@@ -18,8 +18,11 @@ $.ajax({
         for (let i = 0; i<links.length; i++) {
             $("ul").append("<li>" + "<p title=" + links[i] + ">" + lst[i][0] + "</p>" + "</li>")
         }
+        for (let i = 0; i<2; i++) {
+            $("ul").append("<li>" + "<p title=" + "no-channels" + ">" + "No Channel" + "</p>" + "</li>")
+        }
 
-        $("li p:gt(0)").click(function () {
+        $("li p").click(function () {
             player.src({
                 src: $(this).attr("title"),
                 type: 'application/x-mpegURL' /*video type*/
@@ -30,7 +33,7 @@ $.ajax({
         
         let menuHeight = document.getElementById('menu');
         let screenHeight = window.innerHeight;
-        menuHeight.style.height=screenHeight-10+"px";
+        menuHeight.style.height=screenHeight+"px";
         $("#menu").css({"overflow-y":"auto","height":menuHeight});
     }
 })
@@ -40,7 +43,7 @@ $("#player").on({
         $(this).css({"opacity":1})
     },
     click: function() {
-        $(this).css({"background-image":"url(../images/player.jpg)"})
+        $(this).css({"background-image":"url(../Easy-Web-TV-M3u8/images/player.jpg)", "border":"1px solid #fff"})
         $("input").toggle()
         let link = $("input").val()
         if(link.length>0){
@@ -55,7 +58,23 @@ $("#player").on({
     mouseleave: function () {
         $(this).css({"opacity":0.5})
     }
-
 });
+$("#prev").on({
+    mouseenter: function () {
+        $(this).css({"opacity":1})
+    },
+    click: function() {
+        window.location.href = "/";
+    },
+    mouseleave: function () {
+        $(this).css({"opacity":0.5})
+    }
+});
+$("input").on({
+    mouseenter:function(){
+        $(this).css({"opacity":1})
+    }
+})
+
 
 })

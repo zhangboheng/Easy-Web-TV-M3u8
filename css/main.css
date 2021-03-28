@@ -15,13 +15,23 @@ h3 {
     color: #fff;
     text-align: center;
     border-bottom: 1px solid #fff;
-    height: 40px;
+    height: 60px;
+    margin: 30px 0 0 0;
+}
+
+h3 img {
+    width: 15%;
+    vertical-align: middle;
+    padding-right: 10px;
+}
+
+h3 span {
+    font-size:2vw;
 }
 
 ul {
     padding: 0;
-    margin: 0;
-    margin-top: -18px;   
+    margin: 0; 
 }
 
 li {
@@ -31,7 +41,7 @@ li {
 }
 
 li:hover {
-    color: #f00;
+    color: #ff8800;
 }
 
 li p{
@@ -45,11 +55,12 @@ li p{
 }
 
 #left {
-    border-right: 0px solid #000;
     width: 20%;
     height: 100%;
     outline: 1px solid #fff;
     outline-offset: -1px;
+    background-color: #e62117;
+    opacity: 0.8;
 }
 
 #right {
@@ -67,6 +78,20 @@ li p{
     z-index:999;
     border-radius:25px;
     background-image:url("../images/link.jpg");
+    opacity:0.5;
+    cursor:pointer;
+    color:#000;
+}
+#prev {
+    position:absolute;
+    width:50px;
+    height:50px;
+    right:20px;
+    top:80px;
+    background:#fff;
+    z-index:999;
+    border-radius:25px;
+    background-image:url("../images/previous.jpg");
     opacity:0.5;
     cursor:pointer;
     color:#000;
