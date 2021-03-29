@@ -42,7 +42,11 @@ $(document).ready(function() {
         },
         click: function() {
             $(this).css({ "background-image": "url(../Easy-Web-TV-M3u8/images/player.jpg)", "border": "1px solid #fff" })
-            $("input").show()
+            if (window.width > 640) {
+                $("input").show()
+            } else {
+                $("input").toggle()
+            }
             let link = $("input").val()
             if (link.length > 0) {
                 player.src({
