@@ -75,7 +75,7 @@ $(document).ready(function() {
         mouseleave: function() {
             $(this).css({ "opacity": 0.5 })
             $(this).hide()
-            $("#player").css({ "background-image": "url(../images/link.jpg)" })
+            $("#player").css({ "background-image": "url(../Easy-Web-TV-M3u8/images/link.jpg)" })
         }
     })
 
