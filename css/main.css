@@ -114,6 +114,20 @@ input[type="text"] {
     border-bottom: 1px solid #fff;
 }
 
+#div1 img{
+    position:absolute;
+    right:150px;
+    top:100px;
+}
+
+@media screen and (max-width: 1024px) {
+    #div1 img{
+        position:absolute;
+        right:15px;
+        top:175px;
+    }
+}
+
 @media screen and (max-width: 640px) {
     h3 {
         font-size: 14px;
@@ -135,5 +149,13 @@ input[type="text"] {
     input[type="text"] {
         width: 160px;
         height: 30px;
+    }
+
+    #div1 img{
+        position:absolute;
+        width:70%;
+        height:55%;
+        right:15px;
+        top:100px;
     }
 }
