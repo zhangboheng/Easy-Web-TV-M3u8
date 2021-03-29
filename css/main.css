@@ -11,7 +11,7 @@ div {
     float: left;
 }
 
-h2 {
+h3 {
     color: #fff;
     text-align: center;
     border-bottom: 1px solid #fff;
@@ -110,6 +110,12 @@ input[type="text"] {
 }
 
 @media screen and (max-width: 640px) {
+    h3 {
+        font-size: 14px;
+    }
+    li p {
+        font-size: 12px;
+    }
     #player {
         width: 25px;
         height: 25px;

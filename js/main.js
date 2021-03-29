@@ -8,6 +8,7 @@ $(document).ready(function() {
         type: "GET",
         url: ' https://iptv-org.github.io/iptv/categories/movies.m3u',
         success: function(message, text, response) {
+            $("ul").empty()
             let str = message
             let lst = str.split(",").slice(1, ).filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n"))
             let array = str.split(" ")
