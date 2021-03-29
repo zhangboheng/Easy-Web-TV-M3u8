@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Easy Web TV：Watch m3u8 live stream</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <meta name="keywords" content="iptv, movie, github, online tv, web tv, series tv...">
+    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+    <link href="../css/main.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="left">
+        <h3>Health Channels</h3>
+        <ul id="menu">
+            <li>
+                <p>Channels is loading...</p>
+            </li>
+        </ul>
+    </div>
+    <div id="control">
+        <div id="player">
+        </div>
+        <input type="text" placeholder="Support m3u8 links to watch video...">
+        <div id="prev">
+        </div>
+    </div>
+    <div id="right">
+        <div id="div1">
+            <!-- The element where the player will be placed -->
+            <video id="video1" class="video-js" controls preload="auto" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+                <source src="https://y5w8j4a9.ssl.hwcdn.net/andprivehd/tracks-v1a1/index.m3u8"
+                    type="application/x-mpegURL" />
+                <p class="vjs-no-js">
+                    To view this video please enable JavaScript, and consider upgrading to a
+                    web browser that
+                    <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                </p>
+            </video>
+        </div>
+    </div>
+    <script src="../js/main.js"></script>
+    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+    </script>
+</body>
+
+</html>

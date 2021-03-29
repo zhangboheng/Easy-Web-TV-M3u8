@@ -30,6 +30,11 @@ li {
     border-bottom: 1px solid #fff;
 }
 
+li a {
+    color:#fff;
+    text-decoration: none;
+}
+
 li:hover {
     color: #ff8800;
 }
