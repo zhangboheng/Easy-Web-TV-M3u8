@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
     $("#video1").width($("#div1").width()).height($("#div1").height())
 
@@ -10,10 +10,10 @@ $(document).ready(function () {
     $.ajax({
         type: "GET",
         url: ' https://iptv-org.github.io/iptv/categories/' + key + ".m3u",
-        success: function (message, text, response) {
+        success: function(message, text, response) {
             $("ul").empty()
             let str = message
-            let lst = str.split(",").slice(1,).filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n"))
+            let lst = str.split(",").slice(1, ).filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n"))
             let array = str.split(" ")
             console.log(str)
             let links = array.filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n")).flat().filter(x => /[^h]+.m3u8/.test(x))
@@ -23,7 +23,7 @@ $(document).ready(function () {
             $("ul").append(`<li><p title=end>END</p></li>`)
             $("ul").append(`<li><p title=love>♡</p></li>`)
 
-            $("li p").click(function () {
+            $("li p").click(function() {
                 player.src({
                     src: $(this).attr("title"),
                     type: 'application/x-mpegURL' /*video type*/
@@ -43,11 +43,11 @@ $(document).ready(function () {
     })
 
     $("#player").on({
-        mouseenter: function () {
+        mouseenter: function() {
             $(this).css({ "opacity": 1 })
         },
-        click: function () {
-            $(this).css({ "background-image": "url(../Easy-Web-TV-M3u8/images/player.jpg)", "border": "1px solid #fff" })
+        click: function() {
+            $(this).css({ "background-image": "url(../images/player.jpg)", "border": "1px solid #fff" })
             if (window.width > 640) {
                 $("input").show()
             } else {
@@ -63,29 +63,29 @@ $(document).ready(function () {
             }
             $("input").val("")
         },
-        mouseleave: function () {
+        mouseleave: function() {
             $(this).css({ "opacity": 0.5 })
         }
     });
     $("#prev").on({
-        mouseenter: function () {
+        mouseenter: function() {
             $(this).css({ "opacity": 1 })
         },
-        click: function () {
+        click: function() {
             window.location.href = "/Easy-Web-TV-M3u8/";
         },
-        mouseleave: function () {
+        mouseleave: function() {
             $(this).css({ "opacity": 0.5 })
         }
     });
     $("input").on({
-        mouseenter: function () {
+        mouseenter: function() {
             $(this).css({ "opacity": 1 })
         },
-        mouseleave: function () {
+        mouseleave: function() {
             $(this).css({ "opacity": 0.5 })
             $(this).hide(2000)
-            $("#player").css({ "background-image": "url(../Easy-Web-TV-M3u8/images/link.jpg)" })
+            $("#player").css({ "background-image": "url(../images/link.jpg)" })
         }
     })
 
