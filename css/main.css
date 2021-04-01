@@ -161,6 +161,12 @@ input[type="text"] {
         top: 50px;
         background-size: 100%;
     }
+    #github {
+        width: 25px;
+        height: 25px;
+        top: 80px;
+        background-size: 100%;
+    }
     input[type="text"] {
         width: 160px;
         height: 30px;
