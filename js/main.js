@@ -7,6 +7,7 @@ $(document).ready(function() {
     //Get Current href
     var url = window.location.href;
     var key = url.split("/").slice(-1)[0].split(".")[0]
+        //Get iptv-org m3u list and show contents lists
     $.ajax({
         type: "GET",
         url: ' https://iptv-org.github.io/iptv/categories/' + key + ".m3u",
@@ -73,6 +74,17 @@ $(document).ready(function() {
         },
         click: function() {
             window.location.href = "/Easy-Web-TV-M3u8/";
+        },
+        mouseleave: function() {
+            $(this).css({ "opacity": 0.5 })
+        }
+    });
+    $("#github").on({
+        mouseenter: function() {
+            $(this).css({ "opacity": 1 })
+        },
+        click: function() {
+            window.open("https://github.com/zhangboheng/Easy-Web-TV-M3u8");
         },
         mouseleave: function() {
             $(this).css({ "opacity": 0.5 })

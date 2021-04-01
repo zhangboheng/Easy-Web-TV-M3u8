@@ -31,7 +31,7 @@ li {
 }
 
 li a {
-    color:#fff;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -93,6 +93,21 @@ li p {
     color: #000;
 }
 
+#github {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 20px;
+    top: 140px;
+    background: #fff;
+    z-index: 999;
+    border-radius: 25px;
+    background-image: url("../images/github.jpg");
+    opacity: 0.5;
+    cursor: pointer;
+    color: #000;
+}
+
 input[type="text"] {
     position: absolute;
     right: 85px;
@@ -114,17 +129,17 @@ input[type="text"] {
     border-bottom: 1px solid #fff;
 }
 
-#div1 img{
-    position:absolute;
-    right:150px;
-    top:100px;
+#div1 img {
+    position: absolute;
+    right: 150px;
+    top: 100px;
 }
 
 @media screen and (max-width: 1024px) {
-    #div1 img{
-        position:absolute;
-        right:15px;
-        top:175px;
+    #div1 img {
+        position: absolute;
+        right: 15px;
+        top: 175px;
     }
 }
 
@@ -150,12 +165,11 @@ input[type="text"] {
         width: 160px;
         height: 30px;
     }
-
-    #div1 img{
-        position:absolute;
-        width:70%;
-        height:55%;
-        right:15px;
-        top:100px;
+    #div1 img {
+        position: absolute;
+        width: 70%;
+        height: 55%;
+        right: 15px;
+        top: 100px;
     }
 }
