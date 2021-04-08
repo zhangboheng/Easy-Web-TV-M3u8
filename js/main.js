@@ -21,8 +21,6 @@ $(document).ready(function() {
             for (let i = 0; i < links.length; i++) {
                 $("ul").append("<li>" + "<p title=" + links[i] + ">" + lst[i][0] + "</p>" + "</li>")
             }
-            $("ul").append(`<li><p title=end>END</p></li>`)
-            $("ul").append(`<li><p title=love>♡</p></li>`)
 
             $("li p").click(function() {
                 player.src({
@@ -35,7 +33,7 @@ $(document).ready(function() {
 
             let menuHeight = document.getElementById('menu');
             let screenHeight = window.innerHeight;
-            menuHeight.style.height = screenHeight + "px";
+            menuHeight.style.height = screenHeight - 60 + "px";
             $("#menu").css({ "overflow-y": "auto", "height": menuHeight });
         },
         fail: function(xhr, textStatus, errorThrown) {

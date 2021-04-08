@@ -19,7 +19,6 @@
     }
     #menu {
         overflow-y: scroll !important;
-        height:100%;
     }
 </style>
 <body>
@@ -116,9 +115,6 @@
             <li>
                 <p><a href="catalogues/xxx.html">XXX</a></p>
             </li>
-            <li>
-                <p>END</p>
-            </li>
         </ul>
     </div>
     <div id="right">
@@ -126,6 +122,12 @@
             <img src="images/index.png" />
         </div>
     </div>
+    <script>
+            let menuHeight = document.getElementById('menu');
+            let screenHeight = window.innerHeight;
+            menuHeight.style.height = screenHeight - 60 + "px";
+            $("#menu").css({ "overflow-y": "auto", "height": menuHeight });
+    </script>
 </body>
 
 </html>
