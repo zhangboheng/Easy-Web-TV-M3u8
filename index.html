@@ -127,6 +127,12 @@
             let screenHeight = window.innerHeight;
             menuHeight.style.height = screenHeight - 60 + "px";
             $("#menu").css({ "overflow-y": "auto", "height": menuHeight });
+            $("li p").mouseover(function(){
+                $(this).children("a").css({"color":"#000"})
+            })
+            $("li p").mouseleave(function(){
+                $(this).children("a").css({"color":"#fff"})
+            })
     </script>
 </body>
 
