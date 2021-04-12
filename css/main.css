@@ -28,11 +28,6 @@ li {
     cursor: pointer;
     text-align: center;
     border-bottom: 1px solid #fff;
-    margin-top: -16px;
-}
-
-li:hover{
-    background-color:#ff8800;
 }
 
 li a {
@@ -40,14 +35,13 @@ li a {
     text-decoration: none;
 }
 
+li:hover {
+    color: #ff8800;
+}
+
 li p {
     cursor: pointer;
     color: #fff;
-    padding-top: 16px;
-}
-
-li p:hover {
-    color: #000;
 }
 
 .video-js .vjs-big-play-button {
@@ -57,6 +51,7 @@ li p:hover {
 
 #left {
     width: 20%;
+    height: 100%;
     outline: 1px solid #fff;
     outline-offset: -1px;
     background-color: #e62117;

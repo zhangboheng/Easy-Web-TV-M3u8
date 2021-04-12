@@ -97,5 +97,7 @@ $(document).ready(function() {
             $(this).hide(2000)
             $("#player").css({ "background-image": "url(../images/link.jpg)" })
         }
-    });
+    })
+
+
 })
