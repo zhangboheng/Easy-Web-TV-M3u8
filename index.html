@@ -10,23 +10,28 @@
     <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
     <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <style>
-    html,body{
+    html,
+    body {
         background-image: url("images/bg.jpg");
     }
+    
     #menu {
         overflow-y: scroll !important;
     }
 </style>
+
 <body>
     <div id="left">
         <h3>Select Series</h3>
         <ul id="menu">
             <li>
                 <p><a href="catalogues/auto.html">Auto</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/animation.html">Animation</a></p>
             </li>
             <li>
                 <p><a href="catalogues/business.html">Business</a></p>
@@ -36,6 +41,12 @@
             </li>
             <li>
                 <p><a href="catalogues/comedy.html">Comedy</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/cooking.html">Cooking</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/culture.html">Culture</a></p>
             </li>
             <li>
                 <p><a href="catalogues/documentary.html">Documentary</a></p>
@@ -50,22 +61,7 @@
                 <p><a href="catalogues/family.html">Family</a></p>
             </li>
             <li>
-                <p><a href="catalogues/fashion.html">Fasion</a></p>
-            </li>
-            <li>
-                <p><a href="catalogues/food.html">Food</a></p>
-            </li>
-            <li>
                 <p><a href="catalogues/general.html">General</a></p>
-            </li>
-            <li>
-                <p><a href="catalogues/health.html">Health</a></p>
-            </li>
-            <li>
-                <p><a href="catalogues/history.html">History</a></p>
-            </li>
-            <li>
-                <p><a href="catalogues/hobby.html">Hobby</a></p>
             </li>
             <li>
                 <p><a href="catalogues/kids.html">Kids</a></p>
@@ -89,22 +85,25 @@
                 <p><a href="catalogues/news.html">News</a></p>
             </li>
             <li>
-                <p><a href="catalogues/other.html">Other</a></p>
+                <p><a href="catalogues/outdoor.html">Outdoor</a></p>
             </li>
             <li>
-                <p><a href="catalogues/quiz.html">Quiz</a></p>
+                <p><a href="catalogues/relax.html">Relax</a></p>
             </li>
             <li>
                 <p><a href="catalogues/religious.html">Religious</a></p>
             </li>
             <li>
-                <p><a href="catalogues/sci-fi.html">Sci-fi</a></p>
+                <p><a href="catalogues/science.html">Science</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/serise.html">Series</a></p>
             </li>
             <li>
                 <p><a href="catalogues/shop.html">Shop</a></p>
             </li>
             <li>
-                <p><a href="catalogues/sport.html">Sport</a></p>
+                <p><a href="catalogues/sports.html">Sport</a></p>
             </li>
             <li>
                 <p><a href="catalogues/travel.html">travel</a></p>
@@ -115,6 +114,9 @@
             <li>
                 <p><a href="catalogues/xxx.html">XXX</a></p>
             </li>
+            <li>
+                <p><a href="catalogues/other.html">Other</a></p>
+            </li>
         </ul>
     </div>
     <div id="right">
@@ -123,16 +125,23 @@
         </div>
     </div>
     <script>
-            let menuHeight = document.getElementById('menu');
-            let screenHeight = window.innerHeight;
-            menuHeight.style.height = screenHeight - 60 + "px";
-            $("#menu").css({ "overflow-y": "auto", "height": menuHeight });
-            $("li p").mouseover(function(){
-                $(this).children("a").css({"color":"#000"})
+        let menuHeight = document.getElementById('menu');
+        let screenHeight = window.innerHeight;
+        menuHeight.style.height = screenHeight - 60 + "px";
+        $("#menu").css({
+            "overflow-y": "auto",
+            "height": menuHeight
+        });
+        $("li p").mouseover(function() {
+            $(this).children("a").css({
+                "color": "#000"
             })
-            $("li p").mouseleave(function(){
-                $(this).children("a").css({"color":"#fff"})
+        })
+        $("li p").mouseleave(function() {
+            $(this).children("a").css({
+                "color": "#fff"
             })
+        })
     </script>
 </body>
 
