@@ -40,7 +40,14 @@ $(document).ready(function() {
             alert("Please check your Internet or the iptv source has gone out!")
         }
     })
-
+    $('.toggle').click(function() {
+        $('#left').toggle();
+        if ($('#left').is(':visible')) {
+            $('.toggle').css({ 'left': '230px' });
+        } else {
+            $('.toggle').css({ 'left': '5px' });
+        }
+    })
     $("#player").on({
         mouseenter: function() {
             $(this).css({ "opacity": 1 })

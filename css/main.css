@@ -61,6 +61,25 @@ li p:hover {
     outline-offset: -1px;
     background-color: #e62117;
     opacity: 0.8;
+    display: block;
+    z-index: 998;
+    position: absolute;
+}
+
+.toggle {
+    left: 230px;
+    position: absolute;
+    opacity: 0.5;
+    top: 10px;
+    z-index: 999;
+    width: 120px;
+    height: 55px;
+    background-image: url("../images/menubtn.png");
+    cursor: pointer;
+}
+
+.toggle:hover {
+    opacity: 1;
 }
 
 #right {
@@ -129,7 +148,7 @@ input[type="text"] {
 }
 
 #div1 {
-    width: 100%;
+    width: 100vw;
     height: 100%;
     border-bottom: 1px solid #fff;
 }
