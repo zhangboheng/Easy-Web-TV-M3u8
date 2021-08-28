@@ -6,8 +6,8 @@ $(document).ready(function() {
 
     //Get Current href
     var url = window.location.href;
-    var key = url.split("/").slice(-1)[0].split(".")[0]
-        //Get iptv-org m3u list and show contents lists
+    var key = url.split("/").slice(-1)[0].split(".")[0];
+    //Get iptv-org m3u list and show contents lists
     $.ajax({
         type: "GET",
         url: ' https://iptv-org.github.io/iptv/categories/' + key + ".m3u",
@@ -69,6 +69,7 @@ $(document).ready(function() {
             }
         })
     };
+    //Set M3U8 links to play
     $("#player").on({
         mouseenter: function() {
             $(this).css({ "opacity": 1 })
@@ -94,6 +95,7 @@ $(document).ready(function() {
             $(this).css({ "opacity": 0.5 })
         }
     });
+    //Set return home page
     $("#prev").on({
         mouseenter: function() {
             $(this).css({ "opacity": 1 })
@@ -105,6 +107,7 @@ $(document).ready(function() {
             $(this).css({ "opacity": 0.5 })
         }
     });
+    //Set Github link
     $("#github").on({
         mouseenter: function() {
             $(this).css({ "opacity": 1 })
@@ -116,6 +119,7 @@ $(document).ready(function() {
             $(this).css({ "opacity": 0.5 })
         }
     });
+    //Set link input
     $("input").on({
         mouseenter: function() {
             $(this).css({ "opacity": 1 })
