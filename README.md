@@ -6,6 +6,9 @@ Easy way to watch iptv on a web and support m3u8 links to watch.
 # Official
  [Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)  
 
+# Sponsor
+ [![Easy-Web-TV](images/buymecoffeesponsor.jpeg)](https://www.buymeacoffee.com/zhangboheng)
+
 # Version
 ![Easy-Web-TV](https://img.shields.io/badge/version-1.02-green)  
   - Support toggle menu
