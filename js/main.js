@@ -74,6 +74,7 @@ $(document).ready(function() {
                 } else {
                     $(this).css({ 'background-image': 'url(../images/unfavorite20.png)' });
                 }
+                window.location.reload();
             });
             let menuHeight = document.getElementById('menu');
             let screenHeight = window.innerHeight;
