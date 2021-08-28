@@ -12,25 +12,69 @@ $(document).ready(function() {
         type: "GET",
         url: ' https://iptv-org.github.io/iptv/categories/' + key + ".m3u",
         success: function(message, text, response) {
-            $("ul").empty()
+            $("#menu").empty();
+            $("#channelcontent").empty();
             let str = message
             let lst = str.split(",").slice(1, ).filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n"))
             let array = str.split(" ")
-            console.log(str)
             let links = array.filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n")).flat().filter(x => /[^h]+.m3u8/.test(x))
             for (let i = 0; i < links.length; i++) {
-                $("ul").append("<li>" + "<p title=" + links[i] + ">" + lst[i][0] + "</p>" + "</li>")
+                if ($(window).width() > 640) {
+                    if (window.localStorage.getItem(links[i]) == lst[i][0]) {
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
+                        $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
+                    } else {
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
+                    }
+                } else {
+                    if (window.localStorage.getItem(links[i]) == lst[i][0]) {
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
+                        $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
+                    } else {
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
+                    }
+                }
             }
 
-            $("li p").click(function() {
+            $("li p span").click(function() {
                 player.src({
                     src: $(this).attr("title"),
                     type: 'application/x-mpegURL' /*video type*/
                 });
 
                 player.play();
-            })
-
+            });
+            $('#menu li p input').click(function() {
+                //Get browser support localstorage if or not
+                if (!window.localStorage) {
+                    console.log("Browser not support localstorage");
+                    return false;
+                } else {
+                    window.localStorage.setItem($(this).next().attr('title'), $(this).next().text());
+                }
+                if ($(window).width() > 640) {
+                    $(this).css({ 'background-image': 'url(../images/favorite.png)' });
+                } else {
+                    $(this).css({ 'background-image': 'url(../images/favorite20.png)' });
+                }
+                if ($(this).next().attr('title').length > 0) {
+                    window.location.reload();
+                }
+            });
+            $('#channelcontent li p input').click(function() {
+                //Get browser support localstorage if or not
+                if (!window.localStorage) {
+                    console.log("Browser not support localstorage");
+                    return false;
+                } else {
+                    localStorage.removeItem($(this).next().attr('title'));
+                }
+                if ($(window).width() > 640) {
+                    $(this).css({ 'background-image': 'url(../images/unfavorite.png)' });
+                } else {
+                    $(this).css({ 'background-image': 'url(../images/unfavorite20.png)' });
+                }
+            });
             let menuHeight = document.getElementById('menu');
             let screenHeight = window.innerHeight;
             menuHeight.style.height = screenHeight - 60 + "px";
@@ -77,11 +121,11 @@ $(document).ready(function() {
         click: function() {
             $(this).css({ "background-image": "url(../images/player.jpg)", "border": "1px solid #fff" })
             if (window.width > 640) {
-                $("input").show()
+                $("#inputlink").show(500)
             } else {
-                $("input").toggle()
+                $("#inputlink").toggle(500)
             }
-            let link = $("input").val()
+            let link = $("#inputlink").val()
             if (link.length > 0) {
                 player.src({
                     src: link,
@@ -89,7 +133,7 @@ $(document).ready(function() {
                 });
                 player.play();
             }
-            $("input").val("")
+            $('#inputlink').val("")
         },
         mouseleave: function() {
             $(this).css({ "opacity": 0.5 })
@@ -119,8 +163,20 @@ $(document).ready(function() {
             $(this).css({ "opacity": 0.5 })
         }
     });
+    //Set documents list
+    $("#favorite").on({
+        mouseenter: function() {
+            $(this).css({ "opacity": 1 })
+        },
+        click: function() {
+            $('#channelist').toggle(500);
+        },
+        mouseleave: function() {
+            $(this).css({ "opacity": 0.5 })
+        }
+    });
     //Set link input
-    $("input").on({
+    $('#inputlink').on({
         mouseenter: function() {
             $(this).css({ "opacity": 1 })
         },

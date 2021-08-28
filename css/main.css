@@ -50,6 +50,18 @@ li p:hover {
     color: #000;
 }
 
+input[type="button"] {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-color: #00000000;
+    border: none;
+    vertical-align: middle;
+    margin-right: 5px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
 .video-js .vjs-big-play-button {
     left: 45%;
     top: 45%;
@@ -83,6 +95,10 @@ li p:hover {
 }
 
 #menu {
+    overflow-x: hidden;
+}
+
+#channelcontent {
     overflow-x: hidden;
 }
 
@@ -136,6 +152,38 @@ li p:hover {
     color: #000;
 }
 
+#favorite {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 20px;
+    top: 200px;
+    background: #fff;
+    z-index: 999;
+    border-radius: 25px;
+    background-image: url("../images/documents.jpg");
+    opacity: 0.5;
+    cursor: pointer;
+    color: #000;
+}
+
+#channelist {
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    right: 100px;
+    top: 200px;
+    background: #e62117;
+    z-index: 1000;
+    opacity: 0.5;
+    color: #fff;
+    display: none;
+    overflow-y: auto;
+    text-align: center;
+    outline: 1px solid #fff;
+    outline-offset: -1px;
+}
+
 input[type="text"] {
     position: absolute;
     right: 85px;
@@ -181,6 +229,10 @@ input[type="text"] {
     li p {
         font-size: 12px;
     }
+    input[type="button"] {
+        width: 20px;
+        height: 20px;
+    }
     .toggle {
         left: 30px;
     }
@@ -200,6 +252,16 @@ input[type="text"] {
         height: 25px;
         top: 80px;
         background-size: 100%;
+    }
+    #favorite {
+        width: 25px;
+        height: 25px;
+        top: 110px;
+        background-size: 100%;
+    }
+    #channelist {
+        top: 110px;
+        right: 60px;
     }
     input[type="text"] {
         width: 160px;
