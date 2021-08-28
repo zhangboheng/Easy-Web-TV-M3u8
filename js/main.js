@@ -39,15 +39,36 @@ $(document).ready(function() {
         fail: function(xhr, textStatus, errorThrown) {
             alert("Please check your Internet or the iptv source has gone out!")
         }
-    })
-    $('.toggle').click(function() {
-        $('#left').toggle();
-        if ($('#left').is(':visible')) {
-            $('.toggle').css({ 'left': '230px' });
-        } else {
-            $('.toggle').css({ 'left': '5px' });
-        }
-    })
+    });
+    //Set Toggle Menu
+    if ($(window).width() < 640) {
+        $('.toggle').click(function() {
+            $('#left').toggle();
+            if ($('#left').is(':visible')) {
+                $('.toggle').css({ 'left': '30px' });
+            } else {
+                $('.toggle').css({ 'left': '5px' });
+            }
+        })
+    } else if ($(window).width() >= 640 && $(window).width() < 1024) {
+        $('.toggle').click(function() {
+            $('#left').toggle();
+            if ($('#left').is(':visible')) {
+                $('.toggle').css({ 'left': '130px' });
+            } else {
+                $('.toggle').css({ 'left': '5px' });
+            }
+        })
+    } else {
+        $('.toggle').click(function() {
+            $('#left').toggle();
+            if ($('#left').is(':visible')) {
+                $('.toggle').css({ 'left': '230px' });
+            } else {
+                $('.toggle').css({ 'left': '5px' });
+            }
+        })
+    };
     $("#player").on({
         mouseenter: function() {
             $(this).css({ "opacity": 1 })

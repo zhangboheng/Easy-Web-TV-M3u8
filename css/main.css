@@ -82,6 +82,10 @@ li p:hover {
     opacity: 1;
 }
 
+#menu {
+    overflow-x: hidden;
+}
+
 #right {
     width: 80%;
     height: 100%;
@@ -165,6 +169,9 @@ input[type="text"] {
         right: 15px;
         top: 175px;
     }
+    .toggle {
+        left: 130px;
+    }
 }
 
 @media screen and (max-width: 640px) {
@@ -173,6 +180,9 @@ input[type="text"] {
     }
     li p {
         font-size: 12px;
+    }
+    .toggle {
+        left: 30px;
     }
     #player {
         width: 25px;
