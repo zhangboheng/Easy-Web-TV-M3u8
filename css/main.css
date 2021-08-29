@@ -97,6 +97,15 @@ input[type="button"] {
     overflow-x: hidden;
 }
 
+#search {
+    width: 100%;
+    margin-top: 21px;
+    margin-bottom: 5px;
+    border: none;
+    outline: none;
+    padding-inline-start: 10px;
+}
+
 #channelcontent {
     overflow-x: hidden;
 }
@@ -183,7 +192,22 @@ input[type="button"] {
     outline-offset: -1px;
 }
 
-input[type="text"] {
+#shuffleplay {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 20px;
+    top: 260px;
+    background: #fff;
+    z-index: 999;
+    border-radius: 25px;
+    background-image: url("../images/shuffleplay.png");
+    opacity: 0.5;
+    cursor: pointer;
+    color: #000;
+}
+
+#inputlink {
     position: absolute;
     right: 85px;
     top: 25px;

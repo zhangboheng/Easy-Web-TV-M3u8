@@ -1,3 +1,4 @@
+var channels = [];
 $(document).ready(function() {
 
     $("#video1").width($("#div1").width()).height($("#div1").height());
@@ -10,19 +11,21 @@ $(document).ready(function() {
     //Set Page Title
     $('title').html(key.toUpperCase().split('')[0] + key.slice(1) + ' Channels');
     $('#left h3').empty();
-    $('#left h3').html(key.toUpperCase().split('')[0] + key.slice(1) + ' Channels')
-        //Get iptv-org m3u list and show contents lists
+    $('#left h3').html(key.toUpperCase().split('')[0] + key.slice(1) + ' Channels');
+    //Get iptv-org m3u list and show contents lists
     $.ajax({
         type: "GET",
         url: ' https://iptv-org.github.io/iptv/categories/' + key + ".m3u",
         success: function(message, text, response) {
             $("#menu").empty();
+            $("#menu").append('<li style="background-color:#fff"><input id="search" type="text" placeholder="Search..." /></li>');
             $("#channelcontent").empty();
             let str = message
             let lst = str.split(",").slice(1, ).filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n"))
             let array = str.split(" ")
             let links = array.filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n")).flat().filter(x => /[^h]+.m3u8/.test(x))
             for (let i = 0; i < links.length; i++) {
+                channels.push(links[i]);
                 if ($(window).width() > 640) {
                     if (window.localStorage.getItem(links[i]) == lst[i][0]) {
                         $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
@@ -39,7 +42,7 @@ $(document).ready(function() {
                     }
                 }
             }
-
+            //Click channels to play
             $("li p span").click(function() {
                 player.src({
                     src: $(this).attr("title"),
@@ -48,6 +51,17 @@ $(document).ready(function() {
 
                 player.play();
             });
+            //Click play random channels
+            $("#shuffleplay").click(function() {
+                let detail = channels[Math.floor(Math.random() * channels.length)];
+                player.src({
+                    src: detail,
+                    type: 'application/x-mpegURL' /*video type*/
+                });
+
+                player.play();
+            });
+            //Change icon size
             $('#menu li p input').click(function() {
                 //Get browser support localstorage if or not
                 if (!window.localStorage) {
@@ -65,6 +79,7 @@ $(document).ready(function() {
                     window.location.reload();
                 }
             });
+            //Collect favorite channles
             $('#channelcontent li p input').click(function() {
                 //Get browser support localstorage if or not
                 if (!window.localStorage) {
@@ -79,6 +94,23 @@ $(document).ready(function() {
                     $(this).css({ 'background-image': 'url(../images/unfavorite20.png)' });
                 }
                 window.location.reload();
+            });
+            //Search Channels
+            $("#search").on("keyup", function(e) {
+                var valThis = $(this).val().toLowerCase();
+                if (valThis == "") {
+                    $('#menu li').slice(1).show(); // show all lis
+                } else {
+                    $('#menu li:gt(0)').each(function() {
+                        var label = $(this); // cache this
+                        var text = label.text().toLowerCase();
+                        if (text.indexOf(valThis) > -1) {
+                            label.show() // show all li parents up the ancestor tree
+                        } else {
+                            label.hide(); // hide current li as it doesn't match
+                        }
+                    });
+                };
             });
             let menuHeight = document.getElementById('menu');
             let screenHeight = window.innerHeight;
@@ -155,6 +187,15 @@ $(document).ready(function() {
         },
         click: function() {
             $('#channelist').toggle(500);
+        },
+        mouseleave: function() {
+            $(this).css({ "opacity": 0.5 })
+        }
+    });
+    //Set shuffle play
+    $("#shuffleplay").on({
+        mouseenter: function() {
+            $(this).css({ "opacity": 1 })
         },
         mouseleave: function() {
             $(this).css({ "opacity": 0.5 })
