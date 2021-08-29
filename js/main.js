@@ -29,17 +29,23 @@ $(document).ready(function() {
                 if ($(window).width() > 640) {
                     if (window.localStorage.getItem(links[i]) == lst[i][0]) {
                         $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
-                        $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
                     } else {
                         $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
                     }
                 } else {
                     if (window.localStorage.getItem(links[i]) == lst[i][0]) {
                         $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
-                        $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
                     } else {
                         $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
                     }
+                }
+            }
+            //Append favorite list
+            for (let i of Object.keys(localStorage)) {
+                if ($(window).width() > 640) {
+                    $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
+                } else {
+                    $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
                 }
             }
             //Click channels to play
