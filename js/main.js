@@ -5,9 +5,13 @@ $(document).ready(function() {
     var player = videojs(document.querySelector('#video1'));
 
     //Get Current href
-    var url = window.location.href;
-    var key = url.split("/").slice(-1)[0].split(".")[0];
-    //Get iptv-org m3u list and show contents lists
+    var key = window.location.href.split('=')[1];
+
+    //Set Page Title
+    $('title').html(key.toUpperCase().split('')[0] + key.slice(1) + ' Channels');
+    $('#left h3').empty();
+    $('#left h3').html(key.toUpperCase().split('')[0] + key.slice(1) + ' Channels')
+        //Get iptv-org m3u list and show contents lists
     $.ajax({
         type: "GET",
         url: ' https://iptv-org.github.io/iptv/categories/' + key + ".m3u",
