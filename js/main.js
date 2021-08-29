@@ -90,35 +90,15 @@ $(document).ready(function() {
         }
     });
     //Set Toggle Menu
-    if ($(window).width() < 640) {
-        $('.toggle').click(function() {
+    $('.toggle').click(function() {
             $('#left').toggle();
             if ($('#left').is(':visible')) {
-                $('.toggle').css({ 'left': '30px' });
+                $('.toggle').css({ 'left': $('#left').width() - 50 });
             } else {
                 $('.toggle').css({ 'left': '5px' });
             }
         })
-    } else if ($(window).width() >= 640 && $(window).width() < 1024) {
-        $('.toggle').click(function() {
-            $('#left').toggle();
-            if ($('#left').is(':visible')) {
-                $('.toggle').css({ 'left': '130px' });
-            } else {
-                $('.toggle').css({ 'left': '5px' });
-            }
-        })
-    } else {
-        $('.toggle').click(function() {
-            $('#left').toggle();
-            if ($('#left').is(':visible')) {
-                $('.toggle').css({ 'left': '230px' });
-            } else {
-                $('.toggle').css({ 'left': '5px' });
-            }
-        })
-    };
-    //Set M3U8 links to play
+        //Set M3U8 links to play
     $("#player").on({
         mouseenter: function() {
             $(this).css({ "opacity": 1 })
