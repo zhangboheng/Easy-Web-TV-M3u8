@@ -115,12 +115,25 @@ input[type="button"] {
     height: 100%;
 }
 
+#menuicon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 20px;
+    top: 10px;
+    background: none;
+    z-index: 999;
+    background-image: url("../images/menuicon.png");
+    opacity: 0.5;
+    cursor: pointer;
+}
+
 #player {
     position: absolute;
     width: 50px;
     height: 50px;
     right: 20px;
-    top: 20px;
+    top: 60px;
     background: #fff;
     z-index: 999;
     border-radius: 25px;
@@ -128,6 +141,7 @@ input[type="button"] {
     opacity: 0.5;
     cursor: pointer;
     color: #000;
+    display: none;
 }
 
 #prev {
@@ -135,7 +149,7 @@ input[type="button"] {
     width: 50px;
     height: 50px;
     right: 20px;
-    top: 80px;
+    top: 120px;
     background: #fff;
     z-index: 999;
     border-radius: 25px;
@@ -143,6 +157,7 @@ input[type="button"] {
     opacity: 0.5;
     cursor: pointer;
     color: #000;
+    display: none;
 }
 
 #github {
@@ -150,7 +165,7 @@ input[type="button"] {
     width: 50px;
     height: 50px;
     right: 20px;
-    top: 140px;
+    top: 180px;
     background: #fff;
     z-index: 999;
     border-radius: 25px;
@@ -158,6 +173,7 @@ input[type="button"] {
     opacity: 0.5;
     cursor: pointer;
     color: #000;
+    display: none;
 }
 
 #favorite {
@@ -165,7 +181,7 @@ input[type="button"] {
     width: 50px;
     height: 50px;
     right: 20px;
-    top: 200px;
+    top: 240px;
     background: #fff;
     z-index: 999;
     border-radius: 25px;
@@ -173,6 +189,7 @@ input[type="button"] {
     opacity: 0.5;
     cursor: pointer;
     color: #000;
+    display: none;
 }
 
 #channelist {
@@ -180,7 +197,7 @@ input[type="button"] {
     width: 200px;
     height: 300px;
     right: 100px;
-    top: 200px;
+    top: 240px;
     background: #e62117;
     z-index: 1000;
     opacity: 0.5;
@@ -197,7 +214,7 @@ input[type="button"] {
     width: 50px;
     height: 50px;
     right: 20px;
-    top: 260px;
+    top: 300px;
     background: #fff;
     z-index: 999;
     border-radius: 25px;
@@ -205,12 +222,13 @@ input[type="button"] {
     opacity: 0.5;
     cursor: pointer;
     color: #000;
+    display: none;
 }
 
 #inputlink {
     position: absolute;
     right: 85px;
-    top: 25px;
+    top: 65px;
     height: 40px;
     width: 320px;
     background-color: #fff;
@@ -253,42 +271,52 @@ input[type="button"] {
         width: 20px;
         height: 20px;
     }
-    #player {
+    #menuicon {
         width: 25px;
         height: 25px;
+        top: 20px;
         background-size: 100%;
     }
-    #prev {
+    #player {
         width: 25px;
         height: 25px;
         top: 50px;
         background-size: 100%;
     }
-    #github {
+    #prev {
         width: 25px;
         height: 25px;
         top: 80px;
         background-size: 100%;
     }
-    #favorite {
+    #github {
         width: 25px;
         height: 25px;
         top: 110px;
         background-size: 100%;
     }
-    #shuffleplay {
+    #favorite {
         width: 25px;
         height: 25px;
         top: 140px;
         background-size: 100%;
     }
+    #shuffleplay {
+        width: 25px;
+        height: 25px;
+        top: 170px;
+        background-size: 100%;
+    }
     #channelist {
         top: 110px;
         right: 60px;
+        top: 140px;
     }
-    input[type="text"] {
+    #inputlink {
         width: 160px;
         height: 30px;
+        top: 50px;
+        right: 60px;
     }
     #div1 img {
         position: absolute;

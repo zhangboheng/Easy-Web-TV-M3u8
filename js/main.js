@@ -162,6 +162,20 @@ $(document).ready(function() {
             $(this).css({ "opacity": 0.5 })
         }
     });
+    //Set Tools Menu
+    $("#menuicon").on({
+        mouseenter: function() {
+            $(this).css({ "opacity": 1 })
+        },
+        click: function() {
+            $('#control div:gt(0)').slideToggle(500);
+            $('#channelist').hide();
+            $('#inputlink').hide();
+        },
+        mouseleave: function() {
+            $(this).css({ "opacity": 0.5 })
+        }
+    });
     //Set return home page
     $("#prev").on({
         mouseenter: function() {
