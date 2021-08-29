@@ -276,6 +276,12 @@ input[type="button"] {
         top: 110px;
         background-size: 100%;
     }
+    #shuffleplay {
+        width: 25px;
+        height: 25px;
+        top: 140px;
+        background-size: 100%;
+    }
     #channelist {
         top: 110px;
         right: 60px;
