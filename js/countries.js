@@ -6,24 +6,26 @@ $(document).ready(function() {
     var player = videojs(document.querySelector('#video1'));
 
     //Get Current href
-    var key = window.location.href.split('=')[1];
+    var key = window.location.href.split('=')[1].split('&')[0];
+    var tis = window.location.href.split('=')[2];
 
     //Set Page Title
-    $('title').html(key.toUpperCase().split('')[0] + key.slice(1) + ' Channels');
+    $('title').html(tis + ' Channels');
     $('#left h3').empty();
-    $('#left h3').html(key.toUpperCase().split('')[0] + key.slice(1) + ' Channels');
+    $('#left h3').html(tis + ' Channels');
     //Get iptv-org m3u list and show contents lists
     $.ajax({
         type: "GET",
-        url: ' https://iptv-org.github.io/iptv/categories/' + key + ".m3u",
+        url: ' https://iptv-org.github.io/iptv/countries/' + key + ".m3u",
         success: function(message, text, response) {
             $("#menu").empty();
             $("#menu").append('<li style="background-color:#fff"><input id="search" type="text" placeholder="Search..." /></li>');
             $("#channelcontent").empty();
-            let str = message
-            let lst = str.split(",").slice(1, ).filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n"))
-            let array = str.split(" ")
-            let links = array.filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n")).flat().filter(x => /[^h]+.m3u8/.test(x))
+            let str = message;
+            let lst = str.split(",").slice(1, ).filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n"));
+            let array = str.split(" ");
+            let links = array.filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n")).flat().filter(x => /[^h]+.m3u8/.test(x));
+            console.log(lst);
             for (let i = 0; i < links.length; i++) {
                 channels.push(links[i]);
                 if ($(window).width() > 640) {

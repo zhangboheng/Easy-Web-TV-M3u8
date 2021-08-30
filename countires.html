@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Easy Web TV：Watch m3u8 live stream</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <meta name="keywords" content="iptv, movie, github, online tv, web tv, series tv...">
+    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+    html,
+    body {
+        background-image: url("images/bg.jpg");
+    }
+    
+    #menu {
+        overflow-y: scroll !important;
+    }
+</style>
+
+<body>
+    <div id="left">
+        <h3>Select Countires</h3>
+        <ul id="menu">
+            <li>
+                <p><a href="catalogues/counplay.html?tab=af&title=Afghanistan">Afghanistan</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=al&title=Albania">Albania</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=amh&title=dz">Algeria</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=as&title=American Samoa">American Samoa</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=ad&title=Andorra">Andorra</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=ao&title=Angola">Angola</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=ag&title=Antigua & Barbuda">Antigua & Barbuda</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=ar&title=Argentina">Argentina</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=am&title=Armenia">Armenia</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=aw&title=Aruba">Aruba</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=au&title=Australia">Australia</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=at&title=Austria">Austria</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=az&title=Azerbaijan">Azerbaijan</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=bs&title=Bahamas">Bahamas</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=bh&title=Bahrain">Bahrain</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=bd&title=Bangladesh">Bangladesh</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=bb&title=Barbados">Barbados</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=by&title=Belarus">Belarus</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=be&title=Belgium">Belgium</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=bj&title=Benin">Benin</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=bt&title=Bhutan">Bhutan</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=bo&title=Bolivia">Bolivia</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=ba&title=Bosnia">Bosnia</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=bwa&title=Botswana">Botswana</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=br&title=Brazil">Brazil</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=bn&title=Brunei">Brunei</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=bg&title=Bulgaria">Bulgaria</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=bf&title=Burkina Faso">Burkina Faso</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=bi&title=Burundi">Burundi</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=kh&title=Cambodia">Cambodia</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=cml&title=Cameroon">Cameroon</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=ca&title=Canada">Canada</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=iku&title=Inuktitut">Inuktitut</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=ita&title=Italian">Italian</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=jpn&title=Japanese">Japanese</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=jav&title=Javanese">Javanese</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=kan&title=Kannada">Kannada</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=kaz&title=Kazakh">Kazakh</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=khm&title=Khmer">Khmer</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=kin&title=Kinyarwanda">Kinyarwanda</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=kor&title=Korean">Korean</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=kur&title=Kurdish">Kurdish</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=kir&title=Kyrgyz">Kyrgyz</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=lao&title=Lao">Lao</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=lav&title=Latvian">Latvian</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=lit&title=Lithuanian">Lithuanian</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=ltz&title=Luxembourgish">Luxembourgish</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=mkd&title=Macedonian">Macedonian</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=msa&title=Malay (macrolanguage)">Malay (macrolanguage)</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=mal&title=Malayalam">Malayalam</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=mlt&title=Maltese">Maltese</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=cmn&title=Mandarin Chinese">Mandarin Chinese</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=mri&title=Maori">Maori</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=mar&title=Marathi">Marathi</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=nan&title=Min Nan Chinese">Min Nan Chinese</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=ell&title=Modern Greek (1453-)">Modern Greek (1453-)</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=mon&title=Mongolian">Mongolian</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=cnr&title=Montenegrin">Montenegrin</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=nep&title=Nepali (macrolanguage)">Nepali (macrolanguage)</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=nob&title=Norwegian Bokmål">Norwegian Bokmål</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=pan&title=Panjabi">Panjabi</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=pus&title=Pashto">Pashto</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=fas&title=Persian">Persian</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=pol&title=Polish">Polish</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=por&title=Portuguese">Portuguese</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=ron&title=Romanian">Romanian</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=rus&title=Russian">Russian</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=srp&title=Serbian">Serbian</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=sin&title=Sinhala">Sinhala</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=slk&title=Slovak">Slovak</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=slv&title=Slovenian">Slovenian</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=som&title=Somali">Somali</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=spa&title=Spanish">Spanish</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=sun&title=Sundanese">Sundanese</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=swe&title=Swedish">Swedish</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=tgl&title=Tagalog">Tagalog</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=tam&title=Tamil">Tamil</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=tel&title=Telugu">Telugu</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=tha&title=Thai">Thai</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=tur&title=Turkish">Turkish</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=tuk&title=Turkmen">Turkmen</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=ukr&title=Ukrainian">Ukrainian</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=urd&title=Urdu">Urdu</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=uzb&title=Uzbek">Uzbek</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=vie&title=Vietnamese">Vietnamese</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=fry&title=Western Frisian">Western Frisian</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=yue&title=Yue Chinese">Yue Chinese</a></p>
+            </li>
+            <li>
+                <p><a href="catalogues/counplay.html?tab=undefined&title=Others">Others</a></p>
+            </li>
+        </ul>
+    </div>
+    <div id="right">
+        <div id="div1">
+            <img src="images/index.png" />
+        </div>
+    </div>
+    <script>
+        let menuHeight = document.getElementById('menu');
+        let screenHeight = window.innerHeight;
+        menuHeight.style.height = screenHeight - 60 + "px";
+        $("#menu").css({
+            "overflow-y": "auto",
+            "height": menuHeight
+        });
+        $("li p").mouseover(function() {
+            $(this).children("a").css({
+                "color": "#000"
+            })
+        })
+        $("li p").mouseleave(function() {
+            $(this).children("a").css({
+                "color": "#fff"
+            })
+        })
+    </script>
+</body>
+
+</html>
