@@ -1,0 +1,162 @@
+body,
+div,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+input,
+textarea,
+p {
+    margin: 0 auto;
+    padding: 0px;
+    font-size: 12px;
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+img,
+a img {
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a {
+    color: #000;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.bodyCon08 {
+    background: none
+}
+
+.bodyCon08 .students {
+    margin: 0 auto;
+    width: 1100px;
+    height: 480px;
+    position: relative;
+}
+
+#four_flash {
+    position: relative;
+    width: 1100px;
+    height: 400px;
+    margin: 0 auto;
+    position: absolute;
+}
+
+#four_flash .flashBg {
+    width: 998px;
+    height: 400px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+#four_flash .flashBg ul.mobile {
+    height: 400px;
+    position: absolute;
+    top: 15;
+    left: 0;
+}
+
+#four_flash .flashBg ul.mobile li {
+    float: left;
+    width: 280px;
+    height: 340px;
+    margin-left: 26px;
+    margin-bottom: -14px;
+    padding-top: 40px;
+    color: #6C6E85;
+}
+
+#four_flash .flashBg ul.mobile li:hover {
+    color: #999;
+}
+
+#four_flash .flashBg ul.mobile li img {
+    width: 140px;
+    height: 140px;
+    display: block;
+    margin: 0 auto;
+    border: 10px solid #dadce3;
+    border-radius: 82px;
+}
+
+#four_flash .flashBg ul.mobile li dd {
+    font-size: 20px;
+    width: 250px;
+    line-height: 60px;
+    text-align: center;
+    border-bottom: 1px solid #dadce3;
+    color: #ffffff;
+}
+
+#four_flash .flashBg ul.mobile li p {
+    font-size: 16px;
+    text-align: center;
+    width: 250px;
+    line-height: 24px;
+    margin-top: 10px;
+    color: #ffffff98;
+}
+
+#four_flash .flashBg ul.mobile li a {
+    display: block;
+    width: 31px;
+    height: 31px;
+    border: 0px;
+    margin: 8px auto;
+}
+
+#four_flash .but_left {
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    top: 136px;
+    left: 0px;
+}
+
+#four_flash .but_right {
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    top: 136px;
+    right: 0px;
+}
+
+@media screen and (max-width: 1024px) {
+    .bodyCon08 {
+        margin-top: 0px !important;
+    }
+    .bodyCon08 .students {
+        width: 100vw !important;
+    }
+    #four_flash {
+        width: 100vw !important;
+    }
+    #four_flash .flashBg {
+        display: initial;
+    }
+    #four_flash .flashBg ul.mobile li {
+        margin-left: 0;
+        width: 100vw;
+    }
+}

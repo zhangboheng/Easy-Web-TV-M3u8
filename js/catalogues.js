@@ -24,7 +24,6 @@ $(document).ready(function() {
             let lst = str.split(",").slice(1, ).filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n"));
             let array = str.split(" ");
             let links = array.filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n")).flat().filter(x => /[^h]+.m3u8/.test(x));
-            console.log(lst);
             for (let i = 0; i < links.length; i++) {
                 channels.push(links[i]);
                 if ($(window).width() > 640) {

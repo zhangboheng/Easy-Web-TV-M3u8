@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Countires</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <meta name="keywords" content="iptv, movie, github, online tv, web tv, series tv...">
+    <link href="../css/main.css" rel="stylesheet" />
+    <script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+    body {
+        background-image: url("../images/bg.jpg");
+    }
+    
+    #menu {
+        overflow-y: scroll !important;
+    }
+</style>
+
+<body>
+    <div id="left">
+        <h3>Select Countires</h3>
+        <ul id="menu">
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=af&title=Afghanistan">Afghanistan</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=al&title=Albania">Albania</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=amh&title=dz">Algeria</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=as&title=American Samoa">American Samoa</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ad&title=Andorra">Andorra</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ao&title=Angola">Angola</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ag&title=Antigua & Barbuda">Antigua & Barbuda</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ar&title=Argentina">Argentina</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=am&title=Armenia">Armenia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=aw&title=Aruba">Aruba</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=au&title=Australia">Australia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=at&title=Austria">Austria</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=az&title=Azerbaijan">Azerbaijan</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=bs&title=Bahamas">Bahamas</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=bh&title=Bahrain">Bahrain</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=bd&title=Bangladesh">Bangladesh</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=bb&title=Barbados">Barbados</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=by&title=Belarus">Belarus</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=be&title=Belgium">Belgium</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=bj&title=Benin">Benin</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=bt&title=Bhutan">Bhutan</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=bo&title=Bolivia">Bolivia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ba&title=Bosnia">Bosnia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=bwa&title=Botswana">Botswana</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=br&title=Brazil">Brazil</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=bn&title=Brunei">Brunei</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=bg&title=Bulgaria">Bulgaria</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=bf&title=Burkina Faso">Burkina Faso</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=bi&title=Burundi">Burundi</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=kh&title=Cambodia">Cambodia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=cml&title=Cameroon">Cameroon</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ca&title=Canada">Canada</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=cv&title=Cape Verde">Cape Verde</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=cf&title=Central African Republic">Central African Republic</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=td&title=Chad">Chad</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=cl&title=Chile">Chile</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=cn&title=China">China</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=co&title=Colombia">Colombia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=km&title=Comoros">Comoros</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=cg&title=Congo - Brazzaville">Congo - Brazzaville</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=cd&title=Congo - Kinshasa">Congo - Kinshasa</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ck&title=Cook Islands">Cook Islands</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=cr&title=Costa Rica">Costa Rica</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=hr&title=Croatia">Croatia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=cu&title=Cuba">Cuba</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=cw&title=Curaçao">Curaçao</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=cy&title=Cyprus">Cyprus</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=cz&title=Czechia">Czechia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ci&title=Côte d’Ivoire">Côte d’Ivoire</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=dk&title=Denmark">Denmark</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=dj&title=Djibouti">Djibouti</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=do&title=Dominican Republic">Dominican Republic</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ec&title=Ecuador">Ecuador</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mar&title=Marathi">Marathi</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=eg&title=Egypt">Egypt</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=sv&title=El Salvador">El Salvador</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=gq&title=Equatorial Guinea">Equatorial Guinea</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=er&title=Eritrea">Eritrea</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ee&title=Estonia">Estonia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=sz&title=Eswatini">Eswatini</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=et&title=Ethiopia">Ethiopia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=fo&title=Faroe Islands">Faroe Islands</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=fj&title=Fiji">Fiji</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=fi&title=Finland">Finland</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=fr&title=France">France</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=gf&title=French Guiana">French Guiana</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=pf&title=French Polynesia">French Polynesia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=tf&title=French Southern Territories">French Southern Territories</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ga&title=Gabon">Gabon</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=gm&title=Gambia">Gambia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ge&title=Georgia">Georgia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=de&title=Germany">Germany</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=gh&title=Ghana">Ghana</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=gr&title=Greece">Greece</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=gp&title=Guadeloupe">Guadeloupe</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=gu&title=Guam">Guam</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=gt&title=Guatemala">Guatemala</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=gn&title=Guinea">Guinea</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=gw&title=Guinea-Bissau">Guinea-Bissau</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ht&title=Haiti">Haiti</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=hn&title=Honduras">Honduras</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=hk&title=Hong Kong">Hong Kong</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=is&title=Iceland">Iceland</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=in&title=India">India</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=id&title=Indonesia">Indonesia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=int&title=International">International</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ir&title=Iran">Iran</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=iq&title=Iraq">Iraq</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ie&title=Ireland">Ireland</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=il&title=Israel">Israel</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=it&title=Italy">Italy</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=jm&title=Jamaica">Jamaica</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=jp&title=Japan">Japan</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=jo&title=Jordan">Jordan</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=kz&title=Kazakhstan">Kazakhstan</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ke&title=Kenya">Kenya</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ki&title=Kiribati">Kiribati</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=xk&title=Kosovo">Kosovo</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=kw&title=Kuwait">Kuwait</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=kg&title=Kyrgyzstan">Kyrgyzstan</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=la&title=Laos">Laos</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=lv&title=Latvia">Latvia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=lb&title=Lebanon">Lebanon</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=lr&title=Liberia">Liberia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ly&title=Libya">Libya</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=li&title=Liechtenstein">Liechtenstein</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=lt&title=Lithuania">Lithuania</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=lu&title=Luxembourg">Luxembourg</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mo&title=Macao">Macao</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mg&title=Madagascar">Madagascar</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mw&title=Malawi">Malawi</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=my&title=Malaysia">Malaysia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mv&title=Maldives">Maldives</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ml&title=Mali">Mali</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mt&title=Malta">Malta</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mh&title=Marshall Islands">Marshall Islands</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mq&title=Martinique">Martinique</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mr&title=Mauritania">Mauritania</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mu&title=Mauritius">Mauritius</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=yt&title=Mayotte">Mayotte</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mx&title=Mexico">Mexico</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=fm&title=Micronesia">Micronesia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=md&title=Moldova">Moldova</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mc&title=Monaco">Monaco</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mn&title=Mongolia">Mongolia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=me&title=Montenegro">Montenegro</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ma&title=Morocco">Morocco</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mz&title=Mozambique">Mozambique</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mm&title=Myanmar">Myanmar</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=na&title=Namibia">Namibia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=nr&title=Nauru">Nauru</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=np&title=Nepal">Nepal</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=nc&title=New Caledonia">New Caledonia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=nz&title=New Zealand">New Zealand</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ne&title=Niger">Niger</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ng&title=Nigeria">Nigeria</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=nu&title=Niue">Niue</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=nf&title=Norfolk Island">Norfolk Island</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=kp&title=North Korea">North Korea</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mk&title=North Macedonia">North Macedonia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mp&title=Northern Mariana Islands">Northern Mariana Islands</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=no&title=Norway">Norway</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=om&title=Oman">Oman</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=pk&title=Pakistan">Pakistan</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=pw&title=Palau">Palau</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ps&title=Palestine">Palestine</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=pa&title=Panama">Panama</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=pg&title=Papua New Guinea">Papua New Guinea</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=py&title=Paraguay">Paraguay</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=pe&title=Peru">Peru</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ph&title=Philippines">Philippines</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=pn&title=Pitcairn Islands">Pitcairn Islands</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=pl&title=Poland">Poland</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=pt&title=Portugal">Portugal</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=pr&title=Puerto Rico">Puerto Rico</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=qa&title=Qatar">Qatar</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ro&title=Romania">Romania</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ru&title=Russia">Russia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=rw&title=Rwanda">Rwanda</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=re&title=Réunion">Réunion</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ws&title=Samoa">Samoa</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=sm&title=San Marino">San Marino</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=sa&title=Saudi Arabia">Saudi Arabia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=sn&title=Senegal">Senegal</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=rs&title=Serbia">Serbia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=sc&title=Seychelles">Seychelles</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=sl&title=Sierra Leone">Sierra Leone</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=sg&title=Singapore">Singapore</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=sk&title=Slovakia">Slovakia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=si&title=Slovenia">Slovenia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=sb&title=Solomon Islands">Solomon Islands</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=so&title=Somalia">Somalia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=za&title=South Africa">South Africa</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=kr&title=South Korea">South Korea</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ss&title=South Sudan">South Sudan</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=es&title=Spain">Spain</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=lk&title=Sri Lanka">Sri Lanka</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=bl&title=St. Barthélemy">St. Barthélemy</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=sh&title=St. Helena">St. Helena</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=mf&title=St. Martin">St. Martin</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=sd&title=Sudan">Sudan</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=se&title=Sweden">Sweden</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ch&title=Switzerland">Switzerland</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=sy&title=Syria">Syria</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=st&title=São Tomé & Príncipe">São Tomé & Príncipe</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=tw&title=Taiwan">Taiwan</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=tj&title=Tajikistan">Tajikistan</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=tz&title=Tanzania">Tanzania</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=th&title=Thailand">Thailand</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=tl&title=Timor-Leste">Timor-Leste</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=tg&title=Togo">Togo</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=tk&title=Tokelau">Tokelau</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=to&title=Tonga">Tonga</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=tt&title=Trinidad & Tobago">Trinidad & Tobago</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=tn&title=Tunisia">Tunisia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=tr&title=Turkey">Turkey</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=tm&title=Turkmenistan">Turkmenistan</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=tv&title=Tuvalu">Tuvalu</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=vi&title=U.S. Virgin Islands">U.S. Virgin Islands</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ug&title=Uganda">Uganda</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ua&title=Ukraine">Ukraine</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ae&title=United Arab Emirates">United Arab Emirates</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=uk&title=United Kingdom">United Kingdom</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=us&title=United States">United States</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=uy&title=Uruguay">Uruguay</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=uz&title=Uzbekistan">Uzbekistan</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=vu&title=Vanuatu">Vanuatu</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=va&title=Vatican City">Vatican City</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ve&title=Venezuela">Venezuela</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=vn&title=Vietnam">Vietnam</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=wf&title=Wallis & Futuna">Wallis & Futuna</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=eh&title=Western Sahara">Western Sahara</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=ye&title=Yemen">Yemen</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=zm&title=Zambia">Zambia</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=zw&title=Zimbabwe">Zimbabwe</a></p>
+            </li>
+            <li>
+                <p><a href="../catalogues/counplay.html?tab=undefined&title=Others">Others</a></p>
+            </li>
+        </ul>
+    </div>
+    <div id="right">
+        <div id="div1">
+            <img src="../images/index.png" />
+        </div>
+    </div>
+    <script>
+        let menuHeight = document.getElementById('menu');
+        let screenHeight = window.innerHeight;
+        menuHeight.style.height = screenHeight - 60 + "px";
+        $("#menu").css({
+            "overflow-y": "auto",
+            "height": menuHeight
+        });
+        $("li p").mouseover(function() {
+            $(this).children("a").css({
+                "color": "#000"
+            })
+        })
+        $("li p").mouseleave(function() {
+            $(this).children("a").css({
+                "color": "#fff"
+            })
+        })
+    </script>
+</body>
+
+</html>
