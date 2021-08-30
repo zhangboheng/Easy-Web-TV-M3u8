@@ -17,6 +17,7 @@ Easy way to watch iptv on a web and support m3u8 links to watch.
   - Support remark your favorite channels
   - Support search channels
   - Support play random channels
+  - Support select countries and languages
   - more...  
 
 # Screenshot
