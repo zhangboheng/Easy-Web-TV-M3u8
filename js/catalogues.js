@@ -6,7 +6,7 @@ $(document).ready(function() {
     var player = videojs(document.querySelector('#video1'));
 
     //Get Current href
-    var key = window.location.href.split('=')[1];
+    var key = decodeURIComponent(window.location.href).split('=')[1];
 
     //Set Page Title
     $('title').html(key.toUpperCase().split('')[0] + key.slice(1) + ' Channels');
