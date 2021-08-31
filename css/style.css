@@ -76,10 +76,11 @@ a:hover {
 
 #four_flash .flashBg ul.mobile li {
     float: left;
-    width: 280px;
-    height: 340px;
+    width: 30%;
+    height: 80%;
     padding-top: 40px;
     color: #6C6E85;
+    margin-left: 20px;
 }
 
 #four_flash .flashBg ul.mobile li:hover {
@@ -113,7 +114,7 @@ a:hover {
     color: #ffffff98;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 640px) {
     .bodyCon08 .students {
         width: 100vw !important;
     }
