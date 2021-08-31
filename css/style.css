@@ -19,7 +19,6 @@ p {
     margin: 0 auto;
     padding: 0px;
     font-size: 12px;
-    width: 100%;
 }
 
 ul {
@@ -49,31 +48,29 @@ a:hover {
 
 .bodyCon08 .students {
     margin: 0 auto;
-    width: 1100px;
-    height: 480px;
+    width: auto;
     position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    height: 100vh;
 }
 
 #four_flash {
     position: relative;
-    width: 1100px;
-    height: 400px;
+    width: auto;
     margin: 0 auto;
-    position: absolute;
 }
 
 #four_flash .flashBg {
-    width: 998px;
+    width: 100vw;
     height: 400px;
     margin: 0 auto;
-    position: relative;
+    display: flex;
     overflow: hidden;
 }
 
 #four_flash .flashBg ul.mobile {
     height: 400px;
-    position: absolute;
-    top: 15;
     left: 0;
 }
 
@@ -81,8 +78,6 @@ a:hover {
     float: left;
     width: 280px;
     height: 340px;
-    margin-left: 26px;
-    margin-bottom: -14px;
     padding-top: 40px;
     color: #6C6E85;
 }
@@ -118,34 +113,7 @@ a:hover {
     color: #ffffff98;
 }
 
-#four_flash .flashBg ul.mobile li a {
-    display: block;
-    width: 31px;
-    height: 31px;
-    border: 0px;
-    margin: 8px auto;
-}
-
-#four_flash .but_left {
-    width: 50px;
-    height: 100px;
-    position: absolute;
-    top: 136px;
-    left: 0px;
-}
-
-#four_flash .but_right {
-    width: 50px;
-    height: 100px;
-    position: absolute;
-    top: 136px;
-    right: 0px;
-}
-
 @media screen and (max-width: 1024px) {
-    .bodyCon08 {
-        margin-top: 0px !important;
-    }
     .bodyCon08 .students {
         width: 100vw !important;
     }
