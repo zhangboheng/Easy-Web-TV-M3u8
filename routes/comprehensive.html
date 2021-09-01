@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Category</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <meta name="keywords" content="iptv, movie, github, online tv, web tv, series tv...">
+    <link href="../css/main.css" rel="stylesheet" />
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/tocomprehensive.js"></script>
+</head>
+<style>
+    body {
+        background-image: url("../images/bg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        overflow-y: auto;
+    }
+</style>
+
+<body>
+    <div id="left">
+        <h3>Select Category</h3>
+        <ul id="menu">
+            <li>
+                <p>Category list is loading...</p>
+            </li>
+        </ul>
+    </div>
+    <div class="toggle"></div>
+    <select id="selectapi">
+                <option value="http://www.kuaibozy.com/api.php/provide/vod/from/kbm3u8/at/xml/">快播云</option>
+                <option value="https://api.tiankongapi.com/api.php/provide/vod/at/xml/from/tkm3u8/">天空云</option>
+                <option value="http://cj.bajiecaiji.com/inc/bjm3u8.php">八戒云</option>
+    </select>
+    <div id="root">
+        <div class="itemContainer">
+        </div>
+        <div class="itemContainer">
+        </div>
+        <div class="itemContainer">
+        </div>
+        <div class="itemContainer">
+        </div>
+        <div class="itemContainer">
+        </div>
+        <script>
+            let menuHeight = document.getElementById('menu');
+            let screenHeight = window.innerHeight;
+            menuHeight.style.height = screenHeight - 60 + "px";
+            $("#menu").css({
+                "overflow-y": "auto",
+                "height": menuHeight
+            });
+            $("li p").mouseover(function() {
+                $(this).children("a").css({
+                    "color": "#000"
+                })
+            })
+            $("li p").mouseleave(function() {
+                $(this).children("a").css({
+                    "color": "#fff"
+                })
+            });
+            window.addEventListener('scroll', function() {
+                alert("Scrolled");
+            }, false);
+        </script>
+</body>
+
+</html>

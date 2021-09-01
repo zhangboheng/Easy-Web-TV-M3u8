@@ -63,28 +63,31 @@ a:hover {
 
 #four_flash .flashBg {
     width: 100vw;
-    height: 400px;
+    height: 350px;
     margin: 0 auto;
     display: flex;
     overflow: hidden;
 }
 
 #four_flash .flashBg ul.mobile {
-    height: 400px;
+    height: 350px;
     left: 0;
 }
 
 #four_flash .flashBg ul.mobile li {
     float: left;
-    width: 30%;
+    width: 24%;
     height: 80%;
+    opacity: 0.8;
     padding-top: 40px;
     color: #6C6E85;
-    margin-left: 20px;
+    margin-left: 10px;
+    background-color: rgb(163, 0, 27);
 }
 
 #four_flash .flashBg ul.mobile li:hover {
-    color: #999;
+    background-color: #e62117;
+    color: #fff;
 }
 
 #four_flash .flashBg ul.mobile li img {
@@ -114,7 +117,15 @@ a:hover {
     color: #ffffff98;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 1024px) {
+    #four_flash .flashBg ul.mobile li {
+        width: 25%;
+        margin-left: 0px;
+        opacity: 0.8;
+    }
+}
+
+@media screen and (max-width: 768px) {
     .bodyCon08 .students {
         width: 100vw !important;
     }
@@ -127,5 +138,6 @@ a:hover {
     #four_flash .flashBg ul.mobile li {
         margin-left: 0;
         width: 100vw;
+        opacity: 0.8;
     }
 }
