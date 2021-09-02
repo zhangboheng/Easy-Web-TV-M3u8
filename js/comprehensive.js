@@ -18,6 +18,7 @@ $(document).ready(function() {
             var xml = $.parseXML(message),
                 $xml = $(xml),
                 $list = $xml.find('dd'),
+                $pic = $xml.find('pic'),
                 $name = $xml.find('name');
             $('#left h3').html($name[0].innerHTML.split("[")[2].split(']')[0]);
             $("#channelcontent").empty();
@@ -26,9 +27,17 @@ $(document).ready(function() {
             for (let i = 0; i < links.length; i++) {
                 channels.push(links[i]);
                 if (i == 0) {
+                    //Set Videojs Poster
+                    var videoposter = $pic[0].innerHTML
+                    $('.vjs-poster').css({
+                        'background-image': 'url(' + videoposter + ')',
+                        'display': 'block',
+                        'background-size': '25%'
+                    });
+                    //Set Videojs Autoplay
                     player.src({
                         src: links[0],
-                        type: 'application/x-mpegURL' /*video type*/
+                        type: 'application/x-mpegURL'
                     });
 
                     player.play();
@@ -59,7 +68,7 @@ $(document).ready(function() {
             $("li p span").click(function() {
                 player.src({
                     src: $(this).attr("title"),
-                    type: 'application/x-mpegURL' /*video type*/
+                    type: 'application/x-mpegURL'
                 });
 
                 player.play();
@@ -133,7 +142,7 @@ $(document).ready(function() {
             if (link.length > 0) {
                 player.src({
                     src: link,
-                    type: 'application/x-mpegURL' /*video type*/
+                    type: 'application/x-mpegURL'
                 });
                 player.play();
             }
