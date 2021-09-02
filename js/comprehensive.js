@@ -32,7 +32,6 @@ $(document).ready(function() {
                     $('.vjs-poster').css({
                         'background-image': 'url(' + videoposter + ')',
                         'display': 'block',
-                        'background-size': '25%'
                     });
                     //Set Videojs Autoplay
                     player.src({
