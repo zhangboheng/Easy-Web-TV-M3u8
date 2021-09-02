@@ -6,25 +6,23 @@ $(document).ready(function() {
     var player = videojs(document.querySelector('#video1'));
 
     //Get Current href
-    var key = decodeURIComponent(window.location.href).split('=')[1].split('&')[0];
-    var tis = decodeURIComponent(window.location.href).split('=')[2];
+    var initlink = decodeURIComponent(window.location.href).split('=')[1].split('&')[0];
+    var id = decodeURIComponent(window.location.href).split('=')[2];
 
-    //Set Page Title
-    $('title').html(tis + ' Channels');
-    $('#left h3').empty();
-    $('#left h3').html(tis + ' Channels');
     //Get iptv-org m3u list and show contents lists
     $.ajax({
         type: "GET",
-        url: ' https://iptv-org.github.io/iptv/countries/' + key + ".m3u",
+        url: `https://bird.ioliu.cn/v1?url=${initlink}?ac=videolist&ids=${id}`,
         success: function(message, text, response) {
             $("#menu").empty();
-            $("#menu").append('<li style="background-color:#fff"><input id="search" type="text" placeholder="Search..." /></li>');
+            var xml = $.parseXML(message),
+                $xml = $(xml),
+                $list = $xml.find('dd'),
+                $name = $xml.find('name');
+            $('#left h3').html($name[0].innerHTML.split("[")[2].split(']')[0]);
             $("#channelcontent").empty();
-            let str = message;
-            let lst = str.split(",").slice(1, ).filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n"));
-            let array = str.split(" ");
-            let links = array.filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n")).flat().filter(x => /[^h]+.m3u8/.test(x));
+            let episode = $list[0].innerHTML.split('[')[2].split(']')[0].split('\#').map(x => x.split('$')).map(x => x[0]);
+            let links = $list[0].innerHTML.split('[')[2].split(']')[0].split('\#').map(x => x.split('$')).map(x => x[1]);
             for (let i = 0; i < links.length; i++) {
                 channels.push(links[i]);
                 if (i == 0) {
@@ -36,41 +34,31 @@ $(document).ready(function() {
                     player.play();
                 }
                 if ($(window).width() > 640) {
-                    if (window.localStorage.getItem(links[i]) == lst[i][0]) {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
+                    if (window.localStorage.getItem(links[i]) == episode[i]) {
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${links[i]}>${$name[0].innerHTML.split("[")[2].split(']')[0] + episode[i]}</span></p></li>`);
                     } else {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite.png');"/><span title=${links[i]}>${$name[0].innerHTML.split("[")[2].split(']')[0] + episode[i]}</span></p></li>`);
                     }
                 } else {
-                    if (window.localStorage.getItem(links[i]) == lst[i][0]) {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
+                    if (window.localStorage.getItem(links[i]) == episode[i]) {
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${links[i]}>${$name[0].innerHTML.split("[")[2].split(']')[0] + episode[i]}</span></p></li>`);
                     } else {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${links[i]}>${$name[0].innerHTML.split("[")[2].split(']')[0] + episode[i]}</span></p></li>`);
                     }
                 }
             }
             //Append favorite list
             for (let i of Object.keys(localStorage)) {
                 if ($(window).width() > 640) {
-                    $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
+                    $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${i}>${$name[0].innerHTML.split("[")[2].split(']')[0] + localStorage[i]}</span></p></li>`);
                 } else {
-                    $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
+                    $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${i}>${$name[0].innerHTML.split("[")[2].split(']')[0] + localStorage[i]}</span></p></li>`);
                 }
             }
             //Click channels to play
             $("li p span").click(function() {
                 player.src({
                     src: $(this).attr("title"),
-                    type: 'application/x-mpegURL' /*video type*/
-                });
-
-                player.play();
-            });
-            //Click play random channels
-            $("#shuffleplay").click(function() {
-                let detail = channels[Math.floor(Math.random() * channels.length)];
-                player.src({
-                    src: detail,
                     type: 'application/x-mpegURL' /*video type*/
                 });
 
@@ -111,22 +99,6 @@ $(document).ready(function() {
                 window.location.reload();
             });
             //Search Channels
-            $("#search").on("keyup", function(e) {
-                var valThis = $(this).val().toLowerCase();
-                if (valThis == "") {
-                    $('#menu li').slice(1).show(); // show all lis
-                } else {
-                    $('#menu li:gt(0)').each(function() {
-                        var label = $(this); // cache this
-                        var text = label.text().toLowerCase();
-                        if (text.indexOf(valThis) > -1) {
-                            label.show() // show all li parents up the ancestor tree
-                        } else {
-                            label.hide(); // hide current li as it doesn't match
-                        }
-                    });
-                };
-            });
             let menuHeight = document.getElementById('menu');
             let screenHeight = window.innerHeight;
             menuHeight.style.height = screenHeight - 60 + "px";
@@ -138,14 +110,14 @@ $(document).ready(function() {
     });
     //Set Toggle Menu
     $('.toggle').click(function() {
-            $('#left').toggle();
-            if ($('#left').is(':visible')) {
-                $('.toggle').css({ 'left': $('#left').width() - 50 });
-            } else {
-                $('.toggle').css({ 'left': '5px' });
-            }
-        })
-        //Set M3U8 links to play
+        $('#left').toggle();
+        if ($('#left').is(':visible')) {
+            $('.toggle').css({ 'left': $('#left').width() - 50 });
+        } else {
+            $('.toggle').css({ 'left': '5px' });
+        }
+    });
+    //Set M3U8 links to play
     $("#player").on({
         mouseenter: function() {
             $(this).css({ "opacity": 1 })
@@ -216,15 +188,6 @@ $(document).ready(function() {
         },
         click: function() {
             $('#channelist').toggle(500);
-        },
-        mouseleave: function() {
-            $(this).css({ "opacity": 0.5 })
-        }
-    });
-    //Set shuffle play
-    $("#shuffleplay").on({
-        mouseenter: function() {
-            $(this).css({ "opacity": 1 })
         },
         mouseleave: function() {
             $(this).css({ "opacity": 0.5 })

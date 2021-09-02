@@ -7,6 +7,10 @@ body {
     background-color: #000009;
 }
 
+a {
+    color: black;
+}
+
 div {
     float: left;
 }

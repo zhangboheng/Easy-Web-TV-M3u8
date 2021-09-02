@@ -27,6 +27,14 @@ $(document).ready(function() {
             let links = array.filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n")).flat().filter(x => /[^h]+.m3u8/.test(x));
             for (let i = 0; i < links.length; i++) {
                 channels.push(links[i]);
+                if (i == 0) {
+                    player.src({
+                        src: links[0],
+                        type: 'application/x-mpegURL' /*video type*/
+                    });
+
+                    player.play();
+                }
                 if ($(window).width() > 640) {
                     if (window.localStorage.getItem(links[i]) == lst[i][0]) {
                         $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
