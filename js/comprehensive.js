@@ -26,13 +26,21 @@ $(document).ready(function() {
             let links = $list[0].innerHTML.split('[')[2].split(']')[0].split('\#').map(x => x.split('$')).map(x => x[1]);
             for (let i = 0; i < links.length; i++) {
                 channels.push(links[i]);
-                if (i == 0) {
+                if (i == 0 && $(window).width() <= 640) {
                     //Set Videojs Poster
                     var videoposter = $pic[0].innerHTML
                     $('.vjs-poster').css({
                         'background-image': 'url(' + videoposter + ')',
                         'display': 'block',
                     });
+                    //Set Videojs Autoplay
+                    player.src({
+                        src: links[0],
+                        type: 'application/x-mpegURL'
+                    });
+
+                    player.play();
+                } else {
                     //Set Videojs Autoplay
                     player.src({
                         src: links[0],
