@@ -1,15 +1,8 @@
 var channels = [];
-//Set global array proxy links to solve CORS errors
-var proxy = {
-    0: 'https://bird.ioliu.cn/v1?url=',
-}
-var rand = Math.floor(Math.random() * Object.keys(proxy).length);
 $(document).ready(function() {
-
     $("#video1").width($("#div1").width()).height($("#div1").height());
     $(".toggle").css({ 'left': $('#left').width() - 50 });
     var player = videojs(document.querySelector('#video1'));
-
     //Get Current href
     var initlink = decodeURIComponent(window.location.href).split('=')[1].split('&')[0];
     var id = decodeURIComponent(window.location.href).split('=')[2];
@@ -17,7 +10,7 @@ $(document).ready(function() {
     //Get iptv-org m3u list and show contents lists
     $.ajax({
         type: "GET",
-        url: proxy[rand] + `${initlink}?ac=videolist&ids=${id}`,
+        url: 'https://bird.ioliu.cn/v1?url=' + `${initlink}?ac=videolist&ids=${id}`,
         success: function(message, text, response) {
             $("#menu").empty();
             var xml = $.parseXML(message),
@@ -31,29 +24,13 @@ $(document).ready(function() {
             let links = $list[0].innerHTML.split('[')[2].split(']')[0].split('\#').map(x => x.split('$')).map(x => x[1]);
             for (let i = 0; i < links.length; i++) {
                 channels.push(links[i]);
-                if (i == 0 && $(window).width() <= 640) {
-                    //Set Videojs Poster
-                    var videoposter = $pic[0].innerHTML
-                    $('.vjs-poster').css({
-                        'background-image': 'url(' + videoposter + ')',
-                        'display': 'block',
-                    });
-                    //Set Videojs Autoplay
-                    player.src({
-                        src: links[0],
-                        type: 'application/x-mpegURL'
-                    });
+                //Set Videojs Autoplay
+                player.src({
+                    src: links[0],
+                    type: 'application/x-mpegURL'
+                });
 
-                    player.play();
-                } else {
-                    //Set Videojs Autoplay
-                    player.src({
-                        src: links[0],
-                        type: 'application/x-mpegURL'
-                    });
-
-                    player.play();
-                }
+                player.play();
                 if ($(window).width() > 640) {
                     if (window.localStorage.getItem(links[i]) == episode[i]) {
                         $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${links[i]}>${$name[0].innerHTML.split("[")[2].split(']')[0] + episode[i]}</span></p></li>`);

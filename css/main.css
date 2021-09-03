@@ -67,11 +67,6 @@ input[type="button"] {
     cursor: pointer;
 }
 
-.video-js .vjs-big-play-button {
-    left: 45%;
-    top: 45%;
-}
-
 #left {
     width: 20%;
     outline: 1px solid #fff;
@@ -255,6 +250,53 @@ input[type="button"] {
     position: absolute;
     right: 150px;
     top: 100px;
+}
+
+.vjs-paused .vjs-big-play-button,
+.vjs-paused.vjs-has-started .vjs-big-play-button {
+    display: block;
+}
+
+.video-js .vjs-big-play-button {
+    font-size: 2.5em;
+    line-height: 2.3em;
+    height: 2.5em;
+    width: 2.5em;
+    -webkit-border-radius: 2.5em;
+    -moz-border-radius: 2.5em;
+    border-radius: 2.5em;
+    background-color: #73859f;
+    background-color: rgba(115, 133, 159, .5);
+    border-width: 0.15em;
+}
+
+.video-js .vjs-time-control {
+    display: block;
+}
+
+.video-js .vjs-remaining-time {
+    display: none;
+}
+
+.video-js .vjs-tech {
+    position: relative !important;
+}
+
+.vjs-big-play-button .vjs-icon-placeholder {
+    font-size: 1.63em;
+}
+
+.vjs-loading-spinner {
+    font-size: 2.5em;
+    width: 2em;
+    height: 2em;
+    border-radius: 1em;
+    margin-top: -1em;
+    margin-left: -1.5em;
+}
+
+.video-js.vjs-playing .vjs-tech {
+    pointer-events: auto;
 }
 
 
