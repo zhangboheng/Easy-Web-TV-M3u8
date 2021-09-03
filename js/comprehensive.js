@@ -1,4 +1,9 @@
 var channels = [];
+//Set global array proxy links to solve CORS errors
+var proxy = {
+    0: 'https://bird.ioliu.cn/v1?url=',
+}
+var rand = Math.floor(Math.random() * Object.keys(proxy).length);
 $(document).ready(function() {
 
     $("#video1").width($("#div1").width()).height($("#div1").height());
@@ -12,7 +17,7 @@ $(document).ready(function() {
     //Get iptv-org m3u list and show contents lists
     $.ajax({
         type: "GET",
-        url: `https://bird.ioliu.cn/v1?url=${initlink}?ac=videolist&ids=${id}`,
+        url: proxy[rand] + `${initlink}?ac=videolist&ids=${id}`,
         success: function(message, text, response) {
             $("#menu").empty();
             var xml = $.parseXML(message),
