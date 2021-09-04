@@ -33,6 +33,8 @@ $(document).ready(function() {
     });
     //Scroll down to load more
     $(window).scroll(function(e) {
+        $('#left').hide();
+        $('.toggle').css({ 'left': '5px' });
         var ks = $('.hiddens');
         var str = ks[0].children[0].innerHTML;
         var scrollTop = $(this).scrollTop(),
