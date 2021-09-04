@@ -1,6 +1,6 @@
 ![Easy-Web-TV](images/banner.jpg)
 # Easy-Web-TV-M3u8
-![Easy-Web-TV](https://img.shields.io/github/issues/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/badge/version-3.0.0-pink)  
+![Easy-Web-TV](https://img.shields.io/github/issues/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/badge/version-4.0.0-pink)  
 Easy way to watch iptv on a web and support m3u8 links to watch.  
 
 # Official
@@ -10,13 +10,14 @@ Easy way to watch iptv on a web and support m3u8 links to watch.
  [![Easy-Web-TV](images/buymecoffeesponsor.jpeg)](https://www.buymeacoffee.com/zhangboheng)
 
 # Version
-![Easy-Web-TV](https://img.shields.io/badge/version-3.0.0-green)  
-  - Support select countries, languages and category
-  - Watch more than 6000 channels
+![Easy-Web-TV](https://img.shields.io/badge/version-4.0.0-green)  
+  - Support select countries, languages and category to watch online channels
+  - Support watch more than 6000 channels
   - Support to watch m3u8 link videos
-  - Support remark your favorite channels
-  - Support search channels
+  - Support remark your favorite channels, movies, episodes...
+  - Support search channels, movies, episodes...
   - Support play random channels
+  - Support select source websites
   - more...  
 
 # Screenshot

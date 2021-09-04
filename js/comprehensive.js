@@ -32,25 +32,25 @@ $(document).ready(function() {
 
                 player.play();
                 if ($(window).width() > 640) {
-                    if (window.localStorage.getItem(links[i]) == episode[i]) {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${links[i]}>${episode[i]}</span></p></li>`);
+                    if (window.localStorage.getItem(links[i]) == $name[0].innerHTML.split("[")[2].split(']')[0] + episode[i]) {
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${links[i]}>${$name[0].innerHTML.split("[")[2].split(']')[0] + episode[i]}</span></p></li>`);
                     } else {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite.png');"/><span title=${links[i]}>${episode[i]}</span></p></li>`);
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite.png');"/><span title=${links[i]}>${$name[0].innerHTML.split("[")[2].split(']')[0] + episode[i]}</span></p></li>`);
                     }
                 } else {
-                    if (window.localStorage.getItem(links[i]) == episode[i]) {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${links[i]}>${episode[i]}</span></p></li>`);
+                    if (window.localStorage.getItem(links[i]) == $name[0].innerHTML.split("[")[2].split(']')[0] + episode[i]) {
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${links[i]}>${$name[0].innerHTML.split("[")[2].split(']')[0] + episode[i]}</span></p></li>`);
                     } else {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${links[i]}>${episode[i]}</span></p></li>`);
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${links[i]}>${$name[0].innerHTML.split("[")[2].split(']')[0] + episode[i]}</span></p></li>`);
                     }
                 }
             }
             //Append favorite list
             for (let i of Object.keys(localStorage)) {
                 if ($(window).width() > 640) {
-                    $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${i}>${$name[0].innerHTML.split("[")[2].split(']')[0] + localStorage[i]}</span></p></li>`);
+                    $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
                 } else {
-                    $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${i}>${$name[0].innerHTML.split("[")[2].split(']')[0] + localStorage[i]}</span></p></li>`);
+                    $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
                 }
             }
             //Click channels to play
