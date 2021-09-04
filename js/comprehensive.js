@@ -33,15 +33,15 @@ $(document).ready(function() {
                 player.play();
                 if ($(window).width() > 640) {
                     if (window.localStorage.getItem(links[i]) == episode[i]) {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${links[i]}>${$name[0].innerHTML.split("[")[2].split(']')[0] + episode[i]}</span></p></li>`);
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${links[i]}>${episode[i]}</span></p></li>`);
                     } else {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite.png');"/><span title=${links[i]}>${$name[0].innerHTML.split("[")[2].split(']')[0] + episode[i]}</span></p></li>`);
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite.png');"/><span title=${links[i]}>${episode[i]}</span></p></li>`);
                     }
                 } else {
                     if (window.localStorage.getItem(links[i]) == episode[i]) {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${links[i]}>${$name[0].innerHTML.split("[")[2].split(']')[0] + episode[i]}</span></p></li>`);
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${links[i]}>${episode[i]}</span></p></li>`);
                     } else {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${links[i]}>${$name[0].innerHTML.split("[")[2].split(']')[0] + episode[i]}</span></p></li>`);
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${links[i]}>${episode[i]}</span></p></li>`);
                     }
                 }
             }
@@ -194,12 +194,12 @@ $(document).ready(function() {
     //Set link input
     $('#inputlink').on({
         mouseenter: function() {
-            $(this).css({ "opacity": 1 })
+            $(this).css({ "opacity": 1 });
         },
         mouseleave: function() {
-            $(this).css({ "opacity": 0.5 })
-            $(this).hide(2000)
-            $("#player").css({ "background-image": "url(../images/link.jpg)" })
+            $(this).css({ "opacity": 0.5 });
+            $(this).hide(3000);
+            $("#player").css({ "background-image": "url(../images/link.jpg)" });
         }
     });
 })

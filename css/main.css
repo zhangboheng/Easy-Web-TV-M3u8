@@ -95,6 +95,7 @@ input[type="button"] {
 
 #menu {
     overflow-x: hidden;
+    height: 100vh;
 }
 
 #search {

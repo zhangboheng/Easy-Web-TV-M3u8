@@ -232,12 +232,12 @@ $(document).ready(function() {
     //Set link input
     $('#inputlink').on({
         mouseenter: function() {
-            $(this).css({ "opacity": 1 })
+            $(this).css({ "opacity": 1 });
         },
         mouseleave: function() {
-            $(this).css({ "opacity": 0.5 })
-            $(this).hide(2000)
-            $("#player").css({ "background-image": "url(../images/link.jpg)" })
+            $(this).css({ "opacity": 0.5 });
+            $(this).hide(3000);
+            $("#player").css({ "background-image": "url(../images/link.jpg)" });
         }
     });
 })

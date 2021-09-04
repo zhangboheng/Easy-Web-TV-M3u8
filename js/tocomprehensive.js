@@ -41,6 +41,7 @@ $(document).ready(function() {
         var positionValue = (scrollTop + windowHeight) - scrollHeight;
         var link = $('#selectapi').val();
         if (positionValue == 0) {
+            $('#root').append(`<div class="loadingimg"><img src="../images/loading.gif" tag="Easy Web TV"></div>`);
             pnum++;
             $.getJSON(proxy[rand] + `${link}?ac=videolist&t=${str}&pg=${pnum}`, function(data) {
                 var xml = $.parseXML(data),
@@ -49,6 +50,7 @@ $(document).ready(function() {
                     $type = $xml.find('type'),
                     $name = $xml.find('name'),
                     $id = $xml.find('id');
+                $('.loadingimg').remove();
                 if ($(window).width() > 1024) {
                     for (let i = 0; i < $test.length; i++) {
                         if (i % 5 == 0) {
