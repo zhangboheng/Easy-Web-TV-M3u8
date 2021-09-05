@@ -15,7 +15,7 @@
 
 <body>
     <div id="left">
-        <h3></h3>
+        <h3>Name</h3>
         <ul id="menu">
             <li>
                 <p>Channels list is loading...</p>
@@ -43,13 +43,15 @@
                 </li>
             </ul>
         </div>
-        <div id="shuffleplay" title="Random play channels video">
+        <div id="epdetail" title="Content detail">
+        </div>
+        <div id="epcontent">
         </div>
     </div>
     <div id="right">
         <div id="div1">
             <!-- The element where the player will be placed -->
-            <video id="video1" class="video-js vjs-big-play-centered" controls preload="auto" autoplay="true" poster="Loading..." data-setup='{}'>
+            <video id="video1" class="video-js vjs-big-play-centered" controls preload="auto" poster="Loading..." autoplay="true" data-setup='{"playbackRates": [0.5, 1.0, 1.5, 2.0 ,4.0]}'>
                 <source src="https://f8e7y4c6.ssl.hwcdn.net/andflixhd/index.m3u8" type="application/x-mpegURL" />
                 <p class="vjs-no-js">
                     To view this video please enable JavaScript, and consider upgrading to a web browser that
@@ -58,9 +60,8 @@
             </video>
         </div>
     </div>
-    <script src="../js/languages.js"></script>
+    <script src="../js/adult.js"></script>
     <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
-    </script>
 </body>
 
 </html>

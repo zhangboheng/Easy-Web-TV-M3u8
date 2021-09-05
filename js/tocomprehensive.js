@@ -262,6 +262,7 @@ function iniMenu(link) {
         let className = e.originalEvent.target.className;
         $('.hiddens').empty();
         $('.hiddens').append(`<p>${className}</p>`);
+        $('#search').val('');
         $.getJSON(proxy[rand] + `${link}?ac=videolist&t=${className}`, function(data) {
             var xml = $.parseXML(data),
                 $xml = $(xml),
