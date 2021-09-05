@@ -226,6 +226,49 @@ input[type="button"] {
     display: none;
 }
 
+#epdetail {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 20px;
+    top: 300px;
+    background: #fff;
+    z-index: 999;
+    border-radius: 25px;
+    background-image: url("../images/detail.png");
+    opacity: 0.5;
+    cursor: pointer;
+    color: #000;
+    display: none;
+    background-size: cover;
+}
+
+#epcontent {
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    right: 100px;
+    top: 300px;
+    background: #e62117;
+    z-index: 1000;
+    opacity: 0.5;
+    color: #fff;
+    display: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    outline: 1px solid #fff;
+    outline-offset: -1px;
+    word-break: break-all;
+}
+
+#epcontent p {
+    word-break: break-all;
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+}
+
 #inputlink {
     position: absolute;
     right: 85px;
@@ -417,10 +460,19 @@ input[type="button"] {
         top: 170px;
         background-size: 100%;
     }
+    #epdetail {
+        width: 25px;
+        height: 25px;
+        top: 170px;
+        background-size: 100%;
+    }
     #channelist {
-        top: 110px;
         right: 60px;
         top: 140px;
+    }
+    #epcontent {
+        right: 60px;
+        top: 170px;
     }
     #inputlink {
         width: 160px;

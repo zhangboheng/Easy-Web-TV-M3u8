@@ -1,3 +1,7 @@
+//Set global array proxy links to solve CORS errors
+var proxy = {
+    0: 'https://bird.ioliu.cn/v1?url=',
+};
 var channels = [];
 $(document).ready(function() {
     $("#video1").width($("#div1").width()).height($("#div1").height());
@@ -10,14 +14,16 @@ $(document).ready(function() {
     //Get iptv-org m3u list and show contents lists
     $.ajax({
         type: "GET",
-        url: 'https://bird.ioliu.cn/v1?url=' + `${initlink}?ac=videolist&ids=${id}`,
+        url: proxy[0] + `${initlink}?ac=videolist&ids=${id}`,
         success: function(message, text, response) {
             $("#menu").empty();
+            $('#epcontent').empty();
             var xml = $.parseXML(message),
                 $xml = $(xml),
                 $list = $xml.find('dd'),
-                $pic = $xml.find('pic'),
+                $des = $xml.find('des'),
                 $name = $xml.find('name');
+            $('#epcontent').append(`<h3>Content</h3><p>${$des[0].innerHTML.split("[")[2].split(']')[0]}</p>`);
             $('#left h3').html($name[0].innerHTML.split("[")[2].split(']')[0]);
             $("#channelcontent").empty();
             let episode = $list[0].innerHTML.split('[')[2].split(']')[0].split('\#').map(x => x.split('$')).map(x => x[0]);
@@ -150,6 +156,7 @@ $(document).ready(function() {
             $('#control div:gt(0)').slideToggle(500);
             $('#channelist').hide();
             $('#inputlink').hide();
+            $('#epcontent').hide();
         },
         mouseleave: function() {
             $(this).css({ "opacity": 0.5 })
@@ -186,6 +193,18 @@ $(document).ready(function() {
         },
         click: function() {
             $('#channelist').toggle(500);
+        },
+        mouseleave: function() {
+            $(this).css({ "opacity": 0.5 })
+        }
+    });
+    //Set epcontent list
+    $("#epdetail").on({
+        mouseenter: function() {
+            $(this).css({ "opacity": 1 })
+        },
+        click: function() {
+            $('#epcontent').toggle(500);
         },
         mouseleave: function() {
             $(this).css({ "opacity": 0.5 })
