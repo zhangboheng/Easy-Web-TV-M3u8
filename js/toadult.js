@@ -159,7 +159,7 @@ function iniMenu(link) {
             $(`.itemContainer:eq(2)`).hide();
             $(`.itemContainer:eq(3)`).hide();
             $(`.itemContainer:eq(4)`).hide();
-            for (let i = 0; i < $test.length; i++) {
+            for (let i = 0; i < test.length; i++) {
                 pic = test[i].vod_pic.length == 0 ? '../images/noimage.jpeg' : test[i].vod_pic;
                 if (i % 2 == 0) {
                     $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)

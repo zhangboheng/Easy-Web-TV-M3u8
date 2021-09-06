@@ -8,6 +8,8 @@
     <meta name="author" content="Zhang Boheng">
     <meta name="keywords" content="iptv, movie, github, online tv, web tv, series tv...">
     <link rel="stylesheet" href="css/style.css" />
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="js/index.js"></script>
 </head>
 
 <style>
@@ -22,39 +24,37 @@
 </style>
 
 <body>
+    <div id="popupbox">
+        <div id="chooseitem" class="reveal-modal">
+            <a href="#" class="close-reveal-modal">×</a>
+            <h2>Select</h2>
+            <div id="selectform">
+                <input type="radio" name="radioName" value="1" checked/> Contries <br />
+                <input type="radio" name="radioName" value="2" /> Languages <br />
+                <input type="radio" name="radioName" value="3" /> Category <br />
+            </div>
+            <button class="stylebtn">GO!</button>
+        </div>
+    </div>
     <div class="bodyCon08">
         <div class="students">
             <div id="four_flash">
                 <div class="flashBg">
                     <ul class="mobile">
-                        <a href="routes/countires.html">
-                            <li>
-                                <img src="images/earth.svg" />
-                                <dd>Select Countries</dd>
-                                <p>More than 200 countries Channels</p>
-                            </li>
-                        </a>
-                        <a href="routes/language.html">
-                            <li>
-                                <img src="images/language.svg" />
-                                <dd>Select Languages</dd>
-                                <p>88 Languages Channels</p>
-
-                            </li>
-                        </a>
-                        <a href="routes/category.html">
-                            <li>
-                                <img src="images/category.svg" />
-                                <dd>Select Category</dd>
-                                <p>Can watch movies, musics...channels</p>
-
-                            </li>
-                        </a>
+                        <li>
+                            <img src="images/tv.svg" />
+                            <dd>
+                                <a href="#popupbox" data-reveal-id="chooseitem"><button class="stylebtn">Enter</button></a>
+                            </dd>
+                            <p>Watch 6000+ TV Channels...</p>
+                        </li>
                         <a href="routes/comprehensive.html">
                             <li>
                                 <img src="images/comprehensive.svg" />
-                                <dd>Select Comprehensive</dd>
-                                <p>Free movies, Series, anime...</p>
+                                <dd>
+                                    <button class="stylebtn">Enter</button>
+                                </dd>
+                                <p>Watch Movies, Series, Animes...</p>
                             </li>
                         </a>
                     </ul>

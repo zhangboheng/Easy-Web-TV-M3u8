@@ -1,5 +1,4 @@
 body,
-div,
 ul,
 ol,
 li,
@@ -12,13 +11,10 @@ h3,
 h4,
 h5,
 h6,
-form,
-input,
 textarea,
 p {
     margin: 0 auto;
     padding: 0px;
-    font-size: 12px;
 }
 
 ul {
@@ -63,30 +59,29 @@ a:hover {
 
 #four_flash .flashBg {
     width: 100vw;
-    height: 350px;
+    height: 370px;
     margin: 0 auto;
     display: flex;
     overflow: hidden;
 }
 
 #four_flash .flashBg ul.mobile {
-    height: 350px;
+    height: 370px;
     left: 0;
 }
 
 #four_flash .flashBg ul.mobile li {
     float: left;
-    width: 24%;
+    width: 48%;
     height: 80%;
     opacity: 0.8;
     padding-top: 40px;
     color: #6C6E85;
     margin-left: 10px;
-    background-color: rgb(163, 0, 27);
+    background-color: black;
 }
 
 #four_flash .flashBg ul.mobile li:hover {
-    background-color: #e62117;
     color: #fff;
 }
 
@@ -116,6 +111,107 @@ a:hover {
     margin-top: 10px;
     color: #ffffff98;
 }
+
+
+/* This is popupbox css style start */
+
+#popupbox {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    visibility: hidden;
+    display: none;
+    background-color: rgba(22, 22, 22, 0.5);
+}
+
+#popupbox:target {
+    visibility: visible;
+    display: block;
+}
+
+.reveal-modal {
+    color: #fff;
+    background: #a3001b;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    z-index: 41;
+    top: 35%;
+    padding: 10px;
+    text-align: center;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    opacity: 0.9;
+}
+
+.close-reveal-modal {
+    position: relative;
+    float: right;
+    color: #fff;
+}
+
+#selectform {
+    text-align: left;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* This is popupbox css style end */
+
+
+/* This is button css style start */
+
+button {
+    font-weight: 600;
+    border: solid 2px black;
+    outline: 0;
+    padding: 0rem 4rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.08rem;
+    background-color: white;
+    border-radius: 0.35rem;
+    position: relative;
+    cursor: pointer;
+}
+
+button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #a3001b;
+    z-index: -1;
+    border-radius: 0.35rem;
+    border: solid 2px black;
+    transition: all 0.3s ease-in-out;
+}
+
+button.stylebtn::after {
+    border: 0;
+    box-shadow: 0px 0px 0px 2px black;
+    top: 0.5rem;
+    left: 0.5rem;
+}
+
+button.stylebtn:hover {
+    color: white;
+    background-color: red;
+    border: 0;
+}
+
+button.stylebtn:hover::after {
+    background-color: white;
+    box-shadow: none;
+}
+
+
+/* This is button css style end */
 
 @media screen and (max-width: 1024px) {
     #four_flash .flashBg ul.mobile li {
