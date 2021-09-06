@@ -13,7 +13,11 @@
 <script>
     $(document).ready(function() {
         //Check user location if is in China or North korea banned
-        getCoordintes();
+        try {
+            getCoordintes();
+        } catch (e) {
+            console.log(e)
+        }
         //Toggle Menu
         $('#main').click(function() {
             if ($('#mySidenav').is(':visible')) {
@@ -159,10 +163,33 @@
             }
 
             function error(err) {
-                console.warn(`ERROR(${err.code}): ${err.message}`);
+                getUserIp();
+                getCnUser();
             }
 
             navigator.geolocation.getCurrentPosition(success, error, options);
+        }
+
+        function getUserIp() {
+            var request = new XMLHttpRequest();
+
+            request.open('GET', 'https://api.ipdata.co/?api-key=7910661894e758448cbebb4a636485005498427178dea6ef0e911311');
+
+            request.setRequestHeader('Accept', 'application/json');
+
+            request.onreadystatechange = function() {
+                if (this.readyState === 4) {
+                    let country = JSON.parse(this.responseText).country_code;
+                    if (country.toLowerCase() == 'cn' || country.toLowerCase() == 'kp' || country.toLowerCase() == 'ir') {
+                        $('#main').hide();
+                    }
+                }
+            };
+            request.send();
+        }
+
+        function getCnUser() {
+            fetch("https://checkip.amazonaws.com/").then(res => res.text()).then(data => console.log(data));
         }
     </script>
 </body>
