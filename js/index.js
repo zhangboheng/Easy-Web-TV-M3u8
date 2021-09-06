@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var init = $('input[name=radioName]:checked', '#selectform').val();
+    var init;
     $('.stylebtn:eq(0)').on('click', function() {
         if (init == 1) {
             window.location.href = "routes/countries.html";
