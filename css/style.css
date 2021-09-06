@@ -28,9 +28,6 @@ a img {
 
 a {
     text-decoration: none;
-}
-
-a {
     color: #000;
 }
 
@@ -78,7 +75,7 @@ a:hover {
     padding-top: 40px;
     color: #6C6E85;
     margin-left: 10px;
-    background-color: black;
+    background-color: #00000099;
 }
 
 #four_flash .flashBg ul.mobile li:hover {
@@ -111,6 +108,71 @@ a:hover {
     margin-top: 10px;
     color: #ffffff98;
 }
+
+
+/* This is switch css style start */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+/* This is switch css style end */
 
 
 /* This is popupbox css style start */
@@ -213,15 +275,73 @@ button.stylebtn:hover::after {
 
 /* This is button css style end */
 
+
+/* This is slidenav css style start */
+
+.sidenav {
+    height: 100%;
+    width: 400px;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    background-color: #111111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 25px;
+    display: none;
+}
+
+.sidenav h3 {
+    text-align: center;
+    color: #fff;
+    font-size: 28px;
+    padding-bottom: 8px;
+}
+
+.sidenav a {
+    padding: 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+#main {
+    transition: margin-right .5s;
+    padding: 16px;
+    position: absolute;
+    z-index: 999;
+    right: 0;
+}
+
+#main img {
+    opacity: 0.5;
+}
+
+#main img:hover {
+    opacity: 1;
+}
+
+
+/* This is slidenav css style end */
+
 @media screen and (max-width: 1024px) {
     #four_flash .flashBg ul.mobile li {
-        width: 25%;
         margin-left: 0px;
         opacity: 0.8;
+        margin-right: 10px
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 640px) {
     .bodyCon08 .students {
         width: 100vw !important;
     }
@@ -235,5 +355,30 @@ button.stylebtn:hover::after {
         margin-left: 0;
         width: 100vw;
         opacity: 0.8;
+    }
+    /* This is switch css style start */
+    .switch {
+        width: 50px;
+        height: 20px;
+    }
+    .slider:before {
+        height: 15px;
+        width: 15px;
+        bottom: 3px;
+    }
+    /* This is switch css style end */
+    .sidenav {
+        padding-top: 15px;
+        width: 250px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+    .sidenav span {
+        float: left
+    }
+    .sidenav h3 {
+        font-size: 24px;
+        padding-bottom: 8px;
     }
 }

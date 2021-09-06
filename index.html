@@ -9,9 +9,57 @@
     <meta name="keywords" content="iptv, movie, github, online tv, web tv, series tv...">
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/index.js"></script>
 </head>
-
+<script>
+    $(document).ready(function() {
+        //Check user location if is in China or North korea banned
+        getCoordintes();
+        //Toggle Menu
+        $('#main').click(function() {
+            if ($('#mySidenav').is(':visible')) {
+                $(this).css({
+                    'marginRight': '0'
+                });
+                $('#mySidenav').hide();
+            } else {
+                if ($(window).width() > 640) {
+                    $(this).css({
+                        'marginRight': '400px'
+                    });
+                } else {
+                    $(this).css({
+                        'marginRight': '250px'
+                    });
+                }
+                $('#mySidenav').show();
+            };
+        });
+        //Select TV Options
+        $('.stylebtn:eq(0)').on('click', function() {
+            if ($('input[name=radioName]:checked', '#selectform').val() == 1) {
+                window.location.href = "routes/countries.html";
+            } else if ($('input[name=radioName]:checked', '#selectform').val() == 2) {
+                window.location.href = "routes/language.html";
+            } else {
+                window.location.href = "routes/category.html";
+            }
+        });
+        //Check sensetive content if or not
+        $('#adultban').on('change', function() {
+            if ($(this).is(':checked')) {
+                $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
+                $('#four_flash .flashBg ul.mobile li').css({
+                    'width': '32%'
+                })
+            } else {
+                $('.mobile li:eq(2)').remove();
+                $('#four_flash .flashBg ul.mobile li').css({
+                    'width': '48%'
+                })
+            }
+        });
+    });
+</script>
 <style>
     body {
         background-image: url("images/bg.jpg");
@@ -24,6 +72,20 @@
 </style>
 
 <body>
+    <div id="mySidenav" class="sidenav">
+        <h3>Easy Web TV</h3>
+        <hr>
+        <a href="#">
+            <span>Sensetive Content</span>
+            <label class="switch">
+            <input type="checkbox" id="adultban">
+            <span class="slider round"></span>
+            </label>
+        </a>
+    </div>
+    <div id="main">
+        <span style="cursor:pointer"><img src="images/menuicon.png"></span>
+    </div>
     <div id="popupbox">
         <div id="chooseitem" class="reveal-modal">
             <a href="#" class="close-reveal-modal">×</a>
@@ -48,20 +110,61 @@
                             </dd>
                             <p>Watch 6000+ TV Channels...</p>
                         </li>
-                        <a href="routes/comprehensive.html">
-                            <li>
-                                <img src="images/comprehensive.svg" />
-                                <dd>
-                                    <button class="stylebtn">Enter</button>
-                                </dd>
-                                <p>Watch Movies, Series, Animes...</p>
-                            </li>
-                        </a>
+
+                        <li>
+                            <img src="images/comprehensive.svg" />
+                            <dd>
+                                <a href="routes/comprehensive.html"><button class="stylebtn">Enter</button></a>
+                            </dd>
+                            <p>Watch Movies, Series, Animes...</p>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        // Step 1: Get user coordinates
+        function getCoordintes() {
+            var options = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
+
+            function success(pos) {
+                var crd = pos.coords;
+                var lat = crd.latitude.toString();
+                var lng = crd.longitude.toString();
+                var coordinates = [lat, lng];
+                var xhr = new XMLHttpRequest();
+                var lat = coordinates[0];
+                var lng = coordinates[1];
+
+                // Paste your LocationIQ token below.
+                xhr.open('GET', "https://us1.locationiq.com/v1/reverse.php?key=pk.dd067483fe694f72f04c0fdd2d312091&lat=" + lat + "&lon=" + lng + "&format=json", true);
+                xhr.send();
+                xhr.onreadystatechange = processRequest;
+
+                function processRequest(e) {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        var city = response.address;
+                        if (city.country_code == 'cn' || city.country_code == 'kp' || city.country_code == 'ir') {
+                            $('#main').hide();
+                        };
+                    }
+                }
+                return;
+            }
+
+            function error(err) {
+                console.warn(`ERROR(${err.code}): ${err.message}`);
+            }
+
+            navigator.geolocation.getCurrentPosition(success, error, options);
+        }
+    </script>
 </body>
 
 </html>

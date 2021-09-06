@@ -45,7 +45,7 @@ $(document).ready(function() {
         var positionValue = (scrollTop + windowHeight) - scrollHeight;
         var link = $('#selectapi').val();
         var globallink
-        if (positionValue == 0) {
+        if (positionValue <= 0 && positionValue >= -50) {
             $('#root').append(`<div class="loadingimg"><img src="../images/loading.gif" tag="Easy Web TV"></div>`);
             pnum++;
             if (sts.length > 0) {
