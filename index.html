@@ -63,7 +63,11 @@
                     })
                 }
             } else {
-                $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
+                if ($(this).is(':checked')) {
+                    $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
+                } else {
+                    $('.mobile li:eq(2)').remove();
+                }
             }
         });
     });
