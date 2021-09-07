@@ -49,7 +49,27 @@ $(document).ready(function() {
             $('#root').append(`<div class="loadingimg"><img src="../images/loading.gif" tag="Easy Web TV"></div>`);
             pnum++;
             if (sts.length > 0) {
-                globallink = proxy[rand] + `${link}&wd=${sts}&pg=${pnum}`;
+                if (link == "http://secj8.com/inc/jsonsapi.php?ac=videolist") {
+                    kt[0].value = '';
+                    alert('色色资源网 not support search');
+                } else if (link == "http://99zywcj.com/inc/jsonsapi.php?ac=videolist") {
+                    kt[0].value = '';
+                    alert('玖玖资源站 not support search');
+                } else if (link == "http://cjmygzy.com/inc/jsonsapi.php?ac=videolist") {
+                    kt[0].value = '';
+                    alert('狼少年资源站 not support search');
+                } else if (link == "http://wmcj8.com/inc/jsonsapi.php?ac=videolist") {
+                    kt[0].value = '';
+                    alert('环亚资源站 not support search');
+                } else if (link == "http://bttcj.com/inc/jsonsapi.php?ac=videolist") {
+                    kt[0].value = '';
+                    alert('博天堂资源站 not support search');
+                } else if (link == "http://llzxcj.com/inc/json.php?ac=videolist") {
+                    kt[0].value = '';
+                    alert('利来资源站 not support search');
+                } else {
+                    globallink = proxy[rand] + `${link}&wd=${sts}&pg=${pnum}`;
+                }
             } else {
                 globallink = proxy[rand] + `${link}&t=${str}&pg=${pnum}`;
             }
@@ -116,15 +136,21 @@ $(document).ready(function() {
 
 //Initial homepage menu
 function iniMenu(link) {
-    let menu = $.getJSON(proxy[rand] + `${link}`);
+    let menu = $.getJSON(proxy[rand] + `${link.replace('videolist','list')}`);
+    let detail = $.getJSON(proxy[rand] + `${link}`);
     $('#root').append(`<div class="loadingimg"><img src="../images/loading.gif" tag="Easy Web TV"></div>`);
-    $.when(menu).done(function(data) {
+    $.when(menu, detail).done(function(data, response) {
         $("#menu").empty();
-        var lef = data['class'];
-        var test = data['data'];
+        var lef = data[0]['class'];
+        if (link == "http://zmcj88.com/sapi/json?ac=list" || link == 'http://f2dcj6.com/sapi/json?ac=list') {
+            var test = data[0]['data'];
+        } else {
+            var test = response[0]['data'];
+        }
+
         $("#menu").append('<li style="background-color:#fff"><input id="search" type="text" placeholder="Search..." /></li>');
         $("#menu").append(`<li><p><span class="0">最近更新</span></p></li>`);
-        for (let i of lef) {
+        for (let i of Object.values(lef)) {
             $("#menu").append(`<li><p><span class="${i.cid}">${i.title}</span></p></li>`);
         };
         $('.loadingimg').remove();
@@ -174,8 +200,18 @@ function iniMenu(link) {
             if (e.which == 13) {
                 //Search Items
                 var valThis = $(this).val().toLowerCase();
-                if (link == '123') {
-                    alert('xxx not support search');
+                if (link == 'http://secj8.com/inc/jsonsapi.php?ac=videolist') {
+                    alert('色色资源网 not support search');
+                } else if (link == 'http://99zywcj.com/inc/jsonsapi.php?ac=videolist') {
+                    alert('玖玖资源站 not support search');
+                } else if (link == 'http://cjmygzy.com/inc/jsonsapi.php?ac=videolist') {
+                    alert('狼少年资源站 not support search');
+                } else if (link == 'http://wmcj8.com/inc/jsonsapi.php?ac=videolist') {
+                    alert('环亚资源站 not support search');
+                } else if (link == "http://bttcj.com/inc/jsonsapi.php?ac=videolist") {
+                    alert('博天堂资源站 not support search');
+                } else if (link == "http://llzxcj.com/inc/json.php?ac=videolist") {
+                    alert('利来资源站 not support search');
                 } else {
                     searchlink = proxy[rand] + `${link}&wd=${valThis}`;
                 }

@@ -10,7 +10,6 @@ $(document).ready(function() {
     //Get Current href
     var initlink = decodeURIComponent(window.location.href).split('web=')[1];
     //Get iptv-org m3u list and show contents lists
-    console.log(initlink);
     $.ajax({
         type: "GET",
         url: proxy[0] + `${initlink}`,
@@ -21,6 +20,11 @@ $(document).ready(function() {
                 name = test.vod_title,
                 des = test.vod_content,
                 play = test.vpath;
+            if (initlink.indexOf('http://zmcj88.com/sapi/json?ac=list') > -1 || initlink.indexOf('http://f2dcj6.com/sapi/json?ac=list') > -1 || initlink.indexOf('http://mygzycj.com/sapi.php?ac=jsonvideolist') > -1) {
+                play = test.vpath;
+            } else {
+                play = play.split('$')[1];
+            }
             $('#epcontent').append(`<h3>Content</h3><p>${des.length==0?'暂无':des}</p>`);
             $('#left h3').html('Playlist');
             $("#channelcontent").empty();
