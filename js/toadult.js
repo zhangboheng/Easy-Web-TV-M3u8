@@ -64,9 +64,6 @@ $(document).ready(function() {
                 } else if (link == "http://bttcj.com/inc/jsonsapi.php?ac=videolist") {
                     kt[0].value = '';
                     alert('博天堂资源站 not support search');
-                } else if (link == "http://llzxcj.com/inc/json.php?ac=videolist") {
-                    kt[0].value = '';
-                    alert('利来资源站 not support search');
                 } else {
                     globallink = proxy[rand] + `${link}&wd=${sts}&pg=${pnum}`;
                 }
@@ -75,7 +72,7 @@ $(document).ready(function() {
             }
             $.getJSON(globallink, function(data) {
                 var test = data.data;
-                var count = data.pagecount
+                var count = data.pagecount;
                 if (pnum <= count) {
                     $('.loadingimg').remove();
                     if ($(window).width() > 1024) {
@@ -210,8 +207,6 @@ function iniMenu(link) {
                     alert('环亚资源站 not support search');
                 } else if (link == "http://bttcj.com/inc/jsonsapi.php?ac=videolist") {
                     alert('博天堂资源站 not support search');
-                } else if (link == "http://llzxcj.com/inc/json.php?ac=videolist") {
-                    alert('利来资源站 not support search');
                 } else {
                     searchlink = proxy[rand] + `${link}&wd=${valThis}`;
                 }
