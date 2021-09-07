@@ -12,9 +12,9 @@
 </head>
 <script>
     $(document).ready(function() {
-        //Check user location if is in China or North korea banned
+        //Check sser IP belongs to if in China, North Korea or Iran. 
         try {
-            getCoordintes();
+            getUserIp();
         } catch (e) {
             console.log(e)
         }
@@ -50,16 +50,20 @@
         });
         //Check sensetive content if or not
         $('#adultban').on('change', function() {
-            if ($(this).is(':checked')) {
-                $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
-                $('#four_flash .flashBg ul.mobile li').css({
-                    'width': '32%'
-                })
+            if ($(window).width() > 640) {
+                if ($(this).is(':checked')) {
+                    $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
+                    $('#four_flash .flashBg ul.mobile li').css({
+                        'width': '32%'
+                    })
+                } else {
+                    $('.mobile li:eq(2)').remove();
+                    $('#four_flash .flashBg ul.mobile li').css({
+                        'width': '48%'
+                    })
+                }
             } else {
-                $('.mobile li:eq(2)').remove();
-                $('#four_flash .flashBg ul.mobile li').css({
-                    'width': '48%'
-                })
+                $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
             }
         });
     });
@@ -128,6 +132,26 @@
         </div>
     </div>
     <script>
+        //Get User IP
+        function getUserIp() {
+            var request = new XMLHttpRequest();
+
+            request.open('GET', 'https://api.ipdata.co/?api-key=7910661894e758448cbebb4a636485005498427178dea6ef0e911311');
+
+            request.setRequestHeader('Accept', 'application/json');
+
+            request.onreadystatechange = function() {
+                if (this.readyState === 4) {
+                    let country = JSON.parse(this.responseText).country_code;
+                    if (country.toLowerCase() == 'cn' || country.toLowerCase() == 'kp' || country.toLowerCase() == 'ir') {
+                        $('#main').hide();
+                    }
+                } else {
+                    getCoordintes();
+                }
+            };
+            request.send();
+        }
         // Step 1: Get user coordinates
         function getCoordintes() {
             var options = {
@@ -163,33 +187,10 @@
             }
 
             function error(err) {
-                getUserIp();
-                getCnUser();
+                console.log(err);
             }
 
             navigator.geolocation.getCurrentPosition(success, error, options);
-        }
-
-        function getUserIp() {
-            var request = new XMLHttpRequest();
-
-            request.open('GET', 'https://api.ipdata.co/?api-key=7910661894e758448cbebb4a636485005498427178dea6ef0e911311');
-
-            request.setRequestHeader('Accept', 'application/json');
-
-            request.onreadystatechange = function() {
-                if (this.readyState === 4) {
-                    let country = JSON.parse(this.responseText).country_code;
-                    if (country.toLowerCase() == 'cn' || country.toLowerCase() == 'kp' || country.toLowerCase() == 'ir') {
-                        $('#main').hide();
-                    }
-                }
-            };
-            request.send();
-        }
-
-        function getCnUser() {
-            fetch("https://checkip.amazonaws.com/").then(res => res.text()).then(data => console.log(data));
         }
     </script>
 </body>

@@ -1,7 +1,7 @@
 ![Easy-Web-TV](images/banner.jpg)
 # Easy-Web-TV-M3u8
 ![Easy-Web-TV](https://img.shields.io/github/issues/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/badge/version-4.0.1-green)  
-Easy way to watch iptv on a web and support m3u8 links to watch.  
+Easy way to watch movies, series, animes, show, porn and IPTV on the website. 
 
 # Official
  [Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)  
@@ -11,13 +11,13 @@ Easy way to watch iptv on a web and support m3u8 links to watch.
 
 # Version
 ![Easy-Web-TV](https://img.shields.io/badge/version-4.0.1-green)  
-  - Support select countries, languages and category to watch online channels
-  - Support watch more than 6000 channels
-  - Support to watch m3u8 link videos
-  - Support remark your favorite channels, movies, episodes...
-  - Support search channels, movies, episodes...
-  - Support play random channels
-  - Support select source websites
+  - Support to select countries, languages and category to watch more than 6000 TV channels
+  - Support to search and watch movies, series, animes and show
+  - Support to watch porn videos if you open sensitive content
+  - Support to watch m3u8 links video
+  - Support to remark your favorite channels, movies, series...
+  - Support to play random channels
+  - Support to select source websites
   - more...  
 
 # Screenshot
