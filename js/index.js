@@ -57,6 +57,44 @@ $(document).ready(function() {
             }
         }
     });
+    //Change language to show
+    $('#languages').on('change', function() {
+        let lan = $(this).val();
+        if (lan == 'en-US') {
+            $('.stylebtn').text('Enter');
+            $('.mobile p:eq(0)').text('Watch 6000+ TV Channels...');
+            $('.mobile p:eq(1)').text('Watch Movies, Series, Animes...');
+            $('h2').text('Select');
+            $('#selectform input:eq(0)').next().text('Countries');
+            $('#selectform input:eq(1)').next().text('Lanuages');
+            $('#selectform input:eq(2)').next().text('Category');
+            $('#mySidenav a:eq(0)').find('span').text('Sensitive Content');
+            $('#mySidenav a:eq(1)').find('span').text('Languages');
+            $('#mySidenav a:eq(2)').find('span').text('Version');
+        } else if (lan == 'zh') {
+            $('.stylebtn').text('进入');
+            $('.mobile p:eq(0)').text('观看6000多个电视直播台......');
+            $('.mobile p:eq(1)').text('观看电影，电视剧，动漫......');
+            $('h2').text('选择');
+            $('#selectform input:eq(0)').next().text('国家');
+            $('#selectform input:eq(1)').next().text('语言');
+            $('#selectform input:eq(2)').next().text('分类');
+            $('#mySidenav a:eq(0)').find('span').text('敏感内容');
+            $('#mySidenav a:eq(1)').find('span').text('语言');
+            $('#mySidenav a:eq(2)').find('span').text('版本');
+        } else if (lan == 'zh-CN') {
+            $('.stylebtn').text('进入');
+            $('.mobile p:eq(0)').text('观看6000多个电视直播台......');
+            $('.mobile p:eq(1)').text('观看电影，电视剧，动漫......');
+            $('h2').text('选择');
+            $('#selectform input:eq(0)').next().text('国家');
+            $('#selectform input:eq(1)').next().text('语言');
+            $('#selectform input:eq(2)').next().text('分类');
+            $('#mySidenav a:eq(0)').find('span').text('敏感内容');
+            $('#mySidenav a:eq(1)').find('span').text('语言');
+            $('#mySidenav a:eq(2)').find('span').text('版本');
+        }
+    });
 });
 
 //Get User IP
@@ -71,7 +109,7 @@ function getUserIp() {
         if (this.readyState === 4) {
             let country = JSON.parse(this.responseText).country_code;
             if (country.toLowerCase() == 'cn' || country.toLowerCase() == 'kp') {
-                $('#main').hide();
+                $('#mySidenav a:eq(0)').hide();
             }
         } else {
             getCoordintes();
@@ -106,7 +144,7 @@ function getCoordintes() {
                 var response = JSON.parse(xhr.responseText);
                 var city = response.address;
                 if (city.country_code == 'cn' || city.country_code == 'kp') {
-                    $('#main').hide();
+                    $('#mySidenav a:eq(0)').hide();
                 };
             }
         }
