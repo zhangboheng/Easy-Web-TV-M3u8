@@ -1,7 +1,7 @@
 ![Easy-Web-TV](images/banner.jpg)
 # Easy-Web-TV-M3u8
 ![Easy-Web-TV](https://img.shields.io/github/issues/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/badge/version-5.0.0-green)  
-Easy way to listen radio stations and watch movies, series, animes, show, porn and IPTV on the website. 
+Easy way to listen to radio stations and watch movies, series, animes, show, porn and IPTV on the website. 
 
 # Official
  [Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)  
@@ -13,7 +13,7 @@ Easy way to listen radio stations and watch movies, series, animes, show, porn a
 ![Easy-Web-TV](https://img.shields.io/badge/version-5.0.0-green)  
   - Support to select countries, languages and category to watch more than 6000 TV channels
   - Support to search and watch movies, series, animes and show
-  - Support to search and listen 28000+ radio stations
+  - Support to search and listen to 28000+ radio stations
   - Support to watch porn videos if you open sensitive content
   - Support to watch m3u8 links video
   - Support to remark your favorite channels, movies, series...
