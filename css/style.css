@@ -69,8 +69,8 @@ a:hover {
 
 #four_flash .flashBg ul.mobile li {
     float: left;
-    width: 48%;
-    height: 80%;
+    width: 32%;
+    height: 100%;
     opacity: 0.8;
     padding-top: 40px;
     color: #6C6E85;
@@ -341,7 +341,7 @@ button.stylebtn:hover::after {
     }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 768px) {
     .bodyCon08 .students {
         width: 100vw !important;
     }

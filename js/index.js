@@ -35,25 +35,35 @@ $(document).ready(function() {
             window.location.href = "routes/category.html";
         }
     });
+    //Select Radio Options
+    $('.stylebtn:eq(2)').on('click', function() {
+        if ($('input[name=radioName]:checked', '#selectform').val() == 1) {
+            window.location.href = "routes/radiocountry.html";
+        } else if ($('input[name=radioName]:checked', '#selectform').val() == 2) {
+            window.location.href = "routes/radiolanguage.html";
+        } else {
+            window.location.href = "routes/radiotag.html";
+        }
+    });
     //Check sensetive content if or not
     $('#adultban').on('change', function() {
-        if ($(window).width() > 640) {
+        if ($(window).width() > 768) {
             if ($(this).is(':checked')) {
                 $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
                 $('#four_flash .flashBg ul.mobile li').css({
-                    'width': '32%'
+                    'width': '24%'
                 })
             } else {
-                $('.mobile li:eq(2)').remove();
+                $('.mobile li:eq(3)').remove();
                 $('#four_flash .flashBg ul.mobile li').css({
-                    'width': '48%'
+                    'width': '32%'
                 })
             }
         } else {
             if ($(this).is(':checked')) {
                 $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
             } else {
-                $('.mobile li:eq(2)').remove();
+                $('.mobile li:eq(3)').remove();
             }
         }
     });
