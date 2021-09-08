@@ -12,9 +12,9 @@ $(document).ready(function() {
     //Get Current href
     var key = decodeURIComponent(window.location.href).split('=')[1];
     //Set Page Title
-    $('title').html(key + ' Channels');
+    $('title').html(key == "Taiwan Province Of China" ? 'Taiwan' : key + ' Channels');
     $('#left h3').empty();
-    $('#left h3').html(key + ' Channels');
+    $('#left h3').html(key == "Taiwan Province Of China" ? 'Taiwan' : key + ' Channels');
     //Get radio-browser list and show contents lists
     $.ajax({
         type: "GET",
