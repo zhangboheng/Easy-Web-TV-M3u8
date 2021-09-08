@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Countries</title>
+    <title>Category</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="author" content="Zhang Boheng">
     <meta name="keywords" content="iptv, movie, github, online tv, web tv, series tv...">
@@ -25,12 +25,12 @@
     //Set a random integer
     var rand = Math.floor(Math.random() * radiosource.length);
     $(document).ready(function() {
-        let count = $.getJSON(radiosource[rand] + 'json/countries');
+        let count = $.getJSON(radiosource[rand] + 'json/tags');
         $.when(count).done(function(data) {
-            let countryarr = data;
+            let languagearr = data;
             $('#menu').empty();
-            for (let i in countryarr) {
-                $('#menu').append(`<li><p><a href='../catalogues/rcouplay.html?tab=${countryarr[i].name}'>${countryarr[i].name == 'Taiwan Province Of China'? 'Taiwan' : countryarr[i].name}(${countryarr[i].stationcount})</a></p></li>`);
+            for (let i in languagearr) {
+                $('#menu').append(`<li><p><a href='../catalogues/rtagsplay.html?tab=${languagearr[i].name}'>${languagearr[i].name}(${languagearr[i].stationcount})</a></p></li>`);
             }
         });
         setInterval(function() {
@@ -43,10 +43,10 @@
 
 <body>
     <div id="left">
-        <h3>Select Countries</h3>
+        <h3>Select Category</h3>
         <ul id="menu">
             <li>
-                <p>Country list is loading...</p>
+                <p>Category list is loading...</p>
             </li>
         </ul>
     </div>

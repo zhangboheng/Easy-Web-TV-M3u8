@@ -25,26 +25,37 @@ $(document).ready(function() {
             $('#mySidenav').show();
         };
     });
+    //if user back refresh page
+    let link = window.location.href;
+    if (link.indexOf('#') > -1) {
+        window.location.replace('/');
+    }
+    //Set attributes to button
+    $('.stylebtn:eq(1)').click(function() {
+        $(this).attr('title', 'selected');
+        $('.stylebtn:eq(3)').removeAttr("title");
+    });
+    $('.stylebtn:eq(3)').click(function() {
+        $(this).attr('title', 'selected');
+        $('.stylebtn:eq(1)').removeAttr("title");
+    });
     //Select TV Options
     $('.stylebtn:eq(0)').on('click', function() {
-        if ($('input[name=radioName]:checked', '#selectform').val() == 1) {
+        if ($('input[name=radioName]:checked', '#selectform').val() == 1 && $('.stylebtn:eq(1)').attr('title') == 'selected') {
             window.location.href = "routes/countries.html";
-        } else if ($('input[name=radioName]:checked', '#selectform').val() == 2) {
+        } else if ($('input[name=radioName]:checked', '#selectform').val() == 2 && $('.stylebtn:eq(1)').attr('title') == 'selected') {
             window.location.href = "routes/language.html";
-        } else {
+        } else if ($('input[name=radioName]:checked', '#selectform').val() == 3 && $('.stylebtn:eq(1)').attr('title') == 'selected') {
             window.location.href = "routes/category.html";
-        }
-    });
-    //Select Radio Options
-    $('.stylebtn:eq(2)').on('click', function() {
-        if ($('input[name=radioName]:checked', '#selectform').val() == 1) {
+        } else if ($('input[name=radioName]:checked', '#selectform').val() == 1 && $('.stylebtn:eq(3)').attr('title') == 'selected') {
             window.location.href = "routes/radiocountry.html";
-        } else if ($('input[name=radioName]:checked', '#selectform').val() == 2) {
+        } else if ($('input[name=radioName]:checked', '#selectform').val() == 2 && $('.stylebtn:eq(3)').attr('title') == 'selected') {
             window.location.href = "routes/radiolanguage.html";
-        } else {
+        } else if ($('input[name=radioName]:checked', '#selectform').val() == 3 && $('.stylebtn:eq(3)').attr('title') == 'selected') {
             window.location.href = "routes/radiotag.html";
         }
     });
+
     //Check sensetive content if or not
     $('#adultban').on('change', function() {
         if ($(window).width() > 768) {
