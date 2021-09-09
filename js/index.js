@@ -62,13 +62,13 @@ $(document).ready(function() {
             if ($(this).is(':checked')) {
                 $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
             } else {
-                $('.mobile li:eq(3)').remove();
+                $('.mobile li:eq(7)').remove();
             }
         } else {
             if ($(this).is(':checked')) {
                 $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
             } else {
-                $('.mobile li:eq(3)').remove();
+                $('.mobile li:eq(7)').remove();
             }
         }
     });
