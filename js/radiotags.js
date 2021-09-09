@@ -18,7 +18,7 @@ $(document).ready(function() {
     //Get radio-browser list and show contents lists
     $.ajax({
         type: "GET",
-        url: 'https://de1.api.radio-browser.info/' + 'json/stations/bytag/' + key,
+        url: radiosource[rand] + 'json/stations/bytag/' + key,
         success: function(message, text, response) {
             $("#menu").empty();
             $("#menu").append('<li style="background-color:#fff"><input id="search" type="text" placeholder="Search..." /></li>');
