@@ -27,6 +27,7 @@ Easy way to listen to radio stations and watch movies, series, animes, show, por
 # Thanks
   - [jQuery](https://github.com/jquery/jquery)
   - [iptv-org](https://github.com/iptv-org/iptv)
+  - [Radiobrowser](https://github.com/segler-alex/radiobrowser-api-rust)
   - [Videojs](https://github.com/videojs/video.js)  
   
 # License
