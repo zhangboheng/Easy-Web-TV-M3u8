@@ -56,25 +56,23 @@ a:hover {
 
 #four_flash .flashBg {
     width: 100vw;
-    height: 370px;
+    height: auto;
     margin: 0 auto;
-    display: flex;
-    overflow: hidden;
+    display: inline-table;
 }
 
 #four_flash .flashBg ul.mobile {
-    height: 370px;
+    height: 280px;
     left: 0;
 }
 
 #four_flash .flashBg ul.mobile li {
     float: left;
-    width: 32%;
+    width: 25%;
     height: 100%;
     opacity: 0.8;
     padding-top: 40px;
     color: #6C6E85;
-    margin-left: 10px;
     background-color: #00000099;
 }
 
@@ -231,13 +229,13 @@ button {
     font-weight: 600;
     border: solid 2px black;
     outline: 0;
-    padding: 0rem 4rem;
     font-size: 1.5rem;
     letter-spacing: 0.08rem;
     background-color: white;
     border-radius: 0.35rem;
     position: relative;
     cursor: pointer;
+    width: 90%;
 }
 
 button::after {
@@ -328,17 +326,6 @@ button.stylebtn:hover::after {
 
 #main img:hover {
     opacity: 1;
-}
-
-
-/* This is slidenav css style end */
-
-@media screen and (max-width: 1024px) {
-    #four_flash .flashBg ul.mobile li {
-        margin-left: 0px;
-        opacity: 0.8;
-        margin-right: 10px
-    }
 }
 
 @media screen and (max-width: 768px) {

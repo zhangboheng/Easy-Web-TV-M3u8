@@ -61,14 +61,8 @@ $(document).ready(function() {
         if ($(window).width() > 768) {
             if ($(this).is(':checked')) {
                 $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
-                $('#four_flash .flashBg ul.mobile li').css({
-                    'width': '24%'
-                })
             } else {
                 $('.mobile li:eq(3)').remove();
-                $('#four_flash .flashBg ul.mobile li').css({
-                    'width': '32%'
-                })
             }
         } else {
             if ($(this).is(':checked')) {

@@ -8,20 +8,46 @@ $(document).ready(function() {
             $('.mobile p:eq(0)').text('Watch 6000+ TV Channels...');
             $('.mobile p:eq(1)').text('Watch Movies, Series, Animes...');
             $('.mobile p:eq(2)').text('Listen 28000+ Radio Stations...');
-            $('.mobile p:eq(3)').text('Porn Videos...');
+            $('.mobile p:eq(7)').text('Porn Videos...');
             $('h2').text('Select');
             $('#selectform input:eq(0)').next().text('Countries');
-            $('#selectform input:eq(1)').next().text('Lanuages');
+            $('#selectform input:eq(1)').next().text('Languages');
             $('#selectform input:eq(2)').next().text('Category');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensitive Content');
             $('#mySidenav a:eq(1)').find('span').text('Languages');
             $('#mySidenav a:eq(2)').find('span').text('Version');
+        } else if (lan == 'az') {
+            $('.stylebtn').text('Daxil edin');
+            $('.mobile p:eq(0)').text('6000 -dən çox TV kanalına baxın ...');
+            $('.mobile p:eq(1)').text('Filmlərə, Seriyalara, Cizgi filmlərinə baxın ...');
+            $('.mobile p:eq(2)').text('28000+ Radio Stansiyasına qulaq asın ...');
+            $('.mobile p:eq(7)').text('Porno Videolar..');
+            $('h2').text('Seçin');
+            $('#selectform input:eq(0)').next().text('Ölkələr');
+            $('#selectform input:eq(1)').next().text('Dillər');
+            $('#selectform input:eq(2)').next().text('Kateqoriya');
+            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Həssas Məzmun');
+            $('#mySidenav a:eq(1)').find('span').text('Dillər');
+            $('#mySidenav a:eq(2)').find('span').text('Versiya');
+        } else if (lan == 'hy') {
+            $('.stylebtn').text('Մուտքագրեք');
+            $('.mobile p:eq(0)').text('Դիտեք 6000+ հեռուստաալիք ...');
+            $('.mobile p:eq(1)').text('Դիտեք ֆիլմեր, սերիալներ, անիմեներ ...');
+            $('.mobile p:eq(2)').text('Լսեք 28000+ ռադիոկայան ...');
+            $('.mobile p:eq(7)').text('Պոռնո տեսանյութեր ...');
+            $('h2').text('Ընտրել');
+            $('#selectform input:eq(0)').next().text('Երկրներ');
+            $('#selectform input:eq(1)').next().text('Լեզուներ');
+            $('#selectform input:eq(2)').next().text('Կատեգորիա');
+            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sգայուն բովանդակություն');
+            $('#mySidenav a:eq(1)').find('span').text('Լեզուներ');
+            $('#mySidenav a:eq(2)').find('span').text('Տարբերակ');
         } else if (lan == 'de' || lan == 'de-AT' || lan == 'de-DE' || lan == 'de-LI' || lan == 'de-CH') {
             $('.stylebtn').text('Eintreten');
             $('.mobile p:eq(0)').text('Mehr als 6000 TV-Kanäle ansehen...');
             $('.mobile p:eq(1)').text('Filme, Serien, Animes ansehen...');
             $('.mobile p:eq(2)').text('Mehr als 28000 Radiosender anhören...');
-            $('.mobile p:eq(3)').text('Pornovideos...');
+            $('.mobile p:eq(7)').text('Pornovideos...');
             $('h2').text('Auswählen');
             $('#selectform input:eq(0)').next().text('Land');
             $('#selectform input:eq(1)').next().text('Sprachen');
@@ -34,7 +60,7 @@ $(document).ready(function() {
             $('.mobile p:eq(0)').text('Regardez plus de 6000 chaînes de télévision...');
             $('.mobile p:eq(1)').text('Regardez des films, séries, animes...');
             $('.mobile p:eq(2)').text('Écoutez plus de 28 000 stations de radio...');
-            $('.mobile p:eq(3)').text('Vidéos porno...');
+            $('.mobile p:eq(7)').text('Vidéos porno...');
             $('h2').text('Sélectionner');
             $('#selectform input:eq(0)').next().text('Des pays');
             $('#selectform input:eq(1)').next().text('Langages');
@@ -47,7 +73,7 @@ $(document).ready(function() {
             $('.mobile p:eq(0)').text('شاهد أكثر من 6000 قناة تلفزيونية ...');
             $('.mobile p:eq(1)').text('مشاهدة الافلام والمسلسلات والرسوم المتحركة ...');
             $('.mobile p:eq(2)').text('الاستماع 28000+ محطات الراديو ...');
-            $('.mobile p:eq(3)').text('أشرطة الفيديو الإباحية ...');
+            $('.mobile p:eq(7)').text('أشرطة الفيديو الإباحية ...');
             $('h2').text('يختار');
             $('#selectform input:eq(0)').next().text('بلدان');
             $('#selectform input:eq(1)').next().text('اللغات');
@@ -60,7 +86,7 @@ $(document).ready(function() {
             $('.mobile p:eq(0)').text('Shikoni 6000+ kanale televizive ...');
             $('.mobile p:eq(1)').text('Shikoni filma, seri, anime ...');
             $('.mobile p:eq(2)').text('Dëgjoni 28000+ Stacione Radio ...');
-            $('.mobile p:eq(3)').text('Video pornografike ...');
+            $('.mobile p:eq(7)').text('Video pornografike ...');
             $('h2').text('Zgjidhni');
             $('#selectform input:eq(0)').next().text('Vendet');
             $('#selectform input:eq(1)').next().text('Gjuhët');
@@ -73,7 +99,7 @@ $(document).ready(function() {
             $('.mobile p:eq(0)').text('6000+ የቴሌቪዥን ጣቢያዎችን ይመልከቱ ...');
             $('.mobile p:eq(1)').text('ፊልሞችን ፣ ተከታታዮችን ፣ አኒሞችን ይመልከቱ ...');
             $('.mobile p:eq(2)').text('28000+ የሬዲዮ ጣቢያዎችን ያዳምጡ ...');
-            $('.mobile p:eq(3)').text('የወሲብ ቪዲዮዎች ...');
+            $('.mobile p:eq(7)').text('የወሲብ ቪዲዮዎች ...');
             $('h2').text('ይምረጡ');
             $('#selectform input:eq(0)').next().text('አገሮች');
             $('#selectform input:eq(1)').next().text('ቋንቋዎች');
@@ -86,7 +112,7 @@ $(document).ready(function() {
             $('.mobile p:eq(0)').text('观看6000多个电视直播台......');
             $('.mobile p:eq(1)').text('观看电影，电视剧，动漫......');
             $('.mobile p:eq(2)').text('收听28000多个电台频道......');
-            $('.mobile p:eq(3)').text('色情视频...');
+            $('.mobile p:eq(7)').text('色情视频...');
             $('h2').text('选择');
             $('#selectform input:eq(0)').next().text('国家');
             $('#selectform input:eq(1)').next().text('语言');
@@ -99,7 +125,7 @@ $(document).ready(function() {
             $('.mobile p:eq(0)').text('觀看 6000 多個電視頻道...');
             $('.mobile p:eq(1)').text('看電影、電視劇、動漫……');
             $('.mobile p:eq(2)').text('收聽 28000 多個廣播電台...');
-            $('.mobile p:eq(3)').text('色情影片...');
+            $('.mobile p:eq(7)').text('色情影片...');
             $('h2').text('选择');
             $('#selectform input:eq(0)').next().text('國家');
             $('#selectform input:eq(1)').next().text('語言');
@@ -112,7 +138,7 @@ $(document).ready(function() {
             $('.mobile p:eq(0)').text('Kyk na 6000+ TV -kanale ...');
             $('.mobile p:eq(1)').text('Kyk films, reekse, anime ...');
             $('.mobile p:eq(2)').text('Luister na 28000+ radiostasies ...');
-            $('.mobile p:eq(3)').text('Porno video\'s ...');
+            $('.mobile p:eq(7)').text('Porno video\'s ...');
             $('h2').text('kies');
             $('#selectform input:eq(0)').next().text('land');
             $('#selectform input:eq(1)').next().text('Taal');
@@ -125,7 +151,7 @@ $(document).ready(function() {
             $('.mobile p:eq(0)').text('6000以上のテレビチャンネルを見る...');
             $('.mobile p:eq(1)').text('映画、シリーズ、アニメを見る...');
             $('.mobile p:eq(2)').text('28000以上のラジオ局を聞く...');
-            $('.mobile p:eq(3)').text('ポルノビデオ...');
+            $('.mobile p:eq(7)').text('ポルノビデオ...');
             $('h2').text('選択する');
             $('#selectform input:eq(0)').next().text('国');
             $('#selectform input:eq(1)').next().text('言語');
@@ -138,7 +164,7 @@ $(document).ready(function() {
             $('.mobile p:eq(0)').text('6000+ टीवी चैनल देखें...');
             $('.mobile p:eq(1)').text('फिल्में, सीरीज, एनीमे देखें...');
             $('.mobile p:eq(2)').text('28000+ रेडियो स्टेशन सुनें...');
-            $('.mobile p:eq(3)').text('अश्लील वीडियो...');
+            $('.mobile p:eq(7)').text('अश्लील वीडियो...');
             $('h2').text('चुनते हैं');
             $('#selectform input:eq(0)').next().text('देश');
             $('#selectform input:eq(1)').next().text('भाषा: हिन्दी');
@@ -151,7 +177,7 @@ $(document).ready(function() {
             $('.mobile p:eq(0)').text('6000개 이상의 TV 채널 시청...');
             $('.mobile p:eq(1)').text('영화, 시리즈, 애니메이션 감상...');
             $('.mobile p:eq(2)').text('28000개 이상의 라디오 방송국 듣기...');
-            $('.mobile p:eq(3)').text('포르노 비디오...');
+            $('.mobile p:eq(7)').text('포르노 비디오...');
             $('h2').text('선택하다');
             $('#selectform input:eq(0)').next().text('국가');
             $('#selectform input:eq(1)').next().text('언어');
