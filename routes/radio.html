@@ -3,12 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Countries</title>
+    <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="author" content="Zhang Boheng">
     <meta name="keywords" content="iptv, movie, github, online tv, web tv, series tv...">
     <link href="../css/main.css" rel="stylesheet" />
     <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/toradio.js"></script>
 </head>
 <style>
     body {
@@ -19,34 +20,13 @@
         overflow-y: scroll !important;
     }
 </style>
-<script>
-    //Set a array to store source links
-    var radiosource = ['https://de1.api.radio-browser.info/', 'https://fr1.api.radio-browser.info/', 'https://nl1.api.radio-browser.info/'];
-    //Set a random integer
-    var rand = Math.floor(Math.random() * radiosource.length);
-    $(document).ready(function() {
-        let count = $.getJSON(radiosource[rand] + 'json/countries');
-        $.when(count).done(function(data) {
-            let countryarr = data;
-            $('#menu').empty();
-            for (let i in countryarr) {
-                $('#menu').append(`<li><p><a href='../catalogues/rcouplay.html?tab=${countryarr[i].name}'>${countryarr[i].name == 'Taiwan Province Of China'? 'Taiwan' : countryarr[i].name}(${countryarr[i].stationcount})</a></p></li>`);
-            }
-        });
-        setInterval(function() {
-            if ($('#menu li').length == 0 || $('#menu li').length == 1) {
-                alert('Can\' t load list now, Please refresh the page to change source links')
-            }
-        }, 10000);
-    });
-</script>
 
 <body>
     <div id="left">
-        <h3>Select Countries</h3>
+        <h3></h3>
         <ul id="menu">
             <li>
-                <p>Country list is loading...</p>
+                <p>Radio list is loading...</p>
             </li>
         </ul>
     </div>

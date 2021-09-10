@@ -10,15 +10,18 @@ $(document).ready(function() {
     var player = videojs(document.querySelector('#video1'));
 
     //Get Current href
-    var key = decodeURIComponent(window.location.href).split('=')[1];
+    var key = decodeURIComponent(window.location.href).split('=')[1].split('&')[0].replace('#', '');
+    var vls = decodeURIComponent(window.location.href).split('=')[2];
     //Set Page Title
     $('title').html(key == "Taiwan Province Of China" ? 'Taiwan' : key + ' Channels');
     $('#left h3').empty();
     $('#left h3').html(key == "Taiwan Province Of China" ? 'Taiwan' : key + ' Channels');
+    //Set getjson array
+    var getry = ['', 'json/stations/bycountry/', 'json/stations/bylanguage/', 'json/stations/bytag/'];
     //Get radio-browser list and show contents lists
     $.ajax({
         type: "GET",
-        url: radiosource[rand] + 'json/stations/bycountry/' + key,
+        url: radiosource[rand] + getry[Number(vls)] + key,
         success: function(message, text, response) {
             $("#menu").empty();
             $("#menu").append('<li style="background-color:#fff"><input id="search" type="text" placeholder="Search..." /></li>');

@@ -48,11 +48,11 @@ $(document).ready(function() {
         } else if ($('input[name=radioName]:checked', '#selectform').val() == 3 && $('.stylebtn:eq(1)').attr('title') == 'selected') {
             window.location.href = "routes/category.html";
         } else if ($('input[name=radioName]:checked', '#selectform').val() == 1 && $('.stylebtn:eq(3)').attr('title') == 'selected') {
-            window.location.href = "routes/radiocountry.html";
+            window.location.href = "routes/radio.html?t=1";
         } else if ($('input[name=radioName]:checked', '#selectform').val() == 2 && $('.stylebtn:eq(3)').attr('title') == 'selected') {
-            window.location.href = "routes/radiolanguage.html";
+            window.location.href = "routes/radio.html?t=2";
         } else if ($('input[name=radioName]:checked', '#selectform').val() == 3 && $('.stylebtn:eq(3)').attr('title') == 'selected') {
-            window.location.href = "routes/radiotag.html";
+            window.location.href = "routes/radio.html?t=3";
         }
     });
 
