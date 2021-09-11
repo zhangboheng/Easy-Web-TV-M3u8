@@ -251,7 +251,7 @@ input[type="button"] {
     top: 300px;
     background: #e62117;
     z-index: 1000;
-    opacity: 0.5;
+    opacity: 1;
     color: #fff;
     display: none;
     overflow-y: auto;

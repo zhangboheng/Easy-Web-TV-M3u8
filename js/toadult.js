@@ -1,6 +1,7 @@
 //Set global array proxy links to solve CORS errors
 var proxy = {
     0: 'https://bird.ioliu.cn/v1?url=',
+    1: 'https://cors.luckydesigner.workers.dev/?',
 };
 //Set global pagenum and random
 var pnum = 1;
@@ -121,13 +122,6 @@ $(document).ready(function() {
                 }
             });
         }
-    });
-    let menuHeight = document.getElementById('menu');
-    let screenHeight = window.innerHeight;
-    menuHeight.style.height = screenHeight - 60 + 'px';
-    $("#menu").css({
-        "overflow-y": "auto",
-        "height": menuHeight
     });
 });
 

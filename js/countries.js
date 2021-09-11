@@ -127,10 +127,6 @@ $(document).ready(function() {
                     });
                 };
             });
-            let menuHeight = document.getElementById('menu');
-            let screenHeight = window.innerHeight;
-            menuHeight.style.height = screenHeight - 60 + "px";
-            $("#menu").css({ "overflow-y": "auto", "height": menuHeight });
         },
         fail: function(xhr, textStatus, errorThrown) {
             alert("Please check your Internet or the iptv source has gone out!")

@@ -7,11 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="author" content="Zhang Boheng">
     <meta name="keywords" content="iptv, movie, github, online tv, web tv, series tv...">
-    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
     <link href="../css/main.css" rel="stylesheet" />
-    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
     <script src="../js/jquery-3.6.0.min.js"></script>
 </head>
+<style>
+    #readzone {
+        color: #fff;
+        overflow-y: auto;
+        height: 100vh;
+        width: 100vw;
+        font-size: 14px;
+        text-align: justify;
+        word-break: break-all;
+        background-color: #000;
+    }
+    
+    #reader {
+        padding: 70px;
+    }
+</style>
 
 <body>
     <div id="left">
@@ -26,9 +40,6 @@
     <div id="control">
         <div id="menuicon" title="Toggle tools menu">
         </div>
-        <div id="player" title="Play M3U8 Link videos">
-        </div>
-        <input id="inputlink" type="text" placeholder="Support m3u8 links to watch video...">
         <div id="prev" title="Back to homepage">
         </div>
         <div id="github" title="Go to project github">
@@ -43,23 +54,35 @@
                 </li>
             </ul>
         </div>
-        <div id="shuffleplay" title="Random play channels video">
+        <div id="epdetail" title="Content detail">
+        </div>
+        <div id="epcontent">
         </div>
     </div>
-    <div id="right">
-        <div id="div1">
-            <!-- The element where the player will be placed -->
-            <video id="video1" class="video-js vjs-big-play-centered" controls preload="auto" poster="Loading..." autoplay="true" data-setup='{}'>
-                <source src="https://f8e7y4c6.ssl.hwcdn.net/andflixhd/index.m3u8" type="application/x-mpegURL" />
-                <p class="vjs-no-js">
-                    To view this video please enable JavaScript, and consider upgrading to a web browser that
-                    <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                </p>
-            </video>
-        </div>
+    <div id="readzone">
+        <div id="reader"></div>
     </div>
-    <script src="../js/countries.js "></script>
-    <script src="https://vjs.zencdn.net/7.14.3/video.min.js "></script>
+    <div id="hiddens" style="display: none;"></div>
+    <script src="../js/novel.js"></script>
+    <script>
+        let menuHeight = document.getElementById('menu');
+        let screenHeight = window.innerHeight;
+        menuHeight.style.height = screenHeight - 60 + 'px';
+        $("#menu").css({
+            "overflow-y": "auto",
+            "height": menuHeight
+        });
+        $("li p").mouseover(function() {
+            $(this).children("a").css({
+                "color": "#000"
+            })
+        })
+        $("li p").mouseleave(function() {
+            $(this).children("a").css({
+                "color": "#fff"
+            })
+        });
+    </script>
 </body>
 
 </html>
