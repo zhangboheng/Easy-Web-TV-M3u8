@@ -60,6 +60,25 @@
     </div>
     <script src="../js/catalogues.js"></script>
     <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script>
+        let menuHeight = document.getElementById('menu');
+        let screenHeight = window.innerHeight;
+        menuHeight.style.height = screenHeight - 60 + 'px';
+        $("#menu").css({
+            "overflow-y": "auto",
+            "height": menuHeight
+        });
+        $("li p").mouseover(function() {
+            $(this).children("a").css({
+                "color": "#000"
+            })
+        })
+        $("li p").mouseleave(function() {
+            $(this).children("a").css({
+                "color": "#fff"
+            })
+        });
+    </script>
 </body>
 
 </html>
