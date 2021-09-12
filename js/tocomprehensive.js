@@ -45,13 +45,14 @@ $(document).ready(function() {
         var positionValue = (scrollTop + windowHeight) - scrollHeight;
         var link = $('#selectapi').val();
         var globallink
-        console.log(positionValue);
         if (positionValue <= 0 && positionValue >= -50) {
             $('#root').append(`<div class="loadingimg"><img src="../images/loading.gif" tag="Easy Web TV"></div>`);
             pnum++;
             if (sts.length > 0) {
                 if (link == 'http://www.88zy.live/inc/m3u8.php' || link == 'https://www.hongniuzy.com/inc/api.php') {
                     globallink = proxy[rand] + `${link}?ac=list&wd=${sts}&pg=${pnum}`;
+                } else if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                    globallink = 'https://cors.luckydesigner.workers.dev/?' + `${link}?ac=videolist&wd=${sts}&pg=${pnum}`;
                 } else {
                     globallink = proxy[rand] + `${link}?ac=videolist&wd=${sts}&pg=${pnum}`;
                 }
@@ -59,41 +60,70 @@ $(document).ready(function() {
                 globallink = proxy[rand] + `${link}?ac=videolist&t=${str}&pg=${pnum}`;
             }
             $.getJSON(globallink, function(data) {
-                var xml = $.parseXML(data),
-                    $xml = $(xml),
-                    $test = $xml.find('pic'),
-                    $total = $xml.find('list'),
-                    $type = $xml.find('type'),
-                    $name = $xml.find('name'),
-                    $id = $xml.find('id');
-                var pic;
-                if (pnum <= $total[0].attributes[1].value.toString()) {
+                if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                    $test = data.list;
+                    $id = data.list;
+                    $total = data.pagecount;
+                } else {
+                    var xml = $.parseXML(data),
+                        $xml = $(xml),
+                        $test = $xml.find('pic'),
+                        $total = $xml.find('list'),
+                        $type = $xml.find('type'),
+                        $name = $xml.find('name'),
+                        $id = $xml.find('id');
+                    var pic;
+                }
+                var count = link == 'https://www.39kan.com/api.php/provide/vod/at/json' ? $total : Number($total[0].attributes[1].value);
+                if (pnum <= count) {
                     $('.loadingimg').remove();
                     if ($(window).width() > 1024) {
                         $(`.itemContainer:eq(4)`).hide();
                         for (let i = 0; i < $id.length; i++) {
-                            pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
-                            if (i % 4 == 0) {
-                                $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                            } else if (i % 4 == 1) {
-                                $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                            } else if (i % 4 == 2) {
-                                $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                            } else if (i % 4 == 3) {
-                                $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                            if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                                if (i % 4 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                } else if (i % 4 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                } else if (i % 4 == 2) {
+                                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                } else if (i % 4 == 3) {
+                                    $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                }
+                            } else {
+                                pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
+                                if (i % 4 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                } else if (i % 4 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                } else if (i % 4 == 2) {
+                                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                } else if (i % 4 == 3) {
+                                    $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                }
                             }
                         }
                     } else if ($(window).width() <= 1024 && $(window).width() > 640) {
                         $(`.itemContainer:eq(3)`).hide();
                         $(`.itemContainer:eq(4)`).hide();
                         for (let i = 0; i < $id.length; i++) {
-                            pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
-                            if (i % 3 == 0) {
-                                $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                            } else if (i % 3 == 1) {
-                                $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                            } else if (i % 3 == 2) {
-                                $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                            if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                                if (i % 3 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                } else if (i % 3 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                } else if (i % 3 == 2) {
+                                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                }
+                            } else {
+                                pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
+                                if (i % 3 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                } else if (i % 3 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                } else if (i % 3 == 2) {
+                                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                }
                             }
                         }
                     } else if ($(window).width() <= 640) {
@@ -101,11 +131,19 @@ $(document).ready(function() {
                         $(`.itemContainer:eq(3)`).hide();
                         $(`.itemContainer:eq(4)`).hide();
                         for (let i = 0; i < $id.length; i++) {
-                            pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
-                            if (i % 2 == 0) {
-                                $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                            } else if (i % 2 == 1) {
-                                $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                            if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                                if (i % 2 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                } else if (i % 2 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                }
+                            } else {
+                                pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
+                                if (i % 2 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                } else if (i % 2 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                }
                             }
                         }
                     }
@@ -125,47 +163,78 @@ function iniMenu(link) {
     $('#root').append(`<div class="loadingimg"><img src="../images/loading.gif" tag="Easy Web TV"></div>`);
     $.when(menu, list).done(function(alp, bet) {
         $("#menu").empty();
-        var xml = $.parseXML(alp[0]),
-            $xml = $(xml),
-            $lef = $xml.find('ty');
-        var xmls = $.parseXML(bet[0]),
-            $xmls = $(xmls),
-            $id = $xmls.find('id'),
-            $test = $xmls.find('pic'),
-            $type = $xmls.find('type'),
-            $name = $xmls.find('name');
-        var pic;
+        if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+            $lef = alp[0]['class'];
+            $test = bet[0]['list'];
+        } else {
+            var xml = $.parseXML(alp[0]),
+                $xml = $(xml),
+                $lef = $xml.find('ty');
+            var xmls = $.parseXML(bet[0]),
+                $xmls = $(xmls),
+                $id = $xmls.find('id'),
+                $test = $xmls.find('pic'),
+                $type = $xmls.find('type'),
+                $name = $xmls.find('name');
+            var pic;
+        }
         $("#menu").append('<li style="background-color:#fff"><input id="search" type="text" placeholder="Search..." /></li>');
         $("#menu").append(`<li><p><span class="0">最近更新</span></p></li>`);
         for (let i of $lef) {
-            $("#menu").append(`<li><p><span class="${i.id}">${i.innerHTML}</span></p></li>`);
+            if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                $("#menu").append(`<li><p><span class="${i.type_id}">${i.type_name}</span></p></li>`);
+            } else {
+                $("#menu").append(`<li><p><span class="${i.id}">${i.innerHTML}</span></p></li>`);
+            }
         };
         $('.loadingimg').remove();
         if ($(window).width() > 1024) {
             $(`.itemContainer:eq(4)`).hide();
             for (let i = 0; i < $test.length; i++) {
-                pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
-                if (i % 4 == 0) {
-                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                } else if (i % 4 == 1) {
-                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                } else if (i % 4 == 2) {
-                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                } else if (i % 4 == 3) {
-                    $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                    if (i % 4 == 0) {
+                        $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                    } else if (i % 4 == 1) {
+                        $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                    } else if (i % 4 == 2) {
+                        $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                    } else if (i % 4 == 3) {
+                        $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                    }
+                } else {
+                    pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
+                    if (i % 4 == 0) {
+                        $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                    } else if (i % 4 == 1) {
+                        $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                    } else if (i % 4 == 2) {
+                        $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                    } else if (i % 4 == 3) {
+                        $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                    }
                 }
             };
         } else if ($(window).width() <= 1024 && $(window).width() > 640) {
             $(`.itemContainer:eq(3)`).hide();
             $(`.itemContainer:eq(4)`).hide();
             for (let i = 0; i < $test.length; i++) {
-                pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
-                if (i % 3 == 0) {
-                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                } else if (i % 3 == 1) {
-                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                } else if (i % 3 == 2) {
-                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                    if (i % 3 == 0) {
+                        $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                    } else if (i % 3 == 1) {
+                        $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                    } else if (i % 3 == 2) {
+                        $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                    }
+                } else {
+                    pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
+                    if (i % 3 == 0) {
+                        $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                    } else if (i % 3 == 1) {
+                        $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                    } else if (i % 3 == 2) {
+                        $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                    }
                 }
             };
         } else if ($(window).width() <= 640) {
@@ -173,11 +242,19 @@ function iniMenu(link) {
             $(`.itemContainer:eq(3)`).hide();
             $(`.itemContainer:eq(4)`).hide();
             for (let i = 0; i < $test.length; i++) {
-                pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
-                if (i % 2 == 0) {
-                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                } else if (i % 2 == 1) {
-                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                    if (i % 2 == 0) {
+                        $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                    } else if (i % 2 == 1) {
+                        $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                    }
+                } else {
+                    pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
+                    if (i % 2 == 0) {
+                        $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                    } else if (i % 2 == 1) {
+                        $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                    }
                 }
             }
         }
@@ -193,45 +270,72 @@ function iniMenu(link) {
                     alert('天空云 not support search');
                 } else if (link == 'http://cj.bajiecaiji.com/inc/bjm3u8.php') {
                     alert('八戒云 not support search');
-                } else if (link == 'https://www.39kan.com/api.php/provide/vod/at/xml') {
-                    searchlink = proxy[rand] + `${link}?ac=videolist&wd=${valThis}`;
+                } else if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                    searchlink = 'https://cors.luckydesigner.workers.dev/?' + `${link}?ac=videolist&wd=${valThis}`;
                 } else if (link == 'http://www.88zy.live/inc/m3u8.php' || link == "https://www.hongniuzy.com/inc/api.php") {
                     searchlink = proxy[rand] + `${link}?ac=list&wd=${valThis}`;
                 }
                 $.getJSON(searchlink, function(data) {
-                    var xml = $.parseXML(data),
-                        $xml = $(xml),
-                        $test = $xml.find('pic'),
-                        $type = $xml.find('type'),
-                        $name = $xml.find('name'),
-                        $id = $xml.find('id');
-                    var pic;
+                    if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                        $test = data.list;
+                        $id = data.list;
+                    } else {
+                        var xml = $.parseXML(data),
+                            $xml = $(xml),
+                            $test = $xml.find('pic'),
+                            $type = $xml.find('type'),
+                            $name = $xml.find('name'),
+                            $id = $xml.find('id');
+                        var pic;
+                    }
                     $('.itemContainer').empty();
                     if ($(window).width() > 1024) {
                         $(`.itemContainer:eq(4)`).hide();
                         for (let i = 0; i < $id.length; i++) {
-                            pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
-                            if (i % 4 == 0) {
-                                $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                            } else if (i % 4 == 1) {
-                                $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                            } else if (i % 4 == 2) {
-                                $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                            } else if (i % 4 == 3) {
-                                $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                            if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                                if (i % 4 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                } else if (i % 4 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                } else if (i % 4 == 2) {
+                                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                } else if (i % 4 == 3) {
+                                    $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                }
+                            } else {
+                                pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
+                                if (i % 4 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                } else if (i % 4 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                } else if (i % 4 == 2) {
+                                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                } else if (i % 4 == 3) {
+                                    $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                }
                             }
                         }
                     } else if ($(window).width() <= 1024 && $(window).width() > 640) {
                         $(`.itemContainer:eq(3)`).hide();
                         $(`.itemContainer:eq(4)`).hide();
                         for (let i = 0; i < $id.length; i++) {
-                            pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
-                            if (i % 3 == 0) {
-                                $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                            } else if (i % 3 == 1) {
-                                $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                            } else if (i % 3 == 2) {
-                                $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                            if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                                if (i % 3 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                } else if (i % 3 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                } else if (i % 3 == 2) {
+                                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                }
+                            } else {
+                                pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
+                                if (i % 3 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                } else if (i % 3 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                } else if (i % 3 == 2) {
+                                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                }
                             }
                         }
                     } else if ($(window).width() <= 640) {
@@ -239,11 +343,19 @@ function iniMenu(link) {
                         $(`.itemContainer:eq(3)`).hide();
                         $(`.itemContainer:eq(4)`).hide();
                         for (let i = 0; i < $id.length; i++) {
-                            pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
-                            if (i % 2 == 0) {
-                                $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                            } else if (i % 2 == 1) {
-                                $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                            if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                                if (i % 2 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                } else if (i % 2 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                                }
+                            } else {
+                                pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
+                                if (i % 2 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                } else if (i % 2 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                                }
                             }
                         }
                     }
@@ -258,36 +370,66 @@ function iniMenu(link) {
         $('.hiddens').append(`<p>${className}</p>`);
         $('#search').val('');
         $.getJSON(proxy[rand] + `${link}?ac=videolist&t=${className}`, function(data) {
-            var xml = $.parseXML(data),
-                $xml = $(xml),
-                $test = $xml.find('pic'),
-                $type = $xml.find('type'),
-                $name = $xml.find('name'),
-                $id = $xml.find('id');
+            if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                $test = data.list;
+                $id = data.list;
+            } else {
+                var xml = $.parseXML(data),
+                    $xml = $(xml),
+                    $test = $xml.find('pic'),
+                    $type = $xml.find('type'),
+                    $name = $xml.find('name'),
+                    $id = $xml.find('id');
+                var pic;
+            }
             $('.itemContainer').empty();
             if ($(window).width() > 1024) {
                 $(`.itemContainer:eq(4)`).hide();
                 for (let i = 0; i < $test.length; i++) {
-                    if (i % 4 == 0) {
-                        $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${$test[i].innerHTML}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                    } else if (i % 4 == 1) {
-                        $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${$test[i].innerHTML}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                    } else if (i % 4 == 2) {
-                        $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${$test[i].innerHTML}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                    } else if (i % 4 == 3) {
-                        $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${$test[i].innerHTML}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                    if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                        if (i % 4 == 0) {
+                            $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                        } else if (i % 4 == 1) {
+                            $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                        } else if (i % 4 == 2) {
+                            $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                        } else if (i % 4 == 3) {
+                            $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                        }
+                    } else {
+                        pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
+                        if (i % 4 == 0) {
+                            $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                        } else if (i % 4 == 1) {
+                            $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                        } else if (i % 4 == 2) {
+                            $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                        } else if (i % 4 == 3) {
+                            $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                        }
                     }
                 }
             } else if ($(window).width() <= 1024 && $(window).width() > 640) {
                 $(`.itemContainer:eq(3)`).hide();
                 $(`.itemContainer:eq(4)`).hide();
                 for (let i = 0; i < $test.length; i++) {
-                    if (i % 3 == 0) {
-                        $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${$test[i].innerHTML}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                    } else if (i % 3 == 1) {
-                        $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${$test[i].innerHTML}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                    } else if (i % 3 == 2) {
-                        $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${$test[i].innerHTML}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                    if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                        if (i % 3 == 0) {
+                            $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                        } else if (i % 3 == 1) {
+                            $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                        } else if (i % 3 == 2) {
+                            $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                        }
+                    } else {
+                        pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
+                        if (i % 3 == 0) {
+                            $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                        } else if (i % 3 == 1) {
+                            $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                        } else if (i % 3 == 2) {
+                            $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                        }
                     }
                 }
             } else if ($(window).width() <= 640) {
@@ -295,10 +437,19 @@ function iniMenu(link) {
                 $(`.itemContainer:eq(3)`).hide();
                 $(`.itemContainer:eq(4)`).hide();
                 for (let i = 0; i < $test.length; i++) {
-                    if (i % 2 == 0) {
-                        $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${$test[i].innerHTML}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
-                    } else if (i % 2 == 1) {
-                        $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${$test[i].innerHTML}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                    if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
+                        if (i % 2 == 0) {
+                            $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                        } else if (i % 2 == 1) {
+                            $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$test[i]['vod_id']}"><div class="item"><img class="itemImg" src="${$test[i]['vod_pic']}" alt="${$test[i]['vod_name']}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$test[i]['type_name']}]${$test[i]['vod_name']}</span></div></div></a>`)
+                        }
+                    } else {
+                        pic = $test.length == 0 ? '../images/noimage.jpeg' : $test[i].innerHTML;
+                        if (i % 2 == 0) {
+                            $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                        } else if (i % 2 == 1) {
+                            $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/complay.html?web=${link}&tab=${$id[i].innerHTML}"><div class="item"><img class="itemImg" src="${pic}" alt="${$name[i].innerHTML.split("[")[2].split(']')[0]}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${$type[i].innerHTML}]${$name[i].innerHTML.split("[")[2].split(']')[0]}</span></div></div></a>`)
+                        }
                     }
                 }
             }

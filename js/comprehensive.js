@@ -14,7 +14,7 @@ $(document).ready(function() {
     //Get iptv-org m3u list and show contents lists
     $.ajax({
         type: "GET",
-        url: proxy[0] + `${initlink}?ac=videolist&ids=${id}`,
+        url: proxy[0] + `${initlink.replace('json','xml')}?ac=videolist&ids=${id}`,
         success: function(message, text, response) {
             $("#menu").empty();
             $('#epcontent').empty();
