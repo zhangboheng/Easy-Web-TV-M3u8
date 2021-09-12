@@ -12,6 +12,7 @@ $(document).ready(function() {
     if (initlink.indexOf('http://www.xfjxs.com/') > -1) {
         originurl = 'http://www.xfjxs.com';
     };
+    //Get data
     $.ajax({
         url: proxy[0] + initlink,
         dataType: 'html',
@@ -53,6 +54,34 @@ $(document).ready(function() {
                             } else {
                                 $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${originurl + detail[i]}>${episode[i].replace(/\s/g, '')}</span></p></li>`);
                             }
+                        }
+                        if (i == 0) {
+                            var headurl = originurl + detail[0].split('/').slice(0, 3).join('/');
+                            $.ajax({
+                                url: proxy[0] + originurl + detail[0],
+                                dataType: 'html',
+                                type: "GET",
+                                success: function(data) {
+                                    $('#reader').empty();
+                                    var html = $.parseHTML(data);
+                                    var para = $(html).find('.yuedu_zhengwen');
+                                    var btn = $(html).find('.button2 a');
+                                    var arr = [];
+                                    for (let i of btn) {
+                                        arr.push(i.attributes[0].value);
+                                    }
+                                    arr = arr.filter((x, y) => y == 1 || y == 3).map(x => headurl + '/' + x);
+                                    $('#reader').append(`${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g,'').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g,'')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
+                                    $('#center_tip').remove();
+                                    $('#center_tip').remove();
+                                },
+                                error: function() {
+                                    alert("Error");
+                                },
+                                complete: function(xhr, status) {
+
+                                }
+                            });
                         }
                     }
                     //Append favorite list
@@ -104,6 +133,7 @@ $(document).ready(function() {
                 complete: function(xhr, status) {
                     //Click episode to read
                     $("li p span").click(function() {
+                        var headurl = $(this).attr('title').split('.html')[0].replace(/\/\d+$/g, '');
                         $.ajax({
                             url: proxy[0] + $(this).attr('title'),
                             dataType: 'html',
@@ -111,10 +141,18 @@ $(document).ready(function() {
                             success: function(data) {
                                 $('#reader').empty();
                                 var html = $.parseHTML(data);
-                                var title = $(html).find('h1').text();
                                 var para = $(html).find('.yuedu_zhengwen');
-                                $('#reader').append(`${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g,'').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g,'')}`);
+                                var btn = $(html).find('.button2 a');
+                                var arr = [];
+                                for (let i of btn) {
+                                    arr.push(i.attributes[0].value);
+                                }
+                                arr = arr.filter((x, y) => y == 1 || y == 3).map(x => headurl + '/' + x);
+                                $('#reader').append(`${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g,'').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g,'')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
                                 $('#center_tip').remove();
+                                $('#readzone').scrollTop(0);
+                                $('#left').hide();
+                                $('.toggle').css({ 'left': '5px' });
                             },
                             error: function() {
                                 alert("Error");
@@ -126,9 +164,42 @@ $(document).ready(function() {
                     });
                 }
             });
+
         }
     });
 });
+//Set turnpage function
+function turnpage(content) {
+    var headurl = content.split('.html')[0].replace(/\/\d+$/g, '');
+    $.ajax({
+        url: proxy[0] + content,
+        dataType: 'html',
+        type: "GET",
+        success: function(data) {
+            $('#reader').empty();
+            var html = $.parseHTML(data);
+            var para = $(html).find('.yuedu_zhengwen');
+            var btn = $(html).find('.button2 a');
+            var arr = [];
+            for (let i of btn) {
+                arr.push(i.attributes[0].value);
+            }
+            arr = arr.filter((x, y) => y == 1 || y == 3).map(x => headurl + '/' + x);
+            $('#reader').append(`${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g,'').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g,'')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
+            $('#center_tip').remove();
+            $('#center_tip').remove();
+            $('#readzone').scrollTop(0);
+            $('#left').hide();
+            $('.toggle').css({ 'left': '5px' });
+        },
+        error: function() {
+            alert("Error");
+        },
+        complete: function(xhr, status) {
+
+        }
+    });
+}
 //Set Toggle Menu
 $('.toggle').click(function() {
     $('#left').toggle();
