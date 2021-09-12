@@ -19,6 +19,7 @@ $(document).ready(function() {
         type: "GET",
         success: function(data) {
             var html = $.parseHTML(data);
+            console.log(data);
             var title = $(html).find('h1 a').text();
             var info = $(html).find('.r_cons').text();
             var cates = $(html).find('#diralinks')[0].href;
