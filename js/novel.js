@@ -64,6 +64,7 @@ $(document).ready(function() {
                                 success: function(data) {
                                     $('#reader').empty();
                                     var html = $.parseHTML(data);
+                                    var title = $(html).find('h1').text();
                                     var para = $(html).find('.yuedu_zhengwen');
                                     var btn = $(html).find('.button2 a');
                                     var arr = [];
@@ -71,7 +72,7 @@ $(document).ready(function() {
                                         arr.push(i.attributes[0].value);
                                     }
                                     arr = arr.filter((x, y) => y == 1 || y == 3).map(x => headurl + '/' + x);
-                                    $('#reader').append(`${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g,'').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g,'')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
+                                    $('#reader').append(`<h2>${title}</h2>${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g,'').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g,'')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
                                     $('#center_tip').remove();
                                     $('#center_tip').remove();
                                 },
@@ -141,6 +142,7 @@ $(document).ready(function() {
                             success: function(data) {
                                 $('#reader').empty();
                                 var html = $.parseHTML(data);
+                                var title = $(html).find('h1').text();
                                 var para = $(html).find('.yuedu_zhengwen');
                                 var btn = $(html).find('.button2 a');
                                 var arr = [];
@@ -148,7 +150,7 @@ $(document).ready(function() {
                                     arr.push(i.attributes[0].value);
                                 }
                                 arr = arr.filter((x, y) => y == 1 || y == 3).map(x => headurl + '/' + x);
-                                $('#reader').append(`${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g,'').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g,'')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
+                                $('#reader').append(`<h2>${title}</h2>${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g,'').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g,'')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
                                 $('#center_tip').remove();
                                 $('#readzone').scrollTop(0);
                                 $('#left').hide();
@@ -178,6 +180,7 @@ function turnpage(content) {
         success: function(data) {
             $('#reader').empty();
             var html = $.parseHTML(data);
+            var title = $(html).find('h1').text();
             var para = $(html).find('.yuedu_zhengwen');
             var btn = $(html).find('.button2 a');
             var arr = [];
@@ -185,7 +188,7 @@ function turnpage(content) {
                 arr.push(i.attributes[0].value);
             }
             arr = arr.filter((x, y) => y == 1 || y == 3).map(x => headurl + '/' + x);
-            $('#reader').append(`${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g,'').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g,'')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
+            $('#reader').append(`<h2>${title}</h2>${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g,'').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g,'')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
             $('#center_tip').remove();
             $('#center_tip').remove();
             $('#readzone').scrollTop(0);
