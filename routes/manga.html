@@ -3,82 +3,69 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Easy Web TV：Online SmartTV</title>
+    <title>Manga</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="author" content="Zhang Boheng">
     <meta name="keywords" content="iptv, movie, github, online tv, web tv, series tv...">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link href="../css/main.css" rel="stylesheet" />
     <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/tomanga.js"></script>
 </head>
 <style>
-    #readzone {
-        color: #fff;
-        width: 100vw;
-        height: inherit;
+    html,
+    body {
+        height: auto !important;
+        background-image: url("../images/bg.jpg");
         overflow-y: auto;
-        text-align: justify;
-        word-break: break-all;
-        background-color: #000;
     }
     
-    #reader {
-        padding: 50px;
+    .toggle,
+    #left {
+        position: fixed !important;
     }
     
-    button {
-        width: 80px;
-        margin-right: 20px;
-    }
-    
-    .centerbtn {
+    .loadingimg {
+        position: fixed;
+        bottom: 10px;
+        z-index: 998;
+        width: 100vw;
         text-align: center;
-        width: 100%;
     }
     
-    #vung_doc h3 {
-        border: none;
-        float: left;
+    .loadingimg img {
+        width: 8%;
     }
 </style>
 
 <body>
     <div id="left">
-        <h3></h3>
+        <h3>Select Category</h3>
         <ul id="menu">
             <li>
-                <p>Chapters list is loading...</p>
+                <p>Category list is loading...</p>
             </li>
         </ul>
     </div>
     <div class="toggle"></div>
-    <div id="control">
-        <div id="menuicon" title="Toggle tools menu">
+    <select id="selectapi">
+        <option value="http://www.manhuapu.com">漫画铺</option>
+    </select>
+    <div id="root">
+        <div class="itemContainer">
         </div>
-        <div id="prev" title="Back to homepage">
+        <div class="itemContainer">
         </div>
-        <div id="github" title="Go to project github">
+        <div class="itemContainer">
         </div>
-        <div id="favorite" title="Open your favorite channels list">
+        <div class="itemContainer">
         </div>
-        <div id="channelist">
-            <h3>Favorite</h3>
-            <ul id="channelcontent">
-                <li>
-                    <p>Please click like to collect</p>
-                </li>
-            </ul>
+        <div class="itemContainer">
         </div>
-        <div id="epdetail" title="Content detail">
-        </div>
-        <div id="epcontent">
+        <div class="hiddens" style="display: none;">
+            <p>0</p>
         </div>
     </div>
-    <div id="readzone">
-        <div id="reader"></div>
-    </div>
-    <div id="hiddens" style="display: none;"></div>
-    <script src="../js/novel.js"></script>
     <script>
         let menuHeight = document.getElementById('menu');
         let screenHeight = window.innerHeight;

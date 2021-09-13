@@ -16,7 +16,6 @@
         color: #fff;
         width: 100vw;
         height: inherit;
-        overflow-y: auto;
         text-align: justify;
         word-break: break-all;
         background-color: #000;
@@ -24,21 +23,11 @@
     
     #reader {
         padding: 50px;
+        display: contents;
     }
     
-    button {
-        width: 80px;
-        margin-right: 20px;
-    }
-    
-    .centerbtn {
-        text-align: center;
-        width: 100%;
-    }
-    
-    #vung_doc h3 {
+    iframe {
         border: none;
-        float: left;
     }
 </style>
 
@@ -78,7 +67,7 @@
         <div id="reader"></div>
     </div>
     <div id="hiddens" style="display: none;"></div>
-    <script src="../js/novel.js"></script>
+    <script src="../js/manga.js"></script>
     <script>
         let menuHeight = document.getElementById('menu');
         let screenHeight = window.innerHeight;
