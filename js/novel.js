@@ -349,7 +349,7 @@ function turnpage(content) {
 
             }
         });
-    } else if (content.indexOf('bestlightnovel') > -1) {
+    } else if (content.indexOf('bestlightnovel') > -1 || content.indexOf('novelonlinefull') > -1) {
         $.ajax({
             url: proxy[0] + content,
             dataType: 'html',
