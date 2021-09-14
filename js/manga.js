@@ -9,6 +9,10 @@ $(document).ready(function() {
     $(".toggle").css({ 'left': $('#left').width() - 50 });
     //Get Current href
     var initlink = decodeURIComponent(window.location.href).split('web=')[1];
+    var originlink;
+    if (initlink.indexOf('mangabuddy') > -1) {
+        originlink = 'https://mangabuddy.com';
+    }
     //Get data
     $.ajax({
         url: proxy[0] + initlink,
@@ -17,11 +21,7 @@ $(document).ready(function() {
         success: function(data) {
             var html = $.parseHTML(data);
             var title = $(html).find('h1').text();
-            if (initlink.indexOf('readmanganato') > -1) {
-                var info = $(html).find('#panel-story-info-description').text();
-            } else if (initlink.indexOf('mangakakalot') > -1) {
-                var info = $(html).find('#noidungm').text();
-            }
+            var info = $(html).find('p.content').text();
             $('#epcontent').empty();
             $('#left h3').html(title);
             $('#epcontent').append(`<h3>Content</h3><p>${info}</p>`);
@@ -30,15 +30,15 @@ $(document).ready(function() {
             alert("Error");
         },
         complete: function(xhr, status) {
-            if (initlink.indexOf('readmanganato') > -1) {
+            if (initlink.indexOf('mangabuddy') > -1) {
                 $.ajax({
                     url: proxy[0] + initlink,
                     dataType: 'html',
                     type: "GET",
                     success: function(data) {
                         var html = $.parseHTML(data);
-                        var episodes = Object.values($(html).find('.row-content-chapter li a').map((x, y) => y.innerText)).reverse().slice(2);
-                        var epihref = Object.values($(html).find('.row-content-chapter li a').map((x, y) => y.attributes[2].value)).reverse().slice(2);
+                        var episodes = Object.values($(html).find('.chapter-list li a').map((x, y) => y.innerText)).reverse().slice(2);
+                        var epihref = Object.values($(html).find('.chapter-list li a').map((x, y) => originlink + y.attributes[0].value)).reverse().slice(2);
                         $('#menu').empty();
                         $("#channelcontent").empty();
                         for (let i = 0; i < episodes.length; i++) {
@@ -57,17 +57,14 @@ $(document).ready(function() {
                             }
                             if (i == 0) {
                                 $.ajax({
-                                    url: proxy[0] + epihref[0],
+                                    url: proxy[1] + epihref[0],
                                     dataType: 'html',
                                     type: "GET",
-                                    headers: {
-                                        "X-Alt-Referer": "http://www.mangakakalot.com/"
-                                    },
                                     success: function(data) {
                                         $('#reader').empty();
                                         var html = $.parseHTML(data);
-                                        var title = $(html).find('.panel-chapter-info-top h1').text();
-                                        var pic = $(html).find('.container-chapter-reader img').map((x, y) => y.attributes[0].value);
+                                        var title = $(html).find('.chapter-info h1').text();
+                                        var pic = $(html).find('img').map((x, y) => y.dataset.src.replace(/\\n/g, '').replace(/\\/g, '').replace(/\"/g, '')).filter((x, y) => !y.endsWith('.gif') && y.indexOf('/thumb/') == -1);
                                         $('#reader').append(`<h2>${title}</h2>`);
                                         for (let i of pic) {
                                             $('#reader').append(`<a class="spotlight" href="${i}"><img style="width:25%;" src="${i}" /></a>`);
@@ -132,17 +129,14 @@ $(document).ready(function() {
                         //Click episode to read
                         $("li p span").click(function() {
                             $.ajax({
-                                url: proxy[0] + $(this).attr('title'),
+                                url: proxy[1] + $(this).attr('title'),
                                 dataType: 'html',
                                 type: "GET",
-                                headers: {
-                                    "X-Alt-Referer": "http://www.mangakakalot.com/"
-                                },
                                 success: function(data) {
                                     $('#reader').empty();
                                     var html = $.parseHTML(data);
-                                    var title = $(html).find('.panel-chapter-info-top h1').text();
-                                    var pic = $(html).find('.container-chapter-reader img').map((x, y) => y.attributes[0].value);
+                                    var title = $(html).find('.chapter-info h1').text();
+                                    var pic = $(html).find('img').map((x, y) => y.dataset.src.replace(/\\n/g, '').replace(/\\/g, '').replace(/\"/g, '')).filter((x, y) => !y.endsWith('.gif') && y.indexOf('/thumb/') == -1);
                                     $('#reader').append(`<h2>${title}</h2>`);
                                     for (let i of pic) {
                                         $('#reader').append(`<a class="spotlight" href="${i}"><img style="width:25%;" src="${i}" /></a>`);
