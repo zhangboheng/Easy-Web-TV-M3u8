@@ -10,24 +10,25 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link href="../css/main.css" rel="stylesheet" />
     <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/spotlight.bundle.js"></script>
 </head>
 <style>
     #readzone {
         color: #fff;
         width: 100vw;
         height: inherit;
-        text-align: justify;
-        word-break: break-all;
         background-color: #000;
+        text-align: center;
     }
     
     #reader {
         padding: 50px;
-        display: contents;
+        height: 90%;
+        overflow-y: auto;
     }
     
-    iframe {
-        border: none;
+    div {
+        float: none !important;
     }
 </style>
 
@@ -64,7 +65,8 @@
         </div>
     </div>
     <div id="readzone">
-        <div id="reader"></div>
+        <div id="reader" class="spotlight-group">
+        </div>
     </div>
     <div id="hiddens" style="display: none;"></div>
     <script src="../js/manga.js"></script>

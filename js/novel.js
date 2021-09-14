@@ -31,7 +31,7 @@ $(document).ready(function() {
                 }
                 $('#hiddens').append(`<p>${cates}</p>`);
             } else if (initlink.indexOf('https://novelonlinefull.com/') > -1) {
-                var title = $(html).find('h1').text();
+                var title = $(html).find('.truyen_info_right h1').text();
                 var info = $(html).find('#noidungm').text();
             };
             $('#epcontent').empty();

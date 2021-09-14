@@ -1,6 +1,7 @@
 //Set global array proxy links to solve CORS errors
 var proxy = {
     0: 'https://cors.luckydesigner.workers.dev/?',
+    1: 'https://bird.ioliu.cn/v1?url=',
 };
 var channels = [];
 $(document).ready(function() {
@@ -8,10 +9,6 @@ $(document).ready(function() {
     $(".toggle").css({ 'left': $('#left').width() - 50 });
     //Get Current href
     var initlink = decodeURIComponent(window.location.href).split('web=')[1];
-    var originurl;
-    if (initlink.indexOf('http://www.manhuapu.com') > -1) {
-        originurl = 'http://www.manhuapu.com';
-    }
     //Get data
     $.ajax({
         url: proxy[0] + initlink,
@@ -20,7 +17,11 @@ $(document).ready(function() {
         success: function(data) {
             var html = $.parseHTML(data);
             var title = $(html).find('h1').text();
-            var info = $(html).find('.introduction').text();
+            if (initlink.indexOf('readmanganato') > -1) {
+                var info = $(html).find('#panel-story-info-description').text();
+            } else if (initlink.indexOf('mangakakalot') > -1) {
+                var info = $(html).find('#noidungm').text();
+            }
             $('#epcontent').empty();
             $('#left h3').html(title);
             $('#epcontent').append(`<h3>Content</h3><p>${info}</p>`);
@@ -29,15 +30,15 @@ $(document).ready(function() {
             alert("Error");
         },
         complete: function(xhr, status) {
-            if (initlink.indexOf('http://www.manhuapu.com') > -1) {
+            if (initlink.indexOf('readmanganato') > -1) {
                 $.ajax({
                     url: proxy[0] + initlink,
                     dataType: 'html',
                     type: "GET",
                     success: function(data) {
                         var html = $.parseHTML(data);
-                        var episodes = Object.values($(html).find('#play_0 ul li a').map((x, y) => y.innerText)).reverse().slice(2);
-                        var epihref = Object.values($(html).find('#play_0 ul li a').map((x, y) => originurl + y.attributes[1].value)).reverse().slice(2);
+                        var episodes = Object.values($(html).find('.row-content-chapter li a').map((x, y) => y.innerText)).reverse().slice(2);
+                        var epihref = Object.values($(html).find('.row-content-chapter li a').map((x, y) => y.attributes[2].value)).reverse().slice(2);
                         $('#menu').empty();
                         $("#channelcontent").empty();
                         for (let i = 0; i < episodes.length; i++) {
@@ -55,7 +56,30 @@ $(document).ready(function() {
                                 }
                             }
                             if (i == 0) {
-                                $('#reader').append(`<iframe src ="${epihref[0].replace('www','m')}" width="100%" height="120%" style="position:absolute;top:-70px"><iframe>`);
+                                $.ajax({
+                                    url: proxy[0] + epihref[0],
+                                    dataType: 'html',
+                                    type: "GET",
+                                    headers: {
+                                        "X-Alt-Referer": "http://www.mangakakalot.com/"
+                                    },
+                                    success: function(data) {
+                                        $('#reader').empty();
+                                        var html = $.parseHTML(data);
+                                        var title = $(html).find('.panel-chapter-info-top h1').text();
+                                        var pic = $(html).find('.container-chapter-reader img').map((x, y) => y.attributes[0].value);
+                                        $('#reader').append(`<h2>${title}</h2>`);
+                                        for (let i of pic) {
+                                            $('#reader').append(`<a class="spotlight" href="${i}"><img style="width:25%;" src="${i}" /></a>`);
+                                        }
+                                    },
+                                    error: function() {
+                                        alert("Error");
+                                    },
+                                    complete: function(xhr, status) {
+
+                                    }
+                                });
                             }
                         }
                         //Append favorite list
@@ -107,8 +131,30 @@ $(document).ready(function() {
                     complete: function(xhr, status) {
                         //Click episode to read
                         $("li p span").click(function() {
-                            $('#reader').empty();
-                            $('#reader').append(`<iframe src ="${$(this).attr('title').replace('www','m')}"  width="100%" height="120%" style="position:absolute;top:-70px"><iframe>`);
+                            $.ajax({
+                                url: proxy[0] + $(this).attr('title'),
+                                dataType: 'html',
+                                type: "GET",
+                                headers: {
+                                    "X-Alt-Referer": "http://www.mangakakalot.com/"
+                                },
+                                success: function(data) {
+                                    $('#reader').empty();
+                                    var html = $.parseHTML(data);
+                                    var title = $(html).find('.panel-chapter-info-top h1').text();
+                                    var pic = $(html).find('.container-chapter-reader img').map((x, y) => y.attributes[0].value);
+                                    $('#reader').append(`<h2>${title}</h2>`);
+                                    for (let i of pic) {
+                                        $('#reader').append(`<a class="spotlight" href="${i}"><img style="width:25%;" src="${i}" /></a>`);
+                                    }
+                                },
+                                error: function() {
+                                    alert("Error");
+                                },
+                                complete: function(xhr, status) {
+
+                                }
+                            });
                         });
                     }
                 });
@@ -116,67 +162,6 @@ $(document).ready(function() {
         }
     });
 });
-//Set turnpage function
-function turnpage(content) {
-    if (content.indexOf('http://www.xfjxs.com/') > -1) {
-        var headurl = content.split('.html')[0].replace(/\/\d+$/g, '');
-        $.ajax({
-            url: proxy[0] + content,
-            dataType: 'html',
-            type: "GET",
-            success: function(data) {
-                $('#reader').empty();
-                var html = $.parseHTML(data);
-                var title = $(html).find('h1').text();
-                var para = $(html).find('.yuedu_zhengwen');
-                var btn = $(html).find('.button2 a');
-                var arr = [];
-                for (let i of btn) {
-                    arr.push(i.attributes[0].value);
-                }
-                arr = arr.filter((x, y) => y == 1 || y == 3).map(x => headurl + '/' + x);
-                $('#reader').append(`<h2>${title}</h2>${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g,'').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g,'')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
-                $('#center_tip').remove();
-                $('#center_tip').remove();
-                $('#readzone').scrollTop(0);
-                $('#left').hide();
-                $('.toggle').css({ 'left': '5px' });
-            },
-            error: function() {
-                alert("Error");
-            },
-            complete: function(xhr, status) {
-
-            }
-        });
-    } else if (content.indexOf('bestlightnovel') > -1 || content.indexOf('novelonlinefull') > -1) {
-        $.ajax({
-            url: proxy[0] + content,
-            dataType: 'html',
-            type: "GET",
-            success: function(data) {
-                $('#reader').empty();
-                var html = $.parseHTML(data);
-                var para = $(html).find('#vung_doc');
-                var btn = Object.values($(html).find('a.btn_theodoi.btn_doc').map((x, y) => y.href));
-                var arr = [];
-                for (let i of btn) {
-                    arr.push(i);
-                }
-                $('#reader').append(`${para[0].outerHTML}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
-                $('#readzone').scrollTop(0);
-                $('#left').hide();
-                $('.toggle').css({ 'left': '5px' });
-            },
-            error: function() {
-                alert("Error");
-            },
-            complete: function(xhr, status) {
-
-            }
-        });
-    }
-}
 //Set Toggle Menu
 $('.toggle').click(function() {
     $('#left').toggle();
