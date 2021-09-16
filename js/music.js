@@ -19,7 +19,7 @@ $(document).ready(function() {
             $('#left h3').empty();
             $('#left h3').html(str[0].ar[0].name);
             var lst = str.map(x => x.name);
-            var links = str.map(x => x.dt);
+            var links = str.map(x => x.id);
             for (let i = 0; i < links.length; i++) {
                 channels.push(links[i]);
                 if (i == 0) {
