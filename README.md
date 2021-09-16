@@ -1,7 +1,7 @@
 ![Easy-Web-TV](images/banner.jpg)
 # Easy-Web-TV-M3u8
 ![Easy-Web-TV](https://img.shields.io/github/issues/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/badge/version-7.0.0-green)  
-Easy way to listen to radio stations, watch movies, series, animes, show, porn, IPTV and read novel or manga books on the website. 
+Easy way to listen to radio stations, watch movies, series, animes, shows, porn, IPTV, and read novel or manga books on the website. 
 
 # Official
  [Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)  
