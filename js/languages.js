@@ -16,7 +16,7 @@ $(document).ready(function() {
     //Get iptv-org m3u list and show contents lists
     $.ajax({
         type: "GET",
-        url: ' https://iptv-org.github.io/iptv/languages/' + key + ".m3u",
+        url: 'https://iptv-org.github.io/iptv/languages/' + key + ".m3u",
         success: function(message, text, response) {
             $("#menu").empty();
             $("#menu").append('<li style="background-color:#fff"><input id="search" type="text" placeholder="Search..." /></li>');

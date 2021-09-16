@@ -2,48 +2,40 @@ var channels = [];
 $(document).ready(function() {
     $("#video1").width($("#div1").width()).height($("#div1").height());
     $(".toggle").css({ 'left': $('#left').width() - 50 });
-    var player = videojs(document.querySelector('#video1'));
-
     //Get Current href
-    var key = decodeURIComponent(window.location.href).split('=')[1];
-
-    //Set Page Title
-    $('title').html(key.toUpperCase().split('')[0] + key.slice(1) + ' Channels');
-    $('#left h3').empty();
-    $('#left h3').html(key.toUpperCase().split('')[0] + key.slice(1) + ' Channels');
-    //Get iptv-org m3u list and show contents lists
+    var ids = decodeURIComponent(window.location.href).split('web=')[1];
+    //Get radio-browser list and show contents lists
     $.ajax({
         type: "GET",
-        url: 'https://iptv-org.github.io/iptv/categories/' + key + ".m3u",
+        url: `https://163.lpddr5.cn/artist/songs?id=${ids}`,
+        data: {
+            limit: 100
+        },
         success: function(message, text, response) {
             $("#menu").empty();
             $("#menu").append('<li style="background-color:#fff"><input id="search" type="text" placeholder="Search..." /></li>');
             $("#channelcontent").empty();
-            let str = message;
-            let lst = str.split(",").slice(1, ).filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n"));
-            let array = str.split(" ");
-            let links = array.filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n")).flat().filter(x => /[^h]+.m3u8/.test(x));
+            var str = message.songs;
+            $('#left h3').empty();
+            $('#left h3').html(str[0].ar[0].name);
+            var lst = str.map(x => x.name);
+            var links = str.map(x => x.dt);
             for (let i = 0; i < links.length; i++) {
                 channels.push(links[i]);
                 if (i == 0) {
-                    player.src({
-                        src: links[0],
-                        type: 'application/x-mpegURL' /*video type*/
-                    });
-
-                    player.play();
+                    audioPlay(links[0]);
                 }
                 if ($(window).width() > 640) {
                     if (window.localStorage.getItem(links[i]) == lst[i][0]) {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${links[i]}>${lst[i]}</span></p></li>`);
                     } else {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite.png');"/><span title=${links[i]}>${lst[i]}</span></p></li>`);
                     }
                 } else {
                     if (window.localStorage.getItem(links[i]) == lst[i][0]) {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${links[i]}>${lst[i]}</span></p></li>`);
                     } else {
-                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${links[i]}>${lst[i][0]}</span></p></li>`);
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${links[i]}>${lst[i]}</span></p></li>`);
                     }
                 }
             }
@@ -57,22 +49,12 @@ $(document).ready(function() {
             }
             //Click channels to play
             $("li p span").click(function() {
-                player.src({
-                    src: $(this).attr("title"),
-                    type: 'application/x-mpegURL' /*video type*/
-                });
-
-                player.play();
+                audioPlay($(this).attr("title"));
             });
             //Click play random channels
             $("#shuffleplay").click(function() {
                 let detail = channels[Math.floor(Math.random() * channels.length)];
-                player.src({
-                    src: detail,
-                    type: 'application/x-mpegURL' /*video type*/
-                });
-
-                player.play();
+                audioPlay(detail);
             });
             //Change icon size
             $('#menu li p input').click(function() {
@@ -127,19 +109,19 @@ $(document).ready(function() {
             });
         },
         fail: function(xhr, textStatus, errorThrown) {
-            alert("Please check your Internet or the iptv source has gone out!")
+            alert("Please check your Internet or the radio-browser source has gone out!")
         }
     });
     //Set Toggle Menu
     $('.toggle').click(function() {
-            $('#left').toggle();
-            if ($('#left').is(':visible')) {
-                $('.toggle').css({ 'left': $('#left').width() - 50 });
-            } else {
-                $('.toggle').css({ 'left': '5px' });
-            }
-        })
-        //Set M3U8 links to play
+        $('#left').toggle();
+        if ($('#left').is(':visible')) {
+            $('.toggle').css({ 'left': $('#left').width() - 50 });
+        } else {
+            $('.toggle').css({ 'left': '5px' });
+        }
+    });
+    //Set M3U8 links to play
     $("#player").on({
         mouseenter: function() {
             $(this).css({ "opacity": 1 })
@@ -235,4 +217,37 @@ $(document).ready(function() {
             $("#player").css({ "background-image": "url(../images/link.jpg)" });
         }
     });
-})
+});
+
+//Play audio source
+function audioPlay(ids) {
+    var player = videojs(document.querySelector('#video1'));
+    //Test muisc if is invalid
+    $.ajax({
+        url: 'https://163.lpddr5.cn' + '/check/music?id=' + ids,
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            $.ajax({
+                url: 'https://163.lpddr5.cn' + '/song/url?id=' + ids,
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    var fileName = data.data[0].url;
+                    player.src({
+                        src: fileName,
+                        type: "audio/mp3"
+                    });
+
+                    player.play();
+                },
+                error: function(xhr, status) {
+                    alert("Sorry, there was a problem!");
+                }
+            });
+        },
+        error: function(xhr, status) {
+            alert('Sorry, the music is not support to play...');
+        }
+    });
+}

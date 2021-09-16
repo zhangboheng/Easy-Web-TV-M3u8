@@ -67,28 +67,28 @@ $(document).ready(function() {
                             if ($(window).width() > 1024) {
                                 for (let i = 0; i < artisery.length; i++) {
                                     if (i % 5 == 0) {
-                                        $(`.itemContainer:eq(0)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                        $(`.itemContainer:eq(0)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                     } else if (i % 5 == 1) {
-                                        $(`.itemContainer:eq(1)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                        $(`.itemContainer:eq(1)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                     } else if (i % 5 == 2) {
-                                        $(`.itemContainer:eq(2)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                        $(`.itemContainer:eq(2)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                     } else if (i % 5 == 3) {
-                                        $(`.itemContainer:eq(3)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                        $(`.itemContainer:eq(3)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                     } else if (i % 5 == 4) {
-                                        $(`.itemContainer:eq(4)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                        $(`.itemContainer:eq(4)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                     }
                                 };
                             } else if ($(window).width() <= 1024 && $(window).width() > 640) {
                                 $(`.itemContainer:eq(4)`).hide();
                                 for (let i = 0; i < artisery.length; i++) {
                                     if (i % 4 == 0) {
-                                        $(`.itemContainer:eq(0)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                        $(`.itemContainer:eq(0)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                     } else if (i % 4 == 1) {
-                                        $(`.itemContainer:eq(1)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                        $(`.itemContainer:eq(1)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                     } else if (i % 4 == 2) {
-                                        $(`.itemContainer:eq(2)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                        $(`.itemContainer:eq(2)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                     } else if (i % 4 == 3) {
-                                        $(`.itemContainer:eq(3)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                        $(`.itemContainer:eq(3)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                     }
                                 };
 
@@ -98,9 +98,9 @@ $(document).ready(function() {
                                 $(`.itemContainer:eq(4)`).hide();
                                 for (let i = 0; i < artisery.length; i++) {
                                     if (i % 2 == 0) {
-                                        $(`.itemContainer:eq(0)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                        $(`.itemContainer:eq(0)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                     } else if (i % 2 == 1) {
-                                        $(`.itemContainer:eq(1)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                        $(`.itemContainer:eq(1)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                     }
 
                                 }
@@ -258,28 +258,28 @@ function iniMenu(link) {
                                 if ($(window).width() > 1024) {
                                     for (let i = 0; i < artisery.length; i++) {
                                         if (i % 5 == 0) {
-                                            $(`.itemContainer:eq(0)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                            $(`.itemContainer:eq(0)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                         } else if (i % 5 == 1) {
-                                            $(`.itemContainer:eq(1)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                            $(`.itemContainer:eq(1)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                         } else if (i % 5 == 2) {
-                                            $(`.itemContainer:eq(2)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                            $(`.itemContainer:eq(2)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                         } else if (i % 5 == 3) {
-                                            $(`.itemContainer:eq(3)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                            $(`.itemContainer:eq(3)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                         } else if (i % 5 == 4) {
-                                            $(`.itemContainer:eq(4)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                            $(`.itemContainer:eq(4)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                         }
                                     };
                                 } else if ($(window).width() <= 1024 && $(window).width() > 640) {
                                     $(`.itemContainer:eq(4)`).hide();
                                     for (let i = 0; i < artisery.length; i++) {
                                         if (i % 4 == 0) {
-                                            $(`.itemContainer:eq(0)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                            $(`.itemContainer:eq(0)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                         } else if (i % 4 == 1) {
-                                            $(`.itemContainer:eq(1)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                            $(`.itemContainer:eq(1)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                         } else if (i % 4 == 2) {
-                                            $(`.itemContainer:eq(2)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                            $(`.itemContainer:eq(2)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                         } else if (i % 4 == 3) {
-                                            $(`.itemContainer:eq(3)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                            $(`.itemContainer:eq(3)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                         }
                                     };
 
@@ -289,9 +289,9 @@ function iniMenu(link) {
                                     $(`.itemContainer:eq(4)`).hide();
                                     for (let i = 0; i < artisery.length; i++) {
                                         if (i % 2 == 0) {
-                                            $(`.itemContainer:eq(0)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                            $(`.itemContainer:eq(0)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                         } else if (i % 2 == 1) {
-                                            $(`.itemContainer:eq(1)`).append(`<a href="#" onclick="audioPlay('${artisery[i].id}')"><div class="item"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div></a>`)
+                                            $(`.itemContainer:eq(1)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                         }
 
                                     }
@@ -394,27 +394,22 @@ function audioPlay(ids) {
         type: "GET",
         dataType: "json",
         success: function(data) {
-            if (data.success == true) {
-                $.ajax({
-                    url: 'https://163.lpddr5.cn' + '/song/url?id=' + ids,
-                    type: "GET",
-                    dataType: "json",
-                    success: function(data) {
-                        $('audio').show();
-                        var fileName = data.data[0].url;
-                        $("#Audio1").attr("src", fileName).trigger("play");
-                    },
-                    error: function(xhr, status) {
-                        alert("Sorry, there was a problem!");
-                    }
-                });
-            } else {
-                alert('Sorry, the music is not support to play...');
-            }
+            $.ajax({
+                url: 'https://163.lpddr5.cn' + '/song/url?id=' + ids,
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    $('audio').show();
+                    var fileName = data.data[0].url;
+                    $("#Audio1").attr("src", fileName).trigger("play");
+                },
+                error: function(xhr, status) {
+                    alert("Sorry, there was a problem!");
+                }
+            });
         },
         error: function(xhr, status) {
-            alert("Sorry, there was a problem!");
+            alert('Sorry, the music is not support to play...');
         }
     });
-
 }
