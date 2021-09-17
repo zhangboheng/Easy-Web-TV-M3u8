@@ -45,27 +45,37 @@ $(document).ready(function() {
                     type: "GET",
                     success: function(data) {
                         var html = $.parseHTML(data);
-                        var episodes = Object.values($(html).find('.chapter-list li a').map((x, y) => y.innerText)).reverse().slice(2);
-                        var epihref = Object.values($(html).find('.chapter-list li a').map((x, y) => originlink + y.attributes[0].value)).reverse().slice(2);
+                        var episode = Object.values($(html).find('.chapter-list li a strong').map((x, y) => y.innerText)).reverse().slice(2).filter(x => x.indexOf(":") == -1).filter(x => /[0-9]$/g.test(x)).map(x => x.split(' ')[1]);
+                        var epi = Object.values($(html).find('.chapter-list li a').map((x, y) => originlink + y.attributes[0].value)).reverse().slice(2);
+                        var alp = Number(episode[0]);
+                        var bta = Number(episode[episode.length - 1]);
+                        var episodes = [];
+                        for (let i = alp; i <= bta; i++) {
+                            episodes.push(i);
+                        };
+                        var epihref = [];
+                        for (let i = 0; i < episodes.length; i++) {
+                            epihref.push(epi[0].split('/').slice(0, -1).join("/") + `/chapter-${episodes[i]}`);
+                        }
                         $('#menu').empty();
                         $("#channelcontent").empty();
                         for (let i = 0; i < episodes.length; i++) {
                             if ($(window).width() > 640) {
                                 if (window.localStorage.getItem(epihref[i]) == episodes[i]) {
-                                    $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${epihref[i]}>${episodes[i]}</span></p></li>`);
+                                    $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${epihref[i]}>Chapter ${episodes[i]}</span></p></li>`);
                                 } else {
-                                    $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite.png');"/><span title=${epihref[i]}>${episodes[i]}</span></p></li>`);
+                                    $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite.png');"/><span title=${epihref[i]}>Chapter ${episodes[i]}</span></p></li>`);
                                 }
                             } else {
                                 if (window.localStorage.getItem(epihref[i]) == episodes[i]) {
-                                    $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${epihref[i]}>${episodes[i]}</span></p></li>`);
+                                    $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${epihref[i]}>Chapter ${episodes[i]}</span></p></li>`);
                                 } else {
-                                    $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${epihref[i]}>${episodes[i]}</span></p></li>`);
+                                    $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${epihref[i]}>Chapter ${episodes[i]}</span></p></li>`);
                                 }
                             }
                             if (i == 0) {
                                 $.ajax({
-                                    url: proxy[1] + epihref[0],
+                                    url: proxy[1] + epi[0],
                                     dataType: 'html',
                                     type: "GET",
                                     success: function(data) {
@@ -73,9 +83,9 @@ $(document).ready(function() {
                                         var html = $.parseHTML(data);
                                         var title = episodes[0];
                                         var pic = $(html).find('img').map((x, y) => y.dataset.src.replace(/\\n/g, '').replace(/\\/g, '').replace(/\"/g, '')).filter((x, y) => !y.endsWith('.gif') && y.indexOf('/thumb/') == -1);
-                                        $('#reader').append(`<h2>${title}</h2>`);
+                                        $('#reader').append(`<h2>Chapter ${title}</h2>`);
                                         for (let i of pic) {
-                                            $('#reader').append(`<a class="spotlight" href="${i}"><img style="width:25%;" src="${i}" /></a>`);
+                                            $('#reader').append(`<a class="spotlight" href="${i}" data-description="Chapter ${title}"><img style="width:25%;" src="${i}" /></a>`);
                                         }
                                     },
                                     error: function() {
@@ -90,9 +100,9 @@ $(document).ready(function() {
                         //Append favorite list
                         for (let i of Object.keys(localStorage)) {
                             if ($(window).width() > 640) {
-                                $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
+                                $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${i}>Chapter ${localStorage[i]}</span></p></li>`);
                             } else {
-                                $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
+                                $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${i}>Chapter ${localStorage[i]}</span></p></li>`);
                             }
                         }
                         //Change icon size
@@ -147,7 +157,7 @@ $(document).ready(function() {
                                     var pic = $(html).find('img').map((x, y) => y.dataset.src.replace(/\\n/g, '').replace(/\\/g, '').replace(/\"/g, '')).filter((x, y) => !y.endsWith('.gif') && y.indexOf('/thumb/') == -1);
                                     $('#reader').append(`<h2>${title}</h2>`);
                                     for (let i of pic) {
-                                        $('#reader').append(`<a class="spotlight" href="${i}"><img style="width:25%;" src="${i}" /></a>`);
+                                        $('#reader').append(`<a class="spotlight" href="${i}" data-description="${title}"><img style="width:25%;" src="${i}" /></a>`);
                                     }
                                 },
                                 error: function() {
