@@ -65,6 +65,9 @@ $(document).ready(function() {
                 } else if (link == "http://bttcj.com/inc/jsonsapi.php?ac=videolist") {
                     kt[0].value = '';
                     alert('博天堂资源站 not support search');
+                } else if (link == "http://llzxcj.com/inc/json.php?ac=videolist") {
+                    kt[0].value = '';
+                    alert('利来资源站 not support search');
                 } else {
                     globallink = proxy[rand] + `${link}&wd=${sts}&pg=${pnum}`;
                 }
@@ -76,7 +79,48 @@ $(document).ready(function() {
                 var count = data.pagecount;
                 if (pnum <= count) {
                     $('.loadingimg').remove();
-                    if ($(window).width() > 1024) {
+                    if (link == "http://llzxcj.com/inc/json.php?ac=videolist") {
+                        if ($(window).width() > 1024) {
+                            $(`.itemContainer:eq(4)`).hide();
+                            for (let i = 0; i < test.length; i++) {
+                                pic = test[i].vod_pic.length == 0 ? '../images/noimage.jpeg' : test[i].vod_pic;
+                                if (i % 4 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                                } else if (i % 4 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                                } else if (i % 4 == 2) {
+                                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                                } else if (i % 4 == 3) {
+                                    $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                                }
+                            };
+                        } else if ($(window).width() <= 1024 && $(window).width() > 640) {
+                            $(`.itemContainer:eq(3)`).hide();
+                            $(`.itemContainer:eq(4)`).hide();
+                            for (let i = 0; i < test.length; i++) {
+                                pic = test[i].vod_pic.length == 0 ? '../images/noimage.jpeg' : test[i].vod_pic;
+                                if (i % 3 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                                } else if (i % 3 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                                } else if (i % 3 == 2) {
+                                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                                }
+                            };
+                        } else if ($(window).width() <= 640) {
+                            $(`.itemContainer:eq(2)`).hide();
+                            $(`.itemContainer:eq(3)`).hide();
+                            $(`.itemContainer:eq(4)`).hide();
+                            for (let i = 0; i < test.length; i++) {
+                                pic = test[i].vod_pic.length == 0 ? '../images/noimage.jpeg' : test[i].vod_pic;
+                                if (i % 2 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                                } else if (i % 2 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                                }
+                            }
+                        }
+                    } else if ($(window).width() > 1024) {
                         $(`.itemContainer:eq(4)`).hide();
                         for (let i = 0; i < test.length; i++) {
                             pic = test[i].vod_pic.length == 0 ? '../images/noimage.jpeg' : test[i].vod_pic;
@@ -145,43 +189,86 @@ function iniMenu(link) {
             $("#menu").append(`<li><p><span class="${i.cid}">${i.title}</span></p></li>`);
         };
         $('.loadingimg').remove();
-        if ($(window).width() > 1024) {
-            $(`.itemContainer:eq(4)`).hide();
-            for (let i = 0; i < test.length; i++) {
-                pic = test[i].vod_pic.length == 0 ? '../images/noimage.jpeg' : test[i].vod_pic;
-                if (i % 4 == 0) {
-                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
-                } else if (i % 4 == 1) {
-                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
-                } else if (i % 4 == 2) {
-                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
-                } else if (i % 4 == 3) {
-                    $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+        if (link == "http://llzxcj.com/inc/json.php?ac=videolist") {
+            if ($(window).width() > 1024) {
+                $(`.itemContainer:eq(4)`).hide();
+                for (let i = 0; i < test.length; i++) {
+                    pic = test[i].vod_pic.length == 0 ? '../images/noimage.jpeg' : test[i].vod_pic;
+                    if (i % 4 == 0) {
+                        $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    } else if (i % 4 == 1) {
+                        $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    } else if (i % 4 == 2) {
+                        $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    } else if (i % 4 == 3) {
+                        $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    }
+                };
+            } else if ($(window).width() <= 1024 && $(window).width() > 640) {
+                $(`.itemContainer:eq(3)`).hide();
+                $(`.itemContainer:eq(4)`).hide();
+                for (let i = 0; i < test.length; i++) {
+                    pic = test[i].vod_pic.length == 0 ? '../images/noimage.jpeg' : test[i].vod_pic;
+                    if (i % 3 == 0) {
+                        $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    } else if (i % 3 == 1) {
+                        $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    } else if (i % 3 == 2) {
+                        $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    }
+                };
+            } else if ($(window).width() <= 640) {
+                $(`.itemContainer:eq(2)`).hide();
+                $(`.itemContainer:eq(3)`).hide();
+                $(`.itemContainer:eq(4)`).hide();
+                for (let i = 0; i < test.length; i++) {
+                    pic = test[i].vod_pic.length == 0 ? '../images/noimage.jpeg' : test[i].vod_pic;
+                    if (i % 2 == 0) {
+                        $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    } else if (i % 2 == 1) {
+                        $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/adultplay.html?web=${test[i].vpath}&${test[i].vod_title}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    }
                 }
-            };
-        } else if ($(window).width() <= 1024 && $(window).width() > 640) {
-            $(`.itemContainer:eq(3)`).hide();
-            $(`.itemContainer:eq(4)`).hide();
-            for (let i = 0; i < test.length; i++) {
-                pic = test[i].vod_pic.length == 0 ? '../images/noimage.jpeg' : test[i].vod_pic;
-                if (i % 3 == 0) {
-                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
-                } else if (i % 3 == 1) {
-                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
-                } else if (i % 3 == 2) {
-                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
-                }
-            };
-        } else if ($(window).width() <= 640) {
-            $(`.itemContainer:eq(2)`).hide();
-            $(`.itemContainer:eq(3)`).hide();
-            $(`.itemContainer:eq(4)`).hide();
-            for (let i = 0; i < test.length; i++) {
-                pic = test[i].vod_pic.length == 0 ? '../images/noimage.jpeg' : test[i].vod_pic;
-                if (i % 2 == 0) {
-                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
-                } else if (i % 2 == 1) {
-                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+            }
+        } else {
+            if ($(window).width() > 1024) {
+                $(`.itemContainer:eq(4)`).hide();
+                for (let i = 0; i < test.length; i++) {
+                    pic = test[i].vod_pic.length == 0 ? '../images/noimage.jpeg' : test[i].vod_pic;
+                    if (i % 4 == 0) {
+                        $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    } else if (i % 4 == 1) {
+                        $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    } else if (i % 4 == 2) {
+                        $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    } else if (i % 4 == 3) {
+                        $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    }
+                };
+            } else if ($(window).width() <= 1024 && $(window).width() > 640) {
+                $(`.itemContainer:eq(3)`).hide();
+                $(`.itemContainer:eq(4)`).hide();
+                for (let i = 0; i < test.length; i++) {
+                    pic = test[i].vod_pic.length == 0 ? '../images/noimage.jpeg' : test[i].vod_pic;
+                    if (i % 3 == 0) {
+                        $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    } else if (i % 3 == 1) {
+                        $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    } else if (i % 3 == 2) {
+                        $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    }
+                };
+            } else if ($(window).width() <= 640) {
+                $(`.itemContainer:eq(2)`).hide();
+                $(`.itemContainer:eq(3)`).hide();
+                $(`.itemContainer:eq(4)`).hide();
+                for (let i = 0; i < test.length; i++) {
+                    pic = test[i].vod_pic.length == 0 ? '../images/noimage.jpeg' : test[i].vod_pic;
+                    if (i % 2 == 0) {
+                        $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    } else if (i % 2 == 1) {
+                        $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/adultplay.html?web=${link}&ids=${test[i].vod_id}"><div class="item"><img class="itemImg" src="${pic}" alt="${test[i].vod_title}" /><div class="userInfo"><img class="avatar" src="../images/player.jpg" alt="" /><span class="username">[${test[i].category}]${test[i].vod_title}</span></div></div></a>`)
+                    }
                 }
             }
         }
@@ -201,6 +288,8 @@ function iniMenu(link) {
                     alert('环亚资源站 not support search');
                 } else if (link == "http://bttcj.com/inc/jsonsapi.php?ac=videolist") {
                     alert('博天堂资源站 not support search');
+                } else if (link == "http://llzxcj.com/inc/json.php?ac=videolist") {
+                    alert('利来资源站 not support search');
                 } else {
                     searchlink = proxy[rand] + `${link}&wd=${valThis}`;
                 }

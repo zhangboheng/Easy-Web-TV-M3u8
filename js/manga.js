@@ -75,7 +75,7 @@ $(document).ready(function() {
                                         var pic = $(html).find('img').map((x, y) => y.dataset.src.replace(/\\n/g, '').replace(/\\/g, '').replace(/\"/g, '')).filter((x, y) => !y.endsWith('.gif') && y.indexOf('/thumb/') == -1);
                                         $('#reader').append(`<h2>${title}</h2>`);
                                         for (let i of pic) {
-                                            $('#reader').append(`<a class="spotlight" href="${i}"><img style="width:25%;" src="${i}" /></a>`);
+                                            $('#reader').append(`<a class="spotlight" href="${i}" data-description="${title}"><img style="width:25%;" src="${i}" /></a>`);
                                         }
                                     },
                                     error: function() {
@@ -147,7 +147,7 @@ $(document).ready(function() {
                                     var pic = $(html).find('img').map((x, y) => y.dataset.src.replace(/\\n/g, '').replace(/\\/g, '').replace(/\"/g, '')).filter((x, y) => !y.endsWith('.gif') && y.indexOf('/thumb/') == -1);
                                     $('#reader').append(`<h2>${title}</h2>`);
                                     for (let i of pic) {
-                                        $('#reader').append(`<a class="spotlight" href="${i}"><img style="width:25%;" src="${i}" /></a>`);
+                                        $('#reader').append(`<a class="spotlight" href="${i}" data-description="${title}"><img style="width:25%;" src="${i}" /></a>`);
                                     }
                                 },
                                 error: function() {

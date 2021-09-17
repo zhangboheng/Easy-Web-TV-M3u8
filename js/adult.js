@@ -2,7 +2,6 @@
 var proxy = {
     0: 'https://bird.ioliu.cn/v1?url=',
 };
-var channels = [];
 $(document).ready(function() {
     $("#video1").width($("#div1").width()).height($("#div1").height());
     $(".toggle").css({ 'left': $('#left').width() - 50 });
@@ -10,100 +9,174 @@ $(document).ready(function() {
     //Get Current href
     var initlink = decodeURIComponent(window.location.href).split('web=')[1];
     //Get iptv-org m3u list and show contents lists
-    $.ajax({
-        type: "GET",
-        url: proxy[0] + `${initlink}`,
-        success: function(message, text, response) {
-            $("#menu").empty();
-            $('#epcontent').empty();
-            var test = message.data[0],
-                name = test.vod_title,
-                des = test.vod_content,
-                play = test.vpath;
-            if (initlink.indexOf('http://zmcj88.com/sapi/json?ac=list') > -1 || initlink.indexOf('http://f2dcj6.com/sapi/json?ac=list') > -1 || initlink.indexOf('http://mygzycj.com/sapi.php?ac=jsonvideolist') > -1) {
-                play = test.vpath;
+    if (initlink.indexOf('youxijian') > 1) {
+        $('#left h3').html('Playlist');
+        $("#menu").empty();
+        player.src({
+            src: initlink.split('&')[0],
+            type: 'application/x-mpegURL'
+        });
+        player.play();
+        console.log(initlink.split('&')[1]);
+        if ($(window).width() > 640) {
+            if (window.localStorage.getItem(initlink.split('&')[0]) == initlink.split('&')[1]) {
+                $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${initlink.split('&')[0]}>${initlink.split('&')[1]}</span></p></li>`);
             } else {
-                play = play.split('$')[1];
+                $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite.png');"/><span title=${initlink.split('&')[0]}>${initlink.split('&')[1]}</span></p></li>`);
             }
-            $('#epcontent').append(`<h3>Content</h3><p>${des.length==0?'暂无':des}</p>`);
-            $('#left h3').html('Playlist');
-            $("#channelcontent").empty();
-            channels.push(play);
-            //Set Videojs Autoplay
+        } else {
+            if (window.localStorage.getItem(initlink.split('&')[0]) == initlink.split('&')[1]) {
+                $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${initlink.split('&')[0]}>${initlink.split('&')[1]}</span></p></li>`);
+            } else {
+                $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${initlink.split('&')[0]}>${initlink.split('&')[1]}</span></p></li>`);
+            }
+        }
+        //Append favorite list
+        for (let i of Object.keys(localStorage)) {
+            if ($(window).width() > 640) {
+                $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
+            } else {
+                $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
+            }
+        }
+        //Click channels to play
+        $("li p span").click(function() {
             player.src({
-                src: play,
+                src: $(this).attr("title"),
                 type: 'application/x-mpegURL'
             });
+
             player.play();
-            if ($(window).width() > 640) {
-                if (window.localStorage.getItem(play) == name) {
-                    $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${play}>${name}</span></p></li>`);
-                } else {
-                    $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite.png');"/><span title=${play}>${name}</span></p></li>`);
-                }
+        });
+        //Change icon size
+        $('#menu li p input').click(function() {
+            //Get browser support localstorage if or not
+            if (!window.localStorage) {
+                console.log("Browser not support localstorage");
+                return false;
             } else {
-                if (window.localStorage.getItem(play) == name) {
-                    $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${play}>${name}</span></p></li>`);
-                } else {
-                    $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${play}>${name}</span></p></li>`);
-                }
+                window.localStorage.setItem($(this).next().attr('title'), $(this).next().text());
             }
-            //Append favorite list
-            for (let i of Object.keys(localStorage)) {
-                if ($(window).width() > 640) {
-                    $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
-                } else {
-                    $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
-                }
+            if ($(window).width() > 640) {
+                $(this).css({ 'background-image': 'url(../images/favorite.png)' });
+            } else {
+                $(this).css({ 'background-image': 'url(../images/favorite20.png)' });
             }
-            //Click channels to play
-            $("li p span").click(function() {
+            if ($(this).next().attr('title').length > 0) {
+                window.location.reload();
+            }
+        });
+        //Collect favorite channles
+        $('#channelcontent li p input').click(function() {
+            //Get browser support localstorage if or not
+            if (!window.localStorage) {
+                console.log("Browser not support localstorage");
+                return false;
+            } else {
+                localStorage.removeItem($(this).next().attr('title'));
+            }
+            if ($(window).width() > 640) {
+                $(this).css({ 'background-image': 'url(../images/unfavorite.png)' });
+            } else {
+                $(this).css({ 'background-image': 'url(../images/unfavorite20.png)' });
+            }
+            window.location.reload();
+        });
+    } else {
+        $.ajax({
+            type: "GET",
+            url: proxy[0] + `${initlink}`,
+            success: function(message, text, response) {
+                $("#menu").empty();
+                $('#epcontent').empty();
+                var test = message.data[0],
+                    name = test.vod_title,
+                    des = test.vod_content,
+                    play = test.vpath;
+                if (initlink.indexOf('http://zmcj88.com/sapi/json?ac=list') > -1 || initlink.indexOf('http://f2dcj6.com/sapi/json?ac=list') > -1 || initlink.indexOf('http://mygzycj.com/sapi.php?ac=jsonvideolist') > -1) {
+                    play = test.vpath;
+                } else {
+                    play = play.split('$')[1];
+                }
+                $('#epcontent').append(`<h3>Content</h3><p>${des.length==0?'暂无':des}</p>`);
+                $('#left h3').html('Playlist');
+                $("#channelcontent").empty();
+                //Set Videojs Autoplay
                 player.src({
-                    src: $(this).attr("title"),
+                    src: play,
                     type: 'application/x-mpegURL'
                 });
-
                 player.play();
-            });
-            //Change icon size
-            $('#menu li p input').click(function() {
-                //Get browser support localstorage if or not
-                if (!window.localStorage) {
-                    console.log("Browser not support localstorage");
-                    return false;
-                } else {
-                    window.localStorage.setItem($(this).next().attr('title'), $(this).next().text());
-                }
                 if ($(window).width() > 640) {
-                    $(this).css({ 'background-image': 'url(../images/favorite.png)' });
+                    if (window.localStorage.getItem(play) == name) {
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${play}>${name}</span></p></li>`);
+                    } else {
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite.png');"/><span title=${play}>${name}</span></p></li>`);
+                    }
                 } else {
-                    $(this).css({ 'background-image': 'url(../images/favorite20.png)' });
+                    if (window.localStorage.getItem(play) == name) {
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${play}>${name}</span></p></li>`);
+                    } else {
+                        $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${play}>${name}</span></p></li>`);
+                    }
                 }
-                if ($(this).next().attr('title').length > 0) {
+                //Append favorite list
+                for (let i of Object.keys(localStorage)) {
+                    if ($(window).width() > 640) {
+                        $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
+                    } else {
+                        $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
+                    }
+                }
+                //Click channels to play
+                $("li p span").click(function() {
+                    player.src({
+                        src: $(this).attr("title"),
+                        type: 'application/x-mpegURL'
+                    });
+
+                    player.play();
+                });
+                //Change icon size
+                $('#menu li p input').click(function() {
+                    //Get browser support localstorage if or not
+                    if (!window.localStorage) {
+                        console.log("Browser not support localstorage");
+                        return false;
+                    } else {
+                        window.localStorage.setItem($(this).next().attr('title'), $(this).next().text());
+                    }
+                    if ($(window).width() > 640) {
+                        $(this).css({ 'background-image': 'url(../images/favorite.png)' });
+                    } else {
+                        $(this).css({ 'background-image': 'url(../images/favorite20.png)' });
+                    }
+                    if ($(this).next().attr('title').length > 0) {
+                        window.location.reload();
+                    }
+                });
+                //Collect favorite channles
+                $('#channelcontent li p input').click(function() {
+                    //Get browser support localstorage if or not
+                    if (!window.localStorage) {
+                        console.log("Browser not support localstorage");
+                        return false;
+                    } else {
+                        localStorage.removeItem($(this).next().attr('title'));
+                    }
+                    if ($(window).width() > 640) {
+                        $(this).css({ 'background-image': 'url(../images/unfavorite.png)' });
+                    } else {
+                        $(this).css({ 'background-image': 'url(../images/unfavorite20.png)' });
+                    }
                     window.location.reload();
-                }
-            });
-            //Collect favorite channles
-            $('#channelcontent li p input').click(function() {
-                //Get browser support localstorage if or not
-                if (!window.localStorage) {
-                    console.log("Browser not support localstorage");
-                    return false;
-                } else {
-                    localStorage.removeItem($(this).next().attr('title'));
-                }
-                if ($(window).width() > 640) {
-                    $(this).css({ 'background-image': 'url(../images/unfavorite.png)' });
-                } else {
-                    $(this).css({ 'background-image': 'url(../images/unfavorite20.png)' });
-                }
-                window.location.reload();
-            });
-        },
-        fail: function(xhr, textStatus, errorThrown) {
-            alert("Please check your Internet or the iptv source has gone out!")
-        }
-    });
+                });
+            },
+            fail: function(xhr, textStatus, errorThrown) {
+                alert("Please check your Internet or the iptv source has gone out!")
+            }
+        });
+    }
     //Set Toggle Menu
     $('.toggle').click(function() {
         $('#left').toggle();
