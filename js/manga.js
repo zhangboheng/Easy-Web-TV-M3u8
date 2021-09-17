@@ -81,7 +81,7 @@ $(document).ready(function() {
                                     success: function(data) {
                                         $('#reader').empty();
                                         var html = $.parseHTML(data);
-                                        var title = episodes[0];
+                                        var title = $(html).find('.chapter-info h1').text();
                                         var pic = $(html).find('img').map((x, y) => y.dataset.src.replace(/\\n/g, '').replace(/\\/g, '').replace(/\"/g, '')).filter((x, y) => !y.endsWith('.gif') && y.indexOf('/thumb/') == -1);
                                         $('#reader').append(`<h2>Chapter ${title}</h2>`);
                                         for (let i of pic) {
@@ -146,7 +146,6 @@ $(document).ready(function() {
                     complete: function(xhr, status) {
                         //Click episode to read
                         $("li p span").click(function() {
-                            var title = $(this).text();
                             $.ajax({
                                 url: proxy[1] + $(this).attr('title'),
                                 dataType: 'html',
@@ -154,6 +153,7 @@ $(document).ready(function() {
                                 success: function(data) {
                                     $('#reader').empty();
                                     var html = $.parseHTML(data);
+                                    var title = $(html).find('.chapter-info h1').text();
                                     var pic = $(html).find('img').map((x, y) => y.dataset.src.replace(/\\n/g, '').replace(/\\/g, '').replace(/\"/g, '')).filter((x, y) => !y.endsWith('.gif') && y.indexOf('/thumb/') == -1);
                                     $('#reader').append(`<h2>${title}</h2>`);
                                     for (let i of pic) {
