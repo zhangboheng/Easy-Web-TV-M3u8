@@ -1,10 +1,11 @@
 var channels = [];
+var plyist = [];
 $(document).ready(function() {
     $("#video1").width($("#div1").width()).height($("#div1").height());
     $(".toggle").css({ 'left': $('#left').width() - 50 });
     //Get Current href
     var ids = decodeURIComponent(window.location.href).split('web=')[1];
-    //Get radio-browser list and show contents lists
+    var player = videojs(document.querySelector('#video1'));
     $.ajax({
         type: "GET",
         url: `https://163.lpddr5.cn/artist/songs?id=${ids}`,
@@ -38,6 +39,7 @@ $(document).ready(function() {
                         $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/unfavorite20.png');"/><span title=${links[i]}>${lst[i]}</span></p></li>`);
                     }
                 }
+                plyist.push(links[i]);
             }
             //Append favorite list
             for (let i of Object.keys(localStorage)) {
@@ -109,8 +111,16 @@ $(document).ready(function() {
             });
         },
         fail: function(xhr, textStatus, errorThrown) {
-            alert("Please check your Internet or the radio-browser source has gone out!")
+            setTimeout(() => {
+                alert('Sorry, the music playlist is not support to play...');
+            }, 3000);
         }
+    });
+    //Play random music
+    player.on("ended", function() {
+        let playlist = [...new Set(plyist)];
+        var index = Math.floor(Math.random() * playlist.length);
+        audioPlay(playlist[index]);
     });
     //Set Toggle Menu
     $('.toggle').click(function() {
@@ -242,12 +252,16 @@ function audioPlay(ids) {
                     player.play();
                 },
                 error: function(xhr, status) {
-                    alert("Sorry, there was a problem!");
+                    setTimeout(() => {
+                        alert('Sorry, the music is not support to play...');
+                    }, 3000);
                 }
             });
         },
         error: function(xhr, status) {
-            alert('Sorry, the music is not support to play...');
+            setTimeout(() => {
+                alert('Sorry, the music is not support to play...');
+            }, 3000);
         }
     });
 }

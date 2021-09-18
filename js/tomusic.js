@@ -5,6 +5,7 @@ var proxy = {
 };
 //Set global pagenum and random
 var pnum = 1;
+var plyist = [];
 var rand = Math.floor(Math.random() * Object.keys(proxy).length);
 $(document).ready(function() {
     //Variable zone
@@ -77,6 +78,7 @@ $(document).ready(function() {
                                     } else if (i % 5 == 4) {
                                         $(`.itemContainer:eq(4)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                     }
+                                    plyist.push(artisery[i].id);
                                 };
                             } else if ($(window).width() <= 1024 && $(window).width() > 640) {
                                 $(`.itemContainer:eq(4)`).hide();
@@ -90,8 +92,8 @@ $(document).ready(function() {
                                     } else if (i % 4 == 3) {
                                         $(`.itemContainer:eq(3)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                     }
+                                    plyist.push(artisery[i].id);
                                 };
-
                             } else if ($(window).width() <= 640) {
                                 $(`.itemContainer:eq(2)`).hide();
                                 $(`.itemContainer:eq(3)`).hide();
@@ -102,7 +104,7 @@ $(document).ready(function() {
                                     } else if (i % 2 == 1) {
                                         $(`.itemContainer:eq(1)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                     }
-
+                                    plyist.push(artisery[i].id);
                                 }
                             }
                         } else {
@@ -156,6 +158,12 @@ $(document).ready(function() {
                 });
             }
         }
+    });
+    //Add random playlist music 
+    document.getElementById('Audio1').addEventListener("ended", function() {
+        let playlist = [...new Set(plyist)];
+        var index = Math.floor(Math.random() * playlist.length);
+        audioPlay(playlist[index]);
     });
 });
 
@@ -268,6 +276,7 @@ function iniMenu(link) {
                                         } else if (i % 5 == 4) {
                                             $(`.itemContainer:eq(4)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                         }
+                                        plyist.push(artisery[i].id);
                                     };
                                 } else if ($(window).width() <= 1024 && $(window).width() > 640) {
                                     $(`.itemContainer:eq(4)`).hide();
@@ -281,6 +290,7 @@ function iniMenu(link) {
                                         } else if (i % 4 == 3) {
                                             $(`.itemContainer:eq(3)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                         }
+                                        plyist.push(artisery[i].id);
                                     };
 
                                 } else if ($(window).width() <= 640) {
@@ -293,12 +303,14 @@ function iniMenu(link) {
                                         } else if (i % 2 == 1) {
                                             $(`.itemContainer:eq(1)`).append(`<div class="item" onclick="audioPlay('${artisery[i].id}')"><img class="itemImg" src="../images/noimage.jpeg" alt="${artisery[i].name}" /><div class="userInfo"><img class="avatar" src="../images/music.svg" alt="" /><span class="username">[Music]${artisery[i].name}</span></div></div>`)
                                         }
-
+                                        plyist.push(artisery[i].id);
                                     }
                                 }
                             },
                             error: function(xhr, status) {
-                                alert("Sorry, there was a problem!");
+                                setTimeout(() => {
+                                    alert('Sorry, the music is blocked by NetEase');
+                                }, 3000);
                             },
                             complete: function(xhr, status) {
 
@@ -404,12 +416,16 @@ function audioPlay(ids) {
                     $("#Audio1").attr("src", fileName).trigger("play");
                 },
                 error: function(xhr, status) {
-                    alert("Sorry, there was a problem!");
+                    setTimeout(() => {
+                        alert('Sorry, the music is not support to play...');
+                    }, 3000);
                 }
             });
         },
         error: function(xhr, status) {
-            alert('Sorry, the music is not support to play...');
+            setTimeout(() => {
+                alert('Sorry, the music is not support to play...');
+            }, 3000);
         }
     });
 }
