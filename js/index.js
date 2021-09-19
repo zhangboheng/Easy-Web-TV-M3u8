@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    //Check sser IP belongs to if in China, North Korea or Iran. 
-    try {
+    //Check sser IP belongs to if in China, North Korea
+    if (window.localStorage.getItem('bannedcountries') != 'true') {
         getUserIp();
-    } catch (e) {
-        console.log(e)
+    } else {
+        $('#mySidenav a:eq(0)').hide();
     }
     //Toggle Menu
     $('#main').click(function() {
@@ -55,7 +55,6 @@ $(document).ready(function() {
             window.location.href = "routes/radio.html?t=3";
         }
     });
-
     //Check sensetive content if or not
     $('#adultban').on('change', function() {
         if ($(window).width() > 768) {
@@ -86,6 +85,7 @@ function getUserIp() {
         if (this.readyState === 4) {
             let country = JSON.parse(this.responseText).country_code;
             if (country.toLowerCase() == 'cn' || country.toLowerCase() == 'kp') {
+                window.localStorage.setItem('bannedcountries', 'true');
                 $('#mySidenav a:eq(0)').hide();
             }
         } else {
@@ -121,6 +121,7 @@ function getCoordintes() {
                 var response = JSON.parse(xhr.responseText);
                 var city = response.address;
                 if (city.country_code == 'cn' || city.country_code == 'kp') {
+                    window.localStorage.setItem('bannedcountries', 'true');
                     $('#mySidenav a:eq(0)').hide();
                 };
             }

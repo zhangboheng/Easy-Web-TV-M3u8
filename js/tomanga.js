@@ -7,6 +7,19 @@ var proxy = {
 var pnum = 1;
 var rand = Math.floor(Math.random() * Object.keys(proxy).length);
 $(document).ready(function() {
+    //Append Select Options
+    if (window.localStorage.getItem('bannedcountries') == 'true') {
+        $('#selectapi').append(`
+        <option value="https://mangabuddy.com/">mangabuddy</option>
+        <option value="https://m.dmmhw.com/">耽美漫画(PC端)</option>
+        `);
+    } else {
+        $('#selectapi').append(`
+        <option value="https://mangabuddy.com/">mangabuddy</option>
+        <option value="https://llmh27.com/">啦啦漫画</option>
+        <option value="https://m.dmmhw.com/">耽美漫画(PC端)</option>
+        `);
+    }
     //Variable zone
     var initlink = $('#selectapi').val();
     //Toggle menu and adjust size
@@ -161,6 +174,71 @@ $(document).ready(function() {
                         }
                     });
                 }
+            } else if (link == 'https://llmh27.com/') {
+                str = str == "0" ? link + `json/comic/?ticai=61` : link + `json/comic/?ticai=${str}`;
+                globallink = proxy[0] + str;
+                $.ajax({
+                    url: globallink,
+                    data: {
+                        ph: '1',
+                        tempid: '2',
+                        classid: '1',
+                        page: pnum,
+                        orderby: 'diggtop',
+                        line: '10'
+                    },
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        var parse = data.data;
+                        $('.loadingimg').remove();
+                        $(`.itemContainer:eq(4)`).show();
+                        if ($(window).width() > 1024) {
+                            for (let i = 0; i < parse.length; i++) {
+                                if (i % 5 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                                } else if (i % 5 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                                } else if (i % 5 == 2) {
+                                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                                } else if (i % 5 == 3) {
+                                    $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                                } else if (i % 5 == 4) {
+                                    $(`.itemContainer:eq(4)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                                }
+                            };
+                        } else if ($(window).width() <= 1024 && $(window).width() > 640) {
+                            $(`.itemContainer:eq(3)`).hide();
+                            $(`.itemContainer:eq(4)`).hide();
+                            for (let i = 0; i < parse.length; i++) {
+                                if (i % 3 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                                } else if (i % 3 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                                } else if (i % 3 == 2) {
+                                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                                }
+                            };
+                        } else if ($(window).width() <= 640) {
+                            $(`.itemContainer:eq(2)`).hide();
+                            $(`.itemContainer:eq(3)`).hide();
+                            $(`.itemContainer:eq(4)`).hide();
+                            for (let i = 0; i < parse.length; i++) {
+                                if (i % 2 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                                } else if (i % 2 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                                }
+                            };
+                        }
+                    },
+                    error: function(xhr, status) {
+                        $('.loadingimg').remove();
+                        setTimeout(() => {
+                            alert("Sorry, there was a problem!");
+                        }, 3000);
+                    },
+                });
             }
         }
     });
@@ -413,99 +491,245 @@ function iniMenu(link) {
                 });
             }
         });
+    } else if (link == 'https://llmh27.com/') {
+        $("#menu").append('<li style="background-color:#fff"><input id="search" type="text" placeholder="No Support..." disabled/></li>');
+        $("#menu").append(`
+        <li><p><span class="61">剧情</span></p></li>
+        <li><p><span class="62">浪漫爱情</span></p></li>
+        <li><p><span class="63">校园</span></p></li>
+        <li><p><span class="64">奇幻冒险</span></p></li>
+        <li><p><span class="65">恐怖</span></p></li>
+        <li><p><span class="66">惊悚</span></p></li>
+        <li><p><span class="67">BL</span></p></li>
+        <li><p><span class="68">幽默搞笑</span></p></li>
+        <li><p><span class="69">动作</span></p></li>
+        <li><p><span class="70">科幻</span></p></li>
+        <li><p><span class="71">古风穿越</span></p></li>
+        <li><p><span class="72">其他</span></p></li>
+        `);
+        $.ajax({
+            url: proxy[0] + link + 'json/comic/',
+            data: {
+                ph: '1',
+                tempid: '2',
+                classid: '1',
+                page: '0',
+                ticai: '61',
+                orderby: 'diggtop',
+                line: '20'
+            },
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                var prefy = data.replace("}{", "},{");
+                var parse = JSON.parse(prefy).data;
+                $('.loadingimg').remove();
+                $(`.itemContainer:eq(4)`).show();
+                if ($(window).width() > 1024) {
+                    for (let i = 0; i < parse.length; i++) {
+                        if (i % 5 == 0) {
+                            $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                        } else if (i % 5 == 1) {
+                            $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                        } else if (i % 5 == 2) {
+                            $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                        } else if (i % 5 == 3) {
+                            $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                        } else if (i % 5 == 4) {
+                            $(`.itemContainer:eq(4)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                        }
+                    };
+                } else if ($(window).width() <= 1024 && $(window).width() > 640) {
+                    $(`.itemContainer:eq(3)`).hide();
+                    $(`.itemContainer:eq(4)`).hide();
+                    for (let i = 0; i < parse.length; i++) {
+                        if (i % 3 == 0) {
+                            $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                        } else if (i % 3 == 1) {
+                            $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                        } else if (i % 3 == 2) {
+                            $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                        }
+                    };
+                } else if ($(window).width() <= 640) {
+                    $(`.itemContainer:eq(2)`).hide();
+                    $(`.itemContainer:eq(3)`).hide();
+                    $(`.itemContainer:eq(4)`).hide();
+                    for (let i = 0; i < parse.length; i++) {
+                        if (i % 2 == 0) {
+                            $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                        } else if (i % 2 == 1) {
+                            $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                        }
+                    };
+                }
+            },
+            error: function(xhr, status) {
+                setTimeout(() => {
+                    alert("Sorry, there was a problem!");
+                }, 3000);
+            },
+        });
     }
     //Click to choose category
     $('#menu').on("click", "span", function(e) {
         var className;
-        if (link == 'https://mangabuddy.com/') {
-            className = e.originalEvent.target.className;
-        } else if (link == 'https://m.dmmhw.com/') {
-            className = e.originalEvent.target.className;
-        }
+        className = e.originalEvent.target.className;
         $('.hiddens').empty();
         $('.hiddens').append(`<p>${className}</p>`);
         $('#search').val('');
         $('#root').append(`<div class="loadingimg"><img src="../images/loading.gif" tag="Easy Web TV"></div>`);
-        $.ajax({
-            url: proxy[1] + className,
-            type: "GET",
-            dataType: "html",
-            success: function(data) {
-                var html = $.parseHTML(data);
-                if (link == 'https://mangabuddy.com/') {
-                    var title = $(html).find('.title h3').map((x, y) => y.textContent.trim());
-                    var code = $(html).find('.title h3 a').map((x, y) => link.slice(0, -1) + y.attributes[1].value);
-                    var pic = $(html).find('.thumb a img').map((x, y) => 'https:' + y.attributes[2].value);
+        if (link == 'https://llmh27.com/') {
+            $.ajax({
+                url: proxy[0] + link + 'json/comic/',
+                data: {
+                    ph: '1',
+                    tempid: '2',
+                    classid: '1',
+                    page: '0',
+                    ticai: className,
+                    orderby: 'diggtop',
+                    line: '20'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    if (Number(className) > 63) {
+                        var parse = data.data;
+                    } else {
+                        var prefy = data.replace("}{", "},{");
+                        var parse = JSON.parse(prefy).data;
+                    }
                     $('.loadingimg').remove();
                     $(`.itemContainer`).empty();
+                    $(`.itemContainer:eq(4)`).show();
                     if ($(window).width() > 1024) {
-                        $(`.itemContainer:eq(4)`).hide();
-                        for (let i = 0; i < title.length; i++) {
-                            if (i % 4 == 0) {
-                                $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
-                            } else if (i % 4 == 1) {
-                                $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                        for (let i = 0; i < parse.length; i++) {
+                            if (i % 5 == 0) {
+                                $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                            } else if (i % 5 == 1) {
+                                $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
                             } else if (i % 5 == 2) {
-                                $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
-                            } else if (i % 4 == 3) {
-                                $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                            } else if (i % 5 == 3) {
+                                $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
+                            } else if (i % 5 == 4) {
+                                $(`.itemContainer:eq(4)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
                             }
                         };
                     } else if ($(window).width() <= 1024 && $(window).width() > 640) {
                         $(`.itemContainer:eq(3)`).hide();
                         $(`.itemContainer:eq(4)`).hide();
-                        for (let i = 0; i < title.length; i++) {
+                        for (let i = 0; i < parse.length; i++) {
                             if (i % 3 == 0) {
-                                $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
                             } else if (i % 3 == 1) {
-                                $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
                             } else if (i % 3 == 2) {
-                                $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
                             }
                         };
                     } else if ($(window).width() <= 640) {
                         $(`.itemContainer:eq(2)`).hide();
                         $(`.itemContainer:eq(3)`).hide();
                         $(`.itemContainer:eq(4)`).hide();
-                        for (let i = 0; i < title.length; i++) {
+                        for (let i = 0; i < parse.length; i++) {
                             if (i % 2 == 0) {
-                                $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
                             } else if (i % 2 == 1) {
-                                $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
-                            }
-                        }
-                    }
-                } else if (link == 'https://m.dmmhw.com/') {
-                    var title = $(html).find('.pt-name a').map((x, y) => y.innerText);
-                    var code = $(html).find('.pt-name a').map((x, y) => link.slice(0, -1) + y.attributes[0].value);
-                    var pic = $(html).find('.pt-cover img').map((x, y) => y.attributes[2].value);
-                    $('.loadingimg').remove();
-                    $(`.itemContainer`).empty();
-                    $(`.itemContainer:eq(4)`).show();
-                    if ($(window).width() > 1024) {
-                        for (let i = 0; i < pic.length; i++) {
-                            if (i % 5 == 0) {
-                                $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${proxy[1] + pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
-                            } else if (i % 5 == 1) {
-                                $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${proxy[1] + pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
-                            } else if (i % 5 == 2) {
-                                $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${proxy[1] + pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
-                            } else if (i % 5 == 3) {
-                                $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${proxy[1] + pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
-                            } else if (i % 5 == 4) {
-                                $(`.itemContainer:eq(4)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${proxy[1] + pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${link + 'comic/'+parse[i].Id}"><div class="item"><img class="itemImg" src="${parse[i].ImgUrl}" alt="${parse[i].Title}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${parse[i].Title}</span></div></div></a>`)
                             }
                         };
-                    } else if ($(window).width() <= 1024 && $(window).width() > 640) {
-                        return;
-                    } else if ($(window).width() <= 640) {
-                        return;
                     }
+                },
+                error: function() {
+                    setTimeout(() => {
+                        alert("Sorry, there was a problem!");
+                    }, 3000);
                 }
-            },
-            error: function() {
+            });
+        } else {
+            $.ajax({
+                url: proxy[1] + className,
+                type: "GET",
+                dataType: "html",
+                success: function(data) {
+                    var html = $.parseHTML(data);
+                    if (link == 'https://mangabuddy.com/') {
+                        var title = $(html).find('.title h3').map((x, y) => y.textContent.trim());
+                        var code = $(html).find('.title h3 a').map((x, y) => link.slice(0, -1) + y.attributes[1].value);
+                        var pic = $(html).find('.thumb a img').map((x, y) => 'https:' + y.attributes[2].value);
+                        $('.loadingimg').remove();
+                        $(`.itemContainer`).empty();
+                        if ($(window).width() > 1024) {
+                            $(`.itemContainer:eq(4)`).hide();
+                            for (let i = 0; i < title.length; i++) {
+                                if (i % 4 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                } else if (i % 4 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                } else if (i % 5 == 2) {
+                                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                } else if (i % 4 == 3) {
+                                    $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                }
+                            };
+                        } else if ($(window).width() <= 1024 && $(window).width() > 640) {
+                            $(`.itemContainer:eq(3)`).hide();
+                            $(`.itemContainer:eq(4)`).hide();
+                            for (let i = 0; i < title.length; i++) {
+                                if (i % 3 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                } else if (i % 3 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                } else if (i % 3 == 2) {
+                                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                }
+                            };
+                        } else if ($(window).width() <= 640) {
+                            $(`.itemContainer:eq(2)`).hide();
+                            $(`.itemContainer:eq(3)`).hide();
+                            $(`.itemContainer:eq(4)`).hide();
+                            for (let i = 0; i < title.length; i++) {
+                                if (i % 2 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                } else if (i % 2 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                }
+                            }
+                        }
+                    } else if (link == 'https://m.dmmhw.com/') {
+                        var title = $(html).find('.pt-name a').map((x, y) => y.innerText);
+                        var code = $(html).find('.pt-name a').map((x, y) => link.slice(0, -1) + y.attributes[0].value);
+                        var pic = $(html).find('.pt-cover img').map((x, y) => y.attributes[2].value);
+                        $('.loadingimg').remove();
+                        $(`.itemContainer`).empty();
+                        $(`.itemContainer:eq(4)`).show();
+                        if ($(window).width() > 1024) {
+                            for (let i = 0; i < pic.length; i++) {
+                                if (i % 5 == 0) {
+                                    $(`.itemContainer:eq(0)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${proxy[1] + pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                } else if (i % 5 == 1) {
+                                    $(`.itemContainer:eq(1)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${proxy[1] + pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                } else if (i % 5 == 2) {
+                                    $(`.itemContainer:eq(2)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${proxy[1] + pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                } else if (i % 5 == 3) {
+                                    $(`.itemContainer:eq(3)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${proxy[1] + pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                } else if (i % 5 == 4) {
+                                    $(`.itemContainer:eq(4)`).append(`<a href="../catalogues/mangaplay.html?web=${code[i]}"><div class="item"><img class="itemImg" src="${proxy[1] + pic[i]}" alt="${title[i]}" /><div class="userInfo"><img class="avatar" src="../images/clickread.svg" alt="" /><span class="username">${title[i]}</span></div></div></a>`)
+                                }
+                            };
+                        } else if ($(window).width() <= 1024 && $(window).width() > 640) {
+                            return;
+                        } else if ($(window).width() <= 640) {
+                            return;
+                        }
+                    }
+                },
+                error: function() {
 
-            }
-        });
+                }
+            });
+        }
     });
 };
