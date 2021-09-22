@@ -24,6 +24,10 @@
     #languages {
         width: 100px;
     }
+    
+    #clearbtn {
+        width: 100px;
+    }
 </style>
 
 <body>
@@ -49,22 +53,19 @@
                 <option value="az">Azerbaijani - azərbaycan dili</option>
                 <option value="eu">Basque - euskara</option>
                 <option value="be">Belarusian - беларуская</option>
-                <option value="bn">Bengla - বাংলা</option>
+                <option value="bn">Bangla - বাংলা</option>
                 <option value="bs">Bosnian - bosanski</option>
-                <!--
-                <option value="br">Breton - brezhoneg</option>
                 <option value="bg">Bulgarian - български</option>
                 <option value="ca">Catalan - català</option>
-                <option value="ckb">Central Kurdish - کوردی (دەستنوسی عەرەبی)</option>-->
                 <option value="zh">Chinese - 中文</option>
                 <option value="zh-HK">Chinese (Hong Kong) - 中文（香港）</option>
                 <option value="zh-CN">Chinese (Simplified) - 中文（简体）</option>
                 <option value="zh-TW">Chinese (Traditional) - 中文（繁體）</option>
-                <!-- <option value="co">Corsican</option>
+                <option value="co">Corsican</option>
                 <option value="hr">Croatian - hrvatski</option>
                 <option value="cs">Czech - čeština</option>
                 <option value="da">Danish - dansk</option>
-                <option value="nl">Dutch - Nederlands</option> -->
+                <option value="nl">Dutch - Nederlands</option>
                 <option value="en">English</option>
                 <option value="en-AU">English (Australia)</option>
                 <option value="en-CA">English (Canada)</option>
@@ -73,7 +74,8 @@
                 <option value="en-ZA">English (South Africa)</option>
                 <option value="en-GB">English (United Kingdom)</option>
                 <option value="en-US">English (United States)</option>
-                <!-- <option value="eo">Esperanto - esperanto</option>
+                <option value="eo">Esperanto - esperanto</option>
+                <!--
                 <option value="et">Estonian - eesti</option>
                 <option value="fo">Faroese - føroyskt</option>
                 <option value="fil">Filipino</option>
@@ -185,8 +187,15 @@
             </select>
         </a>
         <a href="#">
+            <span>Clear</span>
+            <select id="clearbtn">
+                <option value="default">==Select==</option>
+                <option value="ss">settings</option>
+            </select>
+        </a>
+        <a href="#">
             <span>Version</span>
-            <label class="switch">8.0.2</label>
+            <label class="switch">8.0.3</label>
         </a>
     </div>
     <div id="main">

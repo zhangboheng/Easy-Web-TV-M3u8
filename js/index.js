@@ -55,20 +55,26 @@ $(document).ready(function() {
             window.location.href = "routes/radio.html?t=3";
         }
     });
+    //Set adult content default
+    if (window.localStorage.getItem('bannedcountries') != 'true' && window.localStorage.getItem('Adult') == 'open') {
+        $('#adultban').prop('checked', true);
+        $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
+    }
     //Check sensetive content if or not
     $('#adultban').on('change', function() {
-        if ($(window).width() > 768) {
-            if ($(this).is(':checked')) {
-                $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
-            } else {
-                $('.mobile li:eq(7)').remove();
-            }
+        if ($(this).is(':checked')) {
+            $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
+            window.localStorage.setItem('Adult', 'open');
         } else {
-            if ($(this).is(':checked')) {
-                $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
-            } else {
-                $('.mobile li:eq(7)').remove();
-            }
+            $('.mobile li:eq(7)').remove();
+            localStorage.removeItem('Adult');
+        }
+    });
+    //Clear cache
+    $('#clearbtn').on('change', function() {
+        let lan = $(this).val();
+        if (lan == 'ss') {
+            localStorage.clear();
         }
     });
 });

@@ -16,7 +16,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Kategorija');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Osetljiv sadržaj');
         $('#mySidenav a:eq(1)').find('span').text('Jezici');
-        $('#mySidenav a:eq(2)').find('span').text('Verzija');
+        $('#mySidenav a:eq(2)').find('span').text('jasno');
+        $('#mySidenav a:eq(3)').find('span').text('Verzija');
     } else if (window.localStorage.getItem('languages') == 'bn') {
         $('.stylebtn').text('প্রবেশ করুন');
         $('.mobile p:eq(0)').text('6000+ টিভি চ্যানেল দেখুন ...');
@@ -33,7 +34,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('বিভাগ');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('সংবেদনশীল বিষয়বস্তু');
         $('#mySidenav a:eq(1)').find('span').text('ভাষা');
-        $('#mySidenav a:eq(2)').find('span').text('সংস্করণ');
+        $('#mySidenav a:eq(2)').find('span').text('পরিষ্কার');
+        $('#mySidenav a:eq(3)').find('span').text('সংস্করণ');
     } else if ('selectbox, en, en-AU, en-CA, en-IN, en-NZ'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn:eq(0)').text('GO!');
         $('.stylebtn').slice(1).text('Enter');
@@ -51,7 +53,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Category');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensitive Content');
         $('#mySidenav a:eq(1)').find('span').text('Languages');
-        $('#mySidenav a:eq(2)').find('span').text('Version');
+        $('#mySidenav a:eq(2)').find('span').text('Clear');
+        $('#mySidenav a:eq(3)').find('span').text('Version');
     } else if (window.localStorage.getItem('languages') == 'be') {
         $('.stylebtn').text('Увядзіце');
         $('.mobile p:eq(0)').text('Глядзіце больш за 6000 тэлеканалаў ...');
@@ -68,7 +71,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Катэгорыя');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Адчувальны змест');
         $('#mySidenav a:eq(1)').find('span').text('Мовы');
-        $('#mySidenav a:eq(2)').find('span').text('Версія');
+        $('#mySidenav a:eq(2)').find('span').text('ясна');
+        $('#mySidenav a:eq(3)').find('span').text('Версія');
     } else if (window.localStorage.getItem('languages') == 'eu') {
         $('.stylebtn').text('Sartu');
         $('.mobile p:eq(0)').text('Ikusi 6000+ telebista kate ...');
@@ -85,7 +89,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Kategoria');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Eduki sentikorra');
         $('#mySidenav a:eq(1)').find('span').text('Hizkuntzak');
-        $('#mySidenav a:eq(2)').find('span').text('Bertsioa');
+        $('#mySidenav a:eq(2)').find('span').text('argi');
+        $('#mySidenav a:eq(3)').find('span').text('Bertsioa');
     } else if ('nn, nb, no'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('Tast inn');
         $('.mobile p:eq(0)').text('Se 6000+ TV -kanaler ...');
@@ -102,7 +107,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Kategori');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Følsomt innhold');
         $('#mySidenav a:eq(1)').find('span').text('Språk');
-        $('#mySidenav a:eq(2)').find('span').text('Versjon');
+        $('#mySidenav a:eq(2)').find('span').text('klar');
+        $('#mySidenav a:eq(3)').find('span').text('Versjon');
     } else if ('ro, mo, rm'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('introduce');
         $('.mobile p:eq(0)').text('Urmăriți peste 6000 de canale TV ...');
@@ -119,7 +125,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Categorie');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Conținut sensibil');
         $('#mySidenav a:eq(1)').find('span').text('Limbi');
-        $('#mySidenav a:eq(2)').find('span').text('Versiune');
+        $('#mySidenav a:eq(2)').find('span').text('clar');
+        $('#mySidenav a:eq(3)').find('span').text('Versiune');
     } else if (window.localStorage.getItem('languages') == 'id') {
         $('.stylebtn').text('Memasuki');
         $('.mobile p:eq(0)').text('Tonton 6000+ Saluran TV...');
@@ -136,7 +143,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Kategori');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Konten Sensitif');
         $('#mySidenav a:eq(1)').find('span').text('Bahasa');
-        $('#mySidenav a:eq(2)').find('span').text('Versi: kapan');
+        $('#mySidenav a:eq(2)').find('span').text('jernih');
+        $('#mySidenav a:eq(3)').find('span').text('Versi: kapan');
     } else if (window.localStorage.getItem('languages') == 'th') {
         $('.stylebtn').text('เข้า');
         $('.mobile p:eq(0)').text('ดูทีวีช่อง 6000+...');
@@ -153,7 +161,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('หมวดหมู่');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('เนื้อหาละเอียดอ่อน');
         $('#mySidenav a:eq(1)').find('span').text('ภาษา');
-        $('#mySidenav a:eq(2)').find('span').text('เวอร์ชั่น');
+        $('#mySidenav a:eq(2)').find('span').text('แจ่มใส');
+        $('#mySidenav a:eq(3)').find('span').text('เวอร์ชั่น');
     } else if ('it, it-IT, it-CH'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('accedere');
         $('.mobile p:eq(0)').text('Guarda oltre 6000 canali TV...');
@@ -170,7 +179,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Categoria');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contenuti sensibili');
         $('#mySidenav a:eq(1)').find('span').text('Le lingue');
-        $('#mySidenav a:eq(2)').find('span').text('Versione');
+        $('#mySidenav a:eq(2)').find('span').text('chiara');
+        $('#mySidenav a:eq(3)').find('span').text('Versione');
     } else if (window.localStorage.getItem('languages') == 'ru') {
         $('.stylebtn').text('Входить');
         $('.mobile p:eq(0)').text('Смотрите 6000+ телеканалов ...');
@@ -187,7 +197,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Категория');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Деликатный контент');
         $('#mySidenav a:eq(1)').find('span').text('Языки');
-        $('#mySidenav a:eq(2)').find('span').text('Версия');
+        $('#mySidenav a:eq(2)').find('span').text('Чисто');
+        $('#mySidenav a:eq(3)').find('span').text('Версия');
     } else if ('pt, pt-BR, pt-PT'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('Digitar');
         $('.mobile p:eq(0)').text('Assistir mais de 6.000 canais de TV ...');
@@ -204,7 +215,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Categoria');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Conteúdo Sensível');
         $('#mySidenav a:eq(1)').find('span').text('línguas');
-        $('#mySidenav a:eq(2)').find('span').text('Versão');
+        $('#mySidenav a:eq(2)').find('span').text('claro');
+        $('#mySidenav a:eq(3)').find('span').text('Versão');
     } else if ('es, es-AR, es-419, es-MX, es-ES, es-US'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('Ingresar');
         $('.mobile p:eq(0)').text('Mira más de 6000 canales de televisión ...');
@@ -221,7 +233,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Categoría');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contenido sensible');
         $('#mySidenav a:eq(1)').find('span').text('Idiomas');
-        $('#mySidenav a:eq(2)').find('span').text('Versión');
+        $('#mySidenav a:eq(2)').find('span').text('claro');
+        $('#mySidenav a:eq(3)').find('span').text('Versión');
     } else if (window.localStorage.getItem('languages') == 'az') {
         $('.stylebtn').text('Daxil edin');
         $('.mobile p:eq(0)').text('6000 -dən çox TV kanalına baxın ...');
@@ -238,7 +251,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Kateqoriya');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Həssas Məzmun');
         $('#mySidenav a:eq(1)').find('span').text('Dillər');
-        $('#mySidenav a:eq(2)').find('span').text('Versiya');
+        $('#mySidenav a:eq(2)').find('span').text('aydın');
+        $('#mySidenav a:eq(3)').find('span').text('Versiya');
     } else if (window.localStorage.getItem('languages') == 'hy') {
         $('.stylebtn').text('Մուտքագրեք');
         $('.mobile p:eq(0)').text('Դիտեք 6000+ հեռուստաալիք ...');
@@ -255,7 +269,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Կատեգորիա');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sգայուն բովանդակություն');
         $('#mySidenav a:eq(1)').find('span').text('Լեզուներ');
-        $('#mySidenav a:eq(2)').find('span').text('Տարբերակ');
+        $('#mySidenav a:eq(2)').find('span').text('պարզ');
+        $('#mySidenav a:eq(3)').find('span').text('Տարբերակ');
     } else if ('de, de-AT, de-DE, de-LI, de-CH'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('Eintreten');
         $('.mobile p:eq(0)').text('Mehr als 6000 TV-Kanäle ansehen...');
@@ -272,7 +287,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Kategorie');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensible Inhalte');
         $('#mySidenav a:eq(1)').find('span').text('Sprachen');
-        $('#mySidenav a:eq(2)').find('span').text('Ausführung');
+        $('#mySidenav a:eq(2)').find('span').text('klar');
+        $('#mySidenav a:eq(3)').find('span').text('Ausführung');
     } else if ('fr, fr-CA, fr-FR, fr-CH'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('Entrer');
         $('.mobile p:eq(0)').text('Regardez plus de 6000 chaînes de télévision...');
@@ -289,7 +305,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Catégorie');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contenu sensible');
         $('#mySidenav a:eq(1)').find('span').text('Langages');
-        $('#mySidenav a:eq(2)').find('span').text('Version');
+        $('#mySidenav a:eq(2)').find('span').text('dégager');
+        $('#mySidenav a:eq(3)').find('span').text('Version');
     } else if (window.localStorage.getItem('languages') == 'ar') {
         $('.stylebtn').text('يدخل');
         $('.mobile p:eq(0)').text('شاهد أكثر من 6000 قناة تلفزيونية ...');
@@ -306,7 +323,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('فئة');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('المحتوى الحساس');
         $('#mySidenav a:eq(1)').find('span').text('اللغات');
-        $('#mySidenav a:eq(2)').find('span').text('إصدار');
+        $('#mySidenav a:eq(2)').find('span').text('صافي');
+        $('#mySidenav a:eq(3)').find('span').text('إصدار');
     } else if (window.localStorage.getItem('languages') == 'sq') {
         $('.stylebtn').text('Hyni');
         $('.mobile p:eq(0)').text('Shikoni 6000+ kanale televizive ...');
@@ -323,7 +341,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('Kategoria');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('Përmbajtje e ndjeshme');
         $('#mySidenav a:eq(1)').find('span').text('Gjuhët');
-        $('#mySidenav a:eq(2)').find('span').text('Version');
+        $('#mySidenav a:eq(2)').find('span').text('qartë');
+        $('#mySidenav a:eq(3)').find('span').text('Version');
     } else if (window.localStorage.getItem('languages') == 'am') {
         $('.stylebtn').text('ግባ');
         $('.mobile p:eq(0)').text('6000+ የቴሌቪዥን ጣቢያዎችን ይመልከቱ ...');
@@ -340,7 +359,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('ምድብ');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('ስሜታዊ ይዘት');
         $('#mySidenav a:eq(1)').find('span').text('ቋንቋዎች');
-        $('#mySidenav a:eq(2)').find('span').text('ስሪት');
+        $('#mySidenav a:eq(2)').find('span').text('ግልጽ');
+        $('#mySidenav a:eq(3)').find('span').text('ስሪት');
     } else if ('zh, zh-CN'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('进入');
         $('.mobile p:eq(0)').text('观看6000多个电视直播台......');
@@ -357,7 +377,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('分类');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('敏感内容');
         $('#mySidenav a:eq(1)').find('span').text('语言');
-        $('#mySidenav a:eq(2)').find('span').text('版本');
+        $('#mySidenav a:eq(2)').find('span').text('清理');
+        $('#mySidenav a:eq(3)').find('span').text('版本');
     } else if ('zh-HK, zh-TW'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('进入');
         $('.mobile p:eq(0)').text('观看6000多个电视直播台......');
@@ -374,7 +395,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('分类');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('敏感内容');
         $('#mySidenav a:eq(1)').find('span').text('语言');
-        $('#mySidenav a:eq(2)').find('span').text('版本');
+        $('#mySidenav a:eq(2)').find('span').text('清除');
+        $('#mySidenav a:eq(3)').find('span').text('版本');
     } else if (window.localStorage.getItem('languages') == 'af') {
         $('.stylebtn').text('Tik in');
         $('.mobile p:eq(0)').text('Kyk na 6000+ TV -kanale ...');
@@ -391,7 +413,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('kategorie');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('sensitiewe inhoud');
         $('#mySidenav a:eq(1)').find('span').text('Taal');
-        $('#mySidenav a:eq(2)').find('span').text('weergawe');
+        $('#mySidenav a:eq(2)').find('span').text('duidelik');
+        $('#mySidenav a:eq(3)').find('span').text('weergawe');
     } else if (window.localStorage.getItem('languages') == 'ja') {
         $('.stylebtn').text('入力');
         $('.mobile p:eq(0)').text('6000以上のテレビチャンネルを見る...');
@@ -408,7 +431,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('カテゴリー');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('デリケートなコンテンツ');
         $('#mySidenav a:eq(1)').find('span').text('言語');
-        $('#mySidenav a:eq(2)').find('span').text('バージョン');
+        $('#mySidenav a:eq(2)').find('span').text('クリア');
+        $('#mySidenav a:eq(3)').find('span').text('バージョン');
     } else if (window.localStorage.getItem('languages') == 'hi') {
         $('.stylebtn').text('प्रवेश करना');
         $('.mobile p:eq(0)').text('6000+ टीवी चैनल देखें...');
@@ -425,7 +449,8 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('श्रेणी');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('संवेदनशील सामग्री');
         $('#mySidenav a:eq(1)').find('span').text('भाषा: हिन्दी');
-        $('#mySidenav a:eq(2)').find('span').text('संस्करण');
+        $('#mySidenav a:eq(2)').find('span').text('स्पष्ट');
+        $('#mySidenav a:eq(3)').find('span').text('संस्करण');
     } else if (window.localStorage.getItem('languages') == 'ko') {
         $('.stylebtn').text('입력하다');
         $('.mobile p:eq(0)').text('6000개 이상의 TV 채널 시청...');
@@ -442,7 +467,152 @@ $(document).ready(function() {
         $('#selectform input:eq(2)').next().text('श्रेणी');
         $('#mySidenav a:eq(0)').find('span:eq(0)').text('범주');
         $('#mySidenav a:eq(1)').find('span').text('언어');
-        $('#mySidenav a:eq(2)').find('span').text('버전');
+        $('#mySidenav a:eq(2)').find('span').text('분명한');
+        $('#mySidenav a:eq(3)').find('span').text('버전');
+    } else if (window.localStorage.getItem('languages') == 'bg') {
+        $('.stylebtn').text('Въведете');
+        $('.mobile p:eq(0)').text('Гледайте 6000+ телевизионни канала ...');
+        $('.mobile p:eq(1)').text('Гледайте филми, сериали, анимации ...');
+        $('.mobile p:eq(2)').text('Слушайте 28 000+ радиостанции ...');
+        $('.mobile p:eq(3)').text('Четене на повече от 100 000+ книги ...');
+        $('.mobile p:eq(4)').text('Четене на много книги за манга ...');
+        $('.mobile p:eq(5)').text('Слушайте The World Music ...');
+        $('.mobile p:eq(6)').text('Изграждане до версия 9.0.0');
+        $('.mobile p:eq(7)').text('Порно видео ...');
+        $('h2').text('Изберете');
+        $('#selectform input:eq(0)').next().text('Държави');
+        $('#selectform input:eq(1)').next().text('Езици');
+        $('#selectform input:eq(2)').next().text('Категория');
+        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Чувствително съдържание');
+        $('#mySidenav a:eq(1)').find('span').text('Езици');
+        $('#mySidenav a:eq(2)').find('span').text('ясно');
+        $('#mySidenav a:eq(3)').find('span').text('Версия');
+    } else if (window.localStorage.getItem('languages') == 'ca') {
+        $('.stylebtn').text('Entra');
+        $('.mobile p:eq(0)').text('Mireu més de 6.000 canals de televisió ...');
+        $('.mobile p:eq(1)').text('Veure pel·lícules, sèries, Animes ...');
+        $('.mobile p:eq(2)').text('Escolta més de 28.000 estacions de ràdio ...');
+        $('.mobile p:eq(3)').text('S\'estan llegint més de més de 100.000 llibres ...');
+        $('.mobile p:eq(4)').text('Llegint molts llibres de manga ...');
+        $('.mobile p:eq(5)').text('Escolta The World Music ...');
+        $('.mobile p:eq(6)').text('S\'està construint fins a la versió 9.0.0');
+        $('.mobile p:eq(7)').text('Vídeo porno ...');
+        $('h2').text('Seleccioneu');
+        $('#selectform input:eq(0)').next().text('Països');
+        $('#selectform input:eq(1)').next().text('Idiomes');
+        $('#selectform input:eq(2)').next().text('Categoria');
+        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contingut sensible');
+        $('#mySidenav a:eq(1)').find('span').text('Idiomes');
+        $('#mySidenav a:eq(2)').find('span').text('clar');
+        $('#mySidenav a:eq(3)').find('span').text('Versió');
+    } else if (window.localStorage.getItem('languages') == 'co') {
+        $('.stylebtn').text('Entre');
+        $('.mobile p:eq(0)').text('Guarda 6000+ Canali TV ...');
+        $('.mobile p:eq(1)').text('Guarda Film, Serie, Animes ...');
+        $('.mobile p:eq(2)').text('Ascolta 28000+ Stazioni Radio ...');
+        $('.mobile p:eq(3)').text('Leghjendu Più di 100000+ Libri ...');
+        $('.mobile p:eq(4)').text('Leghjendu Parechji Libri Manga ...');
+        $('.mobile p:eq(5)').text('Escolta The World Music ...');
+        $('.mobile p:eq(6)').text('Custruisce finu à a versione 9.0.0');
+        $('.mobile p:eq(7)').text('Video porno ...');
+        $('h2').text('Selezziunà');
+        $('#selectform input:eq(0)').next().text('Paesi');
+        $('#selectform input:eq(1)').next().text('Lingue');
+        $('#selectform input:eq(2)').next().text('Catigurìa');
+        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Cuntenutu Sensitivu');
+        $('#mySidenav a:eq(1)').find('span').text('Lingue');
+        $('#mySidenav a:eq(2)').find('span').text('chjaru');
+        $('#mySidenav a:eq(3)').find('span').text('Versione');
+    } else if (window.localStorage.getItem('languages') == 'hr') {
+        $('.stylebtn').text('Unesi');
+        $('.mobile p:eq(0)').text('Gledajte 6000+ TV kanala ...');
+        $('.mobile p:eq(1)').text('Gledajte filmove, serije, animacije ...');
+        $('.mobile p:eq(2)').text('Slušajte 28 000+ radio stanica ...');
+        $('.mobile p:eq(3)').text('Čitanje više od 100 000+ knjiga ...');
+        $('.mobile p:eq(4)').text('Čitanje puno manga knjiga ...');
+        $('.mobile p:eq(5)').text('Slušajte glazbu svijeta ...');
+        $('.mobile p:eq(6)').text('Konstruira se do verzije 9.0.0');
+        $('.mobile p:eq(7)').text('Video pornografija ...');
+        $('h2').text('Odaberi');
+        $('#selectform input:eq(0)').next().text('Zemlje');
+        $('#selectform input:eq(1)').next().text('Jezici');
+        $('#selectform input:eq(2)').next().text('Kategorija');
+        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Osjetljiv sadržaj');
+        $('#mySidenav a:eq(1)').find('span').text('Jezici');
+        $('#mySidenav a:eq(2)').find('span').text('čisto');
+        $('#mySidenav a:eq(3)').find('span').text('Verzija');
+    } else if (window.localStorage.getItem('languages') == 'cs') {
+        $('.stylebtn').text('Vstupte');
+        $('.mobile p:eq(0)').text('Sledujte více než 6000 televizních kanálů ...');
+        $('.mobile p:eq(1)').text('Sledujte filmy, seriály, anime ...');
+        $('.mobile p:eq(2)').text('Poslouchejte 28 000+ rozhlasových stanic ...');
+        $('.mobile p:eq(3)').text('Čtení více než 100 000+ knih ...');
+        $('.mobile p:eq(4)').text('Čtení spousty knih o mangách ...');
+        $('.mobile p:eq(5)').text('Poslechněte si The World Music ...');
+        $('.mobile p:eq(6)').text('Konstrukce do verze 9.0.0');
+        $('.mobile p:eq(7)').text('Video porno ...');
+        $('h2').text('Vybrat');
+        $('#selectform input:eq(0)').next().text('Země');
+        $('#selectform input:eq(1)').next().text('Jazyky');
+        $('#selectform input:eq(2)').next().text('Kategorie');
+        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Citlivý obsah');
+        $('#mySidenav a:eq(1)').find('span').text('Jazyky');
+        $('#mySidenav a:eq(2)').find('span').text('Průhledná');
+        $('#mySidenav a:eq(3)').find('span').text('Verze');
+    } else if (window.localStorage.getItem('languages') == 'da') {
+        $('.stylebtn').text('Gå ind');
+        $('.mobile p:eq(0)').text('Se 6000+ tv -kanaler ...');
+        $('.mobile p:eq(1)').text('Se film, serier, anime ...');
+        $('.mobile p:eq(2)').text('Lyt til 28000+ radiostationer ...');
+        $('.mobile p:eq(3)').text('Læser mere end 100000+ bøger ...');
+        $('.mobile p:eq(4)').text('Læser masser af mangabøger ...');
+        $('.mobile p:eq(5)').text('Lyt til The World Music ...');
+        $('.mobile p:eq(6)').text('Konstruerer indtil version 9.0.0');
+        $('.mobile p:eq(7)').text('Videoporno ...');
+        $('h2').text('Vælg');
+        $('#selectform input:eq(0)').next().text('Lande');
+        $('#selectform input:eq(1)').next().text('Sprog');
+        $('#selectform input:eq(2)').next().text('Kategori');
+        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Følsomt indhold');
+        $('#mySidenav a:eq(1)').find('span').text('Sprog');
+        $('#mySidenav a:eq(2)').find('span').text('klar');
+        $('#mySidenav a:eq(3)').find('span').text('Version');
+    } else if (window.localStorage.getItem('languages') == 'nl') {
+        $('.stylebtn').text('Binnenkomen');
+        $('.mobile p:eq(0)').text('Kijk 6000+ tv-kanalen...');
+        $('.mobile p:eq(1)').text('Kijk films, series, animes...');
+        $('.mobile p:eq(2)').text('Luister 28000+ radiostations...');
+        $('.mobile p:eq(3)').text('Meer dan 100000+ boeken lezen...');
+        $('.mobile p:eq(4)').text('Veel mangaboeken lezen...');
+        $('.mobile p:eq(5)').text('Luister naar de wereldmuziek...');
+        $('.mobile p:eq(6)').text('Bouwen tot versie 9.0.0');
+        $('.mobile p:eq(7)').text('Video porno...');
+        $('h2').text('Selecteer');
+        $('#selectform input:eq(0)').next().text('Landen');
+        $('#selectform input:eq(1)').next().text('Talen');
+        $('#selectform input:eq(2)').next().text('Categorie');
+        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Gevoelige inhoud');
+        $('#mySidenav a:eq(1)').find('span').text('Talen');
+        $('#mySidenav a:eq(2)').find('span').text('Doorzichtig');
+        $('#mySidenav a:eq(3)').find('span').text('Versie');
+    } else if (window.localStorage.getItem('languages') == 'eo') {
+        $('.stylebtn').text('Eniru');
+        $('.mobile p:eq(0)').text('Spektu 6000+ televidajn kanalojn ...');
+        $('.mobile p:eq(1)').text('Spektu Filmojn, Seriojn, Animojn ...');
+        $('.mobile p:eq(2)').text('Aŭskultu 28000+ Radiostaciojn ...');
+        $('.mobile p:eq(3)').text('Legante Pli ol 100000+ Librojn ...');
+        $('.mobile p:eq(4)').text('Legante Multajn Mangaajn Librojn ...');
+        $('.mobile p:eq(5)').text('Aŭskultu La Mondan Muzikon ...');
+        $('.mobile p:eq(6)').text('Konstruante ĝis versio 9.0.0');
+        $('.mobile p:eq(7)').text('Video porno ...');
+        $('h2').text('Elektu');
+        $('#selectform input:eq(0)').next().text('Landoj');
+        $('#selectform input:eq(1)').next().text('Lingvoj');
+        $('#selectform input:eq(2)').next().text('Kategorio');
+        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sentema Enhavo');
+        $('#mySidenav a:eq(1)').find('span').text('Lingvoj');
+        $('#mySidenav a:eq(2)').find('span').text('klara');
+        $('#mySidenav a:eq(3)').find('span').text('Versio');
     };
     //Change language to show
     $('#languages').on('change', function() {
@@ -464,7 +634,152 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Category');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensitive Content');
             $('#mySidenav a:eq(1)').find('span').text('Languages');
-            $('#mySidenav a:eq(2)').find('span').text('Version');
+            $('#mySidenav a:eq(2)').find('span').text('Clear');
+            $('#mySidenav a:eq(3)').find('span').text('Version');
+        } else if (lan == 'eo') {
+            $('.stylebtn').text('Eniru');
+            $('.mobile p:eq(0)').text('Spektu 6000+ televidajn kanalojn ...');
+            $('.mobile p:eq(1)').text('Spektu Filmojn, Seriojn, Animojn ...');
+            $('.mobile p:eq(2)').text('Aŭskultu 28000+ Radiostaciojn ...');
+            $('.mobile p:eq(3)').text('Legante Pli ol 100000+ Librojn ...');
+            $('.mobile p:eq(4)').text('Legante Multajn Mangaajn Librojn ...');
+            $('.mobile p:eq(5)').text('Aŭskultu La Mondan Muzikon ...');
+            $('.mobile p:eq(6)').text('Konstruante ĝis versio 9.0.0');
+            $('.mobile p:eq(7)').text('Video porno ...');
+            $('h2').text('Elektu');
+            $('#selectform input:eq(0)').next().text('Landoj');
+            $('#selectform input:eq(1)').next().text('Lingvoj');
+            $('#selectform input:eq(2)').next().text('Kategorio');
+            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sentema Enhavo');
+            $('#mySidenav a:eq(1)').find('span').text('Lingvoj');
+            $('#mySidenav a:eq(2)').find('span').text('klara');
+            $('#mySidenav a:eq(3)').find('span').text('Versio');
+        } else if (lan == 'nl') {
+            $('.stylebtn').text('Binnenkomen');
+            $('.mobile p:eq(0)').text('Kijk 6000+ tv-kanalen...');
+            $('.mobile p:eq(1)').text('Kijk films, series, animes...');
+            $('.mobile p:eq(2)').text('Luister 28000+ radiostations...');
+            $('.mobile p:eq(3)').text('Meer dan 100000+ boeken lezen...');
+            $('.mobile p:eq(4)').text('Veel mangaboeken lezen...');
+            $('.mobile p:eq(5)').text('Luister naar de wereldmuziek...');
+            $('.mobile p:eq(6)').text('Bouwen tot versie 9.0.0');
+            $('.mobile p:eq(7)').text('Video porno...');
+            $('h2').text('Selecteer');
+            $('#selectform input:eq(0)').next().text('Landen');
+            $('#selectform input:eq(1)').next().text('Talen');
+            $('#selectform input:eq(2)').next().text('Categorie');
+            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Gevoelige inhoud');
+            $('#mySidenav a:eq(1)').find('span').text('Talen');
+            $('#mySidenav a:eq(2)').find('span').text('Doorzichtig');
+            $('#mySidenav a:eq(3)').find('span').text('Versie');
+        } else if (lan == 'da') {
+            $('.stylebtn').text('Gå ind');
+            $('.mobile p:eq(0)').text('Se 6000+ tv -kanaler ...');
+            $('.mobile p:eq(1)').text('Se film, serier, anime ...');
+            $('.mobile p:eq(2)').text('Lyt til 28000+ radiostationer ...');
+            $('.mobile p:eq(3)').text('Læser mere end 100000+ bøger ...');
+            $('.mobile p:eq(4)').text('Læser masser af mangabøger ...');
+            $('.mobile p:eq(5)').text('Lyt til The World Music ...');
+            $('.mobile p:eq(6)').text('Konstruerer indtil version 9.0.0');
+            $('.mobile p:eq(7)').text('Videoporno ...');
+            $('h2').text('Vælg');
+            $('#selectform input:eq(0)').next().text('Lande');
+            $('#selectform input:eq(1)').next().text('Sprog');
+            $('#selectform input:eq(2)').next().text('Kategori');
+            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Følsomt indhold');
+            $('#mySidenav a:eq(1)').find('span').text('Sprog');
+            $('#mySidenav a:eq(2)').find('span').text('klar');
+            $('#mySidenav a:eq(3)').find('span').text('Version');
+        } else if (lan == 'cs') {
+            $('.stylebtn').text('Vstupte');
+            $('.mobile p:eq(0)').text('Sledujte více než 6000 televizních kanálů ...');
+            $('.mobile p:eq(1)').text('Sledujte filmy, seriály, anime ...');
+            $('.mobile p:eq(2)').text('Poslouchejte 28 000+ rozhlasových stanic ...');
+            $('.mobile p:eq(3)').text('Čtení více než 100 000+ knih ...');
+            $('.mobile p:eq(4)').text('Čtení spousty knih o mangách ...');
+            $('.mobile p:eq(5)').text('Poslechněte si The World Music ...');
+            $('.mobile p:eq(6)').text('Konstrukce do verze 9.0.0');
+            $('.mobile p:eq(7)').text('Video porno ...');
+            $('h2').text('Vybrat');
+            $('#selectform input:eq(0)').next().text('Země');
+            $('#selectform input:eq(1)').next().text('Jazyky');
+            $('#selectform input:eq(2)').next().text('Kategorie');
+            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Citlivý obsah');
+            $('#mySidenav a:eq(1)').find('span').text('Jazyky');
+            $('#mySidenav a:eq(2)').find('span').text('Průhledná');
+            $('#mySidenav a:eq(3)').find('span').text('Verze');
+        } else if (lan == 'hr') {
+            $('.stylebtn').text('Unesi');
+            $('.mobile p:eq(0)').text('Gledajte 6000+ TV kanala ...');
+            $('.mobile p:eq(1)').text('Gledajte filmove, serije, animacije ...');
+            $('.mobile p:eq(2)').text('Slušajte 28 000+ radio stanica ...');
+            $('.mobile p:eq(3)').text('Čitanje više od 100 000+ knjiga ...');
+            $('.mobile p:eq(4)').text('Čitanje puno manga knjiga ...');
+            $('.mobile p:eq(5)').text('Slušajte glazbu svijeta ...');
+            $('.mobile p:eq(6)').text('Konstruira se do verzije 9.0.0');
+            $('.mobile p:eq(7)').text('Video pornografija ...');
+            $('h2').text('Odaberi');
+            $('#selectform input:eq(0)').next().text('Zemlje');
+            $('#selectform input:eq(1)').next().text('Jezici');
+            $('#selectform input:eq(2)').next().text('Kategorija');
+            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Osjetljiv sadržaj');
+            $('#mySidenav a:eq(1)').find('span').text('Jezici');
+            $('#mySidenav a:eq(2)').find('span').text('čisto');
+            $('#mySidenav a:eq(3)').find('span').text('Verzija');
+        } else if (lan == 'co') {
+            $('.stylebtn').text('Entre');
+            $('.mobile p:eq(0)').text('Guarda 6000+ Canali TV ...');
+            $('.mobile p:eq(1)').text('Guarda Film, Serie, Animes ...');
+            $('.mobile p:eq(2)').text('Ascolta 28000+ Stazioni Radio ...');
+            $('.mobile p:eq(3)').text('Leghjendu Più di 100000+ Libri ...');
+            $('.mobile p:eq(4)').text('Leghjendu Parechji Libri Manga ...');
+            $('.mobile p:eq(5)').text('Escolta The World Music ...');
+            $('.mobile p:eq(6)').text('Custruisce finu à a versione 9.0.0');
+            $('.mobile p:eq(7)').text('Video porno ...');
+            $('h2').text('Selezziunà');
+            $('#selectform input:eq(0)').next().text('Paesi');
+            $('#selectform input:eq(1)').next().text('Lingue');
+            $('#selectform input:eq(2)').next().text('Catigurìa');
+            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Cuntenutu Sensitivu');
+            $('#mySidenav a:eq(1)').find('span').text('Lingue');
+            $('#mySidenav a:eq(2)').find('span').text('chjaru');
+            $('#mySidenav a:eq(3)').find('span').text('Versione');
+        } else if (lan == 'ca') {
+            $('.stylebtn').text('Entra');
+            $('.mobile p:eq(0)').text('Mireu més de 6.000 canals de televisió ...');
+            $('.mobile p:eq(1)').text('Veure pel·lícules, sèries, Animes ...');
+            $('.mobile p:eq(2)').text('Escolta més de 28.000 estacions de ràdio ...');
+            $('.mobile p:eq(3)').text('S\'estan llegint més de més de 100.000 llibres ...');
+            $('.mobile p:eq(4)').text('Llegint molts llibres de manga ...');
+            $('.mobile p:eq(5)').text('Escolta The World Music ...');
+            $('.mobile p:eq(6)').text('S\'està construint fins a la versió 9.0.0');
+            $('.mobile p:eq(7)').text('Vídeo porno ...');
+            $('h2').text('Seleccioneu');
+            $('#selectform input:eq(0)').next().text('Països');
+            $('#selectform input:eq(1)').next().text('Idiomes');
+            $('#selectform input:eq(2)').next().text('Categoria');
+            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contingut sensible');
+            $('#mySidenav a:eq(1)').find('span').text('Idiomes');
+            $('#mySidenav a:eq(2)').find('span').text('clar');
+            $('#mySidenav a:eq(3)').find('span').text('Versió');
+        } else if (lan == 'bg') {
+            $('.stylebtn').text('Въведете');
+            $('.mobile p:eq(0)').text('Гледайте 6000+ телевизионни канала ...');
+            $('.mobile p:eq(1)').text('Гледайте филми, сериали, анимации ...');
+            $('.mobile p:eq(2)').text('Слушайте 28 000+ радиостанции ...');
+            $('.mobile p:eq(3)').text('Четене на повече от 100 000+ книги ...');
+            $('.mobile p:eq(4)').text('Четене на много книги за манга ...');
+            $('.mobile p:eq(5)').text('Слушайте The World Music ...');
+            $('.mobile p:eq(6)').text('Изграждане до версия 9.0.0');
+            $('.mobile p:eq(7)').text('Порно видео ...');
+            $('h2').text('Изберете');
+            $('#selectform input:eq(0)').next().text('Държави');
+            $('#selectform input:eq(1)').next().text('Езици');
+            $('#selectform input:eq(2)').next().text('Категория');
+            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Чувствително съдържание');
+            $('#mySidenav a:eq(1)').find('span').text('Езици');
+            $('#mySidenav a:eq(2)').find('span').text('ясно');
+            $('#mySidenav a:eq(3)').find('span').text('Версия');
         } else if (lan == 'bs') {
             $('.stylebtn').text('Enter');
             $('.mobile p:eq(0)').text('Gledajte 6000+ TV kanala ...');
@@ -481,7 +796,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Kategorija');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Osetljiv sadržaj');
             $('#mySidenav a:eq(1)').find('span').text('Jezici');
-            $('#mySidenav a:eq(2)').find('span').text('Verzija');
+            $('#mySidenav a:eq(2)').find('span').text('jasno');
+            $('#mySidenav a:eq(3)').find('span').text('Verzija');
         } else if (lan == 'bn') {
             $('.stylebtn').text('প্রবেশ করুন');
             $('.mobile p:eq(0)').text('6000+ টিভি চ্যানেল দেখুন ...');
@@ -498,7 +814,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('বিভাগ');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('সংবেদনশীল বিষয়বস্তু');
             $('#mySidenav a:eq(1)').find('span').text('ভাষা');
-            $('#mySidenav a:eq(2)').find('span').text('সংস্করণ');
+            $('#mySidenav a:eq(2)').find('span').text('পরিষ্কার');
+            $('#mySidenav a:eq(3)').find('span').text('সংস্করণ');
         } else if (lan == 'be') {
             $('.stylebtn').text('Увядзіце');
             $('.mobile p:eq(0)').text('Глядзіце больш за 6000 тэлеканалаў ...');
@@ -515,7 +832,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Катэгорыя');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Адчувальны змест');
             $('#mySidenav a:eq(1)').find('span').text('Мовы');
-            $('#mySidenav a:eq(2)').find('span').text('Версія');
+            $('#mySidenav a:eq(2)').find('span').text('ясна');
+            $('#mySidenav a:eq(3)').find('span').text('Версія');
         } else if (lan == 'eu') {
             $('.stylebtn').text('Sartu');
             $('.mobile p:eq(0)').text('Ikusi 6000+ telebista kate ...');
@@ -532,7 +850,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Kategoria');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Eduki sentikorra');
             $('#mySidenav a:eq(1)').find('span').text('Hizkuntzak');
-            $('#mySidenav a:eq(2)').find('span').text('Bertsioa');
+            $('#mySidenav a:eq(2)').find('span').text('argi');
+            $('#mySidenav a:eq(3)').find('span').text('Bertsioa');
         } else if (lan == 'no' || lan == 'nb' || lan == 'nn') {
             $('.stylebtn').text('Tast inn');
             $('.mobile p:eq(0)').text('Se 6000+ TV -kanaler ...');
@@ -549,7 +868,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Kategori');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Følsomt innhold');
             $('#mySidenav a:eq(1)').find('span').text('Språk');
-            $('#mySidenav a:eq(2)').find('span').text('Versjon');
+            $('#mySidenav a:eq(2)').find('span').text('klar');
+            $('#mySidenav a:eq(3)').find('span').text('Versjon');
         } else if (lan == 'ro' || lan == 'mo' || lan == 'rm') {
             $('.stylebtn').text('introduce');
             $('.mobile p:eq(0)').text('Urmăriți peste 6000 de canale TV ...');
@@ -566,7 +886,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Categorie');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Conținut sensibil');
             $('#mySidenav a:eq(1)').find('span').text('Limbi');
-            $('#mySidenav a:eq(2)').find('span').text('Versiune');
+            $('#mySidenav a:eq(2)').find('span').text('clar');
+            $('#mySidenav a:eq(3)').find('span').text('Versiune');
         } else if (lan == 'id') {
             $('.stylebtn').text('Memasuki');
             $('.mobile p:eq(0)').text('Tonton 6000+ Saluran TV...');
@@ -583,7 +904,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Kategori');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Konten Sensitif');
             $('#mySidenav a:eq(1)').find('span').text('Bahasa');
-            $('#mySidenav a:eq(2)').find('span').text('Versi: kapan');
+            $('#mySidenav a:eq(2)').find('span').text('jernih');
+            $('#mySidenav a:eq(3)').find('span').text('Versi: kapan');
         } else if (lan == 'th') {
             $('.stylebtn').text('เข้า');
             $('.mobile p:eq(0)').text('ดูทีวีช่อง 6000+...');
@@ -600,7 +922,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('หมวดหมู่');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('เนื้อหาละเอียดอ่อน');
             $('#mySidenav a:eq(1)').find('span').text('ภาษา');
-            $('#mySidenav a:eq(2)').find('span').text('เวอร์ชั่น');
+            $('#mySidenav a:eq(2)').find('span').text('แจ่มใส');
+            $('#mySidenav a:eq(3)').find('span').text('เวอร์ชั่น');
         } else if (lan == 'it' || lan == 'it-IT' || lan == 'it-CH') {
             $('.stylebtn').text('accedere');
             $('.mobile p:eq(0)').text('Guarda oltre 6000 canali TV...');
@@ -617,7 +940,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Categoria');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contenuti sensibili');
             $('#mySidenav a:eq(1)').find('span').text('Le lingue');
-            $('#mySidenav a:eq(2)').find('span').text('Versione');
+            $('#mySidenav a:eq(2)').find('span').text('chiara');
+            $('#mySidenav a:eq(3)').find('span').text('Versione');
         } else if (lan == 'ru') {
             $('.stylebtn').text('Входить');
             $('.mobile p:eq(0)').text('Смотрите 6000+ телеканалов ...');
@@ -634,7 +958,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Категория');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Деликатный контент');
             $('#mySidenav a:eq(1)').find('span').text('Языки');
-            $('#mySidenav a:eq(2)').find('span').text('Версия');
+            $('#mySidenav a:eq(2)').find('span').text('Чисто');
+            $('#mySidenav a:eq(3)').find('span').text('Версия');
         } else if (lan == 'pt' || lan == 'pt-BR' || lan == 'pt-PT') {
             $('.stylebtn').text('Digitar');
             $('.mobile p:eq(0)').text('Assistir mais de 6.000 canais de TV ...');
@@ -651,7 +976,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Categoria');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Conteúdo Sensível');
             $('#mySidenav a:eq(1)').find('span').text('línguas');
-            $('#mySidenav a:eq(2)').find('span').text('Versão');
+            $('#mySidenav a:eq(2)').find('span').text('claro');
+            $('#mySidenav a:eq(3)').find('span').text('Versão');
         } else if (lan == 'es' || lan == 'es-AR' || lan == 'es-419' || lan == 'es-MX' || lan == 'es-ES' || lan == 'es-US') {
             $('.stylebtn').text('Ingresar');
             $('.mobile p:eq(0)').text('Mira más de 6000 canales de televisión ...');
@@ -668,7 +994,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Categoría');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contenido sensible');
             $('#mySidenav a:eq(1)').find('span').text('Idiomas');
-            $('#mySidenav a:eq(2)').find('span').text('Versión');
+            $('#mySidenav a:eq(2)').find('span').text('claro');
+            $('#mySidenav a:eq(3)').find('span').text('Versión');
         } else if (lan == 'az') {
             $('.stylebtn').text('Daxil edin');
             $('.mobile p:eq(0)').text('6000 -dən çox TV kanalına baxın ...');
@@ -685,7 +1012,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Kateqoriya');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Həssas Məzmun');
             $('#mySidenav a:eq(1)').find('span').text('Dillər');
-            $('#mySidenav a:eq(2)').find('span').text('Versiya');
+            $('#mySidenav a:eq(2)').find('span').text('aydın');
+            $('#mySidenav a:eq(3)').find('span').text('Versiya');
         } else if (lan == 'hy') {
             $('.stylebtn').text('Մուտքագրեք');
             $('.mobile p:eq(0)').text('Դիտեք 6000+ հեռուստաալիք ...');
@@ -702,7 +1030,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Կատեգորիա');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sգայուն բովանդակություն');
             $('#mySidenav a:eq(1)').find('span').text('Լեզուներ');
-            $('#mySidenav a:eq(2)').find('span').text('Տարբերակ');
+            $('#mySidenav a:eq(2)').find('span').text('պարզ');
+            $('#mySidenav a:eq(3)').find('span').text('Տարբերակ');
         } else if (lan == 'de' || lan == 'de-AT' || lan == 'de-DE' || lan == 'de-LI' || lan == 'de-CH') {
             $('.stylebtn').text('Eintreten');
             $('.mobile p:eq(0)').text('Mehr als 6000 TV-Kanäle ansehen...');
@@ -719,7 +1048,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Kategorie');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensible Inhalte');
             $('#mySidenav a:eq(1)').find('span').text('Sprachen');
-            $('#mySidenav a:eq(2)').find('span').text('Ausführung');
+            $('#mySidenav a:eq(2)').find('span').text('klar');
+            $('#mySidenav a:eq(3)').find('span').text('Ausführung');
         } else if (lan == 'fr' || lan == 'fr-CA' || lan == 'fr-FR' || lan == 'fr-CH') {
             $('.stylebtn').text('Entrer');
             $('.mobile p:eq(0)').text('Regardez plus de 6000 chaînes de télévision...');
@@ -736,7 +1066,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Catégorie');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contenu sensible');
             $('#mySidenav a:eq(1)').find('span').text('Langages');
-            $('#mySidenav a:eq(2)').find('span').text('Version');
+            $('#mySidenav a:eq(2)').find('span').text('dégager');
+            $('#mySidenav a:eq(3)').find('span').text('Version');
         } else if (lan == 'ar') {
             $('.stylebtn').text('يدخل');
             $('.mobile p:eq(0)').text('شاهد أكثر من 6000 قناة تلفزيونية ...');
@@ -753,7 +1084,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('فئة');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('المحتوى الحساس');
             $('#mySidenav a:eq(1)').find('span').text('اللغات');
-            $('#mySidenav a:eq(2)').find('span').text('إصدار');
+            $('#mySidenav a:eq(2)').find('span').text('صافي');
+            $('#mySidenav a:eq(3)').find('span').text('إصدار');
         } else if (lan == 'sq') {
             $('.stylebtn').text('Hyni');
             $('.mobile p:eq(0)').text('Shikoni 6000+ kanale televizive ...');
@@ -770,7 +1102,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('Kategoria');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('Përmbajtje e ndjeshme');
             $('#mySidenav a:eq(1)').find('span').text('Gjuhët');
-            $('#mySidenav a:eq(2)').find('span').text('Version');
+            $('#mySidenav a:eq(2)').find('span').text('qartë');
+            $('#mySidenav a:eq(3)').find('span').text('Version');
         } else if (lan == 'am') {
             $('.stylebtn').text('ግባ');
             $('.mobile p:eq(0)').text('6000+ የቴሌቪዥን ጣቢያዎችን ይመልከቱ ...');
@@ -787,7 +1120,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('ምድብ');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('ስሜታዊ ይዘት');
             $('#mySidenav a:eq(1)').find('span').text('ቋንቋዎች');
-            $('#mySidenav a:eq(2)').find('span').text('ስሪት');
+            $('#mySidenav a:eq(2)').find('span').text('ግልጽ');
+            $('#mySidenav a:eq(3)').find('span').text('ስሪት');
         } else if (lan == 'zh' || lan == 'zh-CN') {
             $('.stylebtn').text('进入');
             $('.mobile p:eq(0)').text('观看6000多个电视直播台......');
@@ -804,7 +1138,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('分类');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('敏感内容');
             $('#mySidenav a:eq(1)').find('span').text('语言');
-            $('#mySidenav a:eq(2)').find('span').text('版本');
+            $('#mySidenav a:eq(2)').find('span').text('清理');
+            $('#mySidenav a:eq(3)').find('span').text('版本');
         } else if (lan == 'zh-HK' || lan == 'zh-TW') {
             $('.stylebtn').text('進入');
             $('.mobile p:eq(0)').text('觀看 6000 多個電視頻道...');
@@ -821,7 +1156,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('分類');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('敏感內容');
             $('#mySidenav a:eq(1)').find('span').text('語言');
-            $('#mySidenav a:eq(2)').find('span').text('版本');
+            $('#mySidenav a:eq(2)').find('span').text('清除');
+            $('#mySidenav a:eq(3)').find('span').text('版本');
         } else if (lan == 'af') {
             $('.stylebtn').text('Tik in');
             $('.mobile p:eq(0)').text('Kyk na 6000+ TV -kanale ...');
@@ -838,7 +1174,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('kategorie');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('sensitiewe inhoud');
             $('#mySidenav a:eq(1)').find('span').text('Taal');
-            $('#mySidenav a:eq(2)').find('span').text('weergawe');
+            $('#mySidenav a:eq(2)').find('span').text('duidelik');
+            $('#mySidenav a:eq(3)').find('span').text('weergawe');
         } else if (lan == 'ja') {
             $('.stylebtn').text('入力');
             $('.mobile p:eq(0)').text('6000以上のテレビチャンネルを見る...');
@@ -855,7 +1192,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('カテゴリー');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('デリケートなコンテンツ');
             $('#mySidenav a:eq(1)').find('span').text('言語');
-            $('#mySidenav a:eq(2)').find('span').text('バージョン');
+            $('#mySidenav a:eq(2)').find('span').text('クリア');
+            $('#mySidenav a:eq(3)').find('span').text('バージョン');
         } else if (lan == 'hi') {
             $('.stylebtn').text('प्रवेश करना');
             $('.mobile p:eq(0)').text('6000+ टीवी चैनल देखें...');
@@ -872,7 +1210,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('श्रेणी');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('संवेदनशील सामग्री');
             $('#mySidenav a:eq(1)').find('span').text('भाषा: हिन्दी');
-            $('#mySidenav a:eq(2)').find('span').text('संस्करण');
+            $('#mySidenav a:eq(2)').find('span').text('स्पष्ट');
+            $('#mySidenav a:eq(3)').find('span').text('संस्करण');
         } else if (lan == 'ko') {
             $('.stylebtn').text('입력하다');
             $('.mobile p:eq(0)').text('6000개 이상의 TV 채널 시청...');
@@ -889,7 +1228,8 @@ $(document).ready(function() {
             $('#selectform input:eq(2)').next().text('श्रेणी');
             $('#mySidenav a:eq(0)').find('span:eq(0)').text('범주');
             $('#mySidenav a:eq(1)').find('span').text('언어');
-            $('#mySidenav a:eq(2)').find('span').text('버전');
+            $('#mySidenav a:eq(2)').find('span').text('분명한');
+            $('#mySidenav a:eq(3)').find('span').text('버전');
         }
         window.localStorage.setItem('languages', lan);
     });
