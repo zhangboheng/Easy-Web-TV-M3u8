@@ -56,8 +56,8 @@ $(document).ready(function() {
                         var episodes = Object.values($(html).find('.chapter-list li a').map((x, y) => y.innerText)).reverse().slice(2);
                         var epihref = Object.values($(html).find('.chapter-list li a').map((x, y) => originlink + y.attributes[0].value)).reverse().slice(2);
                     } else if (initlink.indexOf('dmmhw') > -1) {
-                        var episodes = Object.values($(html).find('#newchapter').nextAll('dd').map((x, y) => y.innerText.trim()));
-                        var epihref = Object.values($(html).find('#newchapter').nextAll('dd').map((x, y) => originlink + y.children[0].attributes[0].value));
+                        var episodes = Object.values($(html).find('#newchapter').nextAll('dd').map((x, y) => y.innerText.trim())).slice(0, -2);
+                        var epihref = Object.values($(html).find('#newchapter').nextAll('dd').map((x, y) => originlink + y.children[0].attributes[0].value)).slice(0, -2);
                     } else if (initlink.indexOf('llmh') > -1) {
                         var episodes = Object.values($(html).find('ul li').map((x, y) => y.innerText.trim())).slice(0, -2);
                         var epihref = Object.values($(html).find('ul li a').map((x, y) => y.attributes[0].value.split('').filter(x => /\d/g.test(x)).join(""))).slice(0, -2);
