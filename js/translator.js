@@ -380,21 +380,21 @@ $(document).ready(function() {
         $('#mySidenav a:eq(2)').find('span').text('清理');
         $('#mySidenav a:eq(3)').find('span').text('版本');
     } else if ('zh-HK, zh-TW'.indexOf(window.localStorage.getItem('languages')) > -1) {
-        $('.stylebtn').text('进入');
-        $('.mobile p:eq(0)').text('观看6000多个电视直播台......');
-        $('.mobile p:eq(1)').text('观看电影，电视剧，动漫......');
-        $('.mobile p:eq(2)').text('收听28000多个电台频道......');
-        $('.mobile p:eq(3)').text('阅读超过10本图书...');
-        $('.mobile p:eq(4)').text('浏览海量漫画...');
-        $('.mobile p:eq(5)').text('聆听世界的音乐...');
-        $('.mobile p:eq(6)').text('建设中直到9.0.0版本');
-        $('.mobile p:eq(7)').text('色情视频...');
+        $('.stylebtn').text('進入');
+        $('.mobile p:eq(0)').text('觀看 6000 多個電視頻道...');
+        $('.mobile p:eq(1)').text('看電影、電視劇、動漫……');
+        $('.mobile p:eq(2)').text('收聽 28000 多個廣播電台...');
+        $('.mobile p:eq(3)').text('閱讀超過100000本書...');
+        $('.mobile p:eq(4)').text('瀏覽大量漫畫書...');
+        $('.mobile p:eq(5)').text('聽聽世界的音樂...');
+        $('.mobile p:eq(6)').text('建設中直到9.0.0版本');
+        $('.mobile p:eq(7)').text('色情影片...');
         $('h2').text('选择');
-        $('#selectform input:eq(0)').next().text('国家');
-        $('#selectform input:eq(1)').next().text('语言');
-        $('#selectform input:eq(2)').next().text('分类');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('敏感内容');
-        $('#mySidenav a:eq(1)').find('span').text('语言');
+        $('#selectform input:eq(0)').next().text('國家');
+        $('#selectform input:eq(1)').next().text('語言');
+        $('#selectform input:eq(2)').next().text('分類');
+        $('#mySidenav a:eq(0)').find('span:eq(0)').text('敏感內容');
+        $('#mySidenav a:eq(1)').find('span').text('語言');
         $('#mySidenav a:eq(2)').find('span').text('清除');
         $('#mySidenav a:eq(3)').find('span').text('版本');
     } else if (window.localStorage.getItem('languages') == 'af') {
