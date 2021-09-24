@@ -470,7 +470,7 @@ function iniMenu(link) {
                 var con = $(html).find('a.ml-1');
                 var code = [];
                 con.each(function() {
-                    code.push(link.slice(0, -1) + con.attr('href'));
+                    code.push(link.slice(0, -1) + $(this).attr('href'));
                 });
                 var pic = $(html).find('img.rounded').map((x, y) => link.slice(0, -1) + y.attributes[2].value);
                 $('.loadingimg').remove();
@@ -534,7 +534,7 @@ function iniMenu(link) {
                                 var con = $(html).find('a.ml-1');
                                 var code = [];
                                 con.each(function() {
-                                    code.push(link.slice(0, -1) + con.attr('href'));
+                                    code.push(link.slice(0, -1) + $(this).attr('href'));
                                 });
                                 var pic = $(html).find('img.rounded').map((x, y) => link.slice(0, -1) + y.attributes[2].value);
                                 $('.loadingimg').remove();
