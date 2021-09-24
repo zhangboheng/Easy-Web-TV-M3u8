@@ -20,6 +20,9 @@ $(document).ready(function() {
         getres = proxy[0] + initlink;
     } else if (initlink.indexOf('llmh') > -1) {
         getres = proxy[1] + initlink;
+    } else if (initlink.indexOf('mangadex') > -1) {
+        originlink = 'https://mangadex.tv';
+        getres = proxy[1] + initlink;
     }
     //Get html data
     $.ajax({
@@ -27,7 +30,7 @@ $(document).ready(function() {
         dataType: 'html',
         type: "GET",
         success: function(data) {
-            var html = $.parseHTML(data);
+            var html = $.parseHTML(data.replace(/\"/g, '').replace(/\\/g, ''));
             if (initlink.indexOf('mangabuddy') > -1) {
                 var title = $(html).find('h1').text();
                 var info = $(html).find('p.content').text();
@@ -37,6 +40,9 @@ $(document).ready(function() {
             } else if (initlink.indexOf('llmh') > -1) {
                 var title = $(html).find('h1').text();
                 var info = "Nothing...";
+            } else if (initlink.indexOf('mangadex') > -1) {
+                var title = $(html).find('span.mx-1').text();
+                var info = $(html).find('.col-lg-9.col-xl-10').text();
             }
             $('#epcontent').empty();
             $('#left h3').html(title);
@@ -51,7 +57,7 @@ $(document).ready(function() {
                 dataType: 'html',
                 type: "GET",
                 success: function(data) {
-                    var html = $.parseHTML(data);
+                    var html = $.parseHTML(data.replace(/\"/g, '').replace(/\\/g, ''));
                     if (initlink.indexOf('mangabuddy') > -1) {
                         var episodes = Object.values($(html).find('.chapter-list li a').map((x, y) => y.innerText)).reverse().slice(2);
                         var epihref = Object.values($(html).find('.chapter-list li a').map((x, y) => originlink + y.attributes[0].value)).reverse().slice(2);
@@ -61,6 +67,9 @@ $(document).ready(function() {
                     } else if (initlink.indexOf('llmh') > -1) {
                         var episodes = Object.values($(html).find('ul li').map((x, y) => y.innerText.trim())).slice(0, -2);
                         var epihref = Object.values($(html).find('ul li a').map((x, y) => y.attributes[0].value.split('').filter(x => /\d/g.test(x)).join(""))).slice(0, -2);
+                    } else if (initlink.indexOf('mangadex') > -1) {
+                        var episodes = Object.values($(html).find('a.text-truncate').map((x, y) => y.innerText.trim())).slice(0, -2).reverse();
+                        var epihref = Object.values($(html).find('a.text-truncate').map((x, y) => originlink + y.attributes[0].value)).slice(0, -2).reverse();
                     }
                     $('#menu').empty();
                     $("#channelcontent").empty();
@@ -138,8 +147,28 @@ $(document).ready(function() {
                                         var pic = data.data[0].list;
                                         $('#reader').append(`<h2>${title}</h2>`);
                                         for (let i of pic) {
-                                            console.log(i.img)
                                             $('#reader').append(`<a class="spotlight" href="${i.img}" data-description="${title}"><img style="width:25%;" src="${i.img}" /></a>`);
+                                        }
+                                    },
+                                    error: function() {
+                                        alert("Error");
+                                    },
+                                    complete: function(xhr, status) {
+
+                                    }
+                                });
+                            } else if (initlink.indexOf('mangadex') > -1) {
+                                $.ajax({
+                                    url: proxy[1] + epihref[0],
+                                    dataType: 'html',
+                                    type: "GET",
+                                    success: function(data) {
+                                        $('#reader').empty();
+                                        var html = $.parseHTML(data.replace(/\"/g, '').replace(/\\/g, ''));
+                                        var pic = $(html).find('img.noselect').map((x, y) => y.attributes[5].value);
+                                        $('#reader').append(`<h2>${episodes[0]}</h2>`);
+                                        for (let i of pic) {
+                                            $('#reader').append(`<a class="spotlight" href="${i}" data-description="${title}"><img style="width:25%;" src="${i}" /></a>`);
                                         }
                                     },
                                     error: function() {
@@ -261,6 +290,27 @@ $(document).ready(function() {
                                     $('#reader').append(`<h2>${title}</h2>`);
                                     for (let i of pic) {
                                         $('#reader').append(`<a class="spotlight" href="${i.img}" data-description="${title}"><img style="width:25%;" src="${i.img}" /></a>`);
+                                    }
+                                },
+                                error: function() {
+                                    alert("Error");
+                                },
+                                complete: function(xhr, status) {
+
+                                }
+                            });
+                        } else if (initlink.indexOf('mangadex') > -1) {
+                            $.ajax({
+                                url: proxy[1] + $(this).attr('title'),
+                                dataType: 'html',
+                                type: "GET",
+                                success: function(data) {
+                                    $('#reader').empty();
+                                    var html = $.parseHTML(data.replace(/\"/g, '').replace(/\\/g, ''));
+                                    var pic = $(html).find('img.noselect').map((x, y) => y.attributes[5].value);
+                                    $('#reader').append(`<h2>${title}</h2>`);
+                                    for (let i of pic) {
+                                        $('#reader').append(`<a class="spotlight" href="${i}" data-description="${title}"><img style="width:25%;" src="${i}" /></a>`);
                                     }
                                 },
                                 error: function() {
