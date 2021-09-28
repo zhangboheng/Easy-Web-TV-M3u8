@@ -8,12 +8,20 @@ var pnum = 1;
 var rand = Math.floor(Math.random() * Object.keys(proxy).length);
 $(document).ready(function() {
     //Append Select Options
-    $('#selectapi').append(`
+    if (window.localStorage.getItem('bannedcountries') == 'true') {
+        $('#selectapi').append(`
+        <option value="https://mangabuddy.com/">mangabuddy</option>
+        <option value="https://mangadex.tv/">mangadex</option>
+        <option value="https://m.dmmhw.com/">耽美漫画(PC端)</option>
+        `);
+    } else {
+        $('#selectapi').append(`
         <option value="https://mangabuddy.com/">mangabuddy</option>
         <option value="https://mangadex.tv/">mangadex</option>
         <option value="https://llmh27.com/">啦啦漫画</option>
         <option value="https://m.dmmhw.com/">耽美漫画(PC端)</option>
         `);
+    }
     //Variable zone
     var initlink = $('#selectapi').val();
     //Toggle menu and adjust size
