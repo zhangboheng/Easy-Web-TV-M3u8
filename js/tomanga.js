@@ -8,20 +8,12 @@ var pnum = 1;
 var rand = Math.floor(Math.random() * Object.keys(proxy).length);
 $(document).ready(function() {
     //Append Select Options
-    if (window.localStorage.getItem('bannedcountries') == 'true') {
-        $('#selectapi').append(`
-        <option value="https://mangabuddy.com/">mangabuddy</option>
-        <option value="https://mangadex.tv/">mangadex</option>
-        <option value="https://m.dmmhw.com/">耽美漫画(PC端)</option>
-        `);
-    } else {
-        $('#selectapi').append(`
+    $('#selectapi').append(`
         <option value="https://mangabuddy.com/">mangabuddy</option>
         <option value="https://mangadex.tv/">mangadex</option>
         <option value="https://llmh27.com/">啦啦漫画</option>
         <option value="https://m.dmmhw.com/">耽美漫画(PC端)</option>
         `);
-    }
     //Variable zone
     var initlink = $('#selectapi').val();
     //Toggle menu and adjust size
@@ -258,7 +250,7 @@ $(document).ready(function() {
                         var con = $(html).find('a.ml-1');
                         var code = [];
                         con.each(function() {
-                            code.push(link.slice(0, -1) + con.attr('href'));
+                            code.push(link.slice(0, -1) + $(this).attr('href'));
                         });
                         var pic = $(html).find('img.rounded').map((x, y) => link.slice(0, -1) + y.attributes[2].value);
                         $('.loadingimg').remove();
