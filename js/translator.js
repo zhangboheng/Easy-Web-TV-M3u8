@@ -14,10 +14,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Zemlje');
         $('#selectform input:eq(1)').next().text('Jezici');
         $('#selectform input:eq(2)').next().text('Kategorija');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Osetljiv sadržaj');
-        $('#mySidenav a:eq(1)').find('span').text('Jezici');
-        $('#mySidenav a:eq(2)').find('span').text('jasno');
-        $('#mySidenav a:eq(3)').find('span').text('Verzija');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Osetljiv sadržaj');
+        $('#mySidenav div:eq(1)').find('span').text('Jezici');
+        $('#mySidenav div:eq(2)').find('span').text('jasno');
+        $('#mySidenav div:eq(3)').find('span').text('Verzija');
     } else if (window.localStorage.getItem('languages') == 'af') {
         $('.stylebtn').text('Tik in');
         $('.mobile p:eq(0)').text('Kyk na 6000+ TV -kanale ...');
@@ -32,10 +32,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('land');
         $('#selectform input:eq(1)').next().text('Taal');
         $('#selectform input:eq(2)').next().text('kategorie');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('sensitiewe inhoud');
-        $('#mySidenav a:eq(1)').find('span').text('Taal');
-        $('#mySidenav a:eq(2)').find('span').text('duidelik');
-        $('#mySidenav a:eq(3)').find('span').text('weergawe');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('sensitiewe inhoud');
+        $('#mySidenav div:eq(1)').find('span').text('Taal');
+        $('#mySidenav div:eq(2)').find('span').text('duidelik');
+        $('#mySidenav div:eq(3)').find('span').text('weergawe');
     } else if (window.localStorage.getItem('languages') == 'sq') {
         $('.stylebtn').text('Hyni');
         $('.mobile p:eq(0)').text('Shikoni 6000+ kanale televizive ...');
@@ -50,10 +50,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Vendet');
         $('#selectform input:eq(1)').next().text('Gjuhët');
         $('#selectform input:eq(2)').next().text('Kategoria');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Përmbajtje e ndjeshme');
-        $('#mySidenav a:eq(1)').find('span').text('Gjuhët');
-        $('#mySidenav a:eq(2)').find('span').text('qartë');
-        $('#mySidenav a:eq(3)').find('span').text('Version');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Përmbajtje e ndjeshme');
+        $('#mySidenav div:eq(1)').find('span').text('Gjuhët');
+        $('#mySidenav div:eq(2)').find('span').text('qartë');
+        $('#mySidenav div:eq(3)').find('span').text('Version');
     } else if (window.localStorage.getItem('languages') == 'am') {
         $('.stylebtn').text('ግባ');
         $('.mobile p:eq(0)').text('6000+ የቴሌቪዥን ጣቢያዎችን ይመልከቱ ...');
@@ -68,10 +68,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('አገሮች');
         $('#selectform input:eq(1)').next().text('ቋንቋዎች');
         $('#selectform input:eq(2)').next().text('ምድብ');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('ስሜታዊ ይዘት');
-        $('#mySidenav a:eq(1)').find('span').text('ቋንቋዎች');
-        $('#mySidenav a:eq(2)').find('span').text('ግልጽ');
-        $('#mySidenav a:eq(3)').find('span').text('ስሪት');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('ስሜታዊ ይዘት');
+        $('#mySidenav div:eq(1)').find('span').text('ቋንቋዎች');
+        $('#mySidenav div:eq(2)').find('span').text('ግልጽ');
+        $('#mySidenav div:eq(3)').find('span').text('ስሪት');
     } else if (window.localStorage.getItem('languages') == 'ar') {
         $('.stylebtn').text('يدخل');
         $('.mobile p:eq(0)').text('شاهد أكثر من 6000 قناة تلفزيونية ...');
@@ -86,10 +86,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('بلدان');
         $('#selectform input:eq(1)').next().text('اللغات');
         $('#selectform input:eq(2)').next().text('فئة');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('المحتوى الحساس');
-        $('#mySidenav a:eq(1)').find('span').text('اللغات');
-        $('#mySidenav a:eq(2)').find('span').text('صافي');
-        $('#mySidenav a:eq(3)').find('span').text('إصدار');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('المحتوى الحساس');
+        $('#mySidenav div:eq(1)').find('span').text('اللغات');
+        $('#mySidenav div:eq(2)').find('span').text('صافي');
+        $('#mySidenav div:eq(3)').find('span').text('إصدار');
     } else if (window.localStorage.getItem('languages') == 'hy') {
         $('.stylebtn').text('Մուտքագրեք');
         $('.mobile p:eq(0)').text('Դիտեք 6000+ հեռուստաալիք ...');
@@ -104,10 +104,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Երկրներ');
         $('#selectform input:eq(1)').next().text('Լեզուներ');
         $('#selectform input:eq(2)').next().text('Կատեգորիա');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sգայուն բովանդակություն');
-        $('#mySidenav a:eq(1)').find('span').text('Լեզուներ');
-        $('#mySidenav a:eq(2)').find('span').text('պարզ');
-        $('#mySidenav a:eq(3)').find('span').text('Տարբերակ');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sգայուն բովանդակություն');
+        $('#mySidenav div:eq(1)').find('span').text('Լեզուներ');
+        $('#mySidenav div:eq(2)').find('span').text('պարզ');
+        $('#mySidenav div:eq(3)').find('span').text('Տարբերակ');
     } else if (window.localStorage.getItem('languages') == 'az') {
         $('.stylebtn').text('Daxil edin');
         $('.mobile p:eq(0)').text('6000 -dən çox TV kanalına baxın ...');
@@ -122,10 +122,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Ölkələr');
         $('#selectform input:eq(1)').next().text('Dillər');
         $('#selectform input:eq(2)').next().text('Kateqoriya');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Həssas Məzmun');
-        $('#mySidenav a:eq(1)').find('span').text('Dillər');
-        $('#mySidenav a:eq(2)').find('span').text('aydın');
-        $('#mySidenav a:eq(3)').find('span').text('Versiya');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Həssas Məzmun');
+        $('#mySidenav div:eq(1)').find('span').text('Dillər');
+        $('#mySidenav div:eq(2)').find('span').text('aydın');
+        $('#mySidenav div:eq(3)').find('span').text('Versiya');
     } else if (window.localStorage.getItem('languages') == 'eu') {
         $('.stylebtn').text('Sartu');
         $('.mobile p:eq(0)').text('Ikusi 6000+ telebista kate ...');
@@ -140,10 +140,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Herrialdeak');
         $('#selectform input:eq(1)').next().text('Hizkuntzak');
         $('#selectform input:eq(2)').next().text('Kategoria');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Eduki sentikorra');
-        $('#mySidenav a:eq(1)').find('span').text('Hizkuntzak');
-        $('#mySidenav a:eq(2)').find('span').text('argi');
-        $('#mySidenav a:eq(3)').find('span').text('Bertsioa');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Eduki sentikorra');
+        $('#mySidenav div:eq(1)').find('span').text('Hizkuntzak');
+        $('#mySidenav div:eq(2)').find('span').text('argi');
+        $('#mySidenav div:eq(3)').find('span').text('Bertsioa');
     } else if (window.localStorage.getItem('languages') == 'be') {
         $('.stylebtn').text('Увядзіце');
         $('.mobile p:eq(0)').text('Глядзіце больш за 6000 тэлеканалаў ...');
@@ -158,10 +158,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Краіны');
         $('#selectform input:eq(1)').next().text('Мовы');
         $('#selectform input:eq(2)').next().text('Катэгорыя');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Адчувальны змест');
-        $('#mySidenav a:eq(1)').find('span').text('Мовы');
-        $('#mySidenav a:eq(2)').find('span').text('ясна');
-        $('#mySidenav a:eq(3)').find('span').text('Версія');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Адчувальны змест');
+        $('#mySidenav div:eq(1)').find('span').text('Мовы');
+        $('#mySidenav div:eq(2)').find('span').text('ясна');
+        $('#mySidenav div:eq(3)').find('span').text('Версія');
     } else if (window.localStorage.getItem('languages') == 'bn') {
         $('.stylebtn').text('প্রবেশ করুন');
         $('.mobile p:eq(0)').text('6000+ টিভি চ্যানেল দেখুন ...');
@@ -176,10 +176,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('দেশগুলি');
         $('#selectform input:eq(1)').next().text('ভাষা');
         $('#selectform input:eq(2)').next().text('বিভাগ');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('সংবেদনশীল বিষয়বস্তু');
-        $('#mySidenav a:eq(1)').find('span').text('ভাষা');
-        $('#mySidenav a:eq(2)').find('span').text('পরিষ্কার');
-        $('#mySidenav a:eq(3)').find('span').text('সংস্করণ');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('সংবেদনশীল বিষয়বস্তু');
+        $('#mySidenav div:eq(1)').find('span').text('ভাষা');
+        $('#mySidenav div:eq(2)').find('span').text('পরিষ্কার');
+        $('#mySidenav div:eq(3)').find('span').text('সংস্করণ');
     } else if (window.localStorage.getItem('languages') == 'bg') {
         $('.stylebtn').text('Въведете');
         $('.mobile p:eq(0)').text('Гледайте 6000+ телевизионни канала ...');
@@ -194,10 +194,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Държави');
         $('#selectform input:eq(1)').next().text('Езици');
         $('#selectform input:eq(2)').next().text('Категория');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Чувствително съдържание');
-        $('#mySidenav a:eq(1)').find('span').text('Езици');
-        $('#mySidenav a:eq(2)').find('span').text('ясно');
-        $('#mySidenav a:eq(3)').find('span').text('Версия');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Чувствително съдържание');
+        $('#mySidenav div:eq(1)').find('span').text('Езици');
+        $('#mySidenav div:eq(2)').find('span').text('ясно');
+        $('#mySidenav div:eq(3)').find('span').text('Версия');
     } else if ('selectbox, en, en-AU, en-CA, en-IN, en-NZ'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn:eq(0)').text('GO!');
         $('.stylebtn').slice(1).text('Enter');
@@ -213,10 +213,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Countries');
         $('#selectform input:eq(1)').next().text('Languages');
         $('#selectform input:eq(2)').next().text('Category');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensitive Content');
-        $('#mySidenav a:eq(1)').find('span').text('Languages');
-        $('#mySidenav a:eq(2)').find('span').text('Clear');
-        $('#mySidenav a:eq(3)').find('span').text('Version');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sensitive Content');
+        $('#mySidenav div:eq(1)').find('span').text('Languages');
+        $('#mySidenav div:eq(2)').find('span').text('Clear');
+        $('#mySidenav div:eq(3)').find('span').text('Version');
     } else if ('nn, nb, no'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('Tast inn');
         $('.mobile p:eq(0)').text('Se 6000+ TV -kanaler ...');
@@ -231,10 +231,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Land');
         $('#selectform input:eq(1)').next().text('Språk');
         $('#selectform input:eq(2)').next().text('Kategori');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Følsomt innhold');
-        $('#mySidenav a:eq(1)').find('span').text('Språk');
-        $('#mySidenav a:eq(2)').find('span').text('klar');
-        $('#mySidenav a:eq(3)').find('span').text('Versjon');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Følsomt innhold');
+        $('#mySidenav div:eq(1)').find('span').text('Språk');
+        $('#mySidenav div:eq(2)').find('span').text('klar');
+        $('#mySidenav div:eq(3)').find('span').text('Versjon');
     } else if ('ro, mo, rm'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('introduce');
         $('.mobile p:eq(0)').text('Urmăriți peste 6000 de canale TV ...');
@@ -249,10 +249,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Țări');
         $('#selectform input:eq(1)').next().text('Limbi');
         $('#selectform input:eq(2)').next().text('Categorie');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Conținut sensibil');
-        $('#mySidenav a:eq(1)').find('span').text('Limbi');
-        $('#mySidenav a:eq(2)').find('span').text('clar');
-        $('#mySidenav a:eq(3)').find('span').text('Versiune');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Conținut sensibil');
+        $('#mySidenav div:eq(1)').find('span').text('Limbi');
+        $('#mySidenav div:eq(2)').find('span').text('clar');
+        $('#mySidenav div:eq(3)').find('span').text('Versiune');
     } else if (window.localStorage.getItem('languages') == 'id') {
         $('.stylebtn').text('Memasuki');
         $('.mobile p:eq(0)').text('Tonton 6000+ Saluran TV...');
@@ -267,10 +267,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('negara');
         $('#selectform input:eq(1)').next().text('Bahasa');
         $('#selectform input:eq(2)').next().text('Kategori');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Konten Sensitif');
-        $('#mySidenav a:eq(1)').find('span').text('Bahasa');
-        $('#mySidenav a:eq(2)').find('span').text('jernih');
-        $('#mySidenav a:eq(3)').find('span').text('Versi: kapan');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Konten Sensitif');
+        $('#mySidenav div:eq(1)').find('span').text('Bahasa');
+        $('#mySidenav div:eq(2)').find('span').text('jernih');
+        $('#mySidenav div:eq(3)').find('span').text('Versi: kapan');
     } else if (window.localStorage.getItem('languages') == 'th') {
         $('.stylebtn').text('เข้า');
         $('.mobile p:eq(0)').text('ดูทีวีช่อง 6000+...');
@@ -285,10 +285,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('ประเทศ');
         $('#selectform input:eq(1)').next().text('ภาษา');
         $('#selectform input:eq(2)').next().text('หมวดหมู่');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('เนื้อหาละเอียดอ่อน');
-        $('#mySidenav a:eq(1)').find('span').text('ภาษา');
-        $('#mySidenav a:eq(2)').find('span').text('แจ่มใส');
-        $('#mySidenav a:eq(3)').find('span').text('เวอร์ชั่น');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('เนื้อหาละเอียดอ่อน');
+        $('#mySidenav div:eq(1)').find('span').text('ภาษา');
+        $('#mySidenav div:eq(2)').find('span').text('แจ่มใส');
+        $('#mySidenav div:eq(3)').find('span').text('เวอร์ชั่น');
     } else if ('it, it-IT, it-CH'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('accedere');
         $('.mobile p:eq(0)').text('Guarda oltre 6000 canali TV...');
@@ -303,10 +303,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Paesi');
         $('#selectform input:eq(1)').next().text('Le lingue');
         $('#selectform input:eq(2)').next().text('Categoria');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contenuti sensibili');
-        $('#mySidenav a:eq(1)').find('span').text('Le lingue');
-        $('#mySidenav a:eq(2)').find('span').text('chiara');
-        $('#mySidenav a:eq(3)').find('span').text('Versione');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Contenuti sensibili');
+        $('#mySidenav div:eq(1)').find('span').text('Le lingue');
+        $('#mySidenav div:eq(2)').find('span').text('chiara');
+        $('#mySidenav div:eq(3)').find('span').text('Versione');
     } else if (window.localStorage.getItem('languages') == 'ru') {
         $('.stylebtn').text('Входить');
         $('.mobile p:eq(0)').text('Смотрите 6000+ телеканалов ...');
@@ -321,10 +321,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Страны');
         $('#selectform input:eq(1)').next().text('Языки');
         $('#selectform input:eq(2)').next().text('Категория');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Деликатный контент');
-        $('#mySidenav a:eq(1)').find('span').text('Языки');
-        $('#mySidenav a:eq(2)').find('span').text('Чисто');
-        $('#mySidenav a:eq(3)').find('span').text('Версия');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Деликатный контент');
+        $('#mySidenav div:eq(1)').find('span').text('Языки');
+        $('#mySidenav div:eq(2)').find('span').text('Чисто');
+        $('#mySidenav div:eq(3)').find('span').text('Версия');
     } else if ('pt, pt-BR, pt-PT'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('Digitar');
         $('.mobile p:eq(0)').text('Assistir mais de 6.000 canais de TV ...');
@@ -339,10 +339,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Países');
         $('#selectform input:eq(1)').next().text('línguas');
         $('#selectform input:eq(2)').next().text('Categoria');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Conteúdo Sensível');
-        $('#mySidenav a:eq(1)').find('span').text('línguas');
-        $('#mySidenav a:eq(2)').find('span').text('claro');
-        $('#mySidenav a:eq(3)').find('span').text('Versão');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Conteúdo Sensível');
+        $('#mySidenav div:eq(1)').find('span').text('línguas');
+        $('#mySidenav div:eq(2)').find('span').text('claro');
+        $('#mySidenav div:eq(3)').find('span').text('Versão');
     } else if ('es, es-AR, es-419, es-MX, es-ES, es-US'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('Ingresar');
         $('.mobile p:eq(0)').text('Mira más de 6000 canales de televisión ...');
@@ -357,10 +357,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Países');
         $('#selectform input:eq(1)').next().text('Idiomas');
         $('#selectform input:eq(2)').next().text('Categoría');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contenido sensible');
-        $('#mySidenav a:eq(1)').find('span').text('Idiomas');
-        $('#mySidenav a:eq(2)').find('span').text('claro');
-        $('#mySidenav a:eq(3)').find('span').text('Versión');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Contenido sensible');
+        $('#mySidenav div:eq(1)').find('span').text('Idiomas');
+        $('#mySidenav div:eq(2)').find('span').text('claro');
+        $('#mySidenav div:eq(3)').find('span').text('Versión');
     } else if ('de, de-AT, de-DE, de-LI, de-CH'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('Eintreten');
         $('.mobile p:eq(0)').text('Mehr als 6000 TV-Kanäle ansehen...');
@@ -375,10 +375,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Land');
         $('#selectform input:eq(1)').next().text('Sprachen');
         $('#selectform input:eq(2)').next().text('Kategorie');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensible Inhalte');
-        $('#mySidenav a:eq(1)').find('span').text('Sprachen');
-        $('#mySidenav a:eq(2)').find('span').text('klar');
-        $('#mySidenav a:eq(3)').find('span').text('Ausführung');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sensible Inhalte');
+        $('#mySidenav div:eq(1)').find('span').text('Sprachen');
+        $('#mySidenav div:eq(2)').find('span').text('klar');
+        $('#mySidenav div:eq(3)').find('span').text('Ausführung');
     } else if ('fr, fr-CA, fr-FR, fr-CH'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('Entrer');
         $('.mobile p:eq(0)').text('Regardez plus de 6000 chaînes de télévision...');
@@ -393,10 +393,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Des pays');
         $('#selectform input:eq(1)').next().text('Langages');
         $('#selectform input:eq(2)').next().text('Catégorie');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contenu sensible');
-        $('#mySidenav a:eq(1)').find('span').text('Langages');
-        $('#mySidenav a:eq(2)').find('span').text('dégager');
-        $('#mySidenav a:eq(3)').find('span').text('Version');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Contenu sensible');
+        $('#mySidenav div:eq(1)').find('span').text('Langages');
+        $('#mySidenav div:eq(2)').find('span').text('dégager');
+        $('#mySidenav div:eq(3)').find('span').text('Version');
     } else if ('zh, zh-CN'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('进入');
         $('.mobile p:eq(0)').text('观看6000多个电视直播台......');
@@ -411,10 +411,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('国家');
         $('#selectform input:eq(1)').next().text('语言');
         $('#selectform input:eq(2)').next().text('分类');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('敏感内容');
-        $('#mySidenav a:eq(1)').find('span').text('语言');
-        $('#mySidenav a:eq(2)').find('span').text('清理');
-        $('#mySidenav a:eq(3)').find('span').text('版本');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('敏感内容');
+        $('#mySidenav div:eq(1)').find('span').text('语言');
+        $('#mySidenav div:eq(2)').find('span').text('清理');
+        $('#mySidenav div:eq(3)').find('span').text('版本');
     } else if ('zh-HK, zh-TW'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('進入');
         $('.mobile p:eq(0)').text('觀看 6000 多個電視頻道...');
@@ -429,10 +429,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('國家');
         $('#selectform input:eq(1)').next().text('語言');
         $('#selectform input:eq(2)').next().text('分類');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('敏感內容');
-        $('#mySidenav a:eq(1)').find('span').text('語言');
-        $('#mySidenav a:eq(2)').find('span').text('清除');
-        $('#mySidenav a:eq(3)').find('span').text('版本');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('敏感內容');
+        $('#mySidenav div:eq(1)').find('span').text('語言');
+        $('#mySidenav div:eq(2)').find('span').text('清除');
+        $('#mySidenav div:eq(3)').find('span').text('版本');
     } else if (window.localStorage.getItem('languages') == 'ja') {
         $('.stylebtn').text('入力');
         $('.mobile p:eq(0)').text('6000以上のテレビチャンネルを見る...');
@@ -447,10 +447,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('国');
         $('#selectform input:eq(1)').next().text('言語');
         $('#selectform input:eq(2)').next().text('カテゴリー');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('デリケートなコンテンツ');
-        $('#mySidenav a:eq(1)').find('span').text('言語');
-        $('#mySidenav a:eq(2)').find('span').text('クリア');
-        $('#mySidenav a:eq(3)').find('span').text('バージョン');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('デリケートなコンテンツ');
+        $('#mySidenav div:eq(1)').find('span').text('言語');
+        $('#mySidenav div:eq(2)').find('span').text('クリア');
+        $('#mySidenav div:eq(3)').find('span').text('バージョン');
     } else if (window.localStorage.getItem('languages') == 'hi') {
         $('.stylebtn').text('प्रवेश करना');
         $('.mobile p:eq(0)').text('6000+ टीवी चैनल देखें...');
@@ -465,10 +465,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('देश');
         $('#selectform input:eq(1)').next().text('भाषा: हिन्दी');
         $('#selectform input:eq(2)').next().text('श्रेणी');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('संवेदनशील सामग्री');
-        $('#mySidenav a:eq(1)').find('span').text('भाषा: हिन्दी');
-        $('#mySidenav a:eq(2)').find('span').text('स्पष्ट');
-        $('#mySidenav a:eq(3)').find('span').text('संस्करण');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('संवेदनशील सामग्री');
+        $('#mySidenav div:eq(1)').find('span').text('भाषा: हिन्दी');
+        $('#mySidenav div:eq(2)').find('span').text('स्पष्ट');
+        $('#mySidenav div:eq(3)').find('span').text('संस्करण');
     } else if (window.localStorage.getItem('languages') == 'ko') {
         $('.stylebtn').text('입력하다');
         $('.mobile p:eq(0)').text('6000개 이상의 TV 채널 시청...');
@@ -483,10 +483,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('국가');
         $('#selectform input:eq(1)').next().text('언어');
         $('#selectform input:eq(2)').next().text('श्रेणी');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('범주');
-        $('#mySidenav a:eq(1)').find('span').text('언어');
-        $('#mySidenav a:eq(2)').find('span').text('분명한');
-        $('#mySidenav a:eq(3)').find('span').text('버전');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('범주');
+        $('#mySidenav div:eq(1)').find('span').text('언어');
+        $('#mySidenav div:eq(2)').find('span').text('분명한');
+        $('#mySidenav div:eq(3)').find('span').text('버전');
     } else if (window.localStorage.getItem('languages') == 'ca') {
         $('.stylebtn').text('Entra');
         $('.mobile p:eq(0)').text('Mireu més de 6.000 canals de televisió ...');
@@ -501,10 +501,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Països');
         $('#selectform input:eq(1)').next().text('Idiomes');
         $('#selectform input:eq(2)').next().text('Categoria');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contingut sensible');
-        $('#mySidenav a:eq(1)').find('span').text('Idiomes');
-        $('#mySidenav a:eq(2)').find('span').text('clar');
-        $('#mySidenav a:eq(3)').find('span').text('Versió');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Contingut sensible');
+        $('#mySidenav div:eq(1)').find('span').text('Idiomes');
+        $('#mySidenav div:eq(2)').find('span').text('clar');
+        $('#mySidenav div:eq(3)').find('span').text('Versió');
     } else if (window.localStorage.getItem('languages') == 'co') {
         $('.stylebtn').text('Entre');
         $('.mobile p:eq(0)').text('Guarda 6000+ Canali TV ...');
@@ -519,10 +519,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Paesi');
         $('#selectform input:eq(1)').next().text('Lingue');
         $('#selectform input:eq(2)').next().text('Catigurìa');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Cuntenutu Sensitivu');
-        $('#mySidenav a:eq(1)').find('span').text('Lingue');
-        $('#mySidenav a:eq(2)').find('span').text('chjaru');
-        $('#mySidenav a:eq(3)').find('span').text('Versione');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Cuntenutu Sensitivu');
+        $('#mySidenav div:eq(1)').find('span').text('Lingue');
+        $('#mySidenav div:eq(2)').find('span').text('chjaru');
+        $('#mySidenav div:eq(3)').find('span').text('Versione');
     } else if (window.localStorage.getItem('languages') == 'hr') {
         $('.stylebtn').text('Unesi');
         $('.mobile p:eq(0)').text('Gledajte 6000+ TV kanala ...');
@@ -537,10 +537,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Zemlje');
         $('#selectform input:eq(1)').next().text('Jezici');
         $('#selectform input:eq(2)').next().text('Kategorija');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Osjetljiv sadržaj');
-        $('#mySidenav a:eq(1)').find('span').text('Jezici');
-        $('#mySidenav a:eq(2)').find('span').text('čisto');
-        $('#mySidenav a:eq(3)').find('span').text('Verzija');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Osjetljiv sadržaj');
+        $('#mySidenav div:eq(1)').find('span').text('Jezici');
+        $('#mySidenav div:eq(2)').find('span').text('čisto');
+        $('#mySidenav div:eq(3)').find('span').text('Verzija');
     } else if (window.localStorage.getItem('languages') == 'cs') {
         $('.stylebtn').text('Vstupte');
         $('.mobile p:eq(0)').text('Sledujte více než 6000 televizních kanálů ...');
@@ -555,10 +555,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Země');
         $('#selectform input:eq(1)').next().text('Jazyky');
         $('#selectform input:eq(2)').next().text('Kategorie');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Citlivý obsah');
-        $('#mySidenav a:eq(1)').find('span').text('Jazyky');
-        $('#mySidenav a:eq(2)').find('span').text('Průhledná');
-        $('#mySidenav a:eq(3)').find('span').text('Verze');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Citlivý obsah');
+        $('#mySidenav div:eq(1)').find('span').text('Jazyky');
+        $('#mySidenav div:eq(2)').find('span').text('Průhledná');
+        $('#mySidenav div:eq(3)').find('span').text('Verze');
     } else if (window.localStorage.getItem('languages') == 'da') {
         $('.stylebtn').text('Gå ind');
         $('.mobile p:eq(0)').text('Se 6000+ tv -kanaler ...');
@@ -573,10 +573,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Lande');
         $('#selectform input:eq(1)').next().text('Sprog');
         $('#selectform input:eq(2)').next().text('Kategori');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Følsomt indhold');
-        $('#mySidenav a:eq(1)').find('span').text('Sprog');
-        $('#mySidenav a:eq(2)').find('span').text('klar');
-        $('#mySidenav a:eq(3)').find('span').text('Version');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Følsomt indhold');
+        $('#mySidenav div:eq(1)').find('span').text('Sprog');
+        $('#mySidenav div:eq(2)').find('span').text('klar');
+        $('#mySidenav div:eq(3)').find('span').text('Version');
     } else if (window.localStorage.getItem('languages') == 'nl') {
         $('.stylebtn').text('Binnenkomen');
         $('.mobile p:eq(0)').text('Kijk 6000+ tv-kanalen...');
@@ -591,10 +591,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Landen');
         $('#selectform input:eq(1)').next().text('Talen');
         $('#selectform input:eq(2)').next().text('Categorie');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Gevoelige inhoud');
-        $('#mySidenav a:eq(1)').find('span').text('Talen');
-        $('#mySidenav a:eq(2)').find('span').text('Doorzichtig');
-        $('#mySidenav a:eq(3)').find('span').text('Versie');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Gevoelige inhoud');
+        $('#mySidenav div:eq(1)').find('span').text('Talen');
+        $('#mySidenav div:eq(2)').find('span').text('Doorzichtig');
+        $('#mySidenav div:eq(3)').find('span').text('Versie');
     } else if (window.localStorage.getItem('languages') == 'eo') {
         $('.stylebtn').text('Eniru');
         $('.mobile p:eq(0)').text('Spektu 6000+ televidajn kanalojn ...');
@@ -609,10 +609,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Landoj');
         $('#selectform input:eq(1)').next().text('Lingvoj');
         $('#selectform input:eq(2)').next().text('Kategorio');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sentema Enhavo');
-        $('#mySidenav a:eq(1)').find('span').text('Lingvoj');
-        $('#mySidenav a:eq(2)').find('span').text('klara');
-        $('#mySidenav a:eq(3)').find('span').text('Versio');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sentema Enhavo');
+        $('#mySidenav div:eq(1)').find('span').text('Lingvoj');
+        $('#mySidenav div:eq(2)').find('span').text('klara');
+        $('#mySidenav div:eq(3)').find('span').text('Versio');
     } else if (window.localStorage.getItem('languages') == 'et') {
         $('.stylebtn').text('Sisenema');
         $('.mobile p:eq(0)').text('Vaata üle 6000 telekanali ...');
@@ -627,10 +627,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Riigid');
         $('#selectform input:eq(1)').next().text('Keeled');
         $('#selectform input:eq(2)').next().text('Kategooria');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Tundlik sisu');
-        $('#mySidenav a:eq(1)').find('span').text('Keeled');
-        $('#mySidenav a:eq(2)').find('span').text('Selge');
-        $('#mySidenav a:eq(3)').find('span').text('Versioon');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Tundlik sisu');
+        $('#mySidenav div:eq(1)').find('span').text('Keeled');
+        $('#mySidenav div:eq(2)').find('span').text('Selge');
+        $('#mySidenav div:eq(3)').find('span').text('Versioon');
     } else if (window.localStorage.getItem('languages') == 'fil') {
         $('.stylebtn').text('Pasok');
         $('.mobile p:eq(0)').text('Manood ng 6000+ Mga Channel sa TV ...');
@@ -645,10 +645,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Mga Bansa');
         $('#selectform input:eq(1)').next().text('Mga Wika');
         $('#selectform input:eq(2)').next().text('Kategoryang');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensitibong Nilalaman');
-        $('#mySidenav a:eq(1)').find('span').text('Mga Wika');
-        $('#mySidenav a:eq(2)').find('span').text('Malinaw');
-        $('#mySidenav a:eq(3)').find('span').text('Bersyon');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sensitibong Nilalaman');
+        $('#mySidenav div:eq(1)').find('span').text('Mga Wika');
+        $('#mySidenav div:eq(2)').find('span').text('Malinaw');
+        $('#mySidenav div:eq(3)').find('span').text('Bersyon');
     } else if (window.localStorage.getItem('languages') == 'fi') {
         $('.stylebtn').text('Tulla sisään');
         $('.mobile p:eq(0)').text('Katso yli 6000 TV -kanavaa ...');
@@ -663,10 +663,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Maat');
         $('#selectform input:eq(1)').next().text('Kieli (kielet');
         $('#selectform input:eq(2)').next().text('Kategoria');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Arkaluonteinen sisältö');
-        $('#mySidenav a:eq(1)').find('span').text('Kieli (kielet');
-        $('#mySidenav a:eq(2)').find('span').text('Asia selvä');
-        $('#mySidenav a:eq(3)').find('span').text('Versio');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Arkaluonteinen sisältö');
+        $('#mySidenav div:eq(1)').find('span').text('Kieli (kielet');
+        $('#mySidenav div:eq(2)').find('span').text('Asia selvä');
+        $('#mySidenav div:eq(3)').find('span').text('Versio');
     } else if (window.localStorage.getItem('languages') == 'gl') {
         $('.stylebtn').text('Entra');
         $('.mobile p:eq(0)').text('Ver máis de 6000 canles de TV ...');
@@ -681,10 +681,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Países');
         $('#selectform input:eq(1)').next().text('Idiomas');
         $('#selectform input:eq(2)').next().text('Categoría');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contido sensible');
-        $('#mySidenav a:eq(1)').find('span').text('Idiomas');
-        $('#mySidenav a:eq(2)').find('span').text('Claro');
-        $('#mySidenav a:eq(3)').find('span').text('Versión');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Contido sensible');
+        $('#mySidenav div:eq(1)').find('span').text('Idiomas');
+        $('#mySidenav div:eq(2)').find('span').text('Claro');
+        $('#mySidenav div:eq(3)').find('span').text('Versión');
     } else if (window.localStorage.getItem('languages') == 'ka') {
         $('.stylebtn').text('შეიყვანეთ');
         $('.mobile p:eq(0)').text('უყურეთ 6000+ სატელევიზიო არხს ...');
@@ -699,10 +699,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('პაესები');
         $('#selectform input:eq(1)').next().text('ენები');
         $('#selectform input:eq(2)').next().text('კატეგორია');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('მგრძნობიარე შინაარსი');
-        $('#mySidenav a:eq(1)').find('span').text('ენები');
-        $('#mySidenav a:eq(2)').find('span').text('ნათელია');
-        $('#mySidenav a:eq(3)').find('span').text('ვერსია');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('მგრძნობიარე შინაარსი');
+        $('#mySidenav div:eq(1)').find('span').text('ენები');
+        $('#mySidenav div:eq(2)').find('span').text('ნათელია');
+        $('#mySidenav div:eq(3)').find('span').text('ვერსია');
     } else if (window.localStorage.getItem('languages') == 'el') {
         $('.stylebtn').text('Εισαγω');
         $('.mobile p:eq(0)').text('Παρακολουθήστε 6000+ τηλεοπτικά κανάλια ...');
@@ -717,10 +717,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Χώρες');
         $('#selectform input:eq(1)').next().text('Γλώσσες');
         $('#selectform input:eq(2)').next().text('Κατηγορία');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Ευαίσθητο Περιεχόμενο');
-        $('#mySidenav a:eq(1)').find('span').text('Γλώσσες');
-        $('#mySidenav a:eq(2)').find('span').text('Σαφή');
-        $('#mySidenav a:eq(3)').find('span').text('Εκδοχή');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Ευαίσθητο Περιεχόμενο');
+        $('#mySidenav div:eq(1)').find('span').text('Γλώσσες');
+        $('#mySidenav div:eq(2)').find('span').text('Σαφή');
+        $('#mySidenav div:eq(3)').find('span').text('Εκδοχή');
     } else if (window.localStorage.getItem('languages') == 'gu') {
         $('.stylebtn').text('દાખલ કરો');
         $('.mobile p:eq(0)').text('6000+ ટીવી ચેનલો જુઓ ...');
@@ -735,10 +735,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('દેશો');
         $('#selectform input:eq(1)').next().text('ભાષાઓ');
         $('#selectform input:eq(2)').next().text('શ્રેણી');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('સંવેદનશીલ સામગ્રી');
-        $('#mySidenav a:eq(1)').find('span').text('ભાષાઓ');
-        $('#mySidenav a:eq(2)').find('span').text('ચોખ્ખુ');
-        $('#mySidenav a:eq(3)').find('span').text('આવૃત્તિ');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('સંવેદનશીલ સામગ્રી');
+        $('#mySidenav div:eq(1)').find('span').text('ભાષાઓ');
+        $('#mySidenav div:eq(2)').find('span').text('ચોખ્ખુ');
+        $('#mySidenav div:eq(3)').find('span').text('આવૃત્તિ');
     } else if (window.localStorage.getItem('languages') == 'ha') {
         $('.stylebtn').text('Shigar');
         $('.mobile p:eq(0)').text('Kalli tashoshin TV sama da 6000+ ...');
@@ -753,10 +753,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Kasashe');
         $('#selectform input:eq(1)').next().text('Harsuna');
         $('#selectform input:eq(2)').next().text('Nau\'i');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Abun ciki Mai Sahihi');
-        $('#mySidenav a:eq(1)').find('span').text('Harsuna');
-        $('#mySidenav a:eq(2)').find('span').text('Bayyana');
-        $('#mySidenav a:eq(3)').find('span').text('Sigar');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Abun ciki Mai Sahihi');
+        $('#mySidenav div:eq(1)').find('span').text('Harsuna');
+        $('#mySidenav div:eq(2)').find('span').text('Bayyana');
+        $('#mySidenav div:eq(3)').find('span').text('Sigar');
     } else if (window.localStorage.getItem('languages') == 'haw') {
         $('.stylebtn').text('Komo');
         $('.mobile p:eq(0)').text('Nānā i nā kaha kīwī 6000+ ...');
@@ -771,10 +771,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Nā Aupuni');
         $('#selectform input:eq(1)').next().text('ʻLelo');
         $('#selectform input:eq(2)').next().text('Māhele');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('ʻIke nahenahe');
-        $('#mySidenav a:eq(1)').find('span').text('ʻLelo');
-        $('#mySidenav a:eq(2)').find('span').text('Maopopo');
-        $('#mySidenav a:eq(3)').find('span').text('Mana');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('ʻIke nahenahe');
+        $('#mySidenav div:eq(1)').find('span').text('ʻLelo');
+        $('#mySidenav div:eq(2)').find('span').text('Maopopo');
+        $('#mySidenav div:eq(3)').find('span').text('Mana');
     } else if (window.localStorage.getItem('languages') == 'he') {
         $('.stylebtn').text('להיכנס');
         $('.mobile p:eq(0)').text('צפה בערוצי טלוויזיה 6000+ ...');
@@ -789,10 +789,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('מדינות');
         $('#selectform input:eq(1)').next().text('שפות');
         $('#selectform input:eq(2)').next().text('קטגוריה');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('תוכן רגיש');
-        $('#mySidenav a:eq(1)').find('span').text('שפות');
-        $('#mySidenav a:eq(2)').find('span').text('ברור');
-        $('#mySidenav a:eq(3)').find('span').text('גִרְסָה');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('תוכן רגיש');
+        $('#mySidenav div:eq(1)').find('span').text('שפות');
+        $('#mySidenav div:eq(2)').find('span').text('ברור');
+        $('#mySidenav div:eq(3)').find('span').text('גִרְסָה');
     } else if (window.localStorage.getItem('languages') == 'hu') {
         $('.stylebtn').text('Belép');
         $('.mobile p:eq(0)').text('Nézzen több mint 6000 TV -csatornát ...');
@@ -807,10 +807,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Országok');
         $('#selectform input:eq(1)').next().text('Nyelvek');
         $('#selectform input:eq(2)').next().text('Kategória');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Érzékeny tartalom');
-        $('#mySidenav a:eq(1)').find('span').text('Nyelvek');
-        $('#mySidenav a:eq(2)').find('span').text('Egyértelmű');
-        $('#mySidenav a:eq(3)').find('span').text('Változat');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Érzékeny tartalom');
+        $('#mySidenav div:eq(1)').find('span').text('Nyelvek');
+        $('#mySidenav div:eq(2)').find('span').text('Egyértelmű');
+        $('#mySidenav div:eq(3)').find('span').text('Változat');
     } else if (window.localStorage.getItem('languages') == 'is') {
         $('.stylebtn').text('Koma inn');
         $('.mobile p:eq(0)').text('Horfðu á 6000+ sjónvarpsrásir ...');
@@ -825,10 +825,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Lönd');
         $('#selectform input:eq(1)').next().text('Tungumál');
         $('#selectform input:eq(2)').next().text('Flokkur');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Viðkvæmt efni');
-        $('#mySidenav a:eq(1)').find('span').text('Tungumál');
-        $('#mySidenav a:eq(2)').find('span').text('Hreinsa');
-        $('#mySidenav a:eq(3)').find('span').text('Útgáfa');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Viðkvæmt efni');
+        $('#mySidenav div:eq(1)').find('span').text('Tungumál');
+        $('#mySidenav div:eq(2)').find('span').text('Hreinsa');
+        $('#mySidenav div:eq(3)').find('span').text('Útgáfa');
     } else if (window.localStorage.getItem('languages') == 'ga') {
         $('.stylebtn').text('Iontráil');
         $('.mobile p:eq(0)').text('Féach ar 6000+ Cainéal Teilifíse ...');
@@ -843,10 +843,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Tíortha');
         $('#selectform input:eq(1)').next().text('Teangacha');
         $('#selectform input:eq(2)').next().text('Catagóir');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Ábhar Íogair');
-        $('#mySidenav a:eq(1)').find('span').text('Teangacha');
-        $('#mySidenav a:eq(2)').find('span').text('Glan');
-        $('#mySidenav a:eq(3)').find('span').text('Leagan');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Ábhar Íogair');
+        $('#mySidenav div:eq(1)').find('span').text('Teangacha');
+        $('#mySidenav div:eq(2)').find('span').text('Glan');
+        $('#mySidenav div:eq(3)').find('span').text('Leagan');
     } else if (window.localStorage.getItem('languages') == 'kn') {
         $('.stylebtn').text('ನಮೂದಿಸಿ');
         $('.mobile p:eq(0)').text('6000+ ಟಿವಿ ಚಾನೆಲ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಿ ...');
@@ -861,10 +861,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('ದೇಶಗಳು');
         $('#selectform input:eq(1)').next().text('ಭಾಷೆಗಳು');
         $('#selectform input:eq(2)').next().text('ವರ್ಗ');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('ಸೂಕ್ಷ್ಮ ವಿಷಯ');
-        $('#mySidenav a:eq(1)').find('span').text('ಭಾಷೆಗಳು');
-        $('#mySidenav a:eq(2)').find('span').text('ಸ್ಪಷ್ಟ');
-        $('#mySidenav a:eq(3)').find('span').text('ಆವೃತ್ತಿ');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('ಸೂಕ್ಷ್ಮ ವಿಷಯ');
+        $('#mySidenav div:eq(1)').find('span').text('ಭಾಷೆಗಳು');
+        $('#mySidenav div:eq(2)').find('span').text('ಸ್ಪಷ್ಟ');
+        $('#mySidenav div:eq(3)').find('span').text('ಆವೃತ್ತಿ');
     } else if (window.localStorage.getItem('languages') == 'kk') {
         $('.stylebtn').text('Кіру');
         $('.mobile p:eq(0)').text('6000+ телеарналарды қарау ...');
@@ -879,10 +879,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Елдер');
         $('#selectform input:eq(1)').next().text('Тілдер');
         $('#selectform input:eq(2)').next().text('Санат');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Сезімтал мазмұн');
-        $('#mySidenav a:eq(1)').find('span').text('Тілдер');
-        $('#mySidenav a:eq(2)').find('span').text('Таза');
-        $('#mySidenav a:eq(3)').find('span').text('Нұсқа');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Сезімтал мазмұн');
+        $('#mySidenav div:eq(1)').find('span').text('Тілдер');
+        $('#mySidenav div:eq(2)').find('span').text('Таза');
+        $('#mySidenav div:eq(3)').find('span').text('Нұсқа');
     } else if (window.localStorage.getItem('languages') == 'km') {
         $('.stylebtn').text('បញ្ចូល');
         $('.mobile p:eq(0)').text('មើលប៉ុស្តិ៍ទូរទស្សន៍ជាង ៦០០០+ ...');
@@ -897,10 +897,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('បណ្តាប្រទេស');
         $('#selectform input:eq(1)').next().text('ភាសា');
         $('#selectform input:eq(2)').next().text('ប្រភេទ');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('មាតិការសើប');
-        $('#mySidenav a:eq(1)').find('span').text('ភាសា');
-        $('#mySidenav a:eq(2)').find('span').text('ច្បាស់');
-        $('#mySidenav a:eq(3)').find('span').text('កំណែ');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('មាតិការសើប');
+        $('#mySidenav div:eq(1)').find('span').text('ភាសា');
+        $('#mySidenav div:eq(2)').find('span').text('ច្បាស់');
+        $('#mySidenav div:eq(3)').find('span').text('កំណែ');
     } else if (window.localStorage.getItem('languages') == 'ku') {
         $('.stylebtn').text('Derbasbûn');
         $('.mobile p:eq(0)').text('6000+ Kanalên TV -yê temaşe bikin ...');
@@ -915,10 +915,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Welatan');
         $('#selectform input:eq(1)').next().text('Ziman');
         $('#selectform input:eq(2)').next().text('Liq');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Naveroka Hestiyar');
-        $('#mySidenav a:eq(1)').find('span').text('Ziman');
-        $('#mySidenav a:eq(2)').find('span').text('Zelal');
-        $('#mySidenav a:eq(3)').find('span').text('Awa');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Naveroka Hestiyar');
+        $('#mySidenav div:eq(1)').find('span').text('Ziman');
+        $('#mySidenav div:eq(2)').find('span').text('Zelal');
+        $('#mySidenav div:eq(3)').find('span').text('Awa');
     } else if (window.localStorage.getItem('languages') == 'ky') {
         $('.stylebtn').text('Кирүү');
         $('.mobile p:eq(0)').text('6000+ телеканалдарды көрүңүз ...');
@@ -933,10 +933,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Өлкөлөр');
         $('#selectform input:eq(1)').next().text('Тилдер');
         $('#selectform input:eq(2)').next().text('Категория');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Сезимдүү мазмун');
-        $('#mySidenav a:eq(1)').find('span').text('Тилдер');
-        $('#mySidenav a:eq(2)').find('span').text('Тазалоо');
-        $('#mySidenav a:eq(3)').find('span').text('Версия');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Сезимдүү мазмун');
+        $('#mySidenav div:eq(1)').find('span').text('Тилдер');
+        $('#mySidenav div:eq(2)').find('span').text('Тазалоо');
+        $('#mySidenav div:eq(3)').find('span').text('Версия');
     } else if (window.localStorage.getItem('languages') == 'lo') {
         $('.stylebtn').text('ເຂົ້າ');
         $('.mobile p:eq(0)').text('ເບິ່ງໂທລະທັດຫຼາຍກວ່າ 6000 ຊ່ອງ ...');
@@ -951,10 +951,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('ປະເທດ');
         $('#selectform input:eq(1)').next().text('ພາສາ');
         $('#selectform input:eq(2)').next().text('ປະເພດ');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('ເນື້ອຫາທີ່ລະອຽດອ່ອນ');
-        $('#mySidenav a:eq(1)').find('span').text('ພາສາ');
-        $('#mySidenav a:eq(2)').find('span').text('ຊັດເຈນ');
-        $('#mySidenav a:eq(3)').find('span').text('ສະບັບ');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('ເນື້ອຫາທີ່ລະອຽດອ່ອນ');
+        $('#mySidenav div:eq(1)').find('span').text('ພາສາ');
+        $('#mySidenav div:eq(2)').find('span').text('ຊັດເຈນ');
+        $('#mySidenav div:eq(3)').find('span').text('ສະບັບ');
     } else if (window.localStorage.getItem('languages') == 'la') {
         $('.stylebtn').text('Intra');
         $('.mobile p:eq(0)').text('Vigilate 6000+ TV canales...');
@@ -969,10 +969,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('regiones');
         $('#selectform input:eq(1)').next().text('Linguae');
         $('#selectform input:eq(2)').next().text('Categoria');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensitivum Content');
-        $('#mySidenav a:eq(1)').find('span').text('Linguae');
-        $('#mySidenav a:eq(2)').find('span').text('Patet');
-        $('#mySidenav a:eq(3)').find('span').text('Version');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sensitivum Content');
+        $('#mySidenav div:eq(1)').find('span').text('Linguae');
+        $('#mySidenav div:eq(2)').find('span').text('Patet');
+        $('#mySidenav div:eq(3)').find('span').text('Version');
     } else if (window.localStorage.getItem('languages') == 'lv') {
         $('.stylebtn').text('Ievadiet');
         $('.mobile p:eq(0)').text('Skatieties vairāk nekā 6000 TV kanālu ...');
@@ -987,10 +987,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Valstis');
         $('#selectform input:eq(1)').next().text('Valodas');
         $('#selectform input:eq(2)').next().text('Kategorija');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensitīvs saturs');
-        $('#mySidenav a:eq(1)').find('span').text('Valodas');
-        $('#mySidenav a:eq(2)').find('span').text('Skaidrs');
-        $('#mySidenav a:eq(3)').find('span').text('Versija');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sensitīvs saturs');
+        $('#mySidenav div:eq(1)').find('span').text('Valodas');
+        $('#mySidenav div:eq(2)').find('span').text('Skaidrs');
+        $('#mySidenav div:eq(3)').find('span').text('Versija');
     } else if (window.localStorage.getItem('languages') == 'lt') {
         $('.stylebtn').text('Įveskite');
         $('.mobile p:eq(0)').text('Žiūrėkite daugiau nei 6000 TV kanalų ...');
@@ -1005,10 +1005,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Šalys');
         $('#selectform input:eq(1)').next().text('Kalbos');
         $('#selectform input:eq(2)').next().text('Kategorija');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Jautrus turinys');
-        $('#mySidenav a:eq(1)').find('span').text('Kalbos');
-        $('#mySidenav a:eq(2)').find('span').text('Skaidrus');
-        $('#mySidenav a:eq(3)').find('span').text('Versija');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Jautrus turinys');
+        $('#mySidenav div:eq(1)').find('span').text('Kalbos');
+        $('#mySidenav div:eq(2)').find('span').text('Skaidrus');
+        $('#mySidenav div:eq(3)').find('span').text('Versija');
     } else if (window.localStorage.getItem('languages') == 'mk') {
         $('.stylebtn').text('Внесете');
         $('.mobile p:eq(0)').text('Гледајте 6000+ ТВ канали ...');
@@ -1023,10 +1023,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Земјите');
         $('#selectform input:eq(1)').next().text('Јазици');
         $('#selectform input:eq(2)').next().text('Категорија');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Чувствителна содржина');
-        $('#mySidenav a:eq(1)').find('span').text('Јазици');
-        $('#mySidenav a:eq(2)').find('span').text('Јасно');
-        $('#mySidenav a:eq(3)').find('span').text('Верзија');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Чувствителна содржина');
+        $('#mySidenav div:eq(1)').find('span').text('Јазици');
+        $('#mySidenav div:eq(2)').find('span').text('Јасно');
+        $('#mySidenav div:eq(3)').find('span').text('Верзија');
     } else if (window.localStorage.getItem('languages') == 'ms') {
         $('.stylebtn').text('Masukkan');
         $('.mobile p:eq(0)').text('Tonton 6000+ Saluran TV ...');
@@ -1041,10 +1041,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Negara');
         $('#selectform input:eq(1)').next().text('Bahasa');
         $('#selectform input:eq(2)').next().text('Kategori');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Kandungan Sensitif');
-        $('#mySidenav a:eq(1)').find('span').text('Bahasa');
-        $('#mySidenav a:eq(2)').find('span').text('Jelas');
-        $('#mySidenav a:eq(3)').find('span').text('Versi');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Kandungan Sensitif');
+        $('#mySidenav div:eq(1)').find('span').text('Bahasa');
+        $('#mySidenav div:eq(2)').find('span').text('Jelas');
+        $('#mySidenav div:eq(3)').find('span').text('Versi');
     } else if (window.localStorage.getItem('languages') == 'ml') {
         $('.stylebtn').text('നൽകുക');
         $('.mobile p:eq(0)').text('6000+ ടിവി ചാനലുകൾ കാണുക ...');
@@ -1059,10 +1059,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('രാജ്യങ്ങൾ');
         $('#selectform input:eq(1)').next().text('ഭാഷകൾ');
         $('#selectform input:eq(2)').next().text('വിഭാഗം');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('സെൻസിറ്റീവ് ഉള്ളടക്കം');
-        $('#mySidenav a:eq(1)').find('span').text('ഭാഷകൾ');
-        $('#mySidenav a:eq(2)').find('span').text('തെളിഞ്ഞ');
-        $('#mySidenav a:eq(3)').find('span').text('പതിപ്പ്');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('സെൻസിറ്റീവ് ഉള്ളടക്കം');
+        $('#mySidenav div:eq(1)').find('span').text('ഭാഷകൾ');
+        $('#mySidenav div:eq(2)').find('span').text('തെളിഞ്ഞ');
+        $('#mySidenav div:eq(3)').find('span').text('പതിപ്പ്');
     } else if (window.localStorage.getItem('languages') == 'mt') {
         $('.stylebtn').text('Daħħal');
         $('.mobile p:eq(0)').text('Ara 6000+ Kanal tat-TV ...');
@@ -1077,10 +1077,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Pajjiżi');
         $('#selectform input:eq(1)').next().text('Lingwi');
         $('#selectform input:eq(2)').next().text('Kategorija');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Kontenut Sensittiv');
-        $('#mySidenav a:eq(1)').find('span').text('Lingwi');
-        $('#mySidenav a:eq(2)').find('span').text('Ċara');
-        $('#mySidenav a:eq(3)').find('span').text('Verżjoni');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Kontenut Sensittiv');
+        $('#mySidenav div:eq(1)').find('span').text('Lingwi');
+        $('#mySidenav div:eq(2)').find('span').text('Ċara');
+        $('#mySidenav div:eq(3)').find('span').text('Verżjoni');
     } else if (window.localStorage.getItem('languages') == 'mr') {
         $('.stylebtn').text('एंटर करा');
         $('.mobile p:eq(0)').text('6000+ टीव्ही चॅनेल पहा ...');
@@ -1095,10 +1095,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('देश');
         $('#selectform input:eq(1)').next().text('भाषा');
         $('#selectform input:eq(2)').next().text('श्रेणी');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('संवेदनशील सामग्री');
-        $('#mySidenav a:eq(1)').find('span').text('भाषा');
-        $('#mySidenav a:eq(2)').find('span').text('साफ करा');
-        $('#mySidenav a:eq(3)').find('span').text('आवृत्ती');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('संवेदनशील सामग्री');
+        $('#mySidenav div:eq(1)').find('span').text('भाषा');
+        $('#mySidenav div:eq(2)').find('span').text('साफ करा');
+        $('#mySidenav div:eq(3)').find('span').text('आवृत्ती');
     } else if (window.localStorage.getItem('languages') == 'mn') {
         $('.stylebtn').text('Оруулна уу');
         $('.mobile p:eq(0)').text('6000+ суваг үзэх ...');
@@ -1113,10 +1113,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Улс орнууд');
         $('#selectform input:eq(1)').next().text('Хэл');
         $('#selectform input:eq(2)').next().text('Ангилал');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Мэдрэмтгий контент');
-        $('#mySidenav a:eq(1)').find('span').text('Хэл');
-        $('#mySidenav a:eq(2)').find('span').text('Цэвэр');
-        $('#mySidenav a:eq(3)').find('span').text('Хувилбар');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Мэдрэмтгий контент');
+        $('#mySidenav div:eq(1)').find('span').text('Хэл');
+        $('#mySidenav div:eq(2)').find('span').text('Цэвэр');
+        $('#mySidenav div:eq(3)').find('span').text('Хувилбар');
     } else if (window.localStorage.getItem('languages') == 'vi') {
         $('.stylebtn').text('Vào');
         $('.mobile p:eq(0)').text('Xem hơn 6000 kênh TV ...');
@@ -1131,10 +1131,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Quốc gia');
         $('#selectform input:eq(1)').next().text('Ngôn ngữ');
         $('#selectform input:eq(2)').next().text('Loại');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Nội dung nhạy cảm');
-        $('#mySidenav a:eq(1)').find('span').text('Ngôn ngữ');
-        $('#mySidenav a:eq(2)').find('span').text('Sạch');
-        $('#mySidenav a:eq(3)').find('span').text('Phiên bản');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Nội dung nhạy cảm');
+        $('#mySidenav div:eq(1)').find('span').text('Ngôn ngữ');
+        $('#mySidenav div:eq(2)').find('span').text('Sạch');
+        $('#mySidenav div:eq(3)').find('span').text('Phiên bản');
     } else if (window.localStorage.getItem('languages') == 'pa') {
         $('.stylebtn').text('ਦਾਖਲ ਕਰੋ');
         $('.mobile p:eq(0)').text('6000+ ਟੀਵੀ ਚੈਨਲ ਵੇਖੋ ...');
@@ -1149,10 +1149,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('ਦੇਸ਼');
         $('#selectform input:eq(1)').next().text('ਭਾਸ਼ਾਵਾਂ');
         $('#selectform input:eq(2)').next().text('ਸ਼੍ਰੇਣੀ');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('ਸੰਵੇਦਨਸ਼ੀਲ ਸਮਗਰੀ');
-        $('#mySidenav a:eq(1)').find('span').text('ਭਾਸ਼ਾਵਾਂ');
-        $('#mySidenav a:eq(2)').find('span').text('ਸਾਫ਼ ਕਰੋ');
-        $('#mySidenav a:eq(3)').find('span').text('ਵਰਜਨ');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('ਸੰਵੇਦਨਸ਼ੀਲ ਸਮਗਰੀ');
+        $('#mySidenav div:eq(1)').find('span').text('ਭਾਸ਼ਾਵਾਂ');
+        $('#mySidenav div:eq(2)').find('span').text('ਸਾਫ਼ ਕਰੋ');
+        $('#mySidenav div:eq(3)').find('span').text('ਵਰਜਨ');
     } else if (window.localStorage.getItem('languages') == 'ne') {
         $('.stylebtn').text('प्रविष्ट गर्नुहोस्');
         $('.mobile p:eq(0)').text('000०००+ टिभी च्यानलहरु हेर्नुहोस् ...');
@@ -1167,10 +1167,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('देशहरु');
         $('#selectform input:eq(1)').next().text('भाषाहरु');
         $('#selectform input:eq(2)').next().text('श्रेणी');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('संवेदनशील सामग्री');
-        $('#mySidenav a:eq(1)').find('span').text('भाषाहरु');
-        $('#mySidenav a:eq(2)').find('span').text('खाली');
-        $('#mySidenav a:eq(3)').find('span').text('संस्करण');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('संवेदनशील सामग्री');
+        $('#mySidenav div:eq(1)').find('span').text('भाषाहरु');
+        $('#mySidenav div:eq(2)').find('span').text('खाली');
+        $('#mySidenav div:eq(3)').find('span').text('संस्करण');
     } else if (window.localStorage.getItem('languages') == 'od') {
         $('.stylebtn').text('ପ୍ରବେଶ କରନ୍ତୁ |');
         $('.mobile p:eq(0)').text('6000+ ଟିଭି ଚ୍ୟାନେଲ ଦେଖନ୍ତୁ ...');
@@ -1185,10 +1185,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('ଦେଶଗୁଡିକ |');
         $('#selectform input:eq(1)').next().text('ଭାଷା');
         $('#selectform input:eq(2)').next().text('ବର୍ଗ');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('ସମ୍ବେଦନଶୀଳ ବିଷୟବସ୍ତୁ |');
-        $('#mySidenav a:eq(1)').find('span').text('ଭାଷା');
-        $('#mySidenav a:eq(2)').find('span').text('ସଫା');
-        $('#mySidenav a:eq(3)').find('span').text('ସଂସ୍କରଣ');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('ସମ୍ବେଦନଶୀଳ ବିଷୟବସ୍ତୁ |');
+        $('#mySidenav div:eq(1)').find('span').text('ଭାଷା');
+        $('#mySidenav div:eq(2)').find('span').text('ସଫା');
+        $('#mySidenav div:eq(3)').find('span').text('ସଂସ୍କରଣ');
     } else if (window.localStorage.getItem('languages') == 'ps') {
         $('.stylebtn').text('ننوځئ');
         $('.mobile p:eq(0)').text('6000+ تلویزیوني چینلونه وګورئ ...');
@@ -1203,10 +1203,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('هیوادونه');
         $('#selectform input:eq(1)').next().text('ژبې');
         $('#selectform input:eq(2)').next().text('کټګوري');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('حساس مواد');
-        $('#mySidenav a:eq(1)').find('span').text('ژبې');
-        $('#mySidenav a:eq(2)').find('span').text('پاک');
-        $('#mySidenav a:eq(3)').find('span').text('نسخه');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('حساس مواد');
+        $('#mySidenav div:eq(1)').find('span').text('ژبې');
+        $('#mySidenav div:eq(2)').find('span').text('پاک');
+        $('#mySidenav div:eq(3)').find('span').text('نسخه');
     } else if (window.localStorage.getItem('languages') == 'fa') {
         $('.stylebtn').text('وارد');
         $('.mobile p:eq(0)').text('تماشای بیش از 6000 کانال تلویزیونی ...');
@@ -1221,10 +1221,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('کشورها');
         $('#selectform input:eq(1)').next().text('زبان ها');
         $('#selectform input:eq(2)').next().text('دسته بندی');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('محتوای حساس');
-        $('#mySidenav a:eq(1)').find('span').text('زبان ها');
-        $('#mySidenav a:eq(2)').find('span').text('پاک کردن');
-        $('#mySidenav a:eq(3)').find('span').text('نسخه');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('محتوای حساس');
+        $('#mySidenav div:eq(1)').find('span').text('زبان ها');
+        $('#mySidenav div:eq(2)').find('span').text('پاک کردن');
+        $('#mySidenav div:eq(3)').find('span').text('نسخه');
     } else if (window.localStorage.getItem('languages') == 'pl') {
         $('.stylebtn').text('Wejść');
         $('.mobile p:eq(0)').text('Oglądaj ponad 6000 kanałów telewizyjnych...');
@@ -1239,10 +1239,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Kraje');
         $('#selectform input:eq(1)').next().text('Języki');
         $('#selectform input:eq(2)').next().text('Kategoria');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Treści wrażliwe');
-        $('#mySidenav a:eq(1)').find('span').text('Języki');
-        $('#mySidenav a:eq(2)').find('span').text('Jasne');
-        $('#mySidenav a:eq(3)').find('span').text('Wersja');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Treści wrażliwe');
+        $('#mySidenav div:eq(1)').find('span').text('Języki');
+        $('#mySidenav div:eq(2)').find('span').text('Jasne');
+        $('#mySidenav div:eq(3)').find('span').text('Wersja');
     } else if (window.localStorage.getItem('languages') == 'gd') {
         $('.stylebtn').text('Cuir a-steach');
         $('.mobile p:eq(0)').text('Coimhead air 6000+ Sianalan Tbh ...');
@@ -1257,10 +1257,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Dùthchannan');
         $('#selectform input:eq(1)').next().text('Cànanan');
         $('#selectform input:eq(2)').next().text('Roinn-seòrsa');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Susbaint Mothachail');
-        $('#mySidenav a:eq(1)').find('span').text('Cànanan');
-        $('#mySidenav a:eq(2)').find('span').text('Soilleir');
-        $('#mySidenav a:eq(3)').find('span').text('Tionndadh');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Susbaint Mothachail');
+        $('#mySidenav div:eq(1)').find('span').text('Cànanan');
+        $('#mySidenav div:eq(2)').find('span').text('Soilleir');
+        $('#mySidenav div:eq(3)').find('span').text('Tionndadh');
     } else if (window.localStorage.getItem('languages') == 'sr') {
         $('.stylebtn').text('Ентер');
         $('.mobile p:eq(0)').text('Гледајте 6000+ ТВ канала ...');
@@ -1275,10 +1275,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Земље');
         $('#selectform input:eq(1)').next().text('Језици');
         $('#selectform input:eq(2)').next().text('Категорија');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Осетљив садржај');
-        $('#mySidenav a:eq(1)').find('span').text('Језици');
-        $('#mySidenav a:eq(2)').find('span').text('Јасно');
-        $('#mySidenav a:eq(3)').find('span').text('Верзија');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Осетљив садржај');
+        $('#mySidenav div:eq(1)').find('span').text('Језици');
+        $('#mySidenav div:eq(2)').find('span').text('Јасно');
+        $('#mySidenav div:eq(3)').find('span').text('Верзија');
     } else if (window.localStorage.getItem('languages') == 'zu') {
         $('.stylebtn').text('Faka');
         $('.mobile p:eq(0)').text('Bukela Iziteshi ze-TV ezingama-6000 + ...');
@@ -1293,10 +1293,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Amazwe');
         $('#selectform input:eq(1)').next().text('Izilimi');
         $('#selectform input:eq(2)').next().text('Isigaba');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Okuqukethwe okubucayi');
-        $('#mySidenav a:eq(1)').find('span').text('Izilimi');
-        $('#mySidenav a:eq(2)').find('span').text('Kucacile');
-        $('#mySidenav a:eq(3)').find('span').text('Inguqulo');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Okuqukethwe okubucayi');
+        $('#mySidenav div:eq(1)').find('span').text('Izilimi');
+        $('#mySidenav div:eq(2)').find('span').text('Kucacile');
+        $('#mySidenav div:eq(3)').find('span').text('Inguqulo');
     } else if (window.localStorage.getItem('languages') == 'sn') {
         $('.stylebtn').text('Pinda');
         $('.mobile p:eq(0)').text('Tarisa 6000+ TV Channel ...');
@@ -1311,10 +1311,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Nyika');
         $('#selectform input:eq(1)').next().text('Mitauro');
         $('#selectform input:eq(2)').next().text('Chikamu');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Inonzwisisika Zvemukati');
-        $('#mySidenav a:eq(1)').find('span').text('Mitauro');
-        $('#mySidenav a:eq(2)').find('span').text('Zvakajeka');
-        $('#mySidenav a:eq(3)').find('span').text('Shanduro');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Inonzwisisika Zvemukati');
+        $('#mySidenav div:eq(1)').find('span').text('Mitauro');
+        $('#mySidenav div:eq(2)').find('span').text('Zvakajeka');
+        $('#mySidenav div:eq(3)').find('span').text('Shanduro');
     } else if (window.localStorage.getItem('languages') == 'tr') {
         $('.stylebtn').text('Girmek');
         $('.mobile p:eq(0)').text('6000+ TV Kanalını İzleyin...');
@@ -1329,10 +1329,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Ülkeler');
         $('#selectform input:eq(1)').next().text('Diller');
         $('#selectform input:eq(2)').next().text('Kategori');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Hassas İçerik');
-        $('#mySidenav a:eq(1)').find('span').text('Diller');
-        $('#mySidenav a:eq(2)').find('span').text('Açık');
-        $('#mySidenav a:eq(3)').find('span').text('Sürüm');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Hassas İçerik');
+        $('#mySidenav div:eq(1)').find('span').text('Diller');
+        $('#mySidenav div:eq(2)').find('span').text('Açık');
+        $('#mySidenav div:eq(3)').find('span').text('Sürüm');
     } else if (window.localStorage.getItem('languages') == 'sd') {
         $('.stylebtn').text('داخل ڪريو');
         $('.mobile p:eq(0)').text('ڏسو 6000+ ٽي وي چينلز ...');
@@ -1347,10 +1347,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('ملڪ');
         $('#selectform input:eq(1)').next().text('وليون');
         $('#selectform input:eq(2)').next().text('قسم');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('حساس مواد');
-        $('#mySidenav a:eq(1)').find('span').text('وليون');
-        $('#mySidenav a:eq(2)').find('span').text('صاف');
-        $('#mySidenav a:eq(3)').find('span').text('نسخو');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('حساس مواد');
+        $('#mySidenav div:eq(1)').find('span').text('وليون');
+        $('#mySidenav div:eq(2)').find('span').text('صاف');
+        $('#mySidenav div:eq(3)').find('span').text('نسخو');
     } else if (window.localStorage.getItem('languages') == 'si') {
         $('.stylebtn').text('ඇතුළු කරන්න');
         $('.mobile p:eq(0)').text('රූපවාහිනී නාලිකා 6000+ නරඹන්න ...');
@@ -1365,10 +1365,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('රටවල්');
         $('#selectform input:eq(1)').next().text('භාෂා');
         $('#selectform input:eq(2)').next().text('වර්ගය');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('සංවේදී අන්තර්ගතය');
-        $('#mySidenav a:eq(1)').find('span').text('භාෂා');
-        $('#mySidenav a:eq(2)').find('span').text('පැහැදිලිව');
-        $('#mySidenav a:eq(3)').find('span').text('පිටපත');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('සංවේදී අන්තර්ගතය');
+        $('#mySidenav div:eq(1)').find('span').text('භාෂා');
+        $('#mySidenav div:eq(2)').find('span').text('පැහැදිලිව');
+        $('#mySidenav div:eq(3)').find('span').text('පිටපත');
     } else if (window.localStorage.getItem('languages') == 'sk') {
         $('.stylebtn').text('Zadajte');
         $('.mobile p:eq(0)').text('Sledujte viac ako 6000 televíznych kanálov ...');
@@ -1383,10 +1383,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Krajiny');
         $('#selectform input:eq(1)').next().text('Jazyky');
         $('#selectform input:eq(2)').next().text('Kategória');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Citlivý obsah');
-        $('#mySidenav a:eq(1)').find('span').text('Jazyky');
-        $('#mySidenav a:eq(2)').find('span').text('jasný');
-        $('#mySidenav a:eq(3)').find('span').text('Verzia');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Citlivý obsah');
+        $('#mySidenav div:eq(1)').find('span').text('Jazyky');
+        $('#mySidenav div:eq(2)').find('span').text('jasný');
+        $('#mySidenav div:eq(3)').find('span').text('Verzia');
     } else if (window.localStorage.getItem('languages') == 'sl') {
         $('.stylebtn').text('Vnesite');
         $('.mobile p:eq(0)').text('Oglejte si 6000+ televizijskih kanalov ...');
@@ -1401,10 +1401,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Države');
         $('#selectform input:eq(1)').next().text('Jeziki');
         $('#selectform input:eq(2)').next().text('Kategorija');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Občutljiva vsebina');
-        $('#mySidenav a:eq(1)').find('span').text('Jeziki');
-        $('#mySidenav a:eq(2)').find('span').text('Jasno');
-        $('#mySidenav a:eq(3)').find('span').text('Različica');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Občutljiva vsebina');
+        $('#mySidenav div:eq(1)').find('span').text('Jeziki');
+        $('#mySidenav div:eq(2)').find('span').text('Jasno');
+        $('#mySidenav div:eq(3)').find('span').text('Različica');
     } else if (window.localStorage.getItem('languages') == 'so') {
         $('.stylebtn').text('Geli');
         $('.mobile p:eq(0)').text('Daawo 6000+ kanaal TV ...');
@@ -1419,10 +1419,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Wadamada');
         $('#selectform input:eq(1)').next().text('Luqadaha');
         $('#selectform input:eq(2)').next().text('Qaybta');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Mawduuc Xasaasi ah');
-        $('#mySidenav a:eq(1)').find('span').text('Luqadaha');
-        $('#mySidenav a:eq(2)').find('span').text('Cad');
-        $('#mySidenav a:eq(3)').find('span').text('Nooca');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Mawduuc Xasaasi ah');
+        $('#mySidenav div:eq(1)').find('span').text('Luqadaha');
+        $('#mySidenav div:eq(2)').find('span').text('Cad');
+        $('#mySidenav div:eq(3)').find('span').text('Nooca');
     } else if (window.localStorage.getItem('languages') == 'st') {
         $('.stylebtn').text('Kena');
         $('.mobile p:eq(0)').text('Shebella liteishene tsa TV tse 6000+ ...');
@@ -1437,10 +1437,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Linaha');
         $('#selectform input:eq(1)').next().text('Lipuo');
         $('#selectform input:eq(2)').next().text('Sehlopha');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Litaba tse bonolo');
-        $('#mySidenav a:eq(1)').find('span').text('Lipuo');
-        $('#mySidenav a:eq(2)').find('span').text('E hlakile');
-        $('#mySidenav a:eq(3)').find('span').text('Mofuta');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Litaba tse bonolo');
+        $('#mySidenav div:eq(1)').find('span').text('Lipuo');
+        $('#mySidenav div:eq(2)').find('span').text('E hlakile');
+        $('#mySidenav div:eq(3)').find('span').text('Mofuta');
     } else if (window.localStorage.getItem('languages') == 'su') {
         $('.stylebtn').text('Lebetkeun');
         $('.mobile p:eq(0)').text('Lalajo 6000+ Saluran TV ...');
@@ -1455,10 +1455,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Nagara');
         $('#selectform input:eq(1)').next().text('Bahasa');
         $('#selectform input:eq(2)').next().text('Kategori');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Eusi sénsitip');
-        $('#mySidenav a:eq(1)').find('span').text('Bahasa');
-        $('#mySidenav a:eq(2)').find('span').text('Jelas');
-        $('#mySidenav a:eq(3)').find('span').text('Vérsi');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Eusi sénsitip');
+        $('#mySidenav div:eq(1)').find('span').text('Bahasa');
+        $('#mySidenav div:eq(2)').find('span').text('Jelas');
+        $('#mySidenav div:eq(3)').find('span').text('Vérsi');
     } else if (window.localStorage.getItem('languages') == 'yo') {
         $('.stylebtn').text('Tẹ');
         $('.mobile p:eq(0)').text('Wo 6000+ Awọn ikanni TV ...');
@@ -1473,10 +1473,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Awọn orilẹ -ede');
         $('#selectform input:eq(1)').next().text('Awọn ede');
         $('#selectform input:eq(2)').next().text('Ẹka');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Akoonu Ifarahan');
-        $('#mySidenav a:eq(1)').find('span').text('Awọn ede');
-        $('#mySidenav a:eq(2)').find('span').text('Ko o');
-        $('#mySidenav a:eq(3)').find('span').text('Ẹya');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Akoonu Ifarahan');
+        $('#mySidenav div:eq(1)').find('span').text('Awọn ede');
+        $('#mySidenav div:eq(2)').find('span').text('Ko o');
+        $('#mySidenav div:eq(3)').find('span').text('Ẹya');
     } else if (window.localStorage.getItem('languages') == 'yi') {
         $('.stylebtn').text('אַרייַן');
         $('.mobile p:eq(0)').text('וואַך 6000+ טעלעוויזיע טשאַנאַלז ...');
@@ -1491,10 +1491,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('לענדער');
         $('#selectform input:eq(1)').next().text('שפראכן');
         $('#selectform input:eq(2)').next().text('קאַטעגאָריע');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('סענסיטיווע אינהאַלט');
-        $('#mySidenav a:eq(1)').find('span').text('שפראכן');
-        $('#mySidenav a:eq(2)').find('span').text('קלאָר');
-        $('#mySidenav a:eq(3)').find('span').text('ווערסיע');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('סענסיטיווע אינהאַלט');
+        $('#mySidenav div:eq(1)').find('span').text('שפראכן');
+        $('#mySidenav div:eq(2)').find('span').text('קלאָר');
+        $('#mySidenav div:eq(3)').find('span').text('ווערסיע');
     } else if (window.localStorage.getItem('languages') == 'xh') {
         $('.stylebtn').text('Ngena');
         $('.mobile p:eq(0)').text('Bukela amajelo e-TV angama-6000 + ...');
@@ -1509,10 +1509,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Amazwe');
         $('#selectform input:eq(1)').next().text('Iilwimi');
         $('#selectform input:eq(2)').next().text('Udidi');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Umxholo onovakalelo');
-        $('#mySidenav a:eq(1)').find('span').text('Iilwimi');
-        $('#mySidenav a:eq(2)').find('span').text('Kucacile');
-        $('#mySidenav a:eq(3)').find('span').text('Inguqulelo');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Umxholo onovakalelo');
+        $('#mySidenav div:eq(1)').find('span').text('Iilwimi');
+        $('#mySidenav div:eq(2)').find('span').text('Kucacile');
+        $('#mySidenav div:eq(3)').find('span').text('Inguqulelo');
     } else if (window.localStorage.getItem('languages') == 'fy') {
         $('.stylebtn').text('Yngean');
         $('.mobile p:eq(0)').text('Sjoch 6000+ TV -kanalen ...');
@@ -1527,10 +1527,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Lannen');
         $('#selectform input:eq(1)').next().text('Talen');
         $('#selectform input:eq(2)').next().text('Kategory');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensitive Ynhâld');
-        $('#mySidenav a:eq(1)').find('span').text('Talen');
-        $('#mySidenav a:eq(2)').find('span').text('Opklearje');
-        $('#mySidenav a:eq(3)').find('span').text('Ferzje');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sensitive Ynhâld');
+        $('#mySidenav div:eq(1)').find('span').text('Talen');
+        $('#mySidenav div:eq(2)').find('span').text('Opklearje');
+        $('#mySidenav div:eq(3)').find('span').text('Ferzje');
     } else if (window.localStorage.getItem('languages') == 'cy') {
         $('.stylebtn').text('Rhowch i mewn');
         $('.mobile p:eq(0)').text('Gwyliwch 6000+ o Sianeli Teledu ...');
@@ -1545,10 +1545,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Gwledydd');
         $('#selectform input:eq(1)').next().text('Ieithoedd');
         $('#selectform input:eq(2)').next().text('Categori');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Cynnwys Sensitif');
-        $('#mySidenav a:eq(1)').find('span').text('Ieithoedd');
-        $('#mySidenav a:eq(2)').find('span').text('Clir');
-        $('#mySidenav a:eq(3)').find('span').text('Fersiwn');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Cynnwys Sensitif');
+        $('#mySidenav div:eq(1)').find('span').text('Ieithoedd');
+        $('#mySidenav div:eq(2)').find('span').text('Clir');
+        $('#mySidenav div:eq(3)').find('span').text('Fersiwn');
     } else if (window.localStorage.getItem('languages') == 'uz') {
         $('.stylebtn').text('Kirish');
         $('.mobile p:eq(0)').text('6000 dan ortiq telekanallarni tomosha qiling ...');
@@ -1563,10 +1563,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Mamlakatlar');
         $('#selectform input:eq(1)').next().text('Tillar');
         $('#selectform input:eq(2)').next().text('Turkum');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Nozik tarkib');
-        $('#mySidenav a:eq(1)').find('span').text('Tillar');
-        $('#mySidenav a:eq(2)').find('span').text('Ochiq');
-        $('#mySidenav a:eq(3)').find('span').text('Versiya');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Nozik tarkib');
+        $('#mySidenav div:eq(1)').find('span').text('Tillar');
+        $('#mySidenav div:eq(2)').find('span').text('Ochiq');
+        $('#mySidenav div:eq(3)').find('span').text('Versiya');
     } else if (window.localStorage.getItem('languages') == 'ug') {
         $('.stylebtn').text('كەت');
         $('.mobile p:eq(0)').text('6000+ تېلېۋىزىيە قاناللىرىنى كۆرۈڭ ...');
@@ -1581,10 +1581,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('دۆلەتلەر');
         $('#selectform input:eq(1)').next().text('تىللار');
         $('#selectform input:eq(2)').next().text('سەھىپە');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('سەزگۈر مەزمۇن');
-        $('#mySidenav a:eq(1)').find('span').text('تىللار');
-        $('#mySidenav a:eq(2)').find('span').text('پاكىز');
-        $('#mySidenav a:eq(3)').find('span').text('نەشرى');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('سەزگۈر مەزمۇن');
+        $('#mySidenav div:eq(1)').find('span').text('تىللار');
+        $('#mySidenav div:eq(2)').find('span').text('پاكىز');
+        $('#mySidenav div:eq(3)').find('span').text('نەشرى');
     } else if (window.localStorage.getItem('languages') == 'ur') {
         $('.stylebtn').text('داخل کریں۔');
         $('.mobile p:eq(0)').text('6000+ ٹی وی چینلز دیکھیں ...');
@@ -1599,10 +1599,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('ممالک');
         $('#selectform input:eq(1)').next().text('زبانیں۔');
         $('#selectform input:eq(2)').next().text('قسم');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('حساس مواد۔');
-        $('#mySidenav a:eq(1)').find('span').text('زبانیں۔');
-        $('#mySidenav a:eq(2)').find('span').text('صاف');
-        $('#mySidenav a:eq(3)').find('span').text('ورژن');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('حساس مواد۔');
+        $('#mySidenav div:eq(1)').find('span').text('زبانیں۔');
+        $('#mySidenav div:eq(2)').find('span').text('صاف');
+        $('#mySidenav div:eq(3)').find('span').text('ورژن');
     } else if (window.localStorage.getItem('languages') == 'uk') {
         $('.stylebtn').text('Введіть');
         $('.mobile p:eq(0)').text('Дивіться понад 6000 телеканалів ...');
@@ -1617,10 +1617,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Країни');
         $('#selectform input:eq(1)').next().text('Мови');
         $('#selectform input:eq(2)').next().text('Категорія');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Чутливий вміст');
-        $('#mySidenav a:eq(1)').find('span').text('Мови');
-        $('#mySidenav a:eq(2)').find('span').text('Ясно');
-        $('#mySidenav a:eq(3)').find('span').text('Версія');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Чутливий вміст');
+        $('#mySidenav div:eq(1)').find('span').text('Мови');
+        $('#mySidenav div:eq(2)').find('span').text('Ясно');
+        $('#mySidenav div:eq(3)').find('span').text('Версія');
     } else if (window.localStorage.getItem('languages') == 'tk') {
         $('.stylebtn').text('Enter');
         $('.mobile p:eq(0)').text('6000+ teleýaýlym görüň ...');
@@ -1635,10 +1635,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Countriesurtlar');
         $('#selectform input:eq(1)').next().text('Diller');
         $('#selectform input:eq(2)').next().text('Kategoriýa');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Duýgur mazmun');
-        $('#mySidenav a:eq(1)').find('span').text('Diller');
-        $('#mySidenav a:eq(2)').find('span').text('Arassala');
-        $('#mySidenav a:eq(3)').find('span').text('Wersiýa');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Duýgur mazmun');
+        $('#mySidenav div:eq(1)').find('span').text('Diller');
+        $('#mySidenav div:eq(2)').find('span').text('Arassala');
+        $('#mySidenav div:eq(3)').find('span').text('Wersiýa');
     } else if (window.localStorage.getItem('languages') == 'te') {
         $('.stylebtn').text('నమోదు చేయండి');
         $('.mobile p:eq(0)').text('6000+ టీవీ ఛానెల్‌లను చూడండి ...');
@@ -1653,10 +1653,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('దేశాలు');
         $('#selectform input:eq(1)').next().text('భాషలు');
         $('#selectform input:eq(2)').next().text('వర్గం');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('సున్నితమైన కంటెంట్');
-        $('#mySidenav a:eq(1)').find('span').text('భాషలు');
-        $('#mySidenav a:eq(2)').find('span').text('క్లియర్');
-        $('#mySidenav a:eq(3)').find('span').text('సంస్కరణ: Telugu');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('సున్నితమైన కంటెంట్');
+        $('#mySidenav div:eq(1)').find('span').text('భాషలు');
+        $('#mySidenav div:eq(2)').find('span').text('క్లియర్');
+        $('#mySidenav div:eq(3)').find('span').text('సంస్కరణ: Telugu');
     } else if (window.localStorage.getItem('languages') == 'tt') {
         $('.stylebtn').text('Керегез');
         $('.mobile p:eq(0)').text('6000+ ТВ каналларын карагыз ...');
@@ -1671,10 +1671,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Илләр');
         $('#selectform input:eq(1)').next().text('Телләр');
         $('#selectform input:eq(2)').next().text('Төркем');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Сәнгатьле эчтәлек');
-        $('#mySidenav a:eq(1)').find('span').text('Телләр');
-        $('#mySidenav a:eq(2)').find('span').text('Чиста');
-        $('#mySidenav a:eq(3)').find('span').text('Вариант');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Сәнгатьле эчтәлек');
+        $('#mySidenav div:eq(1)').find('span').text('Телләр');
+        $('#mySidenav div:eq(2)').find('span').text('Чиста');
+        $('#mySidenav div:eq(3)').find('span').text('Вариант');
     } else if (window.localStorage.getItem('languages') == 'ta') {
         $('.stylebtn').text('உள்ளிடவும்');
         $('.mobile p:eq(0)').text('6000+ தொலைக்காட்சி சேனல்களைப் பாருங்கள் ...');
@@ -1689,10 +1689,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('நாடுகள்');
         $('#selectform input:eq(1)').next().text('மொழிகள்');
         $('#selectform input:eq(2)').next().text('வகை');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('உணர்திறன் உள்ளடக்கம்');
-        $('#mySidenav a:eq(1)').find('span').text('மொழிகள்');
-        $('#mySidenav a:eq(2)').find('span').text('தெளிவான');
-        $('#mySidenav a:eq(3)').find('span').text('பதிப்பு');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('உணர்திறன் உள்ளடக்கம்');
+        $('#mySidenav div:eq(1)').find('span').text('மொழிகள்');
+        $('#mySidenav div:eq(2)').find('span').text('தெளிவான');
+        $('#mySidenav div:eq(3)').find('span').text('பதிப்பு');
     } else if (window.localStorage.getItem('languages') == 'tg') {
         $('.stylebtn').text('Ворид кунед');
         $('.mobile p:eq(0)').text('6000+ каналҳои телевизиониро тамошо кунед ...');
@@ -1707,10 +1707,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Кишварҳо');
         $('#selectform input:eq(1)').next().text('Забонҳо');
         $('#selectform input:eq(2)').next().text('Категория');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Мундариҷаи ҳассос');
-        $('#mySidenav a:eq(1)').find('span').text('Забонҳо');
-        $('#mySidenav a:eq(2)').find('span').text('Тоза');
-        $('#mySidenav a:eq(3)').find('span').text('Версия');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Мундариҷаи ҳассос');
+        $('#mySidenav div:eq(1)').find('span').text('Забонҳо');
+        $('#mySidenav div:eq(2)').find('span').text('Тоза');
+        $('#mySidenav div:eq(3)').find('span').text('Версия');
     } else if (window.localStorage.getItem('languages') == 'sv') {
         $('.stylebtn').text('Stiga på');
         $('.mobile p:eq(0)').text('Titta på över 6000 TV -kanaler ...');
@@ -1725,10 +1725,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Länder');
         $('#selectform input:eq(1)').next().text('språk');
         $('#selectform input:eq(2)').next().text('Kategori');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Känsligt innehåll');
-        $('#mySidenav a:eq(1)').find('span').text('språk');
-        $('#mySidenav a:eq(2)').find('span').text('Klar');
-        $('#mySidenav a:eq(3)').find('span').text('Version');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Känsligt innehåll');
+        $('#mySidenav div:eq(1)').find('span').text('språk');
+        $('#mySidenav div:eq(2)').find('span').text('Klar');
+        $('#mySidenav div:eq(3)').find('span').text('Version');
     } else if (window.localStorage.getItem('languages') == 'sw') {
         $('.stylebtn').text('Ingiza');
         $('.mobile p:eq(0)').text('Tazama Vituo vya TV 6000+ ...');
@@ -1743,10 +1743,10 @@ $(document).ready(function() {
         $('#selectform input:eq(0)').next().text('Nchi');
         $('#selectform input:eq(1)').next().text('Lugha');
         $('#selectform input:eq(2)').next().text('Jamii');
-        $('#mySidenav a:eq(0)').find('span:eq(0)').text('Maudhui Nyeti');
-        $('#mySidenav a:eq(1)').find('span').text('Lugha');
-        $('#mySidenav a:eq(2)').find('span').text('Wazi');
-        $('#mySidenav a:eq(3)').find('span').text('Toleo');
+        $('#mySidenav div:eq(0)').find('span:eq(0)').text('Maudhui Nyeti');
+        $('#mySidenav div:eq(1)').find('span').text('Lugha');
+        $('#mySidenav div:eq(2)').find('span').text('Wazi');
+        $('#mySidenav div:eq(3)').find('span').text('Toleo');
     };
     //Change language to show
     $('#languages').on('change', function() {
@@ -1766,10 +1766,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Countries');
             $('#selectform input:eq(1)').next().text('Languages');
             $('#selectform input:eq(2)').next().text('Category');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensitive Content');
-            $('#mySidenav a:eq(1)').find('span').text('Languages');
-            $('#mySidenav a:eq(2)').find('span').text('Clear');
-            $('#mySidenav a:eq(3)').find('span').text('Version');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sensitive Content');
+            $('#mySidenav div:eq(1)').find('span').text('Languages');
+            $('#mySidenav div:eq(2)').find('span').text('Clear');
+            $('#mySidenav div:eq(3)').find('span').text('Version');
         } else if (lan == 'sw') {
             $('.stylebtn').text('Ingiza');
             $('.mobile p:eq(0)').text('Tazama Vituo vya TV 6000+ ...');
@@ -1784,10 +1784,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Nchi');
             $('#selectform input:eq(1)').next().text('Lugha');
             $('#selectform input:eq(2)').next().text('Jamii');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Maudhui Nyeti');
-            $('#mySidenav a:eq(1)').find('span').text('Lugha');
-            $('#mySidenav a:eq(2)').find('span').text('Wazi');
-            $('#mySidenav a:eq(3)').find('span').text('Toleo');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Maudhui Nyeti');
+            $('#mySidenav div:eq(1)').find('span').text('Lugha');
+            $('#mySidenav div:eq(2)').find('span').text('Wazi');
+            $('#mySidenav div:eq(3)').find('span').text('Toleo');
         } else if (lan == 'sv') {
             $('.stylebtn').text('Stiga på');
             $('.mobile p:eq(0)').text('Titta på över 6000 TV -kanaler ...');
@@ -1802,10 +1802,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Länder');
             $('#selectform input:eq(1)').next().text('språk');
             $('#selectform input:eq(2)').next().text('Kategori');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Känsligt innehåll');
-            $('#mySidenav a:eq(1)').find('span').text('språk');
-            $('#mySidenav a:eq(2)').find('span').text('Klar');
-            $('#mySidenav a:eq(3)').find('span').text('Version');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Känsligt innehåll');
+            $('#mySidenav div:eq(1)').find('span').text('språk');
+            $('#mySidenav div:eq(2)').find('span').text('Klar');
+            $('#mySidenav div:eq(3)').find('span').text('Version');
         } else if (lan == 'tg') {
             $('.stylebtn').text('Ворид кунед');
             $('.mobile p:eq(0)').text('6000+ каналҳои телевизиониро тамошо кунед ...');
@@ -1820,10 +1820,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Кишварҳо');
             $('#selectform input:eq(1)').next().text('Забонҳо');
             $('#selectform input:eq(2)').next().text('Категория');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Мундариҷаи ҳассос');
-            $('#mySidenav a:eq(1)').find('span').text('Забонҳо');
-            $('#mySidenav a:eq(2)').find('span').text('Тоза');
-            $('#mySidenav a:eq(3)').find('span').text('Версия');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Мундариҷаи ҳассос');
+            $('#mySidenav div:eq(1)').find('span').text('Забонҳо');
+            $('#mySidenav div:eq(2)').find('span').text('Тоза');
+            $('#mySidenav div:eq(3)').find('span').text('Версия');
         } else if (lan == 'ta') {
             $('.stylebtn').text('உள்ளிடவும்');
             $('.mobile p:eq(0)').text('6000+ தொலைக்காட்சி சேனல்களைப் பாருங்கள் ...');
@@ -1838,10 +1838,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('நாடுகள்');
             $('#selectform input:eq(1)').next().text('மொழிகள்');
             $('#selectform input:eq(2)').next().text('வகை');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('உணர்திறன் உள்ளடக்கம்');
-            $('#mySidenav a:eq(1)').find('span').text('மொழிகள்');
-            $('#mySidenav a:eq(2)').find('span').text('தெளிவான');
-            $('#mySidenav a:eq(3)').find('span').text('பதிப்பு');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('உணர்திறன் உள்ளடக்கம்');
+            $('#mySidenav div:eq(1)').find('span').text('மொழிகள்');
+            $('#mySidenav div:eq(2)').find('span').text('தெளிவான');
+            $('#mySidenav div:eq(3)').find('span').text('பதிப்பு');
         } else if (lan == 'tt') {
             $('.stylebtn').text('Керегез');
             $('.mobile p:eq(0)').text('6000+ ТВ каналларын карагыз ...');
@@ -1856,10 +1856,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Илләр');
             $('#selectform input:eq(1)').next().text('Телләр');
             $('#selectform input:eq(2)').next().text('Төркем');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Сәнгатьле эчтәлек');
-            $('#mySidenav a:eq(1)').find('span').text('Телләр');
-            $('#mySidenav a:eq(2)').find('span').text('Чиста');
-            $('#mySidenav a:eq(3)').find('span').text('Вариант');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Сәнгатьле эчтәлек');
+            $('#mySidenav div:eq(1)').find('span').text('Телләр');
+            $('#mySidenav div:eq(2)').find('span').text('Чиста');
+            $('#mySidenav div:eq(3)').find('span').text('Вариант');
         } else if (lan == 'te') {
             $('.stylebtn').text('నమోదు చేయండి');
             $('.mobile p:eq(0)').text('6000+ టీవీ ఛానెల్‌లను చూడండి ...');
@@ -1874,10 +1874,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('దేశాలు');
             $('#selectform input:eq(1)').next().text('భాషలు');
             $('#selectform input:eq(2)').next().text('వర్గం');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('సున్నితమైన కంటెంట్');
-            $('#mySidenav a:eq(1)').find('span').text('భాషలు');
-            $('#mySidenav a:eq(2)').find('span').text('క్లియర్');
-            $('#mySidenav a:eq(3)').find('span').text('సంస్కరణ: Telugu');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('సున్నితమైన కంటెంట్');
+            $('#mySidenav div:eq(1)').find('span').text('భాషలు');
+            $('#mySidenav div:eq(2)').find('span').text('క్లియర్');
+            $('#mySidenav div:eq(3)').find('span').text('సంస్కరణ: Telugu');
         } else if (lan == 'tk') {
             $('.stylebtn').text('Enter');
             $('.mobile p:eq(0)').text('6000+ teleýaýlym görüň ...');
@@ -1892,10 +1892,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Countriesurtlar');
             $('#selectform input:eq(1)').next().text('Diller');
             $('#selectform input:eq(2)').next().text('Kategoriýa');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Duýgur mazmun');
-            $('#mySidenav a:eq(1)').find('span').text('Diller');
-            $('#mySidenav a:eq(2)').find('span').text('Arassala');
-            $('#mySidenav a:eq(3)').find('span').text('Wersiýa');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Duýgur mazmun');
+            $('#mySidenav div:eq(1)').find('span').text('Diller');
+            $('#mySidenav div:eq(2)').find('span').text('Arassala');
+            $('#mySidenav div:eq(3)').find('span').text('Wersiýa');
         } else if (lan == 'uk') {
             $('.stylebtn').text('Введіть');
             $('.mobile p:eq(0)').text('Дивіться понад 6000 телеканалів ...');
@@ -1910,10 +1910,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Країни');
             $('#selectform input:eq(1)').next().text('Мови');
             $('#selectform input:eq(2)').next().text('Категорія');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Чутливий вміст');
-            $('#mySidenav a:eq(1)').find('span').text('Мови');
-            $('#mySidenav a:eq(2)').find('span').text('Ясно');
-            $('#mySidenav a:eq(3)').find('span').text('Версія');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Чутливий вміст');
+            $('#mySidenav div:eq(1)').find('span').text('Мови');
+            $('#mySidenav div:eq(2)').find('span').text('Ясно');
+            $('#mySidenav div:eq(3)').find('span').text('Версія');
         } else if (lan == 'ur') {
             $('.stylebtn').text('داخل کریں۔');
             $('.mobile p:eq(0)').text('6000+ ٹی وی چینلز دیکھیں ...');
@@ -1928,10 +1928,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('ممالک');
             $('#selectform input:eq(1)').next().text('زبانیں۔');
             $('#selectform input:eq(2)').next().text('قسم');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('حساس مواد۔');
-            $('#mySidenav a:eq(1)').find('span').text('زبانیں۔');
-            $('#mySidenav a:eq(2)').find('span').text('صاف');
-            $('#mySidenav a:eq(3)').find('span').text('ورژن');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('حساس مواد۔');
+            $('#mySidenav div:eq(1)').find('span').text('زبانیں۔');
+            $('#mySidenav div:eq(2)').find('span').text('صاف');
+            $('#mySidenav div:eq(3)').find('span').text('ورژن');
         } else if (lan == 'ug') {
             $('.stylebtn').text('كەت');
             $('.mobile p:eq(0)').text('6000+ تېلېۋىزىيە قاناللىرىنى كۆرۈڭ ...');
@@ -1946,10 +1946,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('دۆلەتلەر');
             $('#selectform input:eq(1)').next().text('تىللار');
             $('#selectform input:eq(2)').next().text('سەھىپە');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('سەزگۈر مەزمۇن');
-            $('#mySidenav a:eq(1)').find('span').text('تىللار');
-            $('#mySidenav a:eq(2)').find('span').text('پاكىز');
-            $('#mySidenav a:eq(3)').find('span').text('نەشرى');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('سەزگۈر مەزمۇن');
+            $('#mySidenav div:eq(1)').find('span').text('تىللار');
+            $('#mySidenav div:eq(2)').find('span').text('پاكىز');
+            $('#mySidenav div:eq(3)').find('span').text('نەشرى');
         } else if (lan == 'uz') {
             $('.stylebtn').text('Kirish');
             $('.mobile p:eq(0)').text('6000 dan ortiq telekanallarni tomosha qiling ...');
@@ -1964,10 +1964,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Mamlakatlar');
             $('#selectform input:eq(1)').next().text('Tillar');
             $('#selectform input:eq(2)').next().text('Turkum');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Nozik tarkib');
-            $('#mySidenav a:eq(1)').find('span').text('Tillar');
-            $('#mySidenav a:eq(2)').find('span').text('Ochiq');
-            $('#mySidenav a:eq(3)').find('span').text('Versiya');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Nozik tarkib');
+            $('#mySidenav div:eq(1)').find('span').text('Tillar');
+            $('#mySidenav div:eq(2)').find('span').text('Ochiq');
+            $('#mySidenav div:eq(3)').find('span').text('Versiya');
         } else if (lan == 'cy') {
             $('.stylebtn').text('Rhowch i mewn');
             $('.mobile p:eq(0)').text('Gwyliwch 6000+ o Sianeli Teledu ...');
@@ -1982,10 +1982,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Gwledydd');
             $('#selectform input:eq(1)').next().text('Ieithoedd');
             $('#selectform input:eq(2)').next().text('Categori');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Cynnwys Sensitif');
-            $('#mySidenav a:eq(1)').find('span').text('Ieithoedd');
-            $('#mySidenav a:eq(2)').find('span').text('Clir');
-            $('#mySidenav a:eq(3)').find('span').text('Fersiwn');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Cynnwys Sensitif');
+            $('#mySidenav div:eq(1)').find('span').text('Ieithoedd');
+            $('#mySidenav div:eq(2)').find('span').text('Clir');
+            $('#mySidenav div:eq(3)').find('span').text('Fersiwn');
         } else if (lan == 'fy') {
             $('.stylebtn').text('Yngean');
             $('.mobile p:eq(0)').text('Sjoch 6000+ TV -kanalen ...');
@@ -2000,10 +2000,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Lannen');
             $('#selectform input:eq(1)').next().text('Talen');
             $('#selectform input:eq(2)').next().text('Kategory');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensitive Ynhâld');
-            $('#mySidenav a:eq(1)').find('span').text('Talen');
-            $('#mySidenav a:eq(2)').find('span').text('Opklearje');
-            $('#mySidenav a:eq(3)').find('span').text('Ferzje');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sensitive Ynhâld');
+            $('#mySidenav div:eq(1)').find('span').text('Talen');
+            $('#mySidenav div:eq(2)').find('span').text('Opklearje');
+            $('#mySidenav div:eq(3)').find('span').text('Ferzje');
         } else if (lan == 'xh') {
             $('.stylebtn').text('Ngena');
             $('.mobile p:eq(0)').text('Bukela amajelo e-TV angama-6000 + ...');
@@ -2018,10 +2018,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Amazwe');
             $('#selectform input:eq(1)').next().text('Iilwimi');
             $('#selectform input:eq(2)').next().text('Udidi');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Umxholo onovakalelo');
-            $('#mySidenav a:eq(1)').find('span').text('Iilwimi');
-            $('#mySidenav a:eq(2)').find('span').text('Kucacile');
-            $('#mySidenav a:eq(3)').find('span').text('Inguqulelo');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Umxholo onovakalelo');
+            $('#mySidenav div:eq(1)').find('span').text('Iilwimi');
+            $('#mySidenav div:eq(2)').find('span').text('Kucacile');
+            $('#mySidenav div:eq(3)').find('span').text('Inguqulelo');
         } else if (lan == 'yi') {
             $('.stylebtn').text('אַרייַן');
             $('.mobile p:eq(0)').text('וואַך 6000+ טעלעוויזיע טשאַנאַלז ...');
@@ -2036,10 +2036,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('לענדער');
             $('#selectform input:eq(1)').next().text('שפראכן');
             $('#selectform input:eq(2)').next().text('קאַטעגאָריע');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('סענסיטיווע אינהאַלט');
-            $('#mySidenav a:eq(1)').find('span').text('שפראכן');
-            $('#mySidenav a:eq(2)').find('span').text('קלאָר');
-            $('#mySidenav a:eq(3)').find('span').text('ווערסיע');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('סענסיטיווע אינהאַלט');
+            $('#mySidenav div:eq(1)').find('span').text('שפראכן');
+            $('#mySidenav div:eq(2)').find('span').text('קלאָר');
+            $('#mySidenav div:eq(3)').find('span').text('ווערסיע');
         } else if (lan == 'yo') {
             $('.stylebtn').text('Tẹ');
             $('.mobile p:eq(0)').text('Wo 6000+ Awọn ikanni TV ...');
@@ -2054,10 +2054,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Awọn orilẹ -ede');
             $('#selectform input:eq(1)').next().text('Awọn ede');
             $('#selectform input:eq(2)').next().text('Ẹka');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Akoonu Ifarahan');
-            $('#mySidenav a:eq(1)').find('span').text('Awọn ede');
-            $('#mySidenav a:eq(2)').find('span').text('Ko o');
-            $('#mySidenav a:eq(3)').find('span').text('Ẹya');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Akoonu Ifarahan');
+            $('#mySidenav div:eq(1)').find('span').text('Awọn ede');
+            $('#mySidenav div:eq(2)').find('span').text('Ko o');
+            $('#mySidenav div:eq(3)').find('span').text('Ẹya');
         } else if (lan == 'su') {
             $('.stylebtn').text('Lebetkeun');
             $('.mobile p:eq(0)').text('Lalajo 6000+ Saluran TV ...');
@@ -2072,10 +2072,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Nagara');
             $('#selectform input:eq(1)').next().text('Bahasa');
             $('#selectform input:eq(2)').next().text('Kategori');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Eusi sénsitip');
-            $('#mySidenav a:eq(1)').find('span').text('Bahasa');
-            $('#mySidenav a:eq(2)').find('span').text('Jelas');
-            $('#mySidenav a:eq(3)').find('span').text('Vérsi');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Eusi sénsitip');
+            $('#mySidenav div:eq(1)').find('span').text('Bahasa');
+            $('#mySidenav div:eq(2)').find('span').text('Jelas');
+            $('#mySidenav div:eq(3)').find('span').text('Vérsi');
         } else if (lan == 'st') {
             $('.stylebtn').text('Kena');
             $('.mobile p:eq(0)').text('Shebella liteishene tsa TV tse 6000+ ...');
@@ -2090,10 +2090,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Linaha');
             $('#selectform input:eq(1)').next().text('Lipuo');
             $('#selectform input:eq(2)').next().text('Sehlopha');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Litaba tse bonolo');
-            $('#mySidenav a:eq(1)').find('span').text('Lipuo');
-            $('#mySidenav a:eq(2)').find('span').text('E hlakile');
-            $('#mySidenav a:eq(3)').find('span').text('Mofuta');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Litaba tse bonolo');
+            $('#mySidenav div:eq(1)').find('span').text('Lipuo');
+            $('#mySidenav div:eq(2)').find('span').text('E hlakile');
+            $('#mySidenav div:eq(3)').find('span').text('Mofuta');
         } else if (lan == 'so') {
             $('.stylebtn').text('Geli');
             $('.mobile p:eq(0)').text('Daawo 6000+ kanaal TV ...');
@@ -2108,10 +2108,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Wadamada');
             $('#selectform input:eq(1)').next().text('Luqadaha');
             $('#selectform input:eq(2)').next().text('Qaybta');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Mawduuc Xasaasi ah');
-            $('#mySidenav a:eq(1)').find('span').text('Luqadaha');
-            $('#mySidenav a:eq(2)').find('span').text('Cad');
-            $('#mySidenav a:eq(3)').find('span').text('Nooca');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Mawduuc Xasaasi ah');
+            $('#mySidenav div:eq(1)').find('span').text('Luqadaha');
+            $('#mySidenav div:eq(2)').find('span').text('Cad');
+            $('#mySidenav div:eq(3)').find('span').text('Nooca');
         } else if (lan == 'sl') {
             $('.stylebtn').text('Vnesite');
             $('.mobile p:eq(0)').text('Oglejte si 6000+ televizijskih kanalov ...');
@@ -2126,10 +2126,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Države');
             $('#selectform input:eq(1)').next().text('Jeziki');
             $('#selectform input:eq(2)').next().text('Kategorija');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Občutljiva vsebina');
-            $('#mySidenav a:eq(1)').find('span').text('Jeziki');
-            $('#mySidenav a:eq(2)').find('span').text('Jasno');
-            $('#mySidenav a:eq(3)').find('span').text('Različica');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Občutljiva vsebina');
+            $('#mySidenav div:eq(1)').find('span').text('Jeziki');
+            $('#mySidenav div:eq(2)').find('span').text('Jasno');
+            $('#mySidenav div:eq(3)').find('span').text('Različica');
         } else if (lan == 'sk') {
             $('.stylebtn').text('Zadajte');
             $('.mobile p:eq(0)').text('Sledujte viac ako 6000 televíznych kanálov ...');
@@ -2144,10 +2144,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Krajiny');
             $('#selectform input:eq(1)').next().text('Jazyky');
             $('#selectform input:eq(2)').next().text('Kategória');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Citlivý obsah');
-            $('#mySidenav a:eq(1)').find('span').text('Jazyky');
-            $('#mySidenav a:eq(2)').find('span').text('jasný');
-            $('#mySidenav a:eq(3)').find('span').text('Verzia');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Citlivý obsah');
+            $('#mySidenav div:eq(1)').find('span').text('Jazyky');
+            $('#mySidenav div:eq(2)').find('span').text('jasný');
+            $('#mySidenav div:eq(3)').find('span').text('Verzia');
         } else if (lan == 'si') {
             $('.stylebtn').text('ඇතුළු කරන්න');
             $('.mobile p:eq(0)').text('රූපවාහිනී නාලිකා 6000+ නරඹන්න ...');
@@ -2162,10 +2162,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('රටවල්');
             $('#selectform input:eq(1)').next().text('භාෂා');
             $('#selectform input:eq(2)').next().text('වර්ගය');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('සංවේදී අන්තර්ගතය');
-            $('#mySidenav a:eq(1)').find('span').text('භාෂා');
-            $('#mySidenav a:eq(2)').find('span').text('පැහැදිලිව');
-            $('#mySidenav a:eq(3)').find('span').text('පිටපත');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('සංවේදී අන්තර්ගතය');
+            $('#mySidenav div:eq(1)').find('span').text('භාෂා');
+            $('#mySidenav div:eq(2)').find('span').text('පැහැදිලිව');
+            $('#mySidenav div:eq(3)').find('span').text('පිටපත');
         } else if (lan == 'sd') {
             $('.stylebtn').text('داخل ڪريو');
             $('.mobile p:eq(0)').text('ڏسو 6000+ ٽي وي چينلز ...');
@@ -2180,10 +2180,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('ملڪ');
             $('#selectform input:eq(1)').next().text('وليون');
             $('#selectform input:eq(2)').next().text('قسم');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('حساس مواد');
-            $('#mySidenav a:eq(1)').find('span').text('وليون');
-            $('#mySidenav a:eq(2)').find('span').text('صاف');
-            $('#mySidenav a:eq(3)').find('span').text('نسخو');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('حساس مواد');
+            $('#mySidenav div:eq(1)').find('span').text('وليون');
+            $('#mySidenav div:eq(2)').find('span').text('صاف');
+            $('#mySidenav div:eq(3)').find('span').text('نسخو');
         } else if (lan == 'tr') {
             $('.stylebtn').text('Girmek');
             $('.mobile p:eq(0)').text('6000+ TV Kanalını İzleyin...');
@@ -2198,10 +2198,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Ülkeler');
             $('#selectform input:eq(1)').next().text('Diller');
             $('#selectform input:eq(2)').next().text('Kategori');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Hassas İçerik');
-            $('#mySidenav a:eq(1)').find('span').text('Diller');
-            $('#mySidenav a:eq(2)').find('span').text('Açık');
-            $('#mySidenav a:eq(3)').find('span').text('Sürüm');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Hassas İçerik');
+            $('#mySidenav div:eq(1)').find('span').text('Diller');
+            $('#mySidenav div:eq(2)').find('span').text('Açık');
+            $('#mySidenav div:eq(3)').find('span').text('Sürüm');
         } else if (lan == 'sn') {
             $('.stylebtn').text('Pinda');
             $('.mobile p:eq(0)').text('Tarisa 6000+ TV Channel ...');
@@ -2216,10 +2216,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Nyika');
             $('#selectform input:eq(1)').next().text('Mitauro');
             $('#selectform input:eq(2)').next().text('Chikamu');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Inonzwisisika Zvemukati');
-            $('#mySidenav a:eq(1)').find('span').text('Mitauro');
-            $('#mySidenav a:eq(2)').find('span').text('Zvakajeka');
-            $('#mySidenav a:eq(3)').find('span').text('Shanduro');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Inonzwisisika Zvemukati');
+            $('#mySidenav div:eq(1)').find('span').text('Mitauro');
+            $('#mySidenav div:eq(2)').find('span').text('Zvakajeka');
+            $('#mySidenav div:eq(3)').find('span').text('Shanduro');
         } else if (lan == 'zu') {
             $('.stylebtn').text('Faka');
             $('.mobile p:eq(0)').text('Bukela Iziteshi ze-TV ezingama-6000 + ...');
@@ -2234,10 +2234,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Amazwe');
             $('#selectform input:eq(1)').next().text('Izilimi');
             $('#selectform input:eq(2)').next().text('Isigaba');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Okuqukethwe okubucayi');
-            $('#mySidenav a:eq(1)').find('span').text('Izilimi');
-            $('#mySidenav a:eq(2)').find('span').text('Kucacile');
-            $('#mySidenav a:eq(3)').find('span').text('Inguqulo');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Okuqukethwe okubucayi');
+            $('#mySidenav div:eq(1)').find('span').text('Izilimi');
+            $('#mySidenav div:eq(2)').find('span').text('Kucacile');
+            $('#mySidenav div:eq(3)').find('span').text('Inguqulo');
         } else if (lan == 'sr') {
             $('.stylebtn').text('Ентер');
             $('.mobile p:eq(0)').text('Гледајте 6000+ ТВ канала ...');
@@ -2252,10 +2252,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Земље');
             $('#selectform input:eq(1)').next().text('Језици');
             $('#selectform input:eq(2)').next().text('Категорија');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Осетљив садржај');
-            $('#mySidenav a:eq(1)').find('span').text('Језици');
-            $('#mySidenav a:eq(2)').find('span').text('Јасно');
-            $('#mySidenav a:eq(3)').find('span').text('Верзија');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Осетљив садржај');
+            $('#mySidenav div:eq(1)').find('span').text('Језици');
+            $('#mySidenav div:eq(2)').find('span').text('Јасно');
+            $('#mySidenav div:eq(3)').find('span').text('Верзија');
         } else if (lan == 'gd') {
             $('.stylebtn').text('Cuir a-steach');
             $('.mobile p:eq(0)').text('Coimhead air 6000+ Sianalan Tbh ...');
@@ -2270,10 +2270,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Dùthchannan');
             $('#selectform input:eq(1)').next().text('Cànanan');
             $('#selectform input:eq(2)').next().text('Roinn-seòrsa');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Susbaint Mothachail');
-            $('#mySidenav a:eq(1)').find('span').text('Cànanan');
-            $('#mySidenav a:eq(2)').find('span').text('Soilleir');
-            $('#mySidenav a:eq(3)').find('span').text('Tionndadh');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Susbaint Mothachail');
+            $('#mySidenav div:eq(1)').find('span').text('Cànanan');
+            $('#mySidenav div:eq(2)').find('span').text('Soilleir');
+            $('#mySidenav div:eq(3)').find('span').text('Tionndadh');
         } else if (lan == 'pl') {
             $('.stylebtn').text('Wejść');
             $('.mobile p:eq(0)').text('Oglądaj ponad 6000 kanałów telewizyjnych...');
@@ -2288,10 +2288,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Kraje');
             $('#selectform input:eq(1)').next().text('Języki');
             $('#selectform input:eq(2)').next().text('Kategoria');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Treści wrażliwe');
-            $('#mySidenav a:eq(1)').find('span').text('Języki');
-            $('#mySidenav a:eq(2)').find('span').text('Jasne');
-            $('#mySidenav a:eq(3)').find('span').text('Wersja');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Treści wrażliwe');
+            $('#mySidenav div:eq(1)').find('span').text('Języki');
+            $('#mySidenav div:eq(2)').find('span').text('Jasne');
+            $('#mySidenav div:eq(3)').find('span').text('Wersja');
         } else if (lan == 'fa') {
             $('.stylebtn').text('وارد');
             $('.mobile p:eq(0)').text('تماشای بیش از 6000 کانال تلویزیونی ...');
@@ -2306,10 +2306,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('کشورها');
             $('#selectform input:eq(1)').next().text('زبان ها');
             $('#selectform input:eq(2)').next().text('دسته بندی');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('محتوای حساس');
-            $('#mySidenav a:eq(1)').find('span').text('زبان ها');
-            $('#mySidenav a:eq(2)').find('span').text('پاک کردن');
-            $('#mySidenav a:eq(3)').find('span').text('نسخه');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('محتوای حساس');
+            $('#mySidenav div:eq(1)').find('span').text('زبان ها');
+            $('#mySidenav div:eq(2)').find('span').text('پاک کردن');
+            $('#mySidenav div:eq(3)').find('span').text('نسخه');
         } else if (lan == 'ps') {
             $('.stylebtn').text('ننوځئ');
             $('.mobile p:eq(0)').text('6000+ تلویزیوني چینلونه وګورئ ...');
@@ -2324,10 +2324,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('هیوادونه');
             $('#selectform input:eq(1)').next().text('ژبې');
             $('#selectform input:eq(2)').next().text('کټګوري');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('حساس مواد');
-            $('#mySidenav a:eq(1)').find('span').text('ژبې');
-            $('#mySidenav a:eq(2)').find('span').text('پاک');
-            $('#mySidenav a:eq(3)').find('span').text('نسخه');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('حساس مواد');
+            $('#mySidenav div:eq(1)').find('span').text('ژبې');
+            $('#mySidenav div:eq(2)').find('span').text('پاک');
+            $('#mySidenav div:eq(3)').find('span').text('نسخه');
         } else if (lan == 'od') {
             $('.stylebtn').text('ପ୍ରବେଶ କରନ୍ତୁ |');
             $('.mobile p:eq(0)').text('6000+ ଟିଭି ଚ୍ୟାନେଲ ଦେଖନ୍ତୁ ...');
@@ -2342,10 +2342,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('ଦେଶଗୁଡିକ |');
             $('#selectform input:eq(1)').next().text('ଭାଷା');
             $('#selectform input:eq(2)').next().text('ବର୍ଗ');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('ସମ୍ବେଦନଶୀଳ ବିଷୟବସ୍ତୁ |');
-            $('#mySidenav a:eq(1)').find('span').text('ଭାଷା');
-            $('#mySidenav a:eq(2)').find('span').text('ସଫା');
-            $('#mySidenav a:eq(3)').find('span').text('ସଂସ୍କରଣ');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('ସମ୍ବେଦନଶୀଳ ବିଷୟବସ୍ତୁ |');
+            $('#mySidenav div:eq(1)').find('span').text('ଭାଷା');
+            $('#mySidenav div:eq(2)').find('span').text('ସଫା');
+            $('#mySidenav div:eq(3)').find('span').text('ସଂସ୍କରଣ');
         } else if (lan == 'ne') {
             $('.stylebtn').text('प्रविष्ट गर्नुहोस्');
             $('.mobile p:eq(0)').text('000०००+ टिभी च्यानलहरु हेर्नुहोस् ...');
@@ -2360,10 +2360,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('देशहरु');
             $('#selectform input:eq(1)').next().text('भाषाहरु');
             $('#selectform input:eq(2)').next().text('श्रेणी');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('संवेदनशील सामग्री');
-            $('#mySidenav a:eq(1)').find('span').text('भाषाहरु');
-            $('#mySidenav a:eq(2)').find('span').text('खाली');
-            $('#mySidenav a:eq(3)').find('span').text('संस्करण');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('संवेदनशील सामग्री');
+            $('#mySidenav div:eq(1)').find('span').text('भाषाहरु');
+            $('#mySidenav div:eq(2)').find('span').text('खाली');
+            $('#mySidenav div:eq(3)').find('span').text('संस्करण');
         } else if (lan == 'pa') {
             $('.stylebtn').text('ਦਾਖਲ ਕਰੋ');
             $('.mobile p:eq(0)').text('6000+ ਟੀਵੀ ਚੈਨਲ ਵੇਖੋ ...');
@@ -2378,10 +2378,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('ਦੇਸ਼');
             $('#selectform input:eq(1)').next().text('ਭਾਸ਼ਾਵਾਂ');
             $('#selectform input:eq(2)').next().text('ਸ਼੍ਰੇਣੀ');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('ਸੰਵੇਦਨਸ਼ੀਲ ਸਮਗਰੀ');
-            $('#mySidenav a:eq(1)').find('span').text('ਭਾਸ਼ਾਵਾਂ');
-            $('#mySidenav a:eq(2)').find('span').text('ਸਾਫ਼ ਕਰੋ');
-            $('#mySidenav a:eq(3)').find('span').text('ਵਰਜਨ');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('ਸੰਵੇਦਨਸ਼ੀਲ ਸਮਗਰੀ');
+            $('#mySidenav div:eq(1)').find('span').text('ਭਾਸ਼ਾਵਾਂ');
+            $('#mySidenav div:eq(2)').find('span').text('ਸਾਫ਼ ਕਰੋ');
+            $('#mySidenav div:eq(3)').find('span').text('ਵਰਜਨ');
         } else if (lan == 'vi') {
             $('.stylebtn').text('Vào');
             $('.mobile p:eq(0)').text('Xem hơn 6000 kênh TV ...');
@@ -2396,10 +2396,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Quốc gia');
             $('#selectform input:eq(1)').next().text('Ngôn ngữ');
             $('#selectform input:eq(2)').next().text('Loại');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Nội dung nhạy cảm');
-            $('#mySidenav a:eq(1)').find('span').text('Ngôn ngữ');
-            $('#mySidenav a:eq(2)').find('span').text('Sạch');
-            $('#mySidenav a:eq(3)').find('span').text('Phiên bản');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Nội dung nhạy cảm');
+            $('#mySidenav div:eq(1)').find('span').text('Ngôn ngữ');
+            $('#mySidenav div:eq(2)').find('span').text('Sạch');
+            $('#mySidenav div:eq(3)').find('span').text('Phiên bản');
         } else if (lan == 'mn') {
             $('.stylebtn').text('Оруулна уу');
             $('.mobile p:eq(0)').text('6000+ суваг үзэх ...');
@@ -2414,10 +2414,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Улс орнууд');
             $('#selectform input:eq(1)').next().text('Хэл');
             $('#selectform input:eq(2)').next().text('Ангилал');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Мэдрэмтгий контент');
-            $('#mySidenav a:eq(1)').find('span').text('Хэл');
-            $('#mySidenav a:eq(2)').find('span').text('Цэвэр');
-            $('#mySidenav a:eq(3)').find('span').text('Хувилбар');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Мэдрэмтгий контент');
+            $('#mySidenav div:eq(1)').find('span').text('Хэл');
+            $('#mySidenav div:eq(2)').find('span').text('Цэвэр');
+            $('#mySidenav div:eq(3)').find('span').text('Хувилбар');
         } else if (lan == 'mr') {
             $('.stylebtn').text('एंटर करा');
             $('.mobile p:eq(0)').text('6000+ टीव्ही चॅनेल पहा ...');
@@ -2432,10 +2432,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('देश');
             $('#selectform input:eq(1)').next().text('भाषा');
             $('#selectform input:eq(2)').next().text('श्रेणी');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('संवेदनशील सामग्री');
-            $('#mySidenav a:eq(1)').find('span').text('भाषा');
-            $('#mySidenav a:eq(2)').find('span').text('साफ करा');
-            $('#mySidenav a:eq(3)').find('span').text('आवृत्ती');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('संवेदनशील सामग्री');
+            $('#mySidenav div:eq(1)').find('span').text('भाषा');
+            $('#mySidenav div:eq(2)').find('span').text('साफ करा');
+            $('#mySidenav div:eq(3)').find('span').text('आवृत्ती');
         } else if (lan == 'mt') {
             $('.stylebtn').text('Daħħal');
             $('.mobile p:eq(0)').text('Ara 6000+ Kanal tat-TV ...');
@@ -2450,10 +2450,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Pajjiżi');
             $('#selectform input:eq(1)').next().text('Lingwi');
             $('#selectform input:eq(2)').next().text('Kategorija');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Kontenut Sensittiv');
-            $('#mySidenav a:eq(1)').find('span').text('Lingwi');
-            $('#mySidenav a:eq(2)').find('span').text('Ċara');
-            $('#mySidenav a:eq(3)').find('span').text('Verżjoni');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Kontenut Sensittiv');
+            $('#mySidenav div:eq(1)').find('span').text('Lingwi');
+            $('#mySidenav div:eq(2)').find('span').text('Ċara');
+            $('#mySidenav div:eq(3)').find('span').text('Verżjoni');
         } else if (lan == 'ml') {
             $('.stylebtn').text('നൽകുക');
             $('.mobile p:eq(0)').text('6000+ ടിവി ചാനലുകൾ കാണുക ...');
@@ -2468,10 +2468,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('രാജ്യങ്ങൾ');
             $('#selectform input:eq(1)').next().text('ഭാഷകൾ');
             $('#selectform input:eq(2)').next().text('വിഭാഗം');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('സെൻസിറ്റീവ് ഉള്ളടക്കം');
-            $('#mySidenav a:eq(1)').find('span').text('ഭാഷകൾ');
-            $('#mySidenav a:eq(2)').find('span').text('തെളിഞ്ഞ');
-            $('#mySidenav a:eq(3)').find('span').text('പതിപ്പ്');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('സെൻസിറ്റീവ് ഉള്ളടക്കം');
+            $('#mySidenav div:eq(1)').find('span').text('ഭാഷകൾ');
+            $('#mySidenav div:eq(2)').find('span').text('തെളിഞ്ഞ');
+            $('#mySidenav div:eq(3)').find('span').text('പതിപ്പ്');
         } else if (lan == 'ms') {
             $('.stylebtn').text('Masukkan');
             $('.mobile p:eq(0)').text('Tonton 6000+ Saluran TV ...');
@@ -2486,10 +2486,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Negara');
             $('#selectform input:eq(1)').next().text('Bahasa');
             $('#selectform input:eq(2)').next().text('Kategori');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Kandungan Sensitif');
-            $('#mySidenav a:eq(1)').find('span').text('Bahasa');
-            $('#mySidenav a:eq(2)').find('span').text('Jelas');
-            $('#mySidenav a:eq(3)').find('span').text('Versi');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Kandungan Sensitif');
+            $('#mySidenav div:eq(1)').find('span').text('Bahasa');
+            $('#mySidenav div:eq(2)').find('span').text('Jelas');
+            $('#mySidenav div:eq(3)').find('span').text('Versi');
         } else if (lan == 'mk') {
             $('.stylebtn').text('Внесете');
             $('.mobile p:eq(0)').text('Гледајте 6000+ ТВ канали ...');
@@ -2504,10 +2504,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Земјите');
             $('#selectform input:eq(1)').next().text('Јазици');
             $('#selectform input:eq(2)').next().text('Категорија');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Чувствителна содржина');
-            $('#mySidenav a:eq(1)').find('span').text('Јазици');
-            $('#mySidenav a:eq(2)').find('span').text('Јасно');
-            $('#mySidenav a:eq(3)').find('span').text('Верзија');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Чувствителна содржина');
+            $('#mySidenav div:eq(1)').find('span').text('Јазици');
+            $('#mySidenav div:eq(2)').find('span').text('Јасно');
+            $('#mySidenav div:eq(3)').find('span').text('Верзија');
         } else if (lan == 'lt') {
             $('.stylebtn').text('Įveskite');
             $('.mobile p:eq(0)').text('Žiūrėkite daugiau nei 6000 TV kanalų ...');
@@ -2522,10 +2522,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Šalys');
             $('#selectform input:eq(1)').next().text('Kalbos');
             $('#selectform input:eq(2)').next().text('Kategorija');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Jautrus turinys');
-            $('#mySidenav a:eq(1)').find('span').text('Kalbos');
-            $('#mySidenav a:eq(2)').find('span').text('Skaidrus');
-            $('#mySidenav a:eq(3)').find('span').text('Versija');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Jautrus turinys');
+            $('#mySidenav div:eq(1)').find('span').text('Kalbos');
+            $('#mySidenav div:eq(2)').find('span').text('Skaidrus');
+            $('#mySidenav div:eq(3)').find('span').text('Versija');
         } else if (lan == 'lv') {
             $('.stylebtn').text('Ievadiet');
             $('.mobile p:eq(0)').text('Skatieties vairāk nekā 6000 TV kanālu ...');
@@ -2540,10 +2540,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Valstis');
             $('#selectform input:eq(1)').next().text('Valodas');
             $('#selectform input:eq(2)').next().text('Kategorija');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensitīvs saturs');
-            $('#mySidenav a:eq(1)').find('span').text('Valodas');
-            $('#mySidenav a:eq(2)').find('span').text('Skaidrs');
-            $('#mySidenav a:eq(3)').find('span').text('Versija');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sensitīvs saturs');
+            $('#mySidenav div:eq(1)').find('span').text('Valodas');
+            $('#mySidenav div:eq(2)').find('span').text('Skaidrs');
+            $('#mySidenav div:eq(3)').find('span').text('Versija');
         } else if (lan == 'la') {
             $('.stylebtn').text('Intra');
             $('.mobile p:eq(0)').text('Vigilate 6000+ TV canales...');
@@ -2558,10 +2558,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('regiones');
             $('#selectform input:eq(1)').next().text('Linguae');
             $('#selectform input:eq(2)').next().text('Categoria');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensitivum Content');
-            $('#mySidenav a:eq(1)').find('span').text('Linguae');
-            $('#mySidenav a:eq(2)').find('span').text('Patet');
-            $('#mySidenav a:eq(3)').find('span').text('Version');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sensitivum Content');
+            $('#mySidenav div:eq(1)').find('span').text('Linguae');
+            $('#mySidenav div:eq(2)').find('span').text('Patet');
+            $('#mySidenav div:eq(3)').find('span').text('Version');
         } else if (lan == 'lo') {
             $('.stylebtn').text('ເຂົ້າ');
             $('.mobile p:eq(0)').text('ເບິ່ງໂທລະທັດຫຼາຍກວ່າ 6000 ຊ່ອງ ...');
@@ -2576,10 +2576,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('ປະເທດ');
             $('#selectform input:eq(1)').next().text('ພາສາ');
             $('#selectform input:eq(2)').next().text('ປະເພດ');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('ເນື້ອຫາທີ່ລະອຽດອ່ອນ');
-            $('#mySidenav a:eq(1)').find('span').text('ພາສາ');
-            $('#mySidenav a:eq(2)').find('span').text('ຊັດເຈນ');
-            $('#mySidenav a:eq(3)').find('span').text('ສະບັບ');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('ເນື້ອຫາທີ່ລະອຽດອ່ອນ');
+            $('#mySidenav div:eq(1)').find('span').text('ພາສາ');
+            $('#mySidenav div:eq(2)').find('span').text('ຊັດເຈນ');
+            $('#mySidenav div:eq(3)').find('span').text('ສະບັບ');
         } else if (lan == 'ky') {
             $('.stylebtn').text('Кирүү');
             $('.mobile p:eq(0)').text('6000+ телеканалдарды көрүңүз ...');
@@ -2594,10 +2594,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Өлкөлөр');
             $('#selectform input:eq(1)').next().text('Тилдер');
             $('#selectform input:eq(2)').next().text('Категория');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Сезимдүү мазмун');
-            $('#mySidenav a:eq(1)').find('span').text('Тилдер');
-            $('#mySidenav a:eq(2)').find('span').text('Тазалоо');
-            $('#mySidenav a:eq(3)').find('span').text('Версия');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Сезимдүү мазмун');
+            $('#mySidenav div:eq(1)').find('span').text('Тилдер');
+            $('#mySidenav div:eq(2)').find('span').text('Тазалоо');
+            $('#mySidenav div:eq(3)').find('span').text('Версия');
         } else if (lan == 'ku') {
             $('.stylebtn').text('Derbasbûn');
             $('.mobile p:eq(0)').text('6000+ Kanalên TV -yê temaşe bikin ...');
@@ -2612,10 +2612,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Welatan');
             $('#selectform input:eq(1)').next().text('Ziman');
             $('#selectform input:eq(2)').next().text('Liq');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Naveroka Hestiyar');
-            $('#mySidenav a:eq(1)').find('span').text('Ziman');
-            $('#mySidenav a:eq(2)').find('span').text('Zelal');
-            $('#mySidenav a:eq(3)').find('span').text('Awa');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Naveroka Hestiyar');
+            $('#mySidenav div:eq(1)').find('span').text('Ziman');
+            $('#mySidenav div:eq(2)').find('span').text('Zelal');
+            $('#mySidenav div:eq(3)').find('span').text('Awa');
         } else if (lan == 'km') {
             $('.stylebtn').text('បញ្ចូល');
             $('.mobile p:eq(0)').text('មើលប៉ុស្តិ៍ទូរទស្សន៍ជាង ៦០០០+ ...');
@@ -2630,10 +2630,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('បណ្តាប្រទេស');
             $('#selectform input:eq(1)').next().text('ភាសា');
             $('#selectform input:eq(2)').next().text('ប្រភេទ');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('មាតិការសើប');
-            $('#mySidenav a:eq(1)').find('span').text('ភាសា');
-            $('#mySidenav a:eq(2)').find('span').text('ច្បាស់');
-            $('#mySidenav a:eq(3)').find('span').text('កំណែ');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('មាតិការសើប');
+            $('#mySidenav div:eq(1)').find('span').text('ភាសា');
+            $('#mySidenav div:eq(2)').find('span').text('ច្បាស់');
+            $('#mySidenav div:eq(3)').find('span').text('កំណែ');
         } else if (lan == 'kk') {
             $('.stylebtn').text('Кіру');
             $('.mobile p:eq(0)').text('6000+ телеарналарды қарау ...');
@@ -2648,10 +2648,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Елдер');
             $('#selectform input:eq(1)').next().text('Тілдер');
             $('#selectform input:eq(2)').next().text('Санат');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Сезімтал мазмұн');
-            $('#mySidenav a:eq(1)').find('span').text('Тілдер');
-            $('#mySidenav a:eq(2)').find('span').text('Таза');
-            $('#mySidenav a:eq(3)').find('span').text('Нұсқа');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Сезімтал мазмұн');
+            $('#mySidenav div:eq(1)').find('span').text('Тілдер');
+            $('#mySidenav div:eq(2)').find('span').text('Таза');
+            $('#mySidenav div:eq(3)').find('span').text('Нұсқа');
         } else if (lan == 'kn') {
             $('.stylebtn').text('ನಮೂದಿಸಿ');
             $('.mobile p:eq(0)').text('6000+ ಟಿವಿ ಚಾನೆಲ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಿ ...');
@@ -2666,10 +2666,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('ದೇಶಗಳು');
             $('#selectform input:eq(1)').next().text('ಭಾಷೆಗಳು');
             $('#selectform input:eq(2)').next().text('ವರ್ಗ');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('ಸೂಕ್ಷ್ಮ ವಿಷಯ');
-            $('#mySidenav a:eq(1)').find('span').text('ಭಾಷೆಗಳು');
-            $('#mySidenav a:eq(2)').find('span').text('ಸ್ಪಷ್ಟ');
-            $('#mySidenav a:eq(3)').find('span').text('ಆವೃತ್ತಿ');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('ಸೂಕ್ಷ್ಮ ವಿಷಯ');
+            $('#mySidenav div:eq(1)').find('span').text('ಭಾಷೆಗಳು');
+            $('#mySidenav div:eq(2)').find('span').text('ಸ್ಪಷ್ಟ');
+            $('#mySidenav div:eq(3)').find('span').text('ಆವೃತ್ತಿ');
         } else if (lan == 'ga') {
             $('.stylebtn').text('Iontráil');
             $('.mobile p:eq(0)').text('Féach ar 6000+ Cainéal Teilifíse ...');
@@ -2684,10 +2684,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Tíortha');
             $('#selectform input:eq(1)').next().text('Teangacha');
             $('#selectform input:eq(2)').next().text('Catagóir');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Ábhar Íogair');
-            $('#mySidenav a:eq(1)').find('span').text('Teangacha');
-            $('#mySidenav a:eq(2)').find('span').text('Glan');
-            $('#mySidenav a:eq(3)').find('span').text('Leagan');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Ábhar Íogair');
+            $('#mySidenav div:eq(1)').find('span').text('Teangacha');
+            $('#mySidenav div:eq(2)').find('span').text('Glan');
+            $('#mySidenav div:eq(3)').find('span').text('Leagan');
         } else if (lan == 'is') {
             $('.stylebtn').text('Koma inn');
             $('.mobile p:eq(0)').text('Horfðu á 6000+ sjónvarpsrásir ...');
@@ -2702,10 +2702,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Lönd');
             $('#selectform input:eq(1)').next().text('Tungumál');
             $('#selectform input:eq(2)').next().text('Flokkur');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Viðkvæmt efni');
-            $('#mySidenav a:eq(1)').find('span').text('Tungumál');
-            $('#mySidenav a:eq(2)').find('span').text('Hreinsa');
-            $('#mySidenav a:eq(3)').find('span').text('Útgáfa');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Viðkvæmt efni');
+            $('#mySidenav div:eq(1)').find('span').text('Tungumál');
+            $('#mySidenav div:eq(2)').find('span').text('Hreinsa');
+            $('#mySidenav div:eq(3)').find('span').text('Útgáfa');
         } else if (lan == 'hu') {
             $('.stylebtn').text('Belép');
             $('.mobile p:eq(0)').text('Nézzen több mint 6000 TV -csatornát ...');
@@ -2720,10 +2720,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Országok');
             $('#selectform input:eq(1)').next().text('Nyelvek');
             $('#selectform input:eq(2)').next().text('Kategória');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Érzékeny tartalom');
-            $('#mySidenav a:eq(1)').find('span').text('Nyelvek');
-            $('#mySidenav a:eq(2)').find('span').text('Egyértelmű');
-            $('#mySidenav a:eq(3)').find('span').text('Változat');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Érzékeny tartalom');
+            $('#mySidenav div:eq(1)').find('span').text('Nyelvek');
+            $('#mySidenav div:eq(2)').find('span').text('Egyértelmű');
+            $('#mySidenav div:eq(3)').find('span').text('Változat');
         } else if (lan == 'he') {
             $('.stylebtn').text('להיכנס');
             $('.mobile p:eq(0)').text('צפה בערוצי טלוויזיה 6000+ ...');
@@ -2738,10 +2738,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('מדינות');
             $('#selectform input:eq(1)').next().text('שפות');
             $('#selectform input:eq(2)').next().text('קטגוריה');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('תוכן רגיש');
-            $('#mySidenav a:eq(1)').find('span').text('שפות');
-            $('#mySidenav a:eq(2)').find('span').text('ברור');
-            $('#mySidenav a:eq(3)').find('span').text('גִרְסָה');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('תוכן רגיש');
+            $('#mySidenav div:eq(1)').find('span').text('שפות');
+            $('#mySidenav div:eq(2)').find('span').text('ברור');
+            $('#mySidenav div:eq(3)').find('span').text('גִרְסָה');
         } else if (lan == 'haw') {
             $('.stylebtn').text('Komo');
             $('.mobile p:eq(0)').text('Nānā i nā kaha kīwī 6000+ ...');
@@ -2756,10 +2756,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Nā Aupuni');
             $('#selectform input:eq(1)').next().text('ʻLelo');
             $('#selectform input:eq(2)').next().text('Māhele');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('ʻIke nahenahe');
-            $('#mySidenav a:eq(1)').find('span').text('ʻLelo');
-            $('#mySidenav a:eq(2)').find('span').text('Maopopo');
-            $('#mySidenav a:eq(3)').find('span').text('Mana');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('ʻIke nahenahe');
+            $('#mySidenav div:eq(1)').find('span').text('ʻLelo');
+            $('#mySidenav div:eq(2)').find('span').text('Maopopo');
+            $('#mySidenav div:eq(3)').find('span').text('Mana');
         } else if (lan == 'ha') {
             $('.stylebtn').text('Shigar');
             $('.mobile p:eq(0)').text('Kalli tashoshin TV sama da 6000+ ...');
@@ -2774,10 +2774,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Kasashe');
             $('#selectform input:eq(1)').next().text('Harsuna');
             $('#selectform input:eq(2)').next().text('Nau\'i');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Abun ciki Mai Sahihi');
-            $('#mySidenav a:eq(1)').find('span').text('Harsuna');
-            $('#mySidenav a:eq(2)').find('span').text('Bayyana');
-            $('#mySidenav a:eq(3)').find('span').text('Sigar');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Abun ciki Mai Sahihi');
+            $('#mySidenav div:eq(1)').find('span').text('Harsuna');
+            $('#mySidenav div:eq(2)').find('span').text('Bayyana');
+            $('#mySidenav div:eq(3)').find('span').text('Sigar');
         } else if (lan == 'gu') {
             $('.stylebtn').text('દાખલ કરો');
             $('.mobile p:eq(0)').text('6000+ ટીવી ચેનલો જુઓ ...');
@@ -2792,10 +2792,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('દેશો');
             $('#selectform input:eq(1)').next().text('ભાષાઓ');
             $('#selectform input:eq(2)').next().text('શ્રેણી');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('સંવેદનશીલ સામગ્રી');
-            $('#mySidenav a:eq(1)').find('span').text('ભાષાઓ');
-            $('#mySidenav a:eq(2)').find('span').text('ચોખ્ખુ');
-            $('#mySidenav a:eq(3)').find('span').text('આવૃત્તિ');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('સંવેદનશીલ સામગ્રી');
+            $('#mySidenav div:eq(1)').find('span').text('ભાષાઓ');
+            $('#mySidenav div:eq(2)').find('span').text('ચોખ્ખુ');
+            $('#mySidenav div:eq(3)').find('span').text('આવૃત્તિ');
         } else if (lan == 'el') {
             $('.stylebtn').text('Εισαγω');
             $('.mobile p:eq(0)').text('Παρακολουθήστε 6000+ τηλεοπτικά κανάλια ...');
@@ -2810,10 +2810,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Χώρες');
             $('#selectform input:eq(1)').next().text('Γλώσσες');
             $('#selectform input:eq(2)').next().text('Κατηγορία');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Ευαίσθητο Περιεχόμενο');
-            $('#mySidenav a:eq(1)').find('span').text('Γλώσσες');
-            $('#mySidenav a:eq(2)').find('span').text('Σαφή');
-            $('#mySidenav a:eq(3)').find('span').text('Εκδοχή');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Ευαίσθητο Περιεχόμενο');
+            $('#mySidenav div:eq(1)').find('span').text('Γλώσσες');
+            $('#mySidenav div:eq(2)').find('span').text('Σαφή');
+            $('#mySidenav div:eq(3)').find('span').text('Εκδοχή');
         } else if (lan == 'ka') {
             $('.stylebtn').text('შეიყვანეთ');
             $('.mobile p:eq(0)').text('უყურეთ 6000+ სატელევიზიო არხს ...');
@@ -2828,10 +2828,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('პაესები');
             $('#selectform input:eq(1)').next().text('ენები');
             $('#selectform input:eq(2)').next().text('კატეგორია');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('მგრძნობიარე შინაარსი');
-            $('#mySidenav a:eq(1)').find('span').text('ენები');
-            $('#mySidenav a:eq(2)').find('span').text('ნათელია');
-            $('#mySidenav a:eq(3)').find('span').text('ვერსია');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('მგრძნობიარე შინაარსი');
+            $('#mySidenav div:eq(1)').find('span').text('ენები');
+            $('#mySidenav div:eq(2)').find('span').text('ნათელია');
+            $('#mySidenav div:eq(3)').find('span').text('ვერსია');
         } else if (lan == 'gl') {
             $('.stylebtn').text('Entra');
             $('.mobile p:eq(0)').text('Ver máis de 6000 canles de TV ...');
@@ -2846,10 +2846,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Países');
             $('#selectform input:eq(1)').next().text('Idiomas');
             $('#selectform input:eq(2)').next().text('Categoría');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contido sensible');
-            $('#mySidenav a:eq(1)').find('span').text('Idiomas');
-            $('#mySidenav a:eq(2)').find('span').text('Claro');
-            $('#mySidenav a:eq(3)').find('span').text('Versión');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Contido sensible');
+            $('#mySidenav div:eq(1)').find('span').text('Idiomas');
+            $('#mySidenav div:eq(2)').find('span').text('Claro');
+            $('#mySidenav div:eq(3)').find('span').text('Versión');
         } else if (lan == 'fi') {
             $('.stylebtn').text('Tulla sisään');
             $('.mobile p:eq(0)').text('Katso yli 6000 TV -kanavaa ...');
@@ -2864,10 +2864,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Maat');
             $('#selectform input:eq(1)').next().text('Kieli (kielet');
             $('#selectform input:eq(2)').next().text('Kategoria');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Arkaluonteinen sisältö');
-            $('#mySidenav a:eq(1)').find('span').text('Kieli (kielet');
-            $('#mySidenav a:eq(2)').find('span').text('Asia selvä');
-            $('#mySidenav a:eq(3)').find('span').text('Versio');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Arkaluonteinen sisältö');
+            $('#mySidenav div:eq(1)').find('span').text('Kieli (kielet');
+            $('#mySidenav div:eq(2)').find('span').text('Asia selvä');
+            $('#mySidenav div:eq(3)').find('span').text('Versio');
         } else if (lan == 'fil') {
             $('.stylebtn').text('Pasok');
             $('.mobile p:eq(0)').text('Manood ng 6000+ Mga Channel sa TV ...');
@@ -2882,10 +2882,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Mga Bansa');
             $('#selectform input:eq(1)').next().text('Mga Wika');
             $('#selectform input:eq(2)').next().text('Kategoryang');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensitibong Nilalaman');
-            $('#mySidenav a:eq(1)').find('span').text('Mga Wika');
-            $('#mySidenav a:eq(2)').find('span').text('Malinaw');
-            $('#mySidenav a:eq(3)').find('span').text('Bersyon');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sensitibong Nilalaman');
+            $('#mySidenav div:eq(1)').find('span').text('Mga Wika');
+            $('#mySidenav div:eq(2)').find('span').text('Malinaw');
+            $('#mySidenav div:eq(3)').find('span').text('Bersyon');
         } else if (lan == 'et') {
             $('.stylebtn').text('Sisenema');
             $('.mobile p:eq(0)').text('Vaata üle 6000 telekanali ...');
@@ -2900,10 +2900,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Riigid');
             $('#selectform input:eq(1)').next().text('Keeled');
             $('#selectform input:eq(2)').next().text('Kategooria');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Tundlik sisu');
-            $('#mySidenav a:eq(1)').find('span').text('Keeled');
-            $('#mySidenav a:eq(2)').find('span').text('Selge');
-            $('#mySidenav a:eq(3)').find('span').text('Versioon');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Tundlik sisu');
+            $('#mySidenav div:eq(1)').find('span').text('Keeled');
+            $('#mySidenav div:eq(2)').find('span').text('Selge');
+            $('#mySidenav div:eq(3)').find('span').text('Versioon');
         } else if (lan == 'eo') {
             $('.stylebtn').text('Eniru');
             $('.mobile p:eq(0)').text('Spektu 6000+ televidajn kanalojn ...');
@@ -2918,10 +2918,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Landoj');
             $('#selectform input:eq(1)').next().text('Lingvoj');
             $('#selectform input:eq(2)').next().text('Kategorio');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sentema Enhavo');
-            $('#mySidenav a:eq(1)').find('span').text('Lingvoj');
-            $('#mySidenav a:eq(2)').find('span').text('klara');
-            $('#mySidenav a:eq(3)').find('span').text('Versio');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sentema Enhavo');
+            $('#mySidenav div:eq(1)').find('span').text('Lingvoj');
+            $('#mySidenav div:eq(2)').find('span').text('klara');
+            $('#mySidenav div:eq(3)').find('span').text('Versio');
         } else if (lan == 'nl') {
             $('.stylebtn').text('Binnenkomen');
             $('.mobile p:eq(0)').text('Kijk 6000+ tv-kanalen...');
@@ -2936,10 +2936,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Landen');
             $('#selectform input:eq(1)').next().text('Talen');
             $('#selectform input:eq(2)').next().text('Categorie');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Gevoelige inhoud');
-            $('#mySidenav a:eq(1)').find('span').text('Talen');
-            $('#mySidenav a:eq(2)').find('span').text('Doorzichtig');
-            $('#mySidenav a:eq(3)').find('span').text('Versie');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Gevoelige inhoud');
+            $('#mySidenav div:eq(1)').find('span').text('Talen');
+            $('#mySidenav div:eq(2)').find('span').text('Doorzichtig');
+            $('#mySidenav div:eq(3)').find('span').text('Versie');
         } else if (lan == 'da') {
             $('.stylebtn').text('Gå ind');
             $('.mobile p:eq(0)').text('Se 6000+ tv -kanaler ...');
@@ -2954,10 +2954,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Lande');
             $('#selectform input:eq(1)').next().text('Sprog');
             $('#selectform input:eq(2)').next().text('Kategori');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Følsomt indhold');
-            $('#mySidenav a:eq(1)').find('span').text('Sprog');
-            $('#mySidenav a:eq(2)').find('span').text('klar');
-            $('#mySidenav a:eq(3)').find('span').text('Version');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Følsomt indhold');
+            $('#mySidenav div:eq(1)').find('span').text('Sprog');
+            $('#mySidenav div:eq(2)').find('span').text('klar');
+            $('#mySidenav div:eq(3)').find('span').text('Version');
         } else if (lan == 'cs') {
             $('.stylebtn').text('Vstupte');
             $('.mobile p:eq(0)').text('Sledujte více než 6000 televizních kanálů ...');
@@ -2972,10 +2972,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Země');
             $('#selectform input:eq(1)').next().text('Jazyky');
             $('#selectform input:eq(2)').next().text('Kategorie');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Citlivý obsah');
-            $('#mySidenav a:eq(1)').find('span').text('Jazyky');
-            $('#mySidenav a:eq(2)').find('span').text('Průhledná');
-            $('#mySidenav a:eq(3)').find('span').text('Verze');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Citlivý obsah');
+            $('#mySidenav div:eq(1)').find('span').text('Jazyky');
+            $('#mySidenav div:eq(2)').find('span').text('Průhledná');
+            $('#mySidenav div:eq(3)').find('span').text('Verze');
         } else if (lan == 'hr') {
             $('.stylebtn').text('Unesi');
             $('.mobile p:eq(0)').text('Gledajte 6000+ TV kanala ...');
@@ -2990,10 +2990,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Zemlje');
             $('#selectform input:eq(1)').next().text('Jezici');
             $('#selectform input:eq(2)').next().text('Kategorija');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Osjetljiv sadržaj');
-            $('#mySidenav a:eq(1)').find('span').text('Jezici');
-            $('#mySidenav a:eq(2)').find('span').text('čisto');
-            $('#mySidenav a:eq(3)').find('span').text('Verzija');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Osjetljiv sadržaj');
+            $('#mySidenav div:eq(1)').find('span').text('Jezici');
+            $('#mySidenav div:eq(2)').find('span').text('čisto');
+            $('#mySidenav div:eq(3)').find('span').text('Verzija');
         } else if (lan == 'co') {
             $('.stylebtn').text('Entre');
             $('.mobile p:eq(0)').text('Guarda 6000+ Canali TV ...');
@@ -3008,10 +3008,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Paesi');
             $('#selectform input:eq(1)').next().text('Lingue');
             $('#selectform input:eq(2)').next().text('Catigurìa');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Cuntenutu Sensitivu');
-            $('#mySidenav a:eq(1)').find('span').text('Lingue');
-            $('#mySidenav a:eq(2)').find('span').text('chjaru');
-            $('#mySidenav a:eq(3)').find('span').text('Versione');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Cuntenutu Sensitivu');
+            $('#mySidenav div:eq(1)').find('span').text('Lingue');
+            $('#mySidenav div:eq(2)').find('span').text('chjaru');
+            $('#mySidenav div:eq(3)').find('span').text('Versione');
         } else if (lan == 'ca') {
             $('.stylebtn').text('Entra');
             $('.mobile p:eq(0)').text('Mireu més de 6.000 canals de televisió ...');
@@ -3026,10 +3026,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Països');
             $('#selectform input:eq(1)').next().text('Idiomes');
             $('#selectform input:eq(2)').next().text('Categoria');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contingut sensible');
-            $('#mySidenav a:eq(1)').find('span').text('Idiomes');
-            $('#mySidenav a:eq(2)').find('span').text('clar');
-            $('#mySidenav a:eq(3)').find('span').text('Versió');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Contingut sensible');
+            $('#mySidenav div:eq(1)').find('span').text('Idiomes');
+            $('#mySidenav div:eq(2)').find('span').text('clar');
+            $('#mySidenav div:eq(3)').find('span').text('Versió');
         } else if (lan == 'bg') {
             $('.stylebtn').text('Въведете');
             $('.mobile p:eq(0)').text('Гледайте 6000+ телевизионни канала ...');
@@ -3044,10 +3044,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Държави');
             $('#selectform input:eq(1)').next().text('Езици');
             $('#selectform input:eq(2)').next().text('Категория');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Чувствително съдържание');
-            $('#mySidenav a:eq(1)').find('span').text('Езици');
-            $('#mySidenav a:eq(2)').find('span').text('ясно');
-            $('#mySidenav a:eq(3)').find('span').text('Версия');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Чувствително съдържание');
+            $('#mySidenav div:eq(1)').find('span').text('Езици');
+            $('#mySidenav div:eq(2)').find('span').text('ясно');
+            $('#mySidenav div:eq(3)').find('span').text('Версия');
         } else if (lan == 'bs') {
             $('.stylebtn').text('Enter');
             $('.mobile p:eq(0)').text('Gledajte 6000+ TV kanala ...');
@@ -3062,10 +3062,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Zemlje');
             $('#selectform input:eq(1)').next().text('Jezici');
             $('#selectform input:eq(2)').next().text('Kategorija');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Osetljiv sadržaj');
-            $('#mySidenav a:eq(1)').find('span').text('Jezici');
-            $('#mySidenav a:eq(2)').find('span').text('jasno');
-            $('#mySidenav a:eq(3)').find('span').text('Verzija');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Osetljiv sadržaj');
+            $('#mySidenav div:eq(1)').find('span').text('Jezici');
+            $('#mySidenav div:eq(2)').find('span').text('jasno');
+            $('#mySidenav div:eq(3)').find('span').text('Verzija');
         } else if (lan == 'bn') {
             $('.stylebtn').text('প্রবেশ করুন');
             $('.mobile p:eq(0)').text('6000+ টিভি চ্যানেল দেখুন ...');
@@ -3080,10 +3080,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('দেশগুলি');
             $('#selectform input:eq(1)').next().text('ভাষা');
             $('#selectform input:eq(2)').next().text('বিভাগ');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('সংবেদনশীল বিষয়বস্তু');
-            $('#mySidenav a:eq(1)').find('span').text('ভাষা');
-            $('#mySidenav a:eq(2)').find('span').text('পরিষ্কার');
-            $('#mySidenav a:eq(3)').find('span').text('সংস্করণ');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('সংবেদনশীল বিষয়বস্তু');
+            $('#mySidenav div:eq(1)').find('span').text('ভাষা');
+            $('#mySidenav div:eq(2)').find('span').text('পরিষ্কার');
+            $('#mySidenav div:eq(3)').find('span').text('সংস্করণ');
         } else if (lan == 'be') {
             $('.stylebtn').text('Увядзіце');
             $('.mobile p:eq(0)').text('Глядзіце больш за 6000 тэлеканалаў ...');
@@ -3098,10 +3098,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Краіны');
             $('#selectform input:eq(1)').next().text('Мовы');
             $('#selectform input:eq(2)').next().text('Катэгорыя');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Адчувальны змест');
-            $('#mySidenav a:eq(1)').find('span').text('Мовы');
-            $('#mySidenav a:eq(2)').find('span').text('ясна');
-            $('#mySidenav a:eq(3)').find('span').text('Версія');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Адчувальны змест');
+            $('#mySidenav div:eq(1)').find('span').text('Мовы');
+            $('#mySidenav div:eq(2)').find('span').text('ясна');
+            $('#mySidenav div:eq(3)').find('span').text('Версія');
         } else if (lan == 'eu') {
             $('.stylebtn').text('Sartu');
             $('.mobile p:eq(0)').text('Ikusi 6000+ telebista kate ...');
@@ -3116,10 +3116,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Herrialdeak');
             $('#selectform input:eq(1)').next().text('Hizkuntzak');
             $('#selectform input:eq(2)').next().text('Kategoria');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Eduki sentikorra');
-            $('#mySidenav a:eq(1)').find('span').text('Hizkuntzak');
-            $('#mySidenav a:eq(2)').find('span').text('argi');
-            $('#mySidenav a:eq(3)').find('span').text('Bertsioa');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Eduki sentikorra');
+            $('#mySidenav div:eq(1)').find('span').text('Hizkuntzak');
+            $('#mySidenav div:eq(2)').find('span').text('argi');
+            $('#mySidenav div:eq(3)').find('span').text('Bertsioa');
         } else if (lan == 'no' || lan == 'nb' || lan == 'nn') {
             $('.stylebtn').text('Tast inn');
             $('.mobile p:eq(0)').text('Se 6000+ TV -kanaler ...');
@@ -3134,10 +3134,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Land');
             $('#selectform input:eq(1)').next().text('Språk');
             $('#selectform input:eq(2)').next().text('Kategori');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Følsomt innhold');
-            $('#mySidenav a:eq(1)').find('span').text('Språk');
-            $('#mySidenav a:eq(2)').find('span').text('klar');
-            $('#mySidenav a:eq(3)').find('span').text('Versjon');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Følsomt innhold');
+            $('#mySidenav div:eq(1)').find('span').text('Språk');
+            $('#mySidenav div:eq(2)').find('span').text('klar');
+            $('#mySidenav div:eq(3)').find('span').text('Versjon');
         } else if (lan == 'ro' || lan == 'mo' || lan == 'rm') {
             $('.stylebtn').text('introduce');
             $('.mobile p:eq(0)').text('Urmăriți peste 6000 de canale TV ...');
@@ -3152,10 +3152,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Țări');
             $('#selectform input:eq(1)').next().text('Limbi');
             $('#selectform input:eq(2)').next().text('Categorie');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Conținut sensibil');
-            $('#mySidenav a:eq(1)').find('span').text('Limbi');
-            $('#mySidenav a:eq(2)').find('span').text('clar');
-            $('#mySidenav a:eq(3)').find('span').text('Versiune');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Conținut sensibil');
+            $('#mySidenav div:eq(1)').find('span').text('Limbi');
+            $('#mySidenav div:eq(2)').find('span').text('clar');
+            $('#mySidenav div:eq(3)').find('span').text('Versiune');
         } else if (lan == 'id') {
             $('.stylebtn').text('Memasuki');
             $('.mobile p:eq(0)').text('Tonton 6000+ Saluran TV...');
@@ -3170,10 +3170,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('negara');
             $('#selectform input:eq(1)').next().text('Bahasa');
             $('#selectform input:eq(2)').next().text('Kategori');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Konten Sensitif');
-            $('#mySidenav a:eq(1)').find('span').text('Bahasa');
-            $('#mySidenav a:eq(2)').find('span').text('jernih');
-            $('#mySidenav a:eq(3)').find('span').text('Versi: kapan');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Konten Sensitif');
+            $('#mySidenav div:eq(1)').find('span').text('Bahasa');
+            $('#mySidenav div:eq(2)').find('span').text('jernih');
+            $('#mySidenav div:eq(3)').find('span').text('Versi: kapan');
         } else if (lan == 'th') {
             $('.stylebtn').text('เข้า');
             $('.mobile p:eq(0)').text('ดูทีวีช่อง 6000+...');
@@ -3188,10 +3188,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('ประเทศ');
             $('#selectform input:eq(1)').next().text('ภาษา');
             $('#selectform input:eq(2)').next().text('หมวดหมู่');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('เนื้อหาละเอียดอ่อน');
-            $('#mySidenav a:eq(1)').find('span').text('ภาษา');
-            $('#mySidenav a:eq(2)').find('span').text('แจ่มใส');
-            $('#mySidenav a:eq(3)').find('span').text('เวอร์ชั่น');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('เนื้อหาละเอียดอ่อน');
+            $('#mySidenav div:eq(1)').find('span').text('ภาษา');
+            $('#mySidenav div:eq(2)').find('span').text('แจ่มใส');
+            $('#mySidenav div:eq(3)').find('span').text('เวอร์ชั่น');
         } else if (lan == 'it' || lan == 'it-IT' || lan == 'it-CH') {
             $('.stylebtn').text('accedere');
             $('.mobile p:eq(0)').text('Guarda oltre 6000 canali TV...');
@@ -3206,10 +3206,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Paesi');
             $('#selectform input:eq(1)').next().text('Le lingue');
             $('#selectform input:eq(2)').next().text('Categoria');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contenuti sensibili');
-            $('#mySidenav a:eq(1)').find('span').text('Le lingue');
-            $('#mySidenav a:eq(2)').find('span').text('chiara');
-            $('#mySidenav a:eq(3)').find('span').text('Versione');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Contenuti sensibili');
+            $('#mySidenav div:eq(1)').find('span').text('Le lingue');
+            $('#mySidenav div:eq(2)').find('span').text('chiara');
+            $('#mySidenav div:eq(3)').find('span').text('Versione');
         } else if (lan == 'ru') {
             $('.stylebtn').text('Входить');
             $('.mobile p:eq(0)').text('Смотрите 6000+ телеканалов ...');
@@ -3224,10 +3224,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Страны');
             $('#selectform input:eq(1)').next().text('Языки');
             $('#selectform input:eq(2)').next().text('Категория');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Деликатный контент');
-            $('#mySidenav a:eq(1)').find('span').text('Языки');
-            $('#mySidenav a:eq(2)').find('span').text('Чисто');
-            $('#mySidenav a:eq(3)').find('span').text('Версия');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Деликатный контент');
+            $('#mySidenav div:eq(1)').find('span').text('Языки');
+            $('#mySidenav div:eq(2)').find('span').text('Чисто');
+            $('#mySidenav div:eq(3)').find('span').text('Версия');
         } else if (lan == 'pt' || lan == 'pt-BR' || lan == 'pt-PT') {
             $('.stylebtn').text('Digitar');
             $('.mobile p:eq(0)').text('Assistir mais de 6.000 canais de TV ...');
@@ -3242,10 +3242,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Países');
             $('#selectform input:eq(1)').next().text('línguas');
             $('#selectform input:eq(2)').next().text('Categoria');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Conteúdo Sensível');
-            $('#mySidenav a:eq(1)').find('span').text('línguas');
-            $('#mySidenav a:eq(2)').find('span').text('claro');
-            $('#mySidenav a:eq(3)').find('span').text('Versão');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Conteúdo Sensível');
+            $('#mySidenav div:eq(1)').find('span').text('línguas');
+            $('#mySidenav div:eq(2)').find('span').text('claro');
+            $('#mySidenav div:eq(3)').find('span').text('Versão');
         } else if (lan == 'es' || lan == 'es-AR' || lan == 'es-419' || lan == 'es-MX' || lan == 'es-ES' || lan == 'es-US') {
             $('.stylebtn').text('Ingresar');
             $('.mobile p:eq(0)').text('Mira más de 6000 canales de televisión ...');
@@ -3260,10 +3260,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Países');
             $('#selectform input:eq(1)').next().text('Idiomas');
             $('#selectform input:eq(2)').next().text('Categoría');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contenido sensible');
-            $('#mySidenav a:eq(1)').find('span').text('Idiomas');
-            $('#mySidenav a:eq(2)').find('span').text('claro');
-            $('#mySidenav a:eq(3)').find('span').text('Versión');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Contenido sensible');
+            $('#mySidenav div:eq(1)').find('span').text('Idiomas');
+            $('#mySidenav div:eq(2)').find('span').text('claro');
+            $('#mySidenav div:eq(3)').find('span').text('Versión');
         } else if (lan == 'az') {
             $('.stylebtn').text('Daxil edin');
             $('.mobile p:eq(0)').text('6000 -dən çox TV kanalına baxın ...');
@@ -3278,10 +3278,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Ölkələr');
             $('#selectform input:eq(1)').next().text('Dillər');
             $('#selectform input:eq(2)').next().text('Kateqoriya');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Həssas Məzmun');
-            $('#mySidenav a:eq(1)').find('span').text('Dillər');
-            $('#mySidenav a:eq(2)').find('span').text('aydın');
-            $('#mySidenav a:eq(3)').find('span').text('Versiya');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Həssas Məzmun');
+            $('#mySidenav div:eq(1)').find('span').text('Dillər');
+            $('#mySidenav div:eq(2)').find('span').text('aydın');
+            $('#mySidenav div:eq(3)').find('span').text('Versiya');
         } else if (lan == 'hy') {
             $('.stylebtn').text('Մուտքագրեք');
             $('.mobile p:eq(0)').text('Դիտեք 6000+ հեռուստաալիք ...');
@@ -3296,10 +3296,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Երկրներ');
             $('#selectform input:eq(1)').next().text('Լեզուներ');
             $('#selectform input:eq(2)').next().text('Կատեգորիա');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sգայուն բովանդակություն');
-            $('#mySidenav a:eq(1)').find('span').text('Լեզուներ');
-            $('#mySidenav a:eq(2)').find('span').text('պարզ');
-            $('#mySidenav a:eq(3)').find('span').text('Տարբերակ');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sգայուն բովանդակություն');
+            $('#mySidenav div:eq(1)').find('span').text('Լեզուներ');
+            $('#mySidenav div:eq(2)').find('span').text('պարզ');
+            $('#mySidenav div:eq(3)').find('span').text('Տարբերակ');
         } else if (lan == 'de' || lan == 'de-AT' || lan == 'de-DE' || lan == 'de-LI' || lan == 'de-CH') {
             $('.stylebtn').text('Eintreten');
             $('.mobile p:eq(0)').text('Mehr als 6000 TV-Kanäle ansehen...');
@@ -3314,10 +3314,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Land');
             $('#selectform input:eq(1)').next().text('Sprachen');
             $('#selectform input:eq(2)').next().text('Kategorie');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Sensible Inhalte');
-            $('#mySidenav a:eq(1)').find('span').text('Sprachen');
-            $('#mySidenav a:eq(2)').find('span').text('klar');
-            $('#mySidenav a:eq(3)').find('span').text('Ausführung');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sensible Inhalte');
+            $('#mySidenav div:eq(1)').find('span').text('Sprachen');
+            $('#mySidenav div:eq(2)').find('span').text('klar');
+            $('#mySidenav div:eq(3)').find('span').text('Ausführung');
         } else if (lan == 'fr' || lan == 'fr-CA' || lan == 'fr-FR' || lan == 'fr-CH') {
             $('.stylebtn').text('Entrer');
             $('.mobile p:eq(0)').text('Regardez plus de 6000 chaînes de télévision...');
@@ -3332,10 +3332,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Des pays');
             $('#selectform input:eq(1)').next().text('Langages');
             $('#selectform input:eq(2)').next().text('Catégorie');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Contenu sensible');
-            $('#mySidenav a:eq(1)').find('span').text('Langages');
-            $('#mySidenav a:eq(2)').find('span').text('dégager');
-            $('#mySidenav a:eq(3)').find('span').text('Version');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Contenu sensible');
+            $('#mySidenav div:eq(1)').find('span').text('Langages');
+            $('#mySidenav div:eq(2)').find('span').text('dégager');
+            $('#mySidenav div:eq(3)').find('span').text('Version');
         } else if (lan == 'ar') {
             $('.stylebtn').text('يدخل');
             $('.mobile p:eq(0)').text('شاهد أكثر من 6000 قناة تلفزيونية ...');
@@ -3350,10 +3350,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('بلدان');
             $('#selectform input:eq(1)').next().text('اللغات');
             $('#selectform input:eq(2)').next().text('فئة');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('المحتوى الحساس');
-            $('#mySidenav a:eq(1)').find('span').text('اللغات');
-            $('#mySidenav a:eq(2)').find('span').text('صافي');
-            $('#mySidenav a:eq(3)').find('span').text('إصدار');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('المحتوى الحساس');
+            $('#mySidenav div:eq(1)').find('span').text('اللغات');
+            $('#mySidenav div:eq(2)').find('span').text('صافي');
+            $('#mySidenav div:eq(3)').find('span').text('إصدار');
         } else if (lan == 'sq') {
             $('.stylebtn').text('Hyni');
             $('.mobile p:eq(0)').text('Shikoni 6000+ kanale televizive ...');
@@ -3368,10 +3368,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('Vendet');
             $('#selectform input:eq(1)').next().text('Gjuhët');
             $('#selectform input:eq(2)').next().text('Kategoria');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('Përmbajtje e ndjeshme');
-            $('#mySidenav a:eq(1)').find('span').text('Gjuhët');
-            $('#mySidenav a:eq(2)').find('span').text('qartë');
-            $('#mySidenav a:eq(3)').find('span').text('Version');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Përmbajtje e ndjeshme');
+            $('#mySidenav div:eq(1)').find('span').text('Gjuhët');
+            $('#mySidenav div:eq(2)').find('span').text('qartë');
+            $('#mySidenav div:eq(3)').find('span').text('Version');
         } else if (lan == 'am') {
             $('.stylebtn').text('ግባ');
             $('.mobile p:eq(0)').text('6000+ የቴሌቪዥን ጣቢያዎችን ይመልከቱ ...');
@@ -3386,10 +3386,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('አገሮች');
             $('#selectform input:eq(1)').next().text('ቋንቋዎች');
             $('#selectform input:eq(2)').next().text('ምድብ');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('ስሜታዊ ይዘት');
-            $('#mySidenav a:eq(1)').find('span').text('ቋንቋዎች');
-            $('#mySidenav a:eq(2)').find('span').text('ግልጽ');
-            $('#mySidenav a:eq(3)').find('span').text('ስሪት');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('ስሜታዊ ይዘት');
+            $('#mySidenav div:eq(1)').find('span').text('ቋንቋዎች');
+            $('#mySidenav div:eq(2)').find('span').text('ግልጽ');
+            $('#mySidenav div:eq(3)').find('span').text('ስሪት');
         } else if (lan == 'zh' || lan == 'zh-CN') {
             $('.stylebtn').text('进入');
             $('.mobile p:eq(0)').text('观看6000多个电视直播台......');
@@ -3404,10 +3404,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('国家');
             $('#selectform input:eq(1)').next().text('语言');
             $('#selectform input:eq(2)').next().text('分类');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('敏感内容');
-            $('#mySidenav a:eq(1)').find('span').text('语言');
-            $('#mySidenav a:eq(2)').find('span').text('清理');
-            $('#mySidenav a:eq(3)').find('span').text('版本');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('敏感内容');
+            $('#mySidenav div:eq(1)').find('span').text('语言');
+            $('#mySidenav div:eq(2)').find('span').text('清理');
+            $('#mySidenav div:eq(3)').find('span').text('版本');
         } else if (lan == 'zh-HK' || lan == 'zh-TW') {
             $('.stylebtn').text('進入');
             $('.mobile p:eq(0)').text('觀看 6000 多個電視頻道...');
@@ -3422,10 +3422,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('國家');
             $('#selectform input:eq(1)').next().text('語言');
             $('#selectform input:eq(2)').next().text('分類');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('敏感內容');
-            $('#mySidenav a:eq(1)').find('span').text('語言');
-            $('#mySidenav a:eq(2)').find('span').text('清除');
-            $('#mySidenav a:eq(3)').find('span').text('版本');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('敏感內容');
+            $('#mySidenav div:eq(1)').find('span').text('語言');
+            $('#mySidenav div:eq(2)').find('span').text('清除');
+            $('#mySidenav div:eq(3)').find('span').text('版本');
         } else if (lan == 'af') {
             $('.stylebtn').text('Tik in');
             $('.mobile p:eq(0)').text('Kyk na 6000+ TV -kanale ...');
@@ -3440,10 +3440,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('land');
             $('#selectform input:eq(1)').next().text('Taal');
             $('#selectform input:eq(2)').next().text('kategorie');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('sensitiewe inhoud');
-            $('#mySidenav a:eq(1)').find('span').text('Taal');
-            $('#mySidenav a:eq(2)').find('span').text('duidelik');
-            $('#mySidenav a:eq(3)').find('span').text('weergawe');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('sensitiewe inhoud');
+            $('#mySidenav div:eq(1)').find('span').text('Taal');
+            $('#mySidenav div:eq(2)').find('span').text('duidelik');
+            $('#mySidenav div:eq(3)').find('span').text('weergawe');
         } else if (lan == 'ja') {
             $('.stylebtn').text('入力');
             $('.mobile p:eq(0)').text('6000以上のテレビチャンネルを見る...');
@@ -3458,10 +3458,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('国');
             $('#selectform input:eq(1)').next().text('言語');
             $('#selectform input:eq(2)').next().text('カテゴリー');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('デリケートなコンテンツ');
-            $('#mySidenav a:eq(1)').find('span').text('言語');
-            $('#mySidenav a:eq(2)').find('span').text('クリア');
-            $('#mySidenav a:eq(3)').find('span').text('バージョン');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('デリケートなコンテンツ');
+            $('#mySidenav div:eq(1)').find('span').text('言語');
+            $('#mySidenav div:eq(2)').find('span').text('クリア');
+            $('#mySidenav div:eq(3)').find('span').text('バージョン');
         } else if (lan == 'hi') {
             $('.stylebtn').text('प्रवेश करना');
             $('.mobile p:eq(0)').text('6000+ टीवी चैनल देखें...');
@@ -3476,10 +3476,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('देश');
             $('#selectform input:eq(1)').next().text('भाषा: हिन्दी');
             $('#selectform input:eq(2)').next().text('श्रेणी');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('संवेदनशील सामग्री');
-            $('#mySidenav a:eq(1)').find('span').text('भाषा: हिन्दी');
-            $('#mySidenav a:eq(2)').find('span').text('स्पष्ट');
-            $('#mySidenav a:eq(3)').find('span').text('संस्करण');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('संवेदनशील सामग्री');
+            $('#mySidenav div:eq(1)').find('span').text('भाषा: हिन्दी');
+            $('#mySidenav div:eq(2)').find('span').text('स्पष्ट');
+            $('#mySidenav div:eq(3)').find('span').text('संस्करण');
         } else if (lan == 'ko') {
             $('.stylebtn').text('입력하다');
             $('.mobile p:eq(0)').text('6000개 이상의 TV 채널 시청...');
@@ -3494,10 +3494,10 @@ $(document).ready(function() {
             $('#selectform input:eq(0)').next().text('국가');
             $('#selectform input:eq(1)').next().text('언어');
             $('#selectform input:eq(2)').next().text('श्रेणी');
-            $('#mySidenav a:eq(0)').find('span:eq(0)').text('범주');
-            $('#mySidenav a:eq(1)').find('span').text('언어');
-            $('#mySidenav a:eq(2)').find('span').text('분명한');
-            $('#mySidenav a:eq(3)').find('span').text('버전');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('범주');
+            $('#mySidenav div:eq(1)').find('span').text('언어');
+            $('#mySidenav div:eq(2)').find('span').text('분명한');
+            $('#mySidenav div:eq(3)').find('span').text('버전');
         }
         window.localStorage.setItem('languages', lan);
     });

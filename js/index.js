@@ -3,7 +3,7 @@ $(document).ready(function() {
     if (window.localStorage.getItem('bannedcountries') != 'true') {
         getUserIp();
     } else {
-        $('#mySidenav a:eq(0)').hide();
+        $('#mySidenav div:eq(0)').hide();
     }
     //Toggle Menu
     $('#main').click(function() {
@@ -71,10 +71,11 @@ $(document).ready(function() {
         }
     });
     //Clear cache
-    $('#clearbtn').on('change', function() {
-        let lan = $(this).val();
-        if (lan == 'ss') {
+    $('.cachebtn').click(function() {
+        if (confirm("Are you sure clear the cache?")) {
             localStorage.clear();
+        } else {
+            console.log("Not do nothing...");
         }
     });
 });
@@ -92,7 +93,7 @@ function getUserIp() {
             let country = JSON.parse(this.responseText).country_code;
             if (country.toLowerCase() == 'cn' || country.toLowerCase() == 'kp') {
                 window.localStorage.setItem('bannedcountries', 'true');
-                $('#mySidenav a:eq(0)').hide();
+                $('#mySidenav div:eq(0)').hide();
             }
         } else {
             getCoordintes();
@@ -128,7 +129,7 @@ function getCoordintes() {
                 var city = response.address;
                 if (city.country_code == 'cn' || city.country_code == 'kp') {
                     window.localStorage.setItem('bannedcountries', 'true');
-                    $('#mySidenav a:eq(0)').hide();
+                    $('#mySidenav div:eq(0)').hide();
                 };
             }
         }

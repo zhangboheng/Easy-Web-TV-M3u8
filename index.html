@@ -25,8 +25,18 @@
         width: 100px;
     }
     
-    #clearbtn {
+    .cachebtn {
         width: 100px;
+    }
+    
+    .cachebtn:hover {
+        color: #fff;
+        background-color: red;
+    }
+    
+    .cachebtn:active {
+        color: #fff;
+        background-color: #a3001b;
     }
 </style>
 
@@ -34,16 +44,16 @@
     <div id="mySidenav" class="sidenav">
         <h3>Easy Web TV</h3>
         <hr>
-        <a href="#">
+        <div>
             <span>Sensitive Content</span>
             <label class="switch">
             <input type="checkbox" id="adultban">
             <span class="slider round"></span>
             </label>
-        </a>
-        <a href="#">
+        </div>
+        <div>
             <span>Languages</span>
-            <select id="languages" name="languages">
+            <select id="languages" name="languages" style="cursor:pointer;">
                 <option value="selectbox">==Select==</option>
                 <option value="af">Afrikaans</option>
                 <option value="sq">Albanian - shqip</option>
@@ -172,18 +182,15 @@
                 <option value="yo">Yoruba - Èdè Yorùbá</option>
                 <option value="zu">Zulu - isiZulu</option> 
             </select>
-        </a>
-        <a href="#">
+        </div>
+        <div>
             <span>Clear</span>
-            <select id="clearbtn">
-                <option value="default">==Select==</option>
-                <option value="ss">settings</option>
-            </select>
-        </a>
-        <a href="#">
+            <button class="cachebtn" style="cursor: pointer;">All</button>
+        </div>
+        <div>
             <span>Version</span>
-            <label class="switch">8.0.3</label>
-        </a>
+            <label class="switch" style="cursor: pointer;"><a href="#logbox" data-reveal-id="logboxitem" style="color:#fff">8.0.4</a></label>
+        </div>
     </div>
     <div id="main">
         <span style="cursor:pointer"><img src="images/menuicon.png"></span>
@@ -198,6 +205,24 @@
                 <input type="radio" name="radioName" value="3" /> <span>Category</span> <br />
             </div>
             <button class="stylebtn">GO!</button>
+        </div>
+    </div>
+    <div id="logbox">
+        <div id="logboxitem" class="log-modal">
+            <a href="#" class="close-log-modal">×</a>
+            <div class="scrollidbar" style="text-align: left;">
+                <p>[2021-10-01] Delete one invalid manga source and add log history</p>
+                <p>[2021-09-16] V8.0.0 release support to listen to music online</p>
+                <p>[2021-09-15] V7.0.0 release support to read manga books</p>
+                <p>[2021-09-13] V6.0.0 release support to read novel books</p>
+                <p>[2021-09-08] V5.0.0 release support to listen 28000+ radio stations</p>
+                <p>[2021-09-04] V4.0.0 release support to watch movies, series, cartoon...</p>
+                <p>[2021-08-31] V3.0.0 release support to watch IPTV</p>
+                <p>[2021-08-29] V2.0.0 release support to search IPTV channels</p>
+                <p>[2021-08-29] V1.1.0 release pure code</p>
+                <p>[2021-08-28] V1.0.3 release support to remark favorite channels</p>
+                <p>[2021-04-21] V1.0.0 release</p>
+            </div>
         </div>
     </div>
     <div class="bodyCon08">

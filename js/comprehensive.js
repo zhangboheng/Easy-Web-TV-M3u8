@@ -26,8 +26,8 @@ $(document).ready(function() {
             $('#epcontent').append(`<h3>Content</h3><p>${$des[0].innerHTML.split("[")[2].split(']')[0]}</p>`);
             $('#left h3').html($name[0].innerHTML.split("[")[2].split(']')[0]);
             $("#channelcontent").empty();
-            let episode = $list[0].innerHTML.split('[')[2].split(']')[0].split('\#').map(x => x.split('$')).map(x => x[0]);
-            let links = $list[0].innerHTML.split('[')[2].split(']')[0].split('\#').map(x => x.split('$')).map(x => x[1]);
+            var episode = $list[0].innerHTML.split('[')[2].split(']')[0].split('\#').map(x => x.split('$')).map(x => x[0]);
+            var links = $list[0].innerHTML.split('[')[2].split(']')[0].split('\#').map(x => x.split('$')).map(x => x[1]);
             for (let i = 0; i < links.length; i++) {
                 channels.push(links[i]);
                 //Set Videojs Autoplay

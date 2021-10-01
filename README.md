@@ -1,6 +1,6 @@
 ![Easy-Web-TV](images/banner.jpg)
 # Easy-Web-TV-M3u8
-![Easy-Web-TV](https://img.shields.io/github/issues/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/badge/version-8.0.3-green)  
+![Easy-Web-TV](https://img.shields.io/github/issues/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8) ![Easy-Web-TV](https://img.shields.io/badge/version-8.0.4-green)  
 Easy way to listen to music or radio stations, watch movies, series, animes, shows, porn or IPTV, and read novel or manga books on the website. 
 
 # Official
@@ -10,7 +10,7 @@ Easy way to listen to music or radio stations, watch movies, series, animes, sho
  [![Easy-Web-TV](images/buymecoffeesponsor.jpeg)](https://www.buymeacoffee.com/zhangboheng)
 
 # Version
-![Easy-Web-TV](https://img.shields.io/badge/version-8.0.3-green)  
+![Easy-Web-TV](https://img.shields.io/badge/version-8.0.4-green)  
   - Support to select countries, languages and category to watch more than 6000 TV channels
   - Support to search and watch movies, series, animes and show
   - Support to search and listen to 28000+ radio stations

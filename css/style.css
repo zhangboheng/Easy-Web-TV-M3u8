@@ -175,7 +175,8 @@ input:checked+.slider:before {
 
 /* This is popupbox css style start */
 
-#popupbox {
+#popupbox,
+#logbox {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -184,12 +185,31 @@ input:checked+.slider:before {
     background-color: rgba(22, 22, 22, 0.5);
 }
 
-#popupbox:target {
+#popupbox:target,
+#logbox:target {
     visibility: visible;
     display: block;
 }
 
-.reveal-modal {
+#logbox p {
+    padding-bottom: 10px;
+    word-break: break-word;
+}
+
+.scrollidbar {
+    text-align: left;
+    overflow-y: auto;
+    height: inherit;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.reveal-modal,
+.log-modal {
     color: #fff;
     background: #a3001b;
     margin: 0 auto;
@@ -206,7 +226,8 @@ input:checked+.slider:before {
     opacity: 0.9;
 }
 
-.close-reveal-modal {
+.close-reveal-modal,
+.close-log-modal {
     position: relative;
     float: right;
     color: #fff;
@@ -297,7 +318,7 @@ button.stylebtn:hover::after {
     padding-bottom: 8px;
 }
 
-.sidenav a {
+.sidenav div {
     padding: 16px;
     text-decoration: none;
     font-size: 25px;
@@ -308,7 +329,7 @@ button.stylebtn:hover::after {
     justify-content: space-between;
 }
 
-.sidenav a:hover {
+.sidenav div:hover {
     color: #f1f1f1;
 }
 
