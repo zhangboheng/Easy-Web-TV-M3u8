@@ -379,7 +379,7 @@ button.stylebtn:hover::after {
         padding-top: 15px;
         width: 250px;
     }
-    .sidenav a {
+    .sidenav div {
         font-size: 18px;
     }
     .sidenav span {
