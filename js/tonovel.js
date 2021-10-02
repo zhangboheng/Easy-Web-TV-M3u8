@@ -6,8 +6,6 @@ var proxy = {
 var pnum = 1;
 var rand = Math.floor(Math.random() * Object.keys(proxy).length);
 $(document).ready(function() {
-    //Variable zone
-    var initlink = $('#selectapi').val();
     //Toggle menu and adjust size
     $(".toggle").css({ 'left': $('#left').width() - 50 });
     $('.toggle').click(function() {
@@ -18,6 +16,25 @@ $(document).ready(function() {
             $('.toggle').css({ 'left': '5px' });
         }
     });
+    //Get select source
+    try {
+        let ms = window.localStorage.getItem('novel').split(",");
+        let arr = ["novelonlinefull", "95sb"];
+        let lst = arr.filter(x => ms.includes(x)).map(x => arr.indexOf(x));
+        let sts = ['<option value="https://novelonlinefull.com/">novelonlinefull</option>',
+            '<option value="http://www.xfjxs.com/">95书包</option>'
+        ];
+        for (let i of lst) {
+            $('#selectapi').append(sts[i]);
+        }
+    } catch (e) {
+        $('#selectapi').append(`
+            <option value="https://novelonlinefull.com/">novelonlinefull</option>
+            <option value="http://www.xfjxs.com/">95书包</option>
+        `);
+    }
+    //Variable zone
+    var initlink = $('#selectapi').val();
     //Initial homepage menu and episod lists
     iniMenu(initlink);
     //Select Different Source Website

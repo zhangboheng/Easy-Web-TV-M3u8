@@ -176,7 +176,8 @@ input:checked+.slider:before {
 /* This is popupbox css style start */
 
 #popupbox,
-#logbox {
+#logbox,
+#sourcebox {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -186,7 +187,8 @@ input:checked+.slider:before {
 }
 
 #popupbox:target,
-#logbox:target {
+#logbox:target,
+#sourcebox:target {
     visibility: visible;
     display: block;
 }
@@ -209,12 +211,13 @@ input:checked+.slider:before {
 }
 
 .reveal-modal,
-.log-modal {
+.log-modal,
+.source-modal {
     color: #fff;
     background: #a3001b;
     margin: 0 auto;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     position: relative;
     z-index: 41;
     top: 35%;
@@ -227,7 +230,8 @@ input:checked+.slider:before {
 }
 
 .close-reveal-modal,
-.close-log-modal {
+.close-log-modal,
+.close-source-modal {
     position: relative;
     float: right;
     color: #fff;
@@ -236,8 +240,8 @@ input:checked+.slider:before {
 #selectform {
     text-align: left;
     font-size: 16px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 
@@ -333,6 +337,23 @@ button.stylebtn:hover::after {
     color: #f1f1f1;
 }
 
+.cachebtn {
+    width: 50%;
+    font-size: 1em;
+}
+
+.cachebtn:hover,
+.cachebtn a:hover {
+    color: #fff;
+    background-color: red;
+}
+
+.cachebtn:active,
+.cachebtn a:active {
+    color: #fff;
+    background-color: #a3001b;
+}
+
 #main {
     transition: margin-right .5s;
     padding: 16px;
@@ -368,6 +389,9 @@ button.stylebtn:hover::after {
     .switch {
         width: 50px;
         height: 20px;
+    }
+    .cachebtn {
+        font-size: 1em;
     }
     .slider:before {
         height: 15px;

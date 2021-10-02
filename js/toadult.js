@@ -7,8 +7,6 @@ var proxy = {
 var pnum = 1;
 var rand = Math.floor(Math.random() * Object.keys(proxy).length);
 $(document).ready(function() {
-    //Variable zone
-    var initlink = $('#selectapi').val();
     //Toggle menu and adjust size
     $(".toggle").css({ 'left': $('#left').width() - 50 });
     $('.toggle').click(function() {
@@ -19,6 +17,39 @@ $(document).ready(function() {
             $('.toggle').css({ 'left': '5px' });
         }
     });
+    //Get select source
+    try {
+        let ms = window.localStorage.getItem('porn').split(",");
+        let arr = ["zmwzy", "fedzy", "javmy", "hyzy", "sszy", "jjzy", "lsnzy", "bttzy", "llzy"];
+        let lst = arr.filter(x => ms.includes(x)).map(x => arr.indexOf(x));
+        let sts = ['<option value="http://zmcj88.com/sapi/json?ac=list">字幕网资源站</option>',
+            '<option value="http://f2dcj6.com/sapi/json?ac=list">富二代资源网</option>',
+            '<option value="http://mygzycj.com/sapi.php?ac=jsonvideolist">JAV名优资源站</option>',
+            '<option value="http://wmcj8.com/inc/jsonsapi.php?ac=videolist">环亚资源站</option>',
+            '<option value="http://secj8.com/inc/jsonsapi.php?ac=videolist">色色资源网</option>',
+            '<option value="http://99zywcj.com/inc/jsonsapi.php?ac=videolist">玖玖资源站</option>',
+            '<option value="http://cjmygzy.com/inc/jsonsapi.php?ac=videolist">狼少年资源站</option>',
+            '<option value="http://bttcj.com/inc/jsonsapi.php?ac=videolist">博天堂资源站</option>',
+            '<option value="http://llzxcj.com/inc/json.php?ac=videolist">利来资源站</option>'
+        ];
+        for (let i of lst) {
+            $('#selectapi').append(sts[i]);
+        }
+    } catch (e) {
+        $('#selectapi').append(`
+            <option value="http://zmcj88.com/sapi/json?ac=list">字幕网资源站</option>
+            <option value="http://f2dcj6.com/sapi/json?ac=list">富二代资源网</option>
+            <option value="http://mygzycj.com/sapi.php?ac=jsonvideolist">JAV名优资源站</option>
+            <option value="http://wmcj8.com/inc/jsonsapi.php?ac=videolist">环亚资源站</option>
+            <option value="http://secj8.com/inc/jsonsapi.php?ac=videolist">色色资源网</option>
+            <option value="http://99zywcj.com/inc/jsonsapi.php?ac=videolist">玖玖资源站</option>
+            <option value="http://cjmygzy.com/inc/jsonsapi.php?ac=videolist">狼少年资源站</option>
+            <option value="http://bttcj.com/inc/jsonsapi.php?ac=videolist">博天堂资源站</option>
+            <option value="http://llzxcj.com/inc/json.php?ac=videolist">利来资源站</option>
+        `);
+    }
+    //Variable zone
+    var initlink = $('#selectapi').val();
     //Initial homepage menu and episod lists
     iniMenu(initlink);
     //Select Different Source Website

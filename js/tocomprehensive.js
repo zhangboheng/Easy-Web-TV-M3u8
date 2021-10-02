@@ -6,8 +6,6 @@ var proxy = {
 var pnum = 1;
 var rand = Math.floor(Math.random() * Object.keys(proxy).length);
 $(document).ready(function() {
-    //Variable zone
-    var initlink = $('#selectapi').val();
     //Toggle menu and adjust size
     $(".toggle").css({ 'left': $('#left').width() - 50 });
     $('.toggle').click(function() {
@@ -18,6 +16,33 @@ $(document).ready(function() {
             $('.toggle').css({ 'left': '5px' });
         }
     });
+    //Get select source
+    try {
+        let ms = window.localStorage.getItem('movie').split(",");
+        let arr = ["39ys", "hnzy", "88zy", "kby", "tky", "bjy"];
+        let lst = arr.filter(x => ms.includes(x)).map(x => arr.indexOf(x));
+        let sts = ['<option value="https://www.39kan.com/api.php/provide/vod/at/json">39影视</option>',
+            '<option value="https://www.hongniuzy.com/inc/api.php">红牛资源</option>',
+            '<option value="http://www.88zy.live/inc/m3u8.php">88资源网</option>',
+            '<option value="http://www.kuaibozy.com/api.php/provide/vod/from/kbm3u8/at/xml/">快播云</option>',
+            '<option value="https://api.tiankongapi.com/api.php/provide/vod/at/xml/from/tkm3u8/">天空云</option>',
+            '<option value="http://cj.bajiecaiji.com/inc/bjm3u8.php">八戒云</option>'
+        ];
+        for (let i of lst) {
+            $('#selectapi').append(sts[i]);
+        }
+    } catch (e) {
+        $('#selectapi').append(`
+            <option value="https://www.39kan.com/api.php/provide/vod/at/json">39影视</option>
+            <option value="https://www.hongniuzy.com/inc/api.php">红牛资源</option>
+            <option value="http://www.88zy.live/inc/m3u8.php">88资源网</option>
+            <option value="http://www.kuaibozy.com/api.php/provide/vod/from/kbm3u8/at/xml/">快播云</option>
+            <option value="https://api.tiankongapi.com/api.php/provide/vod/at/xml/from/tkm3u8/">天空云</option>
+            <option value="http://cj.bajiecaiji.com/inc/bjm3u8.php">八戒云</option>
+        `);
+    }
+    //Variable zone
+    var initlink = $('#selectapi').val();
     //Initial homepage menu and episod lists
     iniMenu(initlink);
     //Select Different Source Website

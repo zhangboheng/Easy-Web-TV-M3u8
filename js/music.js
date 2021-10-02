@@ -1,5 +1,7 @@
 var channels = [];
 var plyist = [];
+//Get default localstorage key
+var localkey = ['manga', 'bannedcountries', 'novel', 'movie', 'music', 'languages'];
 $(document).ready(function() {
     $("#video1").width($("#div1").width()).height($("#div1").height());
     $(".toggle").css({ 'left': $('#left').width() - 50 });
@@ -42,7 +44,7 @@ $(document).ready(function() {
                 plyist.push(links[i]);
             }
             //Append favorite list
-            for (let i of Object.keys(localStorage)) {
+            for (let i of Object.keys(localStorage).filter(x => !localkey.includes(x))) {
                 if ($(window).width() > 640) {
                     $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
                 } else {
