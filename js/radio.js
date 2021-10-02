@@ -4,7 +4,7 @@ var radiosource = ['https://de1.api.radio-browser.info/', 'https://fr1.api.radio
 //Set a random integer
 var rand = Math.floor(Math.random() * radiosource.length);
 //Get default localstorage key
-var localkey = ['manga', 'bannedcountries', 'novel', 'movie', 'music', 'languages'];
+var localkey = ['manga', 'bannedcountries', 'novel', 'movie', 'music', 'languages', 'porn'];
 $(document).ready(function() {
 
     $("#video1").width($("#div1").width()).height($("#div1").height());

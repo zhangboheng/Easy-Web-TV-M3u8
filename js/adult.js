@@ -3,7 +3,7 @@ var proxy = {
     0: 'https://bird.ioliu.cn/v1?url=',
 };
 //Get default localstorage key
-var localkey = ['manga', 'bannedcountries', 'novel', 'movie', 'music', 'languages'];
+var localkey = ['manga', 'bannedcountries', 'novel', 'movie', 'music', 'languages', 'porn'];
 $(document).ready(function() {
     $("#video1").width($("#div1").width()).height($("#div1").height());
     $(".toggle").css({ 'left': $('#left').width() - 50 });
