@@ -5,7 +5,7 @@ var proxy = {
 };
 var channels = [];
 //Get default localstorage key
-var localkey = ['manga', 'bannedcountries', 'novel', 'movie', 'music', 'languages', 'porn'];
+var localkey = ['manga', 'bannedcountries', 'novel', 'movie', 'music', 'languages', 'porn', 'adult'];
 $(document).ready(function() {
     $("#video1").width($("#div1").width()).height($("#div1").height());
     $(".toggle").css({ 'left': $('#left').width() - 50 });

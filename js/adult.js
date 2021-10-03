@@ -3,7 +3,7 @@ var proxy = {
     0: 'https://bird.ioliu.cn/v1?url=',
 };
 //Get default localstorage key
-var localkey = ['manga', 'bannedcountries', 'novel', 'movie', 'music', 'languages', 'porn'];
+var localkey = ['manga', 'bannedcountries', 'novel', 'movie', 'music', 'languages', 'porn', 'adult'];
 $(document).ready(function() {
     $("#video1").width($("#div1").width()).height($("#div1").height());
     $(".toggle").css({ 'left': $('#left').width() - 50 });
@@ -19,7 +19,6 @@ $(document).ready(function() {
             type: 'application/x-mpegURL'
         });
         player.play();
-        console.log(initlink.split('&')[1]);
         if ($(window).width() > 640) {
             if (window.localStorage.getItem(initlink.split('&')[0]) == initlink.split('&')[1]) {
                 $("#menu").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${initlink.split('&')[0]}>${initlink.split('&')[1]}</span></p></li>`);
@@ -123,7 +122,7 @@ $(document).ready(function() {
                     }
                 }
                 //Append favorite list
-                for (let i of Object.keys(localStorage)) {
+                for (let i of Object.keys(localStorage).filter(x => !localkey.includes(x))) {
                     if ($(window).width() > 640) {
                         $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
                     } else {

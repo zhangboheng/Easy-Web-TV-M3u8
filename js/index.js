@@ -187,7 +187,7 @@ $(document).ready(function() {
         }
     });
     //Set adult content default
-    if (window.localStorage.getItem('bannedcountries') != 'true' && window.localStorage.getItem('Adult') == 'open') {
+    if (window.localStorage.getItem('bannedcountries') != 'true' && window.localStorage.getItem('adult') == 'open') {
         $('#adultban').prop('checked', true);
         $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
     }
@@ -195,10 +195,10 @@ $(document).ready(function() {
     $('#adultban').on('change', function() {
         if ($(this).is(':checked')) {
             $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
-            window.localStorage.setItem('Adult', 'open');
+            window.localStorage.setItem('adult', 'open');
         } else {
             $('.mobile li:eq(7)').remove();
-            localStorage.removeItem('Adult');
+            localStorage.removeItem('adult');
         }
     });
     //Clear cache
