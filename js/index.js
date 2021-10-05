@@ -437,7 +437,7 @@ function getUserIp() {
                 $('#mySidenav div:eq(0)').hide();
             }
         } else {
-            //getCoordintes();
+            getCoordintes();
         }
     };
     request.send();
