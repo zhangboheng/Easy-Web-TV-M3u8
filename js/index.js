@@ -171,7 +171,6 @@ $(document).ready(function() {
     });
     //Select TV Options
     $('.stylebtn:eq(0)').on('click', function() {
-        console.log($('input[name=radioName]:checked', '#selectform').val());
         if ($('input[name=radioName]:checked', '#selectform').val() == 1 && $('.stylebtn:eq(2)').attr('title') == 'selected') {
             window.location.href = "routes/countries.html";
         } else if ($('input[name=radioName]:checked', '#selectform').val() == 2 && $('.stylebtn:eq(2)').attr('title') == 'selected') {
@@ -194,8 +193,12 @@ $(document).ready(function() {
     //Check sensetive content if or not
     $('#adultban').on('change', function() {
         if ($(this).is(':checked')) {
-            $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
-            window.localStorage.setItem('adult', 'open');
+            if (confirm("Are you over 18 years old?")) {
+                $('.mobile').append(`<li><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">Enter</button></a></dd><p>Porn Videos...</p></li>`);
+                window.localStorage.setItem('adult', 'open');
+            } else {
+                $(this).prop('checked', false);
+            }
         } else {
             $('.mobile li:eq(7)').remove();
             localStorage.removeItem('adult');
@@ -212,6 +215,7 @@ $(document).ready(function() {
     //Append log history
     $('.scrollidbar').empty();
     $('.scrollidbar').append(`
+        <p>[2021-10-06] V8.1.1 release Add about feature and fixed some bugs</p>
         <p>[2021-10-02] V8.1.0 release Add source control feature</p>
         <p>[2021-10-01] Delete one invalid manga source and add log history</p>
         <p>[2021-09-16] V8.0.0 release support to listen to music online</p>
@@ -225,6 +229,10 @@ $(document).ready(function() {
         <p>[2021-08-28] V1.0.3 release support to remark favorite channels</p>
         <p>[2021-04-21] V1.0.0 release</p>
     `);
+    //Show QRcode
+    $('.circlescon li:eq(3)').click(function() {
+        $('.qrcode').toggle(500);
+    });
 });
 //Go to source nextpage
 function goToSource() {

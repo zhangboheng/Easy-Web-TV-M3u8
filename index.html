@@ -17,10 +17,6 @@
         overflow-x: hidden;
     }
     
-    .mobile li {
-        background-color: #00000066;
-    }
-    
     #languages,
     #source {
         width: 50%;
@@ -54,7 +50,11 @@
         </div>
         <div>
             <span>Version</span>
-            <label class="switch" style="cursor: pointer;"><a href="#logbox" data-reveal-id="logboxitem" style="color:#fff">8.1.0</a></label>
+            <label class="switch" style="cursor: pointer;"><a href="#logbox" data-reveal-id="logboxitem" style="color:#fff">8.1.1</a></label>
+        </div>
+        <div>
+            <span>About</span>
+            <label class="switch" style="cursor: pointer;"><a href="#infobox" data-reveal-id="infoboxitem" style="color:#fff">APP</a></label>
         </div>
     </div>
     <div id="main">
@@ -90,6 +90,33 @@
         <div id="logboxitem" class="log-modal">
             <a href="#" class="close-log-modal">×</a>
             <div class="scrollidbar" style="text-align: left;">
+            </div>
+        </div>
+    </div>
+    <div id="infobox">
+        <div id="infoboxitem" class="log-modal">
+            <a href="#" class="close-log-modal">×</a>
+            <div class="scrollappbar" style="text-align: left;">
+                <p>App Will Publish 2022 or later.</p>
+                <p>Developer: Zhang Boheng</p>
+                <div class="circlescon" style="display:flex;">
+                    <li>
+                        <a target="_blank" href="https://github.com/zhangboheng/"><img src="images/github.svg"></a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.youtube.com/c/LuckyDesigner"><img src="images/youtube.svg"></a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://t.me/Luckydesignerspace"><img src="images/telegram.svg"></a>
+                    </li>
+                    <li>
+                        <img src="images/wechat.svg">
+                        <div class="qrcode">
+                            <img src="images/wechatthumb.jpeg" style="position: absolute; width:25%; height:auto;top: 60%;left: 40%;"><img src="images/wechatpub.jpeg" style="width:100%; height:auto" />
+                        </div>
+                    </li>
+                </div>
+                <p>Copyright 2019-2021 行运设计师 www.luckydesigner.space All Rights Reserved.</p>
             </div>
         </div>
     </div>

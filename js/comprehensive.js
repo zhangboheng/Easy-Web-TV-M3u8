@@ -12,8 +12,7 @@ $(document).ready(function() {
     //Get Current href
     var initlink = decodeURIComponent(window.location.href).split('=')[1].split('&')[0];
     var id = decodeURIComponent(window.location.href).split('=')[2];
-
-    //Get iptv-org m3u list and show contents lists
+    //Get Source
     $.ajax({
         type: "GET",
         url: proxy[0] + `${initlink.replace('json','xml')}?ac=videolist&ids=${id}`,
@@ -28,8 +27,16 @@ $(document).ready(function() {
             $('#epcontent').append(`<h3>Content</h3><p>${$des[0].innerHTML.split("[")[2].split(']')[0]}</p>`);
             $('#left h3').html($name[0].innerHTML.split("[")[2].split(']')[0]);
             $("#channelcontent").empty();
-            var episode = $list[0].innerHTML.split('[')[2].split(']')[0].split('\#').map(x => x.split('$')).map(x => x[0]);
-            var links = $list[0].innerHTML.split('[')[2].split(']')[0].split('\#').map(x => x.split('$')).map(x => x[1]);
+            if (initlink == "http://www.88zy.live/inc/api.php") {
+                var episode = [];
+                var links = $list[1].innerHTML.split('[')[2].split(']')[0].split('\#').map(x => x.split('$')).map(x => x[0]);
+                for (let i = 0; i < links.length; i++) {
+                    episode.push(`第${Number(i+1)}集`);
+                }
+            } else {
+                var episode = $list[0].innerHTML.split('[')[2].split(']')[0].split('\#').map(x => x.split('$')).map(x => x[0]);
+                var links = $list[0].innerHTML.split('[')[2].split(']')[0].split('\#').map(x => x.split('$')).map(x => x[1]);
+            }
             for (let i = 0; i < links.length; i++) {
                 channels.push(links[i]);
                 //Set Videojs Autoplay

@@ -15,6 +15,7 @@ textarea,
 p {
     margin: 0 auto;
     padding: 0px;
+    list-style-type: none;
 }
 
 ul {
@@ -46,6 +47,7 @@ a:hover {
     display: table-cell;
     vertical-align: middle;
     height: 100vh;
+    background-color: #00000066;
 }
 
 #four_flash {
@@ -175,7 +177,8 @@ input:checked+.slider:before {
 
 #popupbox,
 #logbox,
-#sourcebox {
+#sourcebox,
+#infobox {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -186,17 +189,20 @@ input:checked+.slider:before {
 
 #popupbox:target,
 #logbox:target,
-#sourcebox:target {
+#sourcebox:target,
+#infobox:target {
     visibility: visible;
     display: block;
 }
 
-#logbox p {
+#logbox p,
+#infobox p {
     padding-bottom: 10px;
     word-break: break-word;
 }
 
-.scrollidbar {
+.scrollidbar,
+.scrollappbar {
     text-align: left;
     overflow-y: auto;
     height: inherit;
@@ -206,6 +212,34 @@ input:checked+.slider:before {
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+.circlescon {
+    display: flex;
+    padding-bottom: 5px;
+}
+
+.circlescon li {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    background-color: #fff;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.qrcode {
+    position: absolute;
+    background-color: ivory;
+    width: 50%;
+    height: 30%;
+    left: 10vh;
+    display: none;
+}
+
+.circlescon li img {
+    width: 70%;
+    height: 50px;
 }
 
 .reveal-modal,

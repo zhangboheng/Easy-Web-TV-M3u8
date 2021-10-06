@@ -30,14 +30,15 @@ $(document).ready(function() {
         $('.mobile p:eq(6)').text('Konstrueer tot weergawe 9.0.0');
         $('.mobile p:eq(7)').text('Porno video\'s ...');
         $('h2').text('kies');
-        $('#selectform input:eq(0)').next().text('land');
+        $('#selectform input:eq(0)').next().text('Land');
         $('#selectform input:eq(1)').next().text('Taal');
         $('#selectform input:eq(2)').next().text('kategorie');
         $('#mySidenav div:eq(0)').find('span:eq(0)').text('sensitiewe inhoud');
         $('#mySidenav div:eq(1)').find('span').text('Taal');
         $('#mySidenav div:eq(2)').find('span').text('duidelik');
         $('#mySidenav div:eq(3)').find('span').text('Bron');
-        $('#mySidenav div:eq(4)').find('span').text('weergawe');
+        $('#mySidenav div:eq(4)').find('span').text('Weergawe');
+        $('#mySidenav div:eq(5)').find('span').text('Ongeveer');
     } else if (window.localStorage.getItem('languages') == 'sq') {
         $('.stylebtn').text('Hyni');
         $('.mobile p:eq(0)').text('Shikoni 6000+ kanale televizive ...');
@@ -57,6 +58,7 @@ $(document).ready(function() {
         $('#mySidenav div:eq(2)').find('span').text('qartë');
         $('#mySidenav div:eq(3)').find('span').text('Burimi');
         $('#mySidenav div:eq(4)').find('span').text('Version');
+        $('#mySidenav div:eq(5)').find('span').text('Rreth');
     } else if (window.localStorage.getItem('languages') == 'am') {
         $('.stylebtn').text('ግባ');
         $('.mobile p:eq(0)').text('6000+ የቴሌቪዥን ጣቢያዎችን ይመልከቱ ...');
@@ -76,6 +78,7 @@ $(document).ready(function() {
         $('#mySidenav div:eq(2)').find('span').text('ግልጽ');
         $('#mySidenav div:eq(3)').find('span').text('ምንጭ');
         $('#mySidenav div:eq(4)').find('span').text('ስሪት');
+        $('#mySidenav div:eq(5)').find('span').text('ስለ');
     } else if (window.localStorage.getItem('languages') == 'ar') {
         $('.stylebtn').text('يدخل');
         $('.mobile p:eq(0)').text('شاهد أكثر من 6000 قناة تلفزيونية ...');
@@ -95,6 +98,7 @@ $(document).ready(function() {
         $('#mySidenav div:eq(2)').find('span').text('صافي');
         $('#mySidenav div:eq(3)').find('span').text('مصدر');
         $('#mySidenav div:eq(4)').find('span').text('إصدار');
+        $('#mySidenav div:eq(5)').find('span').text('عن');
     } else if (window.localStorage.getItem('languages') == 'hy') {
         $('.stylebtn').text('Մուտքագրեք');
         $('.mobile p:eq(0)').text('Դիտեք 6000+ հեռուստաալիք ...');
@@ -114,6 +118,7 @@ $(document).ready(function() {
         $('#mySidenav div:eq(2)').find('span').text('պարզ');
         $('#mySidenav div:eq(3)').find('span').text('Աղբյուր');
         $('#mySidenav div:eq(4)').find('span').text('Տարբերակ');
+        $('#mySidenav div:eq(5)').find('span').text('Մասին');
     } else if (window.localStorage.getItem('languages') == 'az') {
         $('.stylebtn').text('Daxil edin');
         $('.mobile p:eq(0)').text('6000 -dən çox TV kanalına baxın ...');
@@ -133,6 +138,7 @@ $(document).ready(function() {
         $('#mySidenav div:eq(2)').find('span').text('aydın');
         $('#mySidenav div:eq(3)').find('span').text('Mənbə');
         $('#mySidenav div:eq(4)').find('span').text('Versiya');
+        $('#mySidenav div:eq(5)').find('span').text('Haqqında');
     } else if (window.localStorage.getItem('languages') == 'eu') {
         $('.stylebtn').text('Sartu');
         $('.mobile p:eq(0)').text('Ikusi 6000+ telebista kate ...');
@@ -152,6 +158,7 @@ $(document).ready(function() {
         $('#mySidenav div:eq(2)').find('span').text('argi');
         $('#mySidenav div:eq(3)').find('span').text('Iturria');
         $('#mySidenav div:eq(4)').find('span').text('Bertsioa');
+        $('#mySidenav div:eq(5)').find('span').text('Buruz');
     } else if (window.localStorage.getItem('languages') == 'be') {
         $('.stylebtn').text('Увядзіце');
         $('.mobile p:eq(0)').text('Глядзіце больш за 6000 тэлеканалаў ...');
@@ -171,6 +178,7 @@ $(document).ready(function() {
         $('#mySidenav div:eq(2)').find('span').text('ясна');
         $('#mySidenav div:eq(3)').find('span').text('Крыніца');
         $('#mySidenav div:eq(4)').find('span').text('Версія');
+        $('#mySidenav div:eq(5)').find('span').text('Пра');
     } else if (window.localStorage.getItem('languages') == 'bn') {
         $('.stylebtn').text('প্রবেশ করুন');
         $('.mobile p:eq(0)').text('6000+ টিভি চ্যানেল দেখুন ...');
@@ -190,6 +198,7 @@ $(document).ready(function() {
         $('#mySidenav div:eq(2)').find('span').text('পরিষ্কার');
         $('#mySidenav div:eq(3)').find('span').text('সূত্র');
         $('#mySidenav div:eq(4)').find('span').text('সংস্করণ');
+        $('#mySidenav div:eq(5)').find('span').text('সম্পর্কিত');
     } else if (window.localStorage.getItem('languages') == 'bg') {
         $('.stylebtn').text('Въведете');
         $('.mobile p:eq(0)').text('Гледайте 6000+ телевизионни канала ...');
@@ -247,6 +256,7 @@ $(document).ready(function() {
         $('#mySidenav div:eq(2)').find('span').text('清理');
         $('#mySidenav div:eq(3)').find('span').text('来源');
         $('#mySidenav div:eq(4)').find('span').text('版本');
+        $('#mySidenav div:eq(5)').find('span').text('关于');
     } else if ('zh-HK, zh-TW'.indexOf(window.localStorage.getItem('languages')) > -1) {
         $('.stylebtn').text('進入');
         $('.mobile p:eq(0)').text('觀看 6000 多個電視頻道...');
@@ -266,6 +276,7 @@ $(document).ready(function() {
         $('#mySidenav div:eq(2)').find('span').text('清除');
         $('#mySidenav div:eq(3)').find('span').text('來源');
         $('#mySidenav div:eq(4)').find('span').text('版本');
+        $('#mySidenav div:eq(5)').find('span').text('關於');
     } else if (window.localStorage.getItem('languages') == 'co') {
         $('.stylebtn').text('Entre');
         $('.mobile p:eq(0)').text('Guarda 6000+ Canali TV ...');
@@ -1879,14 +1890,175 @@ $(document).ready(function() {
             $('.mobile p:eq(6)').text('Konstrueer tot weergawe 9.0.0');
             $('.mobile p:eq(7)').text('Porno video\'s ...');
             $('h2').text('kies');
-            $('#selectform input:eq(0)').next().text('land');
+            $('#selectform input:eq(0)').next().text('Land');
             $('#selectform input:eq(1)').next().text('Taal');
-            $('#selectform input:eq(2)').next().text('kategorie');
+            $('#selectform input:eq(2)').next().text('Kategorie');
             $('#mySidenav div:eq(0)').find('span:eq(0)').text('sensitiewe inhoud');
             $('#mySidenav div:eq(1)').find('span').text('Taal');
             $('#mySidenav div:eq(2)').find('span').text('duidelik');
             $('#mySidenav div:eq(3)').find('span').text('Bron');
             $('#mySidenav div:eq(4)').find('span').text('weergawe');
+            $('#mySidenav div:eq(5)').find('span').text('Ongeveer');
+        } else if (lan == 'sq') {
+            $('.stylebtn').text('Hyni');
+            $('.mobile p:eq(0)').text('Shikoni 6000+ kanale televizive ...');
+            $('.mobile p:eq(1)').text('Shikoni filma, seri, anime ...');
+            $('.mobile p:eq(2)').text('Dëgjoni 28000+ Stacione Radio ...');
+            $('.mobile p:eq(3)').text('Leximi i më shumë se 100000+ librave ...');
+            $('.mobile p:eq(4)').text('Duke lexuar shumë libra Manga ...');
+            $('.mobile p:eq(5)').text('Dëgjoni Muzikën Botërore ...');
+            $('.mobile p:eq(6)').text('Ndërtimi deri në versionin 9.0.0');
+            $('.mobile p:eq(7)').text('Video pornografike ...');
+            $('h2').text('Zgjidhni');
+            $('#selectform input:eq(0)').next().text('Vendet');
+            $('#selectform input:eq(1)').next().text('Gjuhët');
+            $('#selectform input:eq(2)').next().text('Kategoria');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Përmbajtje e ndjeshme');
+            $('#mySidenav div:eq(1)').find('span').text('Gjuhët');
+            $('#mySidenav div:eq(2)').find('span').text('qartë');
+            $('#mySidenav div:eq(3)').find('span').text('Burimi');
+            $('#mySidenav div:eq(4)').find('span').text('Version');
+            $('#mySidenav div:eq(5)').find('span').text('Rreth');
+        } else if (lan == 'am') {
+            $('.stylebtn').text('ግባ');
+            $('.mobile p:eq(0)').text('6000+ የቴሌቪዥን ጣቢያዎችን ይመልከቱ ...');
+            $('.mobile p:eq(1)').text('ፊልሞችን ፣ ተከታታዮችን ፣ አኒሞችን ይመልከቱ ...');
+            $('.mobile p:eq(2)').text('28000+ የሬዲዮ ጣቢያዎችን ያዳምጡ ...');
+            $('.mobile p:eq(3)').text('ከ 100000+ በላይ መጽሐፍትን በማንበብ ...');
+            $('.mobile p:eq(4)').text('ብዙ የማንጋ መጽሐፍትን በማንበብ ላይ ...');
+            $('.mobile p:eq(5)').text('የአለም ሙዚቃን ያዳምጡ ...');
+            $('.mobile p:eq(6)').text('እስከ ስሪት 9.0.0 ድረስ በመገንባት ላይ');
+            $('.mobile p:eq(7)').text('የወሲብ ቪዲዮዎች ...');
+            $('h2').text('ይምረጡ');
+            $('#selectform input:eq(0)').next().text('አገሮች');
+            $('#selectform input:eq(1)').next().text('ቋንቋዎች');
+            $('#selectform input:eq(2)').next().text('ምድብ');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('ስሜታዊ ይዘት');
+            $('#mySidenav div:eq(1)').find('span').text('ቋንቋዎች');
+            $('#mySidenav div:eq(2)').find('span').text('ግልጽ');
+            $('#mySidenav div:eq(3)').find('span').text('ምንጭ');
+            $('#mySidenav div:eq(4)').find('span').text('ስሪት');
+            $('#mySidenav div:eq(5)').find('span').text('ስለ');
+        } else if (lan == 'ar') {
+            $('.stylebtn').text('يدخل');
+            $('.mobile p:eq(0)').text('شاهد أكثر من 6000 قناة تلفزيونية ...');
+            $('.mobile p:eq(1)').text('مشاهدة الافلام والمسلسلات والرسوم المتحركة ...');
+            $('.mobile p:eq(2)').text('الاستماع 28000+ محطات الراديو ...');
+            $('.mobile p:eq(3)').text('قراءة أكثر من 100000+ كتاب ...');
+            $('.mobile p:eq(4)').text('قراءة الكثير من كتب المانجا ...');
+            $('.mobile p:eq(5)').text('الاستماع إلى الموسيقى العالمية ...');
+            $('.mobile p:eq(6)').text('جاري الإنشاء حتى الإصدار 9.0.0');
+            $('.mobile p:eq(7)').text('أشرطة الفيديو الإباحية ...');
+            $('h2').text('يختار');
+            $('#selectform input:eq(0)').next().text('بلدان');
+            $('#selectform input:eq(1)').next().text('اللغات');
+            $('#selectform input:eq(2)').next().text('فئة');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('المحتوى الحساس');
+            $('#mySidenav div:eq(1)').find('span').text('اللغات');
+            $('#mySidenav div:eq(2)').find('span').text('صافي');
+            $('#mySidenav div:eq(3)').find('span').text('مصدر');
+            $('#mySidenav div:eq(4)').find('span').text('إصدار');
+            $('#mySidenav div:eq(5)').find('span').text('عن');
+        } else if (lan == 'hy') {
+            $('.stylebtn').text('Մուտքագրեք');
+            $('.mobile p:eq(0)').text('Դիտեք 6000+ հեռուստաալիք ...');
+            $('.mobile p:eq(1)').text('Դիտեք ֆիլմեր, սերիալներ, անիմեներ ...');
+            $('.mobile p:eq(2)').text('Լսեք 28000+ ռադիոկայան ...');
+            $('.mobile p:eq(3)').text('Կարդում է ավելի քան 100000+ գիրք ...');
+            $('.mobile p:eq(4)').text('Մանգայի շատ գրքեր կարդալը ...');
+            $('.mobile p:eq(5)').text('Լսեք համաշխարհային երաժշտությունը ...');
+            $('.mobile p:eq(6)').text('Կառուցող մինչև 9.0.0 տարբերակ');
+            $('.mobile p:eq(7)').text('Պոռնո տեսանյութեր ...');
+            $('h2').text('Ընտրել');
+            $('#selectform input:eq(0)').next().text('Երկրներ');
+            $('#selectform input:eq(1)').next().text('Լեզուներ');
+            $('#selectform input:eq(2)').next().text('Կատեգորիա');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sգայուն բովանդակություն');
+            $('#mySidenav div:eq(1)').find('span').text('Լեզուներ');
+            $('#mySidenav div:eq(2)').find('span').text('պարզ');
+            $('#mySidenav div:eq(3)').find('span').text('Աղբյուր');
+            $('#mySidenav div:eq(4)').find('span').text('Տարբերակ');
+            $('#mySidenav div:eq(5)').find('span').text('Մասին');
+        } else if (lan == 'az') {
+            $('.stylebtn').text('Daxil edin');
+            $('.mobile p:eq(0)').text('6000 -dən çox TV kanalına baxın ...');
+            $('.mobile p:eq(1)').text('Filmlərə, Seriyalara, Cizgi filmlərinə baxın ...');
+            $('.mobile p:eq(2)').text('28000+ Radio Stansiyasına qulaq asın ...');
+            $('.mobile p:eq(3)').text('100000 -dən çox kitab oxumaq ...');
+            $('.mobile p:eq(4)').text('Çox Manga Kitabları Oxuyur ...');
+            $('.mobile p:eq(5)').text('Dünya musiqisini dinləyin ...');
+            $('.mobile p:eq(6)').text('9.0.0 versiyasına qədər tikinti');
+            $('.mobile p:eq(7)').text('Porno Videolar..');
+            $('h2').text('Seçin');
+            $('#selectform input:eq(0)').next().text('Ölkələr');
+            $('#selectform input:eq(1)').next().text('Dillər');
+            $('#selectform input:eq(2)').next().text('Kateqoriya');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Həssas Məzmun');
+            $('#mySidenav div:eq(1)').find('span').text('Dillər');
+            $('#mySidenav div:eq(2)').find('span').text('aydın');
+            $('#mySidenav div:eq(3)').find('span').text('Mənbə');
+            $('#mySidenav div:eq(4)').find('span').text('Versiya');
+            $('#mySidenav div:eq(5)').find('span').text('Haqqında');
+        } else if (lan == 'eu') {
+            $('.stylebtn').text('Sartu');
+            $('.mobile p:eq(0)').text('Ikusi 6000+ telebista kate ...');
+            $('.mobile p:eq(1)').text('Ikusi filmak, telesailak, Animes ...');
+            $('.mobile p:eq(2)').text('Entzun 28000+ irrati ...');
+            $('.mobile p:eq(3)').text('100.000 liburu baino gehiago irakurtzen ...');
+            $('.mobile p:eq(4)').text('Manga liburu asko irakurtzen ...');
+            $('.mobile p:eq(5)').text('Entzun The World Music ...');
+            $('.mobile p:eq(6)').text('9.0.0 bertsiora arte eraikitzen');
+            $('.mobile p:eq(7)').text('Bideo pornoa ...');
+            $('h2').text('Aukeratu');
+            $('#selectform input:eq(0)').next().text('Herrialdeak');
+            $('#selectform input:eq(1)').next().text('Hizkuntzak');
+            $('#selectform input:eq(2)').next().text('Kategoria');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Eduki sentikorra');
+            $('#mySidenav div:eq(1)').find('span').text('Hizkuntzak');
+            $('#mySidenav div:eq(2)').find('span').text('argi');
+            $('#mySidenav div:eq(3)').find('span').text('Iturria');
+            $('#mySidenav div:eq(4)').find('span').text('Bertsioa');
+            $('#mySidenav div:eq(5)').find('span').text('Buruz');
+        } else if (lan == 'be') {
+            $('.stylebtn').text('Увядзіце');
+            $('.mobile p:eq(0)').text('Глядзіце больш за 6000 тэлеканалаў ...');
+            $('.mobile p:eq(1)').text('Глядзіце фільмы, серыялы, анімацыі ...');
+            $('.mobile p:eq(2)').text('Слухайце 28000+ радыёстанцый ...');
+            $('.mobile p:eq(3)').text('Чытанне больш за 100 000 кніг ...');
+            $('.mobile p:eq(4)').text('Чытаючы шмат кніг мангі ...');
+            $('.mobile p:eq(5)').text('Слухайце The World Music ...');
+            $('.mobile p:eq(6)').text('Пабудова да версіі 9.0.0');
+            $('.mobile p:eq(7)').text('Відэа порна ...');
+            $('h2').text('Выберыце');
+            $('#selectform input:eq(0)').next().text('Краіны');
+            $('#selectform input:eq(1)').next().text('Мовы');
+            $('#selectform input:eq(2)').next().text('Катэгорыя');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Адчувальны змест');
+            $('#mySidenav div:eq(1)').find('span').text('Мовы');
+            $('#mySidenav div:eq(2)').find('span').text('ясна');
+            $('#mySidenav div:eq(3)').find('span').text('Крыніца');
+            $('#mySidenav div:eq(4)').find('span').text('Версія');
+            $('#mySidenav div:eq(5)').find('span').text('Пра');
+        } else if (lan == 'bn') {
+            $('.stylebtn').text('প্রবেশ করুন');
+            $('.mobile p:eq(0)').text('6000+ টিভি চ্যানেল দেখুন ...');
+            $('.mobile p:eq(1)').text('সিনেমা, সিরিজ, এনিমেস দেখুন ...');
+            $('.mobile p:eq(2)').text('28000+ রেডিও স্টেশন শুনুন ...');
+            $('.mobile p:eq(3)').text('১০০,০০০+ এরও বেশি বই পড়া ...');
+            $('.mobile p:eq(4)').text('প্রচুর মাঙ্গা বই পড়া ...');
+            $('.mobile p:eq(5)').text('বিশ্ব সঙ্গীত শুনুন ...');
+            $('.mobile p:eq(6)').text('সংস্করণ 9.0.0 পর্যন্ত নির্মাণ');
+            $('.mobile p:eq(7)').text('ভিডিও পর্ন ...');
+            $('h2').text('নির্বাচন করুন');
+            $('#selectform input:eq(0)').next().text('দেশগুলি');
+            $('#selectform input:eq(1)').next().text('ভাষা');
+            $('#selectform input:eq(2)').next().text('বিভাগ');
+            $('#mySidenav div:eq(0)').find('span:eq(0)').text('সংবেদনশীল বিষয়বস্তু');
+            $('#mySidenav div:eq(1)').find('span').text('ভাষা');
+            $('#mySidenav div:eq(2)').find('span').text('পরিষ্কার');
+            $('#mySidenav div:eq(3)').find('span').text('সূত্র');
+            $('#mySidenav div:eq(4)').find('span').text('সংস্করণ');
+            $('#mySidenav div:eq(5)').find('span').text('সম্পর্কিত');
         } else if (lan == 'sw') {
             $('.stylebtn').text('Ingiza');
             $('.mobile p:eq(0)').text('Tazama Vituo vya TV 6000+ ...');
@@ -3255,63 +3427,6 @@ $(document).ready(function() {
             $('#mySidenav div:eq(2)').find('span').text('jasno');
             $('#mySidenav div:eq(3)').find('span').text('Izvor');
             $('#mySidenav div:eq(4)').find('span').text('Verzija');
-        } else if (lan == 'bn') {
-            $('.stylebtn').text('প্রবেশ করুন');
-            $('.mobile p:eq(0)').text('6000+ টিভি চ্যানেল দেখুন ...');
-            $('.mobile p:eq(1)').text('সিনেমা, সিরিজ, এনিমেস দেখুন ...');
-            $('.mobile p:eq(2)').text('28000+ রেডিও স্টেশন শুনুন ...');
-            $('.mobile p:eq(3)').text('১০০,০০০+ এরও বেশি বই পড়া ...');
-            $('.mobile p:eq(4)').text('প্রচুর মাঙ্গা বই পড়া ...');
-            $('.mobile p:eq(5)').text('বিশ্ব সঙ্গীত শুনুন ...');
-            $('.mobile p:eq(6)').text('সংস্করণ 9.0.0 পর্যন্ত নির্মাণ');
-            $('.mobile p:eq(7)').text('ভিডিও পর্ন ...');
-            $('h2').text('নির্বাচন করুন');
-            $('#selectform input:eq(0)').next().text('দেশগুলি');
-            $('#selectform input:eq(1)').next().text('ভাষা');
-            $('#selectform input:eq(2)').next().text('বিভাগ');
-            $('#mySidenav div:eq(0)').find('span:eq(0)').text('সংবেদনশীল বিষয়বস্তু');
-            $('#mySidenav div:eq(1)').find('span').text('ভাষা');
-            $('#mySidenav div:eq(2)').find('span').text('পরিষ্কার');
-            $('#mySidenav div:eq(3)').find('span').text('সূত্র');
-            $('#mySidenav div:eq(4)').find('span').text('সংস্করণ');
-        } else if (lan == 'be') {
-            $('.stylebtn').text('Увядзіце');
-            $('.mobile p:eq(0)').text('Глядзіце больш за 6000 тэлеканалаў ...');
-            $('.mobile p:eq(1)').text('Глядзіце фільмы, серыялы, анімацыі ...');
-            $('.mobile p:eq(2)').text('Слухайце 28000+ радыёстанцый ...');
-            $('.mobile p:eq(3)').text('Чытанне больш за 100 000 кніг ...');
-            $('.mobile p:eq(4)').text('Чытаючы шмат кніг мангі ...');
-            $('.mobile p:eq(5)').text('Слухайце The World Music ...');
-            $('.mobile p:eq(6)').text('Пабудова да версіі 9.0.0');
-            $('.mobile p:eq(7)').text('Відэа порна ...');
-            $('h2').text('Выберыце');
-            $('#selectform input:eq(0)').next().text('Краіны');
-            $('#selectform input:eq(1)').next().text('Мовы');
-            $('#selectform input:eq(2)').next().text('Катэгорыя');
-            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Адчувальны змест');
-            $('#mySidenav div:eq(1)').find('span').text('Мовы');
-            $('#mySidenav div:eq(2)').find('span').text('ясна');
-            $('#mySidenav div:eq(3)').find('span').text('Крыніца');
-            $('#mySidenav div:eq(4)').find('span').text('Версія');
-        } else if (lan == 'eu') {
-            $('.stylebtn').text('Sartu');
-            $('.mobile p:eq(0)').text('Ikusi 6000+ telebista kate ...');
-            $('.mobile p:eq(1)').text('Ikusi filmak, telesailak, Animes ...');
-            $('.mobile p:eq(2)').text('Entzun 28000+ irrati ...');
-            $('.mobile p:eq(3)').text('100.000 liburu baino gehiago irakurtzen ...');
-            $('.mobile p:eq(4)').text('Manga liburu asko irakurtzen ...');
-            $('.mobile p:eq(5)').text('Entzun The World Music ...');
-            $('.mobile p:eq(6)').text('9.0.0 bertsiora arte eraikitzen');
-            $('.mobile p:eq(7)').text('Bideo pornoa ...');
-            $('h2').text('Aukeratu');
-            $('#selectform input:eq(0)').next().text('Herrialdeak');
-            $('#selectform input:eq(1)').next().text('Hizkuntzak');
-            $('#selectform input:eq(2)').next().text('Kategoria');
-            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Eduki sentikorra');
-            $('#mySidenav div:eq(1)').find('span').text('Hizkuntzak');
-            $('#mySidenav div:eq(2)').find('span').text('argi');
-            $('#mySidenav div:eq(3)').find('span').text('Iturria');
-            $('#mySidenav div:eq(4)').find('span').text('Bertsioa');
         } else if (lan == 'no' || lan == 'nb' || lan == 'nn') {
             $('.stylebtn').text('Tast inn');
             $('.mobile p:eq(0)').text('Se 6000+ TV -kanaler ...');
@@ -3464,44 +3579,6 @@ $(document).ready(function() {
             $('#mySidenav div:eq(2)').find('span').text('claro');
             $('#mySidenav div:eq(3)').find('span').text('Fuente');
             $('#mySidenav div:eq(4)').find('span').text('Versión');
-        } else if (lan == 'az') {
-            $('.stylebtn').text('Daxil edin');
-            $('.mobile p:eq(0)').text('6000 -dən çox TV kanalına baxın ...');
-            $('.mobile p:eq(1)').text('Filmlərə, Seriyalara, Cizgi filmlərinə baxın ...');
-            $('.mobile p:eq(2)').text('28000+ Radio Stansiyasına qulaq asın ...');
-            $('.mobile p:eq(3)').text('100000 -dən çox kitab oxumaq ...');
-            $('.mobile p:eq(4)').text('Çox Manga Kitabları Oxuyur ...');
-            $('.mobile p:eq(5)').text('Dünya musiqisini dinləyin ...');
-            $('.mobile p:eq(6)').text('9.0.0 versiyasına qədər tikinti');
-            $('.mobile p:eq(7)').text('Porno Videolar..');
-            $('h2').text('Seçin');
-            $('#selectform input:eq(0)').next().text('Ölkələr');
-            $('#selectform input:eq(1)').next().text('Dillər');
-            $('#selectform input:eq(2)').next().text('Kateqoriya');
-            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Həssas Məzmun');
-            $('#mySidenav div:eq(1)').find('span').text('Dillər');
-            $('#mySidenav div:eq(2)').find('span').text('aydın');
-            $('#mySidenav div:eq(3)').find('span').text('Mənbə');
-            $('#mySidenav div:eq(4)').find('span').text('Versiya');
-        } else if (lan == 'hy') {
-            $('.stylebtn').text('Մուտքագրեք');
-            $('.mobile p:eq(0)').text('Դիտեք 6000+ հեռուստաալիք ...');
-            $('.mobile p:eq(1)').text('Դիտեք ֆիլմեր, սերիալներ, անիմեներ ...');
-            $('.mobile p:eq(2)').text('Լսեք 28000+ ռադիոկայան ...');
-            $('.mobile p:eq(3)').text('Կարդում է ավելի քան 100000+ գիրք ...');
-            $('.mobile p:eq(4)').text('Մանգայի շատ գրքեր կարդալը ...');
-            $('.mobile p:eq(5)').text('Լսեք համաշխարհային երաժշտությունը ...');
-            $('.mobile p:eq(6)').text('Կառուցող մինչև 9.0.0 տարբերակ');
-            $('.mobile p:eq(7)').text('Պոռնո տեսանյութեր ...');
-            $('h2').text('Ընտրել');
-            $('#selectform input:eq(0)').next().text('Երկրներ');
-            $('#selectform input:eq(1)').next().text('Լեզուներ');
-            $('#selectform input:eq(2)').next().text('Կատեգորիա');
-            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Sգայուն բովանդակություն');
-            $('#mySidenav div:eq(1)').find('span').text('Լեզուներ');
-            $('#mySidenav div:eq(2)').find('span').text('պարզ');
-            $('#mySidenav div:eq(3)').find('span').text('Աղբյուր');
-            $('#mySidenav div:eq(4)').find('span').text('Տարբերակ');
         } else if (lan == 'de' || lan == 'de-AT' || lan == 'de-DE' || lan == 'de-LI' || lan == 'de-CH') {
             $('.stylebtn').text('Eintreten');
             $('.mobile p:eq(0)').text('Mehr als 6000 TV-Kanäle ansehen...');
@@ -3540,63 +3617,6 @@ $(document).ready(function() {
             $('#mySidenav div:eq(2)').find('span').text('dégager');
             $('#mySidenav div:eq(3)').find('span').text('La source');
             $('#mySidenav div:eq(4)').find('span').text('Version');
-        } else if (lan == 'ar') {
-            $('.stylebtn').text('يدخل');
-            $('.mobile p:eq(0)').text('شاهد أكثر من 6000 قناة تلفزيونية ...');
-            $('.mobile p:eq(1)').text('مشاهدة الافلام والمسلسلات والرسوم المتحركة ...');
-            $('.mobile p:eq(2)').text('الاستماع 28000+ محطات الراديو ...');
-            $('.mobile p:eq(3)').text('قراءة أكثر من 100000+ كتاب ...');
-            $('.mobile p:eq(4)').text('قراءة الكثير من كتب المانجا ...');
-            $('.mobile p:eq(5)').text('الاستماع إلى الموسيقى العالمية ...');
-            $('.mobile p:eq(6)').text('جاري الإنشاء حتى الإصدار 9.0.0');
-            $('.mobile p:eq(7)').text('أشرطة الفيديو الإباحية ...');
-            $('h2').text('يختار');
-            $('#selectform input:eq(0)').next().text('بلدان');
-            $('#selectform input:eq(1)').next().text('اللغات');
-            $('#selectform input:eq(2)').next().text('فئة');
-            $('#mySidenav div:eq(0)').find('span:eq(0)').text('المحتوى الحساس');
-            $('#mySidenav div:eq(1)').find('span').text('اللغات');
-            $('#mySidenav div:eq(2)').find('span').text('صافي');
-            $('#mySidenav div:eq(3)').find('span').text('مصدر');
-            $('#mySidenav div:eq(4)').find('span').text('إصدار');
-        } else if (lan == 'sq') {
-            $('.stylebtn').text('Hyni');
-            $('.mobile p:eq(0)').text('Shikoni 6000+ kanale televizive ...');
-            $('.mobile p:eq(1)').text('Shikoni filma, seri, anime ...');
-            $('.mobile p:eq(2)').text('Dëgjoni 28000+ Stacione Radio ...');
-            $('.mobile p:eq(3)').text('Leximi i më shumë se 100000+ librave ...');
-            $('.mobile p:eq(4)').text('Duke lexuar shumë libra Manga ...');
-            $('.mobile p:eq(5)').text('Dëgjoni Muzikën Botërore ...');
-            $('.mobile p:eq(6)').text('Ndërtimi deri në versionin 9.0.0');
-            $('.mobile p:eq(7)').text('Video pornografike ...');
-            $('h2').text('Zgjidhni');
-            $('#selectform input:eq(0)').next().text('Vendet');
-            $('#selectform input:eq(1)').next().text('Gjuhët');
-            $('#selectform input:eq(2)').next().text('Kategoria');
-            $('#mySidenav div:eq(0)').find('span:eq(0)').text('Përmbajtje e ndjeshme');
-            $('#mySidenav div:eq(1)').find('span').text('Gjuhët');
-            $('#mySidenav div:eq(2)').find('span').text('qartë');
-            $('#mySidenav div:eq(3)').find('span').text('Burimi');
-            $('#mySidenav div:eq(4)').find('span').text('Version');
-        } else if (lan == 'am') {
-            $('.stylebtn').text('ግባ');
-            $('.mobile p:eq(0)').text('6000+ የቴሌቪዥን ጣቢያዎችን ይመልከቱ ...');
-            $('.mobile p:eq(1)').text('ፊልሞችን ፣ ተከታታዮችን ፣ አኒሞችን ይመልከቱ ...');
-            $('.mobile p:eq(2)').text('28000+ የሬዲዮ ጣቢያዎችን ያዳምጡ ...');
-            $('.mobile p:eq(3)').text('ከ 100000+ በላይ መጽሐፍትን በማንበብ ...');
-            $('.mobile p:eq(4)').text('ብዙ የማንጋ መጽሐፍትን በማንበብ ላይ ...');
-            $('.mobile p:eq(5)').text('የአለም ሙዚቃን ያዳምጡ ...');
-            $('.mobile p:eq(6)').text('እስከ ስሪት 9.0.0 ድረስ በመገንባት ላይ');
-            $('.mobile p:eq(7)').text('የወሲብ ቪዲዮዎች ...');
-            $('h2').text('ይምረጡ');
-            $('#selectform input:eq(0)').next().text('አገሮች');
-            $('#selectform input:eq(1)').next().text('ቋንቋዎች');
-            $('#selectform input:eq(2)').next().text('ምድብ');
-            $('#mySidenav div:eq(0)').find('span:eq(0)').text('ስሜታዊ ይዘት');
-            $('#mySidenav div:eq(1)').find('span').text('ቋንቋዎች');
-            $('#mySidenav div:eq(2)').find('span').text('ግልጽ');
-            $('#mySidenav div:eq(3)').find('span').text('ምንጭ');
-            $('#mySidenav div:eq(4)').find('span').text('ስሪት');
         } else if (lan == 'zh' || lan == 'zh-CN') {
             $('.stylebtn').text('进入');
             $('.mobile p:eq(0)').text('观看6000多个电视直播台......');
@@ -3616,6 +3636,7 @@ $(document).ready(function() {
             $('#mySidenav div:eq(2)').find('span').text('清理');
             $('#mySidenav div:eq(3)').find('span').text('来源');
             $('#mySidenav div:eq(4)').find('span').text('版本');
+            $('#mySidenav div:eq(5)').find('span').text('关于');
         } else if (lan == 'zh-HK' || lan == 'zh-TW') {
             $('.stylebtn').text('進入');
             $('.mobile p:eq(0)').text('觀看 6000 多個電視頻道...');
@@ -3635,6 +3656,7 @@ $(document).ready(function() {
             $('#mySidenav div:eq(2)').find('span').text('清除');
             $('#mySidenav div:eq(3)').find('span').text('来源');
             $('#mySidenav div:eq(4)').find('span').text('版本');
+            $('#mySidenav div:eq(5)').find('span').text('關於');
         } else if (lan == 'ja') {
             $('.stylebtn').text('入力');
             $('.mobile p:eq(0)').text('6000以上のテレビチャンネルを見る...');
