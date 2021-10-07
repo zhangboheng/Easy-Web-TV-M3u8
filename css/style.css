@@ -233,7 +233,7 @@ input:checked+.slider:before {
     background-color: ivory;
     width: 50%;
     height: 30%;
-    left: 10vh;
+    left: 24%;
     display: none;
 }
 

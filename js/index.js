@@ -233,6 +233,9 @@ $(document).ready(function() {
     $('.circlescon li:eq(3)').click(function() {
         $('.qrcode').toggle(500);
     });
+    $('.circlescon li:eq(3)').mouseleave(function() {
+        $('.qrcode').hide(500);
+    });
 });
 //Go to source nextpage
 function goToSource() {
