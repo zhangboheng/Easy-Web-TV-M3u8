@@ -215,6 +215,7 @@ $(document).ready(function() {
     //Append log history
     $('.scrollidbar').empty();
     $('.scrollidbar').append(`
+        <p>[2021-10-09] V8.2.0 release support to play one game</p>
         <p>[2021-10-06] V8.1.1 release Add about feature and fixed some bugs</p>
         <p>[2021-10-02] V8.1.0 release Add source control feature</p>
         <p>[2021-10-01] Delete one invalid manga source and add log history</p>

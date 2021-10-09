@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <meta name="keywords" content="iptv, movie, github, online tv, web tv, series tv...">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link href="../css/main.css" rel="stylesheet" />
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/togame.js"></script>
+</head>
+<style>
+    html,
+    body {
+        height: auto !important;
+        background-image: url("../images/bg.jpg");
+        overflow-y: auto;
+    }
+    
+    .toggle,
+    #left {
+        position: fixed !important;
+    }
+    
+    .loadingimg {
+        position: fixed;
+        bottom: 10px;
+        z-index: 998;
+        width: 100vw;
+        text-align: center;
+    }
+    
+    .loadingimg img {
+        width: 8%;
+    }
+    
+    .ready-player-1 {
+        position: fixed;
+        width: 100%;
+        z-index: 1001;
+        bottom: 0;
+    }
+    
+    audio {
+        width: 100%;
+        opacity: .8;
+        display: none;
+    }
+</style>
+
+<body>
+    <div id="left">
+        <h3>Select Category</h3>
+        <ul id="menu">
+        </ul>
+    </div>
+    <div class="toggle"></div>
+    <div id="root">
+        <div class="itemContainer">
+            <a href="../gamebox/ball/gameball.html">
+                <div class="item"><img class="itemImg" src="../gamebox/ball/squareobstacle.png" alt="Snake" />
+                    <div class="userInfo">
+                        <img class="avatar" src="../images/game.svg" alt="" /><span class="username">[PC] Square Obstacles</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="itemContainer">
+        </div>
+        <div class="itemContainer">
+        </div>
+        <div class="itemContainer">
+        </div>
+        <div class="itemContainer">
+        </div>
+        <div class="hiddens" style="display: none;">
+            <p>0</p>
+        </div>
+    </div>
+    <script>
+        let menuHeight = document.getElementById('menu');
+        let screenHeight = window.innerHeight;
+        menuHeight.style.height = screenHeight - 60 + 'px';
+        $("#menu").css({
+            "overflow-y": "auto",
+            "height": menuHeight
+        });
+        $("li p").mouseover(function() {
+            $(this).children("a").css({
+                "color": "#000"
+            })
+        })
+        $("li p").mouseleave(function() {
+            $(this).children("a").css({
+                "color": "#fff"
+            })
+        });
+    </script>
+</body>
+
+</html>
