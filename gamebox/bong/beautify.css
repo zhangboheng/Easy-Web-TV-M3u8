@@ -1,0 +1,77 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+#wrap {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#wrap>div {
+    position: fixed;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: .5s;
+    filter: blur(20px);
+    transform: scale(.5);
+}
+
+#wrap>div.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+    filter: blur(0);
+    transform: scale(1);
+}
+
+#wrap>#gameplay {
+    opacity: 1;
+    z-index: 0;
+    transform: scale(1);
+    filter: blur(0);
+}
+
+#wrap>div.active~#gameplay {
+    opacity: .75;
+    filter: blur(10px);
+    transform: scale(.95);
+}
+
+button {
+    background-color: white;
+    border: 0;
+    border-radius: 200px;
+    padding: 16px 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1.25px;
+    font-size: 16px;
+    margin: 16px;
+    min-width: 160px;
+    outline: none;
+    transition: .25s;
+    opacity: .75;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+h1 {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 48px;
+    margin-top: 0;
+}
