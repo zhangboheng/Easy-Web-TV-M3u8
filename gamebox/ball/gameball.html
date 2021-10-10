@@ -100,13 +100,14 @@
         function updateGameArea() {
             var x, height, gap, minHeight, maxHeight, minGap, maxGap;
             for (i = 0; i < myObstacles.length; i += 1) {
+                //Set end game conditions
                 if (myGamePiece.crashWith(myObstacles[i]) || myGamePiece.y == window.innerHeight - 22 || myGamePiece.y <= 0) {
                     return;
                 }
             }
             myGameArea.clear();
             myGameArea.frameNo += 1;
-            if (myGameArea.frameNo == 1 || everyinterval(150)) {
+            if (myGameArea.frameNo == 1 || everyinterval(100)) {
                 x = myGameArea.canvas.width;
                 minHeight = 20;
                 maxHeight = 200;
@@ -118,6 +119,7 @@
                 myObstacles.push(new component(10, x - height - gap, randomlor(), x, height + gap));
             }
             for (i = 0; i < myObstacles.length; i += 1) {
+                console.log(myObstacles[i].x);
                 myObstacles[i].x += -1;
                 myObstacles[i].update();
             }
@@ -152,16 +154,12 @@
             let b = Math.floor(Math.random() * 256);
             return "rgb(" + r + "," + g + "," + b + ")";
         }
-
+        //Restart game
         function restartGame() {
             window.location.reload();
         }
-
-        function pauseGame() {
-            myGameArea.clear();
-        }
     </script>
-    <div style="position: relative; bottom: 30px; text-align: center;">
+    <div style="position: relative; bottom: 50px; text-align: center;">
         <button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
         <button onclick="restartGame()">RESTART</button>
     </div>
