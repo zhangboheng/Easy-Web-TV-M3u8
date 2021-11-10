@@ -1,4 +1,4 @@
-//Set global array proxy links to solve CORS errors
+//Set global array proxy links to solve CORS error
 var proxy = {
     0: 'https://cors.luckydesigner.workers.dev/?',
     1: 'https://bird.ioliu.cn/v1?url=',
