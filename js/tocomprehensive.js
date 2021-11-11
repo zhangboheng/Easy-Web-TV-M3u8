@@ -1,6 +1,6 @@
 //Set global array proxy links to solve CORS error
 var proxy = {
-    0: 'https://bird.ioliu.cn/v1?url=',
+    0: 'https://cors.luckydesigner.workers.dev/?',
 };
 //Set global pagenum and random
 var pnum = 1;
@@ -77,7 +77,7 @@ $(document).ready(function() {
                 if (link == 'http://www.88zy.live/inc/api.php' || link == 'https://www.hongniuzy.com/inc/api.php') {
                     globallink = proxy[rand] + `${link}?ac=list&wd=${sts}&pg=${pnum}`;
                 } else if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
-                    globallink = 'https://bird.ioliu.cn/v1?url=' + `${link}?ac=videolist&wd=${sts}&pg=${pnum}`;
+                    globallink = proxy[rand] + `${link}?ac=videolist&wd=${sts}&pg=${pnum}`;
                 } else {
                     globallink = proxy[rand] + `${link}?ac=videolist&wd=${sts}&pg=${pnum}`;
                 }
@@ -295,7 +295,7 @@ function iniMenu(link) {
                 } else if (link == 'http://cj.bajiecaiji.com/inc/bjm3u8.php') {
                     alert('八戒云 not support search');
                 } else if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
-                    searchlink = 'https://bird.ioliu.cn/v1?url=' + `${link}?ac=videolist&wd=${valThis}`;
+                    searchlink = proxy[rand] + `${link}?ac=videolist&wd=${valThis}`;
                 } else if (link == 'http://www.88zy.live/inc/api.php' || link == "https://www.hongniuzy.com/inc/api.php") {
                     searchlink = proxy[rand] + `${link}?ac=list&wd=${valThis}`;
                 }

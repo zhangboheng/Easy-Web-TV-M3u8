@@ -1,6 +1,6 @@
 //Set global array proxy links to solve CORS error
 var proxy = {
-    0: 'https://bird.ioliu.cn/v1?url=',
+    0: 'https://cors.luckydesigner.workers.dev/?',
 };
 var channels = [];
 //Get default localstorage key

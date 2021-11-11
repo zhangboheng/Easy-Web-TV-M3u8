@@ -20,11 +20,9 @@ $(document).ready(function() {
         initlink = initlink.replace('https://m', 'https://www');
         originlink = 'https://m.dmmhw.com';
         getres = proxy[0] + initlink;
-    } else if (initlink.indexOf('llmh') > -1) {
-        getres = proxy[1] + initlink;
     } else if (initlink.indexOf('mangadex') > -1) {
         originlink = 'https://mangadex.tv';
-        getres = proxy[1] + initlink;
+        getres = proxy[0] + initlink;
     }
     //Get html data
     $.ajax({
@@ -39,9 +37,6 @@ $(document).ready(function() {
             } else if (initlink.indexOf('dmmhw') > -1) {
                 var title = $(html).find('h1').text();
                 var info = $(html).find('#intro').text();
-            } else if (initlink.indexOf('llmh') > -1) {
-                var title = $(html).find('h1').text();
-                var info = "Nothing...";
             } else if (initlink.indexOf('mangadex') > -1) {
                 var title = $(html).find('span.mx-1').text();
                 var info = $(html).find('.col-lg-9.col-xl-10').text();
@@ -66,9 +61,6 @@ $(document).ready(function() {
                     } else if (initlink.indexOf('dmmhw') > -1) {
                         var episodes = Object.values($(html).find('#newchapter').nextAll('dd').map((x, y) => y.innerText.trim())).slice(0, -2);
                         var epihref = Object.values($(html).find('#newchapter').nextAll('dd').map((x, y) => originlink + y.children[0].attributes[0].value)).slice(0, -2);
-                    } else if (initlink.indexOf('llmh') > -1) {
-                        var episodes = Object.values($(html).find('ul li').map((x, y) => y.innerText.trim())).slice(0, -2);
-                        var epihref = Object.values($(html).find('ul li a').map((x, y) => y.attributes[0].value.split('').filter(x => /\d/g.test(x)).join(""))).slice(0, -2);
                     } else if (initlink.indexOf('mangadex') > -1) {
                         var episodes = Object.values($(html).find('a.text-truncate').map((x, y) => y.innerText.trim())).slice(0, -2).reverse();
                         var epihref = Object.values($(html).find('a.text-truncate').map((x, y) => originlink + y.attributes[0].value)).slice(0, -2).reverse();
@@ -93,7 +85,7 @@ $(document).ready(function() {
                             var title = episodes[0];
                             if (initlink.indexOf('mangabuddy') > -1) {
                                 $.ajax({
-                                    url: proxy[1] + epihref[0],
+                                    url: proxy[0] + epihref[0],
                                     dataType: 'html',
                                     type: "GET",
                                     success: function(data) {
@@ -134,34 +126,9 @@ $(document).ready(function() {
 
                                     }
                                 });
-                            } else if (initlink.indexOf('llmh') > -1) {
-                                $.ajax({
-                                    url: proxy[1] + 'https://llmh27.com/json/Info/',
-                                    data: {
-                                        cid: '2',
-                                        id: epihref[0],
-                                        type: '3'
-                                    },
-                                    dataType: 'json',
-                                    type: "GET",
-                                    success: function(data) {
-                                        $('#reader').empty();
-                                        var pic = data.data[0].list;
-                                        $('#reader').append(`<h2>${title}</h2>`);
-                                        for (let i of pic) {
-                                            $('#reader').append(`<a class="spotlight" href="${i.img}" data-description="${title}"><img style="width:25%;" src="${i.img}" /></a>`);
-                                        }
-                                    },
-                                    error: function() {
-                                        alert("Error");
-                                    },
-                                    complete: function(xhr, status) {
-
-                                    }
-                                });
                             } else if (initlink.indexOf('mangadex') > -1) {
                                 $.ajax({
-                                    url: proxy[1] + epihref[0],
+                                    url: proxy[0] + epihref[0],
                                     dataType: 'html',
                                     type: "GET",
                                     success: function(data) {
@@ -235,7 +202,7 @@ $(document).ready(function() {
                         var title = $(this).text();
                         if (initlink.indexOf('mangabuddy') > -1) {
                             $.ajax({
-                                url: proxy[1] + $(this).attr('title'),
+                                url: proxy[0] + $(this).attr('title'),
                                 dataType: 'html',
                                 type: "GET",
                                 success: function(data) {
@@ -276,34 +243,9 @@ $(document).ready(function() {
 
                                 }
                             })
-                        } else if (initlink.indexOf('llmh') > -1) {
-                            $.ajax({
-                                url: proxy[1] + 'https://llmh27.com/json/Info/',
-                                data: {
-                                    cid: '2',
-                                    id: $(this).attr('title'),
-                                    type: '3'
-                                },
-                                dataType: 'json',
-                                type: "GET",
-                                success: function(data) {
-                                    $('#reader').empty();
-                                    var pic = data.data[0].list;
-                                    $('#reader').append(`<h2>${title}</h2>`);
-                                    for (let i of pic) {
-                                        $('#reader').append(`<a class="spotlight" href="${i.img}" data-description="${title}"><img style="width:25%;" src="${i.img}" /></a>`);
-                                    }
-                                },
-                                error: function() {
-                                    alert("Error");
-                                },
-                                complete: function(xhr, status) {
-
-                                }
-                            });
                         } else if (initlink.indexOf('mangadex') > -1) {
                             $.ajax({
-                                url: proxy[1] + $(this).attr('title'),
+                                url: proxy[0] + $(this).attr('title'),
                                 dataType: 'html',
                                 type: "GET",
                                 success: function(data) {

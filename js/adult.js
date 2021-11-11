@@ -1,6 +1,6 @@
 //Set global array proxy links to solve CORS error
 var proxy = {
-    0: 'https://bird.ioliu.cn/v1?url=',
+    0: 'https://cors.luckydesigner.workers.dev/?',
 };
 //Get default localstorage key
 var localkey = ['manga', 'bannedcountries', 'novel', 'movie', 'music', 'languages', 'porn', 'adult'];
@@ -90,6 +90,7 @@ $(document).ready(function() {
             success: function(message, text, response) {
                 $("#menu").empty();
                 $('#epcontent').empty();
+                message = JSON.parse(message);
                 var test = message.data[0],
                     name = test.vod_title,
                     des = test.vod_content,

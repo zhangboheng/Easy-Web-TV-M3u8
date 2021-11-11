@@ -1,7 +1,6 @@
 //Set global array proxy links to solve CORS error
 var proxy = {
-    0: 'https://bird.ioliu.cn/v1?url=',
-    1: 'https://cors.luckydesigner.workers.dev/?',
+    0: 'https://cors.luckydesigner.workers.dev/?',
 };
 //Set global pagenum and random
 var pnum = 1;
@@ -100,10 +99,10 @@ $(document).ready(function() {
                     kt[0].value = '';
                     alert('利来资源站 not support search');
                 } else {
-                    globallink = proxy[rand] + `${link}&wd=${sts}&pg=${pnum}`;
+                    globallink = proxy[1] + `${link}&wd=${sts}&pg=${pnum}`;
                 }
             } else {
-                globallink = proxy[rand] + `${link}&t=${str}&pg=${pnum}`;
+                globallink = proxy[1] + `${link}&t=${str}&pg=${pnum}`;
             }
             $.getJSON(globallink, function(data) {
                 var test = data.data;

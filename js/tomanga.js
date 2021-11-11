@@ -182,10 +182,10 @@ $(document).ready(function() {
                 }
             } else if (link == 'https://mangadex.tv/') {
                 if (sts.length > 0) {
-                    globallink = proxy[0] + `${link + 'search?type=titles&title=' + sts}` + `&page=${pnum}`;
+                    globallink = proxy[1] + `${link + 'search?type=titles&title=' + sts}` + `&page=${pnum}`;
                 } else {
                     str = str == "0" ? link + `titles?page=${pnum}` : str + `?page=${pnum}`;
-                    globallink = proxy[0] + str;
+                    globallink = proxy[1] + str;
                 }
                 $.ajax({
                     url: globallink,
@@ -399,7 +399,7 @@ function iniMenu(link) {
     } else if (link == 'https://mangadex.tv/') {
         $("#menu").append('<li style="background-color:#fff"><input id="search" type="text" placeholder="Search..." /></li>');
         $.ajax({
-            url: proxy[0] + link + 'titles',
+            url: proxy[1] + link + 'titles',
             data: {},
             type: "GET",
             dataType: "html",
@@ -461,7 +461,7 @@ function iniMenu(link) {
                     if (e.which == 13) {
                         $('.itemContainer').empty();
                         var valThis = $(this).val().toLowerCase();
-                        searchlink = proxy[0] + `${link + 'search?type=titles&title=' + valThis}`;
+                        searchlink = proxy[1] + `${link + 'search?type=titles&title=' + valThis}`;
                         $.ajax({
                             url: searchlink,
                             data: {},
