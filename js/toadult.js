@@ -99,10 +99,10 @@ $(document).ready(function() {
                     kt[0].value = '';
                     alert('利来资源站 not support search');
                 } else {
-                    globallink = proxy[1] + `${link}&wd=${sts}&pg=${pnum}`;
+                    globallink = proxy[0] + `${link}&wd=${sts}&pg=${pnum}`;
                 }
             } else {
-                globallink = proxy[1] + `${link}&t=${str}&pg=${pnum}`;
+                globallink = proxy[0] + `${link}&t=${str}&pg=${pnum}`;
             }
             $.getJSON(globallink, function(data) {
                 var test = data.data;
