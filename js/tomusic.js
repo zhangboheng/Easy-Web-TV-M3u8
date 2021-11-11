@@ -204,7 +204,7 @@ function iniMenu(link) {
             $("#menu").append(`<li><p><span class="${code[i]}">${area[i]}</span></p></li>`);
         }
         $.ajax({
-            url: proxy[0] + link + 'artist/list',
+            url: link + 'artist/list',
             data: {
                 type: '-1',
                 area: '-1',
