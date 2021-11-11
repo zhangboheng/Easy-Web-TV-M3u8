@@ -201,8 +201,8 @@ $(document).ready(function() {
 
 //Initial homepage menu
 function iniMenu(link) {
-    let menu = $.getJSON(proxy[rand] + `${link.replace('videolist','list')}`);
-    let detail = $.getJSON(proxy[rand] + `${link}`);
+    let menu = $.getJSON(proxy[0] + `${link.replace('videolist','list')}`);
+    let detail = $.getJSON(proxy[0] + `${link}`);
     $('#root').append(`<div class="loadingimg"><img src="../images/loading.gif" tag="Easy Web TV"></div>`);
     $.when(menu, detail).done(function(data, response) {
         $("#menu").empty();
@@ -321,7 +321,7 @@ function iniMenu(link) {
                 } else if (link == "http://llzxcj.com/inc/json.php?ac=videolist") {
                     alert('利来资源站 not support search');
                 } else {
-                    searchlink = proxy[rand] + `${link}&wd=${valThis}`;
+                    searchlink = proxy[0] + `${link}&wd=${valThis}`;
                 }
                 $.getJSON(searchlink, function(data) {
                     var test = data['data'];
@@ -376,7 +376,7 @@ function iniMenu(link) {
         $('.hiddens').empty();
         $('.hiddens').append(`<p>${className}</p>`);
         $('#search').val('');
-        $.getJSON(proxy[rand] + `${link}&t=${className}`, function(data) {
+        $.getJSON(proxy[0] + `${link}&t=${className}`, function(data) {
             var test = data['data'];
             $('.itemContainer').empty();
             if ($(window).width() > 1024) {
