@@ -187,7 +187,7 @@ $(document).ready(function() {
             $(this).css({ "opacity": 1 })
         },
         click: function() {
-            window.location.href = "/Easy-Web-TV-M3u8/routes/catagory.html";
+            window.location.href = "/Easy-Web-TV-M3u8/routes/category.html";
         },
         mouseleave: function() {
             $(this).css({ "opacity": 0.5 })
