@@ -302,7 +302,7 @@ $("#prev").on({
         $(this).css({ "opacity": 1 })
     },
     click: function() {
-        window.location.href = "/Easy-Web-TV-M3u8/";
+        window.location.href = "/Easy-Web-TV-M3u8/routes/manga.html";
     },
     mouseleave: function() {
         $(this).css({ "opacity": 0.5 })
