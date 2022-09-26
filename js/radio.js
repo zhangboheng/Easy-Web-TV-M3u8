@@ -1,6 +1,6 @@
 var channels = [];
 //Set a array to store source links
-var radiosource = ['https://de1.api.radio-browser.info/', 'https://fr1.api.radio-browser.info/', 'https://nl1.api.radio-browser.info/'];
+var radiosource = ['https://de1.api.radio-browser.info/', 'https://at1.api.radio-browser.info/', 'https://nl1.api.radio-browser.info/',];
 //Set a random integer
 var rand = Math.floor(Math.random() * radiosource.length);
 //Get default localstorage key
