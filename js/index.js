@@ -247,10 +247,10 @@ function goToSource() {
             <div id="selectform" style="display:flex;">
                 <input type="checkbox" name="movie" value="39ys" checked />
                 <label for="movie"> 39影视</label><br />
-                <input type="checkbox" name="movie" value="hnzy" checked />
-                <label for="movie"> 红牛资源</label><br />
-                <input type="checkbox" name="movie" value="88zy" checked />
-                <label for="movie"> 88资源网</label><br />
+                <input type="checkbox" name="movie" value="wlys" checked />
+                <label for="movie"> 卧龙影视</label><br />
+                <input type="checkbox" name="movie" value="phzy" checked />
+                <label for="movie"> 飘花资源</label><br />
             </div>
             <div id="selectform" style="display:flex;">
                 <input type="checkbox" name="movie" value="kby" checked />

@@ -19,7 +19,7 @@ $(document).ready(function() {
     //Get select source
     try {
         let ms = window.localStorage.getItem('movie').split(",");
-        let arr = ["39ys", "hnzy", "88zy", "kby", "tky", "bjy"];
+        let arr = ["39ys", "wlys", "phzy", "kby", "tky", "bjy"];
         let lst = arr.filter(x => ms.includes(x)).map(x => arr.indexOf(x));
         let sts = ['<option value="https://www.39kan.com/api.php/provide/vod/at/json">39影视</option>',
             '<option value="https://collect.wolongzyw.com/api.php/provide/vod/at/xml">卧龙影视</option>',
