@@ -22,8 +22,8 @@ $(document).ready(function() {
         let arr = ["39ys", "hnzy", "88zy", "kby", "tky", "bjy"];
         let lst = arr.filter(x => ms.includes(x)).map(x => arr.indexOf(x));
         let sts = ['<option value="https://www.39kan.com/api.php/provide/vod/at/json">39影视</option>',
-            '<option value="https://www.hongniuzy.com/inc/api.php">红牛资源</option>',
-            '<option value="http://www.88zy.live/inc/api.php">88资源网</option>',
+            '<option value="https://collect.wolongzyw.com/api.php/provide/vod/at/xml">卧龙影视</option>',
+            '<option value="http://www.zzrhgg.com/api.php/provide/vod/at/xml">飘花资源</option>',
             '<option value="http://www.kuaibozy.com/api.php/provide/vod/from/kbm3u8/at/xml/">快播云</option>',
             '<option value="https://api.tiankongapi.com/api.php/provide/vod/at/xml/from/tkm3u8/">天空云</option>',
             '<option value="http://cj.bajiecaiji.com/inc/bjm3u8.php">八戒云</option>'
@@ -34,8 +34,8 @@ $(document).ready(function() {
     } catch (e) {
         $('#selectapi').append(`
             <option value="https://www.39kan.com/api.php/provide/vod/at/json">39影视</option>
-            <option value="https://www.hongniuzy.com/inc/api.php">红牛资源</option>
-            <option value="http://www.88zy.live/inc/api.php">88资源网</option>
+            <option value="https://collect.wolongzyw.com/api.php/provide/vod/at/xml">卧龙影视</option>
+            <option value="http://www.zzrhgg.com/api.php/provide/vod/at/xml">飘花资源</option>
             <option value="http://www.kuaibozy.com/api.php/provide/vod/from/kbm3u8/at/xml/">快播云</option>
             <option value="https://api.tiankongapi.com/api.php/provide/vod/at/xml/from/tkm3u8/">天空云</option>
             <option value="http://cj.bajiecaiji.com/inc/bjm3u8.php">八戒云</option>
@@ -74,7 +74,7 @@ $(document).ready(function() {
             $('#root').append(`<div class="loadingimg"><img src="../images/loading.gif" tag="Easy Web TV"></div>`);
             pnum++;
             if (sts.length > 0) {
-                if (link == 'http://www.88zy.live/inc/api.php' || link == 'https://www.hongniuzy.com/inc/api.php') {
+                if (link == 'http://www.88zy.live/inc/api.php' || link == 'https://collect.wolongzyw.com/api.php/provide/vod/at/xml' || link == 'http://www.zzrhgg.com/api.php/provide/vod/at/xml') {
                     globallink = proxy[rand] + `${link}?ac=list&wd=${sts}&pg=${pnum}`;
                 } else if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
                     globallink = proxy[rand] + `${link}?ac=videolist&wd=${sts}&pg=${pnum}`;
@@ -316,7 +316,7 @@ function iniMenu(link) {
                     alert('八戒云 not support search');
                 } else if (link == 'https://www.39kan.com/api.php/provide/vod/at/json') {
                     searchlink = proxy[rand] + `${link}?ac=videolist&wd=${valThis}`;
-                } else if (link == 'http://www.88zy.live/inc/api.php' || link == "https://www.hongniuzy.com/inc/api.php") {
+                } else if (link == 'http://www.88zy.live/inc/api.php' || link == "https://collect.wolongzyw.com/api.php/provide/vod/at/xml" || link == 'http://www.zzrhgg.com/api.php/provide/vod/at/xml') {
                     searchlink = proxy[rand] + `${link}?ac=list&wd=${valThis}`;
                 }
                 $.ajax({
