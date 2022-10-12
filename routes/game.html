@@ -73,6 +73,7 @@
             <p>0</p>
         </div>
     </div>
+    <div id="prev" title="Back to previous page" style="position:fixed !important; top: calc(100% - 60px);"></div>
     <script>
         let menuHeight = document.getElementById('menu');
         let screenHeight = window.innerHeight;
@@ -91,6 +92,18 @@
                 "color": "#fff"
             })
         });
+        $('#prev').show();
+        $('#prev').on({
+            mouseenter: function () {
+                $(this).css({ "opacity": 1 })
+            },
+            click: function () {
+                window.location.href = "/Easy-Web-TV-M3u8/";
+            },
+            mouseleave: function () {
+                $(this).css({ "opacity": 0.5 })
+            }
+        })
     </script>
 </body>
 

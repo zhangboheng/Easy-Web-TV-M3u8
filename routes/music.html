@@ -19,12 +19,12 @@
         background-image: url("../images/bg.jpg");
         overflow-y: auto;
     }
-    
+
     .toggle,
     #left {
         position: fixed !important;
     }
-    
+
     .loadingimg {
         position: fixed;
         bottom: 10px;
@@ -32,18 +32,18 @@
         width: 100vw;
         text-align: center;
     }
-    
+
     .loadingimg img {
         width: 8%;
     }
-    
+
     .ready-player-1 {
         position: fixed;
         width: 100%;
         z-index: 1001;
         bottom: 0;
     }
-    
+
     audio {
         width: 100%;
         opacity: .8;
@@ -78,9 +78,10 @@
             <p>0</p>
         </div>
     </div>
+    <div id="prev" title="Back to previous page" style="position:fixed !important; top: calc(100% - 60px);"></div>
     <div class="ready-player-1">
         <audio controls="controls" id="Audio1">
-            
+
         </audio>
     </div>
     <script>
@@ -91,16 +92,28 @@
             "overflow-y": "auto",
             "height": menuHeight
         });
-        $("li p").mouseover(function() {
+        $("li p").mouseover(function () {
             $(this).children("a").css({
                 "color": "#000"
             })
         })
-        $("li p").mouseleave(function() {
+        $("li p").mouseleave(function () {
             $(this).children("a").css({
                 "color": "#fff"
             })
         });
+        $('#prev').show();
+        $('#prev').on({
+            mouseenter: function () {
+                $(this).css({ "opacity": 1 })
+            },
+            click: function () {
+                window.location.href = "/Easy-Web-TV-M3u8/";
+            },
+            mouseleave: function () {
+                $(this).css({ "opacity": 0.5 })
+            }
+        })
     </script>
 </body>
 
