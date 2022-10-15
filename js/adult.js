@@ -40,6 +40,10 @@ $(document).ready(function() {
                 $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
             }
         }
+        $("#menu li:eq(0)").addClass("bd");
+        $("#menu li").on('click', function(){
+            $(this).addClass("bd").siblings().removeClass("bd");
+        });
         //Click channels to play
         $("li p span").click(function() {
             player.src({
@@ -130,6 +134,10 @@ $(document).ready(function() {
                         $("#channelcontent").append(`<li><p><input type="button" style="background-image: url('../images/favorite20.png');"/><span title=${i}>${localStorage[i]}</span></p></li>`);
                     }
                 }
+                $("#menu li:eq(0)").addClass("bd");
+                $("#menu li").on('click', function(){
+                    $(this).addClass("bd").siblings().removeClass("bd");
+                });
                 //Click channels to play
                 $("li p span").click(function() {
                     player.src({

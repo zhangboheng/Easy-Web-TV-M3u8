@@ -5,7 +5,7 @@ var proxy = {
 var channels = [];
 //Get default localstorage key
 var localkey = ['manga', 'bannedcountries', 'novel', 'movie', 'music', 'languages', 'porn', 'adult'];
-$(document).ready(function() {
+$(document).ready(function () {
     $("#video1").width($("#div1").width()).height($("#div1").height());
     $(".toggle").css({ 'left': $('#left').width() - 50 });
     //Get Current href
@@ -21,7 +21,7 @@ $(document).ready(function() {
         url: proxy[0] + initlink,
         dataType: 'html',
         type: "GET",
-        success: function(data) {
+        success: function (data) {
             var html = $.parseHTML(data);
             if (initlink.indexOf('http://www.xfjxs.com/') > -1) {
                 var title = $(html).find('h1 a').text();
@@ -40,16 +40,16 @@ $(document).ready(function() {
             $('#left h3').html(title);
             $('#epcontent').append(`<h3>Content</h3><p>${info}</p>`);
         },
-        error: function() {
+        error: function () {
             alert("Error");
         },
-        complete: function(xhr, status) {
+        complete: function (xhr, status) {
             if (initlink.indexOf('http://www.xfjxs.com/') > -1) {
                 $.ajax({
                     url: proxy[0] + $('#hiddens').text(),
                     dataType: 'html',
                     type: "GET",
-                    success: function(data) {
+                    success: function (data) {
                         var html = $.parseHTML(data);
                         var episode = $(html).find('dd').find('a').map((x, y) => y.innerHTML);
                         var detail = $(html).find('dd').find('a').map((x, y) => y.attributes[0].value);
@@ -78,7 +78,7 @@ $(document).ready(function() {
                                     url: proxy[0] + originurl + detail[0],
                                     dataType: 'html',
                                     type: "GET",
-                                    success: function(data) {
+                                    success: function (data) {
                                         $('#reader').empty();
                                         var html = $.parseHTML(data);
                                         var title = $(html).find('h1').text();
@@ -90,17 +90,17 @@ $(document).ready(function() {
                                         }
                                         arr = arr.filter((x, y) => y == 1 || y == 3).map(x => headurl + '/' + x);
                                         try {
-                                            $('#reader').append(`<h2>${title}</h2>${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g,'').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g,'')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
+                                            $('#reader').append(`<h2>${title}</h2>${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g, '').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g, '')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
                                         } catch {
                                             location.reload();
                                         }
                                         $('#center_tip').remove();
                                         $('#center_tip').remove();
                                     },
-                                    error: function() {
+                                    error: function () {
                                         alert("Error");
                                     },
-                                    complete: function(xhr, status) {
+                                    complete: function (xhr, status) {
 
                                     }
                                 });
@@ -115,7 +115,7 @@ $(document).ready(function() {
                             }
                         }
                         //Change icon size
-                        $('#menu li p input').click(function() {
+                        $('#menu li p input').click(function () {
                             //Get browser support localstorage if or not
                             if (!window.localStorage) {
                                 console.log("Browser not support localstorage");
@@ -133,7 +133,7 @@ $(document).ready(function() {
                             }
                         });
                         //Collect favorite channles
-                        $('#channelcontent li p input').click(function() {
+                        $('#channelcontent li p input').click(function () {
                             //Get browser support localstorage if or not
                             if (!window.localStorage) {
                                 console.log("Browser not support localstorage");
@@ -149,18 +149,18 @@ $(document).ready(function() {
                             window.location.reload();
                         });
                     },
-                    error: function() {
+                    error: function () {
                         alert("Error");
                     },
-                    complete: function(xhr, status) {
+                    complete: function (xhr, status) {
                         //Click episode to read
-                        $("li p span").click(function() {
+                        $("li p span").click(function () {
                             var headurl = $(this).attr('title').split('.html')[0].replace(/\/\d+$/g, '');
                             $.ajax({
                                 url: proxy[0] + $(this).attr('title'),
                                 dataType: 'html',
                                 type: "GET",
-                                success: function(data) {
+                                success: function (data) {
                                     $('#reader').empty();
                                     var html = $.parseHTML(data);
                                     var title = $(html).find('h1').text();
@@ -171,19 +171,23 @@ $(document).ready(function() {
                                         arr.push(i.attributes[0].value);
                                     }
                                     arr = arr.filter((x, y) => y == 1 || y == 3).map(x => headurl + '/' + x);
-                                    $('#reader').append(`<h2>${title}</h2>${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g,'').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g,'')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
+                                    $('#reader').append(`<h2>${title}</h2>${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g, '').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g, '')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
                                     $('#center_tip').remove();
                                     $('#readzone').scrollTop(0);
                                     $('#left').hide();
                                     $('.toggle').css({ 'left': '5px' });
                                 },
-                                error: function() {
+                                error: function () {
                                     alert("Error");
                                 },
-                                complete: function(xhr, status) {
+                                complete: function (xhr, status) {
 
                                 }
                             });
+                        });
+                        $("#menu li:eq(0)").addClass("bd");
+                        $("#menu li").on('click', function () {
+                            $(this).addClass("bd").siblings().removeClass("bd");
                         });
                     }
                 });
@@ -192,7 +196,7 @@ $(document).ready(function() {
                     url: proxy[0] + initlink,
                     dataType: 'html',
                     type: "GET",
-                    success: function(data) {
+                    success: function (data) {
                         var html = $.parseHTML(data);
                         var episodes = Object.values($(html).find('.row').slice(1).map((x, y) => y.children[0].innerText)).reverse().slice(2);
                         var epihref = Object.values($(html).find('.row a').map((x, y) => y.href)).reverse().slice(2);
@@ -217,7 +221,7 @@ $(document).ready(function() {
                                     url: proxy[0] + epihref[0],
                                     dataType: 'html',
                                     type: "GET",
-                                    success: function(data) {
+                                    success: function (data) {
                                         $('#reader').empty();
                                         var html = $.parseHTML(data);
                                         var para = $(html).find('#vung_doc');
@@ -228,10 +232,10 @@ $(document).ready(function() {
                                         }
                                         $('#reader').append(`${para[0].outerHTML}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
                                     },
-                                    error: function() {
+                                    error: function () {
                                         alert("Error");
                                     },
-                                    complete: function(xhr, status) {
+                                    complete: function (xhr, status) {
 
                                     }
                                 });
@@ -246,7 +250,7 @@ $(document).ready(function() {
                             }
                         }
                         //Change icon size
-                        $('#menu li p input').click(function() {
+                        $('#menu li p input').click(function () {
                             //Get browser support localstorage if or not
                             if (!window.localStorage) {
                                 console.log("Browser not support localstorage");
@@ -264,7 +268,7 @@ $(document).ready(function() {
                             }
                         });
                         //Collect favorite channles
-                        $('#channelcontent li p input').click(function() {
+                        $('#channelcontent li p input').click(function () {
                             //Get browser support localstorage if or not
                             if (!window.localStorage) {
                                 console.log("Browser not support localstorage");
@@ -280,17 +284,17 @@ $(document).ready(function() {
                             window.location.reload();
                         });
                     },
-                    error: function() {
+                    error: function () {
                         alert("Error");
                     },
-                    complete: function(xhr, status) {
+                    complete: function (xhr, status) {
                         //Click episode to read
-                        $("li p span").click(function() {
+                        $("li p span").click(function () {
                             $.ajax({
                                 url: proxy[0] + $(this).attr('title'),
                                 dataType: 'html',
                                 type: "GET",
-                                success: function(data) {
+                                success: function (data) {
                                     $('#reader').empty();
                                     var html = $.parseHTML(data);
                                     var para = $(html).find('#vung_doc');
@@ -304,13 +308,17 @@ $(document).ready(function() {
                                     $('#left').hide();
                                     $('.toggle').css({ 'left': '5px' });
                                 },
-                                error: function() {
+                                error: function () {
                                     alert("Error");
                                 },
-                                complete: function(xhr, status) {
+                                complete: function (xhr, status) {
 
                                 }
                             });
+                        });
+                        $("#menu li:eq(0)").addClass("bd");
+                        $("#menu li").on('click', function () {
+                            $(this).addClass("bd").siblings().removeClass("bd");
                         });
                     }
                 });
@@ -326,7 +334,7 @@ function turnpage(content) {
             url: proxy[0] + content,
             dataType: 'html',
             type: "GET",
-            success: function(data) {
+            success: function (data) {
                 $('#reader').empty();
                 var html = $.parseHTML(data);
                 var title = $(html).find('h1').text();
@@ -337,17 +345,17 @@ function turnpage(content) {
                     arr.push(i.attributes[0].value);
                 }
                 arr = arr.filter((x, y) => y == 1 || y == 3).map(x => headurl + '/' + x);
-                $('#reader').append(`<h2>${title}</h2>${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g,'').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g,'')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
+                $('#reader').append(`<h2>${title}</h2>${para[0].innerHTML.replace(/最新网址：www.xfjxs.com/g, '').replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g, '')}<br /><br /><div class="centerbtn"><button onclick="turnpage('${arr[0]}')">Prev</button><button onclick="turnpage('${arr[1]}')">Next</button></div>`);
                 $('#center_tip').remove();
                 $('#center_tip').remove();
                 $('#readzone').scrollTop(0);
                 $('#left').hide();
                 $('.toggle').css({ 'left': '5px' });
             },
-            error: function() {
+            error: function () {
                 alert("Error");
             },
-            complete: function(xhr, status) {
+            complete: function (xhr, status) {
 
             }
         });
@@ -356,7 +364,7 @@ function turnpage(content) {
             url: proxy[0] + content,
             dataType: 'html',
             type: "GET",
-            success: function(data) {
+            success: function (data) {
                 $('#reader').empty();
                 var html = $.parseHTML(data);
                 var para = $(html).find('#vung_doc');
@@ -370,17 +378,17 @@ function turnpage(content) {
                 $('#left').hide();
                 $('.toggle').css({ 'left': '5px' });
             },
-            error: function() {
+            error: function () {
                 alert("Error");
             },
-            complete: function(xhr, status) {
+            complete: function (xhr, status) {
 
             }
         });
     }
 }
 //Set Toggle Menu
-$('.toggle').click(function() {
+$('.toggle').click(function () {
     $('#left').toggle();
     if ($('#left').is(':visible')) {
         $('.toggle').css({ 'left': $('#left').width() - 50 });
@@ -390,64 +398,64 @@ $('.toggle').click(function() {
 });
 //Set Tools Menu
 $("#menuicon").on({
-    mouseenter: function() {
+    mouseenter: function () {
         $(this).css({ "opacity": 1 })
     },
-    click: function() {
+    click: function () {
         $('#control div:gt(0)').slideToggle(500);
         $('#channelist').hide();
         $('#inputlink').hide();
         $('#epcontent').hide();
     },
-    mouseleave: function() {
+    mouseleave: function () {
         $(this).css({ "opacity": 0.5 })
     }
 });
 //Set return home page
 $("#prev").on({
-    mouseenter: function() {
+    mouseenter: function () {
         $(this).css({ "opacity": 1 })
     },
-    click: function() {
+    click: function () {
         window.location.href = "/Easy-Web-TV-M3u8/routes/novel.html";
     },
-    mouseleave: function() {
+    mouseleave: function () {
         $(this).css({ "opacity": 0.5 })
     }
 });
 //Set Github link
 $("#github").on({
-    mouseenter: function() {
+    mouseenter: function () {
         $(this).css({ "opacity": 1 })
     },
-    click: function() {
+    click: function () {
         window.open("https://github.com/zhangboheng/Easy-Web-TV-M3u8");
     },
-    mouseleave: function() {
+    mouseleave: function () {
         $(this).css({ "opacity": 0.5 })
     }
 });
 //Set documents list
 $("#favorite").on({
-    mouseenter: function() {
+    mouseenter: function () {
         $(this).css({ "opacity": 1 })
     },
-    click: function() {
+    click: function () {
         $('#channelist').toggle(500);
     },
-    mouseleave: function() {
+    mouseleave: function () {
         $(this).css({ "opacity": 0.5 })
     }
 });
 //Set epcontent list
 $("#epdetail").on({
-    mouseenter: function() {
+    mouseenter: function () {
         $(this).css({ "opacity": 1 })
     },
-    click: function() {
+    click: function () {
         $('#epcontent').toggle(500);
     },
-    mouseleave: function() {
+    mouseleave: function () {
         $(this).css({ "opacity": 0.5 })
     }
 });

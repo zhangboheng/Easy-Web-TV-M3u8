@@ -2,7 +2,7 @@ var channels = [];
 var plyist = [];
 //Get default localstorage key
 var localkey = ['manga', 'bannedcountries', 'novel', 'movie', 'music', 'languages', 'porn', 'adult'];
-$(document).ready(function() {
+$(document).ready(function () {
     $("#video1").width($("#div1").width()).height($("#div1").height());
     $(".toggle").css({ 'left': $('#left').width() - 50 });
     //Get Current href
@@ -14,7 +14,7 @@ $(document).ready(function() {
         data: {
             limit: 100
         },
-        success: function(message, text, response) {
+        success: function (message, text, response) {
             $("#menu").empty();
             $("#menu").append('<li style="background-color:#fff"><input id="search" type="text" placeholder="Search..." /></li>');
             $("#channelcontent").empty();
@@ -52,16 +52,16 @@ $(document).ready(function() {
                 }
             }
             //Click channels to play
-            $("li p span").click(function() {
+            $("li p span").click(function () {
                 audioPlay($(this).attr("title"));
             });
             //Click play random channels
-            $("#shuffleplay").click(function() {
+            $("#shuffleplay").click(function () {
                 let detail = channels[Math.floor(Math.random() * channels.length)];
                 audioPlay(detail);
             });
             //Change icon size
-            $('#menu li p input').click(function() {
+            $('#menu li p input').click(function () {
                 //Get browser support localstorage if or not
                 if (!window.localStorage) {
                     console.log("Browser not support localstorage");
@@ -79,7 +79,7 @@ $(document).ready(function() {
                 }
             });
             //Collect favorite channles
-            $('#channelcontent li p input').click(function() {
+            $('#channelcontent li p input').click(function () {
                 //Get browser support localstorage if or not
                 if (!window.localStorage) {
                     console.log("Browser not support localstorage");
@@ -95,12 +95,12 @@ $(document).ready(function() {
                 window.location.reload();
             });
             //Search Channels
-            $("#search").on("keyup", function(e) {
+            $("#search").on("keyup", function (e) {
                 var valThis = $(this).val().toLowerCase();
                 if (valThis == "") {
                     $('#menu li').slice(1).show(); // show all lis
                 } else {
-                    $('#menu li:gt(0)').each(function() {
+                    $('#menu li:gt(0)').each(function () {
                         var label = $(this); // cache this
                         var text = label.text().toLowerCase();
                         if (text.indexOf(valThis) > -1) {
@@ -112,20 +112,26 @@ $(document).ready(function() {
                 };
             });
         },
-        fail: function(xhr, textStatus, errorThrown) {
+        fail: function (xhr, textStatus, errorThrown) {
             setTimeout(() => {
                 alert('Sorry, the music playlist is not support to play...');
             }, 3000);
+        },
+        complete: function(){
+            $("#menu li:eq(1)").addClass("bd");
+            $("#menu li").on('click', function () {
+                $(this).addClass("bd").siblings().removeClass("bd");
+            });
         }
     });
     //Play random music
-    player.on("ended", function() {
+    player.on("ended", function () {
         let playlist = [...new Set(plyist)];
         var index = Math.floor(Math.random() * playlist.length);
         audioPlay(playlist[index]);
     });
     //Set Toggle Menu
-    $('.toggle').click(function() {
+    $('.toggle').click(function () {
         $('#left').toggle();
         if ($('#left').is(':visible')) {
             $('.toggle').css({ 'left': $('#left').width() - 50 });
@@ -135,10 +141,10 @@ $(document).ready(function() {
     });
     //Set M3U8 links to play
     $("#player").on({
-        mouseenter: function() {
+        mouseenter: function () {
             $(this).css({ "opacity": 1 })
         },
-        click: function() {
+        click: function () {
             $(this).css({ "background-image": "url(../images/player.jpg)", "border": "1px solid #fff" })
             if (window.width > 640) {
                 $("#inputlink").show(500)
@@ -155,75 +161,75 @@ $(document).ready(function() {
             }
             $('#inputlink').val("")
         },
-        mouseleave: function() {
+        mouseleave: function () {
             $(this).css({ "opacity": 0.5 })
         }
     });
     //Set Tools Menu
     $("#menuicon").on({
-        mouseenter: function() {
+        mouseenter: function () {
             $(this).css({ "opacity": 1 })
         },
-        click: function() {
+        click: function () {
             $('#control div:gt(0)').slideToggle(500);
             $('#channelist').hide();
             $('#inputlink').hide();
         },
-        mouseleave: function() {
+        mouseleave: function () {
             $(this).css({ "opacity": 0.5 })
         }
     });
     //Set return home page
     $("#prev").on({
-        mouseenter: function() {
+        mouseenter: function () {
             $(this).css({ "opacity": 1 })
         },
-        click: function() {
+        click: function () {
             window.location.href = "/Easy-Web-TV-M3u8/routes/music.html";
         },
-        mouseleave: function() {
+        mouseleave: function () {
             $(this).css({ "opacity": 0.5 })
         }
     });
     //Set Github link
     $("#github").on({
-        mouseenter: function() {
+        mouseenter: function () {
             $(this).css({ "opacity": 1 })
         },
-        click: function() {
+        click: function () {
             window.open("https://github.com/zhangboheng/Easy-Web-TV-M3u8");
         },
-        mouseleave: function() {
+        mouseleave: function () {
             $(this).css({ "opacity": 0.5 })
         }
     });
     //Set documents list
     $("#favorite").on({
-        mouseenter: function() {
+        mouseenter: function () {
             $(this).css({ "opacity": 1 })
         },
-        click: function() {
+        click: function () {
             $('#channelist').toggle(500);
         },
-        mouseleave: function() {
+        mouseleave: function () {
             $(this).css({ "opacity": 0.5 })
         }
     });
     //Set shuffle play
     $("#shuffleplay").on({
-        mouseenter: function() {
+        mouseenter: function () {
             $(this).css({ "opacity": 1 })
         },
-        mouseleave: function() {
+        mouseleave: function () {
             $(this).css({ "opacity": 0.5 })
         }
     });
     //Set link input
     $('#inputlink').on({
-        mouseenter: function() {
+        mouseenter: function () {
             $(this).css({ "opacity": 1 });
         },
-        mouseleave: function() {
+        mouseleave: function () {
             $(this).css({ "opacity": 0.5 });
             $(this).hide(3000);
             $("#player").css({ "background-image": "url(../images/link.jpg)" });
@@ -239,12 +245,12 @@ function audioPlay(ids) {
         url: 'https://api-music.imsyy.top' + '/check/music?id=' + ids,
         type: "GET",
         dataType: "json",
-        success: function(data) {
+        success: function (data) {
             $.ajax({
                 url: 'https://api-music.imsyy.top' + '/song/url?id=' + ids,
                 type: "GET",
                 dataType: "json",
-                success: function(data) {
+                success: function (data) {
                     var fileName = data.data[0].url;
                     player.src({
                         src: fileName,
@@ -253,14 +259,14 @@ function audioPlay(ids) {
 
                     player.play();
                 },
-                error: function(xhr, status) {
+                error: function (xhr, status) {
                     setTimeout(() => {
                         alert('Sorry, no rights to play...');
                     }, 3000);
                 }
             });
         },
-        error: function(xhr, status) {
+        error: function (xhr, status) {
             setTimeout(() => {
                 alert('Sorry, no rights to play...');
             }, 3000);

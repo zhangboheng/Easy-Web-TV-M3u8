@@ -151,6 +151,12 @@ $(document).ready(function() {
         },
         fail: function(xhr, textStatus, errorThrown) {
             alert("Please check your Internet or the radio-browser source has gone out!")
+        },
+        complete: function(){
+            $("#menu li:eq(1)").addClass("bd");
+            $("#menu li").on('click', function(){
+                $(this).addClass("bd").siblings().removeClass("bd");
+            });
         }
     });
     //Set Toggle Menu

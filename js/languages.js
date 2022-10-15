@@ -1,7 +1,7 @@
 var channels = [];
 //Get default localstorage key
 var localkey = ['manga', 'bannedcountries', 'novel', 'movie', 'music', 'languages', 'porn', 'adult'];
-$(document).ready(function() {
+$(document).ready(function () {
 
     $("#video1").width($("#div1").width()).height($("#div1").height());
     $(".toggle").css({ 'left': $('#left').width() - 50 });
@@ -19,12 +19,12 @@ $(document).ready(function() {
     $.ajax({
         type: "GET",
         url: 'https://iptv-org.github.io/iptv/languages/' + key + ".m3u",
-        success: function(message, text, response) {
+        success: function (message, text, response) {
             $("#menu").empty();
             $("#menu").append('<li style="background-color:#fff"><input id="search" type="text" placeholder="Search..." /></li>');
             $("#channelcontent").empty();
             let str = message;
-            let lst = str.split(",").slice(1, ).filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n"));
+            let lst = str.split(",").slice(1,).filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n"));
             let array = str.split(" ");
             let links = array.filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n")).flat().filter(x => /[^h]+.m3u8/.test(x));
             for (let i = 0; i < links.length; i++) {
@@ -60,7 +60,7 @@ $(document).ready(function() {
                 }
             }
             //Click channels to play
-            $("li p span").click(function() {
+            $("li p span").click(function () {
                 player.src({
                     src: $(this).attr("title"),
                     type: 'application/x-mpegURL' /*video type*/
@@ -69,7 +69,7 @@ $(document).ready(function() {
                 player.play();
             });
             //Click play random channels
-            $("#shuffleplay").click(function() {
+            $("#shuffleplay").click(function () {
                 let detail = channels[Math.floor(Math.random() * channels.length)];
                 player.src({
                     src: detail,
@@ -79,7 +79,7 @@ $(document).ready(function() {
                 player.play();
             });
             //Change icon size
-            $('#menu li p input').click(function() {
+            $('#menu li p input').click(function () {
                 //Get browser support localstorage if or not
                 if (!window.localStorage) {
                     console.log("Browser not support localstorage");
@@ -97,7 +97,7 @@ $(document).ready(function() {
                 }
             });
             //Collect favorite channles
-            $('#channelcontent li p input').click(function() {
+            $('#channelcontent li p input').click(function () {
                 //Get browser support localstorage if or not
                 if (!window.localStorage) {
                     console.log("Browser not support localstorage");
@@ -113,12 +113,12 @@ $(document).ready(function() {
                 window.location.reload();
             });
             //Search Channels
-            $("#search").on("keyup", function(e) {
+            $("#search").on("keyup", function (e) {
                 var valThis = $(this).val().toLowerCase();
                 if (valThis == "") {
                     $('#menu li').slice(1).show(); // show all lis
                 } else {
-                    $('#menu li:gt(0)').each(function() {
+                    $('#menu li:gt(0)').each(function () {
                         var label = $(this); // cache this
                         var text = label.text().toLowerCase();
                         if (text.indexOf(valThis) > -1) {
@@ -130,25 +130,31 @@ $(document).ready(function() {
                 };
             });
         },
-        fail: function(xhr, textStatus, errorThrown) {
+        fail: function (xhr, textStatus, errorThrown) {
             alert("Please check your Internet or the iptv source has gone out!")
+        },
+        complete: function(){
+            $("#menu li:eq(0)").addClass("bd");
+            $("#menu li").on('click', function(){
+                $(this).addClass("bd").siblings().removeClass("bd");
+            });
         }
     });
     //Set Toggle Menu
-    $('.toggle').click(function() {
-            $('#left').toggle();
-            if ($('#left').is(':visible')) {
-                $('.toggle').css({ 'left': $('#left').width() - 50 });
-            } else {
-                $('.toggle').css({ 'left': '5px' });
-            }
-        })
-        //Set M3U8 links to play
+    $('.toggle').click(function () {
+        $('#left').toggle();
+        if ($('#left').is(':visible')) {
+            $('.toggle').css({ 'left': $('#left').width() - 50 });
+        } else {
+            $('.toggle').css({ 'left': '5px' });
+        }
+    })
+    //Set M3U8 links to play
     $("#player").on({
-        mouseenter: function() {
+        mouseenter: function () {
             $(this).css({ "opacity": 1 })
         },
-        click: function() {
+        click: function () {
             $(this).css({ "background-image": "url(../images/player.jpg)", "border": "1px solid #fff" })
             if (window.width > 640) {
                 $("#inputlink").show(500)
@@ -165,75 +171,75 @@ $(document).ready(function() {
             }
             $('#inputlink').val("")
         },
-        mouseleave: function() {
+        mouseleave: function () {
             $(this).css({ "opacity": 0.5 })
         }
     });
     //Set Tools Menu
     $("#menuicon").on({
-        mouseenter: function() {
+        mouseenter: function () {
             $(this).css({ "opacity": 1 })
         },
-        click: function() {
+        click: function () {
             $('#control div:gt(0)').slideToggle(500);
             $('#channelist').hide();
             $('#inputlink').hide();
         },
-        mouseleave: function() {
+        mouseleave: function () {
             $(this).css({ "opacity": 0.5 })
         }
     });
     //Set return home page
     $("#prev").on({
-        mouseenter: function() {
+        mouseenter: function () {
             $(this).css({ "opacity": 1 })
         },
-        click: function() {
+        click: function () {
             window.location.href = "/Easy-Web-TV-M3u8/routes/language.html";
         },
-        mouseleave: function() {
+        mouseleave: function () {
             $(this).css({ "opacity": 0.5 })
         }
     });
     //Set Github link
     $("#github").on({
-        mouseenter: function() {
+        mouseenter: function () {
             $(this).css({ "opacity": 1 })
         },
-        click: function() {
+        click: function () {
             window.open("https://github.com/zhangboheng/Easy-Web-TV-M3u8");
         },
-        mouseleave: function() {
+        mouseleave: function () {
             $(this).css({ "opacity": 0.5 })
         }
     });
     //Set documents list
     $("#favorite").on({
-        mouseenter: function() {
+        mouseenter: function () {
             $(this).css({ "opacity": 1 })
         },
-        click: function() {
+        click: function () {
             $('#channelist').toggle(500);
         },
-        mouseleave: function() {
+        mouseleave: function () {
             $(this).css({ "opacity": 0.5 })
         }
     });
     //Set shuffle play
     $("#shuffleplay").on({
-        mouseenter: function() {
+        mouseenter: function () {
             $(this).css({ "opacity": 1 })
         },
-        mouseleave: function() {
+        mouseleave: function () {
             $(this).css({ "opacity": 0.5 })
         }
     });
     //Set link input
     $('#inputlink').on({
-        mouseenter: function() {
+        mouseenter: function () {
             $(this).css({ "opacity": 1 });
         },
-        mouseleave: function() {
+        mouseleave: function () {
             $(this).css({ "opacity": 0.5 });
             $(this).hide(3000);
             $("#player").css({ "background-image": "url(../images/link.jpg)" });
