@@ -303,6 +303,10 @@ function iniMenu(link) {
             }
         }
     }).done(function() {
+        $("#menu li:eq(1)").addClass("bd");
+        $("#menu li").on('click', function(){
+            $(this).addClass("bd").siblings().removeClass("bd");
+        });
         var searchlink = '';
         $("#search").on('keyup', function(e) {
             if (e.which == 13) {

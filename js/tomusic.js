@@ -203,6 +203,9 @@ function iniMenu(link) {
         for (let i = 0; i < code.length; i++) {
             $("#menu").append(`<li><p><span class="${code[i]}">${area[i]}</span></p></li>`);
         }
+        $("#menu li").on('click', function(){
+            $(this).addClass("bd").siblings().removeClass("bd");
+        });
         $.ajax({
             url: link + 'artist/list',
             data: {
@@ -325,9 +328,6 @@ function iniMenu(link) {
                                 setTimeout(() => {
                                     alert('Sorry, the music is blocked by NetEase');
                                 }, 3000);
-                            },
-                            complete: function(xhr, status) {
-
                             }
                         });
                     }

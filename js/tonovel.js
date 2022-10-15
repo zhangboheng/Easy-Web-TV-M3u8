@@ -228,6 +228,10 @@ function iniMenu(link) {
                 alert("Sorry, there was a problem!");
             },
             complete: function(xhr, status) {
+                $("#menu li:eq(1)").addClass("bd");
+                $("#menu li").on('click', function(){
+                    $(this).addClass("bd").siblings().removeClass("bd");
+                });
                 $.ajax({
                     url: proxy[rand] + `${link + $('#menu li p span:eq(0)').attr('class').slice(1)}`,
                     data: {},
@@ -370,6 +374,10 @@ function iniMenu(link) {
                 alert("Sorry, there was a problem!");
             },
             complete: function(xhr, status) {
+                $("#menu li:eq(1)").addClass("bd");
+                $("#menu li").on('click', function(){
+                    $(this).addClass("bd").siblings().removeClass("bd");
+                });
                 $.ajax({
                     url: proxy[rand] + $('#menu li p span:eq(0)').attr('class'),
                     data: {},

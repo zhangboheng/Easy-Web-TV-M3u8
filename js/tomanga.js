@@ -6,10 +6,10 @@ var proxy = {
 //Set global pagenum and random
 var pnum = 1;
 var rand = Math.floor(Math.random() * Object.keys(proxy).length);
-$(document).ready(function() {
+$(document).ready(function () {
     //Toggle menu and adjust size
     $(".toggle").css({ 'left': $('#left').width() - 50 });
-    $('.toggle').click(function() {
+    $('.toggle').click(function () {
         $('#left').toggle();
         if ($('#left').is(':visible')) {
             $('.toggle').css({ 'left': $('#left').width() - 50 });
@@ -41,18 +41,18 @@ $(document).ready(function() {
     //Initial homepage menu and episod lists
     iniMenu(initlink);
     //Select Different Source Website
-    $('#selectapi').on('change', function() {
+    $('#selectapi').on('change', function () {
         var key = $(this).val();
         $('.itemContainer').empty();
         iniMenu(key);
         pnum = 1;
     });
     // //Reinitial page num
-    $("#menu").click(function() {
+    $("#menu").click(function () {
         pnum = 1;
     });
     //Scroll down to load more
-    $(window).scroll(function(e) {
+    $(window).scroll(function (e) {
         $('#left').hide();
         $('.toggle').css({ 'left': '5px' });
         var ks = $('.hiddens');
@@ -79,11 +79,11 @@ $(document).ready(function() {
                     url: globallink,
                     type: "GET",
                     dataType: "html",
-                    success: function(data) {
+                    success: function (data) {
                         var html = $.parseHTML(data);
                         var title = $(html).find('.title h3').map((x, y) => y.textContent.trim());
                         var code = $(html).find('.title h3 a').map((x, y) => link.slice(0, -1) + y.attributes[1].value);
-                        var pic = $(html).find('.thumb a img').map((x, y) => 'https:' + y.attributes[2].value);
+                        var pic = $(html).find('.thumb a img').map((x, y) => y.attributes[2].value);
                         if (pnum <= 1000) {
                             $('.loadingimg').remove();
                             if ($(window).width() > 1024) {
@@ -128,7 +128,7 @@ $(document).ready(function() {
                             alert(`There is nothing to load`);
                         }
                     },
-                    error: function() {
+                    error: function () {
                         alert('Can\'t load more...');
                     }
                 });
@@ -143,7 +143,7 @@ $(document).ready(function() {
                         url: globallink,
                         type: "GET",
                         dataType: "html",
-                        success: function(data) {
+                        success: function (data) {
                             var html = $.parseHTML(data);
                             var title = $(html).find('.pt-name a').map((x, y) => y.innerText);
                             var code = $(html).find('.pt-name a').map((x, y) => link.slice(0, -1) + y.attributes[0].value);
@@ -175,7 +175,7 @@ $(document).ready(function() {
                                 alert(`There is nothing to load`);
                             }
                         },
-                        error: function() {
+                        error: function () {
                             alert('Can\'t load more...');
                         }
                     });
@@ -191,12 +191,12 @@ $(document).ready(function() {
                     url: globallink,
                     type: "GET",
                     dataType: "html",
-                    success: function(data) {
+                    success: function (data) {
                         var html = $.parseHTML(data.replace(/\"/g, '').replace(/\\/g, ''));
                         var title = $(html).find('a.ml-1').map((x, y) => y.innerText);
                         var con = $(html).find('a.ml-1');
                         var code = [];
-                        con.each(function() {
+                        con.each(function () {
                             code.push(link.slice(0, -1) + $(this).attr('href'));
                         });
                         var pic = $(html).find('img.rounded').map((x, y) => link.slice(0, -1) + y.attributes[2].value);
@@ -240,7 +240,7 @@ $(document).ready(function() {
                             }
                         }
                     },
-                    error: function(xhr, status) {
+                    error: function (xhr, status) {
                         $('.loadingimg').remove();
                         setTimeout(() => {
                             alert("Sorry, there was a problem!");
@@ -262,7 +262,7 @@ function iniMenu(link) {
             data: {},
             type: "GET",
             dataType: "html",
-            success: function(data) {
+            success: function (data) {
                 var html = $.parseHTML(data);
                 var title = $(html).find('ul.genres__wrapper.clearfix li a').slice(3, -2).map((x, y) => y.innerText);
                 var target = $(html).find('ul.genres__wrapper.clearfix li a').slice(3, -2).map((x, y) => link.slice(0, -1) + y.attributes[0].value);
@@ -271,20 +271,20 @@ function iniMenu(link) {
                     $("#menu").append(`<li><p><span class="${target[i]}">${title[i]}</span></p></li>`);
                 }
             },
-            error: function(xhr, status) {
+            error: function (xhr, status) {
                 alert("Sorry, there was a problem!");
             },
-            complete: function(xhr, status) {
+            complete: function (xhr, status) {
                 $.ajax({
                     url: proxy[1] + $('#menu li p span:eq(0)').attr('class'),
                     data: {},
                     type: "GET",
                     dataType: "html",
-                    success: function(data) {
+                    success: function (data) {
                         var html = $.parseHTML(data);
                         var title = $(html).find('.title h3').map((x, y) => y.textContent.trim());
                         var code = $(html).find('.title h3 a').map((x, y) => link.slice(0, -1) + y.attributes[1].value);
-                        var pic = $(html).find('.thumb a img').map((x, y) => 'https:' + y.attributes[2].value);
+                        var pic = $(html).find('.thumb a img').map((x, y) => y.attributes[2].value);
                         $('.loadingimg').remove();
                         if ($(window).width() > 1024) {
                             $(`.itemContainer:eq(4)`).hide();
@@ -324,12 +324,16 @@ function iniMenu(link) {
                             }
                         }
                     },
-                    error: function(xhr, status) {
+                    error: function (xhr, status) {
                         alert("Sorry, there was a problem!");
                     },
-                    complete: function(xhr, status) {
+                    complete: function (xhr, status) {
+                        $("#menu li:eq(1)").addClass("bd");
+                        $("#menu li").on('click', function () {
+                            $(this).addClass("bd").siblings().removeClass("bd");
+                        });
                         var searchlink = '';
-                        $("#search").on('keyup', function(e) {
+                        $("#search").on('keyup', function (e) {
                             if (e.which == 13) {
                                 $('.itemContainer').empty();
                                 var valThis = $(this).val().toLowerCase();
@@ -339,7 +343,7 @@ function iniMenu(link) {
                                     data: {},
                                     type: "GET",
                                     dataType: "html",
-                                    success: function(data) {
+                                    success: function (data) {
                                         var html = $.parseHTML(data);
                                         var title = $(html).find('.title h3').map((x, y) => y.textContent.trim());
                                         var code = $(html).find('.title h3 a').map((x, y) => link.slice(0, -1) + y.attributes[1].value);
@@ -383,10 +387,10 @@ function iniMenu(link) {
                                             }
                                         }
                                     },
-                                    error: function(xhr, status) {
+                                    error: function (xhr, status) {
                                         alert("Sorry, there was a problem!");
                                     },
-                                    complete: function(xhr, status) {
+                                    complete: function (xhr, status) {
 
                                     }
                                 });
@@ -403,12 +407,12 @@ function iniMenu(link) {
             data: {},
             type: "GET",
             dataType: "html",
-            success: function(data) {
+            success: function (data) {
                 var html = $.parseHTML(data.replace(/\"/g, '').replace(/\\/g, ''));
                 var title = $(html).find('a.ml-1').map((x, y) => y.innerText);
                 var con = $(html).find('a.ml-1');
                 var code = [];
-                con.each(function() {
+                con.each(function () {
                     code.push(link.slice(0, -1) + $(this).attr('href'));
                 });
                 var pic = $(html).find('img.rounded').map((x, y) => link.slice(0, -1) + y.attributes[2].value);
@@ -452,12 +456,12 @@ function iniMenu(link) {
                     }
                 }
             },
-            error: function(xhr, status) {
+            error: function (xhr, status) {
                 alert("Sorry, there was a problem!");
             },
-            complete: function(xhr, status) {
+            complete: function (xhr, status) {
                 var searchlink = '';
-                $("#search").on('keyup', function(e) {
+                $("#search").on('keyup', function (e) {
                     if (e.which == 13) {
                         $('.itemContainer').empty();
                         var valThis = $(this).val().toLowerCase();
@@ -467,12 +471,12 @@ function iniMenu(link) {
                             data: {},
                             type: "GET",
                             dataType: "html",
-                            success: function(data) {
+                            success: function (data) {
                                 var html = $.parseHTML(data.replace(/\"/g, '').replace(/\\/g, ''));
                                 var title = $(html).find('a.ml-1').map((x, y) => y.innerText);
                                 var con = $(html).find('a.ml-1');
                                 var code = [];
-                                con.each(function() {
+                                con.each(function () {
                                     code.push(link.slice(0, -1) + $(this).attr('href'));
                                 });
                                 var pic = $(html).find('img.rounded').map((x, y) => link.slice(0, -1) + y.attributes[2].value);
@@ -516,10 +520,10 @@ function iniMenu(link) {
                                     }
                                 }
                             },
-                            error: function(xhr, status) {
+                            error: function (xhr, status) {
                                 alert("Sorry, there was a problem!");
                             },
-                            complete: function(xhr, status) {
+                            complete: function (xhr, status) {
 
                             }
                         });
@@ -533,7 +537,7 @@ function iniMenu(link) {
             data: {},
             type: "GET",
             dataType: "html",
-            success: function(data) {
+            success: function (data) {
                 var html = $.parseHTML(data);
                 var title = $(html).find('.categories.ptm-clearfix li a').map((x, y) => y.innerText);
                 var target = $(html).find('.categories.ptm-clearfix li a').map((x, y) => link.slice(0, -1) + y.attributes[0].value);
@@ -542,16 +546,16 @@ function iniMenu(link) {
                     $("#menu").append(`<li><p><span class="${target[i]}">${title[i]}</span></p></li>`);
                 }
             },
-            error: function(xhr, status) {
+            error: function (xhr, status) {
                 alert("Sorry, there was a problem!");
             },
-            complete: function(xhr, status) {
+            complete: function (xhr, status) {
                 $.ajax({
                     url: proxy[1] + $('#menu li p span:eq(0)').attr('class'),
                     data: {},
                     type: "GET",
                     dataType: "html",
-                    success: function(data) {
+                    success: function (data) {
                         var html = $.parseHTML(data);
                         var title = $(html).find('.pt-name a').map((x, y) => y.innerText);
                         var code = $(html).find('.pt-name a').map((x, y) => link.slice(0, -1) + y.attributes[0].value);
@@ -578,12 +582,16 @@ function iniMenu(link) {
                             return;
                         }
                     },
-                    error: function(xhr, status) {
+                    error: function (xhr, status) {
                         alert("Sorry, there was a problem!");
                     },
-                    complete: function(xhr, status) {
+                    complete: function (xhr, status) {
+                        $("#menu li:eq(1)").addClass("bd");
+                        $("#menu li").on('click', function () {
+                            $(this).addClass("bd").siblings().removeClass("bd");
+                        });
                         var searchlink = '';
-                        $("#search").on('keyup', function(e) {
+                        $("#search").on('keyup', function (e) {
                             if (e.which == 13) {
                                 $('.itemContainer').empty();
                                 var valThis = $(this).val().toLowerCase();
@@ -593,7 +601,7 @@ function iniMenu(link) {
                                     data: {},
                                     type: "GET",
                                     dataType: "html",
-                                    success: function(data) {
+                                    success: function (data) {
                                         var html = $.parseHTML(data);
                                         var title = $(html).find('.ptm-card').slice(1).find('.imgarea a').map((x, y) => y.attributes[1].value);
                                         var code = $(html).find('.ptm-card').slice(1).find('.imgarea a').map((x, y) => link.slice(0, -1) + y.attributes[0].value);
@@ -617,10 +625,10 @@ function iniMenu(link) {
                                             return;
                                         }
                                     },
-                                    error: function(xhr, status) {
+                                    error: function (xhr, status) {
                                         alert("Sorry, there was a problem!");
                                     },
-                                    complete: function(xhr, status) {
+                                    complete: function (xhr, status) {
 
                                     }
                                 });
@@ -632,7 +640,7 @@ function iniMenu(link) {
         });
     }
     //Click to choose category
-    $('#menu').on("click", "span", function(e) {
+    $('#menu').on("click", "span", function (e) {
         var className;
         className = e.originalEvent.target.className;
         $('.hiddens').empty();
@@ -643,7 +651,7 @@ function iniMenu(link) {
             url: proxy[1] + className,
             type: "GET",
             dataType: "html",
-            success: function(data) {
+            success: function (data) {
                 var html = $.parseHTML(data);
                 if (link == 'https://mangabuddy.com/') {
                     var title = $(html).find('.title h3').map((x, y) => y.textContent.trim());
@@ -716,7 +724,7 @@ function iniMenu(link) {
                     }
                 }
             },
-            error: function() {
+            error: function () {
 
             }
         });
