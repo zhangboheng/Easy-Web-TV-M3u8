@@ -203,7 +203,7 @@ function iniMenu(link) {
         for (let i = 0; i < code.length; i++) {
             $("#menu").append(`<li><p><span class="${code[i]}">${area[i]}</span></p></li>`);
         }
-        $("#menu li").on('click', function(){
+        $("#menu li:gt(1)").on('click', function(){
             $(this).addClass("bd").siblings().removeClass("bd");
         });
         $.ajax({

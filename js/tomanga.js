@@ -329,7 +329,7 @@ function iniMenu(link) {
                     },
                     complete: function (xhr, status) {
                         $("#menu li:eq(1)").addClass("bd");
-                        $("#menu li").on('click', function () {
+                        $("#menu li:gt(1)").on('click', function () {
                             $(this).addClass("bd").siblings().removeClass("bd");
                         });
                         var searchlink = '';
@@ -587,7 +587,7 @@ function iniMenu(link) {
                     },
                     complete: function (xhr, status) {
                         $("#menu li:eq(1)").addClass("bd");
-                        $("#menu li").on('click', function () {
+                        $("#menu li:gt(1)").on('click', function () {
                             $(this).addClass("bd").siblings().removeClass("bd");
                         });
                         var searchlink = '';
