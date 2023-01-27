@@ -66,13 +66,13 @@ $(document).ready(function() {
             pnum++;
             if (link == 'https://api-music.imsyy.top/') {
                 if (sts.length > 0) {
-                    globallink = link + 'search?keywords=' + sts + `&limit=20&offset=${20*pnum - 20}`;
+                    globallink = proxy[0] + link + 'search?keywords=' + sts + `&limit=20&offset=${20*pnum - 20}`;
                 } else {
                     str = str == "0" ? link + `artist/list?type=-1&area=-1&limit=20&offset=${20*pnum - 20}` : str + `&limit=20&offset=${20*pnum - 20}`;
                     globallink = str;
                 }
                 $.ajax({
-                    url: globallink,
+                    url: proxy[0] + globallink,
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
@@ -207,7 +207,7 @@ function iniMenu(link) {
             $(this).addClass("bd").siblings().removeClass("bd");
         });
         $.ajax({
-            url: link + 'artist/list',
+            url: proxy[0] + link + 'artist/list',
             data: {
                 type: '-1',
                 area: '-1',
@@ -272,7 +272,7 @@ function iniMenu(link) {
                         var valThis = $(this).val().toLowerCase();
                         searchlink = `${link + 'search?keywords=' + valThis}`;
                         $.ajax({
-                            url: searchlink,
+                            url: proxy[0] + searchlink,
                             data: {
                                 limit: 20,
                             },
@@ -350,7 +350,7 @@ function iniMenu(link) {
         $('#search').val('');
         $('#root').append(`<div class="loadingimg"><img src="../images/loading.gif" tag="Easy Web TV"></div>`);
         $.ajax({
-            url: className,
+            url: proxy[0] + className,
             data: {
                 limit: 20
             },
@@ -416,12 +416,12 @@ function iniMenu(link) {
 function audioPlay(ids) {
     //Test muisc if is invalid
     $.ajax({
-        url: 'https://api-music.imsyy.top' + '/check/music?id=' + ids,
+        url: proxy[0] + 'https://api-music.imsyy.top' + '/check/music?id=' + ids,
         type: "GET",
         dataType: "json",
         success: function(data) {
             $.ajax({
-                url: 'https://api-music.imsyy.top' + '/song/url?id=' + ids,
+                url: proxy[0] + 'https://api-music.imsyy.top' + '/song/url?id=' + ids,
                 type: "GET",
                 dataType: "json",
                 success: function(data) {

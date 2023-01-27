@@ -1,5 +1,9 @@
 var channels = [];
 var plyist = [];
+var proxy = {
+    0: 'https://cors.luckydesigner.workers.dev/?',
+    1: 'https://bird.ioliu.cn/v1?url=',
+};
 //Get default localstorage key
 var localkey = ['manga', 'bannedcountries', 'novel', 'movie', 'music', 'languages', 'porn', 'adult'];
 $(document).ready(function () {
@@ -10,7 +14,7 @@ $(document).ready(function () {
     var player = videojs(document.querySelector('#video1'));
     $.ajax({
         type: "GET",
-        url: `https://api-music.imsyy.top/artist/songs?id=${ids}`,
+        url: proxy[0] + `https://api-music.imsyy.top/artist/songs?id=${ids}`,
         data: {
             limit: 100
         },
@@ -242,12 +246,12 @@ function audioPlay(ids) {
     var player = videojs(document.querySelector('#video1'));
     //Test muisc if is invalid
     $.ajax({
-        url: 'https://api-music.imsyy.top' + '/check/music?id=' + ids,
+        url: proxy[0] + 'https://api-music.imsyy.top' + '/check/music?id=' + ids,
         type: "GET",
         dataType: "json",
         success: function (data) {
             $.ajax({
-                url: 'https://api-music.imsyy.top' + '/song/url?id=' + ids,
+                url: proxy[0] + 'https://api-music.imsyy.top' + '/song/url?id=' + ids,
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
