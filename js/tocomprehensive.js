@@ -28,7 +28,7 @@ $(document).ready(function() {
             '<option value="https://api.tiankongapi.com/api.php/provide/vod/at/xml/from/tkm3u8/">天空云</option>',
             '<option value="http://cj.bajiecaiji.com/inc/bjm3u8.php">八戒云</option>'
         ];
-        for (let i of lst) {
+        for (let i in lst) {
             $('#selectapi').append(sts[i]);
         }
     } catch (e) {
