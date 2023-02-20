@@ -1,6 +1,7 @@
 //Set global array proxy links to solve CORS error
 var proxy = {
     0: 'https://cors.luckydesigner.workers.dev/?',
+    1: 'https://bird.ioliu.cn/v1?url='
 };
 //Set global pagenum and random
 var pnum = 1;
