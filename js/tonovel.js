@@ -22,7 +22,7 @@ $(document).ready(function() {
         let arr = ["novelonlinefull", "95sb"];
         let lst = arr.filter(x => ms.includes(x)).map(x => arr.indexOf(x));
         let sts = ['<option value="https://novelonlinefull.com/">novelonlinefull</option>',
-            '<option value="http://www.xfjxs.com/">95书包</option>'
+            '<option value="http://www.95shubao.net/">95书包</option>'
         ];
         for (let i of lst) {
             $('#selectapi').append(sts[i]);
@@ -30,7 +30,7 @@ $(document).ready(function() {
     } catch (e) {
         $('#selectapi').append(`
             <option value="https://novelonlinefull.com/">novelonlinefull</option>
-            <option value="http://www.xfjxs.com/">95书包</option>
+            <option value="http://www.95shubao.net/">95书包</option>
         `);
     }
     //Variable zone
@@ -65,7 +65,7 @@ $(document).ready(function() {
         if (positionValue <= 0 && positionValue >= -5) {
             $('#root').append(`<div class="loadingimg"><img src="../images/loading.gif" tag="Easy Web TV"></div>`);
             pnum++;
-            if (link == 'http://www.xfjxs.com/') {
+            if (link == 'http://www.95shubao.net/') {
                 if (sts.length > 0) {
                     $('.loadingimg').remove();
                 } else {
@@ -209,7 +209,7 @@ $(document).ready(function() {
 function iniMenu(link) {
     $('#root').append(`<div class="loadingimg"><img src="../images/loading.gif" tag="Easy Web TV"></div>`);
     $("#menu").empty();
-    if (link == 'http://www.xfjxs.com/') {
+    if (link == 'http://www.95shubao.net/') {
         $.ajax({
             url: proxy[rand] + `${link}`,
             data: {},
@@ -509,7 +509,7 @@ function iniMenu(link) {
     //Click to choose category
     $('#menu').on("click", "span", function(e) {
         var className;
-        if (link == 'http://www.xfjxs.com/') {
+        if (link == 'http://www.95shubao.net/') {
             className = link + e.originalEvent.target.className.slice(1);
         } else if (link == 'https://novelonlinefull.com/') {
             className = e.originalEvent.target.className;
