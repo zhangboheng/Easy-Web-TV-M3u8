@@ -19,26 +19,27 @@ $(document).ready(function() {
     //Get select source
     try {
         let ms = window.localStorage.getItem('movie').split(",");
-        let arr = ["39ys", "wlys", "phzy", "kby", "tky", "bjy"];
+        let arr = ["tky", "bjy", "39ys", "wlys", "phzy", "kby"];
         let lst = arr.filter(x => ms.includes(x)).map(x => arr.indexOf(x));
-        let sts = ['<option value="https://www.39kan.com/api.php/provide/vod/at/json">39影视</option>',
+        let sts = [
+            '<option value="https://api.tiankongapi.com/api.php/provide/vod/at/xml/from/tkm3u8/">天空云</option>',
+            '<option value="http://cj.bajiecaiji.com/inc/bjm3u8.php">八戒云</option>',
+            '<option value="https://www.39kan.com/api.php/provide/vod/at/json">39影视</option>',
             '<option value="https://collect.wolongzyw.com/api.php/provide/vod/at/xml">卧龙影视</option>',
             '<option value="http://www.zzrhgg.com/api.php/provide/vod/at/xml">飘花资源</option>',
             '<option value="http://www.kuaibozy.com/api.php/provide/vod/from/kbm3u8/at/xml/">快播云</option>',
-            '<option value="https://api.tiankongapi.com/api.php/provide/vod/at/xml/from/tkm3u8/">天空云</option>',
-            '<option value="http://cj.bajiecaiji.com/inc/bjm3u8.php">八戒云</option>'
         ];
         for (let i of lst) {
             $('#selectapi').append(sts[i]);
         }
     } catch (e) {
         $('#selectapi').append(`
+            <option value="https://api.tiankongapi.com/api.php/provide/vod/at/xml/from/tkm3u8/">天空云</option>
+            <option value="http://cj.bajiecaiji.com/inc/bjm3u8.php">八戒云</option>
             <option value="https://www.39kan.com/api.php/provide/vod/at/json">39影视</option>
             <option value="https://collect.wolongzyw.com/api.php/provide/vod/at/xml">卧龙影视</option>
             <option value="http://www.zzrhgg.com/api.php/provide/vod/at/xml">飘花资源</option>
             <option value="http://www.kuaibozy.com/api.php/provide/vod/from/kbm3u8/at/xml/">快播云</option>
-            <option value="https://api.tiankongapi.com/api.php/provide/vod/at/xml/from/tkm3u8/">天空云</option>
-            <option value="http://cj.bajiecaiji.com/inc/bjm3u8.php">八戒云</option>
         `);
     }
     //Variable zone
