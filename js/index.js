@@ -922,8 +922,11 @@ DOM.ready(function() {
     // Initialize Source Control in Settings Modal
     SettingsModal.initSourceControl();
     
-    // Check user IP belongs to if in China, North Korea
-    if (window.localStorage.getItem('bannedcountries') != 'true') {
+    // Check user IP belongs to if in China, Hong Kong, Macau, North Korea
+    if (window.localStorage.getItem('bannedcountries') == 'true') {
+        // Previously detected as a banned country - hide sensitive content immediately
+        hideSensitiveContent();
+    } else {
         getUserIp();
     }
     
@@ -1401,6 +1404,12 @@ function returnSource() {
     }
 }
 
+// Hide the Sensitive Content toggle in settings for banned countries
+function hideSensitiveContent() {
+    var sensitiveSetting = DOM.$('#sensitive-setting');
+    if (sensitiveSetting) sensitiveSetting.style.display = 'none';
+}
+
 // Get User IP
 function getUserIp() {
     LoadingManager.show();
@@ -1422,10 +1431,9 @@ function getUserIp() {
     .then(function(data) {
         if (data && data.country_code) {
             var country = data.country_code.toLowerCase();
-            if (country === 'cn' || country === 'kp') {
+            if (['cn', 'hk', 'mo', 'kp'].indexOf(country) !== -1) {
                 window.localStorage.setItem('bannedcountries', 'true');
-                var firstDiv = DOM.find('#mySidenav', 'div');
-                if (firstDiv) firstDiv.style.display = 'none';
+                hideSensitiveContent();
             }
         }
     })
@@ -1464,10 +1472,9 @@ function getCoordintes() {
         .then(function(data) {
             if (data && data.address && data.address.country_code) {
                 var country = data.address.country_code.toLowerCase();
-                if (country === 'cn' || country === 'kp') {
+                if (['cn', 'hk', 'mo', 'kp'].indexOf(country) !== -1) {
                     window.localStorage.setItem('bannedcountries', 'true');
-                    var firstDiv = DOM.find('#mySidenav', 'div');
-                    if (firstDiv) firstDiv.style.display = 'none';
+                    hideSensitiveContent();
                 }
             }
         })

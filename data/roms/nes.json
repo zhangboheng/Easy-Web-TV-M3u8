@@ -1,0 +1,4031 @@
+{
+  "platform": "nes",
+  "core": "fceumm",
+  "games": [
+    {
+      "name": "10-Yard Fight (USA, Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/10-Yard%20Fight%20(USA%2C%20Europe).zip",
+      "filename": "10-Yard Fight (USA, Europe).zip"
+    },
+    {
+      "name": "1942 (Japan, USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/1942%20(Japan%2C%20USA).zip",
+      "filename": "1942 (Japan, USA).zip"
+    },
+    {
+      "name": "1943 - The Battle of Midway (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/1943%20-%20The%20Battle%20of%20Midway%20(PT-BR).zip",
+      "filename": "1943 - The Battle of Midway (PT-BR).zip"
+    },
+    {
+      "name": "3-D WorldRunner (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/3-D%20WorldRunner%20(USA).zip",
+      "filename": "3-D WorldRunner (USA).zip"
+    },
+    {
+      "name": "720 Degrees (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/720%20Degrees%20(USA).zip",
+      "filename": "720 Degrees (USA).zip"
+    },
+    {
+      "name": "8 Eyes (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/8%20Eyes%20(PT-BR).zip",
+      "filename": "8 Eyes (PT-BR).zip"
+    },
+    {
+      "name": "Abadox - The Deadly Inner War (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Abadox%20-%20The%20Deadly%20Inner%20War%20(PT-BR).zip",
+      "filename": "Abadox - The Deadly Inner War (PT-BR).zip"
+    },
+    {
+      "name": "Action 52 (USA) (Rev A) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Action%2052%20(USA)%20(Rev%20A)%20(Unl).zip",
+      "filename": "Action 52 (USA) (Rev A) (Unl).zip"
+    },
+    {
+      "name": "Addams Family, The (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Addams%20Family%2C%20The%20(PT-BR).zip",
+      "filename": "Addams Family, The (PT-BR).zip"
+    },
+    {
+      "name": "Addams Family, The - Pugsley's Scavenger Hunt (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Addams%20Family%2C%20The%20-%20Pugsley's%20Scavenger%20Hunt%20(USA).zip",
+      "filename": "Addams Family, The - Pugsley's Scavenger Hunt (USA).zip"
+    },
+    {
+      "name": "Advanced Dungeons & Dragons - DragonStrike (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Advanced%20Dungeons%20%26%20Dragons%20-%20DragonStrike%20(PT-BR).zip",
+      "filename": "Advanced Dungeons & Dragons - DragonStrike (PT-BR).zip"
+    },
+    {
+      "name": "Advanced Dungeons & Dragons - Heroes of the Lance (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Advanced%20Dungeons%20%26%20Dragons%20-%20Heroes%20of%20the%20Lance%20(USA).zip",
+      "filename": "Advanced Dungeons & Dragons - Heroes of the Lance (USA).zip"
+    },
+    {
+      "name": "Advanced Dungeons & Dragons - Hillsfar (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Advanced%20Dungeons%20%26%20Dragons%20-%20Hillsfar%20(USA).zip",
+      "filename": "Advanced Dungeons & Dragons - Hillsfar (USA).zip"
+    },
+    {
+      "name": "Advanced Dungeons & Dragons - Pool of Radiance (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Advanced%20Dungeons%20%26%20Dragons%20-%20Pool%20of%20Radiance%20(USA).zip",
+      "filename": "Advanced Dungeons & Dragons - Pool of Radiance (USA).zip"
+    },
+    {
+      "name": "Adventure Island 3 (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Adventure%20Island%203%20(USA).zip",
+      "filename": "Adventure Island 3 (USA).zip"
+    },
+    {
+      "name": "Adventure Island II (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Adventure%20Island%20II%20(USA).zip",
+      "filename": "Adventure Island II (USA).zip"
+    },
+    {
+      "name": "Adventures in the Magic Kingdom (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Adventures%20in%20the%20Magic%20Kingdom%20(USA).zip",
+      "filename": "Adventures in the Magic Kingdom (USA).zip"
+    },
+    {
+      "name": "Adventures of Bayou Billy, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Adventures%20of%20Bayou%20Billy%2C%20The%20(USA).zip",
+      "filename": "Adventures of Bayou Billy, The (USA).zip"
+    },
+    {
+      "name": "Adventures of Dino Riki (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Adventures%20of%20Dino%20Riki%20(USA).zip",
+      "filename": "Adventures of Dino Riki (USA).zip"
+    },
+    {
+      "name": "Adventures of Gilligan's Island, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Adventures%20of%20Gilligan's%20Island%2C%20The%20(USA).zip",
+      "filename": "Adventures of Gilligan's Island, The (USA).zip"
+    },
+    {
+      "name": "Adventures of Lolo (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Adventures%20of%20Lolo%20(USA).zip",
+      "filename": "Adventures of Lolo (USA).zip"
+    },
+    {
+      "name": "Adventures of Lolo 2 (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Adventures%20of%20Lolo%202%20(USA).zip",
+      "filename": "Adventures of Lolo 2 (USA).zip"
+    },
+    {
+      "name": "Adventures of Lolo 3 (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Adventures%20of%20Lolo%203%20(PT-BR).zip",
+      "filename": "Adventures of Lolo 3 (PT-BR).zip"
+    },
+    {
+      "name": "Adventures of Rad Gravity, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Adventures%20of%20Rad%20Gravity%2C%20The%20(USA).zip",
+      "filename": "Adventures of Rad Gravity, The (USA).zip"
+    },
+    {
+      "name": "Adventures of Rocky and Bullwinkle and Friends, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Adventures%20of%20Rocky%20and%20Bullwinkle%20and%20Friends%2C%20The%20(USA).zip",
+      "filename": "Adventures of Rocky and Bullwinkle and Friends, The (USA).zip"
+    },
+    {
+      "name": "Adventures of Tom Sawyer (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Adventures%20of%20Tom%20Sawyer%20(USA).zip",
+      "filename": "Adventures of Tom Sawyer (USA).zip"
+    },
+    {
+      "name": "After Burner (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/After%20Burner%20(USA)%20(Unl).zip",
+      "filename": "After Burner (USA) (Unl).zip"
+    },
+    {
+      "name": "Air Fortress (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Air%20Fortress%20(USA).zip",
+      "filename": "Air Fortress (USA).zip"
+    },
+    {
+      "name": "Airwolf (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Airwolf%20(USA).zip",
+      "filename": "Airwolf (USA).zip"
+    },
+    {
+      "name": "Al Unser Jr. Turbo Racing (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Al%20Unser%20Jr.%20Turbo%20Racing%20(USA).zip",
+      "filename": "Al Unser Jr. Turbo Racing (USA).zip"
+    },
+    {
+      "name": "Aladdin (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Aladdin%20(Europe).zip",
+      "filename": "Aladdin (Europe).zip"
+    },
+    {
+      "name": "Alfred Chicken (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Alfred%20Chicken%20(USA).zip",
+      "filename": "Alfred Chicken (USA).zip"
+    },
+    {
+      "name": "Alien 3 (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Alien%203%20(USA).zip",
+      "filename": "Alien 3 (USA).zip"
+    },
+    {
+      "name": "Alien Syndrome (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Alien%20Syndrome%20(USA)%20(Unl).zip",
+      "filename": "Alien Syndrome (USA) (Unl).zip"
+    },
+    {
+      "name": "All-Pro Basketball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/All-Pro%20Basketball%20(USA).zip",
+      "filename": "All-Pro Basketball (USA).zip"
+    },
+    {
+      "name": "Alpha Mission (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Alpha%20Mission%20(USA).zip",
+      "filename": "Alpha Mission (USA).zip"
+    },
+    {
+      "name": "Amagon (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Amagon%20(PT-BR).zip",
+      "filename": "Amagon (PT-BR).zip"
+    },
+    {
+      "name": "American Gladiators (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/American%20Gladiators%20(USA).zip",
+      "filename": "American Gladiators (USA).zip"
+    },
+    {
+      "name": "Anticipation (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Anticipation%20(USA).zip",
+      "filename": "Anticipation (USA).zip"
+    },
+    {
+      "name": "Arch Rivals - A Basketbrawl! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Arch%20Rivals%20-%20A%20Basketbrawl!%20(USA).zip",
+      "filename": "Arch Rivals - A Basketbrawl! (USA).zip"
+    },
+    {
+      "name": "Archon (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Archon%20(PT-BR).zip",
+      "filename": "Archon (PT-BR).zip"
+    },
+    {
+      "name": "Arkanoid (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Arkanoid%20(PT-BR).zip",
+      "filename": "Arkanoid (PT-BR).zip"
+    },
+    {
+      "name": "Arkista's Ring (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Arkista's%20Ring%20(USA).zip",
+      "filename": "Arkista's Ring (USA).zip"
+    },
+    {
+      "name": "Asterix (Europe) (En,Fr,De,Es,It)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Asterix%20(Europe)%20(En%2CFr%2CDe%2CEs%2CIt).zip",
+      "filename": "Asterix (Europe) (En,Fr,De,Es,It).zip"
+    },
+    {
+      "name": "Astyanax (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Astyanax%20(PT-BR).zip",
+      "filename": "Astyanax (PT-BR).zip"
+    },
+    {
+      "name": "Athena (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Athena%20(USA).zip",
+      "filename": "Athena (USA).zip"
+    },
+    {
+      "name": "Athletic World (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Athletic%20World%20(USA).zip",
+      "filename": "Athletic World (USA).zip"
+    },
+    {
+      "name": "Attack of the Killer Tomatoes (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Attack%20of%20the%20Killer%20Tomatoes%20(USA).zip",
+      "filename": "Attack of the Killer Tomatoes (USA).zip"
+    },
+    {
+      "name": "Baby Boomer (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Baby%20Boomer%20(USA)%20(Unl).zip",
+      "filename": "Baby Boomer (USA) (Unl).zip"
+    },
+    {
+      "name": "Back to the Future (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Back%20to%20the%20Future%20(USA).zip",
+      "filename": "Back to the Future (USA).zip"
+    },
+    {
+      "name": "Back to the Future Part II & III (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Back%20to%20the%20Future%20Part%20II%20%26%20III%20(USA).zip",
+      "filename": "Back to the Future Part II & III (USA).zip"
+    },
+    {
+      "name": "Bad Dudes (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bad%20Dudes%20(PT-BR).zip",
+      "filename": "Bad Dudes (PT-BR).zip"
+    },
+    {
+      "name": "Bad News Baseball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bad%20News%20Baseball%20(USA).zip",
+      "filename": "Bad News Baseball (USA).zip"
+    },
+    {
+      "name": "Bad Street Brawler (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bad%20Street%20Brawler%20(USA).zip",
+      "filename": "Bad Street Brawler (USA).zip"
+    },
+    {
+      "name": "Balloon Fight (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Balloon%20Fight%20(PT-BR).zip",
+      "filename": "Balloon Fight (PT-BR).zip"
+    },
+    {
+      "name": "Bandai Golf - Challenge Pebble Beach (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bandai%20Golf%20-%20Challenge%20Pebble%20Beach%20(USA).zip",
+      "filename": "Bandai Golf - Challenge Pebble Beach (USA).zip"
+    },
+    {
+      "name": "Bandit Kings of Ancient China (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bandit%20Kings%20of%20Ancient%20China%20(USA).zip",
+      "filename": "Bandit Kings of Ancient China (USA).zip"
+    },
+    {
+      "name": "Barbie (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Barbie%20(USA)%20(Rev%20A).zip",
+      "filename": "Barbie (USA) (Rev A).zip"
+    },
+    {
+      "name": "Bard's Tale, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bard's%20Tale%2C%20The%20(USA).zip",
+      "filename": "Bard's Tale, The (USA).zip"
+    },
+    {
+      "name": "Barker Bill's Trick Shooting (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Barker%20Bill's%20Trick%20Shooting%20(USA).zip",
+      "filename": "Barker Bill's Trick Shooting (USA).zip"
+    },
+    {
+      "name": "Baseball (USA, Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Baseball%20(USA%2C%20Europe).zip",
+      "filename": "Baseball (USA, Europe).zip"
+    },
+    {
+      "name": "Baseball Simulator 1.000 (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Baseball%20Simulator%201.000%20(USA).zip",
+      "filename": "Baseball Simulator 1.000 (USA).zip"
+    },
+    {
+      "name": "Baseball Stars (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Baseball%20Stars%20(USA).zip",
+      "filename": "Baseball Stars (USA).zip"
+    },
+    {
+      "name": "Baseball Stars II (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Baseball%20Stars%20II%20(USA).zip",
+      "filename": "Baseball Stars II (USA).zip"
+    },
+    {
+      "name": "Bases Loaded (USA) (Rev B)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bases%20Loaded%20(USA)%20(Rev%20B).zip",
+      "filename": "Bases Loaded (USA) (Rev B).zip"
+    },
+    {
+      "name": "Bases Loaded 3 (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bases%20Loaded%203%20(USA).zip",
+      "filename": "Bases Loaded 3 (USA).zip"
+    },
+    {
+      "name": "Bases Loaded 4 (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bases%20Loaded%204%20(USA).zip",
+      "filename": "Bases Loaded 4 (USA).zip"
+    },
+    {
+      "name": "Bases Loaded II - Second Season (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bases%20Loaded%20II%20-%20Second%20Season%20(USA).zip",
+      "filename": "Bases Loaded II - Second Season (USA).zip"
+    },
+    {
+      "name": "Batman - Return of the Joker (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Batman%20-%20Return%20of%20the%20Joker%20(PT-BR).zip",
+      "filename": "Batman - Return of the Joker (PT-BR).zip"
+    },
+    {
+      "name": "Batman - The Video Game (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Batman%20-%20The%20Video%20Game%20(PT-BR).zip",
+      "filename": "Batman - The Video Game (PT-BR).zip"
+    },
+    {
+      "name": "Batman Returns (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Batman%20Returns%20(PT-BR).zip",
+      "filename": "Batman Returns (PT-BR).zip"
+    },
+    {
+      "name": "Battle Chess (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Battle%20Chess%20(USA).zip",
+      "filename": "Battle Chess (USA).zip"
+    },
+    {
+      "name": "Battle City (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Battle%20City%20(PT-BR).zip",
+      "filename": "Battle City (PT-BR).zip"
+    },
+    {
+      "name": "Battle of Olympus, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Battle%20of%20Olympus%2C%20The%20(USA).zip",
+      "filename": "Battle of Olympus, The (USA).zip"
+    },
+    {
+      "name": "Battleship (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Battleship%20(PT-BR).zip",
+      "filename": "Battleship (PT-BR).zip"
+    },
+    {
+      "name": "Battletank (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Battletank%20(USA).zip",
+      "filename": "Battletank (USA).zip"
+    },
+    {
+      "name": "Battletoads (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Battletoads%20(PT-BR).zip",
+      "filename": "Battletoads (PT-BR).zip"
+    },
+    {
+      "name": "Battletoads-Double Dragon (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Battletoads-Double%20Dragon%20(USA).zip",
+      "filename": "Battletoads-Double Dragon (USA).zip"
+    },
+    {
+      "name": "Beauty and the Beast (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Beauty%20and%20the%20Beast%20(Europe).zip",
+      "filename": "Beauty and the Beast (Europe).zip"
+    },
+    {
+      "name": "Bee 52 (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bee%2052%20(USA)%20(Unl).zip",
+      "filename": "Bee 52 (USA) (Unl).zip"
+    },
+    {
+      "name": "Beetlejuice (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Beetlejuice%20(USA).zip",
+      "filename": "Beetlejuice (USA).zip"
+    },
+    {
+      "name": "Best of the Best - Championship Karate (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Best%20of%20the%20Best%20-%20Championship%20Karate%20(USA).zip",
+      "filename": "Best of the Best - Championship Karate (USA).zip"
+    },
+    {
+      "name": "Bible Adventures (USA) (v1.4) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bible%20Adventures%20(USA)%20(v1.4)%20(Unl).zip",
+      "filename": "Bible Adventures (USA) (v1.4) (Unl).zip"
+    },
+    {
+      "name": "Bible Buffet (USA) (v6.0) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bible%20Buffet%20(USA)%20(v6.0)%20(Unl).zip",
+      "filename": "Bible Buffet (USA) (v6.0) (Unl).zip"
+    },
+    {
+      "name": "Big Nose Freaks Out (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Big%20Nose%20Freaks%20Out%20(USA)%20(Unl).zip",
+      "filename": "Big Nose Freaks Out (USA) (Unl).zip"
+    },
+    {
+      "name": "Big Nose the Caveman (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Big%20Nose%20the%20Caveman%20(USA)%20(Unl).zip",
+      "filename": "Big Nose the Caveman (USA) (Unl).zip"
+    },
+    {
+      "name": "Bigfoot (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bigfoot%20(USA).zip",
+      "filename": "Bigfoot (USA).zip"
+    },
+    {
+      "name": "Bill & Ted's Excellent Video Game Adventure (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bill%20%26%20Ted's%20Excellent%20Video%20Game%20Adventure%20(USA).zip",
+      "filename": "Bill & Ted's Excellent Video Game Adventure (USA).zip"
+    },
+    {
+      "name": "Bill Elliott's NASCAR Challenge (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bill%20Elliott's%20NASCAR%20Challenge%20(USA).zip",
+      "filename": "Bill Elliott's NASCAR Challenge (USA).zip"
+    },
+    {
+      "name": "Bionic Commando (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bionic%20Commando%20(PT-BR).zip",
+      "filename": "Bionic Commando (PT-BR).zip"
+    },
+    {
+      "name": "Black Bass, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Black%20Bass%2C%20The%20(USA).zip",
+      "filename": "Black Bass, The (USA).zip"
+    },
+    {
+      "name": "Blackjack (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Blackjack%20(USA)%20(Unl).zip",
+      "filename": "Blackjack (USA) (Unl).zip"
+    },
+    {
+      "name": "Blades of Steel (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Blades%20of%20Steel%20(USA).zip",
+      "filename": "Blades of Steel (USA).zip"
+    },
+    {
+      "name": "Blaster Master (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Blaster%20Master%20(PT-BR).zip",
+      "filename": "Blaster Master (PT-BR).zip"
+    },
+    {
+      "name": "Blue Marlin, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Blue%20Marlin%2C%20The%20(USA).zip",
+      "filename": "Blue Marlin, The (USA).zip"
+    },
+    {
+      "name": "Blues Brothers, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Blues%20Brothers%2C%20The%20(USA).zip",
+      "filename": "Blues Brothers, The (USA).zip"
+    },
+    {
+      "name": "Bo Jackson Baseball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bo%20Jackson%20Baseball%20(USA).zip",
+      "filename": "Bo Jackson Baseball (USA).zip"
+    },
+    {
+      "name": "Bomberman (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bomberman%20(PT-BR).zip",
+      "filename": "Bomberman (PT-BR).zip"
+    },
+    {
+      "name": "Bomberman II (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bomberman%20II%20(PT-BR).zip",
+      "filename": "Bomberman II (PT-BR).zip"
+    },
+    {
+      "name": "Bonk's Adventure (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bonk's%20Adventure%20(USA).zip",
+      "filename": "Bonk's Adventure (USA).zip"
+    },
+    {
+      "name": "Boulder Dash (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Boulder%20Dash%20(USA).zip",
+      "filename": "Boulder Dash (USA).zip"
+    },
+    {
+      "name": "Boy and His Blob, A - Trouble on Blobolonia (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Boy%20and%20His%20Blob%2C%20A%20-%20Trouble%20on%20Blobolonia%20(USA).zip",
+      "filename": "Boy and His Blob, A - Trouble on Blobolonia (USA).zip"
+    },
+    {
+      "name": "Bram Stoker's Dracula (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bram%20Stoker's%20Dracula%20(PT-BR).zip",
+      "filename": "Bram Stoker's Dracula (PT-BR).zip"
+    },
+    {
+      "name": "Break Time - The National Pool Tour (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Break%20Time%20-%20The%20National%20Pool%20Tour%20(USA).zip",
+      "filename": "Break Time - The National Pool Tour (USA).zip"
+    },
+    {
+      "name": "BreakThru (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/BreakThru%20(USA).zip",
+      "filename": "BreakThru (USA).zip"
+    },
+    {
+      "name": "Bubble Bath Babes (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bubble%20Bath%20Babes%20(USA)%20(Unl).zip",
+      "filename": "Bubble Bath Babes (USA) (Unl).zip"
+    },
+    {
+      "name": "Bubble Bobble (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bubble%20Bobble%20(USA).zip",
+      "filename": "Bubble Bobble (USA).zip"
+    },
+    {
+      "name": "Bubble Bobble Part 2 (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bubble%20Bobble%20Part%202%20(PT-BR).zip",
+      "filename": "Bubble Bobble Part 2 (PT-BR).zip"
+    },
+    {
+      "name": "Bucky O'Hare (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bucky%20O'Hare%20(PT-BR).zip",
+      "filename": "Bucky O'Hare (PT-BR).zip"
+    },
+    {
+      "name": "Bugs Bunny Birthday Blowout, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bugs%20Bunny%20Birthday%20Blowout%2C%20The%20(USA).zip",
+      "filename": "Bugs Bunny Birthday Blowout, The (USA).zip"
+    },
+    {
+      "name": "Bugs Bunny Crazy Castle, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bugs%20Bunny%20Crazy%20Castle%2C%20The%20(USA).zip",
+      "filename": "Bugs Bunny Crazy Castle, The (USA).zip"
+    },
+    {
+      "name": "Bump'n'Jump (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Bump'n'Jump%20(USA).zip",
+      "filename": "Bump'n'Jump (USA).zip"
+    },
+    {
+      "name": "Burai Fighter (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Burai%20Fighter%20(USA).zip",
+      "filename": "Burai Fighter (USA).zip"
+    },
+    {
+      "name": "BurgerTime (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/BurgerTime%20(USA).zip",
+      "filename": "BurgerTime (USA).zip"
+    },
+    {
+      "name": "Cabal (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Cabal%20(USA).zip",
+      "filename": "Cabal (USA).zip"
+    },
+    {
+      "name": "Caesars Palace (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Caesars%20Palace%20(USA).zip",
+      "filename": "Caesars Palace (USA).zip"
+    },
+    {
+      "name": "California Games (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/California%20Games%20(USA).zip",
+      "filename": "California Games (USA).zip"
+    },
+    {
+      "name": "Caltron - 6 in 1 (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Caltron%20-%206%20in%201%20(USA)%20(Unl).zip",
+      "filename": "Caltron - 6 in 1 (USA) (Unl).zip"
+    },
+    {
+      "name": "Capcom's Gold Medal Challenge '92 (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Capcom's%20Gold%20Medal%20Challenge%20'92%20(USA).zip",
+      "filename": "Capcom's Gold Medal Challenge '92 (USA).zip"
+    },
+    {
+      "name": "Captain America and the Avengers (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Captain%20America%20and%20the%20Avengers%20(PT-BR).zip",
+      "filename": "Captain America and the Avengers (PT-BR).zip"
+    },
+    {
+      "name": "Captain Comic - The Adventure (PT-BR) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Captain%20Comic%20-%20The%20Adventure%20(PT-BR)%20(Unl).zip",
+      "filename": "Captain Comic - The Adventure (PT-BR) (Unl).zip"
+    },
+    {
+      "name": "Captain Planet and the Planeteers (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Captain%20Planet%20and%20the%20Planeteers%20(PT-BR).zip",
+      "filename": "Captain Planet and the Planeteers (PT-BR).zip"
+    },
+    {
+      "name": "Captain Skyhawk (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Captain%20Skyhawk%20(USA)%20(Rev%20A).zip",
+      "filename": "Captain Skyhawk (USA) (Rev A).zip"
+    },
+    {
+      "name": "Casino Kid (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Casino%20Kid%20(USA).zip",
+      "filename": "Casino Kid (USA).zip"
+    },
+    {
+      "name": "Casino Kid II (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Casino%20Kid%20II%20(USA).zip",
+      "filename": "Casino Kid II (USA).zip"
+    },
+    {
+      "name": "Castelian (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Castelian%20(USA).zip",
+      "filename": "Castelian (USA).zip"
+    },
+    {
+      "name": "Castle of Deceit (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Castle%20of%20Deceit%20(USA)%20(Unl).zip",
+      "filename": "Castle of Deceit (USA) (Unl).zip"
+    },
+    {
+      "name": "Castle of Dragon (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Castle%20of%20Dragon%20(USA).zip",
+      "filename": "Castle of Dragon (USA).zip"
+    },
+    {
+      "name": "Castlequest (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Castlequest%20(USA).zip",
+      "filename": "Castlequest (USA).zip"
+    },
+    {
+      "name": "Castlevania (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Castlevania%20(PT-BR).zip",
+      "filename": "Castlevania (PT-BR).zip"
+    },
+    {
+      "name": "Castlevania II - Simon's Quest (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Castlevania%20II%20-%20Simon's%20Quest%20(PT-BR).zip",
+      "filename": "Castlevania II - Simon's Quest (PT-BR).zip"
+    },
+    {
+      "name": "Castlevania III - Dracula's Curse (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Castlevania%20III%20-%20Dracula's%20Curse%20(PT-BR).zip",
+      "filename": "Castlevania III - Dracula's Curse (PT-BR).zip"
+    },
+    {
+      "name": "Caveman Games (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Caveman%20Games%20(USA).zip",
+      "filename": "Caveman Games (USA).zip"
+    },
+    {
+      "name": "Challenge of the Dragon (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Challenge%20of%20the%20Dragon%20(USA)%20(Unl).zip",
+      "filename": "Challenge of the Dragon (USA) (Unl).zip"
+    },
+    {
+      "name": "Championship Bowling (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Championship%20Bowling%20(USA).zip",
+      "filename": "Championship Bowling (USA).zip"
+    },
+    {
+      "name": "Championship Pool (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Championship%20Pool%20(USA).zip",
+      "filename": "Championship Pool (USA).zip"
+    },
+    {
+      "name": "Championship Rally (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Championship%20Rally%20(Europe).zip",
+      "filename": "Championship Rally (Europe).zip"
+    },
+    {
+      "name": "Cheetahmen II (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Cheetahmen%20II%20(USA)%20(Unl).zip",
+      "filename": "Cheetahmen II (USA) (Unl).zip"
+    },
+    {
+      "name": "Chessmaster, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Chessmaster%2C%20The%20(USA).zip",
+      "filename": "Chessmaster, The (USA).zip"
+    },
+    {
+      "name": "Chiller (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Chiller%20(USA)%20(Unl).zip",
+      "filename": "Chiller (USA) (Unl).zip"
+    },
+    {
+      "name": "Chip 'n Dale - Rescue Rangers (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Chip%20'n%20Dale%20-%20Rescue%20Rangers%20(PT-BR).zip",
+      "filename": "Chip 'n Dale - Rescue Rangers (PT-BR).zip"
+    },
+    {
+      "name": "Chip 'n Dale Rescue Rangers 2 (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Chip%20'n%20Dale%20Rescue%20Rangers%202%20(USA).zip",
+      "filename": "Chip 'n Dale Rescue Rangers 2 (USA).zip"
+    },
+    {
+      "name": "Chris Evert & Ivan Lendl in Top Players' Tennis (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Chris%20Evert%20%26%20Ivan%20Lendl%20in%20Top%20Players'%20Tennis%20(USA).zip",
+      "filename": "Chris Evert & Ivan Lendl in Top Players' Tennis (USA).zip"
+    },
+    {
+      "name": "Chubby Cherub (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Chubby%20Cherub%20(USA).zip",
+      "filename": "Chubby Cherub (USA).zip"
+    },
+    {
+      "name": "Circus Caper (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Circus%20Caper%20(USA).zip",
+      "filename": "Circus Caper (USA).zip"
+    },
+    {
+      "name": "City Connection (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/City%20Connection%20(USA).zip",
+      "filename": "City Connection (USA).zip"
+    },
+    {
+      "name": "Clash at Demonhead (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Clash%20at%20Demonhead%20(PT-BR).zip",
+      "filename": "Clash at Demonhead (PT-BR).zip"
+    },
+    {
+      "name": "Classic Concentration (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Classic%20Concentration%20(USA).zip",
+      "filename": "Classic Concentration (USA).zip"
+    },
+    {
+      "name": "Cliffhanger (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Cliffhanger%20(USA).zip",
+      "filename": "Cliffhanger (USA).zip"
+    },
+    {
+      "name": "Clu Clu Land (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Clu%20Clu%20Land%20(PT-BR).zip",
+      "filename": "Clu Clu Land (PT-BR).zip"
+    },
+    {
+      "name": "Cobra Command (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Cobra%20Command%20(USA).zip",
+      "filename": "Cobra Command (USA).zip"
+    },
+    {
+      "name": "Cobra Triangle (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Cobra%20Triangle%20(USA).zip",
+      "filename": "Cobra Triangle (USA).zip"
+    },
+    {
+      "name": "Code Name - Viper (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Code%20Name%20-%20Viper%20(PT-BR).zip",
+      "filename": "Code Name - Viper (PT-BR).zip"
+    },
+    {
+      "name": "Color a Dinosaur (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Color%20a%20Dinosaur%20(USA).zip",
+      "filename": "Color a Dinosaur (USA).zip"
+    },
+    {
+      "name": "Commando (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Commando%20(PT-BR).zip",
+      "filename": "Commando (PT-BR).zip"
+    },
+    {
+      "name": "Conan (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Conan%20(USA).zip",
+      "filename": "Conan (USA).zip"
+    },
+    {
+      "name": "Conflict (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Conflict%20(USA).zip",
+      "filename": "Conflict (USA).zip"
+    },
+    {
+      "name": "Conquest of the Crystal Palace (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Conquest%20of%20the%20Crystal%20Palace%20(PT-BR).zip",
+      "filename": "Conquest of the Crystal Palace (PT-BR).zip"
+    },
+    {
+      "name": "Contra (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Contra%20(PT-BR).zip",
+      "filename": "Contra (PT-BR).zip"
+    },
+    {
+      "name": "Contra Force (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Contra%20Force%20(PT-BR).zip",
+      "filename": "Contra Force (PT-BR).zip"
+    },
+    {
+      "name": "Cool World (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Cool%20World%20(USA).zip",
+      "filename": "Cool World (USA).zip"
+    },
+    {
+      "name": "Corvette ZR-1 Challenge (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Corvette%20ZR-1%20Challenge%20(Europe).zip",
+      "filename": "Corvette ZR-1 Challenge (Europe).zip"
+    },
+    {
+      "name": "Cosmic Spacehead (Europe) (En,Fr,De,Es) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Cosmic%20Spacehead%20(Europe)%20(En%2CFr%2CDe%2CEs)%20(Unl).zip",
+      "filename": "Cosmic Spacehead (Europe) (En,Fr,De,Es) (Unl).zip"
+    },
+    {
+      "name": "Cowboy Kid (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Cowboy%20Kid%20(USA).zip",
+      "filename": "Cowboy Kid (USA).zip"
+    },
+    {
+      "name": "Crackout (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Crackout%20(Europe).zip",
+      "filename": "Crackout (Europe).zip"
+    },
+    {
+      "name": "Crash 'n' the Boys - Street Challenge (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Crash%20'n'%20the%20Boys%20-%20Street%20Challenge%20(USA).zip",
+      "filename": "Crash 'n' the Boys - Street Challenge (USA).zip"
+    },
+    {
+      "name": "Crisis Force (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Crisis%20Force%20(PT-BR).zip",
+      "filename": "Crisis Force (PT-BR).zip"
+    },
+    {
+      "name": "Cross Fire (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Cross%20Fire%20(PT-BR).zip",
+      "filename": "Cross Fire (PT-BR).zip"
+    },
+    {
+      "name": "Crystal Mines (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Crystal%20Mines%20(USA)%20(Unl).zip",
+      "filename": "Crystal Mines (USA) (Unl).zip"
+    },
+    {
+      "name": "Crystalis (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Crystalis%20(PT-BR).zip",
+      "filename": "Crystalis (PT-BR).zip"
+    },
+    {
+      "name": "Cyber Stadium Series - Base Wars (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Cyber%20Stadium%20Series%20-%20Base%20Wars%20(USA).zip",
+      "filename": "Cyber Stadium Series - Base Wars (USA).zip"
+    },
+    {
+      "name": "Cyberball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Cyberball%20(USA).zip",
+      "filename": "Cyberball (USA).zip"
+    },
+    {
+      "name": "Cybernoid - The Fighting Machine (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Cybernoid%20-%20The%20Fighting%20Machine%20(USA).zip",
+      "filename": "Cybernoid - The Fighting Machine (USA).zip"
+    },
+    {
+      "name": "Dance Aerobics (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dance%20Aerobics%20(USA).zip",
+      "filename": "Dance Aerobics (USA).zip"
+    },
+    {
+      "name": "Danny Sullivan's Indy Heat (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Danny%20Sullivan's%20Indy%20Heat%20(USA).zip",
+      "filename": "Danny Sullivan's Indy Heat (USA).zip"
+    },
+    {
+      "name": "Darkman (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Darkman%20(USA).zip",
+      "filename": "Darkman (USA).zip"
+    },
+    {
+      "name": "Darkwing Duck (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Darkwing%20Duck%20(PT-BR).zip",
+      "filename": "Darkwing Duck (PT-BR).zip"
+    },
+    {
+      "name": "Dash Galaxy in the Alien Asylum (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dash%20Galaxy%20in%20the%20Alien%20Asylum%20(USA).zip",
+      "filename": "Dash Galaxy in the Alien Asylum (USA).zip"
+    },
+    {
+      "name": "Day Dreamin' Davey (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Day%20Dreamin'%20Davey%20(USA).zip",
+      "filename": "Day Dreamin' Davey (USA).zip"
+    },
+    {
+      "name": "Days of Thunder (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Days%20of%20Thunder%20(USA).zip",
+      "filename": "Days of Thunder (USA).zip"
+    },
+    {
+      "name": "Deadly Towers (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Deadly%20Towers%20(USA).zip",
+      "filename": "Deadly Towers (USA).zip"
+    },
+    {
+      "name": "Death Race (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Death%20Race%20(USA)%20(Unl).zip",
+      "filename": "Death Race (USA) (Unl).zip"
+    },
+    {
+      "name": "Deathbots (USA) (Rev 1) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Deathbots%20(USA)%20(Rev%201)%20(Unl).zip",
+      "filename": "Deathbots (USA) (Rev 1) (Unl).zip"
+    },
+    {
+      "name": "Defender II (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Defender%20II%20(USA).zip",
+      "filename": "Defender II (USA).zip"
+    },
+    {
+      "name": "Defender of the Crown (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Defender%20of%20the%20Crown%20(USA).zip",
+      "filename": "Defender of the Crown (USA).zip"
+    },
+    {
+      "name": "Defenders of Dynatron City (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Defenders%20of%20Dynatron%20City%20(USA).zip",
+      "filename": "Defenders of Dynatron City (USA).zip"
+    },
+    {
+      "name": "Deja Vu (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Deja%20Vu%20(USA).zip",
+      "filename": "Deja Vu (USA).zip"
+    },
+    {
+      "name": "Demon Sword - Release the Power (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Demon%20Sword%20-%20Release%20the%20Power%20(USA).zip",
+      "filename": "Demon Sword - Release the Power (USA).zip"
+    },
+    {
+      "name": "Desert Commander (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Desert%20Commander%20(USA).zip",
+      "filename": "Desert Commander (USA).zip"
+    },
+    {
+      "name": "Destination Earthstar (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Destination%20Earthstar%20(USA).zip",
+      "filename": "Destination Earthstar (USA).zip"
+    },
+    {
+      "name": "Destiny of an Emperor (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Destiny%20of%20an%20Emperor%20(USA).zip",
+      "filename": "Destiny of an Emperor (USA).zip"
+    },
+    {
+      "name": "Devil World (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Devil%20World%20(Europe).zip",
+      "filename": "Devil World (Europe).zip"
+    },
+    {
+      "name": "Dick Tracy (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dick%20Tracy%20(USA).zip",
+      "filename": "Dick Tracy (USA).zip"
+    },
+    {
+      "name": "Die Hard (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Die%20Hard%20(USA).zip",
+      "filename": "Die Hard (USA).zip"
+    },
+    {
+      "name": "Dig Dug II - Trouble in Paradise (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dig%20Dug%20II%20-%20Trouble%20in%20Paradise%20(USA).zip",
+      "filename": "Dig Dug II - Trouble in Paradise (USA).zip"
+    },
+    {
+      "name": "Digger - The Legend of the Lost City (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Digger%20-%20The%20Legend%20of%20the%20Lost%20City%20(USA).zip",
+      "filename": "Digger - The Legend of the Lost City (USA).zip"
+    },
+    {
+      "name": "Dirty Harry (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dirty%20Harry%20(USA).zip",
+      "filename": "Dirty Harry (USA).zip"
+    },
+    {
+      "name": "Dizzy the Adventurer (USA) (Aladdin Compact Cartridge) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dizzy%20the%20Adventurer%20(USA)%20(Aladdin%20Compact%20Cartridge)%20(Unl).zip",
+      "filename": "Dizzy the Adventurer (USA) (Aladdin Compact Cartridge) (Unl).zip"
+    },
+    {
+      "name": "Donkey Kong (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Donkey%20Kong%20(PT-BR).zip",
+      "filename": "Donkey Kong (PT-BR).zip"
+    },
+    {
+      "name": "Donkey Kong 3 (World)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Donkey%20Kong%203%20(World).zip",
+      "filename": "Donkey Kong 3 (World).zip"
+    },
+    {
+      "name": "Donkey Kong Classics (USA, Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Donkey%20Kong%20Classics%20(USA%2C%20Europe).zip",
+      "filename": "Donkey Kong Classics (USA, Europe).zip"
+    },
+    {
+      "name": "Donkey Kong Jr. (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Donkey%20Kong%20Jr.%20(PT-BR).zip",
+      "filename": "Donkey Kong Jr. (PT-BR).zip"
+    },
+    {
+      "name": "Donkey Kong Jr. Math (USA, Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Donkey%20Kong%20Jr.%20Math%20(USA%2C%20Europe).zip",
+      "filename": "Donkey Kong Jr. Math (USA, Europe).zip"
+    },
+    {
+      "name": "Double Dare (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Double%20Dare%20(USA).zip",
+      "filename": "Double Dare (USA).zip"
+    },
+    {
+      "name": "Double Dragon (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Double%20Dragon%20(PT-BR).zip",
+      "filename": "Double Dragon (PT-BR).zip"
+    },
+    {
+      "name": "Double Dragon II - The Revenge (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Double%20Dragon%20II%20-%20The%20Revenge%20(PT-BR).zip",
+      "filename": "Double Dragon II - The Revenge (PT-BR).zip"
+    },
+    {
+      "name": "Double Dragon III - The Sacred Stones (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Double%20Dragon%20III%20-%20The%20Sacred%20Stones%20(PT-BR).zip",
+      "filename": "Double Dragon III - The Sacred Stones (PT-BR).zip"
+    },
+    {
+      "name": "Double Dribble (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Double%20Dribble%20(USA)%20(Rev%20A).zip",
+      "filename": "Double Dribble (USA) (Rev A).zip"
+    },
+    {
+      "name": "Double Strike - Aerial Attack Force (USA) (v1.1) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Double%20Strike%20-%20Aerial%20Attack%20Force%20(USA)%20(v1.1)%20(Unl).zip",
+      "filename": "Double Strike - Aerial Attack Force (USA) (v1.1) (Unl).zip"
+    },
+    {
+      "name": "Dr. Chaos (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dr.%20Chaos%20(USA).zip",
+      "filename": "Dr. Chaos (USA).zip"
+    },
+    {
+      "name": "Dr. Jekyll and Mr. Hyde (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dr.%20Jekyll%20and%20Mr.%20Hyde%20(USA).zip",
+      "filename": "Dr. Jekyll and Mr. Hyde (USA).zip"
+    },
+    {
+      "name": "Dr. Mario (PT-BR).nes",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dr.%20Mario%20(PT-BR).nes.zip",
+      "filename": "Dr. Mario (PT-BR).nes.zip"
+    },
+    {
+      "name": "Dragon Ball - Shen Long no Nazo (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dragon%20Ball%20-%20Shen%20Long%20no%20Nazo%20(PT-BR).zip",
+      "filename": "Dragon Ball - Shen Long no Nazo (PT-BR).zip"
+    },
+    {
+      "name": "Dragon Ball Z - Kyoushuu! Saiya Jin (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dragon%20Ball%20Z%20-%20Kyoushuu!%20Saiya%20Jin%20(PT-BR).zip",
+      "filename": "Dragon Ball Z - Kyoushuu! Saiya Jin (PT-BR).zip"
+    },
+    {
+      "name": "Dragon Fighter (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dragon%20Fighter%20(USA).zip",
+      "filename": "Dragon Fighter (USA).zip"
+    },
+    {
+      "name": "Dragon Power (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dragon%20Power%20(USA).zip",
+      "filename": "Dragon Power (USA).zip"
+    },
+    {
+      "name": "Dragon Spirit - The New Legend (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dragon%20Spirit%20-%20The%20New%20Legend%20(PT-BR).zip",
+      "filename": "Dragon Spirit - The New Legend (PT-BR).zip"
+    },
+    {
+      "name": "Dragon Warrior (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dragon%20Warrior%20(PT-BR).zip",
+      "filename": "Dragon Warrior (PT-BR).zip"
+    },
+    {
+      "name": "Dragon Warrior III (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dragon%20Warrior%20III%20(PT-BR).zip",
+      "filename": "Dragon Warrior III (PT-BR).zip"
+    },
+    {
+      "name": "Dragon Warrior IV (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dragon%20Warrior%20IV%20(USA).zip",
+      "filename": "Dragon Warrior IV (USA).zip"
+    },
+    {
+      "name": "Dragon's Lair (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dragon's%20Lair%20(USA).zip",
+      "filename": "Dragon's Lair (USA).zip"
+    },
+    {
+      "name": "Dropzone (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dropzone%20(Europe).zip",
+      "filename": "Dropzone (Europe).zip"
+    },
+    {
+      "name": "Duck Hunt (World)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Duck%20Hunt%20(World).zip",
+      "filename": "Duck Hunt (World).zip"
+    },
+    {
+      "name": "DuckTales (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/DuckTales%20(PT-BR).zip",
+      "filename": "DuckTales (PT-BR).zip"
+    },
+    {
+      "name": "DuckTales 2 (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/DuckTales%202%20(PT-BR).zip",
+      "filename": "DuckTales 2 (PT-BR).zip"
+    },
+    {
+      "name": "Dudes With Attitude (USA) (Rev 1) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dudes%20With%20Attitude%20(USA)%20(Rev%201)%20(Unl).zip",
+      "filename": "Dudes With Attitude (USA) (Rev 1) (Unl).zip"
+    },
+    {
+      "name": "Dungeon Magic - Sword of the Elements (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dungeon%20Magic%20-%20Sword%20of%20the%20Elements%20(USA).zip",
+      "filename": "Dungeon Magic - Sword of the Elements (USA).zip"
+    },
+    {
+      "name": "Dusty Diamond's All-Star Softball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dusty%20Diamond's%20All-Star%20Softball%20(USA).zip",
+      "filename": "Dusty Diamond's All-Star Softball (USA).zip"
+    },
+    {
+      "name": "Dynablaster (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dynablaster%20(Europe).zip",
+      "filename": "Dynablaster (Europe).zip"
+    },
+    {
+      "name": "Dynowarz - Destruction of Spondylus (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Dynowarz%20-%20Destruction%20of%20Spondylus%20(USA).zip",
+      "filename": "Dynowarz - Destruction of Spondylus (USA).zip"
+    },
+    {
+      "name": "Elevator Action (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Elevator%20Action%20(USA).zip",
+      "filename": "Elevator Action (USA).zip"
+    },
+    {
+      "name": "Eliminator Boat Duel (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Eliminator%20Boat%20Duel%20(USA).zip",
+      "filename": "Eliminator Boat Duel (USA).zip"
+    },
+    {
+      "name": "Elite (Europe) (En,Fr,De)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Elite%20(Europe)%20(En%2CFr%2CDe).zip",
+      "filename": "Elite (Europe) (En,Fr,De).zip"
+    },
+    {
+      "name": "Empereur, L' (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Empereur%2C%20L'%20(USA).zip",
+      "filename": "Empereur, L' (USA).zip"
+    },
+    {
+      "name": "Eric Cantona Football Challenge - Goal! 2 (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Eric%20Cantona%20Football%20Challenge%20-%20Goal!%202%20(Europe).zip",
+      "filename": "Eric Cantona Football Challenge - Goal! 2 (Europe).zip"
+    },
+    {
+      "name": "Excitebike (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Excitebike%20(PT-BR).zip",
+      "filename": "Excitebike (PT-BR).zip"
+    },
+    {
+      "name": "Exodus - Journey to the Promised Land (USA) (v5.0) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Exodus%20-%20Journey%20to%20the%20Promised%20Land%20(USA)%20(v5.0)%20(Unl).zip",
+      "filename": "Exodus - Journey to the Promised Land (USA) (v5.0) (Unl).zip"
+    },
+    {
+      "name": "F-117A - Stealth Fighter (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/F-117A%20-%20Stealth%20Fighter%20(USA).zip",
+      "filename": "F-117A - Stealth Fighter (USA).zip"
+    },
+    {
+      "name": "F-15 Strike Eagle (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/F-15%20Strike%20Eagle%20(USA).zip",
+      "filename": "F-15 Strike Eagle (USA).zip"
+    },
+    {
+      "name": "F15 City War (USA) (v1.1) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/F15%20City%20War%20(USA)%20(v1.1)%20(Unl).zip",
+      "filename": "F15 City War (USA) (v1.1) (Unl).zip"
+    },
+    {
+      "name": "Family Feud (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Family%20Feud%20(USA).zip",
+      "filename": "Family Feud (USA).zip"
+    },
+    {
+      "name": "Fantastic Adventures of Dizzy, The (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Fantastic%20Adventures%20of%20Dizzy%2C%20The%20(USA)%20(Unl).zip",
+      "filename": "Fantastic Adventures of Dizzy, The (USA) (Unl).zip"
+    },
+    {
+      "name": "Fantasy Zone (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Fantasy%20Zone%20(USA)%20(Unl).zip",
+      "filename": "Fantasy Zone (USA) (Unl).zip"
+    },
+    {
+      "name": "Faria - A World of Mystery & Danger! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Faria%20-%20A%20World%20of%20Mystery%20%26%20Danger!%20(USA).zip",
+      "filename": "Faria - A World of Mystery & Danger! (USA).zip"
+    },
+    {
+      "name": "Faxanadu (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Faxanadu%20(PT-BR).zip",
+      "filename": "Faxanadu (PT-BR).zip"
+    },
+    {
+      "name": "Felix the Cat (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Felix%20the%20Cat%20(PT-BR).zip",
+      "filename": "Felix the Cat (PT-BR).zip"
+    },
+    {
+      "name": "Ferrari Grand Prix Challenge (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ferrari%20Grand%20Prix%20Challenge%20(USA).zip",
+      "filename": "Ferrari Grand Prix Challenge (USA).zip"
+    },
+    {
+      "name": "Fester's Quest (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Fester's%20Quest%20(USA).zip",
+      "filename": "Fester's Quest (USA).zip"
+    },
+    {
+      "name": "Final Fantasy (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Final%20Fantasy%20(PT-BR).zip",
+      "filename": "Final Fantasy (PT-BR).zip"
+    },
+    {
+      "name": "Final Fantasy 3 (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Final%20Fantasy%203%20(PT-BR).zip",
+      "filename": "Final Fantasy 3 (PT-BR).zip"
+    },
+    {
+      "name": "Final Fantasy II (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Final%20Fantasy%20II%20(PT-BR).zip",
+      "filename": "Final Fantasy II (PT-BR).zip"
+    },
+    {
+      "name": "Fire 'n Ice (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Fire%20'n%20Ice%20(USA).zip",
+      "filename": "Fire 'n Ice (USA).zip"
+    },
+    {
+      "name": "Fire Emblem - Ankoku Ryuu to Hikari no Tsurugi (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Fire%20Emblem%20-%20Ankoku%20Ryuu%20to%20Hikari%20no%20Tsurugi%20(PT-BR).zip",
+      "filename": "Fire Emblem - Ankoku Ryuu to Hikari no Tsurugi (PT-BR).zip"
+    },
+    {
+      "name": "Fire Hawk (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Fire%20Hawk%20(USA)%20(Unl).zip",
+      "filename": "Fire Hawk (USA) (Unl).zip"
+    },
+    {
+      "name": "Fisher-Price - Firehouse Rescue (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Fisher-Price%20-%20Firehouse%20Rescue%20(USA).zip",
+      "filename": "Fisher-Price - Firehouse Rescue (USA).zip"
+    },
+    {
+      "name": "Fisher-Price - I Can Remember (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Fisher-Price%20-%20I%20Can%20Remember%20(USA).zip",
+      "filename": "Fisher-Price - I Can Remember (USA).zip"
+    },
+    {
+      "name": "Fisher-Price - Perfect Fit (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Fisher-Price%20-%20Perfect%20Fit%20(USA).zip",
+      "filename": "Fisher-Price - Perfect Fit (USA).zip"
+    },
+    {
+      "name": "Fist of the North Star (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Fist%20of%20the%20North%20Star%20(USA).zip",
+      "filename": "Fist of the North Star (USA).zip"
+    },
+    {
+      "name": "Flight of the Intruder (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Flight%20of%20the%20Intruder%20(USA).zip",
+      "filename": "Flight of the Intruder (USA).zip"
+    },
+    {
+      "name": "Flintstones, The - The Rescue of Dino & Hoppy (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Flintstones%2C%20The%20-%20The%20Rescue%20of%20Dino%20%26%20Hoppy%20(PT-BR).zip",
+      "filename": "Flintstones, The - The Rescue of Dino & Hoppy (PT-BR).zip"
+    },
+    {
+      "name": "Flintstones, The - The Surprise at Dinosaur Peak! (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Flintstones%2C%20The%20-%20The%20Surprise%20at%20Dinosaur%20Peak!%20(PT-BR).zip",
+      "filename": "Flintstones, The - The Surprise at Dinosaur Peak! (PT-BR).zip"
+    },
+    {
+      "name": "Flying Dragon - The Secret Scroll (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Flying%20Dragon%20-%20The%20Secret%20Scroll%20(USA).zip",
+      "filename": "Flying Dragon - The Secret Scroll (USA).zip"
+    },
+    {
+      "name": "Flying Warriors (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Flying%20Warriors%20(USA).zip",
+      "filename": "Flying Warriors (USA).zip"
+    },
+    {
+      "name": "Formula 1 Sensation (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Formula%201%20Sensation%20(Europe).zip",
+      "filename": "Formula 1 Sensation (Europe).zip"
+    },
+    {
+      "name": "Formula One - Built to Win (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Formula%20One%20-%20Built%20to%20Win%20(USA).zip",
+      "filename": "Formula One - Built to Win (USA).zip"
+    },
+    {
+      "name": "Fox's Peter Pan & the Pirates - The Revenge of Captain Hook (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Fox's%20Peter%20Pan%20%26%20the%20Pirates%20-%20The%20Revenge%20of%20Captain%20Hook%20(USA).zip",
+      "filename": "Fox's Peter Pan & the Pirates - The Revenge of Captain Hook (USA).zip"
+    },
+    {
+      "name": "Frankenstein - The Monster Returns (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Frankenstein%20-%20The%20Monster%20Returns%20(PT-BR).zip",
+      "filename": "Frankenstein - The Monster Returns (PT-BR).zip"
+    },
+    {
+      "name": "Freedom Force (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Freedom%20Force%20(USA).zip",
+      "filename": "Freedom Force (USA).zip"
+    },
+    {
+      "name": "Friday the 13th (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Friday%20the%2013th%20(USA).zip",
+      "filename": "Friday the 13th (USA).zip"
+    },
+    {
+      "name": "Fun House (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Fun%20House%20(USA).zip",
+      "filename": "Fun House (USA).zip"
+    },
+    {
+      "name": "Fuzzical Fighter (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Fuzzical%20Fighter%20(PT-BR).zip",
+      "filename": "Fuzzical Fighter (PT-BR).zip"
+    },
+    {
+      "name": "G.I. Joe - A Real American Hero (PT-BR).nes",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/G.I.%20Joe%20-%20A%20Real%20American%20Hero%20(PT-BR).nes.zip",
+      "filename": "G.I. Joe - A Real American Hero (PT-BR).nes.zip"
+    },
+    {
+      "name": "G.I. Joe - The Atlantis Factor (PT-BR).nes",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/G.I.%20Joe%20-%20The%20Atlantis%20Factor%20(PT-BR).nes.zip",
+      "filename": "G.I. Joe - The Atlantis Factor (PT-BR).nes.zip"
+    },
+    {
+      "name": "Galactic Crusader (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Galactic%20Crusader%20(USA)%20(Unl).zip",
+      "filename": "Galactic Crusader (USA) (Unl).zip"
+    },
+    {
+      "name": "Galaga - Demons of Death (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Galaga%20-%20Demons%20of%20Death%20(PT-BR).zip",
+      "filename": "Galaga - Demons of Death (PT-BR).zip"
+    },
+    {
+      "name": "Galaxian (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Galaxian%20(PT-BR).zip",
+      "filename": "Galaxian (PT-BR).zip"
+    },
+    {
+      "name": "Galaxy 5000 (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Galaxy%205000%20(USA).zip",
+      "filename": "Galaxy 5000 (USA).zip"
+    },
+    {
+      "name": "Gargoyle's Quest II (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Gargoyle's%20Quest%20II%20(USA).zip",
+      "filename": "Gargoyle's Quest II (USA).zip"
+    },
+    {
+      "name": "Gauntlet (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Gauntlet%20(USA).zip",
+      "filename": "Gauntlet (USA).zip"
+    },
+    {
+      "name": "Gauntlet II (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Gauntlet%20II%20(USA).zip",
+      "filename": "Gauntlet II (USA).zip"
+    },
+    {
+      "name": "Gemfire (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Gemfire%20(USA).zip",
+      "filename": "Gemfire (USA).zip"
+    },
+    {
+      "name": "Genghis Khan (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Genghis%20Khan%20(USA).zip",
+      "filename": "Genghis Khan (USA).zip"
+    },
+    {
+      "name": "George Foreman's KO Boxing (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/George%20Foreman's%20KO%20Boxing%20(USA).zip",
+      "filename": "George Foreman's KO Boxing (USA).zip"
+    },
+    {
+      "name": "Ghostbusters (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ghostbusters%20(USA).zip",
+      "filename": "Ghostbusters (USA).zip"
+    },
+    {
+      "name": "Ghostbusters II (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ghostbusters%20II%20(USA).zip",
+      "filename": "Ghostbusters II (USA).zip"
+    },
+    {
+      "name": "Ghosts'n Goblins (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ghosts'n%20Goblins%20(PT-BR).zip",
+      "filename": "Ghosts'n Goblins (PT-BR).zip"
+    },
+    {
+      "name": "Ghoul School (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ghoul%20School%20(USA).zip",
+      "filename": "Ghoul School (USA).zip"
+    },
+    {
+      "name": "Goal! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Goal!%20(USA).zip",
+      "filename": "Goal! (USA).zip"
+    },
+    {
+      "name": "Goal! Two (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Goal!%20Two%20(USA).zip",
+      "filename": "Goal! Two (USA).zip"
+    },
+    {
+      "name": "Godzilla - Monster of Monsters! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Godzilla%20-%20Monster%20of%20Monsters!%20(USA).zip",
+      "filename": "Godzilla - Monster of Monsters! (USA).zip"
+    },
+    {
+      "name": "Godzilla 2 - War of the Monsters (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Godzilla%202%20-%20War%20of%20the%20Monsters%20(USA).zip",
+      "filename": "Godzilla 2 - War of the Monsters (USA).zip"
+    },
+    {
+      "name": "Golf (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Golf%20(USA).zip",
+      "filename": "Golf (USA).zip"
+    },
+    {
+      "name": "Golf Grand Slam (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Golf%20Grand%20Slam%20(USA).zip",
+      "filename": "Golf Grand Slam (USA).zip"
+    },
+    {
+      "name": "Golgo 13 - Top Secret Episode (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Golgo%2013%20-%20Top%20Secret%20Episode%20(USA).zip",
+      "filename": "Golgo 13 - Top Secret Episode (USA).zip"
+    },
+    {
+      "name": "Goonies II, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Goonies%20II%2C%20The%20(USA).zip",
+      "filename": "Goonies II, The (USA).zip"
+    },
+    {
+      "name": "Gotcha! - The Sport! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Gotcha!%20-%20The%20Sport!%20(USA).zip",
+      "filename": "Gotcha! - The Sport! (USA).zip"
+    },
+    {
+      "name": "Gradius (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Gradius%20(PT-BR).zip",
+      "filename": "Gradius (PT-BR).zip"
+    },
+    {
+      "name": "Gradius II (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Gradius%20II%20(PT-BR).zip",
+      "filename": "Gradius II (PT-BR).zip"
+    },
+    {
+      "name": "Great Waldo Search, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Great%20Waldo%20Search%2C%20The%20(USA).zip",
+      "filename": "Great Waldo Search, The (USA).zip"
+    },
+    {
+      "name": "Greg Norman's Golf Power (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Greg%20Norman's%20Golf%20Power%20(USA).zip",
+      "filename": "Greg Norman's Golf Power (USA).zip"
+    },
+    {
+      "name": "Gremlins 2 - The New Batch (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Gremlins%202%20-%20The%20New%20Batch%20(USA).zip",
+      "filename": "Gremlins 2 - The New Batch (USA).zip"
+    },
+    {
+      "name": "Guardian Legend, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Guardian%20Legend%2C%20The%20(USA).zip",
+      "filename": "Guardian Legend, The (USA).zip"
+    },
+    {
+      "name": "Guerrilla War (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Guerrilla%20War%20(USA).zip",
+      "filename": "Guerrilla War (USA).zip"
+    },
+    {
+      "name": "Gumshoe (USA, Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Gumshoe%20(USA%2C%20Europe).zip",
+      "filename": "Gumshoe (USA, Europe).zip"
+    },
+    {
+      "name": "Gun Nac (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Gun%20Nac%20(PT-BR).zip",
+      "filename": "Gun Nac (PT-BR).zip"
+    },
+    {
+      "name": "Gun.Smoke (PT-BR).nes",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Gun.Smoke%20(PT-BR).nes.zip",
+      "filename": "Gun.Smoke (PT-BR).nes.zip"
+    },
+    {
+      "name": "Gyromite (World)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Gyromite%20(World).zip",
+      "filename": "Gyromite (World).zip"
+    },
+    {
+      "name": "Gyruss (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Gyruss%20(PT-BR).zip",
+      "filename": "Gyruss (PT-BR).zip"
+    },
+    {
+      "name": "Hammerin' Harry (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Hammerin'%20Harry%20(Europe).zip",
+      "filename": "Hammerin' Harry (Europe).zip"
+    },
+    {
+      "name": "Harlem Globetrotters (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Harlem%20Globetrotters%20(USA).zip",
+      "filename": "Harlem Globetrotters (USA).zip"
+    },
+    {
+      "name": "Hatris (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Hatris%20(USA).zip",
+      "filename": "Hatris (USA).zip"
+    },
+    {
+      "name": "Heavy Barrel (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Heavy%20Barrel%20(USA).zip",
+      "filename": "Heavy Barrel (USA).zip"
+    },
+    {
+      "name": "Heavy Shreddin' (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Heavy%20Shreddin'%20(USA).zip",
+      "filename": "Heavy Shreddin' (USA).zip"
+    },
+    {
+      "name": "High Speed (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/High%20Speed%20(USA).zip",
+      "filename": "High Speed (USA).zip"
+    },
+    {
+      "name": "Hogan's Alley (World)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Hogan's%20Alley%20(World).zip",
+      "filename": "Hogan's Alley (World).zip"
+    },
+    {
+      "name": "Hollywood Squares (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Hollywood%20Squares%20(USA).zip",
+      "filename": "Hollywood Squares (USA).zip"
+    },
+    {
+      "name": "Home Alone (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Home%20Alone%20(USA)%20(Rev%20A).zip",
+      "filename": "Home Alone (USA) (Rev A).zip"
+    },
+    {
+      "name": "Home Alone 2 - Lost in New York (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Home%20Alone%202%20-%20Lost%20in%20New%20York%20(USA).zip",
+      "filename": "Home Alone 2 - Lost in New York (USA).zip"
+    },
+    {
+      "name": "Hook (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Hook%20(USA).zip",
+      "filename": "Hook (USA).zip"
+    },
+    {
+      "name": "Hoops (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Hoops%20(USA).zip",
+      "filename": "Hoops (USA).zip"
+    },
+    {
+      "name": "Hudson Hawk (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Hudson%20Hawk%20(PT-BR).zip",
+      "filename": "Hudson Hawk (PT-BR).zip"
+    },
+    {
+      "name": "Hudson's Adventure Island (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Hudson's%20Adventure%20Island%20(PT-BR).zip",
+      "filename": "Hudson's Adventure Island (PT-BR).zip"
+    },
+    {
+      "name": "Hudson's Adventure Island II (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Hudson's%20Adventure%20Island%20II%20(PT-BR).zip",
+      "filename": "Hudson's Adventure Island II (PT-BR).zip"
+    },
+    {
+      "name": "Hunt for Red October, The (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Hunt%20for%20Red%20October%2C%20The%20(USA)%20(Rev%20A).zip",
+      "filename": "Hunt for Red October, The (USA) (Rev A).zip"
+    },
+    {
+      "name": "Hydlide (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Hydlide%20(USA).zip",
+      "filename": "Hydlide (USA).zip"
+    },
+    {
+      "name": "Ice Climber (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ice%20Climber%20(PT-BR).zip",
+      "filename": "Ice Climber (PT-BR).zip"
+    },
+    {
+      "name": "Ice Hockey (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ice%20Hockey%20(USA).zip",
+      "filename": "Ice Hockey (USA).zip"
+    },
+    {
+      "name": "Ikari III - The Rescue (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ikari%20III%20-%20The%20Rescue%20(USA).zip",
+      "filename": "Ikari III - The Rescue (USA).zip"
+    },
+    {
+      "name": "Ikari Warriors (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ikari%20Warriors%20(USA)%20(Rev%20A).zip",
+      "filename": "Ikari Warriors (USA) (Rev A).zip"
+    },
+    {
+      "name": "Ikari Warriors II - Victory Road (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ikari%20Warriors%20II%20-%20Victory%20Road%20(USA).zip",
+      "filename": "Ikari Warriors II - Victory Road (USA).zip"
+    },
+    {
+      "name": "Image Fight (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Image%20Fight%20(USA).zip",
+      "filename": "Image Fight (USA).zip"
+    },
+    {
+      "name": "Immortal, The (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Immortal%2C%20The%20(PT-BR).zip",
+      "filename": "Immortal, The (PT-BR).zip"
+    },
+    {
+      "name": "Impossible Mission II (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Impossible%20Mission%20II%20(USA)%20(Unl).zip",
+      "filename": "Impossible Mission II (USA) (Unl).zip"
+    },
+    {
+      "name": "Incredible Crash Dummies, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Incredible%20Crash%20Dummies%2C%20The%20(USA).zip",
+      "filename": "Incredible Crash Dummies, The (USA).zip"
+    },
+    {
+      "name": "Indiana Jones and the Last Crusade (USA) (Taito)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Indiana%20Jones%20and%20the%20Last%20Crusade%20(USA)%20(Taito).zip",
+      "filename": "Indiana Jones and the Last Crusade (USA) (Taito).zip"
+    },
+    {
+      "name": "Indiana Jones and the Temple of Doom (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Indiana%20Jones%20and%20the%20Temple%20of%20Doom%20(USA)%20(Rev%20A).zip",
+      "filename": "Indiana Jones and the Temple of Doom (USA) (Rev A).zip"
+    },
+    {
+      "name": "Infiltrator (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Infiltrator%20(USA).zip",
+      "filename": "Infiltrator (USA).zip"
+    },
+    {
+      "name": "Iron Tank - The Invasion of Normandy (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Iron%20Tank%20-%20The%20Invasion%20of%20Normandy%20(USA).zip",
+      "filename": "Iron Tank - The Invasion of Normandy (USA).zip"
+    },
+    {
+      "name": "IronSword - Wizards & Warriors II (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/IronSword%20-%20Wizards%20%26%20Warriors%20II%20(USA).zip",
+      "filename": "IronSword - Wizards & Warriors II (USA).zip"
+    },
+    {
+      "name": "Isolated Warrior (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Isolated%20Warrior%20(USA).zip",
+      "filename": "Isolated Warrior (USA).zip"
+    },
+    {
+      "name": "Ivan 'Ironman' Stewart's Super Off Road (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ivan%20'Ironman'%20Stewart's%20Super%20Off%20Road%20(USA).zip",
+      "filename": "Ivan 'Ironman' Stewart's Super Off Road (USA).zip"
+    },
+    {
+      "name": "J.League Winning Goal (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/J.League%20Winning%20Goal%20(PT-BR).zip",
+      "filename": "J.League Winning Goal (PT-BR).zip"
+    },
+    {
+      "name": "Jack Nicklaus' Greatest 18 Holes of Major Championship Golf (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Jack%20Nicklaus'%20Greatest%2018%20Holes%20of%20Major%20Championship%20Golf%20(USA).zip",
+      "filename": "Jack Nicklaus' Greatest 18 Holes of Major Championship Golf (USA).zip"
+    },
+    {
+      "name": "Jackal (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Jackal%20(PT-BR).zip",
+      "filename": "Jackal (PT-BR).zip"
+    },
+    {
+      "name": "Jackie Chan's Action Kung Fu (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Jackie%20Chan's%20Action%20Kung%20Fu%20(PT-BR).zip",
+      "filename": "Jackie Chan's Action Kung Fu (PT-BR).zip"
+    },
+    {
+      "name": "James Bond Jr (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/James%20Bond%20Jr%20(USA).zip",
+      "filename": "James Bond Jr (USA).zip"
+    },
+    {
+      "name": "Jaws (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Jaws%20(USA).zip",
+      "filename": "Jaws (USA).zip"
+    },
+    {
+      "name": "Jeopardy! (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Jeopardy!%20(USA)%20(Rev%20A).zip",
+      "filename": "Jeopardy! (USA) (Rev A).zip"
+    },
+    {
+      "name": "Jeopardy! 25th Anniversary Edition (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Jeopardy!%2025th%20Anniversary%20Edition%20(USA).zip",
+      "filename": "Jeopardy! 25th Anniversary Edition (USA).zip"
+    },
+    {
+      "name": "Jeopardy! Junior Edition (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Jeopardy!%20Junior%20Edition%20(USA).zip",
+      "filename": "Jeopardy! Junior Edition (USA).zip"
+    },
+    {
+      "name": "Jetsons, The - Cogswell's Caper (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Jetsons%2C%20The%20-%20Cogswell's%20Caper%20(PT-BR).zip",
+      "filename": "Jetsons, The - Cogswell's Caper (PT-BR).zip"
+    },
+    {
+      "name": "Jimmy Connors Tennis (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Jimmy%20Connors%20Tennis%20(USA).zip",
+      "filename": "Jimmy Connors Tennis (USA).zip"
+    },
+    {
+      "name": "Joe & Mac (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Joe%20%26%20Mac%20(USA).zip",
+      "filename": "Joe & Mac (USA).zip"
+    },
+    {
+      "name": "John Elway's Quarterback (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/John%20Elway's%20Quarterback%20(USA).zip",
+      "filename": "John Elway's Quarterback (USA).zip"
+    },
+    {
+      "name": "Jordan vs Bird - One On One (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Jordan%20vs%20Bird%20-%20One%20On%20One%20(USA).zip",
+      "filename": "Jordan vs Bird - One On One (USA).zip"
+    },
+    {
+      "name": "Joshua & the Battle of Jericho (USA) (v6.0) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Joshua%20%26%20the%20Battle%20of%20Jericho%20(USA)%20(v6.0)%20(Unl).zip",
+      "filename": "Joshua & the Battle of Jericho (USA) (v6.0) (Unl).zip"
+    },
+    {
+      "name": "Journey to Silius (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Journey%20to%20Silius%20(PT-BR).zip",
+      "filename": "Journey to Silius (PT-BR).zip"
+    },
+    {
+      "name": "Joust (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Joust%20(USA).zip",
+      "filename": "Joust (USA).zip"
+    },
+    {
+      "name": "Jungle Book, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Jungle%20Book%2C%20The%20(USA).zip",
+      "filename": "Jungle Book, The (USA).zip"
+    },
+    {
+      "name": "Jurassic Park (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Jurassic%20Park%20(PT-BR).zip",
+      "filename": "Jurassic Park (PT-BR).zip"
+    },
+    {
+      "name": "Juuouki (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Juuouki%20(PT-BR).zip",
+      "filename": "Juuouki (PT-BR).zip"
+    },
+    {
+      "name": "Kabuki - Quantum Fighter (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Kabuki%20-%20Quantum%20Fighter%20(PT-BR).zip",
+      "filename": "Kabuki - Quantum Fighter (PT-BR).zip"
+    },
+    {
+      "name": "Karate Champ (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Karate%20Champ%20(USA)%20(Rev%20A).zip",
+      "filename": "Karate Champ (USA) (Rev A).zip"
+    },
+    {
+      "name": "Karate Kid, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Karate%20Kid%2C%20The%20(USA).zip",
+      "filename": "Karate Kid, The (USA).zip"
+    },
+    {
+      "name": "Karnov (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Karnov%20(USA).zip",
+      "filename": "Karnov (USA).zip"
+    },
+    {
+      "name": "Kick Master (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Kick%20Master%20(USA).zip",
+      "filename": "Kick Master (USA).zip"
+    },
+    {
+      "name": "Kick Off (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Kick%20Off%20(Europe).zip",
+      "filename": "Kick Off (Europe).zip"
+    },
+    {
+      "name": "Kickle Cubicle (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Kickle%20Cubicle%20(USA).zip",
+      "filename": "Kickle Cubicle (USA).zip"
+    },
+    {
+      "name": "Kid Icarus (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Kid%20Icarus%20(PT-BR).zip",
+      "filename": "Kid Icarus (PT-BR).zip"
+    },
+    {
+      "name": "Kid Klown in Night Mayor World (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Kid%20Klown%20in%20Night%20Mayor%20World%20(USA).zip",
+      "filename": "Kid Klown in Night Mayor World (USA).zip"
+    },
+    {
+      "name": "Kid Kool and the Quest for the Seven Wonder Herbs (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Kid%20Kool%20and%20the%20Quest%20for%20the%20Seven%20Wonder%20Herbs%20(USA).zip",
+      "filename": "Kid Kool and the Quest for the Seven Wonder Herbs (USA).zip"
+    },
+    {
+      "name": "Kid Niki - Radical Ninja (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Kid%20Niki%20-%20Radical%20Ninja%20(USA)%20(Rev%20A).zip",
+      "filename": "Kid Niki - Radical Ninja (USA) (Rev A).zip"
+    },
+    {
+      "name": "King Neptune's Adventure (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/King%20Neptune's%20Adventure%20(USA)%20(Unl).zip",
+      "filename": "King Neptune's Adventure (USA) (Unl).zip"
+    },
+    {
+      "name": "King of Kings, The (USA) (v5.0) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/King%20of%20Kings%2C%20The%20(USA)%20(v5.0)%20(Unl).zip",
+      "filename": "King of Kings, The (USA) (v5.0) (Unl).zip"
+    },
+    {
+      "name": "King's Knight (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/King's%20Knight%20(USA).zip",
+      "filename": "King's Knight (USA).zip"
+    },
+    {
+      "name": "King's Quest V (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/King's%20Quest%20V%20(USA).zip",
+      "filename": "King's Quest V (USA).zip"
+    },
+    {
+      "name": "Kings of the Beach - Professional Beach Volleyball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Kings%20of%20the%20Beach%20-%20Professional%20Beach%20Volleyball%20(USA).zip",
+      "filename": "Kings of the Beach - Professional Beach Volleyball (USA).zip"
+    },
+    {
+      "name": "Kirby's Adventure (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Kirby's%20Adventure%20(USA)%20(Rev%20A).zip",
+      "filename": "Kirby's Adventure (USA) (Rev A).zip"
+    },
+    {
+      "name": "Kiwi Kraze - A Bird-Brained Adventure! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Kiwi%20Kraze%20-%20A%20Bird-Brained%20Adventure!%20(USA).zip",
+      "filename": "Kiwi Kraze - A Bird-Brained Adventure! (USA).zip"
+    },
+    {
+      "name": "Klash Ball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Klash%20Ball%20(USA).zip",
+      "filename": "Klash Ball (USA).zip"
+    },
+    {
+      "name": "Klax (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Klax%20(USA)%20(Unl).zip",
+      "filename": "Klax (USA) (Unl).zip"
+    },
+    {
+      "name": "Knight Rider (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Knight%20Rider%20(USA).zip",
+      "filename": "Knight Rider (USA).zip"
+    },
+    {
+      "name": "Konami Hyper Soccer (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Konami%20Hyper%20Soccer%20(Europe).zip",
+      "filename": "Konami Hyper Soccer (Europe).zip"
+    },
+    {
+      "name": "Krazy Kreatures (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Krazy%20Kreatures%20(USA)%20(Unl).zip",
+      "filename": "Krazy Kreatures (USA) (Unl).zip"
+    },
+    {
+      "name": "Krion Conquest, The (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Krion%20Conquest%2C%20The%20(PT-BR).zip",
+      "filename": "Krion Conquest, The (PT-BR).zip"
+    },
+    {
+      "name": "Krusty's Fun House (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Krusty's%20Fun%20House%20(USA).zip",
+      "filename": "Krusty's Fun House (USA).zip"
+    },
+    {
+      "name": "Kung Fu (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Kung%20Fu%20(PT-BR).zip",
+      "filename": "Kung Fu (PT-BR).zip"
+    },
+    {
+      "name": "Kung-Fu Heroes (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Kung-Fu%20Heroes%20(USA).zip",
+      "filename": "Kung-Fu Heroes (USA).zip"
+    },
+    {
+      "name": "Laser Invasion (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Laser%20Invasion%20(USA).zip",
+      "filename": "Laser Invasion (USA).zip"
+    },
+    {
+      "name": "Last Action Hero (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Last%20Action%20Hero%20(USA).zip",
+      "filename": "Last Action Hero (USA).zip"
+    },
+    {
+      "name": "Last Ninja, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Last%20Ninja%2C%20The%20(USA).zip",
+      "filename": "Last Ninja, The (USA).zip"
+    },
+    {
+      "name": "Last Starfighter, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Last%20Starfighter%2C%20The%20(USA).zip",
+      "filename": "Last Starfighter, The (USA).zip"
+    },
+    {
+      "name": "Lee Trevino's Fighting Golf (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Lee%20Trevino's%20Fighting%20Golf%20(USA).zip",
+      "filename": "Lee Trevino's Fighting Golf (USA).zip"
+    },
+    {
+      "name": "Legacy of the Wizard (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Legacy%20of%20the%20Wizard%20(USA).zip",
+      "filename": "Legacy of the Wizard (USA).zip"
+    },
+    {
+      "name": "Legend of Kage, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Legend%20of%20Kage%2C%20The%20(USA).zip",
+      "filename": "Legend of Kage, The (USA).zip"
+    },
+    {
+      "name": "Legend of Prince Valiant, The (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Legend%20of%20Prince%20Valiant%2C%20The%20(Europe).zip",
+      "filename": "Legend of Prince Valiant, The (Europe).zip"
+    },
+    {
+      "name": "Legend of Zelda, The (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Legend%20of%20Zelda%2C%20The%20(PT-BR).zip",
+      "filename": "Legend of Zelda, The (PT-BR).zip"
+    },
+    {
+      "name": "Legend of the Ghost Lion (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Legend%20of%20the%20Ghost%20Lion%20(USA).zip",
+      "filename": "Legend of the Ghost Lion (USA).zip"
+    },
+    {
+      "name": "Legendary Wings (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Legendary%20Wings%20(USA).zip",
+      "filename": "Legendary Wings (USA).zip"
+    },
+    {
+      "name": "Legends of the Diamond - The Baseball Championship Game (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Legends%20of%20the%20Diamond%20-%20The%20Baseball%20Championship%20Game%20(USA).zip",
+      "filename": "Legends of the Diamond - The Baseball Championship Game (USA).zip"
+    },
+    {
+      "name": "Lemmings (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Lemmings%20(USA).zip",
+      "filename": "Lemmings (USA).zip"
+    },
+    {
+      "name": "Lethal Weapon (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Lethal%20Weapon%20(USA).zip",
+      "filename": "Lethal Weapon (USA).zip"
+    },
+    {
+      "name": "Life Force (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Life%20Force%20(USA).zip",
+      "filename": "Life Force (USA).zip"
+    },
+    {
+      "name": "Linus Spacehead's Cosmic Crusade (USA) (En,Fr,De,Es) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Linus%20Spacehead's%20Cosmic%20Crusade%20(USA)%20(En%2CFr%2CDe%2CEs)%20(Unl).zip",
+      "filename": "Linus Spacehead's Cosmic Crusade (USA) (En,Fr,De,Es) (Unl).zip"
+    },
+    {
+      "name": "Lion King, The (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Lion%20King%2C%20The%20(Europe).zip",
+      "filename": "Lion King, The (Europe).zip"
+    },
+    {
+      "name": "Little League Baseball - Championship Series (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Little%20League%20Baseball%20-%20Championship%20Series%20(USA).zip",
+      "filename": "Little League Baseball - Championship Series (USA).zip"
+    },
+    {
+      "name": "Little Mermaid, The (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Little%20Mermaid%2C%20The%20(PT-BR).zip",
+      "filename": "Little Mermaid, The (PT-BR).zip"
+    },
+    {
+      "name": "Little Nemo - The Dream Master (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Little%20Nemo%20-%20The%20Dream%20Master%20(PT-BR).zip",
+      "filename": "Little Nemo - The Dream Master (PT-BR).zip"
+    },
+    {
+      "name": "Little Ninja Brothers (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Little%20Ninja%20Brothers%20(USA).zip",
+      "filename": "Little Ninja Brothers (USA).zip"
+    },
+    {
+      "name": "Little Samson (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Little%20Samson%20(USA).zip",
+      "filename": "Little Samson (USA).zip"
+    },
+    {
+      "name": "Lode Runner (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Lode%20Runner%20(PT-BR).zip",
+      "filename": "Lode Runner (PT-BR).zip"
+    },
+    {
+      "name": "Lone Ranger, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Lone%20Ranger%2C%20The%20(USA).zip",
+      "filename": "Lone Ranger, The (USA).zip"
+    },
+    {
+      "name": "Loopz (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Loopz%20(USA).zip",
+      "filename": "Loopz (USA).zip"
+    },
+    {
+      "name": "Low G Man - The Low Gravity Man (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Low%20G%20Man%20-%20The%20Low%20Gravity%20Man%20(USA).zip",
+      "filename": "Low G Man - The Low Gravity Man (USA).zip"
+    },
+    {
+      "name": "Lunar Pool (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Lunar%20Pool%20(PT-BR).zip",
+      "filename": "Lunar Pool (PT-BR).zip"
+    },
+    {
+      "name": "M.C. Kids (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/M.C.%20Kids%20(USA).zip",
+      "filename": "M.C. Kids (USA).zip"
+    },
+    {
+      "name": "M.U.L.E. (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/M.U.L.E.%20(USA).zip",
+      "filename": "M.U.L.E. (USA).zip"
+    },
+    {
+      "name": "M.U.S.C.L.E. - Tag Team Match (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/M.U.S.C.L.E.%20-%20Tag%20Team%20Match%20(USA).zip",
+      "filename": "M.U.S.C.L.E. - Tag Team Match (USA).zip"
+    },
+    {
+      "name": "Mach Rider (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mach%20Rider%20(PT-BR).zip",
+      "filename": "Mach Rider (PT-BR).zip"
+    },
+    {
+      "name": "Mad Max (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mad%20Max%20(USA).zip",
+      "filename": "Mad Max (USA).zip"
+    },
+    {
+      "name": "Mafat Conspiracy, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mafat%20Conspiracy%2C%20The%20(USA).zip",
+      "filename": "Mafat Conspiracy, The (USA).zip"
+    },
+    {
+      "name": "Magic Darts (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Magic%20Darts%20(USA).zip",
+      "filename": "Magic Darts (USA).zip"
+    },
+    {
+      "name": "Magic Johnson's Fast Break (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Magic%20Johnson's%20Fast%20Break%20(USA).zip",
+      "filename": "Magic Johnson's Fast Break (USA).zip"
+    },
+    {
+      "name": "Magic of Scheherazade, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Magic%20of%20Scheherazade%2C%20The%20(USA).zip",
+      "filename": "Magic of Scheherazade, The (USA).zip"
+    },
+    {
+      "name": "Magician (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Magician%20(USA).zip",
+      "filename": "Magician (USA).zip"
+    },
+    {
+      "name": "Magmax (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Magmax%20(USA).zip",
+      "filename": "Magmax (USA).zip"
+    },
+    {
+      "name": "Major League Baseball (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Major%20League%20Baseball%20(USA)%20(Rev%20A).zip",
+      "filename": "Major League Baseball (USA) (Rev A).zip"
+    },
+    {
+      "name": "Maniac Mansion (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Maniac%20Mansion%20(USA).zip",
+      "filename": "Maniac Mansion (USA).zip"
+    },
+    {
+      "name": "Mappy-Land (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mappy-Land%20(PT-BR).zip",
+      "filename": "Mappy-Land (PT-BR).zip"
+    },
+    {
+      "name": "Marble Madness (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Marble%20Madness%20(USA).zip",
+      "filename": "Marble Madness (USA).zip"
+    },
+    {
+      "name": "Mario Bros. (World)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mario%20Bros.%20(World).zip",
+      "filename": "Mario Bros. (World).zip"
+    },
+    {
+      "name": "Mario Is Missing! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mario%20Is%20Missing!%20(USA).zip",
+      "filename": "Mario Is Missing! (USA).zip"
+    },
+    {
+      "name": "Mario's Time Machine (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mario's%20Time%20Machine%20(USA).zip",
+      "filename": "Mario's Time Machine (USA).zip"
+    },
+    {
+      "name": "Master Chu and the Drunkard Hu (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Master%20Chu%20and%20the%20Drunkard%20Hu%20(USA)%20(Unl).zip",
+      "filename": "Master Chu and the Drunkard Hu (USA) (Unl).zip"
+    },
+    {
+      "name": "Maxi 15 (USA) (Rev 1) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Maxi%2015%20(USA)%20(Rev%201)%20(Unl).zip",
+      "filename": "Maxi 15 (USA) (Rev 1) (Unl).zip"
+    },
+    {
+      "name": "Mechanized Attack (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mechanized%20Attack%20(USA).zip",
+      "filename": "Mechanized Attack (USA).zip"
+    },
+    {
+      "name": "Mega Man (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mega%20Man%20(PT-BR).zip",
+      "filename": "Mega Man (PT-BR).zip"
+    },
+    {
+      "name": "Mega Man 2 (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mega%20Man%202%20(PT-BR).zip",
+      "filename": "Mega Man 2 (PT-BR).zip"
+    },
+    {
+      "name": "Mega Man 3 (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mega%20Man%203%20(PT-BR).zip",
+      "filename": "Mega Man 3 (PT-BR).zip"
+    },
+    {
+      "name": "Mega Man 4 (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mega%20Man%204%20(PT-BR).zip",
+      "filename": "Mega Man 4 (PT-BR).zip"
+    },
+    {
+      "name": "Mega Man 5 (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mega%20Man%205%20(PT-BR).zip",
+      "filename": "Mega Man 5 (PT-BR).zip"
+    },
+    {
+      "name": "Mega Man 6 (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mega%20Man%206%20(PT-BR).zip",
+      "filename": "Mega Man 6 (PT-BR).zip"
+    },
+    {
+      "name": "Menace Beach (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Menace%20Beach%20(USA)%20(Unl).zip",
+      "filename": "Menace Beach (USA) (Unl).zip"
+    },
+    {
+      "name": "Mendel Palace (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mendel%20Palace%20(USA).zip",
+      "filename": "Mendel Palace (USA).zip"
+    },
+    {
+      "name": "Mermaids of Atlantis - The Riddle of the Magic Bubble (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mermaids%20of%20Atlantis%20-%20The%20Riddle%20of%20the%20Magic%20Bubble%20(USA)%20(Unl).zip",
+      "filename": "Mermaids of Atlantis - The Riddle of the Magic Bubble (USA) (Unl).zip"
+    },
+    {
+      "name": "Metal Fighter (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Metal%20Fighter%20(USA)%20(Unl).zip",
+      "filename": "Metal Fighter (USA) (Unl).zip"
+    },
+    {
+      "name": "Metal Gear (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Metal%20Gear%20(PT-BR).zip",
+      "filename": "Metal Gear (PT-BR).zip"
+    },
+    {
+      "name": "Metal Mech - Man & Machine (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Metal%20Mech%20-%20Man%20%26%20Machine%20(USA).zip",
+      "filename": "Metal Mech - Man & Machine (USA).zip"
+    },
+    {
+      "name": "Metal Storm (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Metal%20Storm%20(USA).zip",
+      "filename": "Metal Storm (USA).zip"
+    },
+    {
+      "name": "Metroid (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Metroid%20(PT-BR).zip",
+      "filename": "Metroid (PT-BR).zip"
+    },
+    {
+      "name": "MiG 29 - Soviet Fighter (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/MiG%2029%20-%20Soviet%20Fighter%20(USA)%20(Unl).zip",
+      "filename": "MiG 29 - Soviet Fighter (USA) (Unl).zip"
+    },
+    {
+      "name": "Michael Andretti's World GP (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Michael%20Andretti's%20World%20GP%20(USA).zip",
+      "filename": "Michael Andretti's World GP (USA).zip"
+    },
+    {
+      "name": "Mickey Mousecapade (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mickey%20Mousecapade%20(USA).zip",
+      "filename": "Mickey Mousecapade (USA).zip"
+    },
+    {
+      "name": "Mickey's Adventure in Numberland (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mickey's%20Adventure%20in%20Numberland%20(USA).zip",
+      "filename": "Mickey's Adventure in Numberland (USA).zip"
+    },
+    {
+      "name": "Mickey's Safari in Letterland (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mickey's%20Safari%20in%20Letterland%20(USA).zip",
+      "filename": "Mickey's Safari in Letterland (USA).zip"
+    },
+    {
+      "name": "Micro Machines (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Micro%20Machines%20(USA)%20(Unl).zip",
+      "filename": "Micro Machines (USA) (Unl).zip"
+    },
+    {
+      "name": "Might & Magic - Secret of the Inner Sanctum (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Might%20%26%20Magic%20-%20Secret%20of%20the%20Inner%20Sanctum%20(USA).zip",
+      "filename": "Might & Magic - Secret of the Inner Sanctum (USA).zip"
+    },
+    {
+      "name": "Mighty Bomb Jack (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mighty%20Bomb%20Jack%20(USA).zip",
+      "filename": "Mighty Bomb Jack (USA).zip"
+    },
+    {
+      "name": "Mighty Final Fight (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mighty%20Final%20Fight%20(PT-BR).zip",
+      "filename": "Mighty Final Fight (PT-BR).zip"
+    },
+    {
+      "name": "Mike Tyson's Punch-Out!! (PT-BR))",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mike%20Tyson's%20Punch-Out!!%20(PT-BR)).zip",
+      "filename": "Mike Tyson's Punch-Out!! (PT-BR)).zip"
+    },
+    {
+      "name": "Millipede (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Millipede%20(USA).zip",
+      "filename": "Millipede (USA).zip"
+    },
+    {
+      "name": "Milon's Secret Castle (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Milon's%20Secret%20Castle%20(USA).zip",
+      "filename": "Milon's Secret Castle (USA).zip"
+    },
+    {
+      "name": "Mission Cobra (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mission%20Cobra%20(USA)%20(Unl).zip",
+      "filename": "Mission Cobra (USA) (Unl).zip"
+    },
+    {
+      "name": "Mission Impossible (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mission%20Impossible%20(USA).zip",
+      "filename": "Mission Impossible (USA).zip"
+    },
+    {
+      "name": "Monopoly (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Monopoly%20(USA).zip",
+      "filename": "Monopoly (USA).zip"
+    },
+    {
+      "name": "Monster Party (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Monster%20Party%20(USA).zip",
+      "filename": "Monster Party (USA).zip"
+    },
+    {
+      "name": "Monster Truck Rally (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Monster%20Truck%20Rally%20(USA).zip",
+      "filename": "Monster Truck Rally (USA).zip"
+    },
+    {
+      "name": "Monster in My Pocket (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Monster%20in%20My%20Pocket%20(PT-BR).zip",
+      "filename": "Monster in My Pocket (PT-BR).zip"
+    },
+    {
+      "name": "Moon Crystal (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Moon%20Crystal%20(PT-BR).zip",
+      "filename": "Moon Crystal (PT-BR).zip"
+    },
+    {
+      "name": "Moon Ranger (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Moon%20Ranger%20(USA)%20(Unl).zip",
+      "filename": "Moon Ranger (USA) (Unl).zip"
+    },
+    {
+      "name": "Motor City Patrol (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Motor%20City%20Patrol%20(USA).zip",
+      "filename": "Motor City Patrol (USA).zip"
+    },
+    {
+      "name": "Mr. Gimmick (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mr.%20Gimmick%20(Europe).zip",
+      "filename": "Mr. Gimmick (Europe).zip"
+    },
+    {
+      "name": "Ms. Pac-Man (PT-BR).nes",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ms.%20Pac-Man%20(PT-BR).nes.zip",
+      "filename": "Ms. Pac-Man (PT-BR).nes.zip"
+    },
+    {
+      "name": "Muppet Adventure - Chaos at the Carnival (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Muppet%20Adventure%20-%20Chaos%20at%20the%20Carnival%20(USA).zip",
+      "filename": "Muppet Adventure - Chaos at the Carnival (USA).zip"
+    },
+    {
+      "name": "Mutant Virus, The - Crisis in a Computer World (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mutant%20Virus%2C%20The%20-%20Crisis%20in%20a%20Computer%20World%20(USA).zip",
+      "filename": "Mutant Virus, The - Crisis in a Computer World (USA).zip"
+    },
+    {
+      "name": "Mystery Quest (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Mystery%20Quest%20(USA).zip",
+      "filename": "Mystery Quest (USA).zip"
+    },
+    {
+      "name": "NARC (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/NARC%20(USA).zip",
+      "filename": "NARC (USA).zip"
+    },
+    {
+      "name": "NES Open Tournament Golf (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/NES%20Open%20Tournament%20Golf%20(USA).zip",
+      "filename": "NES Open Tournament Golf (USA).zip"
+    },
+    {
+      "name": "NES Play Action Football (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/NES%20Play%20Action%20Football%20(USA).zip",
+      "filename": "NES Play Action Football (USA).zip"
+    },
+    {
+      "name": "NFL (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/NFL%20(USA).zip",
+      "filename": "NFL (USA).zip"
+    },
+    {
+      "name": "New Ghostbusters II (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/New%20Ghostbusters%20II%20(Europe).zip",
+      "filename": "New Ghostbusters II (Europe).zip"
+    },
+    {
+      "name": "New Zealand Story, The (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/New%20Zealand%20Story%2C%20The%20(Europe).zip",
+      "filename": "New Zealand Story, The (Europe).zip"
+    },
+    {
+      "name": "Nigel Mansell's World Championship Challenge (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Nigel%20Mansell's%20World%20Championship%20Challenge%20(USA).zip",
+      "filename": "Nigel Mansell's World Championship Challenge (USA).zip"
+    },
+    {
+      "name": "Nightmare on Elm Street, A (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Nightmare%20on%20Elm%20Street%2C%20A%20(PT-BR).zip",
+      "filename": "Nightmare on Elm Street, A (PT-BR).zip"
+    },
+    {
+      "name": "Nightshade (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Nightshade%20(PT-BR).zip",
+      "filename": "Nightshade (PT-BR).zip"
+    },
+    {
+      "name": "Ninja Crusaders (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ninja%20Crusaders%20(PT-BR).zip",
+      "filename": "Ninja Crusaders (PT-BR).zip"
+    },
+    {
+      "name": "Ninja Gaiden (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ninja%20Gaiden%20(PT-BR).zip",
+      "filename": "Ninja Gaiden (PT-BR).zip"
+    },
+    {
+      "name": "Ninja Gaiden II - The Dark Sword of Chaos (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ninja%20Gaiden%20II%20-%20The%20Dark%20Sword%20of%20Chaos%20(PT-BR).zip",
+      "filename": "Ninja Gaiden II - The Dark Sword of Chaos (PT-BR).zip"
+    },
+    {
+      "name": "Ninja Gaiden III - The Ancient Ship of Doom (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ninja%20Gaiden%20III%20-%20The%20Ancient%20Ship%20of%20Doom%20(PT-BR).zip",
+      "filename": "Ninja Gaiden III - The Ancient Ship of Doom (PT-BR).zip"
+    },
+    {
+      "name": "Ninja Kid (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ninja%20Kid%20(USA).zip",
+      "filename": "Ninja Kid (USA).zip"
+    },
+    {
+      "name": "Nintendo World Championships 1990 (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Nintendo%20World%20Championships%201990%20(USA).zip",
+      "filename": "Nintendo World Championships 1990 (USA).zip"
+    },
+    {
+      "name": "Nintendo World Cup (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Nintendo%20World%20Cup%20(USA).zip",
+      "filename": "Nintendo World Cup (USA).zip"
+    },
+    {
+      "name": "Noah's Ark (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Noah's%20Ark%20(Europe).zip",
+      "filename": "Noah's Ark (Europe).zip"
+    },
+    {
+      "name": "Nobunaga's Ambition (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Nobunaga's%20Ambition%20(USA).zip",
+      "filename": "Nobunaga's Ambition (USA).zip"
+    },
+    {
+      "name": "Nobunaga's Ambition II (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Nobunaga's%20Ambition%20II%20(USA).zip",
+      "filename": "Nobunaga's Ambition II (USA).zip"
+    },
+    {
+      "name": "North and South (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/North%20and%20South%20(USA).zip",
+      "filename": "North and South (USA).zip"
+    },
+    {
+      "name": "Operation Secret Storm (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Operation%20Secret%20Storm%20(USA)%20(Unl).zip",
+      "filename": "Operation Secret Storm (USA) (Unl).zip"
+    },
+    {
+      "name": "Operation Wolf (USA) (Rev 0A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Operation%20Wolf%20(USA)%20(Rev%200A).zip",
+      "filename": "Operation Wolf (USA) (Rev 0A).zip"
+    },
+    {
+      "name": "Orb 3D (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Orb%203D%20(USA).zip",
+      "filename": "Orb 3D (USA).zip"
+    },
+    {
+      "name": "Othello (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Othello%20(PT-BR).zip",
+      "filename": "Othello (PT-BR).zip"
+    },
+    {
+      "name": "Over Horizon (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Over%20Horizon%20(Europe).zip",
+      "filename": "Over Horizon (Europe).zip"
+    },
+    {
+      "name": "Overlord (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Overlord%20(USA).zip",
+      "filename": "Overlord (USA).zip"
+    },
+    {
+      "name": "P'radikus Conflict, The (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/P'radikus%20Conflict%2C%20The%20(USA)%20(Unl).zip",
+      "filename": "P'radikus Conflict, The (USA) (Unl).zip"
+    },
+    {
+      "name": "P.O.W. - Prisoners of War (PT-BR).nes",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/P.O.W.%20-%20Prisoners%20of%20War%20(PT-BR).nes.zip",
+      "filename": "P.O.W. - Prisoners of War (PT-BR).nes.zip"
+    },
+    {
+      "name": "Pac-Man (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Pac-Man%20(PT-BR).zip",
+      "filename": "Pac-Man (PT-BR).zip"
+    },
+    {
+      "name": "Pac-Man (USA) (Tengen)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Pac-Man%20(USA)%20(Tengen).zip",
+      "filename": "Pac-Man (USA) (Tengen).zip"
+    },
+    {
+      "name": "Pac-Mania (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Pac-Mania%20(USA)%20(Unl).zip",
+      "filename": "Pac-Mania (USA) (Unl).zip"
+    },
+    {
+      "name": "Palamedes (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Palamedes%20(USA).zip",
+      "filename": "Palamedes (USA).zip"
+    },
+    {
+      "name": "Panic Restaurant (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Panic%20Restaurant%20(USA).zip",
+      "filename": "Panic Restaurant (USA).zip"
+    },
+    {
+      "name": "Paperboy (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Paperboy%20(USA).zip",
+      "filename": "Paperboy (USA).zip"
+    },
+    {
+      "name": "Paperboy 2 (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Paperboy%202%20(USA).zip",
+      "filename": "Paperboy 2 (USA).zip"
+    },
+    {
+      "name": "Parodius (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Parodius%20(Europe).zip",
+      "filename": "Parodius (Europe).zip"
+    },
+    {
+      "name": "Pesterminator (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Pesterminator%20(USA)%20(Unl).zip",
+      "filename": "Pesterminator (USA) (Unl).zip"
+    },
+    {
+      "name": "Phantom Fighter (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Phantom%20Fighter%20(USA).zip",
+      "filename": "Phantom Fighter (USA).zip"
+    },
+    {
+      "name": "Pictionary - The Game of Video Quick Draw (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Pictionary%20-%20The%20Game%20of%20Video%20Quick%20Draw%20(USA).zip",
+      "filename": "Pictionary - The Game of Video Quick Draw (USA).zip"
+    },
+    {
+      "name": "Pin-Bot (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Pin-Bot%20(USA).zip",
+      "filename": "Pin-Bot (USA).zip"
+    },
+    {
+      "name": "Pinball (World)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Pinball%20(World).zip",
+      "filename": "Pinball (World).zip"
+    },
+    {
+      "name": "Pinball Quest (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Pinball%20Quest%20(USA).zip",
+      "filename": "Pinball Quest (USA).zip"
+    },
+    {
+      "name": "Pipe Dream (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Pipe%20Dream%20(PT-BR).zip",
+      "filename": "Pipe Dream (PT-BR).zip"
+    },
+    {
+      "name": "Pirates! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Pirates!%20(USA).zip",
+      "filename": "Pirates! (USA).zip"
+    },
+    {
+      "name": "Platoon (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Platoon%20(USA)%20(Rev%20A).zip",
+      "filename": "Platoon (USA) (Rev A).zip"
+    },
+    {
+      "name": "Popeye (World) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Popeye%20(World)%20(Rev%20A).zip",
+      "filename": "Popeye (World) (Rev A).zip"
+    },
+    {
+      "name": "Power Blade (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Power%20Blade%20(USA).zip",
+      "filename": "Power Blade (USA).zip"
+    },
+    {
+      "name": "Power Blade 2 (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Power%20Blade%202%20(PT-BR).zip",
+      "filename": "Power Blade 2 (PT-BR).zip"
+    },
+    {
+      "name": "Power Punch II (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Power%20Punch%20II%20(USA).zip",
+      "filename": "Power Punch II (USA).zip"
+    },
+    {
+      "name": "Predator (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Predator%20(PT-BR).zip",
+      "filename": "Predator (PT-BR).zip"
+    },
+    {
+      "name": "Prince of Persia (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Prince%20of%20Persia%20(USA).zip",
+      "filename": "Prince of Persia (USA).zip"
+    },
+    {
+      "name": "Princess Tomato in Salad Kingdom (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Princess%20Tomato%20in%20Salad%20Kingdom%20(USA).zip",
+      "filename": "Princess Tomato in Salad Kingdom (USA).zip"
+    },
+    {
+      "name": "Pro Sport Hockey (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Pro%20Sport%20Hockey%20(USA).zip",
+      "filename": "Pro Sport Hockey (USA).zip"
+    },
+    {
+      "name": "Pro Wrestling (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Pro%20Wrestling%20(USA)%20(Rev%20A).zip",
+      "filename": "Pro Wrestling (USA) (Rev A).zip"
+    },
+    {
+      "name": "Punch-Out!! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Punch-Out!!%20(USA).zip",
+      "filename": "Punch-Out!! (USA).zip"
+    },
+    {
+      "name": "Punisher, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Punisher%2C%20The%20(USA).zip",
+      "filename": "Punisher, The (USA).zip"
+    },
+    {
+      "name": "Puss n Boots - Pero's Great Adventure (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Puss%20n%20Boots%20-%20Pero's%20Great%20Adventure%20(USA).zip",
+      "filename": "Puss n Boots - Pero's Great Adventure (USA).zip"
+    },
+    {
+      "name": "Puzzle (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Puzzle%20(USA)%20(Unl).zip",
+      "filename": "Puzzle (USA) (Unl).zip"
+    },
+    {
+      "name": "Puzznic (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Puzznic%20(USA).zip",
+      "filename": "Puzznic (USA).zip"
+    },
+    {
+      "name": "Pyramid (USA) (Rev 1) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Pyramid%20(USA)%20(Rev%201)%20(Unl).zip",
+      "filename": "Pyramid (USA) (Rev 1) (Unl).zip"
+    },
+    {
+      "name": "Q-bert (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Q-bert%20(PT-BR).zip",
+      "filename": "Q-bert (PT-BR).zip"
+    },
+    {
+      "name": "Qix (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Qix%20(USA).zip",
+      "filename": "Qix (USA).zip"
+    },
+    {
+      "name": "Quattro Adventure (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Quattro%20Adventure%20(USA)%20(Unl).zip",
+      "filename": "Quattro Adventure (USA) (Unl).zip"
+    },
+    {
+      "name": "Quattro Arcade (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Quattro%20Arcade%20(USA)%20(Unl).zip",
+      "filename": "Quattro Arcade (USA) (Unl).zip"
+    },
+    {
+      "name": "Quattro Sports (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Quattro%20Sports%20(USA)%20(Unl).zip",
+      "filename": "Quattro Sports (USA) (Unl).zip"
+    },
+    {
+      "name": "R.B.I. Baseball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/R.B.I.%20Baseball%20(USA).zip",
+      "filename": "R.B.I. Baseball (USA).zip"
+    },
+    {
+      "name": "R.B.I. Baseball 2 (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/R.B.I.%20Baseball%202%20(USA)%20(Unl).zip",
+      "filename": "R.B.I. Baseball 2 (USA) (Unl).zip"
+    },
+    {
+      "name": "R.B.I. Baseball 3 (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/R.B.I.%20Baseball%203%20(USA)%20(Unl).zip",
+      "filename": "R.B.I. Baseball 3 (USA) (Unl).zip"
+    },
+    {
+      "name": "R.C. Pro-Am (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/R.C.%20Pro-Am%20(USA)%20(Rev%20A).zip",
+      "filename": "R.C. Pro-Am (USA) (Rev A).zip"
+    },
+    {
+      "name": "R.C. Pro-Am II (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/R.C.%20Pro-Am%20II%20(USA).zip",
+      "filename": "R.C. Pro-Am II (USA).zip"
+    },
+    {
+      "name": "Race America (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Race%20America%20(USA).zip",
+      "filename": "Race America (USA).zip"
+    },
+    {
+      "name": "Racket Attack (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Racket%20Attack%20(USA).zip",
+      "filename": "Racket Attack (USA).zip"
+    },
+    {
+      "name": "Rackets & Rivals (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rackets%20%26%20Rivals%20(Europe).zip",
+      "filename": "Rackets & Rivals (Europe).zip"
+    },
+    {
+      "name": "Rad Racer (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rad%20Racer%20(USA).zip",
+      "filename": "Rad Racer (USA).zip"
+    },
+    {
+      "name": "Rad Racer II (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rad%20Racer%20II%20(USA).zip",
+      "filename": "Rad Racer II (USA).zip"
+    },
+    {
+      "name": "Rad Racket - Deluxe Tennis II (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rad%20Racket%20-%20Deluxe%20Tennis%20II%20(USA)%20(Unl).zip",
+      "filename": "Rad Racket - Deluxe Tennis II (USA) (Unl).zip"
+    },
+    {
+      "name": "Raid 2020 (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Raid%202020%20(USA)%20(Unl).zip",
+      "filename": "Raid 2020 (USA) (Unl).zip"
+    },
+    {
+      "name": "Raid on Bungeling Bay (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Raid%20on%20Bungeling%20Bay%20(USA).zip",
+      "filename": "Raid on Bungeling Bay (USA).zip"
+    },
+    {
+      "name": "Rainbow Islands (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rainbow%20Islands%20(USA).zip",
+      "filename": "Rainbow Islands (USA).zip"
+    },
+    {
+      "name": "Rally Bike (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rally%20Bike%20(USA).zip",
+      "filename": "Rally Bike (USA).zip"
+    },
+    {
+      "name": "Rambo (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rambo%20(USA)%20(Rev%20A).zip",
+      "filename": "Rambo (USA) (Rev A).zip"
+    },
+    {
+      "name": "Rampage (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rampage%20(USA).zip",
+      "filename": "Rampage (USA).zip"
+    },
+    {
+      "name": "Rampart (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rampart%20(USA).zip",
+      "filename": "Rampart (USA).zip"
+    },
+    {
+      "name": "Remote Control (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Remote%20Control%20(USA).zip",
+      "filename": "Remote Control (USA).zip"
+    },
+    {
+      "name": "Ren & Stimpy Show, The - Buckeroo$! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ren%20%26%20Stimpy%20Show%2C%20The%20-%20Buckeroo%24!%20(USA).zip",
+      "filename": "Ren & Stimpy Show, The - Buckeroo$! (USA).zip"
+    },
+    {
+      "name": "Renegade (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Renegade%20(USA).zip",
+      "filename": "Renegade (USA).zip"
+    },
+    {
+      "name": "Rescue - The Embassy Mission (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rescue%20-%20The%20Embassy%20Mission%20(USA).zip",
+      "filename": "Rescue - The Embassy Mission (USA).zip"
+    },
+    {
+      "name": "Ring King (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ring%20King%20(USA).zip",
+      "filename": "Ring King (USA).zip"
+    },
+    {
+      "name": "River City Ransom (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/River%20City%20Ransom%20(PT-BR).zip",
+      "filename": "River City Ransom (PT-BR).zip"
+    },
+    {
+      "name": "Road Fighter (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Road%20Fighter%20(PT-BR).zip",
+      "filename": "Road Fighter (PT-BR).zip"
+    },
+    {
+      "name": "Road Runner (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Road%20Runner%20(USA)%20(Unl).zip",
+      "filename": "Road Runner (USA) (Unl).zip"
+    },
+    {
+      "name": "RoadBlasters (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/RoadBlasters%20(USA).zip",
+      "filename": "RoadBlasters (USA).zip"
+    },
+    {
+      "name": "Robin Hood - Prince of Thieves (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Robin%20Hood%20-%20Prince%20of%20Thieves%20(USA)%20(Rev%20A).zip",
+      "filename": "Robin Hood - Prince of Thieves (USA) (Rev A).zip"
+    },
+    {
+      "name": "Robo Warrior (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Robo%20Warrior%20(USA).zip",
+      "filename": "Robo Warrior (USA).zip"
+    },
+    {
+      "name": "RoboCop (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/RoboCop%20(PT-BR).zip",
+      "filename": "RoboCop (PT-BR).zip"
+    },
+    {
+      "name": "RoboCop 2 (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/RoboCop%202%20(USA)%20(Rev%20A).zip",
+      "filename": "RoboCop 2 (USA) (Rev A).zip"
+    },
+    {
+      "name": "RoboCop 3 (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/RoboCop%203%20(USA).zip",
+      "filename": "RoboCop 3 (USA).zip"
+    },
+    {
+      "name": "Robodemons (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Robodemons%20(USA)%20(Unl).zip",
+      "filename": "Robodemons (USA) (Unl).zip"
+    },
+    {
+      "name": "Rock 'n' Ball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rock%20'n'%20Ball%20(USA).zip",
+      "filename": "Rock 'n' Ball (USA).zip"
+    },
+    {
+      "name": "Rocket Ranger (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rocket%20Ranger%20(USA).zip",
+      "filename": "Rocket Ranger (USA).zip"
+    },
+    {
+      "name": "Rocketeer, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rocketeer%2C%20The%20(USA).zip",
+      "filename": "Rocketeer, The (USA).zip"
+    },
+    {
+      "name": "Rockin' Kats (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rockin'%20Kats%20(PT-BR).zip",
+      "filename": "Rockin' Kats (PT-BR).zip"
+    },
+    {
+      "name": "Rod Land (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rod%20Land%20(Europe).zip",
+      "filename": "Rod Land (Europe).zip"
+    },
+    {
+      "name": "Roger Clemens' MVP Baseball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Roger%20Clemens'%20MVP%20Baseball%20(USA).zip",
+      "filename": "Roger Clemens' MVP Baseball (USA).zip"
+    },
+    {
+      "name": "Rollerball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rollerball%20(USA).zip",
+      "filename": "Rollerball (USA).zip"
+    },
+    {
+      "name": "Rollerblade Racer (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rollerblade%20Racer%20(USA).zip",
+      "filename": "Rollerblade Racer (USA).zip"
+    },
+    {
+      "name": "Rollergames (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rollergames%20(PT-BR).zip",
+      "filename": "Rollergames (PT-BR).zip"
+    },
+    {
+      "name": "Rolling Thunder (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rolling%20Thunder%20(PT-BR).zip",
+      "filename": "Rolling Thunder (PT-BR).zip"
+    },
+    {
+      "name": "Romance of the Three Kingdoms (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Romance%20of%20the%20Three%20Kingdoms%20(USA).zip",
+      "filename": "Romance of the Three Kingdoms (USA).zip"
+    },
+    {
+      "name": "Romance of the Three Kingdoms II (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Romance%20of%20the%20Three%20Kingdoms%20II%20(USA).zip",
+      "filename": "Romance of the Three Kingdoms II (USA).zip"
+    },
+    {
+      "name": "Roundball - 2-on-2 Challenge (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Roundball%20-%202-on-2%20Challenge%20(USA).zip",
+      "filename": "Roundball - 2-on-2 Challenge (USA).zip"
+    },
+    {
+      "name": "Rush'n Attack (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rush'n%20Attack%20(USA).zip",
+      "filename": "Rush'n Attack (USA).zip"
+    },
+    {
+      "name": "Rygar (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Rygar%20(PT-BR).zip",
+      "filename": "Rygar (PT-BR).zip"
+    },
+    {
+      "name": "S.C.A.T -Special cibernetic attack team (PT-BR).nes",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/S.C.A.T%20-Special%20cibernetic%20attack%20team%20(PT-BR).nes.zip",
+      "filename": "S.C.A.T -Special cibernetic attack team (PT-BR).nes.zip"
+    },
+    {
+      "name": "Saint Seiya - Ougon Densetsu Kanketsu Hen (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Saint%20Seiya%20-%20Ougon%20Densetsu%20Kanketsu%20Hen%20(PT-BR).zip",
+      "filename": "Saint Seiya - Ougon Densetsu Kanketsu Hen (PT-BR).zip"
+    },
+    {
+      "name": "Secret Scout in the Temple of Demise (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Secret%20Scout%20in%20the%20Temple%20of%20Demise%20(USA)%20(Unl).zip",
+      "filename": "Secret Scout in the Temple of Demise (USA) (Unl).zip"
+    },
+    {
+      "name": "Section-Z (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Section-Z%20(USA).zip",
+      "filename": "Section-Z (USA).zip"
+    },
+    {
+      "name": "Seicross (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Seicross%20(USA).zip",
+      "filename": "Seicross (USA).zip"
+    },
+    {
+      "name": "Sesame Street - Big Bird's Hide & Speak (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Sesame%20Street%20-%20Big%20Bird's%20Hide%20%26%20Speak%20(USA).zip",
+      "filename": "Sesame Street - Big Bird's Hide & Speak (USA).zip"
+    },
+    {
+      "name": "Sesame Street 123 (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Sesame%20Street%20123%20(USA).zip",
+      "filename": "Sesame Street 123 (USA).zip"
+    },
+    {
+      "name": "Sesame Street ABC & 123 (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Sesame%20Street%20ABC%20%26%20123%20(USA).zip",
+      "filename": "Sesame Street ABC & 123 (USA).zip"
+    },
+    {
+      "name": "Sesame Street ABC (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Sesame%20Street%20ABC%20(USA).zip",
+      "filename": "Sesame Street ABC (USA).zip"
+    },
+    {
+      "name": "Sesame Street Countdown (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Sesame%20Street%20Countdown%20(USA).zip",
+      "filename": "Sesame Street Countdown (USA).zip"
+    },
+    {
+      "name": "Shadow of the Ninja (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Shadow%20of%20the%20Ninja%20(PT-BR).zip",
+      "filename": "Shadow of the Ninja (PT-BR).zip"
+    },
+    {
+      "name": "Shadowgate (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Shadowgate%20(PT-BR).zip",
+      "filename": "Shadowgate (PT-BR).zip"
+    },
+    {
+      "name": "Shatterhand (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Shatterhand%20(USA).zip",
+      "filename": "Shatterhand (USA).zip"
+    },
+    {
+      "name": "Shingen the Ruler (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Shingen%20the%20Ruler%20(USA).zip",
+      "filename": "Shingen the Ruler (USA).zip"
+    },
+    {
+      "name": "Shinobi (PT-BR) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Shinobi%20(PT-BR)%20(Unl).zip",
+      "filename": "Shinobi (PT-BR) (Unl).zip"
+    },
+    {
+      "name": "Shockwave (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Shockwave%20(USA)%20(Unl).zip",
+      "filename": "Shockwave (USA) (Unl).zip"
+    },
+    {
+      "name": "Shooting Range (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Shooting%20Range%20(USA).zip",
+      "filename": "Shooting Range (USA).zip"
+    },
+    {
+      "name": "Short Order + Egg-Splode! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Short Order + Egg-Splode! (USA).zip",
+      "filename": "Short Order + Egg-Splode! (USA).zip"
+    },
+    {
+      "name": "Side Pocket (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Side%20Pocket%20(USA).zip",
+      "filename": "Side Pocket (USA).zip"
+    },
+    {
+      "name": "Silent Assault (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Silent%20Assault%20(USA)%20(Unl).zip",
+      "filename": "Silent Assault (USA) (Unl).zip"
+    },
+    {
+      "name": "Silent Service (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Silent%20Service%20(USA)%20(Rev%20A).zip",
+      "filename": "Silent Service (USA) (Rev A).zip"
+    },
+    {
+      "name": "Silk Worm (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Silk%20Worm%20(USA).zip",
+      "filename": "Silk Worm (USA).zip"
+    },
+    {
+      "name": "Silver Surfer (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Silver%20Surfer%20(PT-BR).zip",
+      "filename": "Silver Surfer (PT-BR).zip"
+    },
+    {
+      "name": "Simpsons, The - Bart vs. the Space Mutants (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Simpsons%2C%20The%20-%20Bart%20vs.%20the%20Space%20Mutants%20(USA)%20(Rev%20A).zip",
+      "filename": "Simpsons, The - Bart vs. the Space Mutants (USA) (Rev A).zip"
+    },
+    {
+      "name": "Simpsons, The - Bart vs. the World (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Simpsons%2C%20The%20-%20Bart%20vs.%20the%20World%20(USA).zip",
+      "filename": "Simpsons, The - Bart vs. the World (USA).zip"
+    },
+    {
+      "name": "Simpsons, The - Bartman Meets Radioactive Man (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Simpsons%2C%20The%20-%20Bartman%20Meets%20Radioactive%20Man%20(USA).zip",
+      "filename": "Simpsons, The - Bartman Meets Radioactive Man (USA).zip"
+    },
+    {
+      "name": "Skate or Die (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Skate%20or%20Die%20(USA).zip",
+      "filename": "Skate or Die (USA).zip"
+    },
+    {
+      "name": "Skate or Die 2 - The Search for Double Trouble (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Skate%20or%20Die%202%20-%20The%20Search%20for%20Double%20Trouble%20(USA).zip",
+      "filename": "Skate or Die 2 - The Search for Double Trouble (USA).zip"
+    },
+    {
+      "name": "Ski or Die (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ski%20or%20Die%20(USA).zip",
+      "filename": "Ski or Die (USA).zip"
+    },
+    {
+      "name": "Skull & Crossbones (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Skull%20%26%20Crossbones%20(USA)%20(Unl).zip",
+      "filename": "Skull & Crossbones (USA) (Unl).zip"
+    },
+    {
+      "name": "Sky Kid (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Sky%20Kid%20(USA).zip",
+      "filename": "Sky Kid (USA).zip"
+    },
+    {
+      "name": "Sky Shark (USA) (Rev 0A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Sky%20Shark%20(USA)%20(Rev%200A).zip",
+      "filename": "Sky Shark (USA) (Rev 0A).zip"
+    },
+    {
+      "name": "Slalom (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Slalom%20(USA).zip",
+      "filename": "Slalom (USA).zip"
+    },
+    {
+      "name": "Smash T.V. (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Smash%20T.V.%20(USA).zip",
+      "filename": "Smash T.V. (USA).zip"
+    },
+    {
+      "name": "Smurfs, The (Europe) (En,Fr,De,Es)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Smurfs%2C%20The%20(Europe)%20(En%2CFr%2CDe%2CEs).zip",
+      "filename": "Smurfs, The (Europe) (En,Fr,De,Es).zip"
+    },
+    {
+      "name": "Snake Rattle n Roll (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Snake%20Rattle%20n%20Roll%20(USA).zip",
+      "filename": "Snake Rattle n Roll (USA).zip"
+    },
+    {
+      "name": "Snake's Revenge (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Snake's%20Revenge%20(USA).zip",
+      "filename": "Snake's Revenge (USA).zip"
+    },
+    {
+      "name": "Snoopy's Silly Sports Spectacular! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Snoopy's%20Silly%20Sports%20Spectacular!%20(USA).zip",
+      "filename": "Snoopy's Silly Sports Spectacular! (USA).zip"
+    },
+    {
+      "name": "Snow Brothers (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Snow%20Brothers%20(USA).zip",
+      "filename": "Snow Brothers (USA).zip"
+    },
+    {
+      "name": "Soccer (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Soccer%20(PT-BR).zip",
+      "filename": "Soccer (PT-BR).zip"
+    },
+    {
+      "name": "Solar Jetman - Hunt for the Golden Warpship (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Solar%20Jetman%20-%20Hunt%20for%20the%20Golden%20Warpship%20(USA).zip",
+      "filename": "Solar Jetman - Hunt for the Golden Warpship (USA).zip"
+    },
+    {
+      "name": "Solitaire (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Solitaire%20(USA)%20(Unl).zip",
+      "filename": "Solitaire (USA) (Unl).zip"
+    },
+    {
+      "name": "Solomon's Key (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Solomon's%20Key%20(USA).zip",
+      "filename": "Solomon's Key (USA).zip"
+    },
+    {
+      "name": "Solomon's Key 2 (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Solomon's%20Key%202%20(Europe).zip",
+      "filename": "Solomon's Key 2 (Europe).zip"
+    },
+    {
+      "name": "Solstice - The Quest for the Staff of Demnos (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Solstice%20-%20The%20Quest%20for%20the%20Staff%20of%20Demnos%20(PT-BR).zip",
+      "filename": "Solstice - The Quest for the Staff of Demnos (PT-BR).zip"
+    },
+    {
+      "name": "Space Shuttle Project (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Space%20Shuttle%20Project%20(USA).zip",
+      "filename": "Space Shuttle Project (USA).zip"
+    },
+    {
+      "name": "Spelunker (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Spelunker%20(PT-BR).zip",
+      "filename": "Spelunker (PT-BR).zip"
+    },
+    {
+      "name": "Spider-Man - Return of the Sinister Six (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Spider-Man%20-%20Return%20of%20the%20Sinister%20Six%20(USA).zip",
+      "filename": "Spider-Man - Return of the Sinister Six (USA).zip"
+    },
+    {
+      "name": "Spiritual Warfare (USA) (v6.1) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Spiritual%20Warfare%20(USA)%20(v6.1)%20(Unl).zip",
+      "filename": "Spiritual Warfare (USA) (v6.1) (Unl).zip"
+    },
+    {
+      "name": "Spot - The Video Game (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Spot%20-%20The%20Video%20Game%20(USA).zip",
+      "filename": "Spot - The Video Game (USA).zip"
+    },
+    {
+      "name": "Spy Hunter (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Spy%20Hunter%20(USA).zip",
+      "filename": "Spy Hunter (USA).zip"
+    },
+    {
+      "name": "Spy vs Spy (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Spy%20vs%20Spy%20(USA).zip",
+      "filename": "Spy vs Spy (USA).zip"
+    },
+    {
+      "name": "Sqoon (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Sqoon%20(USA).zip",
+      "filename": "Sqoon (USA).zip"
+    },
+    {
+      "name": "Stack-Up (World)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Stack-Up%20(World).zip",
+      "filename": "Stack-Up (World).zip"
+    },
+    {
+      "name": "Stadium Events (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Stadium%20Events%20(USA).zip",
+      "filename": "Stadium Events (USA).zip"
+    },
+    {
+      "name": "Stanley - The Search for Dr. Livingston (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Stanley%20-%20The%20Search%20for%20Dr.%20Livingston%20(USA).zip",
+      "filename": "Stanley - The Search for Dr. Livingston (USA).zip"
+    },
+    {
+      "name": "Star Force (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Star%20Force%20(USA).zip",
+      "filename": "Star Force (USA).zip"
+    },
+    {
+      "name": "Star Soldier (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Star%20Soldier%20(USA).zip",
+      "filename": "Star Soldier (USA).zip"
+    },
+    {
+      "name": "Star Trek - 25th Anniversary (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Star%20Trek%20-%2025th%20Anniversary%20(USA).zip",
+      "filename": "Star Trek - 25th Anniversary (USA).zip"
+    },
+    {
+      "name": "Star Trek - The Next Generation (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Star%20Trek%20-%20The%20Next%20Generation%20(USA).zip",
+      "filename": "Star Trek - The Next Generation (USA).zip"
+    },
+    {
+      "name": "Star Voyager (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Star%20Voyager%20(PT-BR).zip",
+      "filename": "Star Voyager (PT-BR).zip"
+    },
+    {
+      "name": "Star Wars (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Star%20Wars%20(PT-BR).zip",
+      "filename": "Star Wars (PT-BR).zip"
+    },
+    {
+      "name": "Star Wars - The Empire Strikes Back (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Star%20Wars%20-%20The%20Empire%20Strikes%20Back%20(USA).zip",
+      "filename": "Star Wars - The Empire Strikes Back (USA).zip"
+    },
+    {
+      "name": "StarTropics (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/StarTropics%20(USA).zip",
+      "filename": "StarTropics (USA).zip"
+    },
+    {
+      "name": "Starship Hector (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Starship%20Hector%20(USA).zip",
+      "filename": "Starship Hector (USA).zip"
+    },
+    {
+      "name": "Stealth ATF (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Stealth%20ATF%20(USA).zip",
+      "filename": "Stealth ATF (USA).zip"
+    },
+    {
+      "name": "Stinger (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Stinger%20(USA).zip",
+      "filename": "Stinger (USA).zip"
+    },
+    {
+      "name": "Street Cop (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Street%20Cop%20(USA).zip",
+      "filename": "Street Cop (USA).zip"
+    },
+    {
+      "name": "Street Fighter 2010 - The Final Fight (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Street%20Fighter%202010%20-%20The%20Final%20Fight%20(PT-BR).zip",
+      "filename": "Street Fighter 2010 - The Final Fight (PT-BR).zip"
+    },
+    {
+      "name": "Strider (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Strider%20(PT-BR).zip",
+      "filename": "Strider (PT-BR).zip"
+    },
+    {
+      "name": "Stunt Kids (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Stunt%20Kids%20(USA)%20(Unl).zip",
+      "filename": "Stunt Kids (USA) (Unl).zip"
+    },
+    {
+      "name": "Sunday Funday - The Ride (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Sunday%20Funday%20-%20The%20Ride%20(USA)%20(Unl).zip",
+      "filename": "Sunday Funday - The Ride (USA) (Unl).zip"
+    },
+    {
+      "name": "Super C (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super%20C%20(PT-BR).zip",
+      "filename": "Super C (PT-BR).zip"
+    },
+    {
+      "name": "Super Cars (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super%20Cars%20(USA).zip",
+      "filename": "Super Cars (USA).zip"
+    },
+    {
+      "name": "Super Dodge Ball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super%20Dodge%20Ball%20(USA).zip",
+      "filename": "Super Dodge Ball (USA).zip"
+    },
+    {
+      "name": "Super Glove Ball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super%20Glove%20Ball%20(USA).zip",
+      "filename": "Super Glove Ball (USA).zip"
+    },
+    {
+      "name": "Super Jeopardy! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super%20Jeopardy!%20(USA).zip",
+      "filename": "Super Jeopardy! (USA).zip"
+    },
+    {
+      "name": "Super Mario Bros. (PT-BR).nes",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super%20Mario%20Bros.%20(PT-BR).nes.zip",
+      "filename": "Super Mario Bros. (PT-BR).nes.zip"
+    },
+    {
+      "name": "Super Mario Bros. + Duck Hunt (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super Mario Bros. + Duck Hunt (USA).zip",
+      "filename": "Super Mario Bros. + Duck Hunt (USA).zip"
+    },
+    {
+      "name": "Super Mario Bros. + Duck Hunt + World Class Track Meet (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super Mario Bros. + Duck Hunt + World Class Track Meet (USA) (Rev A).zip",
+      "filename": "Super Mario Bros. + Duck Hunt + World Class Track Meet (USA) (Rev A).zip"
+    },
+    {
+      "name": "Super Mario Bros. + Tetris + Nintendo World Cup (Europe) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super Mario Bros. + Tetris + Nintendo World Cup (Europe) (Rev A).zip",
+      "filename": "Super Mario Bros. + Tetris + Nintendo World Cup (Europe) (Rev A).zip"
+    },
+    {
+      "name": "Super Mario Bros. 2 (PT-BR).nes",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super%20Mario%20Bros.%202%20(PT-BR).nes.zip",
+      "filename": "Super Mario Bros. 2 (PT-BR).nes.zip"
+    },
+    {
+      "name": "Super Mario Bros. 3 (PT-BR).nes",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super%20Mario%20Bros.%203%20(PT-BR).nes.zip",
+      "filename": "Super Mario Bros. 3 (PT-BR).nes.zip"
+    },
+    {
+      "name": "Super Pitfall (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super%20Pitfall%20(PT-BR).zip",
+      "filename": "Super Pitfall (PT-BR).zip"
+    },
+    {
+      "name": "Super Spike V'Ball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super%20Spike%20V'Ball%20(USA).zip",
+      "filename": "Super Spike V'Ball (USA).zip"
+    },
+    {
+      "name": "Super Spike V'Ball + Nintendo World Cup (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super Spike V'Ball + Nintendo World Cup (USA).zip",
+      "filename": "Super Spike V'Ball + Nintendo World Cup (USA).zip"
+    },
+    {
+      "name": "Super Sprint (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super%20Sprint%20(USA)%20(Unl).zip",
+      "filename": "Super Sprint (USA) (Unl).zip"
+    },
+    {
+      "name": "Super Spy Hunter (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super%20Spy%20Hunter%20(USA).zip",
+      "filename": "Super Spy Hunter (USA).zip"
+    },
+    {
+      "name": "Super Team Games (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super%20Team%20Games%20(USA).zip",
+      "filename": "Super Team Games (USA).zip"
+    },
+    {
+      "name": "Super Turrican (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Super%20Turrican%20(Europe).zip",
+      "filename": "Super Turrican (Europe).zip"
+    },
+    {
+      "name": "Superman (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Superman%20(USA).zip",
+      "filename": "Superman (USA).zip"
+    },
+    {
+      "name": "Swamp Thing (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Swamp%20Thing%20(USA).zip",
+      "filename": "Swamp Thing (USA).zip"
+    },
+    {
+      "name": "Sword Master (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Sword%20Master%20(USA).zip",
+      "filename": "Sword Master (USA).zip"
+    },
+    {
+      "name": "Swords and Serpents (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Swords%20and%20Serpents%20(USA).zip",
+      "filename": "Swords and Serpents (USA).zip"
+    },
+    {
+      "name": "Taboo - The Sixth Sense (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Taboo%20-%20The%20Sixth%20Sense%20(USA)%20(Rev%20A).zip",
+      "filename": "Taboo - The Sixth Sense (USA) (Rev A).zip"
+    },
+    {
+      "name": "Tag Team Wrestling (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tag%20Team%20Wrestling%20(USA).zip",
+      "filename": "Tag Team Wrestling (USA).zip"
+    },
+    {
+      "name": "Tagin' Dragon (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tagin'%20Dragon%20(USA)%20(Unl).zip",
+      "filename": "Tagin' Dragon (USA) (Unl).zip"
+    },
+    {
+      "name": "TaleSpin (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/TaleSpin%20(USA).zip",
+      "filename": "TaleSpin (USA).zip"
+    },
+    {
+      "name": "Target Renegade (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Target%20Renegade%20(USA).zip",
+      "filename": "Target Renegade (USA).zip"
+    },
+    {
+      "name": "Tecmo Baseball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tecmo%20Baseball%20(USA).zip",
+      "filename": "Tecmo Baseball (USA).zip"
+    },
+    {
+      "name": "Tecmo Bowl (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tecmo%20Bowl%20(USA)%20(Rev%20A).zip",
+      "filename": "Tecmo Bowl (USA) (Rev A).zip"
+    },
+    {
+      "name": "Tecmo Cup - Soccer Game (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tecmo%20Cup%20-%20Soccer%20Game%20(USA).zip",
+      "filename": "Tecmo Cup - Soccer Game (USA).zip"
+    },
+    {
+      "name": "Tecmo NBA Basketball (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tecmo%20NBA%20Basketball%20(USA)%20(Rev%20A).zip",
+      "filename": "Tecmo NBA Basketball (USA) (Rev A).zip"
+    },
+    {
+      "name": "Tecmo Super Bowl (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tecmo%20Super%20Bowl%20(USA).zip",
+      "filename": "Tecmo Super Bowl (USA).zip"
+    },
+    {
+      "name": "Tecmo World Cup Soccer (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tecmo%20World%20Cup%20Soccer%20(Europe).zip",
+      "filename": "Tecmo World Cup Soccer (Europe).zip"
+    },
+    {
+      "name": "Tecmo World Wrestling (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tecmo%20World%20Wrestling%20(USA).zip",
+      "filename": "Tecmo World Wrestling (USA).zip"
+    },
+    {
+      "name": "Teenage Mutant Ninja Turtles (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Teenage%20Mutant%20Ninja%20Turtles%20(PT-BR).zip",
+      "filename": "Teenage Mutant Ninja Turtles (PT-BR).zip"
+    },
+    {
+      "name": "Teenage Mutant Ninja Turtles - Tournament Fighters (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Teenage%20Mutant%20Ninja%20Turtles%20-%20Tournament%20Fighters%20(USA).zip",
+      "filename": "Teenage Mutant Ninja Turtles - Tournament Fighters (USA).zip"
+    },
+    {
+      "name": "Teenage Mutant Ninja Turtles II - The Arcade Game (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Teenage%20Mutant%20Ninja%20Turtles%20II%20-%20The%20Arcade%20Game%20(PT-BR).zip",
+      "filename": "Teenage Mutant Ninja Turtles II - The Arcade Game (PT-BR).zip"
+    },
+    {
+      "name": "Teenage Mutant Ninja Turtles III - The Manhattan Project (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Teenage%20Mutant%20Ninja%20Turtles%20III%20-%20The%20Manhattan%20Project%20(PT-BR).zip",
+      "filename": "Teenage Mutant Ninja Turtles III - The Manhattan Project (PT-BR).zip"
+    },
+    {
+      "name": "Tennis (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tennis%20(PT-BR).zip",
+      "filename": "Tennis (PT-BR).zip"
+    },
+    {
+      "name": "Terminator 2 - Judgment Day (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Terminator%202%20-%20Judgment%20Day%20(PT-BR).zip",
+      "filename": "Terminator 2 - Judgment Day (PT-BR).zip"
+    },
+    {
+      "name": "Terminator, The (USA, Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Terminator%2C%20The%20(USA%2C%20Europe).zip",
+      "filename": "Terminator, The (USA, Europe).zip"
+    },
+    {
+      "name": "Terra Cresta (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Terra%20Cresta%20(USA).zip",
+      "filename": "Terra Cresta (USA).zip"
+    },
+    {
+      "name": "Tetris (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tetris%20(PT-BR).zip",
+      "filename": "Tetris (PT-BR).zip"
+    },
+    {
+      "name": "Tetris 2 (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tetris%202%20(USA).zip",
+      "filename": "Tetris 2 (USA).zip"
+    },
+    {
+      "name": "Three Stooges, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Three%20Stooges%2C%20The%20(USA).zip",
+      "filename": "Three Stooges, The (USA).zip"
+    },
+    {
+      "name": "Thunder & Lightning (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Thunder%20%26%20Lightning%20(USA).zip",
+      "filename": "Thunder & Lightning (USA).zip"
+    },
+    {
+      "name": "Thunderbirds (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Thunderbirds%20(USA).zip",
+      "filename": "Thunderbirds (USA).zip"
+    },
+    {
+      "name": "Thundercade (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Thundercade%20(USA).zip",
+      "filename": "Thundercade (USA).zip"
+    },
+    {
+      "name": "Tiger-Heli (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tiger-Heli%20(USA).zip",
+      "filename": "Tiger-Heli (USA).zip"
+    },
+    {
+      "name": "Tiles of Fate (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tiles%20of%20Fate%20(USA)%20(Unl).zip",
+      "filename": "Tiles of Fate (USA) (Unl).zip"
+    },
+    {
+      "name": "Time Lord (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Time%20Lord%20(PT-BR).zip",
+      "filename": "Time Lord (PT-BR).zip"
+    },
+    {
+      "name": "Times of Lore (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Times%20of%20Lore%20(USA).zip",
+      "filename": "Times of Lore (USA).zip"
+    },
+    {
+      "name": "Tiny Toon Adventures (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tiny%20Toon%20Adventures%20(PT-BR).zip",
+      "filename": "Tiny Toon Adventures (PT-BR).zip"
+    },
+    {
+      "name": "Tiny Toon Adventures 2 - Trouble in Wackyland (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tiny%20Toon%20Adventures%202%20-%20Trouble%20in%20Wackyland%20(USA).zip",
+      "filename": "Tiny Toon Adventures 2 - Trouble in Wackyland (USA).zip"
+    },
+    {
+      "name": "Tiny Toon Adventures Cartoon Workshop (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tiny%20Toon%20Adventures%20Cartoon%20Workshop%20(USA).zip",
+      "filename": "Tiny Toon Adventures Cartoon Workshop (USA).zip"
+    },
+    {
+      "name": "To the Earth (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/To%20the%20Earth%20(USA).zip",
+      "filename": "To the Earth (USA).zip"
+    },
+    {
+      "name": "Toki (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Toki%20(PT-BR).zip",
+      "filename": "Toki (PT-BR).zip"
+    },
+    {
+      "name": "Tom & Jerry - The Ultimate Game of Cat and Mouse! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tom%20%26%20Jerry%20-%20The%20Ultimate%20Game%20of%20Cat%20and%20Mouse!%20(USA).zip",
+      "filename": "Tom & Jerry - The Ultimate Game of Cat and Mouse! (USA).zip"
+    },
+    {
+      "name": "Tombs & Treasure (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Tombs%20%26%20Treasure%20(USA).zip",
+      "filename": "Tombs & Treasure (USA).zip"
+    },
+    {
+      "name": "Toobin' (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Toobin'%20(USA)%20(Unl).zip",
+      "filename": "Toobin' (USA) (Unl).zip"
+    },
+    {
+      "name": "Top Gun (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Top%20Gun%20(USA)%20(Rev%20A).zip",
+      "filename": "Top Gun (USA) (Rev A).zip"
+    },
+    {
+      "name": "Top Gun - The Second Mission (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Top%20Gun%20-%20The%20Second%20Mission%20(USA).zip",
+      "filename": "Top Gun - The Second Mission (USA).zip"
+    },
+    {
+      "name": "Total Recall (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Total%20Recall%20(USA).zip",
+      "filename": "Total Recall (USA).zip"
+    },
+    {
+      "name": "Totally Rad (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Totally%20Rad%20(PT-BR).zip",
+      "filename": "Totally Rad (PT-BR).zip"
+    },
+    {
+      "name": "Touch Down Fever (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Touch%20Down%20Fever%20(USA).zip",
+      "filename": "Touch Down Fever (USA).zip"
+    },
+    {
+      "name": "Town & Country Surf Designs - Thrilla's Surfari (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Town%20%26%20Country%20Surf%20Designs%20-%20Thrilla's%20Surfari%20(USA).zip",
+      "filename": "Town & Country Surf Designs - Thrilla's Surfari (USA).zip"
+    },
+    {
+      "name": "Town & Country Surf Designs - Wood & Water Rage (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Town%20%26%20Country%20Surf%20Designs%20-%20Wood%20%26%20Water%20Rage%20(USA).zip",
+      "filename": "Town & Country Surf Designs - Wood & Water Rage (USA).zip"
+    },
+    {
+      "name": "Toxic Crusaders (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Toxic%20Crusaders%20(USA).zip",
+      "filename": "Toxic Crusaders (USA).zip"
+    },
+    {
+      "name": "Track & Field (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Track%20%26%20Field%20(PT-BR).zip",
+      "filename": "Track & Field (PT-BR).zip"
+    },
+    {
+      "name": "Track & Field II (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Track%20%26%20Field%20II%20(PT-BR).zip",
+      "filename": "Track & Field II (PT-BR).zip"
+    },
+    {
+      "name": "Treasure Master (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Treasure%20Master%20(USA).zip",
+      "filename": "Treasure Master (USA).zip"
+    },
+    {
+      "name": "Trog! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Trog!%20(USA).zip",
+      "filename": "Trog! (USA).zip"
+    },
+    {
+      "name": "Trojan (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Trojan%20(PT-BR).zip",
+      "filename": "Trojan (PT-BR).zip"
+    },
+    {
+      "name": "Trolls in Crazyland, The (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Trolls%20in%20Crazyland%2C%20The%20(Europe).zip",
+      "filename": "Trolls in Crazyland, The (Europe).zip"
+    },
+    {
+      "name": "Trolls on Treasure Island (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Trolls%20on%20Treasure%20Island%20(USA)%20(Unl).zip",
+      "filename": "Trolls on Treasure Island (USA) (Unl).zip"
+    },
+    {
+      "name": "Twin Cobra (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Twin%20Cobra%20(USA).zip",
+      "filename": "Twin Cobra (USA).zip"
+    },
+    {
+      "name": "Twin Eagle (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Twin%20Eagle%20(USA).zip",
+      "filename": "Twin Eagle (USA).zip"
+    },
+    {
+      "name": "Ufouria - The Saga (Europe)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ufouria%20-%20The%20Saga%20(Europe).zip",
+      "filename": "Ufouria - The Saga (Europe).zip"
+    },
+    {
+      "name": "Ultima - Exodus (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ultima%20-%20Exodus%20(USA).zip",
+      "filename": "Ultima - Exodus (USA).zip"
+    },
+    {
+      "name": "Ultima - Quest of the Avatar (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ultima%20-%20Quest%20of%20the%20Avatar%20(USA).zip",
+      "filename": "Ultima - Quest of the Avatar (USA).zip"
+    },
+    {
+      "name": "Ultima - Warriors of Destiny (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ultima%20-%20Warriors%20of%20Destiny%20(USA).zip",
+      "filename": "Ultima - Warriors of Destiny (USA).zip"
+    },
+    {
+      "name": "Ultimate Air Combat (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ultimate%20Air%20Combat%20(USA).zip",
+      "filename": "Ultimate Air Combat (USA).zip"
+    },
+    {
+      "name": "Ultimate Basketball (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ultimate%20Basketball%20(USA).zip",
+      "filename": "Ultimate Basketball (USA).zip"
+    },
+    {
+      "name": "Ultimate League Soccer (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ultimate%20League%20Soccer%20(USA)%20(Unl).zip",
+      "filename": "Ultimate League Soccer (USA) (Unl).zip"
+    },
+    {
+      "name": "Ultimate Stuntman, The (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Ultimate%20Stuntman%2C%20The%20(USA)%20(Unl).zip",
+      "filename": "Ultimate Stuntman, The (USA) (Unl).zip"
+    },
+    {
+      "name": "Uncanny X-Men, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Uncanny%20X-Men%2C%20The%20(USA).zip",
+      "filename": "Uncanny X-Men, The (USA).zip"
+    },
+    {
+      "name": "Uncharted Waters (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Uncharted%20Waters%20(USA).zip",
+      "filename": "Uncharted Waters (USA).zip"
+    },
+    {
+      "name": "Uninvited (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Uninvited%20(USA).zip",
+      "filename": "Uninvited (USA).zip"
+    },
+    {
+      "name": "Untouchables, The (USA) (Rev B)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Untouchables%2C%20The%20(USA)%20(Rev%20B).zip",
+      "filename": "Untouchables, The (USA) (Rev B).zip"
+    },
+    {
+      "name": "Urban Champion (World)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Urban%20Champion%20(World).zip",
+      "filename": "Urban Champion (World).zip"
+    },
+    {
+      "name": "Vegas Dream (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Vegas%20Dream%20(USA).zip",
+      "filename": "Vegas Dream (USA).zip"
+    },
+    {
+      "name": "Venice Beach Volleyball (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Venice%20Beach%20Volleyball%20(USA)%20(Unl).zip",
+      "filename": "Venice Beach Volleyball (USA) (Unl).zip"
+    },
+    {
+      "name": "Vice - Project Doom (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Vice%20-%20Project%20Doom%20(USA).zip",
+      "filename": "Vice - Project Doom (USA).zip"
+    },
+    {
+      "name": "Videomation (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Videomation%20(USA).zip",
+      "filename": "Videomation (USA).zip"
+    },
+    {
+      "name": "Vindicators (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Vindicators%20(USA)%20(Unl).zip",
+      "filename": "Vindicators (USA) (Unl).zip"
+    },
+    {
+      "name": "Volleybal (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Volleybal%20(PT-BR).zip",
+      "filename": "Volleybal (PT-BR).zip"
+    },
+    {
+      "name": "WCW World Championship Wrestling (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/WCW%20World%20Championship%20Wrestling%20(USA).zip",
+      "filename": "WCW World Championship Wrestling (USA).zip"
+    },
+    {
+      "name": "WWF King of the Ring (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/WWF%20King%20of%20the%20Ring%20(USA).zip",
+      "filename": "WWF King of the Ring (USA).zip"
+    },
+    {
+      "name": "WWF Wrestlemania (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/WWF%20Wrestlemania%20(USA).zip",
+      "filename": "WWF Wrestlemania (USA).zip"
+    },
+    {
+      "name": "WWF Wrestlemania Challenge (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/WWF%20Wrestlemania%20Challenge%20(USA).zip",
+      "filename": "WWF Wrestlemania Challenge (USA).zip"
+    },
+    {
+      "name": "WWF Wrestlemania Steel Cage Challenge (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/WWF%20Wrestlemania%20Steel%20Cage%20Challenge%20(USA).zip",
+      "filename": "WWF Wrestlemania Steel Cage Challenge (USA).zip"
+    },
+    {
+      "name": "Wacky Races (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wacky%20Races%20(USA).zip",
+      "filename": "Wacky Races (USA).zip"
+    },
+    {
+      "name": "Wall Street Kid (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wall%20Street%20Kid%20(USA).zip",
+      "filename": "Wall Street Kid (USA).zip"
+    },
+    {
+      "name": "Wally Bear and the No! Gang (USA) (Unl)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wally%20Bear%20and%20the%20No!%20Gang%20(USA)%20(Unl).zip",
+      "filename": "Wally Bear and the No! Gang (USA) (Unl).zip"
+    },
+    {
+      "name": "Wario's Woods (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wario's%20Woods%20(USA).zip",
+      "filename": "Wario's Woods (USA).zip"
+    },
+    {
+      "name": "Wayne Gretzky Hockey (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wayne%20Gretzky%20Hockey%20(USA).zip",
+      "filename": "Wayne Gretzky Hockey (USA).zip"
+    },
+    {
+      "name": "Wayne's World (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wayne's%20World%20(USA).zip",
+      "filename": "Wayne's World (USA).zip"
+    },
+    {
+      "name": "Werewolf - The Last Warrior (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Werewolf%20-%20The%20Last%20Warrior%20(PT-BR).zip",
+      "filename": "Werewolf - The Last Warrior (PT-BR).zip"
+    },
+    {
+      "name": "Wheel of Fortune (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wheel%20of%20Fortune%20(USA)%20(Rev%20A).zip",
+      "filename": "Wheel of Fortune (USA) (Rev A).zip"
+    },
+    {
+      "name": "Wheel of Fortune - Family Edition (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wheel%20of%20Fortune%20-%20Family%20Edition%20(USA).zip",
+      "filename": "Wheel of Fortune - Family Edition (USA).zip"
+    },
+    {
+      "name": "Wheel of Fortune - Junior Edition (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wheel%20of%20Fortune%20-%20Junior%20Edition%20(USA).zip",
+      "filename": "Wheel of Fortune - Junior Edition (USA).zip"
+    },
+    {
+      "name": "Wheel of Fortune Starring Vanna White (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wheel%20of%20Fortune%20Starring%20Vanna%20White%20(USA).zip",
+      "filename": "Wheel of Fortune Starring Vanna White (USA).zip"
+    },
+    {
+      "name": "Where in Time Is Carmen Sandiego (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Where%20in%20Time%20Is%20Carmen%20Sandiego%20(USA).zip",
+      "filename": "Where in Time Is Carmen Sandiego (USA).zip"
+    },
+    {
+      "name": "Where's Waldo (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Where's%20Waldo%20(USA).zip",
+      "filename": "Where's Waldo (USA).zip"
+    },
+    {
+      "name": "Who Framed Roger Rabbit (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Who%20Framed%20Roger%20Rabbit%20(USA).zip",
+      "filename": "Who Framed Roger Rabbit (USA).zip"
+    },
+    {
+      "name": "Whomp 'Em (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Whomp%20'Em%20(USA).zip",
+      "filename": "Whomp 'Em (USA).zip"
+    },
+    {
+      "name": "Widget (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Widget%20(USA).zip",
+      "filename": "Widget (USA).zip"
+    },
+    {
+      "name": "Wild Gunman (World) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wild%20Gunman%20(World)%20(Rev%20A).zip",
+      "filename": "Wild Gunman (World) (Rev A).zip"
+    },
+    {
+      "name": "Willow (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Willow%20(PT-BR).zip",
+      "filename": "Willow (PT-BR).zip"
+    },
+    {
+      "name": "Win, Lose or Draw (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Win%2C%20Lose%20or%20Draw%20(USA).zip",
+      "filename": "Win, Lose or Draw (USA).zip"
+    },
+    {
+      "name": "Winter Games (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Winter%20Games%20(USA)%20(Rev%20A).zip",
+      "filename": "Winter Games (USA) (Rev A).zip"
+    },
+    {
+      "name": "Wizardry - Knight of Diamonds - The Second Scenario (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wizardry%20-%20Knight%20of%20Diamonds%20-%20The%20Second%20Scenario%20(USA).zip",
+      "filename": "Wizardry - Knight of Diamonds - The Second Scenario (USA).zip"
+    },
+    {
+      "name": "Wizardry - Proving Grounds of the Mad Overlord (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wizardry%20-%20Proving%20Grounds%20of%20the%20Mad%20Overlord%20(USA).zip",
+      "filename": "Wizardry - Proving Grounds of the Mad Overlord (USA).zip"
+    },
+    {
+      "name": "Wizards & Warriors (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wizards%20%26%20Warriors%20(USA)%20(Rev%20A).zip",
+      "filename": "Wizards & Warriors (USA) (Rev A).zip"
+    },
+    {
+      "name": "Wizards & Warriors III - Kuros...Visions of Power (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wizards%20%26%20Warriors%20III%20-%20Kuros...Visions%20of%20Power%20(USA).zip",
+      "filename": "Wizards & Warriors III - Kuros...Visions of Power (USA).zip"
+    },
+    {
+      "name": "Wolverine (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wolverine%20(PT-BR).zip",
+      "filename": "Wolverine (PT-BR).zip"
+    },
+    {
+      "name": "World Champ - Super Boxing Great Fight (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/World%20Champ%20-%20Super%20Boxing%20Great%20Fight%20(USA).zip",
+      "filename": "World Champ - Super Boxing Great Fight (USA).zip"
+    },
+    {
+      "name": "World Class Track Meet (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/World%20Class%20Track%20Meet%20(USA)%20(Rev%20A).zip",
+      "filename": "World Class Track Meet (USA) (Rev A).zip"
+    },
+    {
+      "name": "World Games (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/World%20Games%20(USA).zip",
+      "filename": "World Games (USA).zip"
+    },
+    {
+      "name": "Wrath of the Black Manta (USA) (Rev A)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wrath%20of%20the%20Black%20Manta%20(USA)%20(Rev%20A).zip",
+      "filename": "Wrath of the Black Manta (USA) (Rev A).zip"
+    },
+    {
+      "name": "Wrecking Crew (World)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wrecking%20Crew%20(World).zip",
+      "filename": "Wrecking Crew (World).zip"
+    },
+    {
+      "name": "Wurm - Journey to the Center of the Earth! (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Wurm%20-%20Journey%20to%20the%20Center%20of%20the%20Earth!%20(USA).zip",
+      "filename": "Wurm - Journey to the Center of the Earth! (USA).zip"
+    },
+    {
+      "name": "Xenophobe (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Xenophobe%20(USA).zip",
+      "filename": "Xenophobe (USA).zip"
+    },
+    {
+      "name": "Xevious - The Avenger (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Xevious%20-%20The%20Avenger%20(USA).zip",
+      "filename": "Xevious - The Avenger (USA).zip"
+    },
+    {
+      "name": "Xexyz (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Xexyz%20(USA).zip",
+      "filename": "Xexyz (USA).zip"
+    },
+    {
+      "name": "Yo! Noid (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Yo!%20Noid%20(PT-BR).zip",
+      "filename": "Yo! Noid (PT-BR).zip"
+    },
+    {
+      "name": "Yoshi (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Yoshi%20(USA).zip",
+      "filename": "Yoshi (USA).zip"
+    },
+    {
+      "name": "Yoshi's Cookie (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Yoshi's%20Cookie%20(USA).zip",
+      "filename": "Yoshi's Cookie (USA).zip"
+    },
+    {
+      "name": "Young Indiana Jones Chronicles, The (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Young%20Indiana%20Jones%20Chronicles%2C%20The%20(USA).zip",
+      "filename": "Young Indiana Jones Chronicles, The (USA).zip"
+    },
+    {
+      "name": "Zanac (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Zanac%20(PT-BR).zip",
+      "filename": "Zanac (PT-BR).zip"
+    },
+    {
+      "name": "Zelda II - The Adventure of Link (PT-BR)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Zelda%20II%20-%20The%20Adventure%20of%20Link%20(PT-BR).zip",
+      "filename": "Zelda II - The Adventure of Link (PT-BR).zip"
+    },
+    {
+      "name": "Zen - Intergalactic Ninja (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Zen%20-%20Intergalactic%20Ninja%20(USA).zip",
+      "filename": "Zen - Intergalactic Ninja (USA).zip"
+    },
+    {
+      "name": "Zoda's Revenge - StarTropics II (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Zoda's%20Revenge%20-%20StarTropics%20II%20(USA).zip",
+      "filename": "Zoda's Revenge - StarTropics II (USA).zip"
+    },
+    {
+      "name": "Zombie Nation (USA)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-nes/main/Zombie%20Nation%20(USA).zip",
+      "filename": "Zombie Nation (USA).zip"
+    }
+  ]
+}

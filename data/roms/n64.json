@@ -1,0 +1,586 @@
+{
+  "platform": "n64",
+  "core": "mupen64plus_next",
+  "games": [
+    {
+      "name": "All Star Baseball 99",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/All_Star%20Baseball_99.n64",
+      "filename": "All_Star Baseball_99.n64"
+    },
+    {
+      "name": "All Star Tennis 99",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/All_Star_Tennis_99.n64",
+      "filename": "All_Star_Tennis_99.n64"
+    },
+    {
+      "name": "Automobili Lamborghini",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Automobili_Lamborghini.n64",
+      "filename": "Automobili_Lamborghini.n64"
+    },
+    {
+      "name": "Banjo Kazooie",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Banjo_Kazooie.n64",
+      "filename": "Banjo_Kazooie.n64"
+    },
+    {
+      "name": "BatmanBeyondReturnoftheJoker",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/BatmanBeyondReturnoftheJoker.z64",
+      "filename": "BatmanBeyondReturnoftheJoker.z64"
+    },
+    {
+      "name": "Batman Beyond",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Batman_Beyond.n64",
+      "filename": "Batman_Beyond.n64"
+    },
+    {
+      "name": "Blast Corps",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Blast_Corps.n64",
+      "filename": "Blast_Corps.n64"
+    },
+    {
+      "name": "Bomberman",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Bomberman.n64",
+      "filename": "Bomberman.n64"
+    },
+    {
+      "name": "Bomberman Hero",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Bomberman_Hero.n64",
+      "filename": "Bomberman_Hero.n64"
+    },
+    {
+      "name": "Carmageddon 64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Carmageddon_64.n64",
+      "filename": "Carmageddon_64.n64"
+    },
+    {
+      "name": "Conkers Bad Fur Day",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Conkers_Bad_Fur_Day.n64",
+      "filename": "Conkers_Bad_Fur_Day.n64"
+    },
+    {
+      "name": "DonkeyKong64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/DonkeyKong64.z64",
+      "filename": "DonkeyKong64.z64"
+    },
+    {
+      "name": "Extreme G",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Extreme_G.n64",
+      "filename": "Extreme_G.n64"
+    },
+    {
+      "name": "F-1 World Grand Prix",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/F-1_World_Grand_Prix.n64",
+      "filename": "F-1_World_Grand_Prix.n64"
+    },
+    {
+      "name": "FZeroX",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/FZeroX.z64",
+      "filename": "FZeroX.z64"
+    },
+    {
+      "name": "FlyingDragon",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/FlyingDragon.z64",
+      "filename": "FlyingDragon.z64"
+    },
+    {
+      "name": "HarvestMoon64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/HarvestMoon64.z64",
+      "filename": "HarvestMoon64.z64"
+    },
+    {
+      "name": "Killer Instinct Gold",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Killer_Instinct_Gold.n64",
+      "filename": "Killer_Instinct_Gold.n64"
+    },
+    {
+      "name": "KnockoutKings 2000",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/KnockoutKings%202000.n64",
+      "filename": "KnockoutKings 2000.n64"
+    },
+    {
+      "name": "KnockoutKings2000",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/KnockoutKings2000.n64",
+      "filename": "KnockoutKings2000.n64"
+    },
+    {
+      "name": "Kobe Bryants NBA Courtside",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Kobe_Bryants_NBA_Courtside.n64",
+      "filename": "Kobe_Bryants_NBA_Courtside.n64"
+    },
+    {
+      "name": "LEGO Racers",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/LEGO_Racers.n64",
+      "filename": "LEGO_Racers.n64"
+    },
+    {
+      "name": "LegendofZeldaTheMajoraMask",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/LegendofZeldaTheMajoraMask.z64",
+      "filename": "LegendofZeldaTheMajoraMask.z64"
+    },
+    {
+      "name": "LegendofZeldaTheOcarinaofTime",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/LegendofZeldaTheOcarinaofTime.z64",
+      "filename": "LegendofZeldaTheOcarinaofTime.z64"
+    },
+    {
+      "name": "Lode Runner 3 D",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Lode_Runner_3_D.n64",
+      "filename": "Lode_Runner_3_D.n64"
+    },
+    {
+      "name": "MaceThe Dark Age",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/MaceThe%20Dark%20Age.n64",
+      "filename": "MaceThe Dark Age.n64"
+    },
+    {
+      "name": "Mace The Dark Age",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Mace_The%20Dark%20Age.n64",
+      "filename": "Mace_The Dark Age.n64"
+    },
+    {
+      "name": "Madden NFL 2001",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Madden_NFL_2001.n64",
+      "filename": "Madden_NFL_2001.n64"
+    },
+    {
+      "name": "Magical Tetris Challenge",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Magical_Tetris_Challenge.n64",
+      "filename": "Magical_Tetris_Challenge.n64"
+    },
+    {
+      "name": "Mahjong 64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Mahjong_64.n64",
+      "filename": "Mahjong_64.n64"
+    },
+    {
+      "name": "Major League Baseball featuring Ken Griffey",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Major_League%20Baseball_featuring_Ken_Griffey.n64",
+      "filename": "Major_League Baseball_featuring_Ken_Griffey.n64"
+    },
+    {
+      "name": "MarioParty2",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/MarioParty2.z64",
+      "filename": "MarioParty2.z64"
+    },
+    {
+      "name": "Mario Kart 64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Mario_Kart_64.z64",
+      "filename": "Mario_Kart_64.z64"
+    },
+    {
+      "name": "MickeynoRacingChallenge",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/MickeynoRacingChallenge.n64",
+      "filename": "MickeynoRacingChallenge.n64"
+    },
+    {
+      "name": "MissionImpossible",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/MissionImpossible.n64",
+      "filename": "MissionImpossible.n64"
+    },
+    {
+      "name": "Mission Impossible",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Mission_Impossible.n64",
+      "filename": "Mission_Impossible.n64"
+    },
+    {
+      "name": "Monopoly",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Monopoly.n64",
+      "filename": "Monopoly.n64"
+    },
+    {
+      "name": "MortalKombat 4",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/MortalKombat%204.z64",
+      "filename": "MortalKombat 4.z64"
+    },
+    {
+      "name": "MortalKombatMythologies",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/MortalKombatMythologies.n64",
+      "filename": "MortalKombatMythologies.n64"
+    },
+    {
+      "name": "MortalKombatTrilogy",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/MortalKombatTrilogy.n64",
+      "filename": "MortalKombatTrilogy.n64"
+    },
+    {
+      "name": "Mortal Kombat Mythologies Sub Zero",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Mortal_Kombat_Mythologies_Sub_Zero.n64",
+      "filename": "Mortal_Kombat_Mythologies_Sub_Zero.n64"
+    },
+    {
+      "name": "Mortal Kombat Trilogy",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Mortal_Kombat_Trilogy.n64",
+      "filename": "Mortal_Kombat_Trilogy.n64"
+    },
+    {
+      "name": "MsPac Man Maze Madness",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/MsPac_Man_Maze_Madness.n64",
+      "filename": "MsPac_Man_Maze_Madness.n64"
+    },
+    {
+      "name": "MysticalNinja2StarringGoemon)",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/MysticalNinja2StarringGoemon).n64",
+      "filename": "MysticalNinja2StarringGoemon).n64"
+    },
+    {
+      "name": "MysticalNinja2StarringGoemon",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/MysticalNinja2StarringGoemon.n64",
+      "filename": "MysticalNinja2StarringGoemon.n64"
+    },
+    {
+      "name": "NASCAR 2000",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/NASCAR_2000.n64",
+      "filename": "NASCAR_2000.n64"
+    },
+    {
+      "name": "NBACourtside2",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/NBACourtside2.n64",
+      "filename": "NBACourtside2.n64"
+    },
+    {
+      "name": "NBAHangtime",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/NBAHangtime.n64",
+      "filename": "NBAHangtime.n64"
+    },
+    {
+      "name": "NBAJam99",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/NBAJam99.n64",
+      "filename": "NBAJam99.n64"
+    },
+    {
+      "name": "NBALive2000",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/NBALive2000.n64",
+      "filename": "NBALive2000.n64"
+    },
+    {
+      "name": "NBA Pro 99",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/NBA_Pro_99.n64",
+      "filename": "NBA_Pro_99.n64"
+    },
+    {
+      "name": "NBAintheZone",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/NBAintheZone.n64",
+      "filename": "NBAintheZone.n64"
+    },
+    {
+      "name": "NFLQuarterbackClub2001",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/NFLQuarterbackClub2001.n64",
+      "filename": "NFLQuarterbackClub2001.n64"
+    },
+    {
+      "name": "NHLBladesofSteel 99",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/NHLBladesofSteel%2099.n64",
+      "filename": "NHLBladesofSteel 99.n64"
+    },
+    {
+      "name": "NHLBreakaway99",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/NHLBreakaway99.n64",
+      "filename": "NHLBreakaway99.n64"
+    },
+    {
+      "name": "NaganoWinterOlympics",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/NaganoWinterOlympics.n64",
+      "filename": "NaganoWinterOlympics.n64"
+    },
+    {
+      "name": "NaganoWinterOlympics98",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/NaganoWinterOlympics98.n64",
+      "filename": "NaganoWinterOlympics98.n64"
+    },
+    {
+      "name": "NamcoMuseum64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/NamcoMuseum64.n64",
+      "filename": "NamcoMuseum64.n64"
+    },
+    {
+      "name": "NuclearStrike64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/NuclearStrike64.n64",
+      "filename": "NuclearStrike64.n64"
+    },
+    {
+      "name": "Nuclear Strike 64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Nuclear_Strike_64.n64",
+      "filename": "Nuclear_Strike_64.n64"
+    },
+    {
+      "name": "OffRoadChallenge",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/OffRoadChallenge.n64",
+      "filename": "OffRoadChallenge.n64"
+    },
+    {
+      "name": "Off Road Challenge",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Off_Road_Challenge.n64",
+      "filename": "Off_Road_Challenge.n64"
+    },
+    {
+      "name": "OlympicHockeyNagano98",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/OlympicHockeyNagano98.n64",
+      "filename": "OlympicHockeyNagano98.n64"
+    },
+    {
+      "name": "Olympic Hockey Nagano98",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Olympic_Hockey_Nagano98.n64",
+      "filename": "Olympic_Hockey_Nagano98.n64"
+    },
+    {
+      "name": "Paperboy",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Paperboy.n64",
+      "filename": "Paperboy.n64"
+    },
+    {
+      "name": "PennyRacers",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/PennyRacers.n64",
+      "filename": "PennyRacers.n64"
+    },
+    {
+      "name": "PerfectDark",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/PerfectDark.z64",
+      "filename": "PerfectDark.z64"
+    },
+    {
+      "name": "PuzzleBobble64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/PuzzleBobble64.n64",
+      "filename": "PuzzleBobble64.n64"
+    },
+    {
+      "name": "Quake64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Quake64.n64",
+      "filename": "Quake64.n64"
+    },
+    {
+      "name": "Rayman2",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Rayman2.n64",
+      "filename": "Rayman2.n64"
+    },
+    {
+      "name": "RoadRash64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/RoadRash64.n64",
+      "filename": "RoadRash64.n64"
+    },
+    {
+      "name": "RockmanDash",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/RockmanDash.n64",
+      "filename": "RockmanDash.n64"
+    },
+    {
+      "name": "SanFranciscoRush",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/SanFranciscoRush.n64",
+      "filename": "SanFranciscoRush.n64"
+    },
+    {
+      "name": "ShadowMan",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/ShadowMan.n64",
+      "filename": "ShadowMan.n64"
+    },
+    {
+      "name": "Shadow Man",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Shadow_Man.n64",
+      "filename": "Shadow_Man.n64"
+    },
+    {
+      "name": "Sim City 2000",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Sim_City_2000.n64",
+      "filename": "Sim_City_2000.n64"
+    },
+    {
+      "name": "SnowboardKids2",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/SnowboardKids2.n64",
+      "filename": "SnowboardKids2.n64"
+    },
+    {
+      "name": "SpiderMan",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/SpiderMan.z64",
+      "filename": "SpiderMan.z64"
+    },
+    {
+      "name": "Spider Man",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Spider_Man.n64",
+      "filename": "Spider_Man.n64"
+    },
+    {
+      "name": "StarCraft64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/StarCraft64.n64",
+      "filename": "StarCraft64.n64"
+    },
+    {
+      "name": "StarWarsEpisode",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/StarWarsEpisode.n64",
+      "filename": "StarWarsEpisode.n64"
+    },
+    {
+      "name": "StarWars ShadowsoftheEmpire",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/StarWars_ShadowsoftheEmpire.n64",
+      "filename": "StarWars_ShadowsoftheEmpire.n64"
+    },
+    {
+      "name": "SuperBowling",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/SuperBowling.n64",
+      "filename": "SuperBowling.n64"
+    },
+    {
+      "name": "SuperMario64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/SuperMario64.z64",
+      "filename": "SuperMario64.z64"
+    },
+    {
+      "name": "SuperSmashBros",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/SuperSmashBros.z64",
+      "filename": "SuperSmashBros.z64"
+    },
+    {
+      "name": "Supercross2000",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Supercross2000.n64",
+      "filename": "Supercross2000.n64"
+    },
+    {
+      "name": "Superman",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Superman.n64",
+      "filename": "Superman.n64"
+    },
+    {
+      "name": "Tarzan",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Tarzan.n64",
+      "filename": "Tarzan.n64"
+    },
+    {
+      "name": "Tetris64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Tetris64.n64",
+      "filename": "Tetris64.n64"
+    },
+    {
+      "name": "TomClancysRainbowSix",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/TomClancysRainbowSix.n64",
+      "filename": "TomClancysRainbowSix.n64"
+    },
+    {
+      "name": "TomandJerry",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/TomandJerry.n64",
+      "filename": "TomandJerry.n64"
+    },
+    {
+      "name": "TomandJerryinFistsofFurry",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/TomandJerryinFistsofFurry.n64",
+      "filename": "TomandJerryinFistsofFurry.n64"
+    },
+    {
+      "name": "TonyHawk",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/TonyHawk.n64",
+      "filename": "TonyHawk.n64"
+    },
+    {
+      "name": "TonyHawksProSkater2",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/TonyHawksProSkater2.n64",
+      "filename": "TonyHawksProSkater2.n64"
+    },
+    {
+      "name": "TopGearHyper",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/TopGearHyper.n64",
+      "filename": "TopGearHyper.n64"
+    },
+    {
+      "name": "TopGearRally2",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/TopGearRally2.n64",
+      "filename": "TopGearRally2.n64"
+    },
+    {
+      "name": "TransformersBeastWarsTransmetals",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/TransformersBeastWarsTransmetals.n64",
+      "filename": "TransformersBeastWarsTransmetals.n64"
+    },
+    {
+      "name": "Turok2SeedsofEvil",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Turok2SeedsofEvil.n64",
+      "filename": "Turok2SeedsofEvil.n64"
+    },
+    {
+      "name": "Turok3ShadowofOblivion",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Turok3ShadowofOblivion.n64",
+      "filename": "Turok3ShadowofOblivion.n64"
+    },
+    {
+      "name": "TurokDinosaurHunter",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/TurokDinosaurHunter.n64",
+      "filename": "TurokDinosaurHunter.n64"
+    },
+    {
+      "name": "TwistedEdge ExtremeSnowboarding",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/TwistedEdge_ExtremeSnowboarding.n64",
+      "filename": "TwistedEdge_ExtremeSnowboarding.n64"
+    },
+    {
+      "name": "VRallyEdition99",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/VRallyEdition99.n64",
+      "filename": "VRallyEdition99.n64"
+    },
+    {
+      "name": "Vigilante8",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Vigilante8.n64",
+      "filename": "Vigilante8.n64"
+    },
+    {
+      "name": "VirtualPool64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/VirtualPool64.n64",
+      "filename": "VirtualPool64.n64"
+    },
+    {
+      "name": "WWFAttitude",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/WWFAttitude.n64",
+      "filename": "WWFAttitude.n64"
+    },
+    {
+      "name": "WWFNoMercy",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/WWFNoMercy.n64",
+      "filename": "WWFNoMercy.n64"
+    },
+    {
+      "name": "WWFWarZone",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/WWFWarZone.n64",
+      "filename": "WWFWarZone.n64"
+    },
+    {
+      "name": "Waialae Country Club TrueGolfClassics",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Waialae_Country_Club_TrueGolfClassics.n64",
+      "filename": "Waialae_Country_Club_TrueGolfClassics.n64"
+    },
+    {
+      "name": "WarGods",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/WarGods.n64",
+      "filename": "WarGods.n64"
+    },
+    {
+      "name": "Wipeout 64",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/Wipeout_64.n64",
+      "filename": "Wipeout_64.n64"
+    },
+    {
+      "name": "WorldCup98",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/WorldCup98.n64",
+      "filename": "WorldCup98.n64"
+    },
+    {
+      "name": "WormsArmageddon",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/WormsArmageddon.n64",
+      "filename": "WormsArmageddon.n64"
+    },
+    {
+      "name": "flying dragon",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/flying_dragon.n64",
+      "filename": "flying_dragon.n64"
+    },
+    {
+      "name": "harvest moon",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/harvest_moon.z64",
+      "filename": "harvest_moon.z64"
+    },
+    {
+      "name": "mario party 2",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/mario_party_2.z64",
+      "filename": "mario_party_2.z64"
+    },
+    {
+      "name": "mk4",
+      "url": "https://raw.githubusercontent.com/tumstech/n64_rom/master/mk4.n64",
+      "filename": "mk4.n64"
+    }
+  ]
+}

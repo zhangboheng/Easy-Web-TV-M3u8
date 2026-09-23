@@ -42,7 +42,7 @@ var games = [
         platform: 'N64',
         category: 'emulator',
         image: '../images/n64.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=mupen64plus'
+        url: '../routes/emulatorjs/emulatorjs.html?core=mupen64plus_next'
     },
     {
         id: 10,
@@ -59,14 +59,6 @@ var games = [
         category: 'emulator',
         image: '../images/psx.svg',
         url: '../routes/emulatorjs/emulatorjs.html?core=pcsx_rearmed'
-    },
-    {
-        id: 11,
-        name: 'PSP Emulator',
-        platform: 'PSP',
-        category: 'emulator',
-        image: '../images/psp.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=ppsspp'
     },
     {
         id: 12,
@@ -101,14 +93,6 @@ var games = [
         url: '../routes/emulatorjs/emulatorjs.html?core=yabause'
     },
     {
-        id: 16,
-        name: 'Dreamcast Emulator',
-        platform: 'Dreamcast',
-        category: 'emulator',
-        image: '../images/dreamcast.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=flycast'
-    },
-    {
         id: 17,
         name: 'NDS Emulator',
         platform: 'NDS',
@@ -117,28 +101,12 @@ var games = [
         url: '../routes/emulatorjs/emulatorjs.html?core=melonds'
     },
     {
-        id: 18,
-        name: '3DS Emulator',
-        platform: '3DS',
-        category: 'emulator',
-        image: '../images/3ds.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=citra'
-    },
-    {
-        id: 19,
-        name: 'PS2 Emulator',
-        platform: 'PS2',
-        category: 'emulator',
-        image: '../images/ps2.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=pcsx2'
-    },
-    {
         id: 20,
         name: 'Atari 2600 Emulator',
         platform: 'Atari 2600',
         category: 'emulator',
         image: '../images/atari2600.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=stella'
+        url: '../routes/emulatorjs/emulatorjs.html?core=stella2014'
     },
     {
         id: 21,
@@ -146,7 +114,7 @@ var games = [
         platform: 'Atari 7800',
         category: 'emulator',
         image: '../images/atari7800.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=a7800'
+        url: '../routes/emulatorjs/emulatorjs.html?core=prosystem'
     },
     {
         id: 22,
@@ -154,7 +122,7 @@ var games = [
         platform: 'Atari 5200',
         category: 'emulator',
         image: '../images/atari5200.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=atari800'
+        url: '../routes/emulatorjs/emulatorjs.html?core=a5200'
     },
     {
         id: 23,
@@ -202,7 +170,7 @@ var games = [
         platform: 'ColecoVision',
         category: 'emulator',
         image: '../images/colecovision.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=bluemsx'
+        url: '../routes/emulatorjs/emulatorjs.html?core=gearcoleco'
     },
     {
         id: 29,
@@ -210,7 +178,7 @@ var games = [
         platform: 'C64',
         category: 'emulator',
         image: '../images/c64.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=vice'
+        url: '../routes/emulatorjs/emulatorjs.html?core=vice_x64'
     },
     {
         id: 30,
@@ -218,7 +186,7 @@ var games = [
         platform: 'C128',
         category: 'emulator',
         image: '../images/c128.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=vice'
+        url: '../routes/emulatorjs/emulatorjs.html?core=vice_x128'
     },
     {
         id: 31,
@@ -226,7 +194,7 @@ var games = [
         platform: 'VIC-20',
         category: 'emulator',
         image: '../images/vic20.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=vice'
+        url: '../routes/emulatorjs/emulatorjs.html?core=vice_xvic'
     },
     {
         id: 32,
@@ -234,7 +202,7 @@ var games = [
         platform: 'PET',
         category: 'emulator',
         image: '../images/pet.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=vice'
+        url: '../routes/emulatorjs/emulatorjs.html?core=vice_xpet'
     },
     {
         id: 33,
@@ -242,7 +210,7 @@ var games = [
         platform: 'Plus/4',
         category: 'emulator',
         image: '../images/plus4.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=vice'
+        url: '../routes/emulatorjs/emulatorjs.html?core=vice_xplus4'
     },
     {
         id: 34,
@@ -275,14 +243,6 @@ var games = [
         category: 'emulator',
         image: '../images/virtualboy.svg',
         url: '../routes/emulatorjs/emulatorjs.html?core=beetle_vb'
-    },
-    {
-        id: 39,
-        name: 'DOS Emulator',
-        platform: 'DOS',
-        category: 'emulator',
-        image: '../images/dos.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=dosbox_pure'
     },
     {
         id: 1,

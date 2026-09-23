@@ -266,6 +266,7 @@ body {
     padding: 40px;
     text-align: center;
     transition: all 0.3s ease;
+    margin-top: 20px;
 }
 
 .url-box.hidden {
@@ -342,45 +343,212 @@ body {
     margin-top: 2px;
 }
 
-/* Core Selection */
-.core-selection {
+/* Search Box */
+.search-box {
     width: 100%;
     max-width: 500px;
-    margin-top: 30px;
+    background: rgba(0,0,0,0.6);
+    border: 2px solid rgba(163,0,27,0.5);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin-top: 20px;
 }
 
-.core-label {
-    color: #fff;
-    font-size: 14px;
-    margin-bottom: 10px;
+.search-box.hidden {
+    display: none;
+}
+
+.search-input-group {
     display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.core-label i {
-    color: #a3001b;
-}
-
-.core-select {
+    gap: 10px;
+    margin-top: 20px;
     width: 100%;
+}
+
+.search-input {
+    flex: 1;
     padding: 12px 15px;
     background: rgba(0,0,0,0.6);
     border: 2px solid rgba(163,0,27,0.5);
     border-radius: 10px;
     color: #fff;
     font-size: 14px;
-    cursor: pointer;
     outline: none;
+    min-width: 0;
 }
 
-.core-select:focus {
+.search-input:focus {
     border-color: #a3001b;
 }
 
-.core-select option {
-    background: rgba(0,0,0,0.9);
+.search-input::placeholder {
+    color: rgba(255,255,255,0.3);
+}
+
+.search-btn {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #a3001b 0%, #8a0016 100%);
+    border: none;
+    border-radius: 10px;
     color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.search-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(163,0,27,0.3);
+}
+
+.search-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.search-disclaimer {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.search-results {
+    margin-top: 20px;
+    width: 100%;
+    max-height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.search-result-item {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(163,0,27,0.3);
+    border-radius: 10px;
+    color: #fff;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.search-result-item:hover {
+    background: rgba(163,0,27,0.15);
+    border-color: #a3001b;
+    transform: translateX(4px);
+}
+
+.search-result-title {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.search-result-meta {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.search-loading {
+    text-align: center;
+    color: rgba(255,255,255,0.6);
+    padding: 20px;
+    font-size: 14px;
+}
+
+.search-error {
+    text-align: center;
+    color: #ff6b6b;
+    padding: 20px;
+    font-size: 13px;
+}
+
+
+.search-manual {
+    margin-top: 10px;
+    padding: 15px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(163,0,27,0.3);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.search-manual-link {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #a3001b 0%, #8a0016 100%);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.search-manual-link:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(163,0,27,0.4);
+}
+
+.search-manual-tip {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+}
+
+/* Search Source Selector */
+.search-source-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.search-source-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    white-space: nowrap;
+}
+
+.search-source-select {
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid rgba(163,0,27,0.5);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 13px;
+    outline: none;
+    cursor: pointer;
+}
+.search-empty {
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    padding: 20px;
+    font-size: 13px;
 }
 
 /* Emulator Container */
@@ -1003,4 +1171,42 @@ body {
     .instructions-content {
         grid-template-columns: 1fr;
     }
+}
+
+/* Preset ROM selector */
+.url-preset-group {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.url-preset-label {
+    font-size: 14px;
+    color: #ccc;
+    white-space: nowrap;
+    min-width: 90px;
+}
+
+.url-preset-select {
+    width: 280px;
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.url-preset-select:hover,
+.url-preset-select:focus {
+    border-color: rgba(255, 255, 255, 0.35);
+    outline: none;
+}
+
+.url-preset-select option {
+    background: #1e1e1e;
+    color: #fff;
 }

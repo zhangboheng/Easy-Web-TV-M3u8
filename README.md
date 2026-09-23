@@ -57,13 +57,15 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 ### 🎮 Games
 - Built-in mini games (Square Obstacles, Pong, Breakout, Tic Tac Toe)
 - **Emulator support** - Play retro console games
-  - Nintendo: NES, SNES, N64, GB/GBC, GBA, NDS, 3DS, Virtual Boy
-  - PlayStation: PS1/PSX, PS2, PSP
-  - Sega: Genesis, Master System, Sega CD, 32X, Game Gear, Saturn, Dreamcast
-  - Atari: 2600, 5200, 7800, Jaguar, Lynx
-  - Commodore: C64, C128, VIC-20, PET, Plus/4, Amiga
-  - Other: 3DO, Arcade (FBNeo, MAME), ColecoVision
-- ROM file upload support
+  - **Nintendo**: NES (805 games), SNES (772 games), N64 (116 games), GB/GBC (800 games), GBA (992 games)
+  - **PlayStation**: PSX, PS2, PSP
+  - **Sega**: Genesis/Mega Drive, Master System, Genesis CD, 32X, Game Gear, Saturn, Dreamcast
+  - **Atari**: 2600, 5200, 7800, Jaguar, Lynx
+  - **Commodore**: C64, C128, VIC-20, PET, Plus/4, Amiga
+  - **Other**: 3DO, Arcade (FBNeo, MAME), ColecoVision, NDS, Virtual Boy, 3DS
+- **3500+ preset ROMs** across 5 platforms (NES, GBA, SNES, GB, N64)
+- Dynamic ROM loading from JSON files with search filter
+- ROM file upload support with automatic core detection
 - Gamepad support
 - Save/Load game states
 - Fullscreen mode
@@ -125,7 +127,33 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - [iptv-org](https://github.com/iptv-org/iptv) - TV channels
   - [Radiobrowser](https://github.com/segler-alex/radiobrowser-api-rust) - Radio stations
 
+## 🎮 Emulator Features
+
+### Dynamic ROM Loading
+- **JSON-based ROM catalogue**: ROM lists are stored in separate JSON files for easy maintenance
+- **Platform-specific loading**: Each platform (NES, GBA, SNES, GB, N64) has its own JSON file
+- **Caching system**: Loaded ROM lists are cached for faster switching
+- **Search filter**: Filter ROMs by name in real-time
+
+### Supported Platforms
+| Platform | Core | Games | JSON File |
+|----------|------|-------|----------|
+| NES | fceumm | 805 | nes.json |
+| GBA | mgba | 992 | gba.json |
+| SNES | snes9x | 772 | snes.json |
+| GB | gambatte | 800 | gb.json |
+| N64 | mupen64plus_next | 116 | n64.json |
+| **Total** | - | **3485** | - |
+
+### Core Features
+- **Automatic core detection**: Upload any ROM file and the system automatically detects the platform
+- **URL parameter support**: Direct link to specific platform (e.g., `?core=snes9x`)
+- **No core selection UI**: Simplified interface with automatic detection
+- **Error handling**: Comprehensive error handling with user-friendly messages
+- **CORS proxy support**: Multiple proxy servers for ROM loading
+
 ## 🚀 Getting Started
+n
 
 ### Prerequisites
 
@@ -164,15 +192,24 @@ Easy-Web-TV-M3u8/
 ├── sw.js                   # Service worker
 ├── css/
 │   ├── main.css           # Main styles
-│   └── style.css          # Additional styles
+│   ├── style.css          # Additional styles
+│   └── emulatorjs.css     # Emulator-specific styles
 ├── js/
 │   ├── index.js           # Main JavaScript
 │   ├── catalogues.js      # Catalogue functions
 │   ├── translator.js      # Translation handler
+│   ├── emulatorjs.js      # Emulator logic & ROM loading
 │   ├── music.js           # Music player logic
 │   ├── podcast.js         # Podcast player with favorites
 │   ├── tomusic.js         # Music page navigation & podcast browsing
 │   └── ...                # Other modules
+├── data/
+│   └── roms/              # ROM catalogue files
+│       ├── nes.json       # 805 NES games
+│       ├── gba.json       # 992 GBA games
+│       ├── snes.json      # 772 SNES games
+│       ├── gb.json        # 800 GB games
+│       └── n64.json       # 116 N64 games
 ├── routes/
 │   ├── tv.html            # TV page
 │   ├── movie.html         # Movie page

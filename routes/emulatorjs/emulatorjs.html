@@ -48,6 +48,10 @@
                     <i class="fas fa-link"></i>
                     <span data-i18n="tabUrl">URL Input</span>
                 </div>
+                <div class="upload-tab" id="tabSearch" data-tab="search">
+                    <i class="fas fa-search"></i>
+                    <span data-i18n="tabSearch">Search ROM</span>
+                </div>
             </div>
 
             <!-- File Upload Box -->
@@ -78,10 +82,43 @@
                         <span data-i18n="loadRom">Load ROM</span>
                     </button>
                 </div>
+                <div class="url-preset-group">
+                    <label class="url-preset-label" data-i18n="urlPreset">Preset ROMs:</label>
+                    <select class="url-preset-select" id="romPresetSelect">
+                        <option value="">-- Select a ROM --</option>
+                    </select>
+                </div>
                 <p class="url-tip">
                     <i class="fas fa-info-circle"></i>
                     <span data-i18n="urlTip">Tip: Enter a direct link to the ROM file. Make sure the URL points to a downloadable file.</span>
                 </p>
+            </div>
+
+            <!-- Search ROM Box -->
+            <div class="search-box hidden" id="searchBox">
+                <div class="upload-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h2 class="upload-title" data-i18n="searchTitle">Search ROMs</h2>
+                <p class="upload-desc" data-i18n="searchDesc">Search archive.org for game ROMs</p>
+                <div class="search-input-group">
+                    <input type="text" class="search-input" id="romSearchInput" placeholder="Super Mario Bros" data-i18n-placeholder="searchPlaceholder">
+                    <button class="search-btn" id="romSearchBtn">
+                        <i class="fas fa-search"></i>
+                        <span data-i18n="search">Search</span>
+                    </button>
+                </div>
+                <div class="search-source-group">
+                    <label class="search-source-label" data-i18n="searchSource">Search Source:</label>
+                    <select class="search-source-select" id="searchSource">
+                        <option value="archive.org">archive.org</option>
+                        </select>
+                </div>
+                <p class="search-disclaimer">
+                    <i class="fas fa-balance-scale"></i>
+                    <span data-i18n="searchDisclaimer">Results from archive.org. Ensure you own the original cartridge/disc before downloading.</span>
+                </p>
+                <div class="search-results" id="searchResults"></div>
             </div>
             
             <!-- Gamepad Status -->
@@ -108,46 +145,6 @@
                 </div>
             </div>
             
-            <!-- Core Selection -->
-            <div class="core-selection">
-                <label class="core-label">
-                    <i class="fas fa-microchip"></i>
-                    <span data-i18n="selectCore">Select Emulator Core:</span>
-                </label>
-                <select class="core-select" id="coreSelect">
-                    <option value="fceumm">NES (Nintendo Entertainment System)</option>
-                    <option value="snes9x">SNES (Super Nintendo)</option>
-                    <option value="mgba">GBA (Game Boy Advance)</option>
-                    <option value="gambatte">GB/GBC (Game Boy / Color)</option>
-                    <option value="mupen64plus">N64 (Nintendo 64)</option>
-                    <option value="melonds">NDS (Nintendo DS)</option>
-                    <option value="citra">3DS (Nintendo 3DS)</option>
-                    <option value="pcsx_rearmed">PS1 (PlayStation)</option>
-                    <option value="pcsx_rearmed">PSX (PlayStation)</option>
-                    <option value="ppsspp">PSP (PlayStation Portable)</option>
-                    <option value="pcsx2">PS2 (PlayStation 2)</option>
-                    <option value="genesis_plus_gx">Genesis/Mega Drive (Sega)</option>
-                    <option value="genesis_plus_gx">Master System (Sega)</option>
-                    <option value="genesis_plus_gx">Sega CD (Sega)</option>
-                    <option value="picodrive">Sega 32X</option>
-                    <option value="genesis_plus_gx">Game Gear (Sega)</option>
-                    <option value="yabause">Saturn (Sega)</option>
-                    <option value="flycast">Dreamcast (Sega)</option>
-                    <option value="stella">Atari 2600</option>
-                    <option value="a7800">Atari 7800</option>
-                    <option value="atari800">Atari 5200 / 800</option>
-                    <option value="virtualjaguar">Atari Jaguar</option>
-                    <option value="handy">Atari Lynx</option>
-                    <option value="opera">3DO Interactive Multiplayer</option>
-                    <option value="fbneo">Arcade (FBNeo)</option>
-                    <option value="mame2003">MAME 2003</option>
-                    <option value="bluemsx">ColecoVision / MSX</option>
-                    <option value="vice">Commodore 64/128/VIC-20/PET/Plus/4</option>
-                    <option value="puae">Commodore Amiga</option>
-                    <option value="beetle_vb">Virtual Boy (Nintendo)</option>
-                    <option value="dosbox_pure">DOS (DOSBox)</option>
-                </select>
-            </div>
         </section>
         
         <!-- Emulator Section -->

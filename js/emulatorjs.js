@@ -64,6 +64,7 @@ var i18n = {
         gameNotLoaded: '游戏尚未加载',
         tabFile: '文件上传',
         tabUrl: 'URL 输入',
+        tabSearch: '搜索 ROM',
         urlTitle: '从 URL 加载 ROM',
         urlDesc: '输入 ROM 文件的直接链接地址',
         urlPlaceholder: 'https://example.com/game.nes',
@@ -72,7 +73,21 @@ var i18n = {
         urlLoading: '正在从 URL 下载 ROM...',
         urlInvalid: '请输入有效的 URL 地址',
         urlFetchFailed: '下载 ROM 文件失败，请检查 URL 是否正确。',
-        urlFetchError: '网络错误，无法下载 ROM 文件。'
+        urlFetchError: '网络错误，无法下载 ROM 文件。',
+        searchTitle: '搜索 ROM',
+        searchDesc: '在 archive.org 中搜索游戏 ROM',
+        searchPlaceholder: '输入游戏名称，例如 Super Mario Bros',
+        search: '搜索',
+        searchDisclaimer: '结果来自 archive.org，下载前请确认您拥有原始卡带/光盘。',
+        searchLoading: '正在搜索...',
+        searchFailed: '搜索失败，请稍后再试。',
+        searchNoResults: '未找到匹配的游戏。',
+        searchDownloading: '正在下载：',
+        searchDownloadFailed: '下载失败，请重试。',
+        searchManualDownload: '手动下载',
+        searchManualTip: '下载失败，请点击上方链接手动下载，然后用文件上传加载 ROM。',
+        searchSource: '搜索源：',
+        urlPreset: '预设 ROM：'
     },
     en: {
         save: 'Save',
@@ -136,6 +151,7 @@ var i18n = {
         gameNotLoaded: 'Game not loaded yet',
         tabFile: 'File Upload',
         tabUrl: 'URL Input',
+        tabSearch: 'Search ROM',
         urlTitle: 'Load ROM from URL',
         urlDesc: 'Enter the direct URL of a ROM file to load',
         urlPlaceholder: 'https://example.com/game.nes',
@@ -144,7 +160,21 @@ var i18n = {
         urlLoading: 'Downloading ROM from URL...',
         urlInvalid: 'Please enter a valid URL',
         urlFetchFailed: 'Failed to download ROM file. Please check the URL.',
-        urlFetchError: 'Network error, unable to download ROM file.'
+        urlFetchError: 'Network error, unable to download ROM file.',
+        searchTitle: 'Search ROMs',
+        searchDesc: 'Search archive.org for game ROMs',
+        searchPlaceholder: 'Enter game name, e.g. Super Mario Bros',
+        search: 'Search',
+        searchDisclaimer: 'Results from archive.org. Ensure you own the original cartridge/disc before downloading.',
+        searchLoading: 'Searching...',
+        searchFailed: 'Search failed. Please try again later.',
+        searchNoResults: 'No matching games found.',
+        searchDownloading: 'Downloading:',
+        searchDownloadFailed: 'Download failed. Please try again.',
+        searchManualDownload: 'Manual download',
+        searchManualTip: 'Download failed. Click the link above to download manually, then use File Upload to load the ROM.',
+        searchSource: 'Search Source:',
+        urlPreset: 'Preset ROMs:'
     },
     ja: {
         save: 'セーブ',
@@ -208,6 +238,7 @@ var i18n = {
         gameNotLoaded: 'ゲームがまだ読み込まれていません',
         tabFile: 'ファイルアップロード',
         tabUrl: 'URL入力',
+        tabSearch: 'ROM検索',
         urlTitle: 'URLからROMを読み込む',
         urlDesc: 'ROMファイルの直接URLを入力',
         urlPlaceholder: 'https://example.com/game.nes',
@@ -216,7 +247,21 @@ var i18n = {
         urlLoading: 'URLからROMをダウンロード中...',
         urlInvalid: '有効なURLを入力してください',
         urlFetchFailed: 'ROMファイルのダウンロードに失敗しました。URLを確認してください。',
-        urlFetchError: 'ネットワークエラー、ROMファイルをダウンロードできません。'
+        urlFetchError: 'ネットワークエラー、ROMファイルをダウンロードできません。',
+        searchTitle: 'ROM検索',
+        searchDesc: 'archive.orgでゲームROMを検索',
+        searchPlaceholder: 'ゲーム名を入力（例：Super Mario Bros）',
+        search: '検索',
+        searchDisclaimer: 'archive.orgの検索結果です。ダウンロード前にオリジナルカートリッジ/ディスクの所有を確認してください。',
+        searchLoading: '検索中...',
+        searchFailed: '検索に失敗しました。後でもう一度お試しください。',
+        searchNoResults: '一致するゲームが見つかりませんでした。',
+        searchDownloading: 'ダウンロード中：',
+        searchDownloadFailed: 'ダウンロードに失敗しました。',
+        searchManualDownload: '手動ダウンロード',
+        searchManualTip: 'ダウンロードに失敗しました。上のリンクをクリックして手動でダウンロードし、ファイルアップロードでROMを読み込んでください。',
+        searchSource: '検索元：',
+        urlPreset: 'ROMプリセット：'
     },
     ko: {
         save: '저장',
@@ -280,6 +325,7 @@ var i18n = {
         gameNotLoaded: '게임이 아직 로드되지 않음',
         tabFile: '파일 업로드',
         tabUrl: 'URL 입력',
+        tabSearch: 'ROM 검색',
         urlTitle: 'URL에서 ROM 로드',
         urlDesc: 'ROM 파일의 직접 URL을 입력',
         urlPlaceholder: 'https://example.com/game.nes',
@@ -288,7 +334,21 @@ var i18n = {
         urlLoading: 'URL에서 ROM 다운로드 중...',
         urlInvalid: '유효한 URL을 입력하세요',
         urlFetchFailed: 'ROM 파일 다운로드 실패. URL을 확인하세요.',
-        urlFetchError: '네트워크 오류, ROM 파일을 다운로드할 수 없습니다.'
+        urlFetchError: '네트워크 오류, ROM 파일을 다운로드할 수 없습니다.',
+        searchTitle: 'ROM 검색',
+        searchDesc: 'archive.org에서 게임 ROM 검색',
+        searchPlaceholder: '게임 이름 입력 (예: Super Mario Bros)',
+        search: '검색',
+        searchDisclaimer: 'archive.org 검색 결과입니다. 다운로드 전 원본 카트리지/디스크 소유권을 확인하세요.',
+        searchLoading: '검색 중...',
+        searchFailed: '검색 실패. 나중에 다시 시도하세요.',
+        searchNoResults: '일치하는 게임을 찾을 수 없습니다.',
+        searchDownloading: '다운로드 중:',
+        searchDownloadFailed: '다운로드 실패. 다시 시도하세요.',
+        searchManualDownload: '수동 다운로드',
+        searchManualTip: '다운로드 실패. 위 링크를 클릭하여 수동으로 다운로드한 후 파일 업로드로 ROM을 로드하세요.',
+        searchSource: '검색 소스：',
+        urlPreset: 'ROM 프리셋:'
     },
     fr: {
         save: 'Sauvegarder',
@@ -360,7 +420,21 @@ var i18n = {
         urlLoading: 'Téléchargement du ROM depuis l\'URL...',
         urlInvalid: 'Veuillez entrer une URL valide',
         urlFetchFailed: 'Échec du téléchargement du ROM. Vérifiez l\'URL.',
-        urlFetchError: 'Erreur réseau, impossible de télécharger le ROM.'
+        urlFetchError: 'Erreur réseau, impossible de télécharger le ROM.',
+        searchTitle: 'Rechercher ROM',
+        searchDesc: 'Rechercher des ROMs sur archive.org',
+        searchPlaceholder: 'Entrez le nom du jeu, ex: Super Mario Bros',
+        search: 'Rechercher',
+        searchDisclaimer: "Résultats de archive.org. Assurez-vous de posséder la cartouche/disque original.",
+        searchLoading: 'Recherche en cours...',
+        searchFailed: 'Recherche échouée. Veuillez réessayer.',
+        searchNoResults: 'Aucun jeu correspondant trouvé.',
+        searchDownloading: 'Téléchargement:',
+        searchDownloadFailed: 'Téléchargement échoué. Réessayez.',
+        searchManualDownload: 'Téléchargement manuel',
+        searchManualTip: 'Échec du téléchargement. Cliquez sur le lien ci-dessus pour télécharger manuellement, puis utilisez le téléchargement de fichier pour charger le ROM.',
+        searchSource: 'Source de recherche:',
+        urlPreset: 'ROM prédéfinis :'
     },
     de: {
         save: 'Speichern',
@@ -432,7 +506,21 @@ var i18n = {
         urlLoading: 'ROM wird von URL heruntergeladen...',
         urlInvalid: 'Bitte geben Sie eine gültige URL ein',
         urlFetchFailed: 'ROM-Download fehlgeschlagen. Bitte URL prüfen.',
-        urlFetchError: 'Netzwerkfehler, ROM kann nicht heruntergeladen werden.'
+        urlFetchError: 'Netzwerkfehler, ROM kann nicht heruntergeladen werden.',
+        searchTitle: 'ROM suchen',
+        searchDesc: 'Durchsuchen Sie archive.org nach ROMs',
+        searchPlaceholder: 'Spielnamen eingeben, z.B. Super Mario Bros',
+        search: 'Suchen',
+        searchDisclaimer: 'Ergebnisse von archive.org. Stellen Sie sicher, dass Sie die Originalkassette/Disk besitzen.',
+        searchLoading: 'Suche läuft...',
+        searchFailed: 'Suche fehlgeschlagen. Bitte versuchen Sie es später.',
+        searchNoResults: 'Keine passenden Spiele gefunden.',
+        searchDownloading: 'Herunterladen:',
+        searchDownloadFailed: 'Download fehlgeschlagen. Bitte versuchen Sie es erneut.',
+        searchManualDownload: 'Manueller Download',
+        searchManualTip: 'Download fehlgeschlagen. Klicken Sie auf den Link oben zum manuellen Download, dann laden Sie das ROM über Datei-Upload.',
+        searchSource: 'Suchquelle:',
+        urlPreset: 'ROM-Vorlagen:'
     },
     es: {
         save: 'Guardar',
@@ -504,7 +592,21 @@ var i18n = {
         urlLoading: 'Descargando ROM desde URL...',
         urlInvalid: 'Por favor, ingrese una URL válida',
         urlFetchFailed: 'Error al descargar ROM. Verifique la URL.',
-        urlFetchError: 'Error de red, no se puede descargar el ROM.'
+        urlFetchError: 'Error de red, no se puede descargar el ROM.',
+        searchTitle: 'Buscar ROM',
+        searchDesc: 'Buscar ROMs en archive.org',
+        searchPlaceholder: 'Ingrese el nombre del juego, ej: Super Mario Bros',
+        search: 'Buscar',
+        searchDisclaimer: 'Resultados de archive.org. Asegúrese de poseer el cartucho/disco original.',
+        searchLoading: 'Buscando...',
+        searchFailed: 'Búsqueda fallida. Inténtelo de nuevo.',
+        searchNoResults: 'No se encontraron juegos coincidentes.',
+        searchDownloading: 'Descargando:',
+        searchDownloadFailed: 'Descarga fallida. Inténtelo de nuevo.',
+        searchManualDownload: 'Descarga manual',
+        searchManualTip: 'Descarga fallida. Haga clic en el enlace de arriba para descargar manualmente, luego use Carga de archivo para cargar el ROM.',
+        searchSource: 'Fuente de búsqueda:',
+        urlPreset: 'ROM predefinidos:'
     },
     ru: {
         save: 'Сохранить',
@@ -576,14 +678,28 @@ var i18n = {
         urlLoading: 'Загрузка ROM по URL...',
         urlInvalid: 'Пожалуйста, введите корректный URL',
         urlFetchFailed: 'Ошибка загрузки ROM. Проверьте URL.',
-        urlFetchError: 'Сетевая ошибка, невозможно загрузить ROM.'
+        urlFetchError: 'Сетевая ошибка, невозможно загрузить ROM.',
+        searchTitle: 'Поиск ROM',
+        searchDesc: 'Поиск ROM на archive.org',
+        searchPlaceholder: 'Введите название игры, например: Super Mario Bros',
+        search: 'Поиск',
+        searchDisclaimer: 'Результаты с archive.org. Убедитесь, что у вас есть оригинальный картридж/диск.',
+        searchLoading: 'Поиск...',
+        searchFailed: 'Поиск не удался. Попробуйте позже.',
+        searchNoResults: 'Подходящих игр не найдено.',
+        searchDownloading: 'Загрузка:',
+        searchDownloadFailed: 'Загрузка не удалась. Попробуйте снова.',
+        searchManualDownload: 'Ручная загрузка',
+        searchManualTip: 'Загрузка не удалась. Нажмите на ссылку выше, чтобы загрузить вручную, затем используйте загрузку файла для загрузки ROM.',
+        searchSource: 'Источник поиска:',
+        urlPreset: 'Предустановленные ROM:'
     }
 };
 
 // Get current language
 function getLang() {
-    var lang = localStorage.getItem('languages') || 'zh';
-    return i18n[lang] ? lang : 'zh';
+    var lang = localStorage.getItem('languages') || 'en';
+    return i18n[lang] ? lang : 'en';
 }
 
 // Get translated text
@@ -609,6 +725,7 @@ function applyTranslations() {
 
 // CORS proxy list (tried in order)
 var corsProxies = [
+    'https://cors.luckydesigner.workers.dev/?',
     'https://api.allorigins.win/raw?url=',
     'https://corsproxy.io/?',
     'https://api.codetabs.com/v1/proxy?quest='
@@ -624,12 +741,11 @@ function processRomBlob(blob, filename) {
         
         // Set current game info
         currentGame.name = filename.replace(/\.[^/.]+$/, "");
-        currentGame.core = detectCore(filename);
+        currentGame.core = userSelectedCore || detectCore(filename) || 'fceumm';
         currentGame.romData = romData;
         
         // Update core select
-        document.getElementById('coreSelect').value = currentGame.core;
-        
+                
         // Configure EmulatorJS
         EJS_core = currentGame.core;
         EJS_gameUrl = romData;
@@ -655,7 +771,7 @@ function processRomBlob(blob, filename) {
 }
 
 // Try fetching ROM through CORS proxies, then direct
-function tryFetchWithProxy(originalUrl, proxyIndex, filename) {
+function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError) {
     var urlLoadBtn = document.getElementById('urlLoadBtn');
     var fetchUrl;
     
@@ -695,12 +811,16 @@ function tryFetchWithProxy(originalUrl, proxyIndex, filename) {
             console.log('Fetch attempt failed: ' + error.message);
             if (proxyIndex < corsProxies.length) {
                 // Try next proxy
-                tryFetchWithProxy(originalUrl, proxyIndex + 1, filename);
+                tryFetchWithProxy(originalUrl, proxyIndex + 1, filename, onFinalError);
             } else {
                 // All methods failed
-                urlLoadBtn.disabled = false;
+                if (urlLoadBtn) urlLoadBtn.disabled = false;
                 console.error('All fetch methods failed for: ' + originalUrl);
-                showToast(t('urlFetchError'));
+                if (typeof onFinalError === 'function') {
+                    onFinalError(originalUrl, filename);
+                } else {
+                    showToast(t('urlFetchError'));
+                }
             }
         });
 }
@@ -721,7 +841,235 @@ function handleRomFromUrl(url) {
     var filename = url.split('/').pop().split('?')[0] || 'game.nes';
     
     // Try fetching through CORS proxies first, then direct
-    tryFetchWithProxy(url, 0, filename);
+    tryFetchWithProxy(url, 0, filename, function(finalUrl, finalFilename) {
+        showManualDownload(finalUrl, finalFilename);
+    });
+}
+
+// Show manual download link when auto-download fails
+function showManualDownload(url, filename) {
+    var resultsDiv = document.getElementById("searchResults");
+    resultsDiv.innerHTML = "<div class='search-error'>" + t("searchDownloadFailed") + "</div>" +
+        "<div class='search-manual'>" +
+            "<a href='" + url + "' download target='_blank' class='search-manual-link'>" + t("searchManualDownload") + ": " + filename + "</a>" +
+            "<p class='search-manual-tip'>" + t("searchManualTip") + "</p>" +
+        "</div>";
+}
+
+// Current search source
+var currentSearchSource = "archive.org";
+
+// Search ROMs
+function searchRom(query) {
+    if (!query || query.trim().length < 2) {
+        showToast(t('searchNoResults'));
+        return;
+    }
+    
+    var resultsDiv = document.getElementById('searchResults');
+    resultsDiv.innerHTML = '<div class=\"search-loading\">' + t('searchLoading') + '</div>';
+    
+    var searchBtn = document.getElementById('romSearchBtn');
+    searchBtn.disabled = true;
+    
+    var source = currentSearchSource;
+    if (source === 'github') {
+        searchGitHub(query)
+            .then(function(data) {
+                searchBtn.disabled = false;
+                renderSearchResults(data, 'github');
+            })
+            .catch(function(err) {
+                searchBtn.disabled = false;
+                console.error('GitHub search failed:', err);
+                resultsDiv.innerHTML = '<div class=\"search-error\">' + t('searchFailed') + '</div>';
+            });
+    } else {
+        searchArchiveOrg(query)
+            .then(function(data) {
+                searchBtn.disabled = false;
+                renderSearchResults(data, 'archive.org');
+            })
+            .catch(function(err) {
+                searchBtn.disabled = false;
+                console.error('Archive.org search failed:', err);
+                resultsDiv.innerHTML = '<div class=\"search-error\">' + t('searchFailed') + '</div>';
+            });
+    }
+}
+
+// Search on archive.org
+function searchArchiveOrg(query) {
+    var q = encodeURIComponent(query + ' mediatype:software');
+    var url = 'https://archive.org/advancedsearch.php?q=' + q + '&fl=identifier,title,creator,year,downloads&rows=20&output=json';
+    return tryFetchJson(url, 0);
+}
+
+// Search on GitHub
+function searchGitHub(query) {
+    var extFilter = 'extension:nes+extension:gba+extension:gbc+extension:gb+extension:sfc+extension:smc+extension:z64+extension:v64+extension:n64+extension:md+extension:smd+extension:gen+extension:zip';
+    var q = encodeURIComponent(query + ' ' + extFilter);
+    var url = 'https://api.github.com/search/code?q=' + q + '&per_page=20';
+    
+    return tryFetchJson(url, 0, {
+        headers: {
+            'Accept': 'application/vnd.github.v3+json'
+        }
+    }).then(function(data) {
+        var docs = (data.items || []).map(function(item) {
+            var parts = item.repository.full_name.split('/');
+            var owner = parts[0] || '';
+            var repo = parts[1] || '';
+            var branch = item.repository.default_branch || 'main';
+            var path = item.path || '';
+            var filename = path.split('/').pop() || 'game.zip';
+            
+            return {
+                identifier: owner + '/' + repo + '/' + branch + '/' + path,
+                title: filename,
+                creator: [item.repository.full_name],
+                year: '',
+                downloads: 0,
+                githubRaw: 'https://raw.githubusercontent.com/' + owner + '/' + repo + '/' + branch + '/' + path
+            };
+        });
+        return { response: { docs: docs } };
+    });
+}
+
+// Fetch JSON through CORS proxies (similar to tryFetchWithProxy but for JSON)
+function tryFetchJson(originalUrl, proxyIndex, options) {
+    var fetchUrl;
+    if (proxyIndex < corsProxies.length) {
+        fetchUrl = corsProxies[proxyIndex] + encodeURIComponent(originalUrl);
+    } else {
+        fetchUrl = originalUrl;
+    }
+    
+    var fetchOptions = options || {};
+        return fetch(fetchUrl, fetchOptions)
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error('HTTP error ' + response.status);
+            }
+            return response.json();
+        })
+        .catch(function(error) {
+            if (proxyIndex < corsProxies.length) {
+                return tryFetchJson(originalUrl, proxyIndex + 1);
+            }
+            throw error;
+        });
+}
+
+// Render search results
+function renderSearchResults(data, source) {
+    var resultsDiv = document.getElementById('searchResults');
+    resultsDiv.innerHTML = '';
+    
+    var docs = data.response && data.response.docs ? data.response.docs : [];
+    if (docs.length === 0) {
+        resultsDiv.innerHTML = '<div class=\"search-empty\">' + t('searchNoResults') + '</div>';
+        return;
+    }
+    
+    docs.forEach(function(doc) {
+        var item = document.createElement('div');
+        item.className = 'search-result-item';
+        
+        var title = doc.title || doc.identifier || 'Unknown';
+        var creator = doc.creator ? doc.creator[0] : '';
+        var year = doc.year || '';
+        var downloads = doc.downloads || 0;
+        
+        var metaHtml = '';
+        if (creator) metaHtml += '<span>' + creator + '</span>';
+        if (year) metaHtml += '<span>' + year + '</span>';
+        metaHtml += '<span>⬇ ' + downloads + '</span>';
+        
+        item.innerHTML = '<div class=\"search-result-title\">' + title + '</div>' +
+            '<div class=\"search-result-meta\">' + metaHtml + '</div>';
+        
+        item.addEventListener('click', function() {
+            selectSearchResult(doc.identifier, title, source);
+        });
+        
+        resultsDiv.appendChild(item);
+    });
+}
+
+// Select a search result and get its ROM files
+function selectSearchResult(identifier, title, source) {
+    source = source || 'archive.org';
+    var resultsDiv = document.getElementById('searchResults');
+    resultsDiv.innerHTML = '<div class=\"search-loading\">' + t('searchDownloading') + ' ' + title + '</div>';
+    
+    if (source === 'github') {
+        var parts = identifier.split('/');
+        var downloadUrl = 'https://raw.githubusercontent.com/' + parts[0] + '/' + parts[1] + '/' + parts[2] + '/' + parts.slice(3).join('/');
+        var filename = title || 'game.zip';
+        downloadAndLoadRom(downloadUrl, filename);
+    } else {
+        var metaUrl = 'https://archive.org/metadata/' + identifier;
+        
+        tryFetchJson(metaUrl, 0)
+            .then(function(meta) {
+                var romFile = findRomFile(meta);
+                if (!romFile) {
+                    resultsDiv.innerHTML = '<div class=\"search-error\">' + t('searchNoResults') + '</div>';
+                    return;
+                }
+                var downloadUrl = 'https://archive.org/download/' + identifier + '/' + romFile.name;
+                downloadAndLoadRom(downloadUrl, romFile.name);
+            })
+            .catch(function(err) {
+                console.error('Metadata fetch failed:', err);
+                resultsDiv.innerHTML = '<div class=\"search-error\">' + t('searchDownloadFailed') + '</div>';
+            });
+    }
+}
+
+// Find the best ROM file from metadata
+function findRomFile(meta) {
+    if (!meta.files || meta.files.length === 0) return null;
+    
+    var romExts = ['.nes', '.gba', '.gbc', '.gb', '.sfc', '.smc', '.z64', '.v64', '.n64',
+        '.iso', '.bin', '.cso', '.pbp', '.md', '.smd', '.gen', '.sms', '.gg', '.sg',
+        '.cue', '.chd', '.nds', '.3ds', '.cia', '.a26', '.a78', '.zip'];
+    
+    var candidates = meta.files.filter(function(f) {
+        var name = f.name || '';
+        return romExts.some(function(ext) { return name.toLowerCase().endsWith(ext); });
+    });
+    
+    if (candidates.length === 0) return null;
+    
+    // Prefer largest file (most likely to be complete ROM)
+    candidates.sort(function(a, b) {
+        return (b.size || 0) - (a.size || 0);
+    });
+    
+    return candidates[0];
+}
+
+// Download ROM and load it
+function downloadAndLoadRom(url, filename) {
+    var resultsDiv = document.getElementById('searchResults');
+    resultsDiv.innerHTML = '<div class=\"search-loading\">' + t('searchDownloading') + ' ' + filename + '</div>';
+    
+    tryFetchWithProxy(url, 0, filename, function(finalUrl, finalFilename) {
+        showManualDownload(finalUrl, finalFilename);
+    });
+}
+
+// Show manual download link when auto-download fails
+function showManualDownload(url, filename) {
+    var resultsDiv = document.getElementById("searchResults");
+    resultsDiv.innerHTML = "<div class='search-error'>" + t("searchDownloadFailed") + "</div>" +
+        "<div class='search-manual'>" +
+            "<a href='" + url + "' download target='_blank' class='search-manual-link'>" + t("searchManualDownload") + ": " + filename + "</a>" +
+            "<p class='search-manual-tip'>" + t("searchManualTip") + "</p>" +
+        "</div>";
 }
 
 // Configuration - Use CDN for EmulatorJS
@@ -730,6 +1078,8 @@ var EJS_core = 'fceumm';
 var EJS_gameUrl = '';
 var EJS_color = '#A3001B';
 var EJS_startOnLoaded = true;
+// Disable cheats to prevent memory errors on some cores (especially N64)
+var EJS_cheats = false;
 // Enable gamepad support
 var EJS_gamepadSupport = true;
 // Use CDN path instead of local
@@ -738,20 +1088,23 @@ var EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
 // ROM file extensions mapping
 var coreMapping = {
     'nes': 'fceumm',
-    'zip': 'fceumm', // NES ROMs often in zip
     'gba': 'mgba',
     'gbc': 'gambatte',
     'gb': 'gambatte',
     'sfc': 'snes9x',
     'smc': 'snes9x',
-    'z64': 'mupen64plus',
-    'v64': 'mupen64plus',
-    'n64': 'mupen64plus',
+    'z64': 'mupen64plus_next',
+    'v64': 'mupen64plus_next',
+    'n64': 'mupen64plus_next',
     'iso': 'pcsx_rearmed',
     'bin': 'pcsx_rearmed',
-    'cso': 'ppsspp',
-    'pbp': 'ppsspp'
+    'md': 'genesis_plus_gx',
+    'smd': 'genesis_plus_gx',
+    'gen': 'genesis_plus_gx'
 };
+
+// 用户通过 URL 参数或下拉框明确选择的 core，优先级高于扩展名自动检测
+var userSelectedCore = '';
 
 // Current game info
 var currentGame = {
@@ -775,7 +1128,7 @@ function showToast(message) {
 // Auto-detect core from file extension
 function detectCore(filename) {
     var ext = filename.split('.').pop().toLowerCase();
-    return coreMapping[ext] || 'fceumm';
+    return coreMapping[ext] || '';
 }
 
 // Handle ROM upload
@@ -788,12 +1141,11 @@ function handleRomUpload(file) {
         
         // Set current game info
         currentGame.name = filename.replace(/\.[^/.]+$/, "");
-        currentGame.core = detectCore(filename);
+        currentGame.core = userSelectedCore || detectCore(filename) || 'fceumm';
         currentGame.romData = romData;
         
         // Update core select
-        document.getElementById('coreSelect').value = currentGame.core;
-        
+                
         // Configure EmulatorJS
         EJS_core = currentGame.core;
         EJS_gameUrl = romData;
@@ -824,15 +1176,39 @@ function loadEmulatorJS() {
     var script = document.createElement('script');
     script.src = EJS_pathtodata + 'loader.js';
     script.onload = function() {
-        console.log('EmulatorJS loaded');
-        // Hide loading overlay after a short delay (EmulatorJS will handle it)
+        console.log('EmulatorJS loaded successfully');
+        console.log('Core:', EJS_core);
+        console.log('Game URL:', EJS_gameUrl);
+        
+        // Wait for EmulatorJS to initialize
+        var checkInterval = setInterval(function() {
+            if (window.EJS_emulator) {
+                clearInterval(checkInterval);
+                console.log('Emulator instance created');
+                
+                // Listen for errors
+                window.EJS_emulator.on('error', function(error) {
+                    console.error('EmulatorJS error:', error);
+                    showToast('Emulator error: ' + (error.message || 'Unknown error'));
+                });
+            }
+        }, 500);
+        
+        // Hide loading overlay after a short delay
         setTimeout(function() {
-            document.getElementById('loadingOverlay').classList.add('hidden');
+            var overlay = document.getElementById('loadingOverlay');
+            if (overlay) {
+                overlay.classList.add('hidden');
+            }
         }, 3000);
     };
     script.onerror = function() {
-        document.getElementById('loadingOverlay').classList.add('hidden');
-        showToast(t('loadEmulatorFailed'));
+        console.error('Failed to load EmulatorJS from:', EJS_pathtodata);
+        var overlay = document.getElementById('loadingOverlay');
+            if (overlay) {
+                overlay.classList.add('hidden');
+            }
+        showToast('Failed to load emulator. Please check console for details.');
     };
     document.body.appendChild(script);
 }
@@ -1001,15 +1377,28 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('tabFile').addEventListener('click', function() {
         this.classList.add('active');
         document.getElementById('tabUrl').classList.remove('active');
+        document.getElementById('tabSearch').classList.remove('active');
         document.getElementById('uploadBox').classList.remove('hidden');
         document.getElementById('urlBox').classList.add('hidden');
+        document.getElementById('searchBox').classList.add('hidden');
     });
-    
+
     document.getElementById('tabUrl').addEventListener('click', function() {
         this.classList.add('active');
         document.getElementById('tabFile').classList.remove('active');
+        document.getElementById('tabSearch').classList.remove('active');
         document.getElementById('urlBox').classList.remove('hidden');
         document.getElementById('uploadBox').classList.add('hidden');
+        document.getElementById('searchBox').classList.add('hidden');
+    });
+    
+    document.getElementById('tabSearch').addEventListener('click', function() {
+        this.classList.add('active');
+        document.getElementById('tabFile').classList.remove('active');
+        document.getElementById('tabUrl').classList.remove('active');
+        document.getElementById('searchBox').classList.remove('hidden');
+        document.getElementById('uploadBox').classList.add('hidden');
+        document.getElementById('urlBox').classList.add('hidden');
     });
     
     // Upload button
@@ -1023,11 +1412,39 @@ document.addEventListener('DOMContentLoaded', function() {
         handleRomFromUrl(url);
     });
     
+    // Preset ROM select
+    document.getElementById('romPresetSelect').addEventListener('change', function() {
+        var url = this.value.trim();
+        if (url) {
+            document.getElementById('romUrlInput').value = url;
+            handleRomFromUrl(url);
+        }
+    });
+    
     // URL input Enter key
     document.getElementById('romUrlInput').addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             var url = this.value.trim();
             handleRomFromUrl(url);
+        }
+    });
+    
+    // Search button
+    document.getElementById('romSearchBtn').addEventListener('click', function() {
+        var query = document.getElementById('romSearchInput').value.trim();
+        searchRom(query);
+    });
+    
+    // Source selector
+    document.getElementById('searchSource').addEventListener('change', function() {
+        currentSearchSource = this.value;
+    });
+    
+    // Search input Enter key
+    document.getElementById('romSearchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            var query = this.value.trim();
+            searchRom(query);
         }
     });
     
@@ -1059,13 +1476,102 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Core select change
-    document.getElementById('coreSelect').addEventListener('change', function(e) {
-        if (currentGame.romData) {
-            EJS_core = e.target.value;
-            currentGame.core = e.target.value;
+    // Core-to-platform mapping for preset filtering
+    var corePlatformMap = {
+        'fceumm': 'nes',
+        'snes9x': 'snes',
+        'mgba': 'gba',
+        'gambatte': 'gb',
+        'mupen64plus_next': 'n64',
+        'melonds': 'nds',
+        'pcsx_rearmed': 'psx',
+        'genesis_plus_gx': 'genesis',
+        'smsplus': 'sms',
+        'picodrive': 'sega32x',
+        'yabause': 'saturn',
+        'stella2014': 'atari2600',
+        'prosystem': 'atari7800',
+        'a5200': 'atari5200',
+        'virtualjaguar': 'atarijaguar',
+        'handy': 'atarilynx',
+        'opera': '3do',
+        'fbneo': 'arcade',
+        'mame2003': 'mame',
+        'gearcoleco': 'coleco'
+    };
+
+    // Preset ROM cache
+    var presetCache = {};
+
+    // Load preset ROM options from JSON file based on core
+    function loadPresetOptions(core) {
+        var platform = corePlatformMap[core] || '';
+        var select = document.getElementById('romPresetSelect');
+        if (!select) return;
+        
+        // Reset select to default option
+        select.innerHTML = '<option value="">-- Select a ROM --</option>';
+        
+        if (!platform) {
+            return;
         }
-    });
+        
+        // Check cache first
+        if (presetCache[platform]) {
+            populatePresetSelect(select, presetCache[platform]);
+            return;
+        }
+        
+        // Show loading state
+        select.innerHTML = '<option value="">Loading...</option>';
+        
+        // Fetch JSON file
+        var jsonUrl = '../../data/roms/' + platform + '.json';
+        fetch(jsonUrl)
+            .then(function(response) {
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status);
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                presetCache[platform] = data;
+                populatePresetSelect(select, data);
+            })
+            .catch(function(error) {
+                console.error('Failed to load preset ROMs:', error);
+                select.innerHTML = '<option value="">Failed to load ROMs</option>';
+            });
+    }
+    
+    // Populate select with games from JSON data
+    function populatePresetSelect(select, data) {
+        select.innerHTML = '<option value="">-- Select a ROM --</option>';
+        
+        if (!data || !data.games || !Array.isArray(data.games)) {
+            return;
+        }
+        
+        data.games.forEach(function(game) {
+            var option = document.createElement('option');
+            option.value = game.url;
+            option.setAttribute('data-platform', data.platform || '');
+            option.setAttribute('data-game-name', game.name);
+            option.textContent = game.name;
+            select.appendChild(option);
+        });
+    }
+
+    // Get core from URL parameter
+    var urlParams = new URLSearchParams(window.location.search);
+    var coreParam = urlParams.get('core');
+    if (coreParam) {
+        EJS_core = coreParam;
+        userSelectedCore = coreParam;
+    }
+    
+    // Initialize preset options based on current core
+    loadPresetOptions(EJS_core);
     
     // Fullscreen button
     document.getElementById('fullscreenBtn').addEventListener('click', function() {
@@ -1102,17 +1608,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var toggle = document.getElementById('instructionsToggle');
         content.classList.toggle('hidden');
         toggle.classList.toggle('collapsed');
-    });
-    
-    // Get core from URL parameter
-    var urlParams = new URLSearchParams(window.location.search);
-    var coreParam = urlParams.get('core');
-    if (coreParam) {
-        document.getElementById('coreSelect').value = coreParam;
-        EJS_core = coreParam;
-    }
-    
-    // Gamepad connection events
+    });    // Gamepad connection events
     window.addEventListener('gamepadconnected', function(e) {
         console.log('Gamepad connected:', e.gamepad.id);
         gamepads[e.gamepad.index] = e.gamepad;
