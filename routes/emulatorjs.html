@@ -57,7 +57,7 @@
                 </div>
                 <h2 class="upload-title" data-i18n="uploadTitle">Upload ROM File</h2>
                 <p class="upload-desc" data-i18n="uploadDesc">Drag and drop your ROM file here or click to select</p>
-                <input type="file" class="upload-input" id="romInput" accept=".nes,.zip,.gba,.gbc,.gb,.sfc,.smc,.z64,.v64,.n64,.iso,.bin,.cso,.pbp,.md,.smd,.gen,.sms,.gg,.sg,.cue,.chd,.nds,.a26,.a78">
+                <input type="file" class="upload-input" id="romInput" accept=".nes,.zip,.gba,.gbc,.gb,.sfc,.smc,.z64,.v64,.n64,.iso,.bin,.cso,.pbp,.md,.smd,.gen,.sms,.gg,.sg,.cue,.chd,.nds,.a26,.a78,.a52,.col,.rom,.j64,.jag,.lyx,.lnx,.vb,.prg,.d64,.tap,.t64,.crt,.g64,.p00,.adf,.adz,.32x,.7z">
                 <button class="upload-btn" id="uploadBtn">
                     <i class="fas fa-file-upload"></i>
                     <span data-i18n="selectRom">Select ROM File</span>
@@ -84,6 +84,7 @@
                         <option value="">-- Select a ROM --</option>
                     </select>
                 </div>
+                <div class="url-load-error hidden" id="urlLoadError" role="alert"></div>
                 <p class="url-tip">
                     <i class="fas fa-info-circle"></i>
                     <span data-i18n="urlTip">Tip: Enter a direct link to the ROM file. Make sure the URL points to a downloadable file.</span>

@@ -1,0 +1,251 @@
+{
+  "platform": "c64",
+  "core": "vice_x64",
+  "games": [
+    {
+      "name": "100box",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/100box.prg",
+      "filename": "100box.prg"
+    },
+    {
+      "name": "algol",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/algol.d64",
+      "filename": "algol.d64"
+    },
+    {
+      "name": "athanor_plus4",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/athanor_plus4.d64",
+      "filename": "athanor_plus4.d64"
+    },
+    {
+      "name": "atomheart",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/atomheart.d64",
+      "filename": "atomheart.d64"
+    },
+    {
+      "name": "bappleship",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/bappleship.prg",
+      "filename": "bappleship.prg"
+    },
+    {
+      "name": "captaincloudberry",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/captaincloudberry.d64",
+      "filename": "captaincloudberry.d64"
+    },
+    {
+      "name": "elav",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/elav.prg",
+      "filename": "elav.prg"
+    },
+    {
+      "name": "electricwarrior",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/electricwarrior.d64",
+      "filename": "electricwarrior.d64"
+    },
+    {
+      "name": "explodingfish",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/explodingfish.d64",
+      "filename": "explodingfish.d64"
+    },
+    {
+      "name": "findthepussy",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/findthepussy.prg",
+      "filename": "findthepussy.prg"
+    },
+    {
+      "name": "gruniozerca",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/gruniozerca.d64",
+      "filename": "gruniozerca.d64"
+    },
+    {
+      "name": "happyflappy",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/happyflappy.prg",
+      "filename": "happyflappy.prg"
+    },
+    {
+      "name": "hektic2",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/hektic2.prg",
+      "filename": "hektic2.prg"
+    },
+    {
+      "name": "honeybee",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/honeybee.d64",
+      "filename": "honeybee.d64"
+    },
+    {
+      "name": "humpy64",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/humpy64.prg",
+      "filename": "humpy64.prg"
+    },
+    {
+      "name": "icebloxplus",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/icebloxplus.d64",
+      "filename": "icebloxplus.d64"
+    },
+    {
+      "name": "itsmagic",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/itsmagic.d64",
+      "filename": "itsmagic.d64"
+    },
+    {
+      "name": "joegunngold",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/joegunngold.d64",
+      "filename": "joegunngold.d64"
+    },
+    {
+      "name": "lightsoff",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/lightsoff.prg",
+      "filename": "lightsoff.prg"
+    },
+    {
+      "name": "lightson",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/lightson.prg",
+      "filename": "lightson.prg"
+    },
+    {
+      "name": "lsstrilogy",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/lsstrilogy.tap",
+      "filename": "lsstrilogy.tap"
+    },
+    {
+      "name": "lumberjack",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/lumberjack.d64",
+      "filename": "lumberjack.d64"
+    },
+    {
+      "name": "magicsquares",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/magicsquares.prg",
+      "filename": "magicsquares.prg"
+    },
+    {
+      "name": "markanoid",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/markanoid.prg",
+      "filename": "markanoid.prg"
+    },
+    {
+      "name": "mazeofdeath",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/mazeofdeath.d64",
+      "filename": "mazeofdeath.d64"
+    },
+    {
+      "name": "monsterhunt",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/monsterhunt.prg",
+      "filename": "monsterhunt.prg"
+    },
+    {
+      "name": "moonrock",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/moonrock.prg",
+      "filename": "moonrock.prg"
+    },
+    {
+      "name": "nanakoincastle",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/nanakoincastle.d64",
+      "filename": "nanakoincastle.d64"
+    },
+    {
+      "name": "numtrap",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/numtrap.prg",
+      "filename": "numtrap.prg"
+    },
+    {
+      "name": "paperplane",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/paperplane.prg",
+      "filename": "paperplane.prg"
+    },
+    {
+      "name": "plunko",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/plunko.prg",
+      "filename": "plunko.prg"
+    },
+    {
+      "name": "pulse",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/pulse.prg",
+      "filename": "pulse.prg"
+    },
+    {
+      "name": "quodinitexit",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/quodinitexit.d64",
+      "filename": "quodinitexit.d64"
+    },
+    {
+      "name": "rollrollroll",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/rollrollroll.prg",
+      "filename": "rollrollroll.prg"
+    },
+    {
+      "name": "scissorspaperrock",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/scissorspaperrock.prg",
+      "filename": "scissorspaperrock.prg"
+    },
+    {
+      "name": "scissorspaperrocklizardspock",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/scissorspaperrocklizardspock.prg",
+      "filename": "scissorspaperrocklizardspock.prg"
+    },
+    {
+      "name": "sentence",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/sentence.d64",
+      "filename": "sentence.d64"
+    },
+    {
+      "name": "shinobidenzero",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/shinobidenzero.prg",
+      "filename": "shinobidenzero.prg"
+    },
+    {
+      "name": "simon",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/simon.prg",
+      "filename": "simon.prg"
+    },
+    {
+      "name": "sirababol",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/sirababol.d64",
+      "filename": "sirababol.d64"
+    },
+    {
+      "name": "snafu",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/snafu.d64",
+      "filename": "snafu.d64"
+    },
+    {
+      "name": "thelabyrinth",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/thelabyrinth.prg",
+      "filename": "thelabyrinth.prg"
+    },
+    {
+      "name": "thevicesquad",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/thevicesquad.d64",
+      "filename": "thevicesquad.d64"
+    },
+    {
+      "name": "tombstones",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/tombstones.d64",
+      "filename": "tombstones.d64"
+    },
+    {
+      "name": "trolleyfollies",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/trolleyfollies.d64",
+      "filename": "trolleyfollies.d64"
+    },
+    {
+      "name": "uwolquestformoney",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/uwolquestformoney.d64",
+      "filename": "uwolquestformoney.d64"
+    },
+    {
+      "name": "winkyblinky",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/winkyblinky.prg",
+      "filename": "winkyblinky.prg"
+    },
+    {
+      "name": "wtf",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/wtf.prg",
+      "filename": "wtf.prg"
+    },
+    {
+      "name": "zilspleef",
+      "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/zilspleef.d64",
+      "filename": "zilspleef.d64"
+    }
+  ]
+}

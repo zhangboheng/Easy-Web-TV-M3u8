@@ -1,0 +1,251 @@
+{
+  "platform": "atarijaguar",
+  "core": "virtualjaguar",
+  "games": [
+    {
+      "name": "Alien vs Predator (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Alien%20vs%20Predator%20(WR).j64",
+      "filename": "Alien vs Predator (WR).j64"
+    },
+    {
+      "name": "Atari Karts (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Atari%20Karts%20(WR).j64",
+      "filename": "Atari Karts (WR).j64"
+    },
+    {
+      "name": "Attack of the Mutant Penguins (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Attack%20of%20the%20Mutant%20Penguins%20(WR).j64",
+      "filename": "Attack of the Mutant Penguins (WR).j64"
+    },
+    {
+      "name": "Breakout 2000 (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Breakout%202000%20(US%20-%20EU).j64",
+      "filename": "Breakout 2000 (US - EU).j64"
+    },
+    {
+      "name": "Brutal Sports Football (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Brutal%20Sports%20Football%20(WR).j64",
+      "filename": "Brutal Sports Football (WR).j64"
+    },
+    {
+      "name": "Bubsy in Fractured Furry Tales (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Bubsy%20in%20Fractured%20Furry%20Tales%20(WR).j64",
+      "filename": "Bubsy in Fractured Furry Tales (WR).j64"
+    },
+    {
+      "name": "Cannon Fodder (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Cannon%20Fodder%20(WR).j64",
+      "filename": "Cannon Fodder (WR).j64"
+    },
+    {
+      "name": "Checkered Flag (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Checkered%20Flag%20(WR).j64",
+      "filename": "Checkered Flag (WR).j64"
+    },
+    {
+      "name": "Club Drive (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Club%20Drive%20(WR).j64",
+      "filename": "Club Drive (WR).j64"
+    },
+    {
+      "name": "Cybermorph (WR) (Rev-A)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Cybermorph%20(WR)%20(Rev-A).j64",
+      "filename": "Cybermorph (WR) (Rev-A).j64"
+    },
+    {
+      "name": "Cybermorph (WR) (Rev-B)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Cybermorph%20(WR)%20(Rev-B).j64",
+      "filename": "Cybermorph (WR) (Rev-B).j64"
+    },
+    {
+      "name": "Defender 2000 (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Defender%202000%20(WR).j64",
+      "filename": "Defender 2000 (WR).j64"
+    },
+    {
+      "name": "Doom (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Doom%20(WR).j64",
+      "filename": "Doom (WR).j64"
+    },
+    {
+      "name": "Double Dragon 5 - The Shadow Falls (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Double%20Dragon%205%20-%20The%20Shadow%20Falls%20(WR).j64",
+      "filename": "Double Dragon 5 - The Shadow Falls (WR).j64"
+    },
+    {
+      "name": "Dragon - The Bruce Lee Story (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Dragon%20-%20The%20Bruce%20Lee%20Story%20(WR).j64",
+      "filename": "Dragon - The Bruce Lee Story (WR).j64"
+    },
+    {
+      "name": "Evolution - Dino Dudes (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Evolution%20-%20Dino%20Dudes%20(WR).j64",
+      "filename": "Evolution - Dino Dudes (WR).j64"
+    },
+    {
+      "name": "Fever Pitch Soccer (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Fever%20Pitch%20Soccer%20(WR).j64",
+      "filename": "Fever Pitch Soccer (WR).j64"
+    },
+    {
+      "name": "Fight for Life (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Fight%20for%20Life%20(US%20-%20EU).j64",
+      "filename": "Fight for Life (US - EU).j64"
+    },
+    {
+      "name": "Flashback - The Quest for Identity (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Flashback%20-%20The%20Quest%20for%20Identity%20(WR).j64",
+      "filename": "Flashback - The Quest for Identity (WR).j64"
+    },
+    {
+      "name": "Flip Out! (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Flip%20Out!%20(WR).j64",
+      "filename": "Flip Out! (WR).j64"
+    },
+    {
+      "name": "Hover Strike (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Hover%20Strike%20(WR).j64",
+      "filename": "Hover Strike (WR).j64"
+    },
+    {
+      "name": "I-War (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/I-War%20(US%20-%20EU).j64",
+      "filename": "I-War (US - EU).j64"
+    },
+    {
+      "name": "International Sensible Soccer (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/International%20Sensible%20Soccer%20(WR).j64",
+      "filename": "International Sensible Soccer (WR).j64"
+    },
+    {
+      "name": "Iron Soldier (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Iron%20Soldier%20(WR).j64",
+      "filename": "Iron Soldier (WR).j64"
+    },
+    {
+      "name": "Kasumi Ninja (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Kasumi%20Ninja%20(WR).j64",
+      "filename": "Kasumi Ninja (WR).j64"
+    },
+    {
+      "name": "Missile Command 3D (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Missile%20Command%203D%20(WR).j64",
+      "filename": "Missile Command 3D (WR).j64"
+    },
+    {
+      "name": "NBA Jam - Tournament Edition (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/NBA%20Jam%20-%20Tournament%20Edition%20(US%20-%20EU).j64",
+      "filename": "NBA Jam - Tournament Edition (US - EU).j64"
+    },
+    {
+      "name": "Pinball Fantasies (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Pinball%20Fantasies%20(WR).j64",
+      "filename": "Pinball Fantasies (WR).j64"
+    },
+    {
+      "name": "Pitfall - The Mayan Adventure (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Pitfall%20-%20The%20Mayan%20Adventure%20(US%20-%20EU).j64",
+      "filename": "Pitfall - The Mayan Adventure (US - EU).j64"
+    },
+    {
+      "name": "Power Drive Rally (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Power%20Drive%20Rally%20(WR).j64",
+      "filename": "Power Drive Rally (WR).j64"
+    },
+    {
+      "name": "Raiden (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Raiden%20(WR).j64",
+      "filename": "Raiden (WR).j64"
+    },
+    {
+      "name": "Raiden (WR) (Rev-A)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Raiden%20(WR)%20(Rev-A).j64",
+      "filename": "Raiden (WR) (Rev-A).j64"
+    },
+    {
+      "name": "Rayman (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Rayman%20(WR).j64",
+      "filename": "Rayman (WR).j64"
+    },
+    {
+      "name": "Ruiner Pinball (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Ruiner%20Pinball%20(US%20-%20EU).j64",
+      "filename": "Ruiner Pinball (US - EU).j64"
+    },
+    {
+      "name": "Super Burnout (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Super%20Burnout%20(WR).j64",
+      "filename": "Super Burnout (WR).j64"
+    },
+    {
+      "name": "Supercross 3D (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Supercross%203D%20(US%20-%20EU).j64",
+      "filename": "Supercross 3D (US - EU).j64"
+    },
+    {
+      "name": "Syndicate (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Syndicate%20(WR).j64",
+      "filename": "Syndicate (WR).j64"
+    },
+    {
+      "name": "Tempest 2000 (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Tempest%202000%20(WR).j64",
+      "filename": "Tempest 2000 (WR).j64"
+    },
+    {
+      "name": "Theme Park (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Theme%20Park%20(WR).j64",
+      "filename": "Theme Park (WR).j64"
+    },
+    {
+      "name": "Towers 2 - Plight of the Stargazer (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Towers%202%20-%20Plight%20of%20the%20Stargazer%20(US%20-%20EU).j64",
+      "filename": "Towers 2 - Plight of the Stargazer (US - EU).j64"
+    },
+    {
+      "name": "Trevor McFur in the Crescent Galaxy (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Trevor%20McFur%20in%20the%20Crescent%20Galaxy%20(WR).j64",
+      "filename": "Trevor McFur in the Crescent Galaxy (WR).j64"
+    },
+    {
+      "name": "Trevor McFur in the Crescent Galaxy (WR) (Rev-A)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Trevor%20McFur%20in%20the%20Crescent%20Galaxy%20(WR)%20(Rev-A).j64",
+      "filename": "Trevor McFur in the Crescent Galaxy (WR) (Rev-A).j64"
+    },
+    {
+      "name": "Troy Aikman NFL Football (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Troy%20Aikman%20NFL%20Football%20(WR).j64",
+      "filename": "Troy Aikman NFL Football (WR).j64"
+    },
+    {
+      "name": "Ultra Vortek (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Ultra%20Vortek%20(WR).j64",
+      "filename": "Ultra Vortek (WR).j64"
+    },
+    {
+      "name": "Val dIsere Skiing and Snowboarding (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Val%20dIsere%20Skiing%20and%20Snowboarding%20(WR).j64",
+      "filename": "Val dIsere Skiing and Snowboarding (WR).j64"
+    },
+    {
+      "name": "White Men Cant Jump (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/White%20Men%20Cant%20Jump%20(US%20-%20EU).j64",
+      "filename": "White Men Cant Jump (US - EU).j64"
+    },
+    {
+      "name": "Wolfenstein 3D (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Wolfenstein%203D%20(WR).j64",
+      "filename": "Wolfenstein 3D (WR).j64"
+    },
+    {
+      "name": "Zool 2 (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Zool%202%20(WR).j64",
+      "filename": "Zool 2 (WR).j64"
+    },
+    {
+      "name": "Zoop (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariJaguar/Zoop%20(US%20-%20EU).j64",
+      "filename": "Zoop (US - EU).j64"
+    }
+  ]
+}

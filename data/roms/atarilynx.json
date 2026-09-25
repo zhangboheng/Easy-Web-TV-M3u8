@@ -1,0 +1,391 @@
+{
+  "platform": "atarilynx",
+  "core": "handy",
+  "games": [
+    {
+      "name": "A.P.B. (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/A.P.B.%20(US%20-%20EU).lyx",
+      "filename": "A.P.B. (US - EU).lyx"
+    },
+    {
+      "name": "Awesome Golf (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Awesome%20Golf%20(US%20-%20EU).lyx",
+      "filename": "Awesome Golf (US - EU).lyx"
+    },
+    {
+      "name": "Baseball Heroes (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Baseball%20Heroes%20(US%20-%20EU).lyx",
+      "filename": "Baseball Heroes (US - EU).lyx"
+    },
+    {
+      "name": "Basketbrawl (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Basketbrawl%20(US%20-%20EU).lyx",
+      "filename": "Basketbrawl (US - EU).lyx"
+    },
+    {
+      "name": "Batman Returns (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Batman%20Returns%20(US%20-%20EU).lyx",
+      "filename": "Batman Returns (US - EU).lyx"
+    },
+    {
+      "name": "Battle Wheels (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Battle%20Wheels%20(US%20-%20EU).lyx",
+      "filename": "Battle Wheels (US - EU).lyx"
+    },
+    {
+      "name": "Battlezone 2000 (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Battlezone%202000%20(US%20-%20EU).lyx",
+      "filename": "Battlezone 2000 (US - EU).lyx"
+    },
+    {
+      "name": "Bill and Teds - Excellent Adventure (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Bill%20and%20Teds%20-%20Excellent%20Adventure%20(US%20-%20EU).lyx",
+      "filename": "Bill and Teds - Excellent Adventure (US - EU).lyx"
+    },
+    {
+      "name": "Block Out (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Block%20Out%20(US%20-%20EU).lyx",
+      "filename": "Block Out (US - EU).lyx"
+    },
+    {
+      "name": "Blue Lightning (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Blue%20Lightning%20(WR).lyx",
+      "filename": "Blue Lightning (WR).lyx"
+    },
+    {
+      "name": "Bubble Trouble (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Bubble%20Trouble%20(US%20-%20EU).lyx",
+      "filename": "Bubble Trouble (US - EU).lyx"
+    },
+    {
+      "name": "California Games (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/California%20Games%20(WR).lyx",
+      "filename": "California Games (WR).lyx"
+    },
+    {
+      "name": "Checkered Flag (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Checkered%20Flag%20(US%20-%20EU).lyx",
+      "filename": "Checkered Flag (US - EU).lyx"
+    },
+    {
+      "name": "Chips Challenge (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Chips%20Challenge%20(WR).lyx",
+      "filename": "Chips Challenge (WR).lyx"
+    },
+    {
+      "name": "Crystal Mines 2 (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Crystal%20Mines%202%20(US%20-%20EU).lyx",
+      "filename": "Crystal Mines 2 (US - EU).lyx"
+    },
+    {
+      "name": "Desert Strike - Return to the Gulf (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Desert%20Strike%20-%20Return%20to%20the%20Gulf%20(US%20-%20EU).lyx",
+      "filename": "Desert Strike - Return to the Gulf (US - EU).lyx"
+    },
+    {
+      "name": "Dinolympics (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Dinolympics%20(US%20-%20EU).lyx",
+      "filename": "Dinolympics (US - EU).lyx"
+    },
+    {
+      "name": "Dirty Larry - Renegade Cop (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Dirty%20Larry%20-%20Renegade%20Cop%20(US%20-%20EU).lyx",
+      "filename": "Dirty Larry - Renegade Cop (US - EU).lyx"
+    },
+    {
+      "name": "Double Dragon (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Double%20Dragon%20(US%20-%20EU).lyx",
+      "filename": "Double Dragon (US - EU).lyx"
+    },
+    {
+      "name": "Dracula - The Undead (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Dracula%20-%20The%20Undead%20(US%20-%20EU).lyx",
+      "filename": "Dracula - The Undead (US - EU).lyx"
+    },
+    {
+      "name": "Electrocop (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Electrocop%20(WR).lyx",
+      "filename": "Electrocop (WR).lyx"
+    },
+    {
+      "name": "European Soccer Challenge (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/European%20Soccer%20Challenge%20(US%20-%20EU).lyx",
+      "filename": "European Soccer Challenge (US - EU).lyx"
+    },
+    {
+      "name": "Fat Bobby (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Fat%20Bobby%20(US%20-%20EU).lyx",
+      "filename": "Fat Bobby (US - EU).lyx"
+    },
+    {
+      "name": "Fidelity Ultimate Chess Challenge, The (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Fidelity%20Ultimate%20Chess%20Challenge%2C%20The%20(US%20-%20EU).lyx",
+      "filename": "Fidelity Ultimate Chess Challenge, The (US - EU).lyx"
+    },
+    {
+      "name": "Gates of Zendocon (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Gates%20of%20Zendocon%20(WR).lyx",
+      "filename": "Gates of Zendocon (WR).lyx"
+    },
+    {
+      "name": "Gauntlet - The Third Encounter (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Gauntlet%20-%20The%20Third%20Encounter%20(WR).lyx",
+      "filename": "Gauntlet - The Third Encounter (WR).lyx"
+    },
+    {
+      "name": "Gordo 106 (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Gordo%20106%20(US%20-%20EU).lyx",
+      "filename": "Gordo 106 (US - EU).lyx"
+    },
+    {
+      "name": "Hard Drivin (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Hard%20Drivin%20(US%20-%20EU).lyx",
+      "filename": "Hard Drivin (US - EU).lyx"
+    },
+    {
+      "name": "Hockey (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Hockey%20(US%20-%20EU).lyx",
+      "filename": "Hockey (US - EU).lyx"
+    },
+    {
+      "name": "Hydra (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Hydra%20(US%20-%20EU).lyx",
+      "filename": "Hydra (US - EU).lyx"
+    },
+    {
+      "name": "Ishido - The Way of Stones (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Ishido%20-%20The%20Way%20of%20Stones%20(US%20-%20EU).lyx",
+      "filename": "Ishido - The Way of Stones (US - EU).lyx"
+    },
+    {
+      "name": "Jimmy Connors Tennis (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Jimmy%20Connors%20Tennis%20(US%20-%20EU).lyx",
+      "filename": "Jimmy Connors Tennis (US - EU).lyx"
+    },
+    {
+      "name": "Joust (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Joust%20(US%20-%20EU).lyx",
+      "filename": "Joust (US - EU).lyx"
+    },
+    {
+      "name": "Klax (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Klax%20(WR).lyx",
+      "filename": "Klax (WR).lyx"
+    },
+    {
+      "name": "Krazy Ace - Miniature Golf (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Krazy%20Ace%20-%20Miniature%20Golf%20(US%20-%20EU).lyx",
+      "filename": "Krazy Ace - Miniature Golf (US - EU).lyx"
+    },
+    {
+      "name": "Kung Food (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Kung%20Food%20(US%20-%20EU).lyx",
+      "filename": "Kung Food (US - EU).lyx"
+    },
+    {
+      "name": "Lemmings (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Lemmings%20(US%20-%20EU).lyx",
+      "filename": "Lemmings (US - EU).lyx"
+    },
+    {
+      "name": "Lynx 2 Production Test Program (USA)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Lynx%202%20Production%20Test%20Program%20(USA).lyx",
+      "filename": "Lynx 2 Production Test Program (USA).lyx"
+    },
+    {
+      "name": "Lynx Casino (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Lynx%20Casino%20(US%20-%20EU).lyx",
+      "filename": "Lynx Casino (US - EU).lyx"
+    },
+    {
+      "name": "Malibu Bikini Volleyball (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Malibu%20Bikini%20Volleyball%20(US%20-%20EU).lyx",
+      "filename": "Malibu Bikini Volleyball (US - EU).lyx"
+    },
+    {
+      "name": "Ms. Pac-Man (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Ms.%20Pac-Man%20(WR).lyx",
+      "filename": "Ms. Pac-Man (WR).lyx"
+    },
+    {
+      "name": "NFL Football (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/NFL%20Football%20(US%20-%20EU).lyx",
+      "filename": "NFL Football (US - EU).lyx"
+    },
+    {
+      "name": "Ninja Gaiden (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Ninja%20Gaiden%20(US%20-%20EU).lyx",
+      "filename": "Ninja Gaiden (US - EU).lyx"
+    },
+    {
+      "name": "Ninja Gaiden 3 - The Ancient Ship of Doom (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Ninja%20Gaiden%203%20-%20The%20Ancient%20Ship%20of%20Doom%20(US%20-%20EU).lyx",
+      "filename": "Ninja Gaiden 3 - The Ancient Ship of Doom (US - EU).lyx"
+    },
+    {
+      "name": "Pac-Land (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Pac-Land%20(US%20-%20EU).lyx",
+      "filename": "Pac-Land (US - EU).lyx"
+    },
+    {
+      "name": "Paperboy (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Paperboy%20(WR).lyx",
+      "filename": "Paperboy (WR).lyx"
+    },
+    {
+      "name": "Pinball Jam (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Pinball%20Jam%20(US%20-%20EU).lyx",
+      "filename": "Pinball Jam (US - EU).lyx"
+    },
+    {
+      "name": "Pit-Fighter (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Pit-Fighter%20(US%20-%20EU).lyx",
+      "filename": "Pit-Fighter (US - EU).lyx"
+    },
+    {
+      "name": "Power Factor (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Power%20Factor%20(US%20-%20EU).lyx",
+      "filename": "Power Factor (US - EU).lyx"
+    },
+    {
+      "name": "QIX (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/QIX%20(US%20-%20EU).lyx",
+      "filename": "QIX (US - EU).lyx"
+    },
+    {
+      "name": "Rampage (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Rampage%20(WR).lyx",
+      "filename": "Rampage (WR).lyx"
+    },
+    {
+      "name": "Rampart (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Rampart%20(US%20-%20EU).lyx",
+      "filename": "Rampart (US - EU).lyx"
+    },
+    {
+      "name": "RoadBlasters (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/RoadBlasters%20(WR).lyx",
+      "filename": "RoadBlasters (WR).lyx"
+    },
+    {
+      "name": "Robo-Squash (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Robo-Squash%20(WR).lyx",
+      "filename": "Robo-Squash (WR).lyx"
+    },
+    {
+      "name": "Robotron 2084 (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Robotron%202084%20(US%20-%20EU).lyx",
+      "filename": "Robotron 2084 (US - EU).lyx"
+    },
+    {
+      "name": "Rygar (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Rygar%20(WR).lyx",
+      "filename": "Rygar (WR).lyx"
+    },
+    {
+      "name": "S.T.U.N. Runner (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/S.T.U.N.%20Runner%20(US%20-%20EU).lyx",
+      "filename": "S.T.U.N. Runner (US - EU).lyx"
+    },
+    {
+      "name": "Scrapyard Dog (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Scrapyard%20Dog%20(US%20-%20EU).lyx",
+      "filename": "Scrapyard Dog (US - EU).lyx"
+    },
+    {
+      "name": "Shadow of the Beast (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Shadow%20of%20the%20Beast%20(US%20-%20EU).lyx",
+      "filename": "Shadow of the Beast (US - EU).lyx"
+    },
+    {
+      "name": "Shanghai (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Shanghai%20(WR).lyx",
+      "filename": "Shanghai (WR).lyx"
+    },
+    {
+      "name": "Steel Talons (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Steel%20Talons%20(US%20-%20EU).lyx",
+      "filename": "Steel Talons (US - EU).lyx"
+    },
+    {
+      "name": "Super Asteroids, Missile Command (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Super%20Asteroids%2C%20Missile%20Command%20(US%20-%20EU).lyx",
+      "filename": "Super Asteroids, Missile Command (US - EU).lyx"
+    },
+    {
+      "name": "Super Off-Road (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Super%20Off-Road%20(US%20-%20EU).lyx",
+      "filename": "Super Off-Road (US - EU).lyx"
+    },
+    {
+      "name": "Super Skweek (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Super%20Skweek%20(US%20-%20EU).lyx",
+      "filename": "Super Skweek (US - EU).lyx"
+    },
+    {
+      "name": "Switchblade 2 (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Switchblade%202%20(US%20-%20EU).lyx",
+      "filename": "Switchblade 2 (US - EU).lyx"
+    },
+    {
+      "name": "T-Tris (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/T-Tris%20(WR).lyx",
+      "filename": "T-Tris (WR).lyx"
+    },
+    {
+      "name": "T-Tris (WR) (Alt)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/T-Tris%20(WR)%20(Alt).lyx",
+      "filename": "T-Tris (WR) (Alt).lyx"
+    },
+    {
+      "name": "Todds Adventures in Slime World (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Todds%20Adventures%20in%20Slime%20World%20(WR).lyx",
+      "filename": "Todds Adventures in Slime World (WR).lyx"
+    },
+    {
+      "name": "Toki (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Toki%20(US%20-%20EU).lyx",
+      "filename": "Toki (US - EU).lyx"
+    },
+    {
+      "name": "Tournament Cyberball (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Tournament%20Cyberball%20(US%20-%20EU).lyx",
+      "filename": "Tournament Cyberball (US - EU).lyx"
+    },
+    {
+      "name": "Turbo Sub (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Turbo%20Sub%20(US%20-%20EU).lyx",
+      "filename": "Turbo Sub (US - EU).lyx"
+    },
+    {
+      "name": "Viking Child (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Viking%20Child%20(US%20-%20EU).lyx",
+      "filename": "Viking Child (US - EU).lyx"
+    },
+    {
+      "name": "Warbirds (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Warbirds%20(US%20-%20EU).lyx",
+      "filename": "Warbirds (US - EU).lyx"
+    },
+    {
+      "name": "World Class Soccer (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/World%20Class%20Soccer%20(US%20-%20EU).lyx",
+      "filename": "World Class Soccer (US - EU).lyx"
+    },
+    {
+      "name": "Xenophobe (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Xenophobe%20(WR).lyx",
+      "filename": "Xenophobe (WR).lyx"
+    },
+    {
+      "name": "Xybots (US - EU)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Xybots%20(US%20-%20EU).lyx",
+      "filename": "Xybots (US - EU).lyx"
+    },
+    {
+      "name": "Zarlor Mercenary (WR)",
+      "url": "https://archive.org/download/CentralArquivista-AtariLynx/Zarlor%20Mercenary%20(WR).lyx",
+      "filename": "Zarlor Mercenary (WR).lyx"
+    }
+  ]
+}

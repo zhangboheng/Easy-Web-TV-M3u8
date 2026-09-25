@@ -1,0 +1,141 @@
+{
+  "platform": "atari7800",
+  "core": "prosystem",
+  "games": [
+    {
+      "name": "Alien Brigade (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Alien%20Brigade%20(USA).a78",
+      "filename": "Alien Brigade (USA).a78"
+    },
+    {
+      "name": "Ballblazer (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Ballblazer%20(USA).a78",
+      "filename": "Ballblazer (USA).a78"
+    },
+    {
+      "name": "Basketbrawl (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Basketbrawl%20(USA).a78",
+      "filename": "Basketbrawl (USA).a78"
+    },
+    {
+      "name": "Choplifter! (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Choplifter!%20(USA).a78",
+      "filename": "Choplifter! (USA).a78"
+    },
+    {
+      "name": "Dark Chambers (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Dark%20Chambers%20(USA).a78",
+      "filename": "Dark Chambers (USA).a78"
+    },
+    {
+      "name": "Dig Dug (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Dig%20Dug%20(USA).a78",
+      "filename": "Dig Dug (USA).a78"
+    },
+    {
+      "name": "Donkey Kong (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Donkey%20Kong%20(USA).a78",
+      "filename": "Donkey Kong (USA).a78"
+    },
+    {
+      "name": "Donkey Kong Junior (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Donkey%20Kong%20Junior%20(USA).a78",
+      "filename": "Donkey Kong Junior (USA).a78"
+    },
+    {
+      "name": "Double Dragon (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Double%20Dragon%20(USA).a78",
+      "filename": "Double Dragon (USA).a78"
+    },
+    {
+      "name": "Food Fight (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Food%20Fight%20(USA).a78",
+      "filename": "Food Fight (USA).a78"
+    },
+    {
+      "name": "Galaga (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Galaga%20(USA).a78",
+      "filename": "Galaga (USA).a78"
+    },
+    {
+      "name": "Joust (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Joust%20(USA).a78",
+      "filename": "Joust (USA).a78"
+    },
+    {
+      "name": "Mean 18 Ultimate Golf (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Mean%2018%20Ultimate%20Golf%20(USA).a78",
+      "filename": "Mean 18 Ultimate Golf (USA).a78"
+    },
+    {
+      "name": "Midnight Mutants (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Midnight%20Mutants%20(USA).a78",
+      "filename": "Midnight Mutants (USA).a78"
+    },
+    {
+      "name": "Ms. Pac-Man (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Ms.%20Pac-Man%20(USA).a78",
+      "filename": "Ms. Pac-Man (USA).a78"
+    },
+    {
+      "name": "Ninja Golf (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Ninja%20Golf%20(USA).a78",
+      "filename": "Ninja Golf (USA).a78"
+    },
+    {
+      "name": "Planet Smashers (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Planet%20Smashers%20(USA).a78",
+      "filename": "Planet Smashers (USA).a78"
+    },
+    {
+      "name": "Pole Position II (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Pole%20Position%20II%20(USA).a78",
+      "filename": "Pole Position II (USA).a78"
+    },
+    {
+      "name": "Rampage (NTSC) (Activision) (1989)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Rampage%20(NTSC)%20(Activision)%20(1989).a78",
+      "filename": "Rampage (NTSC) (Activision) (1989).a78"
+    },
+    {
+      "name": "Rampage (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Rampage%20(USA).a78",
+      "filename": "Rampage (USA).a78"
+    },
+    {
+      "name": "Robotron - 2084 (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Robotron%20-%202084%20(USA).a78",
+      "filename": "Robotron - 2084 (USA).a78"
+    },
+    {
+      "name": "Robotron 2084 (NTSC) (Atari) (1987)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Robotron%202084%20(NTSC)%20(Atari)%20(1987).a78",
+      "filename": "Robotron 2084 (NTSC) (Atari) (1987).a78"
+    },
+    {
+      "name": "Scrapyard Dog (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Scrapyard%20Dog%20(USA).a78",
+      "filename": "Scrapyard Dog (USA).a78"
+    },
+    {
+      "name": "Summer Games (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Summer%20Games%20(USA).a78",
+      "filename": "Summer Games (USA).a78"
+    },
+    {
+      "name": "Super Skateboardin' (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Super%20Skateboardin'%20(USA).a78",
+      "filename": "Super Skateboardin' (USA).a78"
+    },
+    {
+      "name": "Tomcat - The F-14 Fighter Simulator (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Tomcat%20-%20The%20F-14%20Fighter%20Simulator%20(USA).a78",
+      "filename": "Tomcat - The F-14 Fighter Simulator (USA).a78"
+    },
+    {
+      "name": "Tower Toppler (USA)",
+      "url": "https://archive.org/download/full-atari-2600-rom-collection-for-for-retro-achievement-by-retro-raven-updated-4-sept-2024/Tower%20Toppler%20(USA).a78",
+      "filename": "Tower Toppler (USA).a78"
+    }
+  ]
+}

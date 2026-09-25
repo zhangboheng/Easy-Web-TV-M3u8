@@ -1,0 +1,146 @@
+{
+  "platform": "vb",
+  "core": "beetle_vb",
+  "games": [
+    {
+      "name": "3-D Tetris (US)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/3-D%20Tetris%20(US).vb",
+      "filename": "3-D Tetris (US).vb"
+    },
+    {
+      "name": "Galactic Pinball (JP - US)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Galactic%20Pinball%20(JP%20-%20US).vb",
+      "filename": "Galactic Pinball (JP - US).vb"
+    },
+    {
+      "name": "Golf (US)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Golf%20(US).vb",
+      "filename": "Golf (US).vb"
+    },
+    {
+      "name": "Insmouth no Yakata (JP)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Insmouth%20no%20Yakata%20(JP).vb",
+      "filename": "Insmouth no Yakata (JP).vb"
+    },
+    {
+      "name": "Jack Bros. (US)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Jack%20Bros.%20(US).vb",
+      "filename": "Jack Bros. (US).vb"
+    },
+    {
+      "name": "Jack Bros. no Meiro de Hiihoo! (JP)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Jack%20Bros.%20no%20Meiro%20de%20Hiihoo!%20(JP).vb",
+      "filename": "Jack Bros. no Meiro de Hiihoo! (JP).vb"
+    },
+    {
+      "name": "Mario Clash (JP - US)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Mario%20Clash%20(JP%20-%20US).vb",
+      "filename": "Mario Clash (JP - US).vb"
+    },
+    {
+      "name": "Marios Tennis (JP - US)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Marios%20Tennis%20(JP%20-%20US).vb",
+      "filename": "Marios Tennis (JP - US).vb"
+    },
+    {
+      "name": "Nesters Funky Bowling (US)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Nesters%20Funky%20Bowling%20(US).vb",
+      "filename": "Nesters Funky Bowling (US).vb"
+    },
+    {
+      "name": "Panic Bomber (US)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Panic%20Bomber%20(US).vb",
+      "filename": "Panic Bomber (US).vb"
+    },
+    {
+      "name": "Red Alarm (JP)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Red%20Alarm%20(JP).vb",
+      "filename": "Red Alarm (JP).vb"
+    },
+    {
+      "name": "Red Alarm (US)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Red%20Alarm%20(US).vb",
+      "filename": "Red Alarm (US).vb"
+    },
+    {
+      "name": "SD Gundam - Dimension War (JP)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/SD%20Gundam%20-%20Dimension%20War%20(JP).vb",
+      "filename": "SD Gundam - Dimension War (JP).vb"
+    },
+    {
+      "name": "Space Invaders - Virtual Collection (JP)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Space%20Invaders%20-%20Virtual%20Collection%20(JP).vb",
+      "filename": "Space Invaders - Virtual Collection (JP).vb"
+    },
+    {
+      "name": "Space Squash (JP)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Space%20Squash%20(JP).vb",
+      "filename": "Space Squash (JP).vb"
+    },
+    {
+      "name": "T and E Virtual Golf (JP)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/T%20and%20E%20Virtual%20Golf%20(JP).vb",
+      "filename": "T and E Virtual Golf (JP).vb"
+    },
+    {
+      "name": "Teleroboxer (JP - US)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Teleroboxer%20(JP%20-%20US).vb",
+      "filename": "Teleroboxer (JP - US).vb"
+    },
+    {
+      "name": "Tobidase! Panibon (JP)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Tobidase!%20Panibon%20(JP).vb",
+      "filename": "Tobidase! Panibon (JP).vb"
+    },
+    {
+      "name": "V-Tetris (JP)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/V-Tetris%20(JP).vb",
+      "filename": "V-Tetris (JP).vb"
+    },
+    {
+      "name": "Vertical Force (JP)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Vertical%20Force%20(JP).vb",
+      "filename": "Vertical Force (JP).vb"
+    },
+    {
+      "name": "Vertical Force (US)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Vertical%20Force%20(US).vb",
+      "filename": "Vertical Force (US).vb"
+    },
+    {
+      "name": "Virtual Bowling (JP)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Virtual%20Bowling%20(JP).vb",
+      "filename": "Virtual Bowling (JP).vb"
+    },
+    {
+      "name": "Virtual Boy Wario Land (JP - US)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Virtual%20Boy%20Wario%20Land%20(JP%20-%20US).vb",
+      "filename": "Virtual Boy Wario Land (JP - US).vb"
+    },
+    {
+      "name": "Virtual Fishing (JP)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Virtual%20Fishing%20(JP).vb",
+      "filename": "Virtual Fishing (JP).vb"
+    },
+    {
+      "name": "Virtual Lab (JP)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Virtual%20Lab%20(JP).vb",
+      "filename": "Virtual Lab (JP).vb"
+    },
+    {
+      "name": "Virtual League Baseball (US)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Virtual%20League%20Baseball%20(US).vb",
+      "filename": "Virtual League Baseball (US).vb"
+    },
+    {
+      "name": "Virtual Pro Yakyuu 95 (JP)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Virtual%20Pro%20Yakyuu%2095%20(JP).vb",
+      "filename": "Virtual Pro Yakyuu 95 (JP).vb"
+    },
+    {
+      "name": "Waterworld (US)",
+      "url": "https://archive.org/download/CentralArquivista-NintendoVirtualBoy/Waterworld%20(US).vb",
+      "filename": "Waterworld (US).vb"
+    }
+  ]
+}

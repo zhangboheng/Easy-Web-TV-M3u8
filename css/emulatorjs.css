@@ -332,6 +332,15 @@ body {
     box-shadow: none;
 }
 
+.url-load-error {
+    margin-top: 12px;
+    text-align: left;
+}
+
+.url-load-error.hidden {
+    display: none;
+}
+
 .url-tip {
     color: rgba(255,255,255,0.5);
     font-size: 12px;

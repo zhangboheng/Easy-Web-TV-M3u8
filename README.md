@@ -63,10 +63,14 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **Atari**: 2600, 5200, 7800, Jaguar, Lynx
   - **Commodore**: C64, C128, VIC-20, PET, Plus/4, Amiga
   - **Other**: 3DO, Arcade (FBNeo, MAME 2003), ColecoVision, Virtual Boy
-- **5300+ preset ROMs** across 6 platforms, with search on the game launcher
-  - NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116), Genesis (1841)
+- **11000+ preset ROMs** across 16 platforms, with search on the game launcher
+  - Nintendo: NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116)
+  - Sega: Genesis/Mega Drive (1841), Master System + Game Gear (1283)
+  - Atari: 2600 (4145), 5200 (72), 7800 (27), Jaguar (49), Lynx (77)
+  - Other: ColecoVision (94), Virtual Boy (28), Commodore 64 (49)
   - Arcade preset is currently empty - bring your own or load from a URL
 - **Three ways to load a ROM**: pick from the preset list, upload a file (core auto-detected by extension), or paste a ROM URL
+- **Manual download fallback**: if a preset or URL fails to load, an inline button lets you download the ROM file directly, then load it via upload
 - Gamepad support
 - Save/load states and fullscreen via the in-emulator controls
 - Reset button to return to the ROM selection screen
@@ -132,13 +136,13 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Dynamic ROM Loading
 - **JSON-based ROM catalogue**: ROM lists are stored in separate JSON files for easy maintenance
-- **Platform-specific loading**: Each platform (NES, SNES, GB/GBC, GBA, N64, Genesis) has its own JSON file
+- **Platform-specific loading**: Each platform has its own JSON file under `data/roms/` (15 catalogue files)
 - **Caching system**: Loaded ROM lists are cached for faster switching
 - **Search filter**: Filter ROMs by name in real-time
 
 ### Supported Platforms
 
-All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **5326** games across 6 JSON files (Arcade/FBNeo preset is currently empty).
+All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **11150** games across 16 JSON files (Arcade/FBNeo preset is currently empty).
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -150,17 +154,17 @@ All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Nintendo | Nintendo DS | melonds | – | – |
 | PlayStation | PS1 / PSX | pcsx_rearmed | – | – |
 | Sega | Genesis / Mega Drive | genesis_plus_gx | 1841 | genesis.json |
-| Sega | Master System | smsplus | – | – |
-| Sega | Game Gear | smsplus | – | – |
+| Sega | Master System | smsplus | 1283 | sms.json |
+| Sega | Game Gear | smsplus | – ¹ | sms.json |
 | Sega | Sega CD | picodrive | – | – |
 | Sega | Sega 32X | picodrive | – | – |
 | Sega | Saturn | yabause | – | – |
-| Atari | Atari 2600 | stella2014 | – | – |
-| Atari | Atari 5200 | a5200 | – | – |
-| Atari | Atari 7800 | prosystem | – | – |
-| Atari | Atari Jaguar | virtualjaguar | – | – |
-| Atari | Atari Lynx | handy | – | – |
-| Commodore | Commodore 64 | vice_x64 | – | – |
+| Atari | Atari 2600 | stella2014 | 4145 | atari2600.json |
+| Atari | Atari 5200 | a5200 | 72 | atari5200.json |
+| Atari | Atari 7800 | prosystem | 27 | atari7800.json |
+| Atari | Atari Jaguar | virtualjaguar | 49 | atarijaguar.json |
+| Atari | Atari Lynx | handy | 77 | atarilynx.json |
+| Commodore | Commodore 64 | vice_x64 | 49 | c64.json |
 | Commodore | Commodore 128 | vice_x128 | – | – |
 | Commodore | VIC-20 | vice_xvic | – | – |
 | Commodore | PET | vice_xpet | – | – |
@@ -169,16 +173,18 @@ All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Other | 3DO | opera | – | – |
 | Other | Arcade (FBNeo) | fbneo | 0 (empty) | arcade.json |
 | Other | Arcade (MAME 2003) | mame2003 | – | – |
-| Other | ColecoVision | gearcoleco | – | – |
-| Other | Virtual Boy | beetle_vb | – | – |
-| **Total** | **29 platforms** | – | **5326** | **6 files** |
+| Other | ColecoVision | gearcoleco | 94 | coleco.json |
+| Other | Virtual Boy | beetle_vb | 28 | vb.json |
+| **Total** | **29 platforms** | – | **11150** | **16 files** |
+
+¹ Master System and Game Gear share `sms.json` (1283 games combined).
 
 ### Core Features
 - **Automatic core detection**: Upload any ROM file and the system automatically detects the platform
 - **URL parameter support**: Direct link to specific platform (e.g., `?core=snes9x`)
 - **No core selection UI**: Simplified interface with automatic detection
 - **Error handling**: Comprehensive error handling with user-friendly messages
-- **CORS proxy support**: Multiple proxy servers for ROM loading
+- **CORS proxy support**: Proxy fallback with timeout and retry for reliable ROM loading from cross-origin sources
 
 ## 🚀 Getting Started
 n
@@ -234,13 +240,22 @@ Easy-Web-TV-M3u8/
 │   └── ...                # Other modules
 ├── data/
 │   └── roms/              # ROM catalogue files
-│       ├── nes.json       # 805 NES games
-│       ├── snes.json      # 772 SNES games
-│       ├── gb.json        # 800 GB/GBC games
-│       ├── gba.json       # 992 GBA games
-│       ├── n64.json       # 116 N64 games
-│       ├── genesis.json   # 1841 Genesis games
-│       └── arcade.json    # Arcade (FBNeo) presets (currently empty)
+│       ├── nes.json          # 805 NES games
+│       ├── snes.json         # 772 SNES games
+│       ├── gb.json           # 800 GB/GBC games
+│       ├── gba.json          # 992 GBA games
+│       ├── n64.json          # 116 N64 games
+│       ├── genesis.json      # 1841 Genesis games
+│       ├── atari2600.json    # 4145 Atari 2600 games
+│       ├── atari5200.json    # 72 Atari 5200 games
+│       ├── sms.json          # 1283 Master System + Game Gear games
+│       ├── atari7800.json    # 27 Atari 7800 games
+│       ├── atarijaguar.json  # 49 Atari Jaguar games
+│       ├── atarilynx.json    # 77 Atari Lynx games
+│       ├── coleco.json       # 94 ColecoVision games
+│       ├── vb.json           # 28 Virtual Boy games
+│       ├── c64.json          # 49 Commodore 64 games
+│       └── arcade.json       # Arcade (FBNeo) presets (currently empty)
 ├── routes/
 │   ├── tv.html            # TV page
 │   ├── movie.html         # Movie page

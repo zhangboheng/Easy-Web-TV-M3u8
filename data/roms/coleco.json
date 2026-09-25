@@ -1,0 +1,476 @@
+{
+  "platform": "coleco",
+  "core": "gearcoleco",
+  "games": [
+    {
+      "name": "2010 - The Graphic Action Game (1984) (Coleco)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/2010%20-%20The%20Graphic%20Action%20Game%20(1984)%20(Coleco).col",
+      "filename": "2010 - The Graphic Action Game (1984) (Coleco).col"
+    },
+    {
+      "name": "Adam's Musicbox Demo (1987) (Coleco)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Adam's%20Musicbox%20Demo%20(1987)%20(Coleco).col",
+      "filename": "Adam's Musicbox Demo (1987) (Coleco).col"
+    },
+    {
+      "name": "Adventurium3 Demo (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Adventurium3%20Demo%20(2000)%20(PD).col",
+      "filename": "Adventurium3 Demo (2000) (PD).col"
+    },
+    {
+      "name": "Air Battle V0.4 by Daniel Bienvenu (July 10) (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Air%20Battle%20V0.4%20by%20Daniel%20Bienvenu%20(July%2010)%20(2000)%20(PD).col",
+      "filename": "Air Battle V0.4 by Daniel Bienvenu (July 10) (2000) (PD).col"
+    },
+    {
+      "name": "Alcazar - The Forgotten Fortress (1985) (Activision)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Alcazar%20-%20The%20Forgotten%20Fortress%20(1985)%20(Activision).col",
+      "filename": "Alcazar - The Forgotten Fortress (1985) (Activision).col"
+    },
+    {
+      "name": "Alphabet Zoo (1984) (Spinnaker)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Alphabet%20Zoo%20(1984)%20(Spinnaker).col",
+      "filename": "Alphabet Zoo (1984) (Spinnaker).col"
+    },
+    {
+      "name": "Amazing Bumpman (1986) (Telegames)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Amazing%20Bumpman%20(1986)%20(Telegames).col",
+      "filename": "Amazing Bumpman (1986) (Telegames).col"
+    },
+    {
+      "name": "Amazing Snake Beta 4 by Serge-Eric Tremblay (2001) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Amazing%20Snake%20Beta%204%20by%20Serge-Eric%20Tremblay%20(2001)%20(PD).col",
+      "filename": "Amazing Snake Beta 4 by Serge-Eric Tremblay (2001) (PD).col"
+    },
+    {
+      "name": "Amazing Snake Beta 5 by Serge-Eric Tremblay (2001) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Amazing%20Snake%20Beta%205%20by%20Serge-Eric%20Tremblay%20(2001)%20(PD).col",
+      "filename": "Amazing Snake Beta 5 by Serge-Eric Tremblay (2001) (PD).col"
+    },
+    {
+      "name": "Amazing Snake Beta X by Serge-Eric Tremblay (2001) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Amazing%20Snake%20Beta%20X%20by%20Serge-Eric%20Tremblay%20(2001)%20(PD).col",
+      "filename": "Amazing Snake Beta X by Serge-Eric Tremblay (2001) (PD).col"
+    },
+    {
+      "name": "Antarctic Adventure (1984) (Konami)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Antarctic%20Adventure%20(1984)%20(Konami).col",
+      "filename": "Antarctic Adventure (1984) (Konami).col"
+    },
+    {
+      "name": "Antarctic Adventure (1984) (Konami) (Prototype)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Antarctic%20Adventure%20(1984)%20(Konami)%20(Prototype).col",
+      "filename": "Antarctic Adventure (1984) (Konami) (Prototype).col"
+    },
+    {
+      "name": "Aquattack (1984) (Interphase)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Aquattack%20(1984)%20(Interphase).col",
+      "filename": "Aquattack (1984) (Interphase).col"
+    },
+    {
+      "name": "Aquattack (1984) (Interphase) [a1]",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Aquattack%20(1984)%20(Interphase)%20%5Ba1%5D.col",
+      "filename": "Aquattack (1984) (Interphase) [a1].col"
+    },
+    {
+      "name": "Artillery Duel (1983) (Xonox)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Artillery%20Duel%20(1983)%20(Xonox).col",
+      "filename": "Artillery Duel (1983) (Xonox).col"
+    },
+    {
+      "name": "BC's Quest for Tires (1983) (Sierravision)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/BC's%20Quest%20for%20Tires%20(1983)%20(Sierravision).col",
+      "filename": "BC's Quest for Tires (1983) (Sierravision).col"
+    },
+    {
+      "name": "BC's Quest for Tires (1983) (Sierravision) [a1]",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/BC's%20Quest%20for%20Tires%20(1983)%20(Sierravision)%20%5Ba1%5D.col",
+      "filename": "BC's Quest for Tires (1983) (Sierravision) [a1].col"
+    },
+    {
+      "name": "BC's Quest for Tires II - Grog's Revenge (1984) (24k) [a1]",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/BC's%20Quest%20for%20Tires%20II%20-%20Grog's%20Revenge%20(1984)%20(24k)%20%5Ba1%5D.col",
+      "filename": "BC's Quest for Tires II - Grog's Revenge (1984) (24k) [a1].col"
+    },
+    {
+      "name": "BC's Quest for Tires II - Grog's Revenge (1984) (32k)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/BC's%20Quest%20for%20Tires%20II%20-%20Grog's%20Revenge%20(1984)%20(32k).col",
+      "filename": "BC's Quest for Tires II - Grog's Revenge (1984) (32k).col"
+    },
+    {
+      "name": "BC's Quest for Tires II - Grog's Revenge (1984) (32k) [b1]",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/BC's%20Quest%20for%20Tires%20II%20-%20Grog's%20Revenge%20(1984)%20(32k)%20%5Bb1%5D.col",
+      "filename": "BC's Quest for Tires II - Grog's Revenge (1984) (32k) [b1].col"
+    },
+    {
+      "name": "Beamrider (1983) (Activision) [!]",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Beamrider%20(1983)%20(Activision)%20%5B!%5D.col",
+      "filename": "Beamrider (1983) (Activision) [!].col"
+    },
+    {
+      "name": "Bejeweled Demo by Daniel Bienvenu (2001) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Bejeweled%20Demo%20by%20Daniel%20Bienvenu%20(2001)%20(PD).col",
+      "filename": "Bejeweled Demo by Daniel Bienvenu (2001) (PD).col"
+    },
+    {
+      "name": "Blockade Runner (1984) (Interphase)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Blockade%20Runner%20(1984)%20(Interphase).col",
+      "filename": "Blockade Runner (1984) (Interphase).col"
+    },
+    {
+      "name": "Boulder Dash (1984) (Micro Fun)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Boulder%20Dash%20(1984)%20(Micro%20Fun).col",
+      "filename": "Boulder Dash (1984) (Micro Fun).col"
+    },
+    {
+      "name": "Boulder Dash (1984) (Telegames) [t1] (50 Men)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Boulder%20Dash%20(1984)%20(Telegames)%20%5Bt1%5D%20(50%20Men).col",
+      "filename": "Boulder Dash (1984) (Telegames) [t1] (50 Men).col"
+    },
+    {
+      "name": "Boulder Dash (1984) (Telegames) [t2] (9 Men)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Boulder%20Dash%20(1984)%20(Telegames)%20%5Bt2%5D%20(9%20Men).col",
+      "filename": "Boulder Dash (1984) (Telegames) [t2] (9 Men).col"
+    },
+    {
+      "name": "Brain Strainers (1984) (Carousel)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Brain%20Strainers%20(1984)%20(Carousel).col",
+      "filename": "Brain Strainers (1984) (Carousel).col"
+    },
+    {
+      "name": "Breakout by Daniel Bienvenu (Feb 02) (1999) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Breakout%20by%20Daniel%20Bienvenu%20(Feb%2002)%20(1999)%20(PD).col",
+      "filename": "Breakout by Daniel Bienvenu (Feb 02) (1999) (PD).col"
+    },
+    {
+      "name": "Breakout Paddle Demo by Daniel Bienvenu (Feb 12) (2001) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Breakout%20Paddle%20Demo%20by%20Daniel%20Bienvenu%20(Feb%2012)%20(2001)%20(PD).col",
+      "filename": "Breakout Paddle Demo by Daniel Bienvenu (Feb 12) (2001) (PD).col"
+    },
+    {
+      "name": "Buck Rogers - Planet of Zoom (1983) (Sega)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Buck%20Rogers%20-%20Planet%20of%20Zoom%20(1983)%20(Sega).col",
+      "filename": "Buck Rogers - Planet of Zoom (1983) (Sega).col"
+    },
+    {
+      "name": "Buck Rogers - Planet of Zoom (1983) (Sega) [a1]",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Buck%20Rogers%20-%20Planet%20of%20Zoom%20(1983)%20(Sega)%20%5Ba1%5D.col",
+      "filename": "Buck Rogers - Planet of Zoom (1983) (Sega) [a1].col"
+    },
+    {
+      "name": "Bump 'N' Jump (1982-84) (Data East)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Bump%20'N'%20Jump%20(1982-84)%20(Data%20East).col",
+      "filename": "Bump 'N' Jump (1982-84) (Data East).col"
+    },
+    {
+      "name": "Bump 'N' Jump (1982-84) (Mattel) (Prototype)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Bump%20'N'%20Jump%20(1982-84)%20(Mattel)%20(Prototype).col",
+      "filename": "Bump 'N' Jump (1982-84) (Mattel) (Prototype).col"
+    },
+    {
+      "name": "Burgertime (1982-83) (Mattel) (Prototype)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Burgertime%20(1982-83)%20(Mattel)%20(Prototype).col",
+      "filename": "Burgertime (1982-83) (Mattel) (Prototype).col"
+    },
+    {
+      "name": "Burgertime (1982-84) (Data East)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Burgertime%20(1982-84)%20(Data%20East).col",
+      "filename": "Burgertime (1982-84) (Data East).col"
+    },
+    {
+      "name": "BUsTin-Out Demo 0.5 by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/BUsTin-Out%20Demo%200.5%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "BUsTin-Out Demo 0.5 by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "BUsTin-Out Volume 0 by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/BUsTin-Out%20Volume%200%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "BUsTin-Out Volume 0 by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "BUsTin-Out Volume 1 by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/BUsTin-Out%20Volume%201%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "BUsTin-Out Volume 1 by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "BUsTin-Out Volume 2 by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/BUsTin-Out%20Volume%202%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "BUsTin-Out Volume 2 by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "BUsTin-Out Volume 3 by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/BUsTin-Out%20Volume%203%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "BUsTin-Out Volume 3 by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "Cabbage Patch Kids - Adventure in the Park (1983)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Cabbage%20Patch%20Kids%20-%20Adventure%20in%20the%20Park%20(1983).col",
+      "filename": "Cabbage Patch Kids - Adventure in the Park (1983).col"
+    },
+    {
+      "name": "Cabbage Patch Kids - Adventures in the Park (1983) (Proto)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Cabbage%20Patch%20Kids%20-%20Adventures%20in%20the%20Park%20(1983)%20(Proto).col",
+      "filename": "Cabbage Patch Kids - Adventures in the Park (1983) (Proto).col"
+    },
+    {
+      "name": "Cabbage Patch Kids Picture Show (1984)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Cabbage%20Patch%20Kids%20Picture%20Show%20(1984).col",
+      "filename": "Cabbage Patch Kids Picture Show (1984).col"
+    },
+    {
+      "name": "Campaign '84 (1983) (Sunrise)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Campaign%20'84%20(1983)%20(Sunrise).col",
+      "filename": "Campaign '84 (1983) (Sunrise).col"
+    },
+    {
+      "name": "Carnival (1982)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Carnival%20(1982).col",
+      "filename": "Carnival (1982).col"
+    },
+    {
+      "name": "Carnival (1982) [a1]",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Carnival%20(1982)%20%5Ba1%5D.col",
+      "filename": "Carnival (1982) [a1].col"
+    },
+    {
+      "name": "Centipede (1983) (Atarisoft)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Centipede%20(1983)%20(Atarisoft).col",
+      "filename": "Centipede (1983) (Atarisoft).col"
+    },
+    {
+      "name": "Chateau du Dragon, Le by Daniel Bienvenu (2001) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Chateau%20du%20Dragon%2C%20Le%20by%20Daniel%20Bienvenu%20(2001)%20(PD).col",
+      "filename": "Chateau du Dragon, Le by Daniel Bienvenu (2001) (PD).col"
+    },
+    {
+      "name": "Choplifter (1982-84) (Broderbund)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Choplifter%20(1982-84)%20(Broderbund).col",
+      "filename": "Choplifter (1982-84) (Broderbund).col"
+    },
+    {
+      "name": "Choplifter (1982-84) (Broderbund) [b1]",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Choplifter%20(1982-84)%20(Broderbund)%20%5Bb1%5D.col",
+      "filename": "Choplifter (1982-84) (Broderbund) [b1].col"
+    },
+    {
+      "name": "Christmas Demo by Daniel Bienvenu (Dec 25) (2001) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Christmas%20Demo%20by%20Daniel%20Bienvenu%20(Dec%2025)%20(2001)%20(PD).col",
+      "filename": "Christmas Demo by Daniel Bienvenu (Dec 25) (2001) (PD).col"
+    },
+    {
+      "name": "Chuck Norris - Super Kicks (1983) (Xonox)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Chuck%20Norris%20-%20Super%20Kicks%20(1983)%20(Xonox).col",
+      "filename": "Chuck Norris - Super Kicks (1983) (Xonox).col"
+    },
+    {
+      "name": "ColecoVision BIOS (1982)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/ColecoVision%20BIOS%20(1982).col",
+      "filename": "ColecoVision BIOS (1982).col"
+    },
+    {
+      "name": "ColecoVision BIOS (1982) [h1] (no title delay)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/ColecoVision%20BIOS%20(1982)%20%5Bh1%5D%20(no%20title%20delay).col",
+      "filename": "ColecoVision BIOS (1982) [h1] (no title delay).col"
+    },
+    {
+      "name": "ColecoVision BIOS (1982) [h2] (different font)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/ColecoVision%20BIOS%20(1982)%20%5Bh2%5D%20(different%20font).col",
+      "filename": "ColecoVision BIOS (1982) [h2] (different font).col"
+    },
+    {
+      "name": "ColecoVision Monitor Test (1982)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/ColecoVision%20Monitor%20Test%20(1982).col",
+      "filename": "ColecoVision Monitor Test (1982).col"
+    },
+    {
+      "name": "ColecoVision Noise Generator by Marcel de Kogel (1996) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/ColecoVision%20Noise%20Generator%20by%20Marcel%20de%20Kogel%20(1996)%20(PD).col",
+      "filename": "ColecoVision Noise Generator by Marcel de Kogel (1996) (PD).col"
+    },
+    {
+      "name": "Congo Bongo (1984)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Congo%20Bongo%20(1984).col",
+      "filename": "Congo Bongo (1984).col"
+    },
+    {
+      "name": "Cosmic Avenger (1982) (Universal)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Cosmic%20Avenger%20(1982)%20(Universal).col",
+      "filename": "Cosmic Avenger (1982) (Universal).col"
+    },
+    {
+      "name": "Cosmic Avenger (1982) (Universal) [a1]",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Cosmic%20Avenger%20(1982)%20(Universal)%20%5Ba1%5D.col",
+      "filename": "Cosmic Avenger (1982) (Universal) [a1].col"
+    },
+    {
+      "name": "Cosmic Crisis (1983) (Bit Corp)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Cosmic%20Crisis%20(1983)%20(Bit%20Corp).col",
+      "filename": "Cosmic Crisis (1983) (Bit Corp).col"
+    },
+    {
+      "name": "Cosmo Challenge by Marcel de Kogel (1997) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Cosmo%20Challenge%20by%20Marcel%20de%20Kogel%20(1997)%20(PD).col",
+      "filename": "Cosmo Challenge by Marcel de Kogel (1997) (PD).col"
+    },
+    {
+      "name": "Cosmo Challenge-Trainer Menu by Marcel de Kogel (1997) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Cosmo%20Challenge-Trainer%20Menu%20by%20Marcel%20de%20Kogel%20(1997)%20(PD).col",
+      "filename": "Cosmo Challenge-Trainer Menu by Marcel de Kogel (1997) (PD).col"
+    },
+    {
+      "name": "Cosmo Fighter 2 by Marcel de Kogel (1996-97) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Cosmo%20Fighter%202%20by%20Marcel%20de%20Kogel%20(1996-97)%20(PD).col",
+      "filename": "Cosmo Fighter 2 by Marcel de Kogel (1996-97) (PD).col"
+    },
+    {
+      "name": "Cosmo Fighter 3 Demo by Marcel de Kogel (2001) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Cosmo%20Fighter%203%20Demo%20by%20Marcel%20de%20Kogel%20(2001)%20(PD).col",
+      "filename": "Cosmo Fighter 3 Demo by Marcel de Kogel (2001) (PD).col"
+    },
+    {
+      "name": "Cosmo Trainer by Marcel de Kogel (1997) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Cosmo%20Trainer%20by%20Marcel%20de%20Kogel%20(1997)%20(PD).col",
+      "filename": "Cosmo Trainer by Marcel de Kogel (1997) (PD).col"
+    },
+    {
+      "name": "Dacman (Aug 01) by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dacman%20(Aug%2001)%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "Dacman (Aug 01) by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "Dacman (Aug 08) by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dacman%20(Aug%2008)%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "Dacman (Aug 08) by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "Dacman (Aug 16) by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dacman%20(Aug%2016)%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "Dacman (Aug 16) by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "Dacman (Jul 12) by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dacman%20(Jul%2012)%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "Dacman (Jul 12) by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "Dacman (Jul 16) by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dacman%20(Jul%2016)%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "Dacman (Jul 16) by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "Dacman (Jul 17) by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dacman%20(Jul%2017)%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "Dacman (Jul 17) by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "Dacman (Jul 18) by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dacman%20(Jul%2018)%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "Dacman (Jul 18) by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "Dacman (Jul 19) by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dacman%20(Jul%2019)%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "Dacman (Jul 19) by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "Dacman (Jul 22) by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dacman%20(Jul%2022)%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "Dacman (Jul 22) by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "Dacman (Jul 28) by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dacman%20(Jul%2028)%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "Dacman (Jul 28) by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "Dacman (Jul 29) by Daniel Bienvenu (2000) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dacman%20(Jul%2029)%20by%20Daniel%20Bienvenu%20(2000)%20(PD).col",
+      "filename": "Dacman (Jul 29) by Daniel Bienvenu (2000) (PD).col"
+    },
+    {
+      "name": "Dam Busters, The (1984)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dam%20Busters%2C%20The%20(1984).col",
+      "filename": "Dam Busters, The (1984).col"
+    },
+    {
+      "name": "Dance Fantasy (1984) (Fisher-Price)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dance%20Fantasy%20(1984)%20(Fisher-Price).col",
+      "filename": "Dance Fantasy (1984) (Fisher-Price).col"
+    },
+    {
+      "name": "Decathlon (1983) (Activision)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Decathlon%20(1983)%20(Activision).col",
+      "filename": "Decathlon (1983) (Activision).col"
+    },
+    {
+      "name": "Defender (1983) (Atarisoft)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Defender%20(1983)%20(Atarisoft).col",
+      "filename": "Defender (1983) (Atarisoft).col"
+    },
+    {
+      "name": "Demon2 Demo by Yannick Proulx (2001) (PD)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Demon2%20Demo%20by%20Yannick%20Proulx%20(2001)%20(PD).col",
+      "filename": "Demon2 Demo by Yannick Proulx (2001) (PD).col"
+    },
+    {
+      "name": "Destructor (1984) (Coleco)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Destructor%20(1984)%20(Coleco).col",
+      "filename": "Destructor (1984) (Coleco).col"
+    },
+    {
+      "name": "Dig Dug (1983) (Atarisoft) (Prototype)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dig%20Dug%20(1983)%20(Atarisoft)%20(Prototype).col",
+      "filename": "Dig Dug (1983) (Atarisoft) (Prototype).col"
+    },
+    {
+      "name": "Dig Dug (1983) (Atarisoft) (Prototype) [o1]",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dig%20Dug%20(1983)%20(Atarisoft)%20(Prototype)%20%5Bo1%5D.col",
+      "filename": "Dig Dug (1983) (Atarisoft) (Prototype) [o1].col"
+    },
+    {
+      "name": "Donkey Kong (1982)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Donkey%20Kong%20(1982).col",
+      "filename": "Donkey Kong (1982).col"
+    },
+    {
+      "name": "Donkey Kong for Adam (1982)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Donkey%20Kong%20for%20Adam%20(1982).col",
+      "filename": "Donkey Kong for Adam (1982).col"
+    },
+    {
+      "name": "Donkey Kong Jr (1982-83)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Donkey%20Kong%20Jr%20(1982-83).col",
+      "filename": "Donkey Kong Jr (1982-83).col"
+    },
+    {
+      "name": "Dr. Seuss's Fix-Up The Mix-Up Puzzler (1984) (Coleco)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dr.%20Seuss's%20Fix-Up%20The%20Mix-Up%20Puzzler%20(1984)%20(Coleco).col",
+      "filename": "Dr. Seuss's Fix-Up The Mix-Up Puzzler (1984) (Coleco).col"
+    },
+    {
+      "name": "DragonFire (1984) (Imagic)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/DragonFire%20(1984)%20(Imagic).col",
+      "filename": "DragonFire (1984) (Imagic).col"
+    },
+    {
+      "name": "Dukes of Hazzard, The (1984) (Warner Bros)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Dukes%20of%20Hazzard%2C%20The%20(1984)%20(Warner%20Bros).col",
+      "filename": "Dukes of Hazzard, The (1984) (Warner Bros).col"
+    },
+    {
+      "name": "ELDCDBPAPP (Q-bert Hack)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/ELDCDBPAPP%20(Q-bert%20Hack).col",
+      "filename": "ELDCDBPAPP (Q-bert Hack).col"
+    },
+    {
+      "name": "Escape From The Mind Master (1983) (Starpath) (Prototype)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Escape%20From%20The%20Mind%20Master%20(1983)%20(Starpath)%20(Prototype).col",
+      "filename": "Escape From The Mind Master (1983) (Starpath) (Prototype).col"
+    },
+    {
+      "name": "Evolution (1983) (Sydney)",
+      "url": "https://archive.org/download/colecovision_202604/ColecoVision/Evolution%20(1983)%20(Sydney).col",
+      "filename": "Evolution (1983) (Sydney).col"
+    }
+  ]
+}

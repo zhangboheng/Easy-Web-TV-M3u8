@@ -744,13 +744,14 @@ function applyTranslations() {
 // CORS proxy list (tried in order)
 var corsProxies = [
     'https://cors.luckydesigner.workers.dev/?',
+    'https://cors.luckydesigner.workers.dev/?', // retry once: the only proxy that can fetch archive.org (no CORS headers); helps with transient rate-limits
     'https://api.allorigins.win/raw?url=',
-    'https://corsproxy.io/?',
     'https://api.codetabs.com/v1/proxy?quest='
 ];
 
 // Process ROM blob - shared by both URL and file upload paths
 function processRomBlob(blob, filename) {
+    clearUrlError();
     var urlLoadBtn = document.getElementById('urlLoadBtn');
     
     var reader = new FileReader();
@@ -812,8 +813,11 @@ function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError) {
         console.log('Trying direct fetch (no proxy)');
     }
     
-    fetch(fetchUrl)
+    var controller = new AbortController();
+    var fetchTimer = setTimeout(function(){ controller.abort(); }, 20000);
+    fetch(fetchUrl, { signal: controller.signal })
         .then(function(response) {
+            clearTimeout(fetchTimer);
             if (!response.ok) {
                 throw new Error('HTTP error ' + response.status);
             }
@@ -835,6 +839,7 @@ function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError) {
             processRomBlob(blob, filename);
         })
         .catch(function(error) {
+            clearTimeout(fetchTimer);
             console.log('Fetch attempt failed: ' + error.message);
             if (proxyIndex < corsProxies.length) {
                 // Try next proxy
@@ -862,6 +867,7 @@ function handleRomFromUrl(url) {
     
     var urlLoadBtn = document.getElementById('urlLoadBtn');
     urlLoadBtn.disabled = true;
+    clearUrlError();
     showToast(t('urlLoading'));
     
     // Extract filename from URL
@@ -869,7 +875,8 @@ function handleRomFromUrl(url) {
     
     // Try fetching through CORS proxies first, then direct
     tryFetchWithProxy(url, 0, filename, function(finalUrl, finalFilename) {
-        showManualDownload(finalUrl, finalFilename);
+        showUrlManualDownload(finalUrl, finalFilename);
+        showToast(t('urlFetchError'));
     });
 }
 
@@ -881,6 +888,25 @@ function showManualDownload(url, filename) {
             "<a href='" + url + "' download target='_blank' class='search-manual-link'>" + t("searchManualDownload") + ": " + filename + "</a>" +
             "<p class='search-manual-tip'>" + t("searchManualTip") + "</p>" +
         "</div>";
+}
+
+// Show inline error + a manual-download button on the URL tab when a URL/preset ROM fails to load.
+// Reuses the Search ROM manual-download classes so the look is consistent. Rendered into the visible
+// URL tab (#urlLoadError), unlike showManualDownload() which writes into the hidden #searchResults.
+function showUrlManualDownload(url, filename) {
+    var el = document.getElementById('urlLoadError');
+    if (!el) return;
+    el.innerHTML = "<div class='search-error'>" + t('urlFetchFailed') + "</div>" +
+        "<div class='search-manual'>" +
+        "<a href='" + url + "' download target='_blank' class='search-manual-link'>" +
+        "<i class='fas fa-download'></i> " + t('searchManualDownload') + ": " + filename + "</a>" +
+        "<p class='search-manual-tip'>" + t('searchManualTip') + "</p>" +
+        "</div>";
+    el.classList.remove('hidden');
+}
+function clearUrlError() {
+    var el = document.getElementById('urlLoadError');
+    if (el) { el.innerHTML = ''; el.classList.add('hidden'); }
 }
 
 // Current search source
@@ -974,14 +1000,19 @@ function tryFetchJson(originalUrl, proxyIndex, options) {
     }
     
     var fetchOptions = options || {};
+    var controller = new AbortController();
+    var fetchTimer = setTimeout(function(){ controller.abort(); }, 20000);
+    fetchOptions.signal = controller.signal;
         return fetch(fetchUrl, fetchOptions)
         .then(function(response) {
+            clearTimeout(fetchTimer);
             if (!response.ok) {
                 throw new Error('HTTP error ' + response.status);
             }
             return response.json();
         })
         .catch(function(error) {
+            clearTimeout(fetchTimer);
             if (proxyIndex < corsProxies.length) {
                 return tryFetchJson(originalUrl, proxyIndex + 1);
             }
@@ -1230,7 +1261,23 @@ var coreMapping = {
     'gg': 'smsplus',
     'nds': 'melonds',
     'a26': 'stella2014',
-    'a78': 'prosystem'
+    'a78': 'prosystem',
+    'a52': 'a5200',
+    'col': 'gearcoleco',
+    'j64': 'virtualjaguar',
+    'jag': 'virtualjaguar',
+    'lyx': 'handy',
+    'lnx': 'handy',
+    'vb': 'beetle_vb',
+    'prg': 'vice_x64',
+    'd64': 'vice_x64',
+    'tap': 'vice_x64',
+    't64': 'vice_x64',
+    'crt': 'vice_x64',
+    'g64': 'vice_x64',
+    'adf': 'puae',
+    'adz': 'puae',
+    '32x': 'picodrive'
 };
 
 // 用户通过 URL 参数或下拉框明确选择的 core，优先级高于扩展名自动检测
@@ -1317,8 +1364,11 @@ function fetchBlobWithProxy(originalUrl, proxyIndex, onSuccess, onError) {
         console.log('Trying direct fetch for BIOS');
     }
 
-    fetch(fetchUrl)
+    var controller = new AbortController();
+    var fetchTimer = setTimeout(function(){ controller.abort(); }, 20000);
+    fetch(fetchUrl, { signal: controller.signal })
         .then(function(response) {
+            clearTimeout(fetchTimer);
             if (!response.ok) {
                 throw new Error('HTTP error ' + response.status);
             }
@@ -1336,6 +1386,7 @@ function fetchBlobWithProxy(originalUrl, proxyIndex, onSuccess, onError) {
             onSuccess(blob);
         })
         .catch(function(error) {
+            clearTimeout(fetchTimer);
             console.log('BIOS fetch attempt failed: ' + error.message);
             if (proxyIndex < corsProxies.length) {
                 fetchBlobWithProxy(originalUrl, proxyIndex + 1, onSuccess, onError);

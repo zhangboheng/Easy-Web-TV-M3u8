@@ -1,0 +1,366 @@
+{
+  "platform": "atari5200",
+  "core": "a5200",
+  "games": [
+    {
+      "name": "Activision Decathlon (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Activision%20Decathlon%20(U).zip",
+      "filename": "Activision Decathlon (U).zip"
+    },
+    {
+      "name": "Astro Chase (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Astro%20Chase%20(U).zip",
+      "filename": "Astro Chase (U).zip"
+    },
+    {
+      "name": "Ballblazer (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Ballblazer%20(U).zip",
+      "filename": "Ballblazer (U).zip"
+    },
+    {
+      "name": "Beamrider (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Beamrider%20(U).zip",
+      "filename": "Beamrider (U).zip"
+    },
+    {
+      "name": "BerZerk (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/BerZerk%20(U).zip",
+      "filename": "BerZerk (U).zip"
+    },
+    {
+      "name": "Blue Print (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Blue%20Print%20(U).zip",
+      "filename": "Blue Print (U).zip"
+    },
+    {
+      "name": "Bounty Bob Strikes Back! (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Bounty%20Bob%20Strikes%20Back!%20(U).zip",
+      "filename": "Bounty Bob Strikes Back! (U).zip"
+    },
+    {
+      "name": "Buck Rogers - Planet of Zoom (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Buck%20Rogers%20-%20Planet%20of%20Zoom%20(U).zip",
+      "filename": "Buck Rogers - Planet of Zoom (U).zip"
+    },
+    {
+      "name": "Carol Shaw's River Raid (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Carol%20Shaw's%20River%20Raid%20(U).zip",
+      "filename": "Carol Shaw's River Raid (U).zip"
+    },
+    {
+      "name": "Castle Blast (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Castle%20Blast%20(U).zip",
+      "filename": "Castle Blast (U).zip"
+    },
+    {
+      "name": "Castle Crisis (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Castle%20Crisis%20(U).zip",
+      "filename": "Castle Crisis (U).zip"
+    },
+    {
+      "name": "Centipede (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Centipede%20(U).zip",
+      "filename": "Centipede (U).zip"
+    },
+    {
+      "name": "Choplifter! (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Choplifter!%20(U).zip",
+      "filename": "Choplifter! (U).zip"
+    },
+    {
+      "name": "Congo Bongo (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Congo%20Bongo%20(U).zip",
+      "filename": "Congo Bongo (U).zip"
+    },
+    {
+      "name": "Countermeasure (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Countermeasure%20(U).zip",
+      "filename": "Countermeasure (U).zip"
+    },
+    {
+      "name": "David Crane's Pitfall II - Lost Caverns (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/David%20Crane's%20Pitfall%20II%20-%20Lost%20Caverns%20(U).zip",
+      "filename": "David Crane's Pitfall II - Lost Caverns (U).zip"
+    },
+    {
+      "name": "Defender (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Defender%20(U).zip",
+      "filename": "Defender (U).zip"
+    },
+    {
+      "name": "Dig Dug (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Dig%20Dug%20(U).zip",
+      "filename": "Dig Dug (U).zip"
+    },
+    {
+      "name": "Dreadnaught Factor (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Dreadnaught%20Factor%20(U).zip",
+      "filename": "Dreadnaught Factor (U).zip"
+    },
+    {
+      "name": "Frogger (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Frogger%20(U).zip",
+      "filename": "Frogger (U).zip"
+    },
+    {
+      "name": "Frogger II - Threeedeep! (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Frogger%20II%20-%20Threeedeep!%20(U).zip",
+      "filename": "Frogger II - Threeedeep! (U).zip"
+    },
+    {
+      "name": "Galaxian (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Galaxian%20(U).zip",
+      "filename": "Galaxian (U).zip"
+    },
+    {
+      "name": "Gorf (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Gorf%20(U).zip",
+      "filename": "Gorf (U).zip"
+    },
+    {
+      "name": "Gremlins (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Gremlins%20(U).zip",
+      "filename": "Gremlins (U).zip"
+    },
+    {
+      "name": "Gyruss (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Gyruss%20(U).zip",
+      "filename": "Gyruss (U).zip"
+    },
+    {
+      "name": "H.E.R.O. (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/H.E.R.O.%20(U).zip",
+      "filename": "H.E.R.O. (U).zip"
+    },
+    {
+      "name": "James Bond 007 (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/James%20Bond%20007%20(U).zip",
+      "filename": "James Bond 007 (U).zip"
+    },
+    {
+      "name": "Joust (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Joust%20(U).zip",
+      "filename": "Joust (U).zip"
+    },
+    {
+      "name": "Jungle Hunt (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Jungle%20Hunt%20(U).zip",
+      "filename": "Jungle Hunt (U).zip"
+    },
+    {
+      "name": "K-Razy Shoot-Out (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/K-Razy%20Shoot-Out%20(U).zip",
+      "filename": "K-Razy Shoot-Out (U).zip"
+    },
+    {
+      "name": "Kaboom! (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Kaboom!%20(U).zip",
+      "filename": "Kaboom! (U).zip"
+    },
+    {
+      "name": "Kangaroo (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Kangaroo%20(U).zip",
+      "filename": "Kangaroo (U).zip"
+    },
+    {
+      "name": "Keystone Kapers (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Keystone%20Kapers%20(U).zip",
+      "filename": "Keystone Kapers (U).zip"
+    },
+    {
+      "name": "Koffi - Yellow Kopter (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Koffi%20-%20Yellow%20Kopter%20(U).zip",
+      "filename": "Koffi - Yellow Kopter (U).zip"
+    },
+    {
+      "name": "Mario Bros. (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Mario%20Bros.%20(U).zip",
+      "filename": "Mario Bros. (U).zip"
+    },
+    {
+      "name": "MegaMania (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/MegaMania%20(U).zip",
+      "filename": "MegaMania (U).zip"
+    },
+    {
+      "name": "Meteorites (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Meteorites%20(U).zip",
+      "filename": "Meteorites (U).zip"
+    },
+    {
+      "name": "Miner 2049er Starring Bounty Bob (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Miner%202049er%20Starring%20Bounty%20Bob%20(U).zip",
+      "filename": "Miner 2049er Starring Bounty Bob (U).zip"
+    },
+    {
+      "name": "Missile Command (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Missile%20Command%20(U).zip",
+      "filename": "Missile Command (U).zip"
+    },
+    {
+      "name": "Montezuma's Revenge featuring Panama Joe (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Montezuma's%20Revenge%20featuring%20Panama%20Joe%20(U).zip",
+      "filename": "Montezuma's Revenge featuring Panama Joe (U).zip"
+    },
+    {
+      "name": "Moon Patrol (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Moon%20Patrol%20(U).zip",
+      "filename": "Moon Patrol (U).zip"
+    },
+    {
+      "name": "Mountain King (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Mountain%20King%20(U).zip",
+      "filename": "Mountain King (U).zip"
+    },
+    {
+      "name": "Mr. Do!'s Castle (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Mr.%20Do!'s%20Castle%20(U).zip",
+      "filename": "Mr. Do!'s Castle (U).zip"
+    },
+    {
+      "name": "Ms. Pac-Man (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Ms.%20Pac-Man%20(U).zip",
+      "filename": "Ms. Pac-Man (U).zip"
+    },
+    {
+      "name": "Pac-Man (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Pac-Man%20(U).zip",
+      "filename": "Pac-Man (U).zip"
+    },
+    {
+      "name": "Pengo (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Pengo%20(U).zip",
+      "filename": "Pengo (U).zip"
+    },
+    {
+      "name": "Pitfall! (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Pitfall!%20(U).zip",
+      "filename": "Pitfall! (U).zip"
+    },
+    {
+      "name": "Pole Position (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Pole%20Position%20(U).zip",
+      "filename": "Pole Position (U).zip"
+    },
+    {
+      "name": "Popeye (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Popeye%20(U).zip",
+      "filename": "Popeye (U).zip"
+    },
+    {
+      "name": "Q-bert (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Q-bert%20(U).zip",
+      "filename": "Q-bert (U).zip"
+    },
+    {
+      "name": "Qix (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Qix%20(U).zip",
+      "filename": "Qix (U).zip"
+    },
+    {
+      "name": "Quest for Quintana Roo (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Quest%20for%20Quintana%20Roo%20(U).zip",
+      "filename": "Quest for Quintana Roo (U).zip"
+    },
+    {
+      "name": "RealSports Baseball (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/RealSports%20Baseball%20(U).zip",
+      "filename": "RealSports Baseball (U).zip"
+    },
+    {
+      "name": "RealSports Football (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/RealSports%20Football%20(U).zip",
+      "filename": "RealSports Football (U).zip"
+    },
+    {
+      "name": "RealSports Soccer (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/RealSports%20Soccer%20(U).zip",
+      "filename": "RealSports Soccer (U).zip"
+    },
+    {
+      "name": "RealSports Tennis (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/RealSports%20Tennis%20(U).zip",
+      "filename": "RealSports Tennis (U).zip"
+    },
+    {
+      "name": "Rescue on Fractalus! (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Rescue%20on%20Fractalus!%20(U).zip",
+      "filename": "Rescue on Fractalus! (U).zip"
+    },
+    {
+      "name": "Robotron 2084 (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Robotron%202084%20(U).zip",
+      "filename": "Robotron 2084 (U).zip"
+    },
+    {
+      "name": "Space Dungeon (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Space%20Dungeon%20(U).zip",
+      "filename": "Space Dungeon (U).zip"
+    },
+    {
+      "name": "Space Invaders (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Space%20Invaders%20(U).zip",
+      "filename": "Space Invaders (U).zip"
+    },
+    {
+      "name": "Space Shuttle - A Journey Into Space (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Space%20Shuttle%20-%20A%20Journey%20Into%20Space%20(U).zip",
+      "filename": "Space Shuttle - A Journey Into Space (U).zip"
+    },
+    {
+      "name": "Star Raiders (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Star%20Raiders%20(U).zip",
+      "filename": "Star Raiders (U).zip"
+    },
+    {
+      "name": "Star Trek - Strategic Operations Simulator (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Star%20Trek%20-%20Strategic%20Operations%20Simulator%20(U).zip",
+      "filename": "Star Trek - Strategic Operations Simulator (U).zip"
+    },
+    {
+      "name": "Star Wars - Return of the Jedi - Death Star Battle (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Star%20Wars%20-%20Return%20of%20the%20Jedi%20-%20Death%20Star%20Battle%20(U).zip",
+      "filename": "Star Wars - Return of the Jedi - Death Star Battle (U).zip"
+    },
+    {
+      "name": "Star Wars - The Arcade Game (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Star%20Wars%20-%20The%20Arcade%20Game%20(U).zip",
+      "filename": "Star Wars - The Arcade Game (U).zip"
+    },
+    {
+      "name": "Super Breakout (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Super%20Breakout%20(U).zip",
+      "filename": "Super Breakout (U).zip"
+    },
+    {
+      "name": "Super Cobra (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Super%20Cobra%20(U).zip",
+      "filename": "Super Cobra (U).zip"
+    },
+    {
+      "name": "Vanguard (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Vanguard%20(U).zip",
+      "filename": "Vanguard (U).zip"
+    },
+    {
+      "name": "Wizard of Wor (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Wizard%20of%20Wor%20(U).zip",
+      "filename": "Wizard of Wor (U).zip"
+    },
+    {
+      "name": "Zaxxon (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Zaxxon%20(U).zip",
+      "filename": "Zaxxon (U).zip"
+    },
+    {
+      "name": "Zenji (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Zenji%20(U).zip",
+      "filename": "Zenji (U).zip"
+    },
+    {
+      "name": "Zone Ranger (USA)",
+      "url": "https://archive.org/download/atari-5200-lb-games/Zone%20Ranger%20(U).zip",
+      "filename": "Zone Ranger (U).zip"
+    }
+  ]
+}
