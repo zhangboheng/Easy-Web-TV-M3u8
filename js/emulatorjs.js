@@ -1110,7 +1110,7 @@ var EJS_cheats = false;
 // Enable gamepad support
 var EJS_gamepadSupport = true;
 // Use CDN path instead of local
-var EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+var EJS_pathtodata = 'https://cdn.emulatorjs.org/4.2.3/data/';
 
 // NeoGeo BIOS configuration
 var EJS_biosUrl = './bios/neogeo.zip';
@@ -1124,6 +1124,91 @@ var REMOTE_BIOS_URLS = [
 ];
 // FBNeo(arcade) 等核心必需：游戏的 romset 名（否则核心显示 "Romset is unknown"）
 var EJS_gameName = '';
+
+// EmulatorJS control scheme (controlScheme): decides which gamepad layout the
+// "Control Settings" menu and the on-screen virtual gamepad use to list remappable buttons.
+// Background: stable and 4.2.3 createControlSettingMenu() (the control-settings menu) lack a
+// "segaMD" branch, so Genesis (getControlScheme() falls back to "segaMD") hits the else default
+// branch and shows only a few buttons. "segaCD" shares the same 6-button layout as Genesis
+// (A/B/C/X/Y/Z/START/MODE + d-pad) and has branches in both the menu and the virtual gamepad,
+// so Genesis is explicitly set to "segaCD" (UI only; does not change the actual core).
+var EJS_controlScheme = '';
+
+// Core -> controlScheme mapping. Covers every core in this project's corePlatformMap that has a
+// matching branch in 4.2.3's control-settings menu. Cores not listed (pcsx_rearmed/a5200/vice_*/puae,
+// which have no dedicated 4.2.3 branch) return '' and fall back to EmulatorJS's generic default
+// gamepad (still includes A/B/X/Y/L/R/Start/Select/sticks, so usable).
+var controlSchemeMapping = {
+    // Nintendo
+    'fceumm': 'nes',
+    'snes9x': 'snes',
+    'gambatte': 'gb',              // GB / GBC
+    'mgba': 'gba',
+    'mupen64plus_next': 'n64',
+    'melonds': 'nds',
+    // Sega
+    'genesis_plus_gx': 'segaCD',   // Genesis / Mega Drive: segaCD 6-button layout exposes C/X/Y/Z/START/MODE
+    'picodrive': 'segaCD',         // Sega CD / 32X: same 6-button layout (segaCD branch covers sega32x)
+    'smsplus': 'segaMS',           // Master System / Game Gear
+    'yabause': 'segaSaturn',       // Saturn
+    // Atari
+    'stella2014': 'atari2600',
+    'prosystem': 'atari7800',
+    'virtualjaguar': 'jaguar',
+    'handy': 'lynx',
+    // Other
+    'opera': '3do',
+    'beetle_vb': 'vb',
+    'gearcoleco': 'coleco',
+    'fbneo': 'arcade',
+    'mame2003': 'mame'
+};
+
+function getControlSchemeForCore(core) {
+    return controlSchemeMapping[core] || '';
+}
+
+// Custom default controls (identical to EmulatorJS built-in defaults; kept for explicit prefills).
+// Structure: player layer (0=P1) -> button index -> { value: keyboard event.key, value2: gamepad code }.
+// Note: the meaning of each normalized button id depends on controlScheme; which buttons appear in
+// "Control Settings" is decided by EJS_controlScheme (see the mapping above).
+var EJS_defaultControls = {
+    0: {
+        0:  { value: 'x',          value2: 'BUTTON_2' },              // B
+        1:  { value: 's',          value2: 'BUTTON_4' },              // Y
+        2:  { value: 'v',          value2: 'SELECT' },                // SELECT
+        3:  { value: 'enter',      value2: 'START' },                 // START
+        4:  { value: 'up arrow',   value2: 'DPAD_UP' },
+        5:  { value: 'down arrow', value2: 'DPAD_DOWN' },
+        6:  { value: 'left arrow', value2: 'DPAD_LEFT' },
+        7:  { value: 'right arrow',value2: 'DPAD_RIGHT' },
+        8:  { value: 'z',          value2: 'BUTTON_1' },              // A
+        9:  { value: 'a',          value2: 'BUTTON_3' },              // X
+        10: { value: 'q',          value2: 'LEFT_TOP_SHOULDER' },     // L
+        11: { value: 'e',          value2: 'RIGHT_TOP_SHOULDER' },    // R
+        12: { value: 'tab',        value2: 'LEFT_BOTTOM_SHOULDER' },  // L2
+        13: { value: 'r',          value2: 'RIGHT_BOTTOM_SHOULDER' }, // R2
+        14: { value: '',           value2: 'LEFT_STICK' },            // L3
+        15: { value: '',           value2: 'RIGHT_STICK' },           // R3
+        16: { value: 'h',          value2: 'LEFT_STICK_X:+1' },
+        17: { value: 'f',          value2: 'LEFT_STICK_X:-1' },
+        18: { value: 'g',          value2: 'LEFT_STICK_Y:+1' },
+        19: { value: 't',          value2: 'LEFT_STICK_Y:-1' },
+        20: { value: 'l',          value2: 'RIGHT_STICK_X:+1' },
+        21: { value: 'j',          value2: 'RIGHT_STICK_X:-1' },
+        22: { value: 'k',          value2: 'RIGHT_STICK_Y:+1' },
+        23: { value: 'i',          value2: 'RIGHT_STICK_Y:-1' },
+        24: { value: '1' },        // QUICK SAVE STATE
+        25: { value: '2' },        // QUICK LOAD STATE
+        26: { value: '3' },        // CHANGE STATE SLOT
+        27: { value: 'add' },      // FAST FORWARD
+        28: { value: 'space' },    // REWIND
+        29: { value: 'subtract' }  // SLOW MOTION
+    },
+    1: {},
+    2: {},
+    3: {}
+};
 
 // ROM file extensions mapping
 var coreMapping = {
@@ -1312,6 +1397,9 @@ function ensureArcadeBios(callback) {
 
 // Load EmulatorJS script
 function loadEmulatorJS() {
+    // Set controlScheme from the current core so "Control Settings" / virtual gamepad use the
+    // correct gamepad layout (stable/4.2.3 menu lacks segaMD; Genesis needs segaCD, see controlSchemeMapping)
+    EJS_controlScheme = getControlSchemeForCore(EJS_core);
     // 对于 arcade/fbneo 等核心，必须设置游戏的 romset 名，否则核心显示 "Romset is unknown"
     if (EJS_core === 'fbneo' || EJS_core === 'mame2003') {
         EJS_gameName = currentGame.name || '';
