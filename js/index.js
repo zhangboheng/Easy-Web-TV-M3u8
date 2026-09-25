@@ -1142,6 +1142,7 @@ DOM.ready(function() {
     if (scrollidbar) {
         scrollidbar.innerHTML = '';
         DOM.append(scrollidbar, `
+            <p>[2026-09-25] V8.4.3 release Add dynamic ROM loading with 5000+ preset ROMs across 5 platforms</p>
             <p>[2026-05-18] V8.4.2 release change jQuery to JavaScript</p>
             <p>[2026-05-18] V8.4.1 release fixed some bugs</p>
             <p>[2026-05-18] V8.4.0 release improved podcast browsing and added podcast favorites</p>
