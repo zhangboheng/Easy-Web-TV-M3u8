@@ -160,6 +160,10 @@ body {
     background: rgba(163,0,27,0.1);
 }
 
+.upload-box.hidden {
+    display: none;
+}
+
 .upload-icon {
     width: 80px;
     height: 80px;
@@ -535,6 +539,7 @@ body {
 }
 
 .search-source-select {
+    max-width: 100%;
     padding: 8px 12px;
     background: rgba(0,0,0,0.6);
     border: 1px solid rgba(163,0,27,0.5);
@@ -1171,6 +1176,24 @@ body {
     .instructions-content {
         grid-template-columns: 1fr;
     }
+
+    .url-box,
+    .search-box {
+        padding: 30px 20px;
+    }
+
+    .url-preset-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .url-preset-label {
+        min-width: 0;
+    }
+
+    .url-preset-select {
+        max-width: 100%;
+    }
 }
 
 /* Preset ROM selector */
@@ -1189,7 +1212,9 @@ body {
 }
 
 .url-preset-select {
-    width: 280px;
+    flex: 1;
+    min-width: 0;
+    max-width: 280px;
     padding: 8px 10px;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.15);

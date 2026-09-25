@@ -1,5 +1,5 @@
 // Easy Web TV Service Worker
-const CACHE_NAME = 'easy-web-tv-v4';
+const CACHE_NAME = 'easy-web-tv-v5';
 
 // Assets to cache on install - only local assets that exist
 const PRECACHE_ASSETS = [
@@ -74,7 +74,7 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - network-first for same-origin, fallback to cache when offline
 self.addEventListener('fetch', (event) => {
   // Skip non-GET requests
   if (event.request.method !== 'GET') {
@@ -96,48 +96,26 @@ self.addEventListener('fetch', (event) => {
     }
   }
 
+  // Network-first: always fetch fresh HTML/JS/CSS online so they stay in sync;
+  // fall back to the cached copy only when the network is unavailable (offline).
   event.respondWith(
-    caches.match(event.request)
-      .then((cachedResponse) => {
-        if (cachedResponse) {
-          // Return cached response and update cache in background
-          fetchAndCache(event.request);
-          return cachedResponse;
+    fetch(event.request)
+      .then((response) => {
+        const isSameOrigin = requestUrl.origin === self.location.origin;
+        if (response && response.ok && response.status === 200 && isSameOrigin) {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
         }
-
-        // Not in cache, fetch from network
-        return fetchAndCache(event.request);
+        return response;
       })
-      .catch(() => {
-        // Network failed, try to return cached offline page
-        if (event.request.mode === 'navigate') {
-          return caches.match(OFFLINE_URL);
-        }
+      .catch(async () => {
+        const cached = await caches.match(event.request);
+        if (cached) return cached;
+        if (event.request.mode === 'navigate') return caches.match('/index.html');
+        return new Response('', { status: 504, statusText: 'Offline' });
       })
   );
 });
-
-// Helper function to fetch and cache
-async function fetchAndCache(request) {
-  try {
-    const response = await fetch(request);
-    
-    // Only cache successful responses from same origin
-    const requestUrl = new URL(request.url);
-    const isSameOrigin = requestUrl.origin === self.location.origin;
-    
-    if (response.ok && response.status === 200 && isSameOrigin) {
-      const cache = await caches.open(CACHE_NAME);
-      // Clone the response since it can only be consumed once
-      cache.put(request.url, response.clone());
-    }
-    
-    return response;
-  } catch (error) {
-    console.error('[ServiceWorker] Fetch failed for:', request.url, error);
-    throw error;
-  }
-}
 
 // Handle push notifications (for future use)
 self.addEventListener('push', (event) => {

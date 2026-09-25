@@ -6,6 +6,7 @@ var i18n = {
         save: '存档',
         load: '读档',
         fullscreen: '全屏',
+        reset: '重置',
         uploadTitle: '上传 ROM 文件',
         uploadDesc: '拖拽 ROM 文件到此处或点击选择',
         selectRom: '选择 ROM 文件',
@@ -87,12 +88,15 @@ var i18n = {
         searchManualDownload: '手动下载',
         searchManualTip: '下载失败，请点击上方链接手动下载，然后用文件上传加载 ROM。',
         searchSource: '搜索源：',
-        urlPreset: '预设 ROM：'
+        urlPreset: '预设 ROM：',
+        biosMissing: '缺少 NeoGeo BIOS，街机游戏无法启动。请将 neogeo.zip 放入 routes/bios/ 目录后刷新重试。',
+        biosDownloaded: '已自动获取 NeoGeo BIOS'
     },
     en: {
         save: 'Save',
         load: 'Load',
         fullscreen: 'Fullscreen',
+        reset: 'Reset',
         uploadTitle: 'Upload ROM File',
         uploadDesc: 'Drag and drop your ROM file here or click to select',
         selectRom: 'Select ROM File',
@@ -174,7 +178,9 @@ var i18n = {
         searchManualDownload: 'Manual download',
         searchManualTip: 'Download failed. Click the link above to download manually, then use File Upload to load the ROM.',
         searchSource: 'Search Source:',
-        urlPreset: 'Preset ROMs:'
+        urlPreset: 'Preset ROMs:',
+        biosMissing: 'NeoGeo BIOS is missing. Arcade games cannot start. Please place neogeo.zip in the routes/bios/ folder and refresh.',
+        biosDownloaded: 'NeoGeo BIOS downloaded automatically'
     },
     ja: {
         save: 'セーブ',
@@ -261,7 +267,9 @@ var i18n = {
         searchManualDownload: '手動ダウンロード',
         searchManualTip: 'ダウンロードに失敗しました。上のリンクをクリックして手動でダウンロードし、ファイルアップロードでROMを読み込んでください。',
         searchSource: '検索元：',
-        urlPreset: 'ROMプリセット：'
+        urlPreset: 'ROMプリセット：',
+        biosMissing: 'NeoGeo BIOS がありません。アーケードゲームを起動できません。routes/bios/ フォルダに neogeo.zip を配置して再読み込みしてください。',
+        biosDownloaded: 'NeoGeo BIOS を自動取得しました'
     },
     ko: {
         save: '저장',
@@ -348,7 +356,9 @@ var i18n = {
         searchManualDownload: '수동 다운로드',
         searchManualTip: '다운로드 실패. 위 링크를 클릭하여 수동으로 다운로드한 후 파일 업로드로 ROM을 로드하세요.',
         searchSource: '검색 소스：',
-        urlPreset: 'ROM 프리셋:'
+        urlPreset: 'ROM 프리셋:',
+        biosMissing: 'NeoGeo BIOS가 없어 아케이드 게임을 시작할 수 없습니다. routes/bios/ 폴더에 neogeo.zip을 넣고 새로고침하세요.',
+        biosDownloaded: 'NeoGeo BIOS를 자동으로 가져왔습니다'
     },
     fr: {
         save: 'Sauvegarder',
@@ -434,7 +444,9 @@ var i18n = {
         searchManualDownload: 'Téléchargement manuel',
         searchManualTip: 'Échec du téléchargement. Cliquez sur le lien ci-dessus pour télécharger manuellement, puis utilisez le téléchargement de fichier pour charger le ROM.',
         searchSource: 'Source de recherche:',
-        urlPreset: 'ROM prédéfinis :'
+        urlPreset: 'ROM prédéfinis :',
+        biosMissing: 'Le BIOS NeoGeo est manquant, les jeux d\'arcade ne peuvent pas démarrer. Placez neogeo.zip dans le dossier routes/bios/ puis actualisez.',
+        biosDownloaded: 'BIOS NeoGeo téléchargé automatiquement'
     },
     de: {
         save: 'Speichern',
@@ -520,7 +532,9 @@ var i18n = {
         searchManualDownload: 'Manueller Download',
         searchManualTip: 'Download fehlgeschlagen. Klicken Sie auf den Link oben zum manuellen Download, dann laden Sie das ROM über Datei-Upload.',
         searchSource: 'Suchquelle:',
-        urlPreset: 'ROM-Vorlagen:'
+        urlPreset: 'ROM-Vorlagen:',
+        biosMissing: 'NeoGeo-BIOS fehlt, Arcade-Spiele können nicht starten. Legen Sie neogeo.zip in den Ordner routes/bios/ und aktualisieren Sie die Seite.',
+        biosDownloaded: 'NeoGeo-BIOS automatisch geladen'
     },
     es: {
         save: 'Guardar',
@@ -606,7 +620,9 @@ var i18n = {
         searchManualDownload: 'Descarga manual',
         searchManualTip: 'Descarga fallida. Haga clic en el enlace de arriba para descargar manualmente, luego use Carga de archivo para cargar el ROM.',
         searchSource: 'Fuente de búsqueda:',
-        urlPreset: 'ROM predefinidos:'
+        urlPreset: 'ROM predefinidos:',
+        biosMissing: 'Falta el BIOS de NeoGeo, los juegos arcade no pueden iniciar. Coloque neogeo.zip en la carpeta routes/bios/ y actualice.',
+        biosDownloaded: 'BIOS de NeoGeo descargado automáticamente'
     },
     ru: {
         save: 'Сохранить',
@@ -692,7 +708,9 @@ var i18n = {
         searchManualDownload: 'Ручная загрузка',
         searchManualTip: 'Загрузка не удалась. Нажмите на ссылку выше, чтобы загрузить вручную, затем используйте загрузку файла для загрузки ROM.',
         searchSource: 'Источник поиска:',
-        urlPreset: 'Предустановленные ROM:'
+        urlPreset: 'Предустановленные ROM:',
+        biosMissing: 'Отсутствует BIOS NeoGeo, аркадные игры не могут запуститься. Поместите neogeo.zip в папку routes/bios/ и обновите страницу.',
+        biosDownloaded: 'BIOS NeoGeo загружен автоматически'
     }
 };
 
@@ -757,9 +775,9 @@ function processRomBlob(blob, filename) {
         // Show loading overlay
         document.getElementById('loadingOverlay').classList.remove('hidden');
         
-        // Show action buttons
-        document.getElementById('fullscreenBtn').style.display = 'flex';
-        document.getElementById('settingsBtn').style.display = 'flex';
+        // Show reset button (guard against a missing element during cache transitions)
+        var resetBtn = document.getElementById('resetBtn');
+        if (resetBtn) resetBtn.style.display = 'flex';
         
         // Update title
         document.getElementById('pageTitle').textContent = currentGame.name;
@@ -775,8 +793,17 @@ function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError) {
     var urlLoadBtn = document.getElementById('urlLoadBtn');
     var fetchUrl;
     
-    if (proxyIndex < corsProxies.length) {
-        // Use CORS proxy
+    // Check if URL is local (localhost, 127.0.0.1, or absolute path)
+    var isLocalUrl = originalUrl.includes('localhost') || 
+                     originalUrl.includes('127.0.0.1') || 
+                     originalUrl.startsWith('/');
+    
+    if (isLocalUrl) {
+        // Local URL - fetch directly without CORS proxy
+        fetchUrl = originalUrl;
+        console.log('Local URL detected, fetching directly: ' + originalUrl);
+    } else if (proxyIndex < corsProxies.length) {
+        // Use CORS proxy for remote URLs
         fetchUrl = corsProxies[proxyIndex] + encodeURIComponent(originalUrl);
         console.log('Trying CORS proxy ' + (proxyIndex + 1) + ': ' + corsProxies[proxyIndex]);
     } else {
@@ -1085,6 +1112,19 @@ var EJS_gamepadSupport = true;
 // Use CDN path instead of local
 var EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
 
+// NeoGeo BIOS configuration
+var EJS_biosUrl = './bios/neogeo.zip';
+var EJS_dontExtractBIOS = false;
+// Enable soft load for FBNeo core
+var EJS_softLoad = true;
+// 远程 NeoGeo BIOS 备用源（本地 routes/bios/neogeo.zip 缺失时自动尝试获取）
+var REMOTE_BIOS_URLS = [
+    'https://archive.org/download/neogeo-bios/neogeo/mame_0251b/roms/neogeo.zip',
+    'https://archive.org/download/neogeo-bios/neogeo/mame_0111/roms/neogeo.zip'
+];
+// FBNeo(arcade) 等核心必需：游戏的 romset 名（否则核心显示 "Romset is unknown"）
+var EJS_gameName = '';
+
 // ROM file extensions mapping
 var coreMapping = {
     'nes': 'fceumm',
@@ -1100,7 +1140,12 @@ var coreMapping = {
     'bin': 'pcsx_rearmed',
     'md': 'genesis_plus_gx',
     'smd': 'genesis_plus_gx',
-    'gen': 'genesis_plus_gx'
+    'gen': 'genesis_plus_gx',
+    'sms': 'smsplus',
+    'gg': 'smsplus',
+    'nds': 'melonds',
+    'a26': 'stella2014',
+    'a78': 'prosystem'
 };
 
 // 用户通过 URL 参数或下拉框明确选择的 core，优先级高于扩展名自动检测
@@ -1157,9 +1202,9 @@ function handleRomUpload(file) {
         // Show loading overlay
         document.getElementById('loadingOverlay').classList.remove('hidden');
         
-        // Show action buttons (only fullscreen and settings)
-        document.getElementById('fullscreenBtn').style.display = 'flex';
-        document.getElementById('settingsBtn').style.display = 'flex';
+        // Show reset button (guard against a missing element during cache transitions)
+        var resetBtn = document.getElementById('resetBtn');
+        if (resetBtn) resetBtn.style.display = 'flex';
         
         // Update title
         document.getElementById('pageTitle').textContent = currentGame.name;
@@ -1171,8 +1216,124 @@ function handleRomUpload(file) {
     reader.readAsDataURL(file);
 }
 
+// Fetch a binary file as blob through CORS proxies, then direct fetch
+function fetchBlobWithProxy(originalUrl, proxyIndex, onSuccess, onError) {
+    var fetchUrl;
+    var isLocalUrl = originalUrl.indexOf('localhost') !== -1 ||
+                     originalUrl.indexOf('127.0.0.1') !== -1 ||
+                     originalUrl.charAt(0) === '/';
+    if (isLocalUrl) {
+        fetchUrl = originalUrl;
+    } else if (proxyIndex < corsProxies.length) {
+        fetchUrl = corsProxies[proxyIndex] + encodeURIComponent(originalUrl);
+        console.log('Trying CORS proxy ' + (proxyIndex + 1) + ' for BIOS');
+    } else {
+        fetchUrl = originalUrl;
+        console.log('Trying direct fetch for BIOS');
+    }
+
+    fetch(fetchUrl)
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error('HTTP error ' + response.status);
+            }
+            var contentType = response.headers.get('content-type') || '';
+            if (proxyIndex < corsProxies.length && contentType.indexOf('text/html') !== -1) {
+                throw new Error('Proxy returned HTML');
+            }
+            return response.blob();
+        })
+        .then(function(blob) {
+            if (blob.size < 1024) {
+                throw new Error('File too small, possibly an error page');
+            }
+            console.log('BIOS downloaded (' + blob.size + ' bytes)');
+            onSuccess(blob);
+        })
+        .catch(function(error) {
+            console.log('BIOS fetch attempt failed: ' + error.message);
+            if (proxyIndex < corsProxies.length) {
+                fetchBlobWithProxy(originalUrl, proxyIndex + 1, onSuccess, onError);
+            } else if (typeof onError === 'function') {
+                onError();
+            }
+        });
+}
+
+// 本地 BIOS 缺失时，尝试从远程源下载并转换为 data URL 交给 EmulatorJS
+function fetchRemoteBios(callback) {
+    function tryNext(index) {
+        if (index >= REMOTE_BIOS_URLS.length) {
+            console.error('All remote BIOS sources failed');
+            callback(false);
+            return;
+        }
+        fetchBlobWithProxy(REMOTE_BIOS_URLS[index], 0, function(blob) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                EJS_biosUrl = e.target.result; // data URL
+                showToast(t('biosDownloaded'));
+                callback(true);
+            };
+            reader.readAsDataURL(blob);
+        }, function() {
+            tryNext(index + 1);
+        });
+    }
+    tryNext(0);
+}
+
+// 确保 arcade 核心的 BIOS 可用（本地优先，缺失时尝试远程），避免 "Romset is unknown"
+function ensureArcadeBios(callback) {
+    if (EJS_core !== 'fbneo' && EJS_core !== 'mame2003') {
+        callback(true);
+        return;
+    }
+    if (!EJS_biosUrl) {
+        callback(true);
+        return;
+    }
+    // 1. 检查本地 BIOS 是否可访问
+    fetch(EJS_biosUrl, { method: 'HEAD' })
+        .then(function(res) {
+            if (res.ok) {
+                console.log('Local BIOS OK:', EJS_biosUrl);
+                callback(true);
+            } else {
+                console.warn('Local BIOS not found (' + res.status + '), trying remote...');
+                fetchRemoteBios(callback);
+            }
+        })
+        .catch(function() {
+            console.warn('Local BIOS check failed, trying remote...');
+            fetchRemoteBios(callback);
+        });
+}
+
 // Load EmulatorJS script
 function loadEmulatorJS() {
+    // 对于 arcade/fbneo 等核心，必须设置游戏的 romset 名，否则核心显示 "Romset is unknown"
+    if (EJS_core === 'fbneo' || EJS_core === 'mame2003') {
+        EJS_gameName = currentGame.name || '';
+        console.log('EJS_gameName:', EJS_gameName);
+    }
+    // 先确保 BIOS 可用，再加载模拟器
+    ensureArcadeBios(function(biosReady) {
+        if (!biosReady) {
+            console.error('NeoGeo BIOS is not available.');
+            var overlay = document.getElementById('loadingOverlay');
+            if (overlay) {
+                overlay.classList.add('hidden');
+            }
+            showToast(t('biosMissing'));
+            return;
+        }
+        doLoadEmulatorJS();
+    });
+}
+
+// Actually load the EmulatorJS loader script
+function doLoadEmulatorJS() {
     var script = document.createElement('script');
     script.src = EJS_pathtodata + 'loader.js';
     script.onload = function() {
@@ -1188,8 +1349,14 @@ function loadEmulatorJS() {
                 
                 // Listen for errors
                 window.EJS_emulator.on('error', function(error) {
+                    var msg = (error && error.message) ? error.message : 'Unknown error';
                     console.error('EmulatorJS error:', error);
-                    showToast('Emulator error: ' + (error.message || 'Unknown error'));
+                    // BIOS/ROM 加载失败时给出明确提示，而非静默显示 "Romset is unknown"
+                    if (/content-length|romset|bios|404|load.*fail/i.test(msg)) {
+                        showToast(t('biosMissing'));
+                    } else {
+                        showToast('Emulator error: ' + msg);
+                    }
                 });
             }
         }, 500);
@@ -1497,8 +1664,16 @@ document.addEventListener('DOMContentLoaded', function() {
         'opera': '3do',
         'fbneo': 'arcade',
         'mame2003': 'mame',
-        'gearcoleco': 'coleco'
-    };
+        'gearcoleco': 'coleco',
+        'vice_x64': 'c64',
+        'vice_x128': 'c128',
+        'vice_xvic': 'vic20',
+        'vice_xpet': 'pet',
+        'vice_xplus4': 'plus4',
+        'puae': 'amiga',
+        'beetle_vb': 'vb'
+};
+
 
     // Preset ROM cache
     var presetCache = {};
@@ -1573,34 +1748,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize preset options based on current core
     loadPresetOptions(EJS_core);
     
-    // Fullscreen button
-    document.getElementById('fullscreenBtn').addEventListener('click', function() {
-        if (window.EJS_emulator) {
-            window.EJS_emulator.fullscreen();
-        }
-    });
-    
-    // Settings button - Opens EmulatorJS settings panel
-    document.getElementById('settingsBtn').addEventListener('click', function() {
-        // Try to open EmulatorJS settings
-        if (window.EJS_emulator) {
-            // EmulatorJS has a settings button in its UI, we can try to click it
-            var settingsBtn = document.querySelector('.ejs_settings_button');
-            if (settingsBtn) {
-                settingsBtn.click();
-            } else {
-                // Alternative: try to access the settings menu directly
-                var settingsMenu = document.querySelector('.ejs_settings_menu');
-                if (settingsMenu) {
-                    settingsMenu.style.display = 'block';
-                } else {
-                    showToast(t('clickGearIcon'));
-                }
-            }
-        } else {
-            showToast(t('gameNotLoaded'));
-        }
-    });
+    // Reset button - reload the page to return to the ROM selection screen
+    var resetBtn = document.getElementById('resetBtn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+            location.reload();
+        });
+    }
     
     // Instructions toggle
     document.getElementById('instructionsHeader').addEventListener('click', function() {

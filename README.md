@@ -56,19 +56,20 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### 🎮 Games
 - Built-in mini games (Square Obstacles, Pong, Breakout, Tic Tac Toe)
-- **Emulator support** - Play retro console games
-  - **Nintendo**: NES (805 games), SNES (772 games), N64 (116 games), GB/GBC (800 games), GBA (992 games)
-  - **PlayStation**: PSX, PS2, PSP
-  - **Sega**: Genesis/Mega Drive, Master System, Genesis CD, 32X, Game Gear, Saturn, Dreamcast
+- **Emulator support** - Play retro console games, powered by [EmulatorJS](https://emulatorjs.org/)
+  - **Nintendo**: NES, SNES, N64, GB/GBC, GBA, NDS
+  - **PlayStation**: PS1/PSX
+  - **Sega**: Genesis/Mega Drive, Master System, Game Gear, Sega CD, Sega 32X, Saturn
   - **Atari**: 2600, 5200, 7800, Jaguar, Lynx
   - **Commodore**: C64, C128, VIC-20, PET, Plus/4, Amiga
-  - **Other**: 3DO, Arcade (FBNeo, MAME), ColecoVision, NDS, Virtual Boy, 3DS
-- **3500+ preset ROMs** across 5 platforms (NES, GBA, SNES, GB, N64)
-- Dynamic ROM loading from JSON files with search filter
-- ROM file upload support with automatic core detection
+  - **Other**: 3DO, Arcade (FBNeo, MAME 2003), ColecoVision, Virtual Boy
+- **5300+ preset ROMs** across 6 platforms, with search on the game launcher
+  - NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116), Genesis (1841)
+  - Arcade preset is currently empty - bring your own or load from a URL
+- **Three ways to load a ROM**: pick from the preset list, upload a file (core auto-detected by extension), or paste a ROM URL
 - Gamepad support
-- Save/Load game states
-- Fullscreen mode
+- Save/load states and fullscreen via the in-emulator controls
+- Reset button to return to the ROM selection screen
 - 🎮 **How to play with a gamepad on TV:**
   1. Access the app through the browser on your TV
   2. Select an emulator to enter
@@ -199,6 +200,7 @@ Easy-Web-TV-M3u8/
 │   ├── catalogues.js      # Catalogue functions
 │   ├── translator.js      # Translation handler
 │   ├── emulatorjs.js      # Emulator logic & ROM loading
+│   ├── togame.js          # Game launcher & emulator picker
 │   ├── music.js           # Music player logic
 │   ├── podcast.js         # Podcast player with favorites
 │   ├── tomusic.js         # Music page navigation & podcast browsing
@@ -206,10 +208,12 @@ Easy-Web-TV-M3u8/
 ├── data/
 │   └── roms/              # ROM catalogue files
 │       ├── nes.json       # 805 NES games
-│       ├── gba.json       # 992 GBA games
 │       ├── snes.json      # 772 SNES games
-│       ├── gb.json        # 800 GB games
-│       └── n64.json       # 116 N64 games
+│       ├── gb.json        # 800 GB/GBC games
+│       ├── gba.json       # 992 GBA games
+│       ├── n64.json       # 116 N64 games
+│       ├── genesis.json   # 1841 Genesis games
+│       └── arcade.json    # Arcade (FBNeo) presets (currently empty)
 ├── routes/
 │   ├── tv.html            # TV page
 │   ├── movie.html         # Movie page
@@ -218,8 +222,7 @@ Easy-Web-TV-M3u8/
 │   ├── novel.html         # Novel page
 │   ├── manga.html         # Manga page
 │   ├── game.html          # Game page
-│   ├── emulatorjs/        # Emulator pages
-│   │   └── emulatorjs.html # Emulator page
+│   ├── emulatorjs.html    # Emulator pages
 │   └── ...                # Other pages
 ├── catalogues/
 │   └── *play.html         # Player pages

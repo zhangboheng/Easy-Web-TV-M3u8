@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="author" content="Zhang Boheng">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../css/emulatorjs.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
 </head>
 
 <body>
@@ -23,13 +23,9 @@
             </div>
         </div>
         <div class="header-right">
-            <div class="header-action-btn" id="fullscreenBtn" style="display: none;">
-                <i class="fas fa-expand"></i>
-                <span data-i18n="fullscreen">Fullscreen</span>
-            </div>
-            <div class="header-action-btn settings" id="settingsBtn" style="display: none;">
-                <i class="fas fa-cog"></i>
-                <span data-i18n="settings">Settings</span>
+            <div class="header-action-btn" id="resetBtn" style="display: none;">
+                <i class="fas fa-redo"></i>
+                <span data-i18n="reset">Reset</span>
             </div>
         </div>
     </header>
@@ -61,7 +57,7 @@
                 </div>
                 <h2 class="upload-title" data-i18n="uploadTitle">Upload ROM File</h2>
                 <p class="upload-desc" data-i18n="uploadDesc">Drag and drop your ROM file here or click to select</p>
-                <input type="file" class="upload-input" id="romInput" accept=".nes,.zip,.gba,.gbc,.gb,.sfc,.smc,.z64,.v64,.n64,.iso,.bin,.cso,.pbp,.md,.smd,.gen,.sms,.gg,.sg,.cue,.chd,.nds,.3ds,.3dsx,.cia,.a26,.bin,.a78">
+                <input type="file" class="upload-input" id="romInput" accept=".nes,.zip,.gba,.gbc,.gb,.sfc,.smc,.z64,.v64,.n64,.iso,.bin,.cso,.pbp,.md,.smd,.gen,.sms,.gg,.sg,.cue,.chd,.nds,.a26,.a78">
                 <button class="upload-btn" id="uploadBtn">
                     <i class="fas fa-file-upload"></i>
                     <span data-i18n="selectRom">Select ROM File</span>
@@ -247,7 +243,7 @@
     </div>
     
     <!-- EmulatorJS JavaScript -->
-    <script src="../../js/emulatorjs.js"></script>
+    <script src="../js/emulatorjs.js"></script>
 </body>
 
 </html>

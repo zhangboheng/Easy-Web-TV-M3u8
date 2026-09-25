@@ -5,100 +5,12 @@
 var games = [
     // Emulator Games
     {
-        id: 5,
-        name: 'NES Emulator',
-        platform: 'NES',
+        id: 26,
+        name: 'Arcade Emulator',
+        platform: 'Arcade',
         category: 'emulator',
-        image: '../images/nes.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=fceumm'
-    },
-    {
-        id: 6,
-        name: 'SNES Emulator',
-        platform: 'SNES',
-        category: 'emulator',
-        image: '../images/snes.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=snes9x'
-    },
-    {
-        id: 7,
-        name: 'GBA Emulator',
-        platform: 'GBA',
-        category: 'emulator',
-        image: '../images/gba.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=mgba'
-    },
-    {
-        id: 8,
-        name: 'Game Boy Emulator',
-        platform: 'GB/GBC',
-        category: 'emulator',
-        image: '../images/gb.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=gambatte'
-    },
-    {
-        id: 9,
-        name: 'N64 Emulator',
-        platform: 'N64',
-        category: 'emulator',
-        image: '../images/n64.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=mupen64plus_next'
-    },
-    {
-        id: 10,
-        name: 'PS1 Emulator',
-        platform: 'PS1',
-        category: 'emulator',
-        image: '../images/ps1.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=pcsx_rearmed'
-    },
-    {
-        id: 38,
-        name: 'PSX Emulator',
-        platform: 'PSX',
-        category: 'emulator',
-        image: '../images/psx.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=pcsx_rearmed'
-    },
-    {
-        id: 12,
-        name: 'Genesis Emulator',
-        platform: 'Genesis',
-        category: 'emulator',
-        image: '../images/genesis.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=genesis_plus_gx'
-    },
-    {
-        id: 13,
-        name: 'Master System Emulator',
-        platform: 'Master System',
-        category: 'emulator',
-        image: '../images/mastersystem.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=genesis_plus_gx'
-    },
-    {
-        id: 14,
-        name: 'Sega CD Emulator',
-        platform: 'Sega CD',
-        category: 'emulator',
-        image: '../images/segacd.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=genesis_plus_gx'
-    },
-    {
-        id: 15,
-        name: 'Saturn Emulator',
-        platform: 'Saturn',
-        category: 'emulator',
-        image: '../images/saturn.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=yabause'
-    },
-    {
-        id: 17,
-        name: 'NDS Emulator',
-        platform: 'NDS',
-        category: 'emulator',
-        image: '../images/nds.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=melonds'
+        image: '../images/arcade.svg',
+        url: '../routes/emulatorjs.html?core=fbneo'
     },
     {
         id: 20,
@@ -106,95 +18,7 @@ var games = [
         platform: 'Atari 2600',
         category: 'emulator',
         image: '../images/atari2600.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=stella2014'
-    },
-    {
-        id: 21,
-        name: 'Atari 7800 Emulator',
-        platform: 'Atari 7800',
-        category: 'emulator',
-        image: '../images/atari7800.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=prosystem'
-    },
-    {
-        id: 22,
-        name: 'Atari 5200 Emulator',
-        platform: 'Atari 5200',
-        category: 'emulator',
-        image: '../images/atari5200.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=a5200'
-    },
-    {
-        id: 23,
-        name: 'Atari Jaguar Emulator',
-        platform: 'Atari Jaguar',
-        category: 'emulator',
-        image: '../images/atarijaguar.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=virtualjaguar'
-    },
-    {
-        id: 24,
-        name: 'Atari Lynx Emulator',
-        platform: 'Atari Lynx',
-        category: 'emulator',
-        image: '../images/atarilynx.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=handy'
-    },
-    {
-        id: 25,
-        name: '3DO Emulator',
-        platform: '3DO',
-        category: 'emulator',
-        image: '../images/3do.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=opera'
-    },
-    {
-        id: 26,
-        name: 'Arcade Emulator',
-        platform: 'Arcade',
-        category: 'emulator',
-        image: '../images/arcade.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=fbneo'
-    },
-    {
-        id: 27,
-        name: 'MAME 2003 Emulator',
-        platform: 'MAME',
-        category: 'emulator',
-        image: '../images/mame.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=mame2003'
-    },
-    {
-        id: 28,
-        name: 'ColecoVision Emulator',
-        platform: 'ColecoVision',
-        category: 'emulator',
-        image: '../images/colecovision.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=gearcoleco'
-    },
-    {
-        id: 29,
-        name: 'Commodore 64 Emulator',
-        platform: 'C64',
-        category: 'emulator',
-        image: '../images/c64.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=vice_x64'
-    },
-    {
-        id: 30,
-        name: 'Commodore 128 Emulator',
-        platform: 'C128',
-        category: 'emulator',
-        image: '../images/c128.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=vice_x128'
-    },
-    {
-        id: 31,
-        name: 'Commodore VIC-20 Emulator',
-        platform: 'VIC-20',
-        category: 'emulator',
-        image: '../images/vic20.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=vice_xvic'
+        url: '../routes/emulatorjs.html?core=stella2014'
     },
     {
         id: 32,
@@ -202,7 +26,47 @@ var games = [
         platform: 'PET',
         category: 'emulator',
         image: '../images/pet.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=vice_xpet'
+        url: '../routes/emulatorjs.html?core=vice_xpet'
+    },
+    {
+        id: 31,
+        name: 'Commodore VIC-20 Emulator',
+        platform: 'VIC-20',
+        category: 'emulator',
+        image: '../images/vic20.svg',
+        url: '../routes/emulatorjs.html?core=vice_xvic'
+    },
+    {
+        id: 28,
+        name: 'ColecoVision Emulator',
+        platform: 'ColecoVision',
+        category: 'emulator',
+        image: '../images/colecovision.svg',
+        url: '../routes/emulatorjs.html?core=gearcoleco'
+    },
+    {
+        id: 29,
+        name: 'Commodore 64 Emulator',
+        platform: 'C64',
+        category: 'emulator',
+        image: '../images/c64.svg',
+        url: '../routes/emulatorjs.html?core=vice_x64'
+    },
+    {
+        id: 22,
+        name: 'Atari 5200 Emulator',
+        platform: 'Atari 5200',
+        category: 'emulator',
+        image: '../images/atari5200.svg',
+        url: '../routes/emulatorjs.html?core=a5200'
+    },
+    {
+        id: 5,
+        name: 'NES Emulator',
+        platform: 'NES',
+        category: 'emulator',
+        image: '../images/nes.svg',
+        url: '../routes/emulatorjs.html?core=fceumm'
     },
     {
         id: 33,
@@ -210,7 +74,15 @@ var games = [
         platform: 'Plus/4',
         category: 'emulator',
         image: '../images/plus4.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=vice_xplus4'
+        url: '../routes/emulatorjs.html?core=vice_xplus4'
+    },
+    {
+        id: 13,
+        name: 'Master System Emulator',
+        platform: 'Master System',
+        category: 'emulator',
+        image: '../images/mastersystem.svg',
+        url: '../routes/emulatorjs.html?core=smsplus'
     },
     {
         id: 34,
@@ -218,15 +90,47 @@ var games = [
         platform: 'Amiga',
         category: 'emulator',
         image: '../images/amiga.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=puae'
+        url: '../routes/emulatorjs.html?core=puae'
     },
     {
-        id: 35,
-        name: 'Sega 32X Emulator',
-        platform: 'Sega 32X',
+        id: 30,
+        name: 'Commodore 128 Emulator',
+        platform: 'C128',
         category: 'emulator',
-        image: '../images/sega32x.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=picodrive'
+        image: '../images/c128.svg',
+        url: '../routes/emulatorjs.html?core=vice_x128'
+    },
+    {
+        id: 21,
+        name: 'Atari 7800 Emulator',
+        platform: 'Atari 7800',
+        category: 'emulator',
+        image: '../images/atari7800.svg',
+        url: '../routes/emulatorjs.html?core=prosystem'
+    },
+    {
+        id: 12,
+        name: 'Genesis Emulator',
+        platform: 'Genesis',
+        category: 'emulator',
+        image: '../images/genesis.svg',
+        url: '../routes/emulatorjs.html?core=genesis_plus_gx'
+    },
+    {
+        id: 24,
+        name: 'Atari Lynx Emulator',
+        platform: 'Atari Lynx',
+        category: 'emulator',
+        image: '../images/atarilynx.svg',
+        url: '../routes/emulatorjs.html?core=handy'
+    },
+    {
+        id: 8,
+        name: 'Game Boy Emulator',
+        platform: 'GB/GBC',
+        category: 'emulator',
+        image: '../images/gb.svg',
+        url: '../routes/emulatorjs.html?core=gambatte'
     },
     {
         id: 36,
@@ -234,7 +138,63 @@ var games = [
         platform: 'Game Gear',
         category: 'emulator',
         image: '../images/gamegear.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=genesis_plus_gx'
+        url: '../routes/emulatorjs.html?core=smsplus'
+    },
+    {
+        id: 6,
+        name: 'SNES Emulator',
+        platform: 'SNES',
+        category: 'emulator',
+        image: '../images/snes.svg',
+        url: '../routes/emulatorjs.html?core=snes9x'
+    },
+    {
+        id: 14,
+        name: 'Sega CD Emulator',
+        platform: 'Sega CD',
+        category: 'emulator',
+        image: '../images/segacd.svg',
+        url: '../routes/emulatorjs.html?core=picodrive'
+    },
+    {
+        id: 25,
+        name: '3DO Emulator',
+        platform: '3DO',
+        category: 'emulator',
+        image: '../images/3do.svg',
+        url: '../routes/emulatorjs.html?core=opera'
+    },
+    {
+        id: 23,
+        name: 'Atari Jaguar Emulator',
+        platform: 'Atari Jaguar',
+        category: 'emulator',
+        image: '../images/atarijaguar.svg',
+        url: '../routes/emulatorjs.html?core=virtualjaguar'
+    },
+    {
+        id: 35,
+        name: 'Sega 32X Emulator',
+        platform: 'Sega 32X',
+        category: 'emulator',
+        image: '../images/sega32x.svg',
+        url: '../routes/emulatorjs.html?core=picodrive'
+    },
+    {
+        id: 10,
+        name: 'PS1 Emulator',
+        platform: 'PS1',
+        category: 'emulator',
+        image: '../images/ps1.svg',
+        url: '../routes/emulatorjs.html?core=pcsx_rearmed'
+    },
+    {
+        id: 15,
+        name: 'Saturn Emulator',
+        platform: 'Saturn',
+        category: 'emulator',
+        image: '../images/saturn.svg',
+        url: '../routes/emulatorjs.html?core=yabause'
     },
     {
         id: 37,
@@ -242,8 +202,41 @@ var games = [
         platform: 'Virtual Boy',
         category: 'emulator',
         image: '../images/virtualboy.svg',
-        url: '../routes/emulatorjs/emulatorjs.html?core=beetle_vb'
+        url: '../routes/emulatorjs.html?core=beetle_vb'
     },
+    {
+        id: 9,
+        name: 'N64 Emulator',
+        platform: 'N64',
+        category: 'emulator',
+        image: '../images/n64.svg',
+        url: '../routes/emulatorjs.html?core=mupen64plus_next'
+    },
+    {
+        id: 27,
+        name: 'MAME 2003 Emulator',
+        platform: 'MAME',
+        category: 'emulator',
+        image: '../images/mame.svg',
+        url: '../routes/emulatorjs.html?core=mame2003'
+    },
+    {
+        id: 7,
+        name: 'GBA Emulator',
+        platform: 'GBA',
+        category: 'emulator',
+        image: '../images/gba.svg',
+        url: '../routes/emulatorjs.html?core=mgba'
+    },
+    {
+        id: 17,
+        name: 'NDS Emulator',
+        platform: 'NDS',
+        category: 'emulator',
+        image: '../images/nds.svg',
+        url: '../routes/emulatorjs.html?core=melonds'
+    },
+
     {
         id: 1,
         name: 'Square Obstacles',
@@ -275,7 +268,7 @@ var games = [
         category: 'others',
         image: '../gamebox/tic-tac-toe/tictactoe.png',
         url: '../catalogues/gameplay.html?game=tic-tac-toe'
-    }
+    },
 ];
 
 var currentCategory = 'all';
