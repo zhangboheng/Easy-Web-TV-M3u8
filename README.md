@@ -132,19 +132,46 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Dynamic ROM Loading
 - **JSON-based ROM catalogue**: ROM lists are stored in separate JSON files for easy maintenance
-- **Platform-specific loading**: Each platform (NES, GBA, SNES, GB, N64) has its own JSON file
+- **Platform-specific loading**: Each platform (NES, SNES, GB/GBC, GBA, N64, Genesis) has its own JSON file
 - **Caching system**: Loaded ROM lists are cached for faster switching
 - **Search filter**: Filter ROMs by name in real-time
 
 ### Supported Platforms
-| Platform | Core | Games | JSON File |
-|----------|------|-------|----------|
-| NES | fceumm | 805 | nes.json |
-| GBA | mgba | 992 | gba.json |
-| SNES | snes9x | 772 | snes.json |
-| GB | gambatte | 800 | gb.json |
-| N64 | mupen64plus_next | 116 | n64.json |
-| **Total** | - | **3485** | - |
+
+All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **5326** games across 6 JSON files (Arcade/FBNeo preset is currently empty).
+
+| Family | Platform | Core | Preset ROMs | JSON File |
+|--------|----------|------|-------------|-----------|
+| Nintendo | NES | fceumm | 805 | nes.json |
+| Nintendo | SNES | snes9x | 772 | snes.json |
+| Nintendo | GB / GBC | gambatte | 800 | gb.json |
+| Nintendo | GBA | mgba | 992 | gba.json |
+| Nintendo | Nintendo 64 | mupen64plus_next | 116 | n64.json |
+| Nintendo | Nintendo DS | melonds | – | – |
+| PlayStation | PS1 / PSX | pcsx_rearmed | – | – |
+| Sega | Genesis / Mega Drive | genesis_plus_gx | 1841 | genesis.json |
+| Sega | Master System | smsplus | – | – |
+| Sega | Game Gear | smsplus | – | – |
+| Sega | Sega CD | picodrive | – | – |
+| Sega | Sega 32X | picodrive | – | – |
+| Sega | Saturn | yabause | – | – |
+| Atari | Atari 2600 | stella2014 | – | – |
+| Atari | Atari 5200 | a5200 | – | – |
+| Atari | Atari 7800 | prosystem | – | – |
+| Atari | Atari Jaguar | virtualjaguar | – | – |
+| Atari | Atari Lynx | handy | – | – |
+| Commodore | Commodore 64 | vice_x64 | – | – |
+| Commodore | Commodore 128 | vice_x128 | – | – |
+| Commodore | VIC-20 | vice_xvic | – | – |
+| Commodore | PET | vice_xpet | – | – |
+| Commodore | Plus/4 | vice_xplus4 | – | – |
+| Commodore | Amiga | puae | – | – |
+| Other | 3DO | opera | – | – |
+| Other | Arcade (FBNeo) | fbneo | 0 (empty) | arcade.json |
+| Other | Arcade (MAME 2003) | mame2003 | – | – |
+| Other | ColecoVision | gearcoleco | – | – |
+| Other | Virtual Boy | beetle_vb | – | – |
+| **Total** | **29 platforms** | – | **5326** | **6 files** |
 
 ### Core Features
 - **Automatic core detection**: Upload any ROM file and the system automatically detects the platform
