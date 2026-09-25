@@ -1701,7 +1701,7 @@ document.addEventListener('DOMContentLoaded', function() {
         select.innerHTML = '<option value="">Loading...</option>';
         
         // Fetch JSON file
-        var jsonUrl = '../../data/roms/' + platform + '.json';
+        var jsonUrl = '../data/roms/' + platform + '.json';
         fetch(jsonUrl)
             .then(function(response) {
                 if (!response.ok) {
