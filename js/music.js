@@ -10,12 +10,7 @@ var pageNum = 1;
 var isLoading = false;
 var hasMore = true;
 
-var proxy = {
-    0: 'https://api.codetabs.com/v1/proxy/?quest=',
-    1: 'https://corsproxy.io/?',
-    2: 'https://api.allorigins.win/raw?url=',
-};
-var rand = Math.floor(Math.random() * Object.keys(proxy).length);
+// CORS proxy + failover now live in ../js/apiproxy.js (fetchMusicJSON)
 
 // Helper functions
 function $(selector) {
@@ -185,41 +180,38 @@ function loadSongs(id) {
     
     $('#songList').innerHTML = '<div class="loading-state"><i class="fas fa-spinner"></i><span>Loading songs...</span></div>';
     
-    fetch(proxy[rand] + 'http://iwenwiki.com:3000/artist/songs?id=' + artistId + '&limit=50&offset=0')
-        .then(function(response) { return response.json(); })
-        .then(function(message) {
-            isLoading = false;
-            var songList = message.songs;
-            if (songList && songList.length > 0) {
-                artistName = songList[0].ar[0].name;
-                $('#artistTitle').textContent = artistName;
-                $('#artistName span').textContent = artistName;
-                
-                songs = songList.map(function(x) { return { id: x.id, name: x.name }; });
-                playlist = songs.slice();
-                
-                $('#songCount').textContent = songs.length;
-                
-                // Render song list
-                renderSongList();
-                
-                // Play first song
-                playSong(songs[0].id, songs[0].name);
-                
-                // Check if there might be more songs
-                if (songList.length < 50) {
-                    hasMore = false;
-                }
-            } else {
+    fetchMusicJSON('/artist/songs?id=' + artistId + '&limit=50&offset=0', function (message) {
+        isLoading = false;
+        var songList = message.songs;
+        if (songList && songList.length > 0) {
+            artistName = songList[0].ar[0].name;
+            $('#artistTitle').textContent = artistName;
+            $('#artistName span').textContent = artistName;
+            
+            songs = songList.map(function(x) { return { id: x.id, name: x.name }; });
+            playlist = songs.slice();
+            
+            $('#songCount').textContent = songs.length;
+            
+            // Render song list
+            renderSongList();
+            
+            // Play first song
+            playSong(songs[0].id, songs[0].name);
+            
+            // Check if there might be more songs
+            if (songList.length < 50) {
                 hasMore = false;
-                $('#songList').innerHTML = '<div class="no-songs"><i class="fas fa-music"></i><span>No songs found</span></div>';
             }
-        })
-        .catch(function() {
-            isLoading = false;
+        } else {
             hasMore = false;
-            $('#songList').innerHTML = '<div class="no-songs"><i class="fas fa-exclamation-circle"></i><span>Failed to load songs</span></div>';
-        });
+            $('#songList').innerHTML = '<div class="no-songs"><i class="fas fa-music"></i><span>No songs found</span></div>';
+        }
+    }, function () {
+        isLoading = false;
+        hasMore = false;
+        $('#songList').innerHTML = '<div class="no-songs"><i class="fas fa-exclamation-circle"></i><span>Failed to load songs</span></div>';
+    });
 }
 
 // Load more songs
@@ -235,35 +227,32 @@ function loadMoreSongs() {
     loadingDiv.innerHTML = '<i class="fas fa-spinner" style="animation: spin 1s linear infinite;"></i><span style="color: rgba(255,255,255,0.5); font-size: 12px; margin-left: 10px;">Loading more...</span>';
     $('#songList').appendChild(loadingDiv);
     
-    fetch(proxy[rand] + 'http://iwenwiki.com:3000/artist/songs?id=' + artistId + '&limit=50&offset=' + (50 * (pageNum - 1)))
-        .then(function(response) { return response.json(); })
-        .then(function(message) {
-            isLoading = false;
-            $('#loadingMore').remove();
+    fetchMusicJSON('/artist/songs?id=' + artistId + '&limit=50&offset=' + (50 * (pageNum - 1)), function (message) {
+        isLoading = false;
+        $('#loadingMore').remove();
+        
+        var songList = message.songs;
+        if (songList && songList.length > 0) {
+            var newSongs = songList.map(function(x) { return { id: x.id, name: x.name }; });
+            songs = songs.concat(newSongs);
+            playlist = playlist.concat(newSongs);
             
-            var songList = message.songs;
-            if (songList && songList.length > 0) {
-                var newSongs = songList.map(function(x) { return { id: x.id, name: x.name }; });
-                songs = songs.concat(newSongs);
-                playlist = playlist.concat(newSongs);
-                
-                $('#songCount').textContent = songs.length;
-                
-                // Append new songs to list
-                appendSongList(newSongs);
-                
-                if (songList.length < 50) {
-                    hasMore = false;
-                }
-            } else {
+            $('#songCount').textContent = songs.length;
+            
+            // Append new songs to list
+            appendSongList(newSongs);
+            
+            if (songList.length < 50) {
                 hasMore = false;
             }
-        })
-        .catch(function() {
-            isLoading = false;
-            pageNum--;
-            $('#loadingMore').remove();
-        });
+        } else {
+            hasMore = false;
+        }
+    }, function () {
+        isLoading = false;
+        pageNum--;
+        $('#loadingMore').remove();
+    });
 }
 
 // Render song list
@@ -317,30 +306,23 @@ function playSong(songId, songName) {
         songList.scrollTo({ top: scrollPosition, behavior: 'smooth' });
     }
     
-    // Check music availability and play
-    fetch(proxy[rand] + 'http://iwenwiki.com:3000/check/music?id=' + songId)
-        .then(function(response) { return response.json(); })
-        .then(function(data) {
-            return fetch(proxy[rand] + 'http://iwenwiki.com:3000/song/url?id=' + songId);
-        })
-        .then(function(response) { return response.json(); })
-        .then(function(data) {
-            var url = data.data[0].url;
-            if (url) {
-                var player = videojs(document.querySelector('#video1'));
-                player.src({
-                    src: url,
-                    type: "audio/mp3"
-                });
-                player.play();
-                $('#musicVisualizer').classList.remove('paused');
-            } else {
-                alert('Sorry, this song is not available...');
-            }
-        })
-        .catch(function() {
-            alert('Sorry, no rights to play...');
-        });
+    // Get playable URL and play (removed redundant /check/music pre-flight)
+    fetchMusicJSON('/song/url?id=' + songId, function (data) {
+        var url = data.data && data.data[0] && data.data[0].url;
+        if (url) {
+            var player = videojs(document.querySelector('#video1'));
+            player.src({
+                src: url,
+                type: "audio/mp3"
+            });
+            player.play();
+            $('#musicVisualizer').classList.remove('paused');
+        } else {
+            alert('Sorry, this song is not available...');
+        }
+    }, function () {
+        alert('Sorry, no rights to play...');
+    });
 }
 
 // Load favorites from localStorage

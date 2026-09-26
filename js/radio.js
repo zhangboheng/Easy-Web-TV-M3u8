@@ -2,8 +2,7 @@
 // Radio Browser API source
 // Native JavaScript (No jQuery)
 
-var radiosource = ['https://de1.api.radio-browser.info/'];
-var rand = Math.floor(Math.random() * radiosource.length);
+// RadioBrowser fetch + mirror failover now live in ../js/apiproxy.js (fetchRadio)
 var stations = [];
 var player;
 
@@ -163,10 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Load stations from API
 function loadStations(tab, endpoint) {
-    fetch(radiosource[rand] + endpoint + encodeURIComponent(tab))
-        .then(function(response) {
-            return response.json();
-        })
+    fetchRadio(endpoint + encodeURIComponent(tab))
         .then(function(data) {
             var stationList = document.getElementById('stationList');
             stationList.innerHTML = '';

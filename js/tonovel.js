@@ -1,18 +1,7 @@
 // Novel List Page JS - Modern UI Version
 // Native JavaScript (No jQuery)
 
-// Proxy for CORS
-var proxy = {
-    0: 'https://cors.luckydesigner.workers.dev/?',
-    1: 'https://corsproxy.io/?',
-    2: 'https://api.allorigins.win/raw?url=',
-};
-
-// Get random proxy for each request
-function getRandomProxy() {
-    var rand = Math.floor(Math.random() * Object.keys(proxy).length);
-    return proxy[rand];
-}
+// CORS proxy + failover now live in ../js/apiproxy.js (fetchWithProxy)
 
 // Global variables
 var pnum = 1;
@@ -164,12 +153,7 @@ function loadNovels(url, append = true) {
     isLoading = true;
     showLoading(true);
     
-    var fullUrl = getRandomProxy() + url;
-    
-    fetch(fullUrl)
-        .then(function(response) {
-            return response.text();
-        })
+    fetchWithProxy(url)
         .then(function(data) {
             var parser = new DOMParser();
             var html = parser.parseFromString(data, 'text/html');
@@ -212,10 +196,7 @@ function loadNovels(url, append = true) {
 function loadCategories(sourceUrl) {
     document.getElementById('categoryList').innerHTML = '<div class="loading-state"><i class="fas fa-spinner"></i><span>Loading...</span></div>';
     
-    fetch(getRandomProxy() + sourceUrl)
-        .then(function(response) {
-            return response.text();
-        })
+    fetchWithProxy(sourceUrl)
         .then(function(data) {
             var categories = [];
             

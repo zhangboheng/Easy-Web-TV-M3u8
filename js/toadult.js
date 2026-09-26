@@ -13,31 +13,14 @@ var pornSources = {
     'xiangjiaozyw': { url: 'https://xiangjiaozyw.com/api.php/provide/vod/at/json', name: '香蕉资源网' }
 };
 
-// Proxy for CORS
-var proxy = {
-    0: 'https://cors.luckydesigner.workers.dev/?',
-    1: 'https://corsproxy.io/?',
-    2: 'https://api.allorigins.win/raw?url=',
-};
-var rand = Math.floor(Math.random() * Object.keys(proxy).length);
-var proxyRetryCount = 0;
-var maxProxyRetries = 3;
-
-// Get next proxy
-function getNextProxy() {
-    proxyRetryCount++;
-    if (proxyRetryCount >= maxProxyRetries) {
-        proxyRetryCount = 0;
-        rand = (rand + 1) % Object.keys(proxy).length;
-    }
-    return proxy[rand];
-}
+// CORS proxy + failover now live in ../js/apiproxy.js (fetchWithProxy)
 
 var currentLink = '';
 var currentCategory = '';
 var pageNum = 1;
 var isLoading = false;
 var isSearchMode = false;
+var reqToken = 0;
 
 // Initialize source select from localStorage
 function initSourceSelect() {
@@ -88,9 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSourceSelect();
     
     // Initialize
-    currentLink = document.getElementById('sourceSelect').value;
-    loadCategories(currentLink);
-    loadVideos(currentLink, '', 1);
+    selectSource(document.getElementById('sourceSelect').value);
     
     // Back button
     document.getElementById('backBtn').addEventListener('click', function() {
@@ -115,13 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Source select change
     document.getElementById('sourceSelect').addEventListener('change', function() {
-        currentLink = this.value;
-        currentCategory = '';
-        pageNum = 1;
-        isSearchMode = false;
-        document.getElementById('searchInput').value = '';
-        loadCategories(currentLink);
-        loadVideos(currentLink, '', 1);
+        selectSource(this.value);
     });
     
     // Search
@@ -148,10 +123,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     loadingDiv.innerHTML = '<i class="fas fa-spinner"></i><span>Searching...</span>';
                     mainContent.insertBefore(loadingDiv, mainContent.firstChild);
                 }
-                searchVideos(currentLink, searchTerm, 1);
+                var token = beginContext();
+                searchVideos(currentLink, searchTerm, 1, token);
             } else {
                 isSearchMode = false;
-                loadVideos(currentLink, currentCategory, 1);
+                var token = beginContext();
+                loadVideos(currentLink, currentCategory, 1, token);
             }
         }
     });
@@ -167,10 +144,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isSearchMode) {
                 var searchTerm = document.getElementById('searchInput').value.trim();
                 if (searchTerm) {
-                    searchVideos(currentLink, searchTerm, pageNum);
+                    searchVideos(currentLink, searchTerm, pageNum, reqToken);
                 }
             } else {
-                loadVideos(currentLink, currentCategory, pageNum);
+                loadVideos(currentLink, currentCategory, pageNum, reqToken);
             }
         }
     });
@@ -196,14 +173,35 @@ function buildApiUrl(link, action, params) {
         }
     }
     
-    // Use different proxy format for allorigins
-    var selectedProxy = proxy[rand];
-    if (selectedProxy.indexOf('allorigins') > -1) {
-        // allorigins needs full URL encoding
-        return selectedProxy + encodeURIComponent(url);
-    } else {
-        return selectedProxy + encodeURIComponent(url);
-    }
+    // Return the raw API URL; proxy + failover handled by fetchWithProxy().
+    return url;
+}
+
+// Begin a new UI context (source switch / category click / search):
+// invalidate any in-flight requests and unblock the isLoading guard.
+// The returned token must be threaded into loadCategories/loadVideos/searchVideos.
+function beginContext() {
+    reqToken++;
+    isLoading = false;
+    return reqToken;
+}
+
+// Switch data source atomically: category list + video list always reflect the same source.
+function selectSource(link) {
+    currentLink = link;
+    currentCategory = '';
+    pageNum = 1;
+    isSearchMode = false;
+    document.getElementById('searchInput').value = '';
+
+    var token = beginContext();
+
+    // Reset category list to a loading state so stale categories don't linger.
+    document.getElementById('categoryList').innerHTML =
+        '<div class="empty-state"><i class="fas fa-spinner fa-spin"></i><p>Loading...</p></div>';
+
+    loadCategories(currentLink, token);
+    loadVideos(currentLink, '', 1, token);
 }
 
 // Parse API response (handles both JSON and XML)
@@ -271,12 +269,12 @@ function parseApiResponse(data) {
 }
 
 // Load categories (use API class data if available, otherwise extract from video list)
-function loadCategories(link) {
+function loadCategories(link, token) {
     var apiUrl = buildApiUrl(link, 'list', { pg: 1 });
     
-    fetch(apiUrl)
-        .then(function(response) { return response.text(); })
+    fetchWithProxy(apiUrl)
         .then(function(data) {
+            if (token !== reqToken) return; // stale response from a previous source/context
             var parsedData = parseApiResponse(data);
             if (!parsedData) {
                 document.getElementById('categoryList').innerHTML = `
@@ -346,15 +344,17 @@ function loadCategories(link) {
                         el.classList.remove('active');
                     });
                     this.classList.add('active');
+                    var token = beginContext();
                     currentCategory = this.dataset.id;
                     pageNum = 1;
                     isSearchMode = false;
                     document.getElementById('searchInput').value = '';
-                    loadVideos(currentLink, currentCategory, 1);
+                    loadVideos(currentLink, currentCategory, 1, token);
                 });
             });
         })
         .catch(function() {
+            if (token !== reqToken) return; // stale response from a previous source/context
             document.getElementById('categoryList').innerHTML = `
                 <div class="empty-state">
                     <i class="fas fa-exclamation-triangle"></i>
@@ -365,7 +365,7 @@ function loadCategories(link) {
 }
 
 // Load videos
-function loadVideos(link, category, page) {
+function loadVideos(link, category, page, token) {
     if (isLoading) return;
     isLoading = true;
     
@@ -391,9 +391,9 @@ function loadVideos(link, category, page) {
     
     var apiUrl = buildApiUrl(link, 'videolist', params);
     
-    fetch(apiUrl)
-        .then(function(response) { return response.text(); })
+    fetchWithProxy(apiUrl)
         .then(function(data) {
+            if (token !== reqToken) return; // stale response from a previous source/context
             var parsedData = parseApiResponse(data);
             if (!parsedData) {
                 if (page === 1) {
@@ -431,6 +431,7 @@ function loadVideos(link, category, page) {
             isLoading = false;
         })
         .catch(function() {
+            if (token !== reqToken) return; // stale response from a previous source/context
             if (page === 1) {
                 document.getElementById('contentGrid').innerHTML = `
                     <div class="empty-state">
@@ -446,7 +447,7 @@ function loadVideos(link, category, page) {
 }
 
 // Search videos
-function searchVideos(link, term, page) {
+function searchVideos(link, term, page, token) {
     if (isLoading && page === 1) return;
     if (page > 1 && isLoading) return;
     isLoading = true;
@@ -458,9 +459,9 @@ function searchVideos(link, term, page) {
     
     var apiUrl = buildApiUrl(link, 'videolist', { wd: term, pg: page || 1 });
     
-    fetch(apiUrl)
-        .then(function(response) { return response.text(); })
+    fetchWithProxy(apiUrl)
         .then(function(data) {
+            if (token !== reqToken) return; // stale response from a previous source/context
             // Remove loading state first
             var searchLoading = document.querySelector('.search-loading');
             if (searchLoading) searchLoading.remove();
@@ -506,6 +507,7 @@ function searchVideos(link, term, page) {
             isLoading = false;
         })
         .catch(function() {
+            if (token !== reqToken) return; // stale response from a previous source/context
             // Remove loading state on error too
             var searchLoading = document.querySelector('.search-loading');
             if (searchLoading) searchLoading.remove();

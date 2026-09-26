@@ -1,39 +1,36 @@
 // Radio Page JS - Modern UI Version
 // Native JavaScript (No jQuery)
 
-// Set a array to store source links
-var radiosource = ['https://de1.api.radio-browser.info/'];
-// Set a random integer
-var rand = Math.floor(Math.random() * radiosource.length);
+// RadioBrowser fetch + mirror failover now live in ../js/apiproxy.js (fetchRadio)
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Tab 切换功能
+    // Tab switching
     document.querySelectorAll('.tab-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
             var targetTab = this.dataset.tab;
             
-            // 切换 tab 按钮状态
+            // Toggle tab button state
             document.querySelectorAll('.tab-btn').forEach(function(el) {
                 el.classList.remove('active');
             });
             this.classList.add('active');
             
-            // 切换内容区域
+            // Switch the content area
             document.querySelectorAll('.tab-content').forEach(function(el) {
                 el.classList.remove('active');
             });
             document.getElementById(targetTab).classList.add('active');
             
-            // 清空搜索框
+            // Clear the search box
             document.getElementById('searchInput').value = '';
-            // 显示所有卡片
+            // Show all cards
             document.querySelectorAll('.item-card').forEach(function(el) {
                 el.style.display = '';
             });
         });
     });
     
-    // 搜索功能
+    // Search
     document.getElementById('searchInput').addEventListener('input', function() {
         var searchTerm = this.value.toLowerCase();
         var activeTab = document.querySelector('.tab-content.active').id;
@@ -48,16 +45,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // 返回按钮
+    // Back button
     document.getElementById('backBtn').addEventListener('click', function() {
         window.history.back();
     });
     
-    // 卡片点击跳转 - 使用事件委托
+    // Card click navigation - using event delegation
     document.addEventListener('click', function(e) {
         var card = e.target.closest('.item-card');
         if (card) {
-            // 如果点击的是a标签本身，让它自然跳转
+            // If the clicked element is the <a> tag itself, let it navigate naturally
             if (e.target.tagName === 'A') {
                 return;
             }
@@ -68,21 +65,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // 动态加载 Countries 列表
+    // Dynamically load the Countries list
     function loadCountries() {
-        fetch(radiosource[rand] + 'json/countries')
-            .then(function(response) { return response.json(); })
+        fetchRadio('json/countries')
             .then(function(data) {
                 var grid = document.getElementById('countries-grid');
                 grid.innerHTML = '';
-                // 按名称排序
+                // Sort by name
                 data.sort(function(a, b) {
                     return a.name.localeCompare(b.name);
                 });
                 for (var i = 0; i < data.length; i++) {
                     var country = data[i];
                     var name = country.name;
-                    // 处理台湾名称
+                    // Handle the Taiwan name
                     var displayName = name === 'Taiwan Province Of China' ? 'Taiwan' : name;
                     var stationcount = country.stationcount;
                     var link = '../catalogues/radioplay.html?tab=' + encodeURIComponent(name) + '&t=1';
@@ -98,14 +94,13 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    // 动态加载 Languages 列表
+    // Dynamically load the Languages list
     function loadLanguages() {
-        fetch(radiosource[rand] + 'json/languages')
-            .then(function(response) { return response.json(); })
+        fetchRadio('json/languages')
             .then(function(data) {
                 var grid = document.getElementById('languages-grid');
                 grid.innerHTML = '';
-                // 按名称排序
+                // Sort by name
                 data.sort(function(a, b) {
                     return a.name.localeCompare(b.name);
                 });
@@ -126,14 +121,13 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    // 动态加载 Tags (Category) 列表
+    // Dynamically load the Tags (Category) list
     function loadTags() {
-        fetch(radiosource[rand] + 'json/tags')
-            .then(function(response) { return response.json(); })
+        fetchRadio('json/tags')
             .then(function(data) {
                 var grid = document.getElementById('category-grid');
                 grid.innerHTML = '';
-                // 按名称排序
+                // Sort by name
                 data.sort(function(a, b) {
                     return a.name.localeCompare(b.name);
                 });
@@ -154,12 +148,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    // 页面加载时获取数据
+    // Fetch data on page load
     loadCountries();
     loadLanguages();
     loadTags();
     
-    // 错误检测
+    // Error detection
     setInterval(function() {
         var countriesGrid = document.getElementById('countries-grid');
         var languagesGrid = document.getElementById('languages-grid');

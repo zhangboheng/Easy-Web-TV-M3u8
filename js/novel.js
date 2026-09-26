@@ -1,18 +1,7 @@
 // Novel Reader JS - Modern UI Version
 // Native JavaScript (No jQuery)
 
-// Proxy for CORS
-var proxy = {
-    0: 'https://cors.luckydesigner.workers.dev/?',
-    1: 'https://corsproxy.io/?',
-    2: 'https://api.allorigins.win/raw?url=',
-};
-
-// Get random proxy for each request
-function getRandomProxy() {
-    var rand = Math.floor(Math.random() * Object.keys(proxy).length);
-    return proxy[rand];
-}
+// CORS proxy + failover now live in ../js/apiproxy.js (fetchWithProxy)
 
 // Favorite prefix for localStorage
 var FAV_PREFIX = 'fav_novel_';
@@ -293,8 +282,7 @@ function renderChapters(chapterData) {
 function loadChapter(url, chapterName) {
     showLoading(true);
     
-    fetch(getRandomProxy() + url)
-        .then(function(response) { return response.text(); })
+    fetchWithProxy(url)
         .then(function(data) {
             var html = parseHTML(data);
             
@@ -435,8 +423,7 @@ function loadChapter(url, chapterName) {
 function parseRoyalRoad(initlink) {
     originUrl = 'https://www.royalroad.com';
     
-    fetch(getRandomProxy() + initlink)
-        .then(function(response) { return response.text(); })
+    fetchWithProxy(initlink)
         .then(function(data) {
             var html = parseHTML(data);
             

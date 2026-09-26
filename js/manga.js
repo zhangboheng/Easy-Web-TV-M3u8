@@ -4,21 +4,10 @@
  * Native JavaScript (No jQuery)
  */
 
-// API Base URL with CORS proxy pool
-const CORS_PROXIES = {
-    0: 'https://cors.luckydesigner.workers.dev/?',
-    1: 'https://corsproxy.io/?',
-    2: 'https://api.allorigins.win/raw?url=',
-};
+// API Base URL
 const MANGADEX_API = 'https://api.mangadex.org';
 const MANGADEX_COVER = 'https://uploads.mangadex.org/covers';
-
-// Get random CORS proxy
-function getProxy() {
-    const keys = Object.keys(CORS_PROXIES);
-    const randomKey = keys[Math.floor(Math.random() * keys.length)];
-    return CORS_PROXIES[randomKey];
-}
+// CORS proxy + failover now live in ../js/apiproxy.js (fetchJSONWithProxy)
 
 // State
 let currentManga = null;
@@ -195,8 +184,7 @@ async function loadManga(mangaId, chapterId) {
         showLoading('Loading manga...');
         
         // Get manga info
-        const mangaResponse = await fetch(getProxy() + encodeURIComponent(`${MANGADEX_API}/manga/${mangaId}`));
-        const mangaData = await mangaResponse.json();
+        const mangaData = await fetchJSONWithProxy(`${MANGADEX_API}/manga/${mangaId}`);
         
         if (mangaData.result === 'ok') {
             currentManga = mangaData.data;
@@ -205,10 +193,7 @@ async function loadManga(mangaId, chapterId) {
         }
         
         // Get chapters
-        const chaptersResponse = await fetch(
-            getProxy() + encodeURIComponent(`${MANGADEX_API}/manga/${mangaId}/feed?translatedLanguage[]=en&order[chapter]=desc&limit=500`)
-        );
-        const chaptersData = await chaptersResponse.json();
+        const chaptersData = await fetchJSONWithProxy(`${MANGADEX_API}/manga/${mangaId}/feed?translatedLanguage[]=en&order[chapter]=desc&limit=500`);
         
         if (chaptersData.result === 'ok') {
             chapters = chaptersData.data;
@@ -322,8 +307,7 @@ async function loadChapter(chapterId) {
         showLoading('Loading chapter pages...');
         
         // Get chapter pages
-        const response = await fetch(getProxy() + encodeURIComponent(`${MANGADEX_API}/at-home/server/${chapterId}`));
-        const data = await response.json();
+        const data = await fetchJSONWithProxy(`${MANGADEX_API}/at-home/server/${chapterId}`);
         
         if (data.result === 'ok') {
             const baseUrl = data.baseUrl;

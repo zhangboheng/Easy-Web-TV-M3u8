@@ -1,20 +1,9 @@
 // Manga List Page JS - MangaDex API Version
 // Native JavaScript (No jQuery)
 
-// MangaDex API base URL with CORS proxy pool
-var CORS_PROXIES = {
-    0: 'https://cors.luckydesigner.workers.dev/?',
-    1: 'https://corsproxy.io/?',
-    2: 'https://api.allorigins.win/raw?url=',
-};
+// MangaDex API base URL
 var MANGADEX_API = 'https://api.mangadex.org';
-
-// Get random CORS proxy
-function getProxy() {
-    var keys = Object.keys(CORS_PROXIES);
-    var randomKey = keys[Math.floor(Math.random() * keys.length)];
-    return CORS_PROXIES[randomKey];
-}
+// CORS proxy + failover now live in ../js/apiproxy.js (fetchJSONWithProxy)
 
 // Global variables
 var pnum = 1;
@@ -177,8 +166,7 @@ function renderCategories(categories) {
 function loadTags() {
     document.getElementById('categoryList').innerHTML = '<div class="loading-state"><i class="fas fa-spinner"></i><span>Loading categories...</span></div>';
     
-    fetch(getProxy() + encodeURIComponent(MANGADEX_API + '/manga/tag'))
-        .then(function(response) { return response.json(); })
+    fetchJSONWithProxy(MANGADEX_API + '/manga/tag')
         .then(function(data) {
             if (data.result === 'ok' && data.data) {
                 // Filter for genre-type tags (group: 'genre')
@@ -229,8 +217,7 @@ function loadMangas(tagId, append) {
         apiUrl += '&title=' + encodeURIComponent(searchKeyword);
     }
     
-    fetch(getProxy() + encodeURIComponent(apiUrl))
-        .then(function(response) { return response.json(); })
+    fetchJSONWithProxy(apiUrl)
         .then(function(data) {
             if (data.result === 'ok' && data.data) {
                 // Process manga data and get cover URLs

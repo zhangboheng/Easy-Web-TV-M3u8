@@ -1,17 +1,17 @@
 // TV Channels Page JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-    // Tab 切换功能
+    // Tab switching
     document.querySelectorAll('.tab-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
             var targetTab = this.getAttribute('data-tab');
             
-            // 切换 tab 按钮状态
+            // Toggle tab button state
             document.querySelectorAll('.tab-btn').forEach(function(b) {
                 b.classList.remove('active');
             });
             this.classList.add('active');
             
-            // 切换内容区域
+            // Switch the content area
             document.querySelectorAll('.tab-content').forEach(function(content) {
                 content.classList.remove('active');
             });
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // 搜索功能
+    // Search
     var searchInput = document.getElementById('searchInput');
     if (searchInput) {
         searchInput.addEventListener('input', function() {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // 返回按钮
+    // Back button
     var backBtn = document.getElementById('backBtn');
     if (backBtn) {
         backBtn.addEventListener('click', function() {
@@ -47,11 +47,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // 卡片点击跳转 - 使用事件委托
+    // Card click navigation - using event delegation
     document.addEventListener('click', function(e) {
         var card = e.target.closest('.item-card');
         if (card) {
-            // 如果点击的是a标签本身，让它自然跳转
+            // If the clicked element is the <a> tag itself, let it navigate naturally
             if (e.target.tagName === 'A') {
                 return;
             }
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // 动态加载 Countries 列表
+    // Dynamically load the Countries list
     function loadCountries() {
         fetch('https://iptv-org.github.io/api/countries.json')
             .then(function(response) {
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(function(data) {
                 var grid = document.getElementById('countries-grid');
                 grid.innerHTML = '';
-                // 按名称排序
+                // Sort by name
                 data.sort(function(a, b) {
                     return a.name.localeCompare(b.name);
                 });
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    // 动态加载 Languages 列表
+    // Dynamically load the Languages list
     function loadLanguages() {
         fetch('https://iptv-org.github.io/api/languages.json')
             .then(function(response) {
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(function(data) {
                 var grid = document.getElementById('languages-grid');
                 grid.innerHTML = '';
-                // 按名称排序
+                // Sort by name
                 data.sort(function(a, b) {
                     return a.name.localeCompare(b.name);
                 });
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    // 动态加载 Categories 列表
+    // Dynamically load the Categories list
     function loadCategories() {
         fetch('https://iptv-org.github.io/api/categories.json')
             .then(function(response) {
@@ -128,11 +128,11 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(function(data) {
                 var grid = document.getElementById('category-grid');
                 grid.innerHTML = '';
-                // 按名称排序
+                // Sort by name
                 data.sort(function(a, b) {
                     return a.name.localeCompare(b.name);
                 });
-                // 分类图标映射
+                // Category icon mapping
                 var iconMap = {
                     'animation': 'fa-film',
                     'auto': 'fa-car',
@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    // 页面加载时获取数据
+    // Fetch data on page load
     loadCountries();
     loadLanguages();
     loadCategories();

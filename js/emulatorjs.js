@@ -743,8 +743,8 @@ function applyTranslations() {
 
 // CORS proxy list (tried in order)
 var corsProxies = [
-    'https://cors.luckydesigner.workers.dev/?',
-    'https://cors.luckydesigner.workers.dev/?', // retry once: the only proxy that can fetch archive.org (no CORS headers); helps with transient rate-limits
+    'https://cors.luckydesigner.workers.dev/?', // primary: the only proxy that can fetch archive.org (no CORS headers)
+    'https://corsmirror.onrender.com/v1/cors?url=',
     'https://api.allorigins.win/raw?url=',
     'https://api.codetabs.com/v1/proxy?quest='
 ];
@@ -1148,12 +1148,12 @@ var EJS_biosUrl = './bios/neogeo.zip';
 var EJS_dontExtractBIOS = false;
 // Enable soft load for FBNeo core
 var EJS_softLoad = true;
-// 远程 NeoGeo BIOS 备用源（本地 routes/bios/neogeo.zip 缺失时自动尝试获取）
+// Remote NeoGeo BIOS fallback source (auto-fetched when local routes/bios/neogeo.zip is missing)
 var REMOTE_BIOS_URLS = [
     'https://archive.org/download/neogeo-bios/neogeo/mame_0251b/roms/neogeo.zip',
     'https://archive.org/download/neogeo-bios/neogeo/mame_0111/roms/neogeo.zip'
 ];
-// FBNeo(arcade) 等核心必需：游戏的 romset 名（否则核心显示 "Romset is unknown"）
+// Required for FBNeo (arcade) and similar cores: the game's romset name (otherwise the core shows "Romset is unknown")
 var EJS_gameName = '';
 
 // EmulatorJS control scheme (controlScheme): decides which gamepad layout the
@@ -1280,7 +1280,7 @@ var coreMapping = {
     '32x': 'picodrive'
 };
 
-// 用户通过 URL 参数或下拉框明确选择的 core，优先级高于扩展名自动检测
+// Core explicitly chosen by the user via URL param or dropdown; takes priority over extension-based auto-detection
 var userSelectedCore = '';
 
 // Current game info
@@ -1396,7 +1396,7 @@ function fetchBlobWithProxy(originalUrl, proxyIndex, onSuccess, onError) {
         });
 }
 
-// 本地 BIOS 缺失时，尝试从远程源下载并转换为 data URL 交给 EmulatorJS
+// When the local BIOS is missing, try downloading from a remote source and convert it to a data URL for EmulatorJS
 function fetchRemoteBios(callback) {
     function tryNext(index) {
         if (index >= REMOTE_BIOS_URLS.length) {
@@ -1419,7 +1419,7 @@ function fetchRemoteBios(callback) {
     tryNext(0);
 }
 
-// 确保 arcade 核心的 BIOS 可用（本地优先，缺失时尝试远程），避免 "Romset is unknown"
+// Ensure the arcade core's BIOS is available (local first, remote fallback) to avoid "Romset is unknown"
 function ensureArcadeBios(callback) {
     if (EJS_core !== 'fbneo' && EJS_core !== 'mame2003') {
         callback(true);
@@ -1429,7 +1429,7 @@ function ensureArcadeBios(callback) {
         callback(true);
         return;
     }
-    // 1. 检查本地 BIOS 是否可访问
+    // 1. Check whether the local BIOS is accessible
     fetch(EJS_biosUrl, { method: 'HEAD' })
         .then(function(res) {
             if (res.ok) {
@@ -1451,12 +1451,12 @@ function loadEmulatorJS() {
     // Set controlScheme from the current core so "Control Settings" / virtual gamepad use the
     // correct gamepad layout (stable/4.2.3 menu lacks segaMD; Genesis needs segaCD, see controlSchemeMapping)
     EJS_controlScheme = getControlSchemeForCore(EJS_core);
-    // 对于 arcade/fbneo 等核心，必须设置游戏的 romset 名，否则核心显示 "Romset is unknown"
+    // For arcade/fbneo and similar cores, the game's romset name must be set, otherwise the core shows "Romset is unknown"
     if (EJS_core === 'fbneo' || EJS_core === 'mame2003') {
         EJS_gameName = currentGame.name || '';
         console.log('EJS_gameName:', EJS_gameName);
     }
-    // 先确保 BIOS 可用，再加载模拟器
+    // Ensure the BIOS is available before loading the emulator
     ensureArcadeBios(function(biosReady) {
         if (!biosReady) {
             console.error('NeoGeo BIOS is not available.');
@@ -1490,7 +1490,7 @@ function doLoadEmulatorJS() {
                 window.EJS_emulator.on('error', function(error) {
                     var msg = (error && error.message) ? error.message : 'Unknown error';
                     console.error('EmulatorJS error:', error);
-                    // BIOS/ROM 加载失败时给出明确提示，而非静默显示 "Romset is unknown"
+                    // Show a clear message when BIOS/ROM loading fails, instead of silently showing "Romset is unknown"
                     if (/content-length|romset|bios|404|load.*fail/i.test(msg)) {
                         showToast(t('biosMissing'));
                     } else {

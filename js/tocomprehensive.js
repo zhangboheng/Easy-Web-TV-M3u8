@@ -11,13 +11,7 @@ var movieSources = {
     'bjy': { url: 'https://cj.rycjapi.com/api.php/provide/vod/at/json/', name: '如意资源' }
 };
 
-// Proxy for CORS
-var proxy = {
-    0: 'https://cors.luckydesigner.workers.dev/?',
-    1: 'https://corsproxy.io/?',
-    2: 'https://api.allorigins.win/raw?url=',
-};
-var rand = Math.floor(Math.random() * Object.keys(proxy).length);
+// CORS proxy + failover now live in ../js/apiproxy.js (fetchJSONWithProxy)
 
 // Global variables
 var currentLink = '';
@@ -105,12 +99,11 @@ function showLoading(show, isSearch) {
 // Load categories
 function loadCategories(link) {
     var baseUrl = link.endsWith('/') ? link : link + '/';
-    var apiUrl = proxy[rand] + encodeURIComponent(baseUrl + '?ac=&pg=1');
+    var apiUrl = baseUrl + '?ac=&pg=1';
     
     document.getElementById('categoryList').innerHTML = '<div class="loading-state"><i class="fas fa-spinner"></i><span>Loading categories...</span></div>';
     
-    fetch(apiUrl)
-        .then(function(response) { return response.json(); })
+    fetchJSONWithProxy(apiUrl)
         .then(function(data) {
             var categoryList = document.getElementById('categoryList');
             categoryList.innerHTML = '';
@@ -174,12 +167,11 @@ function loadVideos(link, category, page) {
     }
     
     var baseUrl = link.endsWith('/') ? link : link + '/';
-    var apiUrl = category 
-        ? proxy[rand] + encodeURIComponent(baseUrl + '?ac=videolist&t=' + category + '&pg=' + page)
-        : proxy[rand] + encodeURIComponent(baseUrl + '?ac=videolist&pg=' + page);
+    var apiUrl = category
+        ? baseUrl + '?ac=videolist&t=' + category + '&pg=' + page
+        : baseUrl + '?ac=videolist&pg=' + page;
     
-    fetch(apiUrl)
-        .then(function(response) { return response.json(); })
+    fetchJSONWithProxy(apiUrl)
         .then(function(data) {
             if (page === 1) {
                 document.getElementById('contentGrid').innerHTML = '';
@@ -233,10 +225,9 @@ function searchVideos(link, term, page) {
     showLoading(page > 1, page === 1);
     
     var baseUrl = link.endsWith('/') ? link : link + '/';
-    var apiUrl = proxy[rand] + encodeURIComponent(baseUrl + '?ac=videolist&wd=' + encodeURIComponent(term) + '&pg=' + (page || 1));
+    var apiUrl = baseUrl + '?ac=videolist&wd=' + encodeURIComponent(term) + '&pg=' + (page || 1);
     
-    fetch(apiUrl)
-        .then(function(response) { return response.json(); })
+    fetchJSONWithProxy(apiUrl)
         .then(function(data) {
             if (page === 1) {
                 var contentGrid = document.getElementById('contentGrid');

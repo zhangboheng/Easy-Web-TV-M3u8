@@ -1,12 +1,6 @@
 // Adult Player JS - Native JavaScript (No jQuery)
 
-// Proxy for CORS
-var proxy = {
-    0: 'https://cors.luckydesigner.workers.dev/?',
-    1: 'https://corsproxy.io/?',
-    2: 'https://api.allorigins.win/raw?url=',
-};
-var rand = Math.floor(Math.random() * Object.keys(proxy).length);
+// CORS proxy + failover now live in ../js/apiproxy.js (fetchWithProxy)
 
 // Favorite prefix for localStorage
 var FAV_PREFIX = 'fav_adult_';
@@ -106,8 +100,8 @@ function buildApiUrl(link, action, params) {
         }
     }
     
-    var selectedProxy = proxy[rand];
-    return selectedProxy + encodeURIComponent(url);
+    // Return the raw API URL; proxy + failover handled by fetchWithProxy().
+    return url;
 }
 
 // Parse API response
@@ -185,8 +179,7 @@ function loadVideoDetail(apiUrl, videoId) {
     var detailUrl = buildApiUrl(apiUrl, 'detail', { ids: videoId });
     console.log('Detail API URL:', detailUrl);
     
-    fetch(detailUrl)
-        .then(function(response) { return response.text(); })
+    fetchWithProxy(detailUrl)
         .then(function(data) {
             console.log('API Response received, length:', data.length);
             

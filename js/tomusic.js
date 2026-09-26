@@ -1,13 +1,7 @@
 // Music Page JS - Modern UI Version
 // Native JavaScript (No jQuery)
 
-var proxy = {
-    0: 'https://api.codetabs.com/v1/proxy/?quest=',
-    1: 'https://cors.luckydesigner.workers.dev/?',
-    2: 'https://corsproxy.io/?',
-    3: 'https://api.allorigins.win/raw?url=',
-};
-var rand = Math.floor(Math.random() * Object.keys(proxy).length);
+// CORS proxy + failover now live in ../js/apiproxy.js (fetchWithProxy / fetchMusicJSON)
 
 var artists = [];
 var pageNum = 1;
@@ -580,8 +574,7 @@ function extractPodcastImage(channel, xmlText) {
 function fetchPodcastInfo(podcast) {
     var apiUrl = podcast.feedUrl;
     
-    fetch(proxy[rand] + encodeURIComponent(apiUrl))
-        .then(function(response) { return response.text(); })
+    fetchWithProxy(apiUrl)
         .then(function(xmlText) {
             try {
                 var parser = new DOMParser();
@@ -589,7 +582,7 @@ function fetchPodcastInfo(podcast) {
                 var channel = doc.querySelector('channel');
                 var title = channel.querySelector('title').textContent || podcast.name;
                 var image = extractPodcastImage(channel, xmlText);
-                
+
                 // Update the podcast info
                 var idx = podcastSubscriptions.findIndex(function (p) { return p.feedUrl === podcast.feedUrl; });
                 if (idx !== -1) {
@@ -603,46 +596,21 @@ function fetchPodcastInfo(podcast) {
             }
         })
         .catch(function() {
-            // Try alternate proxy
-            var altRand = (rand + 1) % Object.keys(proxy).length;
-            fetch(proxy[altRand] + encodeURIComponent(apiUrl))
-                .then(function(response) { return response.text(); })
-                .then(function(xmlText) {
-                    try {
-                        var parser = new DOMParser();
-                        var doc = parser.parseFromString(xmlText, 'text/xml');
-                        var channel = doc.querySelector('channel');
-                        var title = channel.querySelector('title').textContent || podcast.name;
-                        var image = extractPodcastImage(channel, xmlText);
-                        
-                        var idx = podcastSubscriptions.findIndex(function (p) { return p.feedUrl === podcast.feedUrl; });
-                        if (idx !== -1) {
-                            podcastSubscriptions[idx].name = title;
-                            podcastSubscriptions[idx].imageUrl = image;
-                            savePodcastSubscriptions();
-                            renderPodcastList();
-                        }
-                    } catch (e) {
-                        console.error('Failed to parse podcast info (alt proxy):', e);
-                    }
-                })
-                .catch(function() {
-                    // Failed to fetch - update name to show it's unavailable
-                    var idx = podcastSubscriptions.findIndex(function (p) { return p.feedUrl === podcast.feedUrl; });
-                    if (idx !== -1 && podcastSubscriptions[idx].name === 'Loading...') {
-                        // Extract domain name as fallback display
-                        try {
-                            var urlObj = new URL(podcast.feedUrl);
-                            podcastSubscriptions[idx].name = urlObj.hostname;
-                        } catch (e) {
-                            podcastSubscriptions[idx].name = 'Unknown Podcast';
-                        }
-                        savePodcastSubscriptions();
-                        renderPodcastList();
-                        showToast('Could not fetch podcast details for: ' + podcastSubscriptions[idx].name + '. The RSS feed may be unavailable.', 'error', 5000);
-                    }
-                    console.error('Failed to fetch podcast info for:', podcast.feedUrl);
-                });
+            // Failed to fetch - update name to show it's unavailable
+            var idx = podcastSubscriptions.findIndex(function (p) { return p.feedUrl === podcast.feedUrl; });
+            if (idx !== -1 && podcastSubscriptions[idx].name === 'Loading...') {
+                // Extract domain name as fallback display
+                try {
+                    var urlObj = new URL(podcast.feedUrl);
+                    podcastSubscriptions[idx].name = urlObj.hostname;
+                } catch (e) {
+                    podcastSubscriptions[idx].name = 'Unknown Podcast';
+                }
+                savePodcastSubscriptions();
+                renderPodcastList();
+                showToast('Could not fetch podcast details for: ' + podcastSubscriptions[idx].name + '. The RSS feed may be unavailable.', 'error', 5000);
+            }
+            console.error('Failed to fetch podcast info for:', podcast.feedUrl);
         });
 }
 
@@ -816,12 +784,11 @@ function fetchOpmlFromUrl(url) {
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Fetching...';
     
-    fetch(proxy[rand] + encodeURIComponent(url))
-        .then(function(response) { return response.text(); })
+    fetchWithProxy(url)
         .then(function(data) {
             btn.disabled = false;
             btn.innerHTML = '<i class="fas fa-download"></i> Import from URL';
-            
+
             if (data && data.trim()) {
                 parseOpml(data);
                 hideOpmlImportModal();
@@ -831,27 +798,9 @@ function fetchOpmlFromUrl(url) {
             }
         })
         .catch(function() {
-            // Try alternate proxy
-            var altRand = (rand + 1) % Object.keys(proxy).length;
-            fetch(proxy[altRand] + encodeURIComponent(url))
-                .then(function(response) { return response.text(); })
-                .then(function(data) {
-                    btn.disabled = false;
-                    btn.innerHTML = '<i class="fas fa-download"></i> Import from URL';
-                    
-                    if (data && data.trim()) {
-                        parseOpml(data);
-                        hideOpmlImportModal();
-                        $('#opmlUrlInput').value = '';
-                    } else {
-                        showToast('The fetched OPML content is empty.', 'warning');
-                    }
-                })
-                .catch(function() {
-                    btn.disabled = false;
-                    btn.innerHTML = '<i class="fas fa-download"></i> Import from URL';
-                    showToast('Failed to fetch OPML from URL. Please check the URL or try pasting the content directly.', 'error');
-                });
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-download"></i> Import from URL';
+            showToast('Failed to fetch OPML from URL. Please check the URL or try pasting the content directly.', 'error');
         });
 }
 
@@ -1012,34 +961,15 @@ function playSong(index) {
 }
 
 function getSongUrl(songId, callback) {
-    var apiUrl = 'http://iwenwiki.com:3000/song/url?id=' + songId;
+    var apiUrl = '/song/url?id=' + songId;
     
-    fetch(proxy[rand] + encodeURIComponent(apiUrl))
-        .then(function(response) { return response.json(); })
-        .then(function(data) {
-            console.log('Song URL response:', data);
-            var url = null;
-            if (data.data && data.data[0] && data.data[0].url) {
-                url = data.data[0].url;
-            }
-            callback(url);
-        })
-        .catch(function() {
-            // Try alternate proxy
-            var altRand = (rand + 1) % Object.keys(proxy).length;
-            fetch(proxy[altRand] + encodeURIComponent(apiUrl))
-                .then(function(response) { return response.json(); })
-                .then(function(data) {
-                    var url = null;
-                    if (data.data && data.data[0] && data.data[0].url) {
-                        url = data.data[0].url;
-                    }
-                    callback(url);
-                })
-                .catch(function() {
-                    callback(null);
-                });
-        });
+    fetchMusicJSON(apiUrl, function (data) {
+        console.log('Song URL response:', data);
+        var url = (data.data && data.data[0] && data.data[0].url) ? data.data[0].url : null;
+        callback(url);
+    }, function () {
+        callback(null);
+    });
 }
 
 function loadArtists() {
@@ -1051,44 +981,22 @@ function loadArtists() {
     var apiUrl = buildApiUrl();
     console.log('Loading artists, API URL:', apiUrl);
     
-    fetch(proxy[rand] + encodeURIComponent(apiUrl))
-        .then(function(response) { return response.json(); })
-        .then(function(data) {
-            console.log('Load artists response:', data);
-            hideLoading();
-            isLoading = false;
-            
-            if (data.artists && data.artists.length > 0) {
-                artists = data.artists;
-                renderArtists(artists);
-            } else {
-                showNoResults();
-            }
-        })
-        .catch(function(error) {
-            console.log('Load artists failed with proxy 0, trying proxy 1...', error);
-            // Try alternate proxy
-            var altRand = (rand + 1) % Object.keys(proxy).length;
-            fetch(proxy[altRand] + encodeURIComponent(apiUrl))
-                .then(function(response) { return response.json(); })
-                .then(function(data) {
-                    console.log('Load artists response (proxy 1):', data);
-                    hideLoading();
-                    isLoading = false;
-                    
-                    if (data.artists && data.artists.length > 0) {
-                        artists = data.artists;
-                        renderArtists(artists);
-                    } else {
-                        showNoResults();
-                    }
-                })
-                .catch(function() {
-                    hideLoading();
-                    isLoading = false;
-                    showError('Failed to load artists');
-                });
-        });
+    fetchMusicJSON(apiUrl, function (data) {
+        console.log('Load artists response:', data);
+        hideLoading();
+        isLoading = false;
+        
+        if (data.artists && data.artists.length > 0) {
+            artists = data.artists;
+            renderArtists(artists);
+        } else {
+            showNoResults();
+        }
+    }, function () {
+        hideLoading();
+        isLoading = false;
+        showError('Failed to load artists');
+    });
 }
 
 function loadMoreArtists() {
@@ -1101,72 +1009,39 @@ function loadMoreArtists() {
     var apiUrl = buildApiUrl();
     console.log('Loading more artists, page:', pageNum, 'API URL:', apiUrl);
     
-    fetch(proxy[rand] + encodeURIComponent(apiUrl))
-        .then(function(response) { return response.json(); })
-        .then(function(data) {
-            console.log('Load more response:', data);
-            $('#loadMore').style.display = 'none';
-            isLoading = false;
+    fetchMusicJSON(apiUrl, function (data) {
+        console.log('Load more response:', data);
+        $('#loadMore').style.display = 'none';
+        isLoading = false;
+        
+        if (data.artists && data.artists.length > 0) {
+            // Filter out duplicates
+            var existingIds = artists.map(function(a) { return a.id; });
+            var newArtists = data.artists.filter(function(a) {
+                return existingIds.indexOf(a.id) === -1;
+            });
             
-            if (data.artists && data.artists.length > 0) {
-                // Filter out duplicates
-                var existingIds = artists.map(function(a) { return a.id; });
-                var newArtists = data.artists.filter(function(a) {
-                    return existingIds.indexOf(a.id) === -1;
-                });
-                
-                if (newArtists.length > 0) {
-                    artists = artists.concat(newArtists);
-                    appendArtists(newArtists);
-                }
-                
-                // If we got less than expected, might be end of data
-                if (data.artists.length < 50) {
-                    hasMore = false;
-                }
-            } else {
+            if (newArtists.length > 0) {
+                artists = artists.concat(newArtists);
+                appendArtists(newArtists);
+            }
+            
+            // If we got less than expected, might be end of data
+            if (data.artists.length < 50) {
                 hasMore = false;
             }
-        })
-        .catch(function(error) {
-            console.log('Load more failed with proxy 0, trying proxy 1...', error);
-            // Try alternate proxy
-            var altRand = (rand + 1) % Object.keys(proxy).length;
-            fetch(proxy[altRand] + encodeURIComponent(apiUrl))
-                .then(function(response) { return response.json(); })
-                .then(function(data) {
-                    console.log('Load more response (proxy 1):', data);
-                    $('#loadMore').style.display = 'none';
-                    isLoading = false;
-                    
-                    if (data.artists && data.artists.length > 0) {
-                        var existingIds = artists.map(function(a) { return a.id; });
-                        var newArtists = data.artists.filter(function(a) {
-                            return existingIds.indexOf(a.id) === -1;
-                        });
-                        
-                        if (newArtists.length > 0) {
-                            artists = artists.concat(newArtists);
-                            appendArtists(newArtists);
-                        }
-                        
-                        if (data.artists.length < 50) {
-                            hasMore = false;
-                        }
-                    } else {
-                        hasMore = false;
-                    }
-                })
-                .catch(function() {
-                    $('#loadMore').style.display = 'none';
-                    isLoading = false;
-                    pageNum--;
-                });
-        });
+        } else {
+            hasMore = false;
+        }
+    }, function () {
+        $('#loadMore').style.display = 'none';
+        isLoading = false;
+        pageNum--;
+    });
 }
 
 function buildApiUrl() {
-    var baseUrl = 'http://iwenwiki.com:3000/artist/list';
+    var baseUrl = '/artist/list';
     var params = [];
     
     if (currentFilter.type === 'area') {
@@ -1249,110 +1124,57 @@ function searchSongs(query) {
     // Disable load more in search mode
     hasMore = false;
     
-    // Try both proxies for better reliability
-    var apiUrl = 'http://iwenwiki.com:3000/search?keywords=' + encodeURIComponent(query) + '&limit=50';
+    var apiUrl = '/search?keywords=' + encodeURIComponent(query) + '&limit=50';
     
     console.log('Search API URL:', apiUrl);
     
-    fetch(proxy[rand] + encodeURIComponent(apiUrl))
-        .then(function(response) { return response.json(); })
-        .then(function(data) {
-            console.log('Search response:', data);
-            hideLoading();
-            isLoading = false;
-            
-            // Check multiple possible response structures
-            var songs = null;
-            if (data.result && data.result.songs) {
-                songs = data.result.songs;
-            } else if (data.data && data.data.songs) {
-                songs = data.data.songs;
-            } else if (data.songs) {
-                songs = data.songs;
-            }
-            
-            if (songs && songs.length > 0) {
-                // Store songs as playlist
-                currentPlaylist = songs.map(function (song) {
-                    // Get artist names from artists array
-                    var artistNames = '';
-                    if (song.artists && song.artists.length > 0) {
-                        artistNames = song.artists.map(function(a) { return a.name; }).join(', ');
-                    } else if (song.ar && song.ar.length > 0) {
-                        artistNames = song.ar.map(function(a) { return a.name; }).join(', ');
-                    }
-                    
-                    return {
-                        id: song.id,
-                        name: song.name,
-                        artistName: artistNames,
-                        cover: song.al && song.al.picUrl ? song.al.picUrl : '../images/noimage.jpeg'
-                    };
-                });
-                renderSearchResults(songs);
-                
-                // Show message that search results are limited
-                if (songs.length === 50) {
-                    $('#artistGrid').insertAdjacentHTML('beforeend', '<div class="search-info" style="grid-column: 1 / -1; text-align: center; padding: 20px; color: rgba(255,255,255,0.5); font-size: 12px;"><i class="fas fa-info-circle"></i> Showing top 50 results. Use more specific keywords for better results.</div>');
+    fetchMusicJSON(apiUrl, function (data) {
+        console.log('Search response:', data);
+        hideLoading();
+        isLoading = false;
+        
+        // Check multiple possible response structures
+        var songs = null;
+        if (data.result && data.result.songs) {
+            songs = data.result.songs;
+        } else if (data.data && data.data.songs) {
+            songs = data.data.songs;
+        } else if (data.songs) {
+            songs = data.songs;
+        }
+        
+        if (songs && songs.length > 0) {
+            // Store songs as playlist
+            currentPlaylist = songs.map(function (song) {
+                // Get artist names from artists array
+                var artistNames = '';
+                if (song.artists && song.artists.length > 0) {
+                    artistNames = song.artists.map(function(a) { return a.name; }).join(', ');
+                } else if (song.ar && song.ar.length > 0) {
+                    artistNames = song.ar.map(function(a) { return a.name; }).join(', ');
                 }
-            } else {
-                showNoResults();
+                
+                return {
+                    id: song.id,
+                    name: song.name,
+                    artistName: artistNames,
+                    cover: song.al && song.al.picUrl ? song.al.picUrl : '../images/noimage.jpeg'
+                };
+            });
+            renderSearchResults(songs);
+            
+            // Show message that search results are limited
+            if (songs.length === 50) {
+                $('#artistGrid').insertAdjacentHTML('beforeend', '<div class="search-info" style="grid-column: 1 / -1; text-align: center; padding: 20px; color: rgba(255,255,255,0.5); font-size: 12px;"><i class="fas fa-info-circle"></i> Showing top 50 results. Use more specific keywords for better results.</div>');
             }
-        })
-        .catch(function(error) {
-            console.log('Search failed with proxy 0, trying proxy 1...', error);
-            // Try alternate proxy
-            var altRand = (rand + 1) % Object.keys(proxy).length;
-            fetch(proxy[altRand] + encodeURIComponent(apiUrl))
-                .then(function(response) { return response.json(); })
-                .then(function(data) {
-                    console.log('Search response (proxy 1):', data);
-                    hideLoading();
-                    isLoading = false;
-                    
-                    var songs = null;
-                    if (data.result && data.result.songs) {
-                        songs = data.result.songs;
-                    } else if (data.data && data.data.songs) {
-                        songs = data.data.songs;
-                    } else if (data.songs) {
-                        songs = data.songs;
-                    }
-                    
-                    if (songs && songs.length > 0) {
-                        currentPlaylist = songs.map(function (song) {
-                            // Get artist names from artists array
-                            var artistNames = '';
-                            if (song.artists && song.artists.length > 0) {
-                                artistNames = song.artists.map(function(a) { return a.name; }).join(', ');
-                            } else if (song.ar && song.ar.length > 0) {
-                                artistNames = song.ar.map(function(a) { return a.name; }).join(', ');
-                            }
-                            
-                            return {
-                                id: song.id,
-                                name: song.name,
-                                artistName: artistNames,
-                                cover: song.al && song.al.picUrl ? song.al.picUrl : '../images/noimage.jpeg'
-                            };
-                        });
-                        renderSearchResults(songs);
-                        
-                        // Show message that search results are limited
-                        if (songs.length === 50) {
-                            $('#artistGrid').insertAdjacentHTML('beforeend', '<div class="search-info" style="grid-column: 1 / -1; text-align: center; padding: 20px; color: rgba(255,255,255,0.5); font-size: 12px;"><i class="fas fa-info-circle"></i> Showing top 50 results. Use more specific keywords for better results.</div>');
-                        }
-                    } else {
-                        showNoResults();
-                    }
-                })
-                .catch(function(error2) {
-                    console.log('Search failed completely:', error2);
-                    hideLoading();
-                    isLoading = false;
-                    showError('Search failed: ' + error2);
-                });
-        });
+        } else {
+            showNoResults();
+        }
+    }, function () {
+        hideLoading();
+        isLoading = false;
+        showError('Search failed');
+    });
 }
 
 function renderSearchResults(songs) {

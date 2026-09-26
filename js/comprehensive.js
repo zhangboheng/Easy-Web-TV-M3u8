@@ -1,13 +1,7 @@
 // Comprehensive (Movie/TV) Play Page JS
 // Native JavaScript (No jQuery)
 
-// Set global array proxy links to solve CORS error
-var proxy = {
-    0: 'https://cors.luckydesigner.workers.dev/?',
-    1: 'https://corsproxy.io/?',
-    2: 'https://api.allorigins.win/raw?url=',
-};
-var rand = Math.floor(Math.random() * Object.keys(proxy).length);
+// CORS proxy + failover now live in ../js/apiproxy.js (fetchJSONWithProxy)
 
 // Store episodes data
 var episodes = [];
@@ -60,10 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // Load video data from API
 function loadVideoData(linkUrl, videoId) {
     var baseUrl = linkUrl.endsWith('/') ? linkUrl : linkUrl + '/';
-    var apiUrl = proxy[rand] + encodeURIComponent(baseUrl + '?ac=videolist&ids=' + videoId);
+    var apiUrl = baseUrl + '?ac=videolist&ids=' + videoId;
     
-    fetch(apiUrl)
-        .then(function(response) { return response.json(); })
+    fetchJSONWithProxy(apiUrl)
         .then(function(data) {
             var episodeList = document.getElementById('episodeList');
             episodeList.innerHTML = '';
