@@ -142,7 +142,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Supported Platforms
 
-All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **11150** games across 16 JSON files (Arcade/FBNeo preset is currently empty).
+All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **11306** games across 17 JSON files (Arcade/FBNeo preset is currently empty).
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -166,7 +166,7 @@ All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Atari | Atari Lynx | handy | 77 | atarilynx.json |
 | Commodore | Commodore 64 | vice_x64 | 49 | c64.json |
 | Commodore | Commodore 128 | vice_x128 | – | – |
-| Commodore | VIC-20 | vice_xvic | – | – |
+| Commodore | VIC-20 | vice_xvic | 156 | vic20.json |
 | Commodore | PET | vice_xpet | – | – |
 | Commodore | Plus/4 | vice_xplus4 | – | – |
 | Commodore | Amiga | puae | – | – |
@@ -175,7 +175,7 @@ All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Other | Arcade (MAME 2003) | mame2003 | – | – |
 | Other | ColecoVision | gearcoleco | 94 | coleco.json |
 | Other | Virtual Boy | beetle_vb | 28 | vb.json |
-| **Total** | **29 platforms** | – | **11150** | **16 files** |
+| **Total** | **29 platforms** | – | **11306** | **17 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 

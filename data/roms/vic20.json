@@ -1,0 +1,786 @@
+{
+  "platform": "vic20",
+  "core": "vice_xvic",
+  "games": [
+    {
+      "name": "Adventure (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Adventure%20(8k).prg",
+      "filename": "Adventure (8k).prg"
+    },
+    {
+      "name": "African Beads - owerri (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/African%20Beads%20-%20owerri%20(8k).prg",
+      "filename": "African Beads - owerri (8k).prg"
+    },
+    {
+      "name": "Alien Blitz-pal",
+      "url": "https://archive.org/download/vic-20-collection_202606/Alien%20Blitz-pal.prg",
+      "filename": "Alien Blitz-pal.prg"
+    },
+    {
+      "name": "Alien The (3k)-pal",
+      "url": "https://archive.org/download/vic-20-collection_202606/Alien%20The%20(3k)-pal.prg",
+      "filename": "Alien The (3k)-pal.prg"
+    },
+    {
+      "name": "Alien The (3k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Alien%20The%20(3k).prg",
+      "filename": "Alien The (3k).prg"
+    },
+    {
+      "name": "allied defense",
+      "url": "https://archive.org/download/vic-20-collection_202606/allied%20defense.prg",
+      "filename": "allied defense.prg"
+    },
+    {
+      "name": "Amoeba (8k)-pal",
+      "url": "https://archive.org/download/vic-20-collection_202606/Amoeba%20(8k)-pal.prg",
+      "filename": "Amoeba (8k)-pal.prg"
+    },
+    {
+      "name": "android attack (Titan)",
+      "url": "https://archive.org/download/vic-20-collection_202606/android%20attack%20(Titan).prg",
+      "filename": "android attack (Titan).prg"
+    },
+    {
+      "name": "ant raiders",
+      "url": "https://archive.org/download/vic-20-collection_202606/ant%20raiders.prg",
+      "filename": "ant raiders.prg"
+    },
+    {
+      "name": "Anti-matter",
+      "url": "https://archive.org/download/vic-20-collection_202606/Anti-matter.prg",
+      "filename": "Anti-matter.prg"
+    },
+    {
+      "name": "Apple Bug",
+      "url": "https://archive.org/download/vic-20-collection_202606/Apple%20Bug.prg",
+      "filename": "Apple Bug.prg"
+    },
+    {
+      "name": "Apple Tree (3k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Apple%20Tree%20(3k).prg",
+      "filename": "Apple Tree (3k).prg"
+    },
+    {
+      "name": "Arithmevic 1",
+      "url": "https://archive.org/download/vic-20-collection_202606/Arithmevic%201.prg",
+      "filename": "Arithmevic 1.prg"
+    },
+    {
+      "name": "Assault from Deep",
+      "url": "https://archive.org/download/vic-20-collection_202606/Assault%20from%20Deep.prg",
+      "filename": "Assault from Deep.prg"
+    },
+    {
+      "name": "Asteroid Attack",
+      "url": "https://archive.org/download/vic-20-collection_202606/Asteroid%20Attack.prg",
+      "filename": "Asteroid Attack.prg"
+    },
+    {
+      "name": "asteroyds",
+      "url": "https://archive.org/download/vic-20-collection_202606/asteroyds.prg",
+      "filename": "asteroyds.prg"
+    },
+    {
+      "name": "Astro Command",
+      "url": "https://archive.org/download/vic-20-collection_202606/Astro%20Command.prg",
+      "filename": "Astro Command.prg"
+    },
+    {
+      "name": "Astro Patrol",
+      "url": "https://archive.org/download/vic-20-collection_202606/Astro%20Patrol.prg",
+      "filename": "Astro Patrol.prg"
+    },
+    {
+      "name": "astroiders",
+      "url": "https://archive.org/download/vic-20-collection_202606/astroiders.prg",
+      "filename": "astroiders.prg"
+    },
+    {
+      "name": "At the Circus (3k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/At%20the%20Circus%20(3k).prg",
+      "filename": "At the Circus (3k).prg"
+    },
+    {
+      "name": "backfire",
+      "url": "https://archive.org/download/vic-20-collection_202606/backfire.prg",
+      "filename": "backfire.prg"
+    },
+    {
+      "name": "backgammon (3k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/backgammon%20(3k).prg",
+      "filename": "backgammon (3k).prg"
+    },
+    {
+      "name": "Bastow Manor",
+      "url": "https://archive.org/download/vic-20-collection_202606/Bastow%20Manor.prg",
+      "filename": "Bastow Manor.prg"
+    },
+    {
+      "name": "battle of britain (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/battle%20of%20britain%20(16k).prg",
+      "filename": "battle of britain (16k).prg"
+    },
+    {
+      "name": "battle zone",
+      "url": "https://archive.org/download/vic-20-collection_202606/battle%20zone.prg",
+      "filename": "battle zone.prg"
+    },
+    {
+      "name": "Battleground",
+      "url": "https://archive.org/download/vic-20-collection_202606/Battleground.prg",
+      "filename": "Battleground.prg"
+    },
+    {
+      "name": "Birds (3k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Birds%20(3k).prg",
+      "filename": "Birds (3k).prg"
+    },
+    {
+      "name": "blockade",
+      "url": "https://archive.org/download/vic-20-collection_202606/blockade.prg",
+      "filename": "blockade.prg"
+    },
+    {
+      "name": "BLOCKIT (3k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/BLOCKIT%20(3k).prg",
+      "filename": "BLOCKIT (3k).prg"
+    },
+    {
+      "name": "Blue Meanies from Outer Space (fix)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Blue%20Meanies%20from%20Outer%20Space%20(fix).prg",
+      "filename": "Blue Meanies from Outer Space (fix).prg"
+    },
+    {
+      "name": "bobs blunder",
+      "url": "https://archive.org/download/vic-20-collection_202606/bobs%20blunder.prg",
+      "filename": "bobs blunder.prg"
+    },
+    {
+      "name": "bomber mission (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/bomber%20mission%20(16k).prg",
+      "filename": "bomber mission (16k).prg"
+    },
+    {
+      "name": "bongo (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/bongo%20(16k).prg",
+      "filename": "bongo (16k).prg"
+    },
+    {
+      "name": "bonzo (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/bonzo%20(8k).prg",
+      "filename": "bonzo (8k).prg"
+    },
+    {
+      "name": "bowling champ [fixed]",
+      "url": "https://archive.org/download/vic-20-collection_202606/bowling%20champ%20%5Bfixed%5D.prg",
+      "filename": "bowling champ [fixed].prg"
+    },
+    {
+      "name": "boxed-in2",
+      "url": "https://archive.org/download/vic-20-collection_202606/boxed-in2.prg",
+      "filename": "boxed-in2.prg"
+    },
+    {
+      "name": "breakout (AP)",
+      "url": "https://archive.org/download/vic-20-collection_202606/breakout%20(AP).prg",
+      "filename": "breakout (AP).prg"
+    },
+    {
+      "name": "breakout (ST)",
+      "url": "https://archive.org/download/vic-20-collection_202606/breakout%20(ST).prg",
+      "filename": "breakout (ST).prg"
+    },
+    {
+      "name": "Brennball",
+      "url": "https://archive.org/download/vic-20-collection_202606/Brennball.prg",
+      "filename": "Brennball.prg"
+    },
+    {
+      "name": "cannonade (3k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/cannonade%20(3k).prg",
+      "filename": "cannonade (3k).prg"
+    },
+    {
+      "name": "CANNONBALL (CLEAN)",
+      "url": "https://archive.org/download/vic-20-collection_202606/CANNONBALL%20(CLEAN).prg",
+      "filename": "CANNONBALL (CLEAN).prg"
+    },
+    {
+      "name": "car chase",
+      "url": "https://archive.org/download/vic-20-collection_202606/car%20chase.prg",
+      "filename": "car chase.prg"
+    },
+    {
+      "name": "cargar",
+      "url": "https://archive.org/download/vic-20-collection_202606/cargar.prg",
+      "filename": "cargar.prg"
+    },
+    {
+      "name": "carom",
+      "url": "https://archive.org/download/vic-20-collection_202606/carom.prg",
+      "filename": "carom.prg"
+    },
+    {
+      "name": "carrier attack",
+      "url": "https://archive.org/download/vic-20-collection_202606/carrier%20attack.prg",
+      "filename": "carrier attack.prg"
+    },
+    {
+      "name": "castle math (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/castle%20math%20(16k).prg",
+      "filename": "castle math (16k).prg"
+    },
+    {
+      "name": "caterpilla-pal",
+      "url": "https://archive.org/download/vic-20-collection_202606/caterpilla-pal.prg",
+      "filename": "caterpilla-pal.prg"
+    },
+    {
+      "name": "cavern run",
+      "url": "https://archive.org/download/vic-20-collection_202606/cavern%20run.prg",
+      "filename": "cavern run.prg"
+    },
+    {
+      "name": "caves of annod[.mad.][break]",
+      "url": "https://archive.org/download/vic-20-collection_202606/caves%20of%20annod%5B.mad.%5D%5Bbreak%5D.prg",
+      "filename": "caves of annod[.mad.][break].prg"
+    },
+    {
+      "name": "Cells and Serpents (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Cells%20and%20Serpents%20(16k).prg",
+      "filename": "Cells and Serpents (16k).prg"
+    },
+    {
+      "name": "Centropods",
+      "url": "https://archive.org/download/vic-20-collection_202606/Centropods.prg",
+      "filename": "Centropods.prg"
+    },
+    {
+      "name": "chase",
+      "url": "https://archive.org/download/vic-20-collection_202606/chase.prg",
+      "filename": "chase.prg"
+    },
+    {
+      "name": "China Clan (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/China%20Clan%20(8k).prg",
+      "filename": "China Clan (8k).prg"
+    },
+    {
+      "name": "Chinamen (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Chinamen%20(8k).prg",
+      "filename": "Chinamen (8k).prg"
+    },
+    {
+      "name": "Chomper Man",
+      "url": "https://archive.org/download/vic-20-collection_202606/Chomper%20Man.prg",
+      "filename": "Chomper Man.prg"
+    },
+    {
+      "name": "city bomber-pal",
+      "url": "https://archive.org/download/vic-20-collection_202606/city%20bomber-pal.prg",
+      "filename": "city bomber-pal.prg"
+    },
+    {
+      "name": "clear round (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/clear%20round%20(16k).prg",
+      "filename": "clear round (16k).prg"
+    },
+    {
+      "name": "cloudburst",
+      "url": "https://archive.org/download/vic-20-collection_202606/cloudburst.prg",
+      "filename": "cloudburst.prg"
+    },
+    {
+      "name": "cobra (cw)",
+      "url": "https://archive.org/download/vic-20-collection_202606/cobra%20(cw).prg",
+      "filename": "cobra (cw).prg"
+    },
+    {
+      "name": "cobra",
+      "url": "https://archive.org/download/vic-20-collection_202606/cobra.prg",
+      "filename": "cobra.prg"
+    },
+    {
+      "name": "code",
+      "url": "https://archive.org/download/vic-20-collection_202606/code.prg",
+      "filename": "code.prg"
+    },
+    {
+      "name": "Compusport Baseball (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Compusport%20Baseball%20(8k).prg",
+      "filename": "Compusport Baseball (8k).prg"
+    },
+    {
+      "name": "Compusport Grandprix (8k)-pal",
+      "url": "https://archive.org/download/vic-20-collection_202606/Compusport%20Grandprix%20(8k)-pal.prg",
+      "filename": "Compusport Grandprix (8k)-pal.prg"
+    },
+    {
+      "name": "connect 4(arctic)",
+      "url": "https://archive.org/download/vic-20-collection_202606/connect%204(arctic).prg",
+      "filename": "connect 4(arctic).prg"
+    },
+    {
+      "name": "conquerer (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/conquerer%20(16k).prg",
+      "filename": "conquerer (16k).prg"
+    },
+    {
+      "name": "conquering everest (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/conquering%20everest%20(16k).prg",
+      "filename": "conquering everest (16k).prg"
+    },
+    {
+      "name": "convention",
+      "url": "https://archive.org/download/vic-20-collection_202606/convention.prg",
+      "filename": "convention.prg"
+    },
+    {
+      "name": "Cosmaids",
+      "url": "https://archive.org/download/vic-20-collection_202606/Cosmaids.prg",
+      "filename": "Cosmaids.prg"
+    },
+    {
+      "name": "crazy balloon",
+      "url": "https://archive.org/download/vic-20-collection_202606/crazy%20balloon.prg",
+      "filename": "crazy balloon.prg"
+    },
+    {
+      "name": "cribbage[rs] (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/cribbage%5Brs%5D%20(16k).prg",
+      "filename": "cribbage[rs] (16k).prg"
+    },
+    {
+      "name": "critical path",
+      "url": "https://archive.org/download/vic-20-collection_202606/critical%20path.prg",
+      "filename": "critical path.prg"
+    },
+    {
+      "name": "cruncher (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/cruncher%20(8k).prg",
+      "filename": "cruncher (8k).prg"
+    },
+    {
+      "name": "cryptowhiz",
+      "url": "https://archive.org/download/vic-20-collection_202606/cryptowhiz.prg",
+      "filename": "cryptowhiz.prg"
+    },
+    {
+      "name": "curse of the werewolf (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/curse%20of%20the%20werewolf%20(16k).prg",
+      "filename": "curse of the werewolf (16k).prg"
+    },
+    {
+      "name": "dam busta",
+      "url": "https://archive.org/download/vic-20-collection_202606/dam%20busta.prg",
+      "filename": "dam busta.prg"
+    },
+    {
+      "name": "damsel",
+      "url": "https://archive.org/download/vic-20-collection_202606/damsel.prg",
+      "filename": "damsel.prg"
+    },
+    {
+      "name": "Dare Devil Diver (8k)-pal",
+      "url": "https://archive.org/download/vic-20-collection_202606/Dare%20Devil%20Diver%20(8k)-pal.prg",
+      "filename": "Dare Devil Diver (8k)-pal.prg"
+    },
+    {
+      "name": "Defend (Commodore)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Defend%20(Commodore).prg",
+      "filename": "Defend (Commodore).prg"
+    },
+    {
+      "name": "Defenda (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Defenda%20(8k).prg",
+      "filename": "Defenda (8k).prg"
+    },
+    {
+      "name": "deflect",
+      "url": "https://archive.org/download/vic-20-collection_202606/deflect.prg",
+      "filename": "deflect.prg"
+    },
+    {
+      "name": "delivery alert",
+      "url": "https://archive.org/download/vic-20-collection_202606/delivery%20alert.prg",
+      "filename": "delivery alert.prg"
+    },
+    {
+      "name": "demon hunt",
+      "url": "https://archive.org/download/vic-20-collection_202606/demon%20hunt.prg",
+      "filename": "demon hunt.prg"
+    },
+    {
+      "name": "demon knight (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/demon%20knight%20(16k).prg",
+      "filename": "demon knight (16k).prg"
+    },
+    {
+      "name": "dodge cars (wizard)",
+      "url": "https://archive.org/download/vic-20-collection_202606/dodge%20cars%20(wizard).prg",
+      "filename": "dodge cars (wizard).prg"
+    },
+    {
+      "name": "Dragons and Treasure (comm-data)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Dragons%20and%20Treasure%20(comm-data).prg",
+      "filename": "Dragons and Treasure (comm-data).prg"
+    },
+    {
+      "name": "Electra Sport Soccer-pal (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Electra%20Sport%20Soccer-pal%20(8k).prg",
+      "filename": "Electra Sport Soccer-pal (8k).prg"
+    },
+    {
+      "name": "Emmet Attack",
+      "url": "https://archive.org/download/vic-20-collection_202606/Emmet%20Attack.prg",
+      "filename": "Emmet Attack.prg"
+    },
+    {
+      "name": "Engine Shed [52,27] (3k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Engine%20Shed%20%5B52%2C27%5D%20(3k).prg",
+      "filename": "Engine Shed [52,27] (3k).prg"
+    },
+    {
+      "name": "Escape MCP (.mad.)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Escape%20MCP%20(.mad.).prg",
+      "filename": "Escape MCP (.mad.).prg"
+    },
+    {
+      "name": "Evil Castle (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Evil%20Castle%20(16k).prg",
+      "filename": "Evil Castle (16k).prg"
+    },
+    {
+      "name": "Feeding Time",
+      "url": "https://archive.org/download/vic-20-collection_202606/Feeding%20Time.prg",
+      "filename": "Feeding Time.prg"
+    },
+    {
+      "name": "Fire Fighter II",
+      "url": "https://archive.org/download/vic-20-collection_202606/Fire%20Fighter%20II.prg",
+      "filename": "Fire Fighter II.prg"
+    },
+    {
+      "name": "Flash 'n Math Subtraction",
+      "url": "https://archive.org/download/vic-20-collection_202606/Flash%20'n%20Math%20Subtraction.prg",
+      "filename": "Flash 'n Math Subtraction.prg"
+    },
+    {
+      "name": "Flash 'n Spell",
+      "url": "https://archive.org/download/vic-20-collection_202606/Flash%20'n%20Spell.prg",
+      "filename": "Flash 'n Spell.prg"
+    },
+    {
+      "name": "Flysnatcher",
+      "url": "https://archive.org/download/vic-20-collection_202606/Flysnatcher.prg",
+      "filename": "Flysnatcher.prg"
+    },
+    {
+      "name": "Forbidden Tower (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Forbidden%20Tower%20(8k).prg",
+      "filename": "Forbidden Tower (8k).prg"
+    },
+    {
+      "name": "Forbidden Tower (8k)[tr]",
+      "url": "https://archive.org/download/vic-20-collection_202606/Forbidden%20Tower%20(8k)%5Btr%5D.prg",
+      "filename": "Forbidden Tower (8k)[tr].prg"
+    },
+    {
+      "name": "freeway zapper (pal)",
+      "url": "https://archive.org/download/vic-20-collection_202606/freeway%20zapper%20(pal).prg",
+      "filename": "freeway zapper (pal).prg"
+    },
+    {
+      "name": "frogchase(fix)",
+      "url": "https://archive.org/download/vic-20-collection_202606/frogchase(fix).prg",
+      "filename": "frogchase(fix).prg"
+    },
+    {
+      "name": "frogs",
+      "url": "https://archive.org/download/vic-20-collection_202606/frogs.prg",
+      "filename": "frogs.prg"
+    },
+    {
+      "name": "Galactic Abductor (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Galactic%20Abductor%20(16k).prg",
+      "filename": "Galactic Abductor (16k).prg"
+    },
+    {
+      "name": "Galactic Defender (Cymbal)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Galactic%20Defender%20(Cymbal).prg",
+      "filename": "Galactic Defender (Cymbal).prg"
+    },
+    {
+      "name": "Galactic Defender (Scott Elder)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Galactic%20Defender%20(Scott%20Elder).prg",
+      "filename": "Galactic Defender (Scott Elder).prg"
+    },
+    {
+      "name": "ghost driver (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/ghost%20driver%20(8k).prg",
+      "filename": "ghost driver (8k).prg"
+    },
+    {
+      "name": "gobbler(blabby)",
+      "url": "https://archive.org/download/vic-20-collection_202606/gobbler(blabby).prg",
+      "filename": "gobbler(blabby).prg"
+    },
+    {
+      "name": "gobbler(UMI)",
+      "url": "https://archive.org/download/vic-20-collection_202606/gobbler(UMI).prg",
+      "filename": "gobbler(UMI).prg"
+    },
+    {
+      "name": "Golden Baton (8k)(fix)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Golden%20Baton%20(8k)(fix).prg",
+      "filename": "Golden Baton (8k)(fix).prg"
+    },
+    {
+      "name": "gord",
+      "url": "https://archive.org/download/vic-20-collection_202606/gord.prg",
+      "filename": "gord.prg"
+    },
+    {
+      "name": "Grand Master (8k)-ntsc",
+      "url": "https://archive.org/download/vic-20-collection_202606/Grand%20Master%20(8k)-ntsc.prg",
+      "filename": "Grand Master (8k)-ntsc.prg"
+    },
+    {
+      "name": "Grand Master (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Grand%20Master%20(8k).prg",
+      "filename": "Grand Master (8k).prg"
+    },
+    {
+      "name": "grand prix driving",
+      "url": "https://archive.org/download/vic-20-collection_202606/grand%20prix%20driving.prg",
+      "filename": "grand prix driving.prg"
+    },
+    {
+      "name": "Great Adventure",
+      "url": "https://archive.org/download/vic-20-collection_202606/Great%20Adventure.prg",
+      "filename": "Great Adventure.prg"
+    },
+    {
+      "name": "gridion",
+      "url": "https://archive.org/download/vic-20-collection_202606/gridion.prg",
+      "filename": "gridion.prg"
+    },
+    {
+      "name": "grub",
+      "url": "https://archive.org/download/vic-20-collection_202606/grub.prg",
+      "filename": "grub.prg"
+    },
+    {
+      "name": "head on(hitech)",
+      "url": "https://archive.org/download/vic-20-collection_202606/head%20on(hitech).prg",
+      "filename": "head on(hitech).prg"
+    },
+    {
+      "name": "hektik (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/hektik%20(8k).prg",
+      "filename": "hektik (8k).prg"
+    },
+    {
+      "name": "Hell Driver",
+      "url": "https://archive.org/download/vic-20-collection_202606/Hell%20Driver.prg",
+      "filename": "Hell Driver.prg"
+    },
+    {
+      "name": "hop-frog (3k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/hop-frog%20(3k).prg",
+      "filename": "hop-frog (3k).prg"
+    },
+    {
+      "name": "horse race",
+      "url": "https://archive.org/download/vic-20-collection_202606/horse%20race.prg",
+      "filename": "horse race.prg"
+    },
+    {
+      "name": "humphry (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/humphry%20(8k).prg",
+      "filename": "humphry (8k).prg"
+    },
+    {
+      "name": "hunchy (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/hunchy%20(8k).prg",
+      "filename": "hunchy (8k).prg"
+    },
+    {
+      "name": "hydro blast",
+      "url": "https://archive.org/download/vic-20-collection_202606/hydro%20blast.prg",
+      "filename": "hydro blast.prg"
+    },
+    {
+      "name": "ICE",
+      "url": "https://archive.org/download/vic-20-collection_202606/ICE.PRG",
+      "filename": "ICE.PRG"
+    },
+    {
+      "name": "invaders addition[f]",
+      "url": "https://archive.org/download/vic-20-collection_202606/invaders%20addition%5Bf%5D.prg",
+      "filename": "invaders addition[f].prg"
+    },
+    {
+      "name": "Invaders English",
+      "url": "https://archive.org/download/vic-20-collection_202606/Invaders%20English.prg",
+      "filename": "Invaders English.prg"
+    },
+    {
+      "name": "invaders subtraction[f]",
+      "url": "https://archive.org/download/vic-20-collection_202606/invaders%20subtraction%5Bf%5D.prg",
+      "filename": "invaders subtraction[f].prg"
+    },
+    {
+      "name": "jackpot",
+      "url": "https://archive.org/download/vic-20-collection_202606/jackpot.prg",
+      "filename": "jackpot.prg"
+    },
+    {
+      "name": "jigsaw",
+      "url": "https://archive.org/download/vic-20-collection_202606/jigsaw.prg",
+      "filename": "jigsaw.prg"
+    },
+    {
+      "name": "jumpjet (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/jumpjet%20(16k).prg",
+      "filename": "jumpjet (16k).prg"
+    },
+    {
+      "name": "kaktus-pal (8k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/kaktus-pal%20(8k).prg",
+      "filename": "kaktus-pal (8k).prg"
+    },
+    {
+      "name": "Killer Caterpillar",
+      "url": "https://archive.org/download/vic-20-collection_202606/Killer%20Caterpillar.prg",
+      "filename": "Killer Caterpillar.prg"
+    },
+    {
+      "name": "kraal kingdom 1 (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/kraal%20kingdom%201%20(16k).prg",
+      "filename": "kraal kingdom 1 (16k).prg"
+    },
+    {
+      "name": "Land of Tezrel (16k)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Land%20of%20Tezrel%20(16k).prg",
+      "filename": "Land of Tezrel (16k).prg"
+    },
+    {
+      "name": "laser bike",
+      "url": "https://archive.org/download/vic-20-collection_202606/laser%20bike.prg",
+      "filename": "laser bike.prg"
+    },
+    {
+      "name": "laser blast",
+      "url": "https://archive.org/download/vic-20-collection_202606/laser%20blast.prg",
+      "filename": "laser blast.prg"
+    },
+    {
+      "name": "lunar lander(nakano)",
+      "url": "https://archive.org/download/vic-20-collection_202606/lunar%20lander(nakano).prg",
+      "filename": "lunar lander(nakano).prg"
+    },
+    {
+      "name": "man on run",
+      "url": "https://archive.org/download/vic-20-collection_202606/man%20on%20run.prg",
+      "filename": "man on run.prg"
+    },
+    {
+      "name": "martians",
+      "url": "https://archive.org/download/vic-20-collection_202606/martians.prg",
+      "filename": "martians.prg"
+    },
+    {
+      "name": "mastermind (street)",
+      "url": "https://archive.org/download/vic-20-collection_202606/mastermind%20(street).prg",
+      "filename": "mastermind (street).prg"
+    },
+    {
+      "name": "masterwits",
+      "url": "https://archive.org/download/vic-20-collection_202606/masterwits.prg",
+      "filename": "masterwits.prg"
+    },
+    {
+      "name": "math duel",
+      "url": "https://archive.org/download/vic-20-collection_202606/math%20duel.prg",
+      "filename": "math duel.prg"
+    },
+    {
+      "name": "maths maze",
+      "url": "https://archive.org/download/vic-20-collection_202606/maths%20maze.prg",
+      "filename": "maths maze.prg"
+    },
+    {
+      "name": "metroblitz",
+      "url": "https://archive.org/download/vic-20-collection_202606/metroblitz.prg",
+      "filename": "metroblitz.prg"
+    },
+    {
+      "name": "metrodome",
+      "url": "https://archive.org/download/vic-20-collection_202606/metrodome.prg",
+      "filename": "metrodome.prg"
+    },
+    {
+      "name": "milipede",
+      "url": "https://archive.org/download/vic-20-collection_202606/milipede.prg",
+      "filename": "milipede.prg"
+    },
+    {
+      "name": "minefield (creative)",
+      "url": "https://archive.org/download/vic-20-collection_202606/minefield%20(creative).prg",
+      "filename": "minefield (creative).prg"
+    },
+    {
+      "name": "missile attack",
+      "url": "https://archive.org/download/vic-20-collection_202606/missile%20attack.prg",
+      "filename": "missile attack.prg"
+    },
+    {
+      "name": "Money Minefield",
+      "url": "https://archive.org/download/vic-20-collection_202606/Money%20Minefield.prg",
+      "filename": "Money Minefield.prg"
+    },
+    {
+      "name": "Monster Maze (Creative)",
+      "url": "https://archive.org/download/vic-20-collection_202606/Monster%20Maze%20(Creative).prg",
+      "filename": "Monster Maze (Creative).prg"
+    },
+    {
+      "name": "multitron",
+      "url": "https://archive.org/download/vic-20-collection_202606/multitron.prg",
+      "filename": "multitron.prg"
+    },
+    {
+      "name": "munchmaid",
+      "url": "https://archive.org/download/vic-20-collection_202606/munchmaid.prg",
+      "filename": "munchmaid.prg"
+    },
+    {
+      "name": "Mushroom Alley (8k)-pal",
+      "url": "https://archive.org/download/vic-20-collection_202606/Mushroom%20Alley%20(8k)-pal.prg",
+      "filename": "Mushroom Alley (8k)-pal.prg"
+    },
+    {
+      "name": "mystery caves (8k)-pal",
+      "url": "https://archive.org/download/vic-20-collection_202606/mystery%20caves%20(8k)-pal.prg",
+      "filename": "mystery caves (8k)-pal.prg"
+    },
+    {
+      "name": "mystery island",
+      "url": "https://archive.org/download/vic-20-collection_202606/mystery%20island.prg",
+      "filename": "mystery island.prg"
+    },
+    {
+      "name": "naval attack",
+      "url": "https://archive.org/download/vic-20-collection_202606/naval%20attack.prg",
+      "filename": "naval attack.prg"
+    },
+    {
+      "name": "night flyer",
+      "url": "https://archive.org/download/vic-20-collection_202606/night%20flyer.prg",
+      "filename": "night flyer.prg"
+    }
+  ]
+}
