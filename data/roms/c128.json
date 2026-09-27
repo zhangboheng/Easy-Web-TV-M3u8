@@ -1,0 +1,31 @@
+{
+  "platform": "c128",
+  "core": "vice_x128",
+  "games": [
+    {
+      "name": "Race",
+      "url": "https://raw.githubusercontent.com/ricardoquesada/c64-c128-erasoft/master/disks/race.d71",
+      "filename": "race.d71"
+    },
+    {
+      "name": "The Race",
+      "url": "https://raw.githubusercontent.com/ricardoquesada/c64-c128-erasoft/master/disks/therace.d71",
+      "filename": "therace.d71"
+    },
+    {
+      "name": "Puncher",
+      "url": "https://raw.githubusercontent.com/ricardoquesada/c64-c128-erasoft/master/disks/puncher.d71",
+      "filename": "puncher.d71"
+    },
+    {
+      "name": "Teenage Mutant Runner Turtle",
+      "url": "https://raw.githubusercontent.com/ricardoquesada/c64-c128-erasoft/master/disks/tmrt.d71",
+      "filename": "tmrt.d71"
+    },
+    {
+      "name": "Sex Games 3",
+      "url": "https://raw.githubusercontent.com/ricardoquesada/c64-c128-erasoft/master/disks/sexgames3.d71",
+      "filename": "sexgames3.d71"
+    }
+  ]
+}

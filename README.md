@@ -63,7 +63,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **Atari**: 2600, 5200, 7800, Jaguar, Lynx
   - **Commodore**: C64, C128, VIC-20, PET, Plus/4, Amiga
   - **Other**: 3DO, Arcade (FBNeo, MAME 2003), ColecoVision, Virtual Boy
-- **11000+ preset ROMs** across 16 platforms, with search on the game launcher
+- **11000+ preset ROMs** across 17 platforms, with search on the game launcher
   - Nintendo: NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116)
   - Sega: Genesis/Mega Drive (1841), Master System + Game Gear (1283)
   - Atari: 2600 (4145), 5200 (72), 7800 (27), Jaguar (49), Lynx (77)
@@ -136,13 +136,13 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Dynamic ROM Loading
 - **JSON-based ROM catalogue**: ROM lists are stored in separate JSON files for easy maintenance
-- **Platform-specific loading**: Each platform has its own JSON file under `data/roms/` (15 catalogue files)
+- **Platform-specific loading**: Each platform has its own JSON file under `data/roms/` (18 catalogue files)
 - **Caching system**: Loaded ROM lists are cached for faster switching
 - **Search filter**: Filter ROMs by name in real-time
 
 ### Supported Platforms
 
-All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **11306** games across 17 JSON files (Arcade/FBNeo preset is currently empty).
+All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **11311** games across 18 JSON files (Arcade/FBNeo preset is currently empty).
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -165,7 +165,7 @@ All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Atari | Atari Jaguar | virtualjaguar | 49 | atarijaguar.json |
 | Atari | Atari Lynx | handy | 77 | atarilynx.json |
 | Commodore | Commodore 64 | vice_x64 | 49 | c64.json |
-| Commodore | Commodore 128 | vice_x128 | – | – |
+| Commodore | Commodore 128 | vice_x128 | 5 | c128.json |
 | Commodore | VIC-20 | vice_xvic | 156 | vic20.json |
 | Commodore | PET | vice_xpet | – | – |
 | Commodore | Plus/4 | vice_xplus4 | – | – |
@@ -175,7 +175,7 @@ All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Other | Arcade (MAME 2003) | mame2003 | – | – |
 | Other | ColecoVision | gearcoleco | 94 | coleco.json |
 | Other | Virtual Boy | beetle_vb | 28 | vb.json |
-| **Total** | **29 platforms** | – | **11306** | **17 files** |
+| **Total** | **29 platforms** | – | **11311** | **18 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 
