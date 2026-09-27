@@ -142,7 +142,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Supported Platforms
 
-All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **11311** games across 18 JSON files (Arcade/FBNeo preset is currently empty).
+All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **11313** games across 18 JSON files (Arcade/FBNeo preset is currently empty).
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -164,7 +164,7 @@ All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Atari | Atari 7800 | prosystem | 27 | atari7800.json |
 | Atari | Atari Jaguar | virtualjaguar | 49 | atarijaguar.json |
 | Atari | Atari Lynx | handy | 77 | atarilynx.json |
-| Commodore | Commodore 64 | vice_x64 | 49 | c64.json |
+| Commodore | Commodore 64 | vice_x64 | 51 | c64.json |
 | Commodore | Commodore 128 | vice_x128 | 5 | c128.json |
 | Commodore | VIC-20 | vice_xvic | 156 | vic20.json |
 | Commodore | PET | vice_xpet | – | – |
@@ -175,7 +175,7 @@ All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Other | Arcade (MAME 2003) | mame2003 | – | – |
 | Other | ColecoVision | gearcoleco | 94 | coleco.json |
 | Other | Virtual Boy | beetle_vb | 28 | vb.json |
-| **Total** | **29 platforms** | – | **11311** | **18 files** |
+| **Total** | **29 platforms** | – | **11313** | **18 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 

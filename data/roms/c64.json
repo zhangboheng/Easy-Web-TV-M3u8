@@ -246,6 +246,16 @@
       "name": "zilspleef",
       "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/zilspleef.d64",
       "filename": "zilspleef.d64"
+    },
+    {
+      "name": "Space Action",
+      "url": "https://archive.org/download/spaceaction/spaceact.crt",
+      "filename": "spaceact.crt"
+    },
+    {
+      "name": "Masterchip",
+      "url": "https://archive.org/download/masterchip/masterchip.crt",
+      "filename": "masterchip.crt"
     }
   ]
 }
