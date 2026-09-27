@@ -1519,6 +1519,78 @@ function doLoadEmulatorJS() {
     document.body.appendChild(script);
 }
 
+// Reset back to the ROM selection screen (initial state) so a different game can be loaded,
+// WITHOUT reloading the whole page. Cleanly shuts down the running EmulatorJS instance first.
+function resetEmulatorToSelection() {
+    var emulatorSection = document.getElementById('emulatorSection');
+    var uploadSection = document.getElementById('uploadSection');
+    var emuContainer = document.getElementById('emulator');
+    var resetBtn = document.getElementById('resetBtn');
+
+    // 1) Gracefully stop the running EmulatorJS instance (EmulatorJS 4.2.3 public API).
+    var stopInstance = function() {
+        var e = window.EJS_emulator;
+        if (e && typeof e.callEvent === 'function') {
+            try { e.callEvent('exit'); } catch (err) { console.warn('EmulatorJS exit failed:', err); }
+        }
+    };
+    if (window.EJS_emulator) {
+        stopInstance();
+    } else {
+        // Core still initializing (instance not created yet): the pending loader.js will mount
+        // one into the (now hidden) #emulator shortly. Stop it once it appears, but ONLY if we
+        // are still on the selection screen (i.e. the user hasn't already started a new load).
+        setTimeout(function() {
+            var e = window.EJS_emulator;
+            var stillOnSelection = emulatorSection && !emulatorSection.classList.contains('active');
+            if (e && typeof e.callEvent === 'function' && stillOnSelection) {
+                try { e.callEvent('exit'); } catch (err) {}
+            }
+        }, 1800);
+    }
+
+    // Drop our handle so the next load starts from a clean slate.
+    window.EJS_emulator = undefined;
+
+    // 2) Restore #emulator to its initial DOM: removes the old canvas/menu and re-creates the
+    //    loading overlay that processRomBlob() expects to exist on the next load.
+    if (emuContainer) {
+        emuContainer.innerHTML =
+            '<div class="loading-overlay" id="loadingOverlay">' +
+                '<div class="loading-spinner"></div>' +
+                '<div class="loading-text">' +
+                    '<span data-i18n="loading">Loading game, please wait...</span>' +
+                    '<small data-i18n="loadingTip">This may take a few seconds</small>' +
+                '</div>' +
+            '</div>';
+    }
+
+    // 3) Show the selection screen again and hide the emulator.
+    if (uploadSection) uploadSection.classList.remove('hidden');
+    if (emulatorSection) emulatorSection.classList.remove('active');
+
+    // 4) Reset the upload tabs to the default "File Upload" tab.
+    document.getElementById('tabFile').classList.add('active');
+    document.getElementById('tabUrl').classList.remove('active');
+    document.getElementById('tabSearch').classList.remove('active');
+    document.getElementById('uploadBox').classList.remove('hidden');
+    document.getElementById('urlBox').classList.add('hidden');
+    document.getElementById('searchBox').classList.add('hidden');
+
+    // 5) Clear transient input/error state so the screen is pristine.
+    var urlErr = document.getElementById('urlLoadError');
+    if (urlErr) { urlErr.innerHTML = ''; urlErr.classList.add('hidden'); }
+    var searchResults = document.getElementById('searchResults');
+    if (searchResults) { searchResults.innerHTML = ''; }
+
+    // 6) Hide the reset button and restore the title + current-game state.
+    if (resetBtn) resetBtn.style.display = 'none';
+    document.getElementById('pageTitle').textContent = 'Emulator';
+
+    currentGame = { name: '', core: userSelectedCore || '', romData: null };
+    EJS_gameUrl = '';
+}
+
 // Gamepad detection variables
 var gamepads = {};
 var gamepadPollInterval = null;
@@ -1887,11 +1959,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize preset options based on current core
     loadPresetOptions(EJS_core);
     
-    // Reset button - reload the page to return to the ROM selection screen
+    // Reset button - return to the ROM selection screen (initial state, no page reload),
+    // stopping the running emulator so a different game can be loaded.
     var resetBtn = document.getElementById('resetBtn');
     if (resetBtn) {
         resetBtn.addEventListener('click', function() {
-            location.reload();
+            resetEmulatorToSelection();
         });
     }
     
