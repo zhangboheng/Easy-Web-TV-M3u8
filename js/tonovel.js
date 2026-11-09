@@ -2,6 +2,47 @@
 // Native JavaScript (No jQuery)
 
 // CORS proxy + failover now live in ../js/apiproxy.js (fetchWithProxy)
+// CORS proxy + failover now live in ../js/apiproxy.js (fetchWithProxy)
+
+// Novel source registry: each source defines its own categories, list parser and search builder.
+// To add a source: register it here, add a parser branch in loadNovels(), a branch in
+// searchNovels(), and a parser in js/novel.js (reader side, dispatched by the ?src= param).
+var NOVEL_SOURCES = {
+    royalroad: {
+        name: 'Royal Road',
+        origin: 'https://www.royalroad.com',
+        categories: [
+            { name: 'All', url: 'https://www.royalroad.com/fictions/best-rated' },
+            { name: 'Best Rated', url: 'https://www.royalroad.com/fictions/best-rated' },
+            { name: 'Trending', url: 'https://www.royalroad.com/fictions/trending' },
+            { name: 'Ongoing', url: 'https://www.royalroad.com/fictions/ongoing' },
+            { name: 'Completed', url: 'https://www.royalroad.com/fictions/completed' },
+            { name: 'Popular This Week', url: 'https://www.royalroad.com/fictions/weekly-popular' },
+            { name: 'Latest Updates', url: 'https://www.royalroad.com/fictions/latest-updates' },
+            { name: 'New Releases', url: 'https://www.royalroad.com/fictions/new' },
+            { name: 'Rising Stars', url: 'https://www.royalroad.com/fictions/rising-stars' }
+        ]
+    },
+    hetushu: {
+        name: '和图书 (中文)',
+        origin: 'https://www.hetushu.com',
+        categories: [
+            { name: '全部小说', url: 'https://www.hetushu.com/book/index.php' },
+            { name: '完本', url: 'https://www.hetushu.com/book/index.php?state=2' },
+            { name: '连载', url: 'https://www.hetushu.com/book/index.php?state=1' }
+        ]
+    }
+};
+
+// Global variables
+var pnum = 1;
+var currentCategory = '';
+var currentSource = '';   // source id: 'royalroad' | 'hetushu'
+var currentListUrl = '';   // Base URL of the currently rendered list (category or search)
+var hasMoreNovels = true;  // Stop paginating once a page returns no novels
+var lastFirstNovelUrl = '';  // dedup guard for sources whose last page repeats content instead of being empty
+var isLoading = false;
+
 
 // Global variables
 var pnum = 1;
@@ -93,7 +134,8 @@ function renderNovels(novels, append = false) {
     
     novels.forEach(function(novel) {
         var card = document.createElement('a');
-        card.href = '../catalogues/novelplay.html?web=' + encodeURIComponent(novel.url);
+        var playSrc = novel.url.indexOf('hetushu.com') > -1 ? 'hetushu' : 'royalroad';
+        card.href = '../catalogues/novelplay.html?web=' + encodeURIComponent(novel.url) + '&src=' + playSrc;
         card.className = 'card-item';
         card.innerHTML = `
             <img class="card-image" src="${novel.image}" alt="${novel.title}" onerror="this.src='../images/noimage.jpeg'">
@@ -141,6 +183,7 @@ function renderCategories(categories) {
             currentListUrl = url;
             pnum = 1;
             hasMoreNovels = true;
+            lastFirstNovelUrl = '';
             loadNovels(url, false);
             
             // Hide sidebar on mobile
@@ -162,7 +205,7 @@ function loadNovels(url, append = true) {
             var parser = new DOMParser();
             var html = parser.parseFromString(data, 'text/html');
             var novels = [];
-            if (currentSource.indexOf('royalroad.com') > -1) {
+            if (currentSource === 'royalroad') {
                 // Royal Road
                 html.querySelectorAll('.fiction-list-item').forEach(function(item) {
                     var titleEl = item.querySelector('.fiction-title a');
@@ -182,12 +225,68 @@ function loadNovels(url, append = true) {
                         });
                     }
                 });
+            } else if (currentSource === 'hetushu') {
+                // 和图书: list/library/search cards are blocks containing a /book/{id}/index.html link
+                var cardMap = {};
+                html.querySelectorAll('a[href*="/book/"]').forEach(function(a) {
+                    var href = a.getAttribute('href') || '';
+                    var m = href.match(/\/book\/(\d+)\//);
+                    if (!m) return;
+                    var key = m[1];
+                    if (!cardMap[key]) {
+                        cardMap[key] = {
+                            title: '',
+                            url: 'https://www.hetushu.com/book/' + key + '/index.html',
+                            image: '',
+                            author: ''
+                        };
+                    }
+                    var card = cardMap[key];
+                    if (!card.image) {
+                        var img = a.querySelector('img');
+                        if (img) {
+                            var imgSrc = img.getAttribute('src') || '';
+                            if (imgSrc && imgSrc.charAt(0) === '/') imgSrc = 'https://www.hetushu.com' + imgSrc;
+                            card.image = imgSrc;
+                        }
+                    }
+                    if (!card.title) {
+                        var t = a.getAttribute('title') || a.textContent.trim();
+                        if (t) card.title = t;
+                    }
+                });
+                // Second pass: author name from surrounding <li> containers
+                html.querySelectorAll('li').forEach(function(li) {
+                    var a = li.querySelector('a[href*="/book/"]');
+                    if (!a) return;
+                    var m = (a.getAttribute('href') || '').match(/\/book\/(\d+)\//);
+                    if (m && cardMap[m[1]] && !cardMap[m[1]].author) {
+                        var au = li.querySelector('.author');
+                        if (au) cardMap[m[1]].author = au.textContent.replace(/^作者[:：]?/, '').trim();
+                    }
+                });
+                Object.keys(cardMap).forEach(function(key) {
+                    var card = cardMap[key];
+                    if (card.title) {
+                        if (!card.image) card.image = '../images/noimage.jpeg';
+                        novels.push(card);
+                    }
+                });
             }
             
             renderNovels(novels, append);
             
-            // An empty page means we reached the end of the list
-            hasMoreNovels = novels.length > 0;
+            // An empty page means we reached the end of the list.
+            // hetushu repeats page 1 content on out-of-range pages instead of returning an
+            // empty page, so stop paginating when the first novel matches the previous page.
+            if (novels.length > 0 && novels[0].url === lastFirstNovelUrl) {
+                hasMoreNovels = false;
+            } else {
+                hasMoreNovels = novels.length > 0;
+            }
+            if (novels.length > 0) {
+                lastFirstNovelUrl = novels[0].url;
+            }
             
             isLoading = false;
             showLoading(false);
@@ -199,43 +298,24 @@ function loadNovels(url, append = true) {
         });
 }
 
-// Load categories from source
-function loadCategories(sourceUrl) {
+// Load categories from source (all categories are predefined per source, no fetch needed)
+function loadCategories() {
     document.getElementById('categoryList').innerHTML = '<div class="loading-state"><i class="fas fa-spinner"></i><span>Loading...</span></div>';
     
-    fetchWithProxy(sourceUrl)
-        .then(function(data) {
-            var categories = [];
-            
-            if (sourceUrl.indexOf('royalroad.com') > -1) {
-                // Royal Road - predefined categories
-                categories = [
-                    { name: 'All', url: 'https://www.royalroad.com/fictions/best-rated' },
-                    { name: 'Best Rated', url: 'https://www.royalroad.com/fictions/best-rated' },
-                    { name: 'Trending', url: 'https://www.royalroad.com/fictions/trending' },
-                    { name: 'Ongoing', url: 'https://www.royalroad.com/fictions/ongoing' },
-                    { name: 'Completed', url: 'https://www.royalroad.com/fictions/completed' },
-                    { name: 'Popular This Week', url: 'https://www.royalroad.com/fictions/weekly-popular' },
-                    { name: 'Latest Updates', url: 'https://www.royalroad.com/fictions/latest-updates' },
-                    { name: 'New Releases', url: 'https://www.royalroad.com/fictions/new' },
-                    { name: 'Rising Stars', url: 'https://www.royalroad.com/fictions/rising-stars' }
-                ];
-            }
-            
-            renderCategories(categories);
-            
-            // Load first category
-            if (categories.length > 0) {
-                currentCategory = categories[0].url;
-                currentListUrl = categories[0].url;
-                pnum = 1;
-                hasMoreNovels = true;
-                loadNovels(categories[0].url, false);
-            }
-        })
-        .catch(function(error) {
-            showToast('Failed to load categories', 'error');
-        });
+    var source = NOVEL_SOURCES[currentSource];
+    var categories = source ? source.categories : [];
+    
+    renderCategories(categories);
+    
+    // Load first category
+    if (categories.length > 0) {
+        currentCategory = categories[0].url;
+        currentListUrl = categories[0].url;
+        pnum = 1;
+        hasMoreNovels = true;
+        lastFirstNovelUrl = '';
+        loadNovels(categories[0].url, false);
+    }
 }
 
 // Search novels
@@ -244,11 +324,14 @@ function searchNovels(keyword) {
     
     var searchUrl = '';
     
-    if (currentSource.indexOf('royalroad.com') > -1) {
+    if (currentSource === 'royalroad') {
         searchUrl = 'https://www.royalroad.com/fictions/search?title=' + encodeURIComponent(keyword);
+    } else if (currentSource === 'hetushu') {
+        searchUrl = 'https://www.hetushu.com/search/?keyword=' + encodeURIComponent(keyword);
     }
     
     if (searchUrl) {
+        lastFirstNovelUrl = '';
         currentListUrl = searchUrl;
         pnum = 1;
         hasMoreNovels = true;
@@ -262,27 +345,29 @@ function searchNovels(keyword) {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('=== Novel List Page Loaded ===');
     
-    // Load source options - only Royal Road (other sources are defunct)
+    // Load source options
     var sourceSelect = document.getElementById('sourceSelect');
     if (sourceSelect) {
-        var option = document.createElement('option');
-        option.value = 'https://www.royalroad.com/';
-        option.textContent = 'Royal Road';
-        sourceSelect.appendChild(option);
+        Object.keys(NOVEL_SOURCES).forEach(function(id) {
+            var option = document.createElement('option');
+            option.value = id;
+            option.textContent = NOVEL_SOURCES[id].name;
+            sourceSelect.appendChild(option);
+        });
         
         // Set initial source
         currentSource = sourceSelect.value;
     }
     
     // Load initial data
-    loadCategories(currentSource);
+    loadCategories();
     
     // Source change handler
     if (sourceSelect) {
         sourceSelect.addEventListener('change', function() {
             currentSource = this.value;
             pnum = 1;
-            loadCategories(currentSource);
+            loadCategories();
         });
     }
     

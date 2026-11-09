@@ -1142,12 +1142,13 @@ DOM.ready(function() {
     if (scrollidbar) {
         scrollidbar.innerHTML = '';
         DOM.append(scrollidbar, `
+            <p>[2026-11-10] V8.4.5 release Add second data sources for novels and manga</p>
             <p>[2026-09-25] V8.4.3 release Add dynamic ROM loading with 5000+ preset ROMs across 5 platforms</p>
             <p>[2026-05-18] V8.4.2 release change jQuery to JavaScript</p>
             <p>[2026-05-18] V8.4.1 release fixed some bugs</p>
             <p>[2026-05-18] V8.4.0 release improved podcast browsing and added podcast favorites</p>
-            <p>[2026-05-17] V8.3.0 release add retro console game emulator</p>
-            <p>[2026-05-17] V8.2.3 release add video autoplay next episode feature</p>
+            <p>[2026-05-17] V8.3.0 release Add retro console game emulator</p>
+            <p>[2026-05-17] V8.2.3 release Add video autoplay next episode feature</p>
             <p>[2026-05-16] V8.2.2 release fixed some bugs</p>
             <p>[2026-05-16] V8.2.1 release beautify UI</p>
             <p>[2021-10-09] V8.2.0 release support to play one game</p>

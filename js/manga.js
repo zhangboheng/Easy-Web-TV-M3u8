@@ -18,25 +18,26 @@ let currentPages = [];
 let mangaInfo = null;
 let isScrollMode = true;
 
-// Get manga ID from URL
-function getMangaId() {
+// Get all reader params from URL
+function getReaderParams() {
     const params = new URLSearchParams(window.location.search);
-    return params.get('id') || params.get('mangaId');
-}
-
-// Get chapter ID from URL
-function getChapterId() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get('chapter');
+    return {
+        src: params.get('src') || 'mangadex',
+        mangaId: params.get('id') || params.get('mangaId'),
+        mid: params.get('mid'),
+        slug: params.get('slug'),
+        chapterId: params.get('chapter')
+    };
 }
 
 // DOM Ready
 document.addEventListener('DOMContentLoaded', function() {
-    const mangaId = getMangaId();
-    const chapterId = getChapterId();
+    const p = getReaderParams();
     
-    if (mangaId) {
-        loadManga(mangaId, chapterId);
+    if (p.src === 'mangapill' && p.mid && p.slug) {
+        loadMangaPill(p.mid, p.slug, p.chapterId);
+    } else if (p.mangaId) {
+        loadManga(p.mangaId, p.chapterId);
     } else {
         showError('No manga specified');
     }
@@ -213,6 +214,57 @@ async function loadManga(mangaId, chapterId) {
     }
 }
 
+// Load Manga from MangaPill (server-rendered HTML)
+async function loadMangaPill(mid, slug, chapterId) {
+    try {
+        showLoading('Loading manga...');
+        
+        const data = await fetchWithProxy(`https://mangapill.com/manga/${mid}/${slug}`);
+        const html = new DOMParser().parseFromString(data, 'text/html');
+        
+        let title = (html.querySelector('meta[property="og:title"]') || {}).content ||
+                    (html.querySelector('h1') || {}).textContent ||
+                    'Unknown Title';
+        title = String(title).replace(/\s*[-|]\s*MangaPill.*$/i, '').trim();
+        
+        const cover = (html.querySelector('meta[property="og:image"]') || {}).content || '';
+        const desc = String((html.querySelector('meta[property="og:description"]') || {}).content || 'No description available.').trim();
+        
+        document.getElementById('mangaTitle').textContent = title;
+        document.getElementById('mangaInfoTitle').textContent = title;
+        if (cover) document.getElementById('mangaCover').src = cover;
+        document.getElementById('mangaTags').innerHTML = '<span class="tag">MangaPill</span>';
+        document.getElementById('mangaInfoContent').innerHTML = `<p>${escapeHtml(desc)}</p>`;
+        document.title = title + ' - Manga Reader';
+        
+        // Chapters: /chapters/{mid}-{cid}/{slug}-chapter-{num}
+        chapters = [];
+        const seen = new Set();
+        html.querySelectorAll('a[href^="/chapters/"]').forEach(function(a) {
+            const href = a.getAttribute('href') || '';
+            if (href === '/chapters' || seen.has(href)) return;
+            const m = href.match(/chapter-([0-9.]+)/);
+            seen.add(href);
+            chapters.push({
+                id: href,
+                attributes: { chapter: m ? m[1] : '?', title: '' }
+            });
+        });
+        
+        displayChapters();
+        
+        // Load first chapter or specified chapter
+        if (chapterId) {
+            await loadChapter(chapterId);
+        } else if (chapters.length > 0) {
+            await loadChapter(chapters[0].id);
+        }
+    } catch (error) {
+        console.error('Error loading manga (mangapill):', error);
+        showError('Failed to load manga: ' + error.message);
+    }
+}
+
 // Update Manga Info
 function updateMangaInfo() {
     if (!mangaInfo) return;
@@ -306,7 +358,36 @@ async function loadChapter(chapterId) {
         
         showLoading('Loading chapter pages...');
         
-        // Get chapter pages
+        // MangaPill: chapter pages are server-rendered HTML with img.js-page[data-src]
+        if (getReaderParams().src === 'mangapill') {
+            const pageData = await fetchWithProxy('https://mangapill.com' + chapterId);
+            const pageHtml = new DOMParser().parseFromString(pageData, 'text/html');
+            
+            let imgEls = Array.from(pageHtml.querySelectorAll('img.js-page'));
+            if (imgEls.length === 0) {
+                imgEls = Array.from(pageHtml.querySelectorAll('img[data-src]')).filter(function(img) {
+                    const u = img.getAttribute('data-src') || '';
+                    return u.indexOf('/mangap/') > -1;
+                });
+            }
+            currentPages = imgEls.map(function(img) {
+                return img.getAttribute('data-src') || img.getAttribute('src');
+            }).filter(Boolean);
+            currentPageIndex = 0;
+            
+            const chapterEntry = chapters.find(c => c.id === chapterId);
+            if (chapterEntry) {
+                const chapterNum = chapterEntry.attributes.chapter || '?';
+                const chapterTitle = chapterEntry.attributes.title || '';
+                document.getElementById('currentChapter').textContent = `Ch. ${chapterNum}: ${chapterTitle}`;
+            }
+            
+            displayPages();
+            updateNavigation();
+            return;
+        }
+        
+        // Get chapter pages (MangaDex)
         const data = await fetchJSONWithProxy(`${MANGADEX_API}/at-home/server/${chapterId}`);
         
         if (data.result === 'ok') {
@@ -355,7 +436,7 @@ function displayPages() {
         // Scroll mode - show all pages vertically
         let html = '';
         currentPages.forEach((page, index) => {
-            html += `<img src="${page}" class="manga-page" alt="Page ${index + 1}" loading="lazy">`;
+            html += `<img src="${page}" class="manga-page" alt="Page ${index + 1}" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML='<div style=&quot;padding:40px 20px;text-align:center;color:rgba(255,255,255,0.5);border:1px dashed rgba(255,255,255,0.15);border-radius:8px;margin:8px 0;font-size:14px;&quot;>⚠ Page ${index + 1}: image blocked by CDN hotlink protection</div>'">`;
         });
         document.getElementById('readerWrapper').innerHTML = html;
         document.getElementById('pageText').textContent = `Total: ${currentPages.length} pages`;
@@ -370,11 +451,12 @@ function displayCurrentPage() {
     if (currentPages.length === 0) return;
     
     const pageUrl = currentPages[currentPageIndex];
+    const idx = currentPageIndex;
     document.getElementById('readerWrapper').innerHTML = `
-        <img src="${pageUrl}" class="manga-page" alt="Page ${currentPageIndex + 1}">
+        <img src="${pageUrl}" class="manga-page" alt="Page ${idx + 1}" referrerpolicy="no-referrer" onerror="this.outerHTML='<div style=&quot;padding:40px 20px;text-align:center;color:rgba(255,255,255,0.5);border:1px dashed rgba(255,255,255,0.15);border-radius:8px;margin:8px 0;font-size:14px;&quot;>⚠ Page ${idx + 1}: image blocked by CDN hotlink protection</div>'">
     `;
     
-    document.getElementById('pageText').textContent = `Page ${currentPageIndex + 1} / ${currentPages.length}`;
+    document.getElementById('pageText').textContent = `Page ${idx + 1} / ${currentPages.length}`;
     updateNavigation();
 }
 

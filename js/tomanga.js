@@ -3,6 +3,8 @@
 
 // MangaDex API base URL
 var MANGADEX_API = 'https://api.mangadex.org';
+// MangaPill (server-rendered HTML, scraped via fetchWithProxy)
+var MANGAPILL_BASE = 'https://mangapill.com';
 // CORS proxy + failover now live in ../js/apiproxy.js (fetchJSONWithProxy)
 
 // Global variables
@@ -77,8 +79,8 @@ function getCoverUrl(mangaId, coverArt) {
     return 'https://uploads.mangadex.org/covers/' + mangaId + '/' + fileName + '.256.jpg';
 }
 
-// Render manga cards
-function renderMangas(mangas, append) {
+// Render manga cards from a normalized card list: [{ id, href, title, coverUrl, status }]
+function renderMangas(cards, append) {
     var grid = document.getElementById('contentGrid');
     
     if (!append) {
@@ -86,38 +88,48 @@ function renderMangas(mangas, append) {
         grid.classList.add('has-results');
     }
     
-    if (mangas.length === 0 && !append) {
+    if (cards.length === 0 && !append) {
         grid.innerHTML = '<div class="empty-state"><i class="fas fa-book-open"></i><p>No manga found</p></div>';
         return;
     }
     
-    mangas.forEach(function(manga) {
-        var title = manga.attributes.title.en || 
-                   manga.attributes.title['ja-ro'] || 
-                   manga.attributes.title.ja || 
-                   Object.values(manga.attributes.title)[0] || 
-                   'Unknown Title';
-        
-        var coverUrl = manga.coverUrl || '../images/noimage.jpeg';
-        var mangaId = manga.id;
+    cards.forEach(function(cardData) {
+        var coverUrl = cardData.coverUrl || '../images/noimage.jpeg';
         
         var card = document.createElement('a');
-        card.href = '../catalogues/mangaplay.html?id=' + mangaId;
+        card.href = cardData.href;
         card.className = 'card-item';
         card.innerHTML = 
-            '<img class="card-image" src="' + escapeHtml(coverUrl) + '" alt="' + escapeHtml(title) + '" onerror="this.src=\'../images/noimage.jpeg\'">' +
+            '<img class="card-image" src="' + escapeHtml(coverUrl) + '" alt="' + escapeHtml(cardData.title) + '" onerror="this.src=\'../images/noimage.jpeg\'">' +
             '<div class="card-overlay"></div>' +
             '<div class="card-play-icon">' +
                 '<i class="fas fa-book-open"></i>' +
             '</div>' +
             '<div class="card-info">' +
                 '<div class="card-type">Manga</div>' +
-                '<h3 class="card-title">' + escapeHtml(title) + '</h3>' +
-                '<p class="card-chapter">' + escapeHtml(manga.attributes.status || 'Ongoing') + '</p>' +
+                '<h3 class="card-title">' + escapeHtml(cardData.title) + '</h3>' +
+                '<p class="card-chapter">' + escapeHtml(cardData.status || 'Ongoing') + '</p>' +
             '</div>';
         
         grid.appendChild(card);
     });
+}
+
+// Convert a MangaDex API entry into a normalized card
+function mangadexToCard(manga) {
+    var title = manga.attributes.title.en || 
+               manga.attributes.title['ja-ro'] || 
+               manga.attributes.title.ja || 
+               Object.values(manga.attributes.title)[0] || 
+               'Unknown Title';
+    
+    return {
+        id: manga.id,
+        href: '../catalogues/mangaplay.html?id=' + manga.id + '&src=mangadex',
+        title: title,
+        coverUrl: manga.coverUrl || '../images/noimage.jpeg',
+        status: manga.attributes.status || 'Ongoing'
+    };
 }
 
 // Render categories (MangaDex tags/genres)
@@ -164,8 +176,17 @@ function renderCategories(categories) {
     });
 }
 
-// Load manga tags/genres from MangaDex API
+// Load categories for the current source (dispatches per source)
 function loadTags() {
+    if (currentSource === 'mangapill') {
+        // MangaPill has fixed list pages instead of tag/genre filtering
+        renderCategories([
+            { id: 'latest', name: 'Latest Updates' },
+            { id: 'new', name: 'New Releases' }
+        ]);
+        loadMangas('', false);
+        return;
+    }
     document.getElementById('categoryList').innerHTML = '<div class="loading-state"><i class="fas fa-spinner"></i><span>Loading categories...</span></div>';
     
     fetchJSONWithProxy(MANGADEX_API + '/manga/tag')
@@ -199,10 +220,16 @@ function loadTags() {
         });
 }
 
-// Load mangas from MangaDex API
+// Load mangas for the current source (dispatches per source)
 function loadMangas(tagId, append) {
     if (isLoading) return;
     if (append && !hasMoreManga) return;
+    
+    if (currentSource === 'mangapill') {
+        loadMangaPillList(tagId, append);
+        return;
+    }
+    
     isLoading = true;
     showLoading(true);
     
@@ -224,20 +251,20 @@ function loadMangas(tagId, append) {
         .then(function(data) {
             if (data.result === 'ok' && data.data) {
                 // Process manga data and get cover URLs
-                var mangas = data.data.map(function(manga) {
+                var cards = data.data.map(function(manga) {
                     // Find cover art from relationships
                     var coverArt = manga.relationships.find(function(rel) { return rel.type === 'cover_art'; });
                     manga.coverUrl = getCoverUrl(manga.id, coverArt);
-                    return manga;
+                    return mangadexToCard(manga);
                 });
                 
-                renderMangas(mangas, append);
+                renderMangas(cards, append);
                 
                 // Check if there are more results
                 if (typeof data.total === 'number') {
-                    hasMoreManga = data.total > offset + limit && mangas.length > 0;
+                    hasMoreManga = data.total > offset + limit && cards.length > 0;
                 } else {
-                    hasMoreManga = mangas.length > 0;
+                    hasMoreManga = cards.length > 0;
                 }
                 if (hasMoreManga) {
                     pnum++;
@@ -277,6 +304,89 @@ function checkAutoLoadManga() {
     }
 }
 
+// Load manga list from MangaPill (home / new / search pages are server-rendered HTML)
+function loadMangaPillList(tagId, append) {
+    isLoading = true;
+    showLoading(true);
+    
+    var url;
+    if (searchKeyword) {
+        url = MANGAPILL_BASE + '/search?q=' + encodeURIComponent(searchKeyword);
+    } else if (tagId === 'new') {
+        url = MANGAPILL_BASE + '/mangas/new';
+    } else {
+        url = MANGAPILL_BASE + '/';
+    }
+    
+    fetchWithProxy(url)
+        .then(function(data) {
+            var html = new DOMParser().parseFromString(data, 'text/html');
+            
+            // MangaPill cards: an <a class="relative block"> holds the cover img,
+            // a sibling <a href="/manga/{id}/{slug}"> holds the title (div.font-black).
+            // Aggregate both by manga id.
+            var cardMap = {};
+            var cards = [];
+            
+            html.querySelectorAll('a[href^="/manga/"]').forEach(function(a) {
+                var href = a.getAttribute('href') || '';
+                var m = href.match(/^\/manga\/(\d+)\/([^\/?#]+)/);
+                if (!m) return;
+                var key = m[1];
+                if (!cardMap[key]) {
+                    cardMap[key] = {
+                        id: m[1],
+                        href: '../catalogues/mangaplay.html?src=mangapill&mid=' + m[1] + '&slug=' + m[2],
+                        title: '',
+                        coverUrl: '',
+                        status: ''
+                    };
+                    cards.push(cardMap[key]);
+                }
+                var cardData = cardMap[key];
+                if (!cardData.coverUrl) {
+                    var img = a.querySelector('img');
+                    if (!img) {
+                        // cover img may sit in the parent card container (home featured cards
+                        // nest the /manga/ title link two levels below the card wrapper)
+                        var lvl1 = a.parentElement;
+                        var lvl2 = lvl1 ? lvl1.parentElement : null;
+                        if (lvl1) img = lvl1.querySelector('img[data-src]');
+                        if (!img && lvl2) img = lvl2.querySelector('img[data-src]');
+                    }
+                    if (img) {
+                        cardData.coverUrl = img.getAttribute('data-src') || img.getAttribute('src') || '';
+                    }
+                }
+                if (!cardData.title) {
+                    var titleEl = a.querySelector('.font-black') || a;
+                    var txt = (titleEl.textContent || '').trim();
+                    if (txt) cardData.title = txt;
+                }
+            });
+            
+            cards = cards.filter(function(c) { return c.title; });
+            cards.forEach(function(c) { if (!c.coverUrl) c.coverUrl = '../images/noimage.jpeg'; });
+            
+            renderMangas(cards, append);
+            
+            // MangaPill list pages are single-page: no infinite scroll
+            hasMoreManga = false;
+            isLoading = false;
+            showLoading(false);
+            checkAutoLoadManga();
+        })
+        .catch(function(error) {
+            console.error('Error loading manga (mangapill):', error);
+            if (!append) {
+                document.getElementById('contentGrid').innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-circle"></i><p>Failed to load manga</p></div>';
+            }
+            showToast('Network error occurred', 'error');
+            isLoading = false;
+            showLoading(false);
+        });
+}
+
 // Search mangas
 function searchMangas(keyword) {
     if (!keyword) {
@@ -304,6 +414,11 @@ document.addEventListener('DOMContentLoaded', function() {
         option.value = 'mangadex';
         option.textContent = 'MangaDex';
         sourceSelect.appendChild(option);
+        
+        var option2 = document.createElement('option');
+        option2.value = 'mangapill';
+        option2.textContent = 'MangaPill';
+        sourceSelect.appendChild(option2);
     }
     
     // Load initial data

@@ -9,41 +9,87 @@
 // OK, parseable response wins. Entry forms:
 //   'https://host/path?url='                -> append encodeURIComponent(url)
 //   { prefix: 'https://host/', raw: true }  -> append the URL verbatim (raw)
-// Excluded: corsproxy.io (needs an API key), cors.x2u.in / corsfix (need
-// email / domain registration). codetabs & allorigins are intermittently down
-// but often reachable, so kept as deep fallbacks. redoc.ly requires the raw URL
-// and an Origin header (the browser sends Origin automatically on fetch).
+// Status verified 2026-09: allorigins is unreachable and removed, as is
+// redoc.ly (403 on real targets). corsmirror is live but slow to wake
+// (Render free tier cold start - hence the 30s proxy timeout); cors.lol
+// works but rate-limits aggressively; luckydesigner and codetabs are
+// intermittently down but kept as deep fallbacks. CORS-enabled hosts never
+// reach this pool - they are fetched directly first (see directHosts).
 var proxyList = [
-    'https://cors.luckydesigner.workers.dev/?',
-    { prefix: 'https://cors.redoc.ly/', raw: true },
     'https://corsmirror.onrender.com/v1/cors?url=',
-    'https://api.codetabs.com/v1/proxy/?quest=',
-    'https://api.allorigins.win/raw?url='
+    'https://api.cors.lol/?url=',
+    'https://cors.luckydesigner.workers.dev/?',
+    'https://api.codetabs.com/v1/proxy/?quest='
 ];
+
+// Hosts that serve CORS headers (Access-Control-Allow-Origin) - requests to
+// these are made directly, without any proxy. Verified 2026-09: the
+// MangaDex API echoes the caller Origin, api.github.com and the archive.org
+// metadata/advancedsearch endpoints send Access-Control-Allow-Origin: *.
+var directHosts = [
+    'api.mangadex.org',
+    'api.github.com',
+    'archive.org'
+];
+
+// Hosts that also accept credentialed requests (Access-Control-Allow-Credentials
+// + Origin echo). Sending cookies lets a Cloudflare bot-challenge token the user
+// obtained by visiting the site earlier (cf_clearance) apply to API calls.
+var credentialHosts = ['api.mangadex.org'];
+
+function isDirectFetchable(url) {
+    try {
+        return directHosts.indexOf(new URL(url).hostname) !== -1;
+    } catch (e) {
+        return false;
+    }
+}
+
+function wantsCredentials(url) {
+    try {
+        return credentialHosts.indexOf(new URL(url).hostname) !== -1;
+    } catch (e) {
+        return false;
+    }
+}
 
 // NetEase Cloud Music API host (music-only convenience, see fetchMusicJSON).
 var MUSIC_API_BASE = 'http://iwenwiki.com:3000';
 
-// Core: try each proxy in order. `consume(response)` extracts the payload
-// (e.g. r => r.text() or r => r.json()). Resolves with the first success,
-// rejects only after every proxy has failed. Each attempt is aborted after
-// REQUEST_TIMEOUT_MS so a hung proxy cannot freeze the page forever.
+// Core: try a direct fetch first for CORS-enabled hosts, then each proxy in
+// order. `consume(response)` extracts the payload (e.g. r => r.text() or
+// r => r.json()). Resolves with the first success, rejects only after every
+// attempt has failed. Each attempt is aborted after its timeout so a hung
+// proxy cannot freeze the page forever (proxies get a longer timeout than
+// direct attempts: free-tier proxies can take 30s+ to wake from cold start).
 var REQUEST_TIMEOUT_MS = 15000;
+var PROXY_TIMEOUT_MS = 30000;
 
 function tryProxies(url, consume) {
     return new Promise(function (resolve, reject) {
+        var attempts = proxyList.map(function (entry) {
+            var prefix = (typeof entry === 'string') ? entry : entry.prefix;
+            var target = (entry && entry.raw) ? url : encodeURIComponent(url);
+            return { fetchUrl: prefix + target, isDirect: false };
+        });
+        if (isDirectFetchable(url)) {
+            attempts.unshift({ fetchUrl: url, isDirect: true });
+        }
         var i = 0;
         function attempt() {
-            if (i >= proxyList.length) {
+            if (i >= attempts.length) {
                 reject(new Error('all proxies failed for ' + url));
                 return;
             }
-            var entry = proxyList[i++];
-            var prefix = (typeof entry === 'string') ? entry : entry.prefix;
-            var target = (entry && entry.raw) ? url : encodeURIComponent(url);
+            var current = attempts[i++];
             var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
-            var timer = controller ? setTimeout(function() { controller.abort(); }, REQUEST_TIMEOUT_MS) : null;
-            fetch(prefix + target, controller ? { signal: controller.signal } : undefined)
+            var timeout = current.isDirect ? REQUEST_TIMEOUT_MS : PROXY_TIMEOUT_MS;
+            var timer = controller ? setTimeout(function() { controller.abort(); }, timeout) : null;
+            var fetchOptions = controller ? { signal: controller.signal } : {};
+            if (current.isDirect && wantsCredentials(url)) {
+                fetchOptions.credentials = 'include';
+            }
+            fetch(current.fetchUrl, fetchOptions)
                 .then(function (response) {
                     if (!response.ok) throw new Error('HTTP ' + response.status);
                     return consume(response);

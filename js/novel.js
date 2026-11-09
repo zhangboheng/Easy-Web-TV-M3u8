@@ -372,6 +372,36 @@ function loadChapter(url, chapterName) {
                         nextUrl = nextHref;
                     }
                 }
+            } else if (url.indexOf('hetushu.com') > -1) {
+                // 和图书 chapter page: title in #ctitle, content in #content
+                title = html.querySelector('#ctitle');
+                if (title) title = title.textContent.trim();
+                // #ctitle can include the reading-progress prefix (e.g. "0%")
+                if (title) title = title.replace(/^\d+%\s*/, '');
+                if (!title) {
+                    title = html.querySelector('h1');
+                    if (title) title = title.textContent.trim();
+                }
+                
+                var chapterContent = html.querySelector('#content');
+                if (chapterContent) {
+                    var clone = chapterContent.cloneNode(true);
+                    var junk = clone.querySelectorAll('script, style, .ads, .advertisement');
+                    junk.forEach(function(s) { s.remove(); });
+                    content = clone.innerHTML;
+                }
+                
+                // Navigation (next chapter id is #next on hetushu pages)
+                var nextLink = html.querySelector('#next a, a#next');
+                if (nextLink && nextLink.getAttribute('href')) {
+                    var nextHref = nextLink.getAttribute('href');
+                    nextUrl = nextHref.indexOf('http') === -1 ? 'https://www.hetushu.com' + nextHref : nextHref;
+                }
+                var prevLink = html.querySelector('#prev a, a#prev');
+                if (prevLink && prevLink.getAttribute('href')) {
+                    var prevHref = prevLink.getAttribute('href');
+                    prevUrl = prevHref.indexOf('http') === -1 ? 'https://www.hetushu.com' + prevHref : prevHref;
+                }
             }
             
             // Update reader - update both toolbar title and display title
@@ -561,6 +591,98 @@ function parseRoyalRoad(initlink) {
         });
 }
 
+// Parse novel data from Hetushu (和图书, Chinese novels)
+function parseHetushu(initlink) {
+    originUrl = 'https://www.hetushu.com';
+    
+    fetchWithProxy(initlink)
+        .then(function(data) {
+            var html = parseHTML(data);
+            
+            // Book page title sits in an <h2> inside the header block
+            var title = html.querySelector('h2');
+            if (title) title = title.textContent.trim();
+            if (!title) {
+                title = html.querySelector('h1');
+                if (title) title = title.textContent.trim();
+            }
+            
+            // Author
+            var author = '';
+            var authorEl = html.querySelector('.author');
+            if (authorEl) author = authorEl.textContent.replace(/^作者[:：]?/, '').trim();
+            if (!author) {
+                var authorMeta = html.querySelector('meta[name="author"]');
+                if (authorMeta) author = (authorMeta.getAttribute('content') || '').trim();
+            }
+            
+            // Description
+            var info = html.querySelector('.intro');
+            if (info) info = info.textContent.trim();
+            if (!info) {
+                var descMeta = html.querySelector('meta[name="description"]');
+                if (descMeta) info = (descMeta.getAttribute('content') || '').trim();
+            }
+            
+            currentNovelTitle = title;
+            novelInfo = (author ? '作者: ' + author + '\n\n' : '') + info;
+            
+            document.getElementById('novelTitle').textContent = title || 'Unknown Title';
+            document.getElementById('infoTitle').textContent = title || 'Unknown Title';
+            document.getElementById('infoContent').textContent = novelInfo || 'No description available.';
+            document.title = (title || 'Novel') + ' - Novel Reader';
+            
+            // Chapters: links like /book/{bookId}/{chapterId}.html (absolute or page-relative)
+            var chapterData = [];
+            var seen = {};
+            var baseDir = initlink.replace(/index\.html$/, '');
+            
+            html.querySelectorAll('a[href*="/book/"]').forEach(function(link) {
+                var chapterUrl = link.getAttribute('href') || '';
+                if (!/\/book\/\d+\/\d+\.html/.test(chapterUrl)) return;
+                
+                if (chapterUrl.indexOf('http') === 0) {
+                    // already absolute
+                } else if (chapterUrl.charAt(0) === '/') {
+                    chapterUrl = originUrl + chapterUrl;
+                } else {
+                    chapterUrl = baseDir + chapterUrl;
+                }
+                
+                var chapterName = link.textContent.trim();
+                if (!chapterName) return;
+                if (seen[chapterUrl]) return;
+                seen[chapterUrl] = true;
+                
+                chapterData.push({
+                    name: chapterName,
+                    url: chapterUrl
+                });
+            });
+            
+            if (chapterData.length === 0) {
+                showToast('No chapters found. The page structure may have changed.', 'warning');
+                showLoading(false);
+                return;
+            }
+            
+            renderChapters(chapterData);
+            
+            // Auto load first chapter
+            if (chapterData[0]) {
+                var firstItem = document.querySelector('.chapter-item');
+                if (firstItem) firstItem.classList.add('active');
+                currentChapterIndex = 0;
+                loadChapter(chapterData[0].url, chapterData[0].name);
+            }
+        })
+        .catch(function(error) {
+            console.error('Failed to load novel:', error);
+            showToast('Failed to load novel. Please try again.', 'error');
+            showLoading(false);
+        });
+}
+
 // Turn page (prev/next)
 function turnPage(url) {
     if (!url) return;
@@ -595,13 +717,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('Init link:', initlink);
     
+    var srcParam = new URLSearchParams(window.location.search).get('src') || '';
+    
     if (initlink) {
         showLoading(true);
         
-        if (initlink.indexOf('https://www.royalroad.com/') > -1) {
+        if (srcParam === 'hetushu' || initlink.indexOf('hetushu.com') > -1) {
+            parseHetushu(initlink);
+        } else if (initlink.indexOf('https://www.royalroad.com/') > -1) {
             parseRoyalRoad(initlink);
         } else {
-            showToast('Unsupported novel source. Only Royal Road is supported.', 'error');
+            showToast('Unsupported novel source.', 'error');
             showLoading(false);
         }
     } else {
