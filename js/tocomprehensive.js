@@ -18,6 +18,7 @@ var currentLink = '';
 var currentCategory = '';
 var pageNum = 1;
 var isLoading = false;
+var noMoreData = false;
 
 // Toast notification
 function showToast(message, type) {
@@ -159,6 +160,7 @@ function loadCategories(link) {
 function loadVideos(link, category, page) {
     if (isLoading) return;
     isLoading = true;
+    if ((page || 1) === 1) noMoreData = false;
     
     if (page === 1) {
         showLoading(true, false);
@@ -179,9 +181,13 @@ function loadVideos(link, category, page) {
             
             var videos = data.list || [];
             
+            if (videos.length === 0) {
+                noMoreData = true;
+            }
+            
             if (videos.length === 0 && page === 1) {
                 document.getElementById('contentGrid').innerHTML = '<div class="empty-state"><i class="fas fa-video-slash"></i><p>No videos found</p></div>';
-            } else {
+            } else if (videos.length > 0) {
                 document.getElementById('contentGrid').classList.add('has-results');
                 
                 for (var i = 0; i < videos.length; i++) {
@@ -206,6 +212,7 @@ function loadVideos(link, category, page) {
             
             showLoading(false);
             isLoading = false;
+            checkAutoLoad();
         })
         .catch(function() {
             if (page === 1) {
@@ -221,6 +228,7 @@ function loadVideos(link, category, page) {
 function searchVideos(link, term, page) {
     if (isLoading) return;
     isLoading = true;
+    if ((page || 1) === 1) noMoreData = false;
     
     showLoading(page > 1, page === 1);
     
@@ -238,6 +246,10 @@ function searchVideos(link, term, page) {
             showLoading(false);
             
             var videos = data.list || data.vod_list || data.data || [];
+            
+            if (videos.length === 0) {
+                noMoreData = true;
+            }
             
             if (videos.length === 0 && page === 1) {
                 document.getElementById('contentGrid').innerHTML = '<div class="empty-state"><i class="fas fa-search"></i><p>No results found for "' + term + '"</p></div>';
@@ -265,6 +277,7 @@ function searchVideos(link, term, page) {
             }
             
             isLoading = false;
+            checkAutoLoad();
         })
         .catch(function() {
             showLoading(false);
@@ -279,6 +292,29 @@ function searchVideos(link, term, page) {
 }
 
 // Initialize source select from localStorage
+// Auto load more when content does not fill the visible area
+// (e.g. very wide screens where the first page fits entirely without scrolling,
+// so the scroll event never fires and infinite scroll would never trigger)
+function checkAutoLoad() {
+    if (noMoreData || isLoading) return;
+    
+    var contentArea = document.getElementById('contentArea');
+    var contentGrid = document.getElementById('contentGrid');
+    
+    // Skip while a search loading state is showing (grid is hidden)
+    if (contentGrid.style.display === 'none') return;
+    
+    if (contentArea.scrollHeight <= contentArea.clientHeight + 100) {
+        pageNum++;
+        var searchTerm = document.getElementById('searchInput').value.trim();
+        if (searchTerm) {
+            searchVideos(currentLink, searchTerm, pageNum);
+        } else {
+            loadVideos(currentLink, currentCategory, pageNum);
+        }
+    }
+}
+
 function initSourceSelect() {
     var savedSources = localStorage.getItem('movie');
     var sourceSelect = document.getElementById('sourceSelect');
@@ -382,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var scrollHeight = this.scrollHeight;
         var clientHeight = this.clientHeight;
         
-        if (scrollTop + clientHeight >= scrollHeight - 100 && !isLoading) {
+        if (scrollTop + clientHeight >= scrollHeight - 100 && !isLoading && !noMoreData) {
             pageNum++;
             var searchTerm = document.getElementById('searchInput').value.trim();
             if (searchTerm) {
@@ -391,5 +427,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 loadVideos(currentLink, currentCategory, pageNum);
             }
         }
+    });
+    
+    // When the window is resized (e.g. wider screen), content that previously
+    // filled the viewport may now fit entirely, so re-check auto load
+    var resizeTimer = null;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(checkAutoLoad, 200);
     });
 });
