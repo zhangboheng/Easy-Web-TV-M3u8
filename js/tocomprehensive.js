@@ -197,13 +197,13 @@ function loadVideos(link, category, page) {
                     var videoPic = video.vod_pic || '../images/noimage.jpeg';
                     var videoType = filterTypeName(video.type_name) || '未知';
                     
-                    var cardHtml = '<a href="../catalogues/complay.html?web=' + link + '&tab=' + videoId + '" class="card-item">' +
-                        '<img class="card-image" src="' + videoPic + '" alt="' + videoName + '" onerror="this.src=\'../images/noimage.jpeg\'">' +
+                    var cardHtml = '<a href="../catalogues/complay.html?web=' + encodeURIComponent(link) + '&tab=' + videoId + '" class="card-item">' +
+                        '<img class="card-image" src="' + escapeHtml(videoPic) + '" alt="' + escapeHtml(videoName) + '" onerror="this.src=\'../images/noimage.jpeg\'">' +
                         '<div class="card-overlay"></div>' +
                         '<div class="card-play-icon"><i class="fas fa-play"></i></div>' +
                         '<div class="card-info">' +
-                        '<span class="card-type">' + videoType + '</span>' +
-                        '<h4 class="card-title">' + videoName + '</h4>' +
+                        '<span class="card-type">' + escapeHtml(videoType) + '</span>' +
+                        '<h4 class="card-title">' + escapeHtml(videoName) + '</h4>' +
                         '</div></a>';
                     
                     document.getElementById('contentGrid').insertAdjacentHTML('beforeend', cardHtml);
@@ -230,7 +230,7 @@ function searchVideos(link, term, page) {
     isLoading = true;
     if ((page || 1) === 1) noMoreData = false;
     
-    showLoading(page > 1, page === 1);
+    showLoading(true, page === 1);
     
     var baseUrl = link.endsWith('/') ? link : link + '/';
     var apiUrl = baseUrl + '?ac=videolist&wd=' + encodeURIComponent(term) + '&pg=' + (page || 1);
@@ -263,13 +263,13 @@ function searchVideos(link, term, page) {
                     var videoPic = video.vod_pic || '../images/noimage.jpeg';
                     var videoType = filterTypeName(video.type_name) || '未知';
                     
-                    var cardHtml = '<a href="../catalogues/complay.html?web=' + link + '&tab=' + videoId + '" class="card-item">' +
-                        '<img class="card-image" src="' + videoPic + '" alt="' + videoName + '" onerror="this.src=\'../images/noimage.jpeg\'">' +
+                    var cardHtml = '<a href="../catalogues/complay.html?web=' + encodeURIComponent(link) + '&tab=' + videoId + '" class="card-item">' +
+                        '<img class="card-image" src="' + escapeHtml(videoPic) + '" alt="' + escapeHtml(videoName) + '" onerror="this.src=\'../images/noimage.jpeg\'">' +
                         '<div class="card-overlay"></div>' +
                         '<div class="card-play-icon"><i class="fas fa-play"></i></div>' +
                         '<div class="card-info">' +
-                        '<span class="card-type">' + videoType + '</span>' +
-                        '<h4 class="card-title">' + videoName + '</h4>' +
+                        '<span class="card-type">' + escapeHtml(videoType) + '</span>' +
+                        '<h4 class="card-title">' + escapeHtml(videoName) + '</h4>' +
                         '</div></a>';
                     
                     document.getElementById('contentGrid').insertAdjacentHTML('beforeend', cardHtml);

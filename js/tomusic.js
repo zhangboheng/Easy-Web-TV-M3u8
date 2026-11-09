@@ -1066,7 +1066,7 @@ function renderArtists(artistList) {
     
     artistList.forEach(function (artist) {
         var alias = artist.alias && artist.alias.length > 0 ? artist.alias[0] : '';
-        html += '<a href="../catalogues/musicplay.html?web=' + artist.id + '" class="artist-card">';
+        html += '<a href="../catalogues/musicplay.html?web=' + encodeURIComponent(artist.id) + '" class="artist-card">';
         html += '  <img class="artist-image" src="' + (artist.picUrl || '../images/noimage.jpeg') + '" alt="' + artist.name + '" onerror="this.src=\'../images/noimage.jpeg\'">';
         html += '  <div class="artist-info">';
         html += '    <div class="artist-name">' + artist.name + '</div>';
@@ -1085,7 +1085,7 @@ function appendArtists(artistList) {
     
     artistList.forEach(function (artist) {
         var alias = artist.alias && artist.alias.length > 0 ? artist.alias[0] : '';
-        html += '<a href="../catalogues/musicplay.html?web=' + artist.id + '" class="artist-card">';
+        html += '<a href="../catalogues/musicplay.html?web=' + encodeURIComponent(artist.id) + '" class="artist-card">';
         html += '  <img class="artist-image" src="' + (artist.picUrl || '../images/noimage.jpeg') + '" alt="' + artist.name + '" onerror="this.src=\'../images/noimage.jpeg\'">';
         html += '  <div class="artist-info">';
         html += '    <div class="artist-name">' + artist.name + '</div>';

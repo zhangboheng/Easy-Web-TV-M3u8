@@ -21,6 +21,7 @@ var pageNum = 1;
 var isLoading = false;
 var isSearchMode = false;
 var reqToken = 0;
+var noMoreData = false;
 
 // Initialize source select from localStorage
 function initSourceSelect() {
@@ -87,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
             sidebar.classList.toggle('show-mobile');
         } else {
             sidebar.classList.toggle('collapsed');
-            mainContent.classList.toggle('expanded');
+            if (mainContent) mainContent.classList.toggle('expanded');
         }
     }
     
@@ -139,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var scrollHeight = this.scrollHeight;
         var clientHeight = this.clientHeight;
         
-        if (scrollTop + clientHeight >= scrollHeight - 100 && !isLoading) {
+        if (scrollTop + clientHeight >= scrollHeight - 100 && !isLoading && !noMoreData) {
             pageNum++;
             if (isSearchMode) {
                 var searchTerm = document.getElementById('searchInput').value.trim();
@@ -151,7 +152,41 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+    
+    // When the window is resized (e.g. wider screen), content that previously
+    // filled the viewport may now fit entirely, so re-check auto load
+    var resizeTimer = null;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(checkAutoLoad, 200);
+    });
 });
+
+// Auto load more when content does not fill the visible area
+// (e.g. very wide screens where the first page fits entirely without scrolling,
+// so the scroll event never fires and infinite scroll would never trigger)
+function checkAutoLoad() {
+    if (noMoreData || isLoading) return;
+    
+    var contentArea = document.getElementById('contentArea');
+    var contentGrid = document.getElementById('contentGrid');
+    if (!contentArea || !contentGrid) return;
+    
+    // Skip while a search loading state is showing (grid is hidden)
+    if (contentGrid.style.display === 'none') return;
+    
+    if (contentArea.scrollHeight <= contentArea.clientHeight + 100) {
+        pageNum++;
+        if (isSearchMode) {
+            var searchTerm = document.getElementById('searchInput').value.trim();
+            if (searchTerm) {
+                searchVideos(currentLink, searchTerm, pageNum, reqToken);
+            }
+        } else {
+            loadVideos(currentLink, currentCategory, pageNum, reqToken);
+        }
+    }
+}
 
 // Build API URL with proper format
 function buildApiUrl(link, action, params) {
@@ -368,6 +403,7 @@ function loadCategories(link, token) {
 function loadVideos(link, category, page, token) {
     if (isLoading) return;
     isLoading = true;
+    if ((page || 1) === 1) noMoreData = false;
     
     // Show load more indicator for pagination
     if (page > 1) {
@@ -415,6 +451,10 @@ function loadVideos(link, category, page, token) {
             
             var videos = parsedData.list || [];
             
+            if (videos.length === 0) {
+                noMoreData = true;
+            }
+            
             if (videos.length === 0 && page === 1) {
                 document.getElementById('contentGrid').innerHTML = `
                     <div class="empty-state">
@@ -429,6 +469,7 @@ function loadVideos(link, category, page, token) {
             // Hide load more indicator
             document.getElementById('loadMoreIndicator').style.display = 'none';
             isLoading = false;
+            checkAutoLoad();
         })
         .catch(function() {
             if (token !== reqToken) return; // stale response from a previous source/context
@@ -451,6 +492,7 @@ function searchVideos(link, term, page, token) {
     if (isLoading && page === 1) return;
     if (page > 1 && isLoading) return;
     isLoading = true;
+    if ((page || 1) === 1) noMoreData = false;
     
     // Show load more indicator for pagination
     if (page > 1) {
@@ -489,6 +531,10 @@ function searchVideos(link, term, page, token) {
             
             var videos = parsedData.list || [];
             
+            if (videos.length === 0) {
+                noMoreData = true;
+            }
+            
             if (videos.length === 0 && page === 1) {
                 document.getElementById('contentGrid').innerHTML = `
                     <div class="empty-state">
@@ -505,6 +551,7 @@ function searchVideos(link, term, page, token) {
             // Hide load more indicator
             document.getElementById('loadMoreIndicator').style.display = 'none';
             isLoading = false;
+            checkAutoLoad();
         })
         .catch(function() {
             if (token !== reqToken) return; // stale response from a previous source/context
@@ -548,14 +595,14 @@ function renderVideos(videos, link, clear) {
         
         var cardHtml = `
             <a href="${playUrl}" class="card-item">
-                <img class="card-image" src="${videoPic}" alt="${videoName}" onerror="this.src='../images/noimage.jpeg'">
+                <img class="card-image" src="${escapeHtml(videoPic)}" alt="${escapeHtml(videoName)}" onerror="this.src='../images/noimage.jpeg'">
                 <div class="card-overlay"></div>
                 <div class="card-play-icon">
                     <i class="fas fa-play"></i>
                 </div>
                 <div class="card-info">
-                    ${videoType ? `<span class="card-type">${videoType}</span>` : ''}
-                    <h4 class="card-title">${videoName}</h4>
+                    ${videoType ? `<span class="card-type">${escapeHtml(videoType)}</span>` : ''}
+                    <h4 class="card-title">${escapeHtml(videoName)}</h4>
                 </div>
             </a>
         `;

@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     var link = '../catalogues/tvplay.html?type=countries&key=' + code + '&title=' + encodeURIComponent(name);
                     var card = document.createElement('div');
                     card.className = 'item-card';
-                    card.innerHTML = '<span class="flag-icon">' + flag + '</span><a href="' + link + '">' + name + '</a>';
+                    card.innerHTML = '<span class="flag-icon">' + escapeHtml(flag) + '</span><a href="' + link + '">' + escapeHtml(name) + '</a>';
                     grid.appendChild(card);
                 });
             })
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     var link = '../catalogues/tvplay.html?type=languages&key=' + code + '&title=' + encodeURIComponent(name);
                     var card = document.createElement('div');
                     card.className = 'item-card';
-                    card.innerHTML = '<i class="fas fa-comments card-icon"></i><a href="' + link + '">' + name + '</a>';
+                    card.innerHTML = '<i class="fas fa-comments card-icon"></i><a href="' + link + '">' + escapeHtml(name) + '</a>';
                     grid.appendChild(card);
                 });
             })
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     var card = document.createElement('div');
                     card.className = 'item-card';
                     card.setAttribute('data-category', id);
-                    card.innerHTML = '<i class="fas ' + icon + ' card-icon"></i><a href="' + link + '">' + name + '</a>';
+                    card.innerHTML = '<i class="fas ' + icon + ' card-icon"></i><a href="' + link + '">' + escapeHtml(name) + '</a>';
                     grid.appendChild(card);
                 });
             })

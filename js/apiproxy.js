@@ -26,7 +26,10 @@ var MUSIC_API_BASE = 'http://iwenwiki.com:3000';
 
 // Core: try each proxy in order. `consume(response)` extracts the payload
 // (e.g. r => r.text() or r => r.json()). Resolves with the first success,
-// rejects only after every proxy has failed.
+// rejects only after every proxy has failed. Each attempt is aborted after
+// REQUEST_TIMEOUT_MS so a hung proxy cannot freeze the page forever.
+var REQUEST_TIMEOUT_MS = 15000;
+
 function tryProxies(url, consume) {
     return new Promise(function (resolve, reject) {
         var i = 0;
@@ -38,13 +41,21 @@ function tryProxies(url, consume) {
             var entry = proxyList[i++];
             var prefix = (typeof entry === 'string') ? entry : entry.prefix;
             var target = (entry && entry.raw) ? url : encodeURIComponent(url);
-            fetch(prefix + target)
+            var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+            var timer = controller ? setTimeout(function() { controller.abort(); }, REQUEST_TIMEOUT_MS) : null;
+            fetch(prefix + target, controller ? { signal: controller.signal } : undefined)
                 .then(function (response) {
                     if (!response.ok) throw new Error('HTTP ' + response.status);
                     return consume(response);
                 })
-                .then(resolve)
-                .catch(attempt);
+                .then(function (result) {
+                    if (timer) clearTimeout(timer);
+                    resolve(result);
+                })
+                .catch(function () {
+                    if (timer) clearTimeout(timer);
+                    attempt();
+                });
         }
         attempt();
     });
@@ -60,6 +71,20 @@ function fetchWithProxy(url) {
 // Generic: fetch any URL through the proxy pool and resolve with parsed JSON.
 function fetchJSONWithProxy(url) {
     return tryProxies(url, function (response) { return response.json(); });
+}
+
+// Escape HTML special characters (& < > " ') so untrusted strings (video
+// titles, category names, descriptions...) can be safely interpolated into
+// innerHTML templates. Pages may define their own escapeHtml afterwards;
+// the local definition then takes precedence in that page.
+function escapeHtml(text) {
+    if (text === null || text === undefined) return '';
+    return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
 }
 
 // Music convenience: fetch a NetEase API path and hand back parsed JSON.
@@ -81,17 +106,25 @@ var radioMirrors = [
 
 // Fetch JSON from RadioBrowser, failing over across mirrors on network / HTTP / parse error.
 // `path` is appended to each mirror (caller pre-encodes any query params).
+// Each attempt is aborted after REQUEST_TIMEOUT_MS so a hung mirror cannot block forever.
 function fetchRadio(path) {
     var attempt = function(i) {
         if (i >= radioMirrors.length) {
             return Promise.reject(new Error('All RadioBrowser mirrors failed'));
         }
-        return fetch(radioMirrors[i] + path)
+        var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+        var timer = controller ? setTimeout(function() { controller.abort(); }, REQUEST_TIMEOUT_MS) : null;
+        return fetch(radioMirrors[i] + path, controller ? { signal: controller.signal } : undefined)
             .then(function(response) {
                 if (!response.ok) throw new Error('HTTP ' + response.status);
                 return response.json();
             })
+            .then(function(result) {
+                if (timer) clearTimeout(timer);
+                return result;
+            })
             .catch(function() {
+                if (timer) clearTimeout(timer);
                 return attempt(i + 1);
             });
     };

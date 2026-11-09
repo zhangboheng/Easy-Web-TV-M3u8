@@ -7,6 +7,8 @@
 var pnum = 1;
 var currentCategory = '';
 var currentSource = '';
+var currentListUrl = '';   // Base URL of the currently rendered list (category or search)
+var hasMoreNovels = true;  // Stop paginating once a page returns no novels
 var isLoading = false;
 
 // Toast notification
@@ -91,7 +93,7 @@ function renderNovels(novels, append = false) {
     
     novels.forEach(function(novel) {
         var card = document.createElement('a');
-        card.href = '../catalogues/novelplay.html?web=' + novel.url;
+        card.href = '../catalogues/novelplay.html?web=' + encodeURIComponent(novel.url);
         card.className = 'card-item';
         card.innerHTML = `
             <img class="card-image" src="${novel.image}" alt="${novel.title}" onerror="this.src='../images/noimage.jpeg'">
@@ -136,7 +138,9 @@ function renderCategories(categories) {
             
             var url = this.dataset.url;
             currentCategory = url;
+            currentListUrl = url;
             pnum = 1;
+            hasMoreNovels = true;
             loadNovels(url, false);
             
             // Hide sidebar on mobile
@@ -158,7 +162,6 @@ function loadNovels(url, append = true) {
             var parser = new DOMParser();
             var html = parser.parseFromString(data, 'text/html');
             var novels = [];
-            
             if (currentSource.indexOf('royalroad.com') > -1) {
                 // Royal Road
                 html.querySelectorAll('.fiction-list-item').forEach(function(item) {
@@ -182,6 +185,10 @@ function loadNovels(url, append = true) {
             }
             
             renderNovels(novels, append);
+            
+            // An empty page means we reached the end of the list
+            hasMoreNovels = novels.length > 0;
+            
             isLoading = false;
             showLoading(false);
         })
@@ -220,7 +227,9 @@ function loadCategories(sourceUrl) {
             // Load first category
             if (categories.length > 0) {
                 currentCategory = categories[0].url;
+                currentListUrl = categories[0].url;
                 pnum = 1;
+                hasMoreNovels = true;
                 loadNovels(categories[0].url, false);
             }
         })
@@ -240,7 +249,9 @@ function searchNovels(keyword) {
     }
     
     if (searchUrl) {
+        currentListUrl = searchUrl;
         pnum = 1;
+        hasMoreNovels = true;
         loadNovels(searchUrl, false);
     } else {
         showToast('Search not available for this source', 'warning');
@@ -323,7 +334,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Scroll to load more
+    // Scroll to load more: paginate the current list with ?page=N
+    // (Royal Road supports ?page=N on both category lists and search results;
+    //  use & as separator when the base URL already has a query string)
     var contentArea = document.getElementById('contentArea');
     if (contentArea) {
         contentArea.addEventListener('scroll', function() {
@@ -332,9 +345,10 @@ document.addEventListener('DOMContentLoaded', function() {
             var height = this.offsetHeight;
             
             if (scrollTop + height >= scrollHeight - 100) {
-                if (!isLoading && currentCategory) {
+                if (!isLoading && hasMoreNovels && currentListUrl) {
                     pnum++;
-                    // Load more logic would go here based on source
+                    var separator = currentListUrl.indexOf('?') > -1 ? '&' : '?';
+                    loadNovels(currentListUrl + separator + 'page=' + pnum, true);
                 }
             }
         });

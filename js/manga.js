@@ -238,7 +238,7 @@ function updateMangaInfo() {
         .slice(0, 5);
     
     if (tags.length > 0) {
-        document.getElementById('mangaTags').innerHTML = tags.map(t => `<span class="tag">${t}</span>`).join('');
+        document.getElementById('mangaTags').innerHTML = tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('');
     }
     
     // Get description
@@ -246,7 +246,7 @@ function updateMangaInfo() {
                         Object.values(mangaInfo.attributes.description)[0] || 
                         'No description available.';
     
-    document.getElementById('mangaInfoContent').innerHTML = `<p>${description}</p>`;
+    document.getElementById('mangaInfoContent').innerHTML = `<p>${escapeHtml(description)}</p>`;
 }
 
 // Display Chapters
@@ -270,11 +270,11 @@ function displayChapters() {
         const isCurrent = chapter.id === currentChapter;
         
         html += `
-            <div class="chapter-item ${isCurrent ? 'active' : ''}" data-id="${chapter.id}">
+            <div class="chapter-item ${isCurrent ? 'active' : ''}" data-id="${escapeHtml(chapter.id)}">
                 <div class="chapter-icon">
                     <i class="fas fa-book-open"></i>
                 </div>
-                <span class="chapter-name">Ch. ${chapterNum}: ${title}</span>
+                <span class="chapter-name">Ch. ${escapeHtml(String(chapterNum))}: ${escapeHtml(title)}</span>
             </div>
         `;
     });

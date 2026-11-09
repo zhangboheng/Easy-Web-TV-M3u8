@@ -251,10 +251,11 @@ function loadChannels(apiUrl) {
             
             for (var i = 0; i < links.length; i++) {
                 channels.push(links[i]);
+                var channelName = (lst[i] && lst[i][0]) ? lst[i][0] : 'Unknown channel';
                 channelList.push({
-                    name: lst[i][0],
+                    name: channelName,
                     url: links[i],
-                    isFavorite: window.localStorage.getItem(FAV_PREFIX + links[i]) === lst[i][0]
+                    isFavorite: window.localStorage.getItem(FAV_PREFIX + links[i]) === channelName
                 });
             }
             
@@ -278,9 +279,9 @@ function renderChannelList(channelList) {
     var html = '';
     channelList.forEach(function(channel, index) {
         var isFav = channel.isFavorite ? 'active' : '';
-        html += '<div class="channel-item ' + (index === 0 ? 'active' : '') + '" data-url="' + channel.url + '" data-name="' + channel.name + '">';
+        html += '<div class="channel-item ' + (index === 0 ? 'active' : '') + '" data-url="' + escapeHtml(channel.url) + '" data-name="' + escapeHtml(channel.name) + '">';
         html += '    <div class="channel-icon"><i class="fas fa-tv"></i></div>';
-        html += '    <span class="channel-name">' + channel.name + '</span>';
+        html += '    <span class="channel-name">' + escapeHtml(channel.name) + '</span>';
         html += '    <i class="fas fa-heart favorite-btn ' + isFav + '" title="Add to favorites"></i>';
         html += '</div>';
     });
@@ -338,9 +339,9 @@ function loadFavorites() {
     
     var html = '';
     favorites.forEach(function(fav) {
-        html += '<div class="favorite-item" data-url="' + fav.url + '" data-name="' + fav.name + '">';
+        html += '<div class="favorite-item" data-url="' + escapeHtml(fav.url) + '" data-name="' + escapeHtml(fav.name) + '">';
         html += '    <i class="fas fa-tv"></i>';
-        html += '    <span>' + fav.name + '</span>';
+        html += '    <span>' + escapeHtml(fav.name) + '</span>';
         html += '</div>';
     });
     

@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     
     // Get Current href
-    artistId = decodeURIComponent(window.location.href).split('web=')[1];
+    artistId = new URLSearchParams(window.location.search).get('web') || '';
     
     // Toggle sidebar - toggle chapter list and toolbar visibility
     function toggleSidebar() {
@@ -260,9 +260,9 @@ function renderSongList() {
     var html = '';
     songs.forEach(function (song, index) {
         var isFavorite = localStorage.getItem(FAV_PREFIX + song.id);
-        html += '<div class="song-item ' + (index === 0 ? 'active' : '') + '" data-id="' + song.id + '" data-name="' + song.name + '">';
+        html += '<div class="song-item ' + (index === 0 ? 'active' : '') + '" data-id="' + escapeHtml(song.id) + '" data-name="' + escapeHtml(song.name) + '">';
         html += '    <div class="song-icon"><i class="fas fa-music"></i></div>';
-        html += '    <span class="song-name">' + song.name + '</span>';
+        html += '    <span class="song-name">' + escapeHtml(song.name) + '</span>';
         html += '    <i class="fas fa-heart favorite-btn ' + (isFavorite ? 'active' : '') + '"></i>';
         html += '</div>';
     });
@@ -274,9 +274,9 @@ function appendSongList(newSongs) {
     var html = '';
     newSongs.forEach(function (song) {
         var isFavorite = localStorage.getItem(FAV_PREFIX + song.id);
-        html += '<div class="song-item" data-id="' + song.id + '" data-name="' + song.name + '">';
+        html += '<div class="song-item" data-id="' + escapeHtml(song.id) + '" data-name="' + escapeHtml(song.name) + '">';
         html += '    <div class="song-icon"><i class="fas fa-music"></i></div>';
-        html += '    <span class="song-name">' + song.name + '</span>';
+        html += '    <span class="song-name">' + escapeHtml(song.name) + '</span>';
         html += '    <i class="fas fa-heart favorite-btn ' + (isFavorite ? 'active' : '') + '"></i>';
         html += '</div>';
     });
@@ -343,9 +343,9 @@ function loadFavorites() {
     } else {
         var html = '';
         favorites.forEach(function (fav) {
-            html += '<div class="favorite-item" data-id="' + fav.id + '" data-name="' + fav.name + '">';
+            html += '<div class="favorite-item" data-id="' + escapeHtml(fav.id) + '" data-name="' + escapeHtml(fav.name) + '">';
             html += '    <i class="fas fa-heart"></i>';
-            html += '    <span>' + fav.name + '</span>';
+            html += '    <span>' + escapeHtml(fav.name) + '</span>';
             html += '    <i class="fas fa-times delete-btn"></i>';
             html += '</div>';
         });

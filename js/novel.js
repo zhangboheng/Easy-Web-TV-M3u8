@@ -137,7 +137,7 @@ function loadFavorites() {
             item.setAttribute('data-url', url);
             item.innerHTML = 
                 '<div class="fav-item-info">' +
-                    '<div class="fav-item-name">' + name + '</div>' +
+                    '<div class="fav-item-name">' + escapeHtml(name) + '</div>' +
                 '</div>' +
                 '<button class="fav-item-remove" title="Remove">' +
                     '<i class="fas fa-times"></i>' +
@@ -238,7 +238,7 @@ function renderChapters(chapterData) {
         item.setAttribute('data-name', chapter.name);
         item.setAttribute('data-index', i);
         item.innerHTML = 
-            '<span class="chapter-name">' + chapter.name + '</span>' +
+            '<span class="chapter-name">' + escapeHtml(chapter.name) + '</span>' +
             '<button class="fav-btn ' + (isFav ? 'active' : '') + '" title="Add to favorites">' +
                 '<i class="fas fa-heart"></i>' +
             '</button>';
@@ -591,7 +591,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadFavorites();
     
     // Parse URL parameters
-    var initlink = decodeURIComponent(window.location.href).split('web=')[1];
+    var initlink = new URLSearchParams(window.location.search).get('web') || '';
     
     console.log('Init link:', initlink);
     

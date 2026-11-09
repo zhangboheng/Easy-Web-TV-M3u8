@@ -31,6 +31,22 @@ document.addEventListener('DOMContentLoaded', function() {
     player = videojs(document.querySelector('#video1'));
     console.log('Video.js player initialized');
     
+    // Playback speed control (0.5x - 2x): enables the built-in rate button
+    // in the control bar. Works as a runtime setter regardless of whether the
+    // player was auto-initialized by data-setup or created here.
+    try {
+        if (typeof player.playbackRates === 'function') {
+            player.playbackRates([0.5, 0.75, 1, 1.25, 1.5, 2]);
+        }
+    } catch (e) {
+        // Older video.js builds have no rates setter - the default 1x still works
+    }
+    
+    // Add custom back/forward 10s buttons to the control bar
+    player.ready(function() {
+        addSeekButtons(player);
+    });
+    
     // Error handling
     player.on('error', function() {
         player.removeClass('vjs-waiting');
@@ -208,13 +224,13 @@ function loadVideoDetail(apiUrl, videoId) {
             $('#videoTitle').textContent = 'Playlist';
             document.title = currentVideoName + ' - Adult Player';
             
-            $('#detailContent').innerHTML = '<h4 style="color: #ff004c; margin-bottom: 10px;">' + currentVideoName + '</h4><p>' + videoContent + '</p>';
+            $('#detailContent').innerHTML = '<h4 style="color: #ff004c; margin-bottom: 10px;">' + escapeHtml(currentVideoName) + '</h4><p>' + escapeHtml(videoContent) + '</p>';
             
             var items = parsePlayUrls(playUrlRaw, apiUrl);
             console.log('Parsed play items:', items.length);
             
             if (items.length === 0) {
-                $('#channelList').innerHTML = '<div class="no-channels"><i class="fas fa-video-slash"></i><span>No playable sources found</span><small style="margin-top: 10px; font-size: 11px;">Raw data: ' + (playUrlRaw ? playUrlRaw.substring(0, 100) + '...' : 'Empty') + '</small></div>';
+                $('#channelList').innerHTML = '<div class="no-channels"><i class="fas fa-video-slash"></i><span>No playable sources found</span><small style="margin-top: 10px; font-size: 11px;">Raw data: ' + escapeHtml(playUrlRaw ? playUrlRaw.substring(0, 100) + '...' : 'Empty') + '</small></div>';
                 return;
             }
             
@@ -298,7 +314,7 @@ function renderPlaylist(items) {
         div.className = 'channel-item';
         div.dataset.url = item.url;
         div.dataset.name = item.name;
-        div.innerHTML = '<div class="channel-icon"><i class="fas fa-play"></i></div><span class="channel-name">' + item.name + '</span><i class="fas fa-heart favorite-btn ' + (isFav ? 'active' : '') + '"></i>';
+        div.innerHTML = '<div class="channel-icon"><i class="fas fa-play"></i></div><span class="channel-name">' + escapeHtml(item.name) + '</span><i class="fas fa-heart favorite-btn ' + (isFav ? 'active' : '') + '"></i>';
         
         div.addEventListener('click', function() {
             $$('.channel-item').forEach(function(el) { el.classList.remove('active'); });
@@ -358,7 +374,7 @@ function handleDirectPlay(initlink) {
     div.className = 'channel-item active';
     div.dataset.url = playUrl;
     div.dataset.name = videoName;
-    div.innerHTML = '<div class="channel-icon"><i class="fas fa-play"></i></div><span class="channel-name">' + videoName + '</span><i class="fas fa-heart favorite-btn ' + (isFav ? 'active' : '') + '"></i>';
+    div.innerHTML = '<div class="channel-icon"><i class="fas fa-play"></i></div><span class="channel-name">' + escapeHtml(videoName) + '</span><i class="fas fa-heart favorite-btn ' + (isFav ? 'active' : '') + '"></i>';
     
     div.addEventListener('click', function() {
         $$('.channel-item').forEach(function(el) { el.classList.remove('active'); });
@@ -417,7 +433,7 @@ function loadFavorites() {
         var div = document.createElement('div');
         div.className = 'favorite-item';
         div.dataset.url = fav.url;
-        div.innerHTML = '<i class="fas fa-play-circle"></i><span>' + fav.name + '</span><i class="fas fa-times remove-fav" title="Remove"></i>';
+        div.innerHTML = '<i class="fas fa-play-circle"></i><span>' + escapeHtml(fav.name) + '</span><i class="fas fa-times remove-fav" title="Remove"></i>';
         
         div.addEventListener('click', function(e) {
             if (!e.target.classList.contains('remove-fav')) {
@@ -441,6 +457,48 @@ function loadFavorites() {
 
 function checkFavorite(url, name) {
     return localStorage.getItem(FAV_PREFIX + url) === name;
+}
+
+// Add custom back/forward 10s buttons to the video.js control bar
+// (video.js core has no skip buttons; this avoids an extra plugin dependency)
+function addSeekButtons(player) {
+    var controlBar = player.controlBar && player.controlBar.el();
+    if (!controlBar || controlBar.querySelector('.vjs-seek-btn')) return;
+    
+    function createSeekButton(secs, iconClass, title) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'vjs-control vjs-button vjs-seek-btn ' + (secs > 0 ? 'vjs-seek-forward' : 'vjs-seek-back');
+        btn.title = title;
+        btn.setAttribute('aria-label', title);
+        btn.innerHTML = '<i class="fas ' + iconClass + '" aria-hidden="true"></i><span class="vjs-seek-seconds">' + Math.abs(secs) + '</span>';
+        btn.addEventListener('click', function() {
+            var seekable = player.seekable();
+            var maxTime = (seekable && seekable.length) ? seekable.end(seekable.length - 1) : (player.duration() || 0);
+            var target = player.currentTime() + secs;
+            if (target < 0) target = 0;
+            if (maxTime > 0 && target > maxTime) target = maxTime;
+            player.currentTime(target);
+        });
+        return btn;
+    }
+    
+    var backBtn = createSeekButton(-10, 'fa-rotate-left', 'Back 10 seconds');
+    var fwdBtn = createSeekButton(10, 'fa-rotate-right', 'Forward 10 seconds');
+    
+    // Place them around the progress bar: back | progress | forward
+    var progressControl = controlBar.querySelector('.vjs-progress-control');
+    if (progressControl) {
+        controlBar.insertBefore(backBtn, progressControl);
+        if (progressControl.nextSibling) {
+            controlBar.insertBefore(fwdBtn, progressControl.nextSibling);
+        } else {
+            controlBar.appendChild(fwdBtn);
+        }
+    } else {
+        controlBar.insertBefore(backBtn, controlBar.firstChild);
+        controlBar.appendChild(fwdBtn);
+    }
 }
 
 // Setup UI interactions
@@ -544,6 +602,27 @@ function setupUIInteractions() {
         var linkBtn = $('#linkBtn');
         if (!linkWrapper.contains(e.target) && !linkBtn.contains(e.target)) {
             linkWrapper.classList.remove('show');
+        }
+    });
+    
+    // Keyboard shortcuts: Space = play/pause, ArrowLeft/Right = seek ±10s.
+    // Skipped when the event comes from inside the player (video.js handles
+    // its own shortcuts there) or from an input field.
+    document.addEventListener('keydown', function(e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.target.closest && e.target.closest('.video-js')) return;
+        
+        if (e.key === ' ') {
+            e.preventDefault();
+            if (player.paused()) {
+                player.play();
+            } else {
+                player.pause();
+            }
+        } else if (e.key === 'ArrowLeft') {
+            player.currentTime(Math.max(0, player.currentTime() - 10));
+        } else if (e.key === 'ArrowRight') {
+            player.currentTime(player.currentTime() + 10);
         }
     });
     

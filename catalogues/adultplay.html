@@ -860,6 +860,28 @@
             }
         }
         
+        /* Custom ±10s seek buttons in the video.js control bar */
+        .vjs-seek-btn {
+            width: 4em;
+            cursor: pointer;
+        }
+        .vjs-seek-btn i {
+            font-size: 15px;
+            color: #fff;
+            margin-top: 0.35em;
+        }
+        .vjs-seek-btn .vjs-seek-seconds {
+            display: block;
+            font-size: 9px;
+            line-height: 1;
+            margin-top: 1px;
+            color: rgba(255,255,255,0.85);
+        }
+        .vjs-seek-btn:hover i,
+        .vjs-seek-btn:hover .vjs-seek-seconds {
+            color: #ff004c;
+        }
+        
         /* Hide old elements */
         #left, #right, #div1, #control, #menuicon, #player, #prev, #github, #favorite, #channelist, #shuffleplay, #inputlink, .toggle {
             display: none !important;

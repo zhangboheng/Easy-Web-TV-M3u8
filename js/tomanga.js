@@ -12,6 +12,7 @@ var currentSource = 'mangadex';
 var isLoading = false;
 var searchKeyword = '';
 var totalMangas = [];
+var hasMoreManga = true;
 
 // Toast notification
 function showToast(message, type) {
@@ -104,15 +105,15 @@ function renderMangas(mangas, append) {
         card.href = '../catalogues/mangaplay.html?id=' + mangaId;
         card.className = 'card-item';
         card.innerHTML = 
-            '<img class="card-image" src="' + coverUrl + '" alt="' + title + '" onerror="this.src=\'../images/noimage.jpeg\'">' +
+            '<img class="card-image" src="' + escapeHtml(coverUrl) + '" alt="' + escapeHtml(title) + '" onerror="this.src=\'../images/noimage.jpeg\'">' +
             '<div class="card-overlay"></div>' +
             '<div class="card-play-icon">' +
                 '<i class="fas fa-book-open"></i>' +
             '</div>' +
             '<div class="card-info">' +
                 '<div class="card-type">Manga</div>' +
-                '<h3 class="card-title">' + title + '</h3>' +
-                '<p class="card-chapter">' + (manga.attributes.status || 'Ongoing') + '</p>' +
+                '<h3 class="card-title">' + escapeHtml(title) + '</h3>' +
+                '<p class="card-chapter">' + escapeHtml(manga.attributes.status || 'Ongoing') + '</p>' +
             '</div>';
         
         grid.appendChild(card);
@@ -152,6 +153,7 @@ function renderCategories(categories) {
             currentCategory = tagId;
             pnum = 1;
             searchKeyword = '';
+            hasMoreManga = true;
             loadMangas(tagId, false);
             
             // Hide sidebar on mobile
@@ -200,6 +202,7 @@ function loadTags() {
 // Load mangas from MangaDex API
 function loadMangas(tagId, append) {
     if (isLoading) return;
+    if (append && !hasMoreManga) return;
     isLoading = true;
     showLoading(true);
     
@@ -231,7 +234,12 @@ function loadMangas(tagId, append) {
                 renderMangas(mangas, append);
                 
                 // Check if there are more results
-                if (data.total > offset + limit) {
+                if (typeof data.total === 'number') {
+                    hasMoreManga = data.total > offset + limit && mangas.length > 0;
+                } else {
+                    hasMoreManga = mangas.length > 0;
+                }
+                if (hasMoreManga) {
                     pnum++;
                 }
             } else {
@@ -240,6 +248,9 @@ function loadMangas(tagId, append) {
                 }
                 showToast('Failed to load manga', 'error');
             }
+            isLoading = false;
+            showLoading(false);
+            checkAutoLoadManga();
         })
         .catch(function(error) {
             console.error('Error loading manga:', error);
@@ -247,10 +258,23 @@ function loadMangas(tagId, append) {
                 document.getElementById('contentGrid').innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-circle"></i><p>Failed to load manga</p></div>';
             }
             showToast('Network error occurred', 'error');
+            isLoading = false;
+            showLoading(false);
         });
+}
+
+// Auto load more when content does not fill the visible area
+// (wide screens: the first batch of cards may fit entirely without scrolling,
+// so the scroll event never fires and infinite scroll would never trigger)
+function checkAutoLoadManga() {
+    if (isLoading || !hasMoreManga) return;
     
-    isLoading = false;
-    showLoading(false);
+    var contentArea = document.getElementById('contentArea');
+    if (!contentArea) return;
+    
+    if (contentArea.scrollHeight <= contentArea.clientHeight + 100) {
+        loadMangas(currentCategory, true);
+    }
 }
 
 // Search mangas
@@ -258,12 +282,14 @@ function searchMangas(keyword) {
     if (!keyword) {
         searchKeyword = '';
         pnum = 1;
+        hasMoreManga = true;
         loadMangas(currentCategory, false);
         return;
     }
     
     searchKeyword = keyword;
     pnum = 1;
+    hasMoreManga = true;
     loadMangas(currentCategory, false);
 }
 
@@ -290,6 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
             pnum = 1;
             currentCategory = '';
             searchKeyword = '';
+            hasMoreManga = true;
             loadTags();
         });
     }
@@ -337,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var height = this.clientHeight;
             
             if (scrollTop + height >= scrollHeight - 100) {
-                if (!isLoading) {
+                if (!isLoading && hasMoreManga) {
                     loadMangas(currentCategory, true);
                 }
             }

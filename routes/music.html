@@ -197,7 +197,7 @@
         /* Tab Content Wrapper */
         .tab-content-wrapper {
             flex: 1;
-            margin-top: 70px;
+            margin-top: var(--header-height, 70px);
             overflow: hidden;
             min-height: 0;
         }
@@ -533,7 +533,7 @@
         .sidebar {
             position: fixed;
             left: 0;
-            top: 70px;
+            top: var(--header-height, 70px);
             bottom: 0;
             width: 250px;
             background: rgba(0,0,0,0.85);
@@ -2002,6 +2002,7 @@
         <audio id="audioPlayer" style="display: none;"></audio>
     </div>
     
+    <script src="../js/core/header-height.js"></script>
     <script src="../js/apiproxy.js"></script>
     <script src="../js/tomusic.js"></script>
 </body>

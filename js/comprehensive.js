@@ -19,6 +19,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize player
     player = videojs(document.querySelector('#video1'));
     
+    // Playback speed control (0.5x - 2x): enables the built-in rate button
+    // in the control bar. Works as a runtime setter regardless of whether the
+    // player was auto-initialized by data-setup or created here.
+    try {
+        if (typeof player.playbackRates === 'function') {
+            player.playbackRates([0.5, 0.75, 1, 1.25, 1.5, 2]);
+        }
+    } catch (e) {
+        // Older video.js builds have no rates setter - the default 1x still works
+    }
+    
+    // Add custom back/forward 10s buttons to the control bar
+    player.ready(function() {
+        addSeekButtons(player);
+    });
+    
     // Error handling - prevent loading spinner and error icon showing simultaneously
     player.on('error', function() {
         player.removeClass('vjs-waiting');
@@ -38,8 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Get Current href parameters
-    var initlink = decodeURIComponent(window.location.href).split('=')[1].split('&')[0];
-    var id = decodeURIComponent(window.location.href).split('=')[2];
+    var urlParams = new URLSearchParams(window.location.search);
+    var initlink = urlParams.get('web') || '';
+    var id = urlParams.get('tab') || '';
     
     // Load video data
     loadVideoData(initlink, id);
@@ -75,7 +92,7 @@ function loadVideoData(linkUrl, videoId) {
             
             // Update UI with video info
             document.getElementById('videoTitle').textContent = videoName;
-            document.getElementById('detailContent').innerHTML = '<p>' + videoDes + '</p>';
+            document.getElementById('detailContent').innerHTML = '<p>' + escapeHtml(videoDes) + '</p>';
             
             // Parse play links
             var sources = vodPlayUrl.split('$$$').filter(function(x) { return x.trim(); });
@@ -148,8 +165,8 @@ function renderEpisodeList() {
             '<div class="episode-icon">' +
                 '<i class="fas fa-play"></i>' +
             '</div>' +
-            '<span class="episode-name">' + episodes[i] + '</span>' +
-            '<i class="fas fa-heart favorite-btn ' + (isFavorited ? 'active' : '') + '" data-link="' + links[i] + '" data-name="' + displayName + '"></i>';
+            '<span class="episode-name">' + escapeHtml(episodes[i]) + '</span>' +
+            '<i class="fas fa-heart favorite-btn ' + (isFavorited ? 'active' : '') + '" data-link="' + escapeHtml(links[i]) + '" data-name="' + escapeHtml(displayName) + '"></i>';
         
         episodeList.appendChild(div);
     }
@@ -259,7 +276,7 @@ function loadFavorites() {
         div.setAttribute('data-link', fav.link);
         div.innerHTML = 
             '<i class="fas fa-play-circle"></i>' +
-            '<span>' + fav.name + '</span>' +
+            '<span>' + escapeHtml(fav.name) + '</span>' +
             '<i class="fas fa-times remove-fav" title="Remove"></i>';
         
         favContent.appendChild(div);
@@ -309,6 +326,48 @@ function showError(message) {
             '<i class="fas fa-exclamation-triangle"></i>' +
             '<span>' + message + '</span>' +
         '</div>';
+}
+
+// Add custom back/forward 10s buttons to the video.js control bar
+// (video.js core has no skip buttons; this avoids an extra plugin dependency)
+function addSeekButtons(player) {
+    var controlBar = player.controlBar && player.controlBar.el();
+    if (!controlBar || controlBar.querySelector('.vjs-seek-btn')) return;
+    
+    function createSeekButton(secs, iconClass, title) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'vjs-control vjs-button vjs-seek-btn ' + (secs > 0 ? 'vjs-seek-forward' : 'vjs-seek-back');
+        btn.title = title;
+        btn.setAttribute('aria-label', title);
+        btn.innerHTML = '<i class="fas ' + iconClass + '" aria-hidden="true"></i><span class="vjs-seek-seconds">' + Math.abs(secs) + '</span>';
+        btn.addEventListener('click', function() {
+            var seekable = player.seekable();
+            var maxTime = (seekable && seekable.length) ? seekable.end(seekable.length - 1) : (player.duration() || 0);
+            var target = player.currentTime() + secs;
+            if (target < 0) target = 0;
+            if (maxTime > 0 && target > maxTime) target = maxTime;
+            player.currentTime(target);
+        });
+        return btn;
+    }
+    
+    var backBtn = createSeekButton(-10, 'fa-rotate-left', 'Back 10 seconds');
+    var fwdBtn = createSeekButton(10, 'fa-rotate-right', 'Forward 10 seconds');
+    
+    // Place them around the progress bar: back | progress | forward
+    var progressControl = controlBar.querySelector('.vjs-progress-control');
+    if (progressControl) {
+        controlBar.insertBefore(backBtn, progressControl);
+        if (progressControl.nextSibling) {
+            controlBar.insertBefore(fwdBtn, progressControl.nextSibling);
+        } else {
+            controlBar.appendChild(fwdBtn);
+        }
+    } else {
+        controlBar.insertBefore(backBtn, controlBar.firstChild);
+        controlBar.appendChild(fwdBtn);
+    }
 }
 
 // Initialize UI interactions
@@ -469,14 +528,23 @@ function initUIInteractions() {
             document.getElementById('linkInputWrapper').classList.remove('show');
         }
         
-        // Space to toggle play/pause (when not focused on input)
-        if (e.key === ' ' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+        // Space to toggle play/pause (when not focused on an input). Skip when
+        // the event comes from inside the player: video.js handles its own Space
+        // shortcut there and both firing would double-toggle play/pause.
+        if (e.key === ' ' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA' &&
+            !(e.target.closest && e.target.closest('.video-js'))) {
             e.preventDefault();
             if (player.paused()) {
                 player.play();
             } else {
                 player.pause();
             }
+        } else if (e.key === 'ArrowLeft' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA' &&
+            !(e.target.closest && e.target.closest('.video-js'))) {
+            player.currentTime(Math.max(0, player.currentTime() - 10));
+        } else if (e.key === 'ArrowRight' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA' &&
+            !(e.target.closest && e.target.closest('.video-js'))) {
+            player.currentTime(player.currentTime() + 10);
         }
     });
 }

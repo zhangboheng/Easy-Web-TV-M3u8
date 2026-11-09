@@ -6,7 +6,7 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.4.3-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.4.4-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
@@ -39,6 +39,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 - Search and watch movies, series, animes, and shows
 - Multiple source options
 - Favorites and watch history
+- 🎮 **Player controls**: playback speed (0.5x–2x), ±10s skip buttons around the progress bar, keyboard shortcuts (Space = play/pause, ←/→ = seek ±10s), plus Video.js built-ins (F fullscreen, M mute)
 
 ### 🎵 Music & Radio
 - Search and listen to music
@@ -70,6 +71,8 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - Other: ColecoVision (94), Virtual Boy (28), Commodore 64 (49)
   - Arcade preset is currently empty - bring your own or load from a URL
 - **Three ways to load a ROM**: pick from the preset list, upload a file (core auto-detected by extension), or paste a ROM URL
+- **Fast ROM fetching**: direct download for CORS-enabled sources (e.g. GitHub-hosted ROMs), public CORS proxies only as fallback
+- **ROM caching**: downloaded ROMs are stored in Cache Storage, so replaying the same game is instant and works even when proxies are down
 - **Manual download fallback**: if a preset or URL fails to load, an inline button lets you download the ROM file directly, then load it via upload
 - Gamepad support
 - Save/load states and fullscreen via the in-emulator controls
@@ -184,10 +187,9 @@ All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 - **URL parameter support**: Direct link to specific platform (e.g., `?core=snes9x`)
 - **No core selection UI**: Simplified interface with automatic detection
 - **Error handling**: Comprehensive error handling with user-friendly messages
-- **CORS proxy support**: Proxy fallback with timeout and retry for reliable ROM loading from cross-origin sources
+- **Smart CORS strategy**: Direct fetch first for CORS-enabled hosts (GitHub raw, archive.org APIs); resilient proxy failover with 30s timeout for free-tier proxies, and detection of proxy error pages returned as HTTP 200
 
 ## 🚀 Getting Started
-n
 
 ### Prerequisites
 
@@ -217,6 +219,8 @@ n
 
 4. Open `http://localhost:8000` in your browser
 
+> **Note**: Always use a local server (or the GitHub Pages demo) instead of opening `index.html` via `file://` - the emulator preset ROM lists and several APIs require HTTP for CORS.
+
 ## 📁 Project Structure
 
 ```
@@ -230,7 +234,9 @@ Easy-Web-TV-M3u8/
 │   └── emulatorjs.css     # Emulator-specific styles
 ├── js/
 │   ├── index.js           # Main JavaScript
-│   ├── catalogues.js      # Catalogue functions
+│   ├── apiproxy.js        # Shared CORS-proxy failover helpers
+│   ├── core/
+│   │   └── header-height.js  # Header height measurement (--header-height CSS var)
 │   ├── translator.js      # Translation handler
 │   ├── emulatorjs.js      # Emulator logic & ROM loading
 │   ├── togame.js          # Game launcher & emulator picker
@@ -254,7 +260,9 @@ Easy-Web-TV-M3u8/
 │       ├── atarilynx.json    # 77 Atari Lynx games
 │       ├── coleco.json       # 94 ColecoVision games
 │       ├── vb.json           # 28 Virtual Boy games
-│       ├── c64.json          # 49 Commodore 64 games
+│       ├── c64.json          # 51 Commodore 64 games
+│       ├── c128.json         # 5 Commodore 128 games
+│       ├── vic20.json        # 156 VIC-20 games
 │       └── arcade.json       # Arcade (FBNeo) presets (currently empty)
 ├── routes/
 │   ├── tv.html            # TV page

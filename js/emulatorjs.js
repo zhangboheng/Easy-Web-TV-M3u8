@@ -741,18 +741,80 @@ function applyTranslations() {
     });
 }
 
-// CORS proxy list (tried in order)
+// CORS proxy list (tried in order).
+// Status verified 2026-09: corsmirror is live (Render free tier: cold start
+// can take 30s+); luckydesigner and api.cors.lol can fetch archive.org but
+// rate-limit aggressively; codetabs is unstable. allorigins was unreachable
+// and has been removed.
 var corsProxies = [
-    'https://cors.luckydesigner.workers.dev/?', // primary: the only proxy that can fetch archive.org (no CORS headers)
     'https://corsmirror.onrender.com/v1/cors?url=',
-    'https://api.allorigins.win/raw?url=',
+    'https://cors.luckydesigner.workers.dev/?',
+    'https://api.cors.lol/?url=',
     'https://api.codetabs.com/v1/proxy?quest='
 ];
+
+// Hosts that serve CORS headers (Access-Control-Allow-Origin: *) - ROMs from
+// these hosts can be fetched directly without any proxy
+var directFetchHosts = [
+    'raw.githubusercontent.com',
+    'gist.githubusercontent.com',
+    'cdn.jsdelivr.net'
+];
+
+function isDirectFetchable(url) {
+    try {
+        return directFetchHosts.indexOf(new URL(url).hostname) !== -1;
+    } catch (e) {
+        return false;
+    }
+}
+
+// Detect proxy/CDN error pages returned with HTTP 200 (e.g. Cloudflare's
+// plain-text "error code: 522" body) so garbage is not fed into the emulator
+function isLikelyErrorBody(blob) {
+    return new Promise(function(resolve) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var head = String(reader.result || '').slice(0, 512).toLowerCase();
+            resolve(head.indexOf('error code:') === 0 ||
+                    head.indexOf('{"error') === 0 ||
+                    head.indexOf('<!doctype') === 0 ||
+                    head.indexOf('<html') === 0 ||
+                    head.indexOf('rate limit') !== -1);
+        };
+        reader.onerror = function() { resolve(false); };
+        reader.readAsText(blob.slice(0, 512));
+    });
+}
+
+// Cache Storage for downloaded ROMs: avoids re-downloading (and re-proxying)
+// the same game. Especially valuable for archive.org sources, which have no
+// CORS headers and depend entirely on public proxies.
+var ROM_CACHE_NAME = 'ewtv-rom-cache-v1';
+
+function cacheGetRom(url) {
+    if (!window.caches || !window.caches.open) return Promise.resolve(null);
+    return window.caches.open(ROM_CACHE_NAME)
+        .then(function(cache) { return cache.match(url); })
+        .then(function(response) { return response ? response.blob() : null; })
+        .catch(function() { return null; });
+}
+
+function cachePutRom(url, blob) {
+    if (!window.caches || !window.caches.open) return;
+    window.caches.open(ROM_CACHE_NAME)
+        .then(function(cache) {
+            var headers = { 'Content-Type': blob.type || 'application/octet-stream' };
+            return cache.put(url, new Response(blob, { headers: headers }));
+        })
+        .catch(function() { /* caching is best-effort; ignore failures */ });
+}
 
 // Process ROM blob - shared by both URL and file upload paths
 function processRomBlob(blob, filename) {
     clearUrlError();
     var urlLoadBtn = document.getElementById('urlLoadBtn');
+    if (urlLoadBtn) urlLoadBtn.disabled = false;
     
     var reader = new FileReader();
     reader.onload = function(e) {
@@ -789,32 +851,48 @@ function processRomBlob(blob, filename) {
     reader.readAsDataURL(blob);
 }
 
-// Try fetching ROM through CORS proxies, then direct
-function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError) {
+// Fetch a ROM: direct first for CORS-enabled hosts (e.g. raw.githubusercontent.com),
+// then through CORS proxies, then a final direct attempt as last resort
+function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError, directTried) {
     var urlLoadBtn = document.getElementById('urlLoadBtn');
     var fetchUrl;
+    var viaProxy;
     
     // Check if URL is local (localhost, 127.0.0.1, or absolute path)
-    var isLocalUrl = originalUrl.includes('localhost') || 
-                     originalUrl.includes('127.0.0.1') || 
-                     originalUrl.startsWith('/');
+    var isLocalUrl = originalUrl.indexOf('localhost') !== -1 || 
+                     originalUrl.indexOf('127.0.0.1') !== -1 || 
+                     originalUrl.charAt(0) === '/';
     
     if (isLocalUrl) {
         // Local URL - fetch directly without CORS proxy
         fetchUrl = originalUrl;
+        viaProxy = false;
         console.log('Local URL detected, fetching directly: ' + originalUrl);
+    } else if (!directTried && isDirectFetchable(originalUrl)) {
+        // Host serves CORS headers - fetch directly first: faster and more
+        // reliable than routing through public proxies
+        fetchUrl = originalUrl;
+        viaProxy = false;
+        directTried = true;
+        proxyIndex = -1; // marker: continue with proxy 0 after this attempt
+        console.log('CORS-enabled host detected, fetching directly: ' + originalUrl);
     } else if (proxyIndex < corsProxies.length) {
         // Use CORS proxy for remote URLs
         fetchUrl = corsProxies[proxyIndex] + encodeURIComponent(originalUrl);
+        viaProxy = true;
         console.log('Trying CORS proxy ' + (proxyIndex + 1) + ': ' + corsProxies[proxyIndex]);
     } else {
         // All proxies failed, try direct fetch (works for CORS-enabled servers)
         fetchUrl = originalUrl;
+        viaProxy = false;
+        directTried = true;
         console.log('Trying direct fetch (no proxy)');
     }
     
+    // Proxied attempts get a longer timeout: free-tier proxies (e.g. Render)
+    // can take 30s+ to wake up from a cold start
     var controller = new AbortController();
-    var fetchTimer = setTimeout(function(){ controller.abort(); }, 20000);
+    var fetchTimer = setTimeout(function(){ controller.abort(); }, viaProxy ? 30000 : 20000);
     fetch(fetchUrl, { signal: controller.signal })
         .then(function(response) {
             clearTimeout(fetchTimer);
@@ -823,7 +901,7 @@ function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError) {
             }
             // Verify we got binary data, not an HTML error page from proxy
             var contentType = response.headers.get('content-type') || '';
-            if (proxyIndex < corsProxies.length && contentType.indexOf('text/html') !== -1 && filename.indexOf('.html') === -1) {
+            if (viaProxy && contentType.indexOf('text/html') !== -1 && filename.indexOf('.html') === -1) {
                 // Proxy returned HTML instead of the ROM file - try next proxy
                 console.log('Proxy returned HTML, trying next...');
                 throw new Error('Proxy returned HTML');
@@ -835,15 +913,31 @@ function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError) {
             if (blob.size < 1024 && filename.indexOf('.zip') === -1) {
                 throw new Error('File too small, possibly an error page');
             }
+            // Some proxies fail upstream but still answer HTTP 200 with an
+            // error page body (e.g. plain-text "error code: 522") - reject
+            // those too so the emulator never receives garbage
+            return isLikelyErrorBody(blob).then(function(isError) {
+                if (isError) {
+                    throw new Error('Proxy returned an error page');
+                }
+                return blob;
+            });
+        })
+        .then(function(blob) {
             console.log('ROM downloaded successfully (' + blob.size + ' bytes)');
+            cachePutRom(originalUrl, blob);
             processRomBlob(blob, filename);
         })
         .catch(function(error) {
             clearTimeout(fetchTimer);
             console.log('Fetch attempt failed: ' + error.message);
-            if (proxyIndex < corsProxies.length) {
+            var nextProxy = proxyIndex < 0 ? 0 : proxyIndex + 1;
+            if (nextProxy < corsProxies.length) {
                 // Try next proxy
-                tryFetchWithProxy(originalUrl, proxyIndex + 1, filename, onFinalError);
+                tryFetchWithProxy(originalUrl, nextProxy, filename, onFinalError, directTried);
+            } else if (!directTried) {
+                // All proxies failed, try direct as a last resort
+                tryFetchWithProxy(originalUrl, nextProxy, filename, onFinalError, directTried);
             } else {
                 // All methods failed
                 if (urlLoadBtn) urlLoadBtn.disabled = false;
@@ -873,10 +967,18 @@ function handleRomFromUrl(url) {
     // Extract filename from URL
     var filename = url.split('/').pop().split('?')[0] || 'game.nes';
     
-    // Try fetching through CORS proxies first, then direct
-    tryFetchWithProxy(url, 0, filename, function(finalUrl, finalFilename) {
-        showUrlManualDownload(finalUrl, finalFilename);
-        showToast(t('urlFetchError'));
+    // Serve previously downloaded ROMs from Cache Storage (no network needed)
+    cacheGetRom(url).then(function(cachedBlob) {
+        if (cachedBlob && cachedBlob.size > 0) {
+            console.log('ROM served from cache (' + cachedBlob.size + ' bytes)');
+            processRomBlob(cachedBlob, filename);
+            return;
+        }
+        // Fetch: direct first for CORS-enabled hosts, then CORS proxies
+        tryFetchWithProxy(url, 0, filename, function(finalUrl, finalFilename) {
+            showUrlManualDownload(finalUrl, finalFilename);
+            showToast(t('urlFetchError'));
+        });
     });
 }
 
@@ -990,18 +1092,48 @@ function searchGitHub(query) {
     });
 }
 
-// Fetch JSON through CORS proxies (similar to tryFetchWithProxy but for JSON)
+// JSON API hosts that serve CORS headers - fetched directly without a proxy
+function isJsonDirectFetchable(url) {
+    try {
+        var hostname = new URL(url).hostname;
+        return hostname === 'archive.org' || hostname === 'api.github.com' ||
+               directFetchHosts.indexOf(hostname) !== -1;
+    } catch (e) {
+        return false;
+    }
+}
+
+// Fetch JSON through CORS proxies (similar to tryFetchWithProxy but for JSON).
+// CORS-enabled JSON APIs (archive.org metadata/advancedsearch, api.github.com)
+// are fetched directly first.
 function tryFetchJson(originalUrl, proxyIndex, options) {
     var fetchUrl;
-    if (proxyIndex < corsProxies.length) {
+    var viaProxy;
+    
+    if (proxyIndex === 0 && isJsonDirectFetchable(originalUrl)) {
+        fetchUrl = originalUrl;
+        viaProxy = false;
+        proxyIndex = -1; // marker: continue with proxy 0 after this attempt
+        console.log('Fetching JSON directly (CORS-enabled API)');
+    } else if (proxyIndex >= 0 && proxyIndex < corsProxies.length) {
         fetchUrl = corsProxies[proxyIndex] + encodeURIComponent(originalUrl);
+        viaProxy = true;
     } else {
         fetchUrl = originalUrl;
+        viaProxy = false;
     }
     
-    var fetchOptions = options || {};
+    // Build fresh options per attempt (signal must not be reused; keep headers)
+    var fetchOptions = {};
+    if (options) {
+        for (var key in options) {
+            if (key !== 'signal' && Object.prototype.hasOwnProperty.call(options, key)) {
+                fetchOptions[key] = options[key];
+            }
+        }
+    }
     var controller = new AbortController();
-    var fetchTimer = setTimeout(function(){ controller.abort(); }, 20000);
+    var fetchTimer = setTimeout(function(){ controller.abort(); }, viaProxy ? 30000 : 20000);
     fetchOptions.signal = controller.signal;
         return fetch(fetchUrl, fetchOptions)
         .then(function(response) {
@@ -1013,8 +1145,9 @@ function tryFetchJson(originalUrl, proxyIndex, options) {
         })
         .catch(function(error) {
             clearTimeout(fetchTimer);
-            if (proxyIndex < corsProxies.length) {
-                return tryFetchJson(originalUrl, proxyIndex + 1);
+            var nextProxy = proxyIndex < 0 ? 0 : proxyIndex + 1;
+            if (nextProxy < corsProxies.length) {
+                return tryFetchJson(originalUrl, nextProxy, options);
             }
             throw error;
         });
@@ -1115,8 +1248,16 @@ function downloadAndLoadRom(url, filename) {
     var resultsDiv = document.getElementById('searchResults');
     resultsDiv.innerHTML = '<div class=\"search-loading\">' + t('searchDownloading') + ' ' + filename + '</div>';
     
-    tryFetchWithProxy(url, 0, filename, function(finalUrl, finalFilename) {
-        showManualDownload(finalUrl, finalFilename);
+    // Serve previously downloaded ROMs from Cache Storage (no network needed)
+    cacheGetRom(url).then(function(cachedBlob) {
+        if (cachedBlob && cachedBlob.size > 0) {
+            console.log('ROM served from cache (' + cachedBlob.size + ' bytes)');
+            processRomBlob(cachedBlob, filename);
+            return;
+        }
+        tryFetchWithProxy(url, 0, filename, function(finalUrl, finalFilename) {
+            showManualDownload(finalUrl, finalFilename);
+        });
     });
 }
 
@@ -1895,12 +2036,21 @@ document.addEventListener('DOMContentLoaded', function() {
         var select = document.getElementById('romPresetSelect');
         if (!select) return;
         
+        // Hide the whole preset group when this core has no preset data
+        // (e.g. psx/saturn/3do have no data files, arcade.json is empty)
+        var presetGroup = select.closest ? select.closest('.url-preset-group') : null;
+        function showPresetGroup(show) {
+            if (presetGroup) presetGroup.classList.toggle('hidden', !show);
+        }
+        
         // Reset select to default option
         select.innerHTML = '<option value="">-- Select a ROM --</option>';
         
         if (!platform) {
+            showPresetGroup(false);
             return;
         }
+        showPresetGroup(true);
         
         // Check cache first
         if (presetCache[platform]) {
@@ -1922,11 +2072,21 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(function(data) {
                 presetCache[platform] = data;
+                if (!data || !data.games || data.games.length === 0) {
+                    // Platform data file exists but holds no games
+                    showPresetGroup(false);
+                    return;
+                }
                 populatePresetSelect(select, data);
             })
             .catch(function(error) {
                 console.error('Failed to load preset ROMs:', error);
-                select.innerHTML = '<option value="">Failed to load ROMs</option>';
+                if (/HTTP 404/.test(String(error && error.message))) {
+                    // Platform data file does not exist - no presets for this core
+                    showPresetGroup(false);
+                } else {
+                    select.innerHTML = '<option value="">Failed to load ROMs</option>';
+                }
             });
     }
     

@@ -173,7 +173,7 @@
             display: flex;
             flex: 1;
             height: 0;
-            margin-top: 70px;
+            margin-top: var(--header-height, 70px);
             position: relative;
             overflow: hidden;
         }
@@ -188,7 +188,7 @@
             flex-direction: column;
             transition: all 0.3s ease;
             position: fixed;
-            top: 70px;
+            top: var(--header-height, 70px);
             bottom: 0;
             z-index: 50;
             overflow: hidden;
@@ -259,7 +259,7 @@
         .toggle-sidebar {
             position: fixed;
             left: 250px;
-            top: calc(70px + 50%);
+            top: calc(var(--header-height, 70px) + 50%);
             transform: translateY(-50%);
             width: 30px;
             height: 60px;
@@ -668,6 +668,7 @@
         </div>
     </div>
     
+    <script src="../js/core/header-height.js"></script>
     <script src="../js/apiproxy.js"></script>
     <script src="../js/tocomprehensive.js"></script>
 </body>
