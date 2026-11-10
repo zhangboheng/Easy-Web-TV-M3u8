@@ -1,5 +1,6 @@
-// Shared API proxy helper — generic CORS-proxy failover for all pages.
-// Used by: music (fetchMusicJSON) and adult/porn (fetchWithProxy).
+// Shared API proxy helper — direct fetch for CORS-enabled APIs, with generic
+// CORS-proxy failover for every other cross-origin request.
+// Used by: music (fetchMusicJSON), adult/porn, and the manga/novel readers.
 //
 // Provides an ordered proxy pool and a sequential failover fetch: if one proxy
 // is down / blocked / rate-limited, the next is tried automatically until one
@@ -13,8 +14,8 @@
 // redoc.ly (403 on real targets). corsmirror is live but slow to wake
 // (Render free tier cold start - hence the 30s proxy timeout); cors.lol
 // works but rate-limits aggressively; luckydesigner and codetabs are
-// intermittently down but kept as deep fallbacks. CORS-enabled hosts never
-// reach this pool - they are fetched directly first (see directHosts).
+// intermittently down but kept as deep fallbacks. Hosts in directHosts are
+// tried first, then this pool is used as a fallback if direct fetch fails.
 var proxyList = [
     'https://corsmirror.onrender.com/v1/cors?url=',
     'https://api.cors.lol/?url=',
@@ -22,20 +23,25 @@ var proxyList = [
     'https://api.codetabs.com/v1/proxy/?quest='
 ];
 
-// Hosts that serve CORS headers (Access-Control-Allow-Origin) - requests to
-// these are made directly, without any proxy. Verified 2026-09: the
-// MangaDex API echoes the caller Origin, api.github.com and the archive.org
-// metadata/advancedsearch endpoints send Access-Control-Allow-Origin: *.
+// Hosts documented as CORS=Yes in Downloads/public-apis-master/README.md.
+// These are requested directly first; if that ever fails, the proxy pool below
+// still acts as a fallback (tryProxies always appends proxy attempts).
+//   Jikan (Anime), Bible-api + PoetryDB (Books): CORS = Yes
+// Sources documented as CORS=No (xkcd, Open Library) or Unknown (Gutendex,
+// Project Gutenberg) are intentionally NOT listed here: they go straight to
+// the CORS-proxy pool, because an API being public/keyless does not imply the
+// browser is allowed to read its response cross-origin.
 var directHosts = [
-    'api.mangadex.org',
+    'poetrydb.org',
+    'bible-api.com',
+    'api.jikan.moe',
     'api.github.com',
     'archive.org'
 ];
 
 // Hosts that also accept credentialed requests (Access-Control-Allow-Credentials
-// + Origin echo). Sending cookies lets a Cloudflare bot-challenge token the user
-// obtained by visiting the site earlier (cf_clearance) apply to API calls.
-var credentialHosts = ['api.mangadex.org'];
+// + Origin echo). None of the public reading APIs need cookies today.
+var credentialHosts = [];
 
 function isDirectFetchable(url) {
     try {
@@ -57,7 +63,8 @@ function wantsCredentials(url) {
 var MUSIC_API_BASE = 'http://iwenwiki.com:3000';
 
 // Core: try a direct fetch first for CORS-enabled hosts, then each proxy in
-// order. `consume(response)` extracts the payload (e.g. r => r.text() or
+// order (even for direct hosts, the proxies are kept as a fallback).
+// `consume(response)` extracts the payload (e.g. r => r.text() or
 // r => r.json()). Resolves with the first success, rejects only after every
 // attempt has failed. Each attempt is aborted after its timeout so a hung
 // proxy cannot freeze the page forever (proxies get a longer timeout than

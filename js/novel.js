@@ -1,7 +1,13 @@
-// Novel Reader JS - Modern UI Version
+// Novel Reader JS - public-apis sources (Books section)
 // Native JavaScript (No jQuery)
+//
+// Reader dispatch uses ?src= gutendex | openlibrary | poetrydb | bible.
+// Royal Road / 和图书 parsers removed. All requests use apiproxy.js helpers.
 
-// CORS proxy + failover now live in ../js/apiproxy.js (fetchWithProxy)
+var GUTENDEX_API = 'https://gutendex.com/books';
+var OPENLIBRARY_API = 'https://openlibrary.org';
+var POETRYDB_API = 'https://poetrydb.org';
+var BIBLE_API = 'https://bible-api.com';
 
 // Favorite prefix for localStorage
 var FAV_PREFIX = 'fav_novel_';
@@ -14,11 +20,33 @@ var novelInfo = '';
 var originUrl = '';
 var prevChapterUrl = '';
 var nextChapterUrl = '';
+var readerSource = '';
+var readerInitLink = '';
 
-// Helper: parse HTML string to DOM
-function parseHTML(htmlString) {
-    var parser = new DOMParser();
-    return parser.parseFromString(htmlString, 'text/html');
+// Helper: escape untrusted plain text before inserting into readerContent
+function escapeText(text) {
+    return String(text === null || text === undefined ? '' : text)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+// Helper: render plain text as safe HTML paragraphs/lines
+function textToHtml(text) {
+    var lines = String(text || '').replace(/\r\n/g, '\n').split('\n');
+    var html = '';
+    var buffer = [];
+    function flush() {
+        if (buffer.length) {
+            html += '<p>' + escapeText(buffer.join('\n')) + '</p>';
+            buffer = [];
+        }
+    }
+    lines.forEach(function(line) {
+        if (!line.trim()) flush();
+        else buffer.push(line);
+    });
+    flush();
+    return html || '<p>No content available.</p>';
 }
 
 // Toast notification system
@@ -278,407 +306,235 @@ function renderChapters(chapterData) {
     });
 }
 
-// Load chapter content
+// In-memory cache for large Gutenberg texts. Chapter URLs are virtual keys;
+// loadChapter reads the cached chunk instead of refetching the whole book.
+var chapterCache = { data: {} };
+function chapterCacheKey(source, textUrl, index) {
+    return source + '::' + textUrl + '::' + index;
+}
+
+// Load chapter content from the public API source
 function loadChapter(url, chapterName) {
     showLoading(true);
-    
-    fetchWithProxy(url)
-        .then(function(data) {
-            var html = parseHTML(data);
-            
-            var title = '';
-            var content = '';
-            var prevUrl = '';
-            var nextUrl = '';
-            
-            if (url.indexOf('royalroad.com') > -1) {
-                // Try multiple selectors for chapter title
-                title = html.querySelector('.chapter-title');
-                if (title) title = title.textContent.trim();
-                if (!title) {
-                    title = html.querySelector('h1');
-                    if (title) title = title.textContent.trim();
-                }
-                if (!title) {
-                    title = html.querySelector('[property="name"]');
-                    if (title) title = title.textContent.trim();
-                }
-                
-                // Try multiple selectors for chapter content
-                var chapterContent = html.querySelector('.chapter-content');
-                if (!chapterContent) {
-                    chapterContent = html.querySelector('.fic-chapter-content');
-                }
-                if (!chapterContent) {
-                    chapterContent = html.querySelector('[property="articleBody"]');
-                }
-                if (!chapterContent) {
-                    chapterContent = html.querySelector('article .content');
-                }
-                
-                if (chapterContent) {
-                    // Clean up content - remove unwanted elements
-                    var clone = chapterContent.cloneNode(true);
-                    var scripts = clone.querySelectorAll('script, style, .ads, .advertisement, .comments');
-                    scripts.forEach(function(s) { s.remove(); });
-                    content = clone.innerHTML;
-                }
-                
-                // Navigation - try multiple selectors
-                // Previous chapter
-                var prevLink = html.querySelector('[rel="prev"]');
-                if (!prevLink) {
-                    prevLink = html.querySelector('.nav-previous a, .prev-chapter a');
-                }
-                if (!prevLink) {
-                    var allLinks = html.querySelectorAll('a[href*="/chapter/"]');
-                    allLinks.forEach(function(link) {
-                        var text = link.textContent.toLowerCase();
-                        if (text.indexOf('previous') > -1 || text.indexOf('prev') > -1) {
-                            prevLink = link;
-                        }
-                    });
-                }
-                
-                // Next chapter
-                var nextLink = html.querySelector('[rel="next"]');
-                if (!nextLink) {
-                    nextLink = html.querySelector('.nav-next a, .next-chapter a');
-                }
-                if (!nextLink) {
-                    var allLinks = html.querySelectorAll('a[href*="/chapter/"]');
-                    allLinks.forEach(function(link) {
-                        var text = link.textContent.toLowerCase();
-                        if (text.indexOf('next') > -1) {
-                            nextLink = link;
-                        }
-                    });
-                }
-                
-                if (prevLink && prevLink.getAttribute('href')) {
-                    var prevHref = prevLink.getAttribute('href');
-                    if (prevHref.indexOf('http') === -1) {
-                        prevUrl = 'https://www.royalroad.com' + prevHref;
-                    } else {
-                        prevUrl = prevHref;
-                    }
-                }
-                
-                if (nextLink && nextLink.getAttribute('href')) {
-                    var nextHref = nextLink.getAttribute('href');
-                    if (nextHref.indexOf('http') === -1) {
-                        nextUrl = 'https://www.royalroad.com' + nextHref;
-                    } else {
-                        nextUrl = nextHref;
-                    }
-                }
-            } else if (url.indexOf('hetushu.com') > -1) {
-                // 和图书 chapter page: title in #ctitle, content in #content
-                title = html.querySelector('#ctitle');
-                if (title) title = title.textContent.trim();
-                // #ctitle can include the reading-progress prefix (e.g. "0%")
-                if (title) title = title.replace(/^\d+%\s*/, '');
-                if (!title) {
-                    title = html.querySelector('h1');
-                    if (title) title = title.textContent.trim();
-                }
-                
-                var chapterContent = html.querySelector('#content');
-                if (chapterContent) {
-                    var clone = chapterContent.cloneNode(true);
-                    var junk = clone.querySelectorAll('script, style, .ads, .advertisement');
-                    junk.forEach(function(s) { s.remove(); });
-                    content = clone.innerHTML;
-                }
-                
-                // Navigation (next chapter id is #next on hetushu pages)
-                var nextLink = html.querySelector('#next a, a#next');
-                if (nextLink && nextLink.getAttribute('href')) {
-                    var nextHref = nextLink.getAttribute('href');
-                    nextUrl = nextHref.indexOf('http') === -1 ? 'https://www.hetushu.com' + nextHref : nextHref;
-                }
-                var prevLink = html.querySelector('#prev a, a#prev');
-                if (prevLink && prevLink.getAttribute('href')) {
-                    var prevHref = prevLink.getAttribute('href');
-                    prevUrl = prevHref.indexOf('http') === -1 ? 'https://www.hetushu.com' + prevHref : prevHref;
-                }
-            }
-            
-            // Update reader - update both toolbar title and display title
-            var displayTitle = title || chapterName || 'Chapter';
-            document.getElementById('chapterTitle').textContent = displayTitle;
-            var titleDisplay = document.getElementById('chapterTitleDisplay');
-            if (titleDisplay) {
-                titleDisplay.textContent = displayTitle;
-            }
-            
-            if (content) {
-                document.getElementById('readerContent').innerHTML = content;
-            } else {
-                document.getElementById('readerContent').innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.5);">Unable to load chapter content. Please try again or select another chapter.</p>';
-            }
-            
-            // Update navigation based on chapter index
-            // prevChapter disabled if first chapter (index 0)
-            document.getElementById('prevChapter').disabled = currentChapterIndex === 0;
-            // nextChapter disabled if last chapter
-            document.getElementById('nextChapter').disabled = currentChapterIndex === chapters.length - 1;
-            
-            // Also store URLs from page parsing as fallback
-            prevChapterUrl = prevUrl;
-            nextChapterUrl = nextUrl;
-            document.getElementById('readerNav').style.display = 'flex';
-            
-            // Scroll to top
-            document.getElementById('readerArea').scrollTop = 0;
-            
-            // Hide sidebar on mobile
-            if (window.innerWidth <= 768) {
-                document.getElementById('sidebar').classList.remove('show-mobile');
-            }
-            
-            // Update chapter count
-            document.getElementById('chapterCount').textContent = chapters.length;
-        })
-        .catch(function(error) {
-            console.error('Failed to load chapter:', error);
-            showToast('Failed to load chapter content. Please try again.', 'error');
-        })
-        .finally(function() {
-            showLoading(false);
-        });
-}
+    var source = readerSource;
+    var request;
 
-// Parse novel data from Royal Road
-function parseRoyalRoad(initlink) {
-    originUrl = 'https://www.royalroad.com';
-    
-    fetchWithProxy(initlink)
-        .then(function(data) {
-            var html = parseHTML(data);
-            
-            // Try multiple selectors for title
-            var title = html.querySelector('h1.font-white');
-            if (title) title = title.textContent.trim();
-            if (!title) {
-                title = html.querySelector('.fic-title h1');
-                if (title) title = title.textContent.trim();
-            }
-            if (!title) {
-                title = html.querySelector('h1');
-                if (title) title = title.textContent.trim();
-            }
-            
-            // Try multiple selectors for author
-            var author = html.querySelector('.fic-title a.font-white');
-            if (author) author = author.textContent.trim();
-            if (!author) {
-                author = html.querySelector('.author a');
-                if (author) author = author.textContent.trim();
-            }
-            if (!author) {
-                author = html.querySelector('[property="author"]');
-                if (author) author = author.textContent.trim();
-            }
-            
-            // Try multiple selectors for description
-            var info = html.querySelector('.hidden-content');
-            if (info) info = info.textContent.trim();
-            if (!info) {
-                info = html.querySelector('.description');
-                if (info) info = info.textContent.trim();
-            }
-            if (!info) {
-                info = html.querySelector('[property="description"]');
-                if (info) info = info.textContent.trim();
-            }
-            
-            currentNovelTitle = title;
-            novelInfo = 'Author: ' + author + '\n\n' + info;
-            
-            document.getElementById('novelTitle').textContent = title || 'Unknown Title';
-            document.getElementById('infoTitle').textContent = title || 'Unknown Title';
-            document.getElementById('infoContent').textContent = novelInfo || 'No description available.';
-            document.title = (title || 'Novel') + ' - Novel Reader';
-            
-            // Parse chapter list - try multiple selectors
-            var chapterData = [];
-            
-            // Method 1: Standard chapter table
-            var chapterRows = html.querySelectorAll('#chapters tbody tr');
-            
-            if (chapterRows.length > 0) {
-                chapterRows.forEach(function(row) {
-                    var link = row.querySelector('a');
-                    if (link) {
-                        var chapterUrl = link.getAttribute('href');
-                        var chapterName = link.textContent.trim();
-                        
-                        if (chapterUrl && chapterName) {
-                            if (chapterUrl.indexOf('http') === -1) {
-                                chapterUrl = originUrl + chapterUrl;
-                            }
-                            chapterData.push({
-                                name: chapterName,
-                                url: chapterUrl
-                            });
-                        }
-                    }
+    if (source === 'gutendex') {
+        var m = String(url).match(/^gutendex::(.+)::(\d+)$/);
+        if (!m) {
+            request = Promise.reject(new Error('Invalid chapter key'));
+        } else {
+            var textUrl = m[1];
+            var index = parseInt(m[2], 10);
+            var cached = chapterCache.data[textUrl];
+            var getChunk = cached
+                ? Promise.resolve(cached[index])
+                : fetchWithProxy(textUrl).then(function(text) {
+                    var chunks = splitGutenbergText(text).slice(0, 80);
+                    chapterCache.data[textUrl] = chunks;
+                    return chunks[index];
                 });
-            }
-            
-            // Method 2: Chapter links in various containers
-            if (chapterData.length === 0) {
-                var chapterLinks = html.querySelectorAll('a[href*="/chapter/"]');
-                chapterLinks.forEach(function(link) {
-                    var chapterUrl = link.getAttribute('href');
-                    var chapterName = link.textContent.trim();
-                    
-                    if (chapterUrl && chapterName && chapterName.length > 0) {
-                        if (chapterUrl.indexOf('http') === -1) {
-                            chapterUrl = originUrl + chapterUrl;
-                        }
-                        chapterData.push({
-                            name: chapterName,
-                            url: chapterUrl
-                        });
-                    }
-                });
-            }
-            
-            // Method 3: Fiction chapters list
-            if (chapterData.length === 0) {
-                var fictionChapters = html.querySelectorAll('.chapter-row, .fiction-chapter');
-                fictionChapters.forEach(function(row) {
-                    var link = row.querySelector('a');
-                    if (link) {
-                        var chapterUrl = link.getAttribute('href');
-                        var chapterName = link.textContent.trim();
-                        
-                        if (chapterUrl && chapterName) {
-                            if (chapterUrl.indexOf('http') === -1) {
-                                chapterUrl = originUrl + chapterUrl;
-                            }
-                            chapterData.push({
-                                name: chapterName,
-                                url: chapterUrl
-                            });
-                        }
-                    }
-                });
-            }
-            
-            if (chapterData.length === 0) {
-                showToast('No chapters found. The page structure may have changed.', 'warning');
-                showLoading(false);
-                return;
-            }
-            
-            renderChapters(chapterData);
-            
-            // Auto load first chapter
-            if (chapterData[0]) {
-                var firstItem = document.querySelector('.chapter-item');
-                if (firstItem) firstItem.classList.add('active');
-                currentChapterIndex = 0;
-                loadChapter(chapterData[0].url, chapterData[0].name);
-            }
-        })
-        .catch(function(error) {
-            console.error('Failed to load novel:', error);
-            showToast('Failed to load novel. Please try again.', 'error');
-            showLoading(false);
-        });
-}
-
-// Parse novel data from Hetushu (和图书, Chinese novels)
-function parseHetushu(initlink) {
-    originUrl = 'https://www.hetushu.com';
-    
-    fetchWithProxy(initlink)
-        .then(function(data) {
-            var html = parseHTML(data);
-            
-            // Book page title sits in an <h2> inside the header block
-            var title = html.querySelector('h2');
-            if (title) title = title.textContent.trim();
-            if (!title) {
-                title = html.querySelector('h1');
-                if (title) title = title.textContent.trim();
-            }
-            
-            // Author
-            var author = '';
-            var authorEl = html.querySelector('.author');
-            if (authorEl) author = authorEl.textContent.replace(/^作者[:：]?/, '').trim();
-            if (!author) {
-                var authorMeta = html.querySelector('meta[name="author"]');
-                if (authorMeta) author = (authorMeta.getAttribute('content') || '').trim();
-            }
-            
-            // Description
-            var info = html.querySelector('.intro');
-            if (info) info = info.textContent.trim();
-            if (!info) {
-                var descMeta = html.querySelector('meta[name="description"]');
-                if (descMeta) info = (descMeta.getAttribute('content') || '').trim();
-            }
-            
-            currentNovelTitle = title;
-            novelInfo = (author ? '作者: ' + author + '\n\n' : '') + info;
-            
-            document.getElementById('novelTitle').textContent = title || 'Unknown Title';
-            document.getElementById('infoTitle').textContent = title || 'Unknown Title';
-            document.getElementById('infoContent').textContent = novelInfo || 'No description available.';
-            document.title = (title || 'Novel') + ' - Novel Reader';
-            
-            // Chapters: links like /book/{bookId}/{chapterId}.html (absolute or page-relative)
-            var chapterData = [];
-            var seen = {};
-            var baseDir = initlink.replace(/index\.html$/, '');
-            
-            html.querySelectorAll('a[href*="/book/"]').forEach(function(link) {
-                var chapterUrl = link.getAttribute('href') || '';
-                if (!/\/book\/\d+\/\d+\.html/.test(chapterUrl)) return;
-                
-                if (chapterUrl.indexOf('http') === 0) {
-                    // already absolute
-                } else if (chapterUrl.charAt(0) === '/') {
-                    chapterUrl = originUrl + chapterUrl;
-                } else {
-                    chapterUrl = baseDir + chapterUrl;
-                }
-                
-                var chapterName = link.textContent.trim();
-                if (!chapterName) return;
-                if (seen[chapterUrl]) return;
-                seen[chapterUrl] = true;
-                
-                chapterData.push({
-                    name: chapterName,
-                    url: chapterUrl
-                });
+            request = getChunk.then(function(chunk) {
+                return { html: textToHtml(chunk || 'Chapter not available.'), title: chapterName };
             });
-            
-            if (chapterData.length === 0) {
-                showToast('No chapters found. The page structure may have changed.', 'warning');
-                showLoading(false);
-                return;
-            }
-            
-            renderChapters(chapterData);
-            
-            // Auto load first chapter
-            if (chapterData[0]) {
-                var firstItem = document.querySelector('.chapter-item');
-                if (firstItem) firstItem.classList.add('active');
+        }
+    } else if (source === 'openlibrary') {
+        request = fetchJSONWithProxy(url).then(function(work) {
+            var desc = work.description;
+            if (desc && typeof desc === 'object') desc = desc.value;
+            var subjects = (work.subjects || []).slice(0, 12).join(', ');
+            var html = '<h2>' + escapeText(work.title || 'Untitled') + '</h2>' + textToHtml(desc || 'No description available.');
+            if (subjects) html += '<p><strong>Subjects:</strong> ' + escapeText(subjects) + '</p>';
+            if (work.key) html += '<p><a target="_blank" rel="noopener" href="' + escapeText(OPENLIBRARY_API + work.key) + '">View on Open Library</a></p>';
+            return { html: html, title: chapterName || work.title };
+        });
+    } else if (source === 'poetrydb') {
+        request = fetchJSONWithProxy(url).then(function(poems) {
+            var list = Array.isArray(poems) ? poems : [];
+            var poem = list[0] || {};
+            var lines = (poem.lines || []).join('\n');
+            var html = '<h2>' + escapeText(poem.title || chapterName) + '</h2>';
+            if (poem.author) html += '<p><em>' + escapeText(poem.author) + '</em></p>';
+            html += textToHtml(lines || 'Poem text not available.');
+            return { html: html, title: poem.title || chapterName };
+        });
+    } else if (source === 'bible') {
+        request = fetchJSONWithProxy(url).then(function(data) {
+            var verses = data.verses || [];
+            var html = '<h2>' + escapeText(data.reference || 'Bible Passage') + '</h2>';
+            verses.forEach(function(v) {
+                html += '<p><strong>' + escapeText(v.chapter + ':' + v.verse) + '</strong> ' + escapeText(v.text) + '</p>';
+            });
+            if (!verses.length && data.text) html += textToHtml(data.text);
+            return { html: html, title: data.reference || chapterName };
+        });
+    } else {
+        request = Promise.reject(new Error('Unsupported novel source'));
+    }
+
+    request.then(function(result) {
+        var displayTitle = result.title || chapterName || 'Chapter';
+        document.getElementById('chapterTitle').textContent = displayTitle;
+        var titleDisplay = document.getElementById('chapterTitleDisplay');
+        if (titleDisplay) titleDisplay.textContent = displayTitle;
+        document.getElementById('readerContent').innerHTML = result.html || '<p>Unable to load content.</p>';
+
+        document.getElementById('prevChapter').disabled = currentChapterIndex <= 0;
+        document.getElementById('nextChapter').disabled = currentChapterIndex >= chapters.length - 1;
+        prevChapterUrl = currentChapterIndex > 0 ? chapters[currentChapterIndex - 1].url : '';
+        nextChapterUrl = currentChapterIndex < chapters.length - 1 ? chapters[currentChapterIndex + 1].url : '';
+        document.getElementById('readerNav').style.display = 'flex';
+        document.getElementById('readerArea').scrollTop = 0;
+        if (window.innerWidth <= 768) {
+            document.getElementById('sidebar').classList.remove('show-mobile');
+        }
+        document.getElementById('chapterCount').textContent = chapters.length;
+    })
+    .catch(function(error) {
+        console.error('Failed to load chapter:', error);
+        showToast('Failed to load chapter content. Please try again.', 'error');
+        document.getElementById('readerContent').innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.5);">Unable to load chapter content. Please try another chapter.</p>';
+    })
+    .finally(function() {
+        showLoading(false);
+    });
+}
+
+// Set the novel info panel and title from parsed metadata
+function setNovelHeader(title, info) {
+    currentNovelTitle = title || 'Unknown Title';
+    novelInfo = info || 'No description available.';
+    document.getElementById('novelTitle').textContent = currentNovelTitle;
+    document.getElementById('infoTitle').textContent = currentNovelTitle;
+    document.getElementById('infoContent').textContent = novelInfo;
+    document.title = currentNovelTitle + ' - Novel Reader';
+}
+
+// Split Gutenberg plain text into roughly equal readable chapters
+function splitGutenbergText(text) {
+    var clean = String(text || '').replace(/\r\n/g, '\n');
+    var startMarker = clean.indexOf('*** START OF');
+    var endMarker = clean.indexOf('*** END OF');
+    if (startMarker > -1) clean = clean.slice(startMarker);
+    if (endMarker > startMarker && endMarker > -1) clean = clean.slice(0, endMarker);
+
+    var lines = clean.split('\n');
+    var maxChars = 14000;
+    var result = [];
+    var current = [];
+    var size = 0;
+    lines.forEach(function(line) {
+        current.push(line);
+        size += line.length + 1;
+        if (size >= maxChars) {
+            result.push(current.join('\n'));
+            current = [];
+            size = 0;
+        }
+    });
+    if (current.join('\n').trim()) result.push(current.join('\n'));
+    return result.length ? result : [clean];
+}
+
+// Gutendex: fetch metadata + full plain text, split into chapters
+function parseGutendex(metaUrl) {
+    var bookId = String(metaUrl).match(/\/books\/(\d+)/);
+    var apiUrl = bookId ? GUTENDEX_API + '/' + bookId[1] + '/' : metaUrl;
+    fetchJSONWithProxy(apiUrl)
+        .then(function(book) {
+            var formats = book.formats || {};
+            var textUrl = formats['text/plain; charset=utf-8'] || formats['text/plain; charset=us-ascii'] || formats['text/plain'] || formats['text/html'];
+            if (!textUrl) throw new Error('No readable text format');
+            var authors = (book.authors || []).map(function(a) { return a.name; }).join(', ');
+            var summary = (book.summaries || [])[0] || (book.subjects || []).slice(0, 8).join(', ');
+            setNovelHeader(book.title, (authors ? 'Author: ' + authors + '\n\n' : '') + (summary || 'No description available.'));
+            return fetchWithProxy(textUrl).then(function(text) {
+                var chunks = splitGutenbergText(text).slice(0, 80);
+                chapterCache.data[textUrl] = chunks;
+                chapters = chunks.map(function(chunk, i) {
+                    return { name: 'Part ' + (i + 1), url: chapterCacheKey('gutendex', textUrl, i) };
+                });
+                renderChapters(chapters);
                 currentChapterIndex = 0;
-                loadChapter(chapterData[0].url, chapterData[0].name);
-            }
+                var first = document.querySelector('.chapter-item');
+                if (first) first.classList.add('active');
+                loadChapter(chapters[0].url, chapters[0].name);
+            });
         })
         .catch(function(error) {
-            console.error('Failed to load novel:', error);
-            showToast('Failed to load novel. Please try again.', 'error');
+            console.error('Failed to load Gutendex book:', error);
+            showToast('Failed to load book. Please try again.', 'error');
+            showLoading(false);
+        });
+}
+
+// Open Library: metadata only (full text is not exposed by this API)
+function parseOpenLibrary(workUrl) {
+    fetchJSONWithProxy(workUrl)
+        .then(function(work) {
+            var desc = work.description;
+            if (desc && typeof desc === 'object') desc = desc.value;
+            var subjects = (work.subjects || []).slice(0, 10).join(', ');
+            setNovelHeader(work.title, (desc || 'No description available.') + (subjects ? '\n\nSubjects: ' + subjects : ''));
+            chapters = [{ name: 'Book Details', url: workUrl }];
+            renderChapters(chapters);
+            currentChapterIndex = 0;
+            var first = document.querySelector('.chapter-item');
+            if (first) first.classList.add('active');
+            loadChapter(workUrl, 'Book Details');
+        })
+        .catch(function(error) {
+            console.error('Failed to load Open Library work:', error);
+            showToast('Failed to load book. Please try again.', 'error');
+            showLoading(false);
+        });
+}
+
+// PoetryDB: the list URL points at one poem; nearby poems become chapters
+function parsePoetryDB(poemUrl) {
+    fetchJSONWithProxy(poemUrl)
+        .then(function(poems) {
+            var list = Array.isArray(poems) ? poems : [];
+            var poem = list[0] || {};
+            setNovelHeader(poem.title || 'Poem', (poem.author ? 'Author: ' + poem.author + '\n\n' : '') + (poem.linecount ? poem.linecount + ' lines' : 'PoetryDB public-domain poem'));
+            chapters = list.slice(0, 24).map(function(item, i) {
+                return { name: item.title || ('Poem ' + (i + 1)), url: POETRYDB_API + '/title/' + encodeURIComponent(item.title || '') + '?author=' + encodeURIComponent(item.author || '') };
+            });
+            if (!chapters.length) chapters = [{ name: poem.title || 'Poem', url: poemUrl }];
+            renderChapters(chapters);
+            currentChapterIndex = 0;
+            var first = document.querySelector('.chapter-item');
+            if (first) first.classList.add('active');
+            loadChapter(chapters[0].url, chapters[0].name);
+        })
+        .catch(function(error) {
+            console.error('Failed to load PoetryDB poem:', error);
+            showToast('Failed to load poem. Please try again.', 'error');
+            showLoading(false);
+        });
+}
+
+// Bible API: passage + adjacent chapters of the same book
+function parseBible(passageUrl) {
+    fetchJSONWithProxy(passageUrl)
+        .then(function(data) {
+            var firstVerse = (data.verses || [])[0] || {};
+            var book = firstVerse.book_name || (data.reference || '').replace(/\s*\d.*$/, '') || 'John';
+            var chapter = firstVerse.chapter || parseInt((data.reference || '').match(/(\d+)/) || [0, 1], 10) || 1;
+            setNovelHeader(data.reference || 'Bible Passage', (data.translation_name || 'Bible API') + '\n\n' + (data.translation_note || ''));
+            chapters = [];
+            for (var c = Math.max(1, chapter - 2); c <= chapter + 2; c++) {
+                chapters.push({ name: book + ' ' + c, url: BIBLE_API + '/' + encodeURIComponent(book + ' ' + c) + '?translation=web' });
+            }
+            renderChapters(chapters);
+            currentChapterIndex = 0;
+            var first = document.querySelector('.chapter-item');
+            if (first) first.classList.add('active');
+            loadChapter(passageUrl, data.reference || 'Bible Passage');
+        })
+        .catch(function(error) {
+            console.error('Failed to load Bible passage:', error);
+            showToast('Failed to load passage. Please try again.', 'error');
             showLoading(false);
         });
 }
@@ -713,19 +569,24 @@ document.addEventListener('DOMContentLoaded', function() {
     loadFavorites();
     
     // Parse URL parameters
-    var initlink = new URLSearchParams(window.location.search).get('web') || '';
-    
-    console.log('Init link:', initlink);
-    
-    var srcParam = new URLSearchParams(window.location.search).get('src') || '';
-    
-    if (initlink) {
+    var params = new URLSearchParams(window.location.search);
+    var initlink = params.get('web') || '';
+    var srcParam = params.get('src') || '';
+    readerSource = srcParam;
+    readerInitLink = initlink;
+
+    console.log('Init link:', initlink, 'source:', srcParam);
+
+    if (initlink && srcParam) {
         showLoading(true);
-        
-        if (srcParam === 'hetushu' || initlink.indexOf('hetushu.com') > -1) {
-            parseHetushu(initlink);
-        } else if (initlink.indexOf('https://www.royalroad.com/') > -1) {
-            parseRoyalRoad(initlink);
+        if (srcParam === 'gutendex') {
+            parseGutendex(initlink);
+        } else if (srcParam === 'openlibrary') {
+            parseOpenLibrary(initlink);
+        } else if (srcParam === 'poetrydb') {
+            parsePoetryDB(initlink);
+        } else if (srcParam === 'bible') {
+            parseBible(initlink);
         } else {
             showToast('Unsupported novel source.', 'error');
             showLoading(false);

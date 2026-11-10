@@ -1,20 +1,49 @@
-// Manga List Page JS - MangaDex API Version
+// Manga List Page JS - public-apis sources (Jikan / xkcd)
 // Native JavaScript (No jQuery)
+//
+// Sources from Downloads/public-apis-master/README.md:
+//   Jikan  https://jikan.moe          (Anime) - manga catalog, search, genres
+//   xkcd   https://xkcd.com/json.html (Games & Comics) - single-issue comics
+// MangaDex / MangaPill removed. All requests use apiproxy.js helpers.
 
-// MangaDex API base URL
-var MANGADEX_API = 'https://api.mangadex.org';
-// MangaPill (server-rendered HTML, scraped via fetchWithProxy)
-var MANGAPILL_BASE = 'https://mangapill.com';
-// CORS proxy + failover now live in ../js/apiproxy.js (fetchJSONWithProxy)
+var JIKAN_API = 'https://api.jikan.moe/v4';
+var XKCD_API = 'https://xkcd.com';
+
+var MANGA_SOURCES = {
+    jikan: {
+        name: 'Jikan (Manga)',
+        categories: [
+            { id: 'all', name: 'All Manga' },
+            { id: 'top', name: 'Top Manga' },
+            { id: 'publishing', name: 'Publishing' },
+            { id: 'complete', name: 'Completed' },
+            { id: 'manga', name: 'Manga' },
+            { id: 'novels', name: 'Light Novels' },
+            { id: 'oneshots', name: 'One-shots' },
+            { id: 'doujin', name: 'Doujinshi' },
+            { id: 'manhwa', name: 'Manhwa' },
+            { id: 'manhua', name: 'Manhua' }
+        ]
+    },
+    xkcd: {
+        name: 'xkcd Comics',
+        categories: [
+            { id: 'latest', name: 'Latest Issues' },
+            { id: 'classic', name: 'Classic Issues' },
+            { id: 'random', name: 'Random Issues' }
+        ]
+    }
+};
 
 // Global variables
 var pnum = 1;
-var currentCategory = '';
-var currentSource = 'mangadex';
+var currentCategory = 'all';
+var currentSource = 'jikan';
 var isLoading = false;
 var searchKeyword = '';
 var totalMangas = [];
 var hasMoreManga = true;
+var currentListUrl = '';
 
 // Toast notification
 function showToast(message, type) {
@@ -70,13 +99,30 @@ function toggleSidebar() {
     }
 }
 
-// Get cover art URL from MangaDex
-function getCoverUrl(mangaId, coverArt) {
-    if (!coverArt || !coverArt.attributes) {
-        return '../images/noimage.jpeg';
-    }
-    var fileName = coverArt.attributes.fileName;
-    return 'https://uploads.mangadex.org/covers/' + mangaId + '/' + fileName + '.256.jpg';
+// Jikan: normalize one manga entry into a card
+function jikanToCard(manga) {
+    var title = manga.title_english || manga.title || (manga.titles && manga.titles[0] && manga.titles[0].title) || 'Unknown Title';
+    var jpg = (manga.images && manga.images.jpg) || {};
+    var coverUrl = jpg.large_image_url || jpg.image_url || jpg.small_image_url || '';
+    var status = manga.status || (manga.score ? 'Score ' + manga.score : 'Manga');
+    return {
+        id: manga.mal_id,
+        href: '../catalogues/mangaplay.html?src=jikan&id=' + encodeURIComponent(manga.mal_id),
+        title: title,
+        coverUrl: coverUrl,
+        status: status
+    };
+}
+
+// xkcd: normalize one comic entry into a card
+function xkcdToCard(comic) {
+    return {
+        id: comic.num,
+        href: '../catalogues/mangaplay.html?src=xkcd&id=' + encodeURIComponent(comic.num),
+        title: '#' + comic.num + ' ' + (comic.safe_title || comic.title || 'Untitled'),
+        coverUrl: comic.img || '',
+        status: (comic.year || '') + '-' + (comic.month || '') + '-' + (comic.day || '')
+    };
 }
 
 // Render manga cards from a normalized card list: [{ id, href, title, coverUrl, status }]
@@ -115,60 +161,32 @@ function renderMangas(cards, append) {
     });
 }
 
-// Convert a MangaDex API entry into a normalized card
-function mangadexToCard(manga) {
-    var title = manga.attributes.title.en || 
-               manga.attributes.title['ja-ro'] || 
-               manga.attributes.title.ja || 
-               Object.values(manga.attributes.title)[0] || 
-               'Unknown Title';
-    
-    return {
-        id: manga.id,
-        href: '../catalogues/mangaplay.html?id=' + manga.id + '&src=mangadex',
-        title: title,
-        coverUrl: manga.coverUrl || '../images/noimage.jpeg',
-        status: manga.attributes.status || 'Ongoing'
-    };
-}
+// Jikan / xkcd normalizers are defined above.
 
-// Render categories (MangaDex tags/genres)
+// Render categories (fixed filters + optional Jikan genres)
 function renderCategories(categories) {
     var list = document.getElementById('categoryList');
     list.innerHTML = '';
-    
-    // Add "All" category first
-    var allItem = document.createElement('div');
-    allItem.className = 'category-item active';
-    allItem.setAttribute('data-id', '');
-    allItem.setAttribute('data-name', 'All');
-    allItem.innerHTML = '<i class="fas fa-globe"></i><span>All Manga</span>';
-    list.appendChild(allItem);
-    
+
     categories.forEach(function(cat) {
         var item = document.createElement('div');
-        item.className = 'category-item';
+        item.className = 'category-item' + (cat.id === currentCategory ? ' active' : '');
         item.setAttribute('data-id', cat.id);
         item.setAttribute('data-name', cat.name);
-        item.innerHTML = '<i class="fas fa-bookmark"></i><span>' + cat.name + '</span>';
+        item.innerHTML = '<i class="fas fa-bookmark"></i><span>' + escapeHtml(cat.name) + '</span>';
         list.appendChild(item);
     });
-    
-    // Bind click events
+
     var items = list.querySelectorAll('.category-item');
     items.forEach(function(item) {
         item.addEventListener('click', function() {
             items.forEach(function(i) { i.classList.remove('active'); });
             this.classList.add('active');
-            
-            var tagId = this.getAttribute('data-id');
-            currentCategory = tagId;
+            currentCategory = this.getAttribute('data-id');
             pnum = 1;
             searchKeyword = '';
             hasMoreManga = true;
-            loadMangas(tagId, false);
-            
-            // Hide sidebar on mobile
+            loadMangas(currentCategory, false);
             if (window.innerWidth <= 768) {
                 document.getElementById('sidebar').classList.remove('show-mobile');
             }
@@ -176,47 +194,32 @@ function renderCategories(categories) {
     });
 }
 
-// Load categories for the current source (dispatches per source)
+// Load categories for the current source. Jikan also exposes tags/genres;
+// append safe genre filters when that endpoint is reachable.
 function loadTags() {
-    if (currentSource === 'mangapill') {
-        // MangaPill has fixed list pages instead of tag/genre filtering
-        renderCategories([
-            { id: 'latest', name: 'Latest Updates' },
-            { id: 'new', name: 'New Releases' }
-        ]);
-        loadMangas('', false);
+    var source = MANGA_SOURCES[currentSource];
+    var base = source ? source.categories : [];
+    document.getElementById('categoryList').innerHTML = '<div class="loading-state"><i class="fas fa-spinner"></i><span>Loading categories...</span></div>';
+
+    if (currentSource !== 'jikan') {
+        renderCategories(base);
+        loadMangas(base[0].id, false);
         return;
     }
-    document.getElementById('categoryList').innerHTML = '<div class="loading-state"><i class="fas fa-spinner"></i><span>Loading categories...</span></div>';
-    
-    fetchJSONWithProxy(MANGADEX_API + '/manga/tag')
+
+    fetchJSONWithProxy(JIKAN_API + '/genres/manga?filter=genres')
         .then(function(data) {
-            if (data.result === 'ok' && data.data) {
-                // Filter for genre-type tags (group: 'genre')
-                var genres = data.data.filter(function(tag) { return tag.attributes.group === 'genre'; });
-                
-                var categories = genres.map(function(tag) {
-                    return {
-                        id: tag.id,
-                        name: tag.attributes.name.en || Object.values(tag.attributes.name)[0] || 'Unknown'
-                    };
-                }).sort(function(a, b) { return a.name.localeCompare(b.name); });
-                
-                renderCategories(categories);
-                
-                // Load initial manga list
-                loadMangas('', false);
-            } else {
-                showToast('Failed to load categories', 'error');
-                renderCategories([]);
-                loadMangas('', false);
-            }
+            var genres = (data && data.data) || [];
+            var extra = genres.slice(0, 16).map(function(g) {
+                return { id: 'genre:' + g.mal_id, name: g.name };
+            });
+            renderCategories(base.concat(extra));
+            loadMangas(currentCategory, false);
         })
         .catch(function(error) {
-            console.error('Error loading tags:', error);
-            showToast('Failed to load categories', 'error');
-            renderCategories([]);
-            loadMangas('', false);
+            console.warn('Jikan genres unavailable, using fixed filters:', error);
+            renderCategories(base);
+            loadMangas(currentCategory, false);
         });
 }
 
@@ -224,63 +227,33 @@ function loadTags() {
 function loadMangas(tagId, append) {
     if (isLoading) return;
     if (append && !hasMoreManga) return;
-    
-    if (currentSource === 'mangapill') {
-        loadMangaPillList(tagId, append);
-        return;
-    }
-    
+
     isLoading = true;
     showLoading(true);
-    
-    var limit = 20;
-    var offset = append ? (pnum - 1) * limit : 0;
-    
-    // Build API URL
-    var apiUrl = MANGADEX_API + '/manga?limit=' + limit + '&offset=' + offset + '&order[rating]=desc&includes[]=cover_art&contentRating[]=safe&contentRating[]=suggestive';
-    
-    if (tagId) {
-        apiUrl += '&includedTags[]=' + tagId;
+
+    if (currentSource === 'xkcd') {
+        loadXkcdList(append);
+        return;
     }
-    
-    if (searchKeyword) {
-        apiUrl += '&title=' + encodeURIComponent(searchKeyword);
-    }
-    
+
+    var page = append ? pnum : 1;
+    var apiUrl = buildJikanUrl(page);
+    currentListUrl = apiUrl;
+
     fetchJSONWithProxy(apiUrl)
         .then(function(data) {
-            if (data.result === 'ok' && data.data) {
-                // Process manga data and get cover URLs
-                var cards = data.data.map(function(manga) {
-                    // Find cover art from relationships
-                    var coverArt = manga.relationships.find(function(rel) { return rel.type === 'cover_art'; });
-                    manga.coverUrl = getCoverUrl(manga.id, coverArt);
-                    return mangadexToCard(manga);
-                });
-                
-                renderMangas(cards, append);
-                
-                // Check if there are more results
-                if (typeof data.total === 'number') {
-                    hasMoreManga = data.total > offset + limit && cards.length > 0;
-                } else {
-                    hasMoreManga = cards.length > 0;
-                }
-                if (hasMoreManga) {
-                    pnum++;
-                }
-            } else {
-                if (!append) {
-                    document.getElementById('contentGrid').innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-circle"></i><p>Failed to load manga</p></div>';
-                }
-                showToast('Failed to load manga', 'error');
-            }
+            var items = (data && data.data) || [];
+            var cards = items.map(jikanToCard);
+            renderMangas(cards, append);
+            var pagination = data && data.pagination;
+            hasMoreManga = pagination ? !!pagination.has_next_page : cards.length >= 24;
+            if (hasMoreManga) pnum = page + 1;
             isLoading = false;
             showLoading(false);
             checkAutoLoadManga();
         })
         .catch(function(error) {
-            console.error('Error loading manga:', error);
+            console.error('Error loading manga (Jikan):', error);
             if (!append) {
                 document.getElementById('contentGrid').innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-circle"></i><p>Failed to load manga</p></div>';
             }
@@ -304,82 +277,91 @@ function checkAutoLoadManga() {
     }
 }
 
-// Load manga list from MangaPill (home / new / search pages are server-rendered HTML)
-function loadMangaPillList(tagId, append) {
-    isLoading = true;
-    showLoading(true);
-    
-    var url;
+// Build the Jikan list URL for the current category / keyword / page
+function buildJikanUrl(page) {
+    var url = JIKAN_API;
+    var query = [];
+    var cat = currentCategory;
+
     if (searchKeyword) {
-        url = MANGAPILL_BASE + '/search?q=' + encodeURIComponent(searchKeyword);
-    } else if (tagId === 'new') {
-        url = MANGAPILL_BASE + '/mangas/new';
-    } else {
-        url = MANGAPILL_BASE + '/';
+        return url + '/manga?q=' + encodeURIComponent(searchKeyword) + '&limit=24&page=' + page + '&sfw=true';
     }
-    
-    fetchWithProxy(url)
-        .then(function(data) {
-            var html = new DOMParser().parseFromString(data, 'text/html');
-            
-            // MangaPill cards: an <a class="relative block"> holds the cover img,
-            // a sibling <a href="/manga/{id}/{slug}"> holds the title (div.font-black).
-            // Aggregate both by manga id.
-            var cardMap = {};
-            var cards = [];
-            
-            html.querySelectorAll('a[href^="/manga/"]').forEach(function(a) {
-                var href = a.getAttribute('href') || '';
-                var m = href.match(/^\/manga\/(\d+)\/([^\/?#]+)/);
-                if (!m) return;
-                var key = m[1];
-                if (!cardMap[key]) {
-                    cardMap[key] = {
-                        id: m[1],
-                        href: '../catalogues/mangaplay.html?src=mangapill&mid=' + m[1] + '&slug=' + m[2],
-                        title: '',
-                        coverUrl: '',
-                        status: ''
-                    };
-                    cards.push(cardMap[key]);
+    if (cat === 'top') {
+        url += '/top/manga?limit=24&page=' + page;
+    } else if (cat === 'all' || cat === 'publishing' || cat === 'complete') {
+        url += '/manga?limit=24&page=' + page + '&sfw=true&order_by=score&sort=desc';
+        if (cat === 'publishing') query.push('status=publishing');
+        if (cat === 'complete') query.push('status=complete');
+    } else if (cat.indexOf('genre:') === 0) {
+        url += '/manga?limit=24&page=' + page + '&sfw=true&genres=' + encodeURIComponent(cat.slice(6));
+    } else {
+        url += '/manga?limit=24&page=' + page + '&sfw=true&type=' + encodeURIComponent(cat);
+    }
+    if (query.length) url += '&' + query.join('&');
+    return url;
+}
+
+// Build xkcd issue-number list for a page (xkcd has no list endpoint)
+function xkcdNumbers(page) {
+    var numbers = [];
+    var latest = (typeof xkcdNumbers.latest === 'number') ? xkcdNumbers.latest : 3322;
+    var category = currentCategory;
+
+    if (category === 'classic') {
+        for (var c = 1; c <= 24; c++) numbers.push(c);
+        return numbers;
+    }
+    if (category === 'random') {
+        for (var r = 0; r < 24; r++) numbers.push(1 + Math.floor(Math.random() * latest));
+        return numbers;
+    }
+
+    var start = Math.max(1, latest - (page - 1) * 24);
+    var end = Math.max(1, start - 23);
+    for (var n = start; n >= end; n--) numbers.push(n);
+    return numbers;
+}
+
+// xkcd list: fetch the latest issue once, then N issues in parallel
+function loadXkcdList(append) {
+    fetchJSONWithProxy(XKCD_API + '/info.0.json')
+        .catch(function() { return null; })
+        .then(function(latest) {
+            if (latest && latest.num) xkcdNumbers.latest = latest.num;
+            var numbers = xkcdNumbers(append ? pnum : 1);
+
+            if (searchKeyword) {
+                var match = searchKeyword.match(/^\d+$/);
+                if (match) {
+                    numbers = [parseInt(match[0], 10)];
+                } else {
+                    renderMangas([], false);
+                    showToast('xkcd search accepts an issue number only', 'warning');
+                    hasMoreManga = false;
+                    isLoading = false;
+                    showLoading(false);
+                    return null;
                 }
-                var cardData = cardMap[key];
-                if (!cardData.coverUrl) {
-                    var img = a.querySelector('img');
-                    if (!img) {
-                        // cover img may sit in the parent card container (home featured cards
-                        // nest the /manga/ title link two levels below the card wrapper)
-                        var lvl1 = a.parentElement;
-                        var lvl2 = lvl1 ? lvl1.parentElement : null;
-                        if (lvl1) img = lvl1.querySelector('img[data-src]');
-                        if (!img && lvl2) img = lvl2.querySelector('img[data-src]');
-                    }
-                    if (img) {
-                        cardData.coverUrl = img.getAttribute('data-src') || img.getAttribute('src') || '';
-                    }
-                }
-                if (!cardData.title) {
-                    var titleEl = a.querySelector('.font-black') || a;
-                    var txt = (titleEl.textContent || '').trim();
-                    if (txt) cardData.title = txt;
-                }
-            });
-            
-            cards = cards.filter(function(c) { return c.title; });
-            cards.forEach(function(c) { if (!c.coverUrl) c.coverUrl = '../images/noimage.jpeg'; });
-            
+            }
+
+            return Promise.all(numbers.map(function(num) {
+                return fetchJSONWithProxy(XKCD_API + '/' + num + '/info.0.json').catch(function() { return null; });
+            }));
+        })
+        .then(function(comics) {
+            if (!comics) return;
+            var cards = comics.filter(Boolean).map(xkcdToCard);
             renderMangas(cards, append);
-            
-            // MangaPill list pages are single-page: no infinite scroll
-            hasMoreManga = false;
+            hasMoreManga = !searchKeyword && currentCategory === 'latest' && xkcdNumbers.latest > pnum * 24;
+            if (hasMoreManga) pnum++;
             isLoading = false;
             showLoading(false);
             checkAutoLoadManga();
         })
         .catch(function(error) {
-            console.error('Error loading manga (mangapill):', error);
+            console.error('Error loading manga (xkcd):', error);
             if (!append) {
-                document.getElementById('contentGrid').innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-circle"></i><p>Failed to load manga</p></div>';
+                document.getElementById('contentGrid').innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-circle"></i><p>Failed to load comics</p></div>';
             }
             showToast('Network error occurred', 'error');
             isLoading = false;
@@ -405,37 +387,32 @@ function searchMangas(keyword) {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('=== Manga List Page Loaded (MangaDex API) ===');
-    
-    // Load source options
+    console.log('=== Manga List Page Loaded (public-apis sources) ===');
+
     var sourceSelect = document.getElementById('sourceSelect');
     if (sourceSelect) {
-        var option = document.createElement('option');
-        option.value = 'mangadex';
-        option.textContent = 'MangaDex';
-        sourceSelect.appendChild(option);
-        
-        var option2 = document.createElement('option');
-        option2.value = 'mangapill';
-        option2.textContent = 'MangaPill';
-        sourceSelect.appendChild(option2);
+        Object.keys(MANGA_SOURCES).forEach(function(id) {
+            var option = document.createElement('option');
+            option.value = id;
+            option.textContent = MANGA_SOURCES[id].name;
+            sourceSelect.appendChild(option);
+        });
+        currentSource = sourceSelect.value;
     }
-    
-    // Load initial data
+
     loadTags();
-    
-    // Source change handler
+
     if (sourceSelect) {
         sourceSelect.addEventListener('change', function() {
             currentSource = this.value;
+            currentCategory = MANGA_SOURCES[currentSource].categories[0].id;
             pnum = 1;
-            currentCategory = '';
             searchKeyword = '';
             hasMoreManga = true;
             loadTags();
         });
     }
-    
+
     // Back button
     var backBtn = document.getElementById('backBtn');
     if (backBtn) {

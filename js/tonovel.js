@@ -1,55 +1,79 @@
-// Novel List Page JS - Modern UI Version
+// Novel List Page JS - public-apis sources (Books section)
 // Native JavaScript (No jQuery)
+//
+// Sources from Downloads/public-apis-master/README.md (Books):
+//   Gutendex     https://gutendex.com/             - Project Gutenberg full text
+//   Open Library https://openlibrary.org/dev...   - book metadata + covers
+//   PoetryDB     https://poetrydb.org             - public-domain poems
+//   Bible API    https://bible-api.com/           - Bible passages
+// Royal Road / 和图书 removed. All requests use apiproxy.js helpers.
 
-// CORS proxy + failover now live in ../js/apiproxy.js (fetchWithProxy)
-// CORS proxy + failover now live in ../js/apiproxy.js (fetchWithProxy)
+var GUTENDEX_API = 'https://gutendex.com/books';
+var OPENLIBRARY_API = 'https://openlibrary.org/search.json';
+var POETRYDB_API = 'https://poetrydb.org';
+var BIBLE_API = 'https://bible-api.com';
 
-// Novel source registry: each source defines its own categories, list parser and search builder.
-// To add a source: register it here, add a parser branch in loadNovels(), a branch in
-// searchNovels(), and a parser in js/novel.js (reader side, dispatched by the ?src= param).
+// Novel source registry: fixed browse filters per source.
 var NOVEL_SOURCES = {
-    royalroad: {
-        name: 'Royal Road',
-        origin: 'https://www.royalroad.com',
+    gutendex: {
+        name: 'Gutendex (Gutenberg)',
         categories: [
-            { name: 'All', url: 'https://www.royalroad.com/fictions/best-rated' },
-            { name: 'Best Rated', url: 'https://www.royalroad.com/fictions/best-rated' },
-            { name: 'Trending', url: 'https://www.royalroad.com/fictions/trending' },
-            { name: 'Ongoing', url: 'https://www.royalroad.com/fictions/ongoing' },
-            { name: 'Completed', url: 'https://www.royalroad.com/fictions/completed' },
-            { name: 'Popular This Week', url: 'https://www.royalroad.com/fictions/weekly-popular' },
-            { name: 'Latest Updates', url: 'https://www.royalroad.com/fictions/latest-updates' },
-            { name: 'New Releases', url: 'https://www.royalroad.com/fictions/new' },
-            { name: 'Rising Stars', url: 'https://www.royalroad.com/fictions/rising-stars' }
+            { id: 'popular', name: 'Popular Books' },
+            { id: 'fiction', name: 'Fiction' },
+            { id: 'romance', name: 'Romance' },
+            { id: 'adventure', name: 'Adventure' },
+            { id: 'children', name: "Children's" },
+            { id: 'history', name: 'History' },
+            { id: 'poetry', name: 'Poetry Books' },
+            { id: 'scifi', name: 'Science Fiction' },
+            { id: 'newest', name: 'Newest' }
         ]
     },
-    hetushu: {
-        name: '和图书 (中文)',
-        origin: 'https://www.hetushu.com',
+    openlibrary: {
+        name: 'Open Library',
         categories: [
-            { name: '全部小说', url: 'https://www.hetushu.com/book/index.php' },
-            { name: '完本', url: 'https://www.hetushu.com/book/index.php?state=2' },
-            { name: '连载', url: 'https://www.hetushu.com/book/index.php?state=1' }
+            { id: 'classic', name: 'Classics' },
+            { id: 'fiction', name: 'Fiction' },
+            { id: 'fantasy', name: 'Fantasy' },
+            { id: 'mystery', name: 'Mystery' },
+            { id: 'romance', name: 'Romance' },
+            { id: 'scifi', name: 'Science Fiction' },
+            { id: 'history', name: 'History' },
+            { id: 'new', name: 'Recently Added' }
+        ]
+    },
+    poetrydb: {
+        name: 'PoetryDB',
+        categories: [
+            { id: 'winter', name: 'Winter Poems' },
+            { id: 'love', name: 'Love Poems' },
+            { id: 'nature', name: 'Nature Poems' },
+            { id: 'sonnet', name: 'Sonnets' },
+            { id: 'dickinson', name: 'Emily Dickinson' },
+            { id: 'shakespeare', name: 'Shakespeare' }
+        ]
+    },
+    bible: {
+        name: 'Bible API',
+        categories: [
+            { id: 'john', name: 'John' },
+            { id: 'genesis', name: 'Genesis' },
+            { id: 'psalms', name: 'Psalms' },
+            { id: 'proverbs', name: 'Proverbs' },
+            { id: 'matthew', name: 'Matthew' },
+            { id: 'romans', name: 'Romans' }
         ]
     }
 };
 
 // Global variables
 var pnum = 1;
-var currentCategory = '';
-var currentSource = '';   // source id: 'royalroad' | 'hetushu'
-var currentListUrl = '';   // Base URL of the currently rendered list (category or search)
-var hasMoreNovels = true;  // Stop paginating once a page returns no novels
-var lastFirstNovelUrl = '';  // dedup guard for sources whose last page repeats content instead of being empty
-var isLoading = false;
-
-
-// Global variables
-var pnum = 1;
-var currentCategory = '';
-var currentSource = '';
-var currentListUrl = '';   // Base URL of the currently rendered list (category or search)
-var hasMoreNovels = true;  // Stop paginating once a page returns no novels
+var currentCategory = 'popular';
+var currentSource = 'gutendex';
+var currentListUrl = '';
+var hasMoreNovels = true;
+var lastFirstNovelUrl = '';
+var searchKeyword = '';
 var isLoading = false;
 
 // Toast notification
@@ -123,30 +147,34 @@ function toggleSidebar() {
     }
 }
 
-// Render novel cards
+// Render novel cards from normalized [{ title, url, src, image, author }]
 function renderNovels(novels, append = false) {
     var grid = document.getElementById('contentGrid');
-    
+
     if (!append) {
         grid.innerHTML = '';
         grid.classList.add('has-results');
     }
-    
+
+    if (novels.length === 0 && !append) {
+        grid.innerHTML = '<div class="empty-state"><i class="fas fa-book"></i><p>No books found</p></div>';
+        return;
+    }
+
     novels.forEach(function(novel) {
         var card = document.createElement('a');
-        var playSrc = novel.url.indexOf('hetushu.com') > -1 ? 'hetushu' : 'royalroad';
-        card.href = '../catalogues/novelplay.html?web=' + encodeURIComponent(novel.url) + '&src=' + playSrc;
+        card.href = '../catalogues/novelplay.html?web=' + encodeURIComponent(novel.url) + '&src=' + encodeURIComponent(novel.src);
         card.className = 'card-item';
         card.innerHTML = `
-            <img class="card-image" src="${novel.image}" alt="${novel.title}" onerror="this.src='../images/noimage.jpeg'">
+            <img class="card-image" src="${escapeHtml(novel.image || '../images/noimage.jpeg')}" alt="${escapeHtml(novel.title)}" onerror="this.src='../images/noimage.jpeg'">
             <div class="card-overlay"></div>
             <div class="card-play-icon">
                 <i class="fas fa-book-open"></i>
             </div>
             <div class="card-info">
-                <div class="card-type">Novel</div>
-                <h3 class="card-title">${novel.title}</h3>
-                <p class="card-author">${novel.author ? '[' + novel.author + ']' : ''}</p>
+                <div class="card-type">Book</div>
+                <h3 class="card-title">${escapeHtml(novel.title)}</h3>
+                <p class="card-author">${novel.author ? '[' + escapeHtml(novel.author) + ']' : ''}</p>
             </div>
         `;
         grid.appendChild(card);
@@ -157,19 +185,19 @@ function renderNovels(novels, append = false) {
 function renderCategories(categories) {
     var list = document.getElementById('categoryList');
     list.innerHTML = '';
-    
+
     categories.forEach(function(cat, index) {
         var item = document.createElement('div');
         item.className = 'category-item' + (index === 0 ? ' active' : '');
-        item.dataset.url = cat.url;
+        item.dataset.id = cat.id;
         item.dataset.name = cat.name;
         item.innerHTML = `
             <i class="fas fa-bookmark"></i>
-            <span>${cat.name}</span>
+            <span>${escapeHtml(cat.name)}</span>
         `;
         list.appendChild(item);
     });
-    
+
     // Bind click events
     document.querySelectorAll('.category-item').forEach(function(item) {
         item.addEventListener('click', function() {
@@ -177,15 +205,15 @@ function renderCategories(categories) {
                 el.classList.remove('active');
             });
             this.classList.add('active');
-            
-            var url = this.dataset.url;
-            currentCategory = url;
-            currentListUrl = url;
+
+            currentCategory = this.dataset.id;
+            currentListUrl = '';
+            searchKeyword = '';
             pnum = 1;
             hasMoreNovels = true;
             lastFirstNovelUrl = '';
-            loadNovels(url, false);
-            
+            loadNovels('', false);
+
             // Hide sidebar on mobile
             if (window.innerWidth <= 768) {
                 document.getElementById('sidebar').classList.remove('show-mobile');
@@ -194,105 +222,115 @@ function renderCategories(categories) {
     });
 }
 
+// Build the API URL for the current source/category/keyword/page
+function buildListUrl(page) {
+    var cat = currentCategory;
+    var q = searchKeyword;
+
+    if (currentSource === 'gutendex') {
+        var url = GUTENDEX_API + '?languages=en&mime_type=text%2F&page=' + page;
+        if (q) url += '&search=' + encodeURIComponent(q);
+        else if (cat === 'newest') url += '&sort=descending';
+        else if (cat !== 'popular') {
+            var topics = { fiction: 'fiction', romance: 'love stories', adventure: 'adventure', children: 'children', history: 'history', poetry: 'poetry', scifi: 'science fiction' };
+            url += '&topic=' + encodeURIComponent(topics[cat] || cat);
+        }
+        return url;
+    }
+
+    if (currentSource === 'openlibrary') {
+        var subjects = { classic: 'classics', fiction: 'fiction', fantasy: 'fantasy', mystery: 'mystery', romance: 'romance', scifi: 'science fiction', history: 'history' };
+        var query = q || (cat === 'new' ? '*:*' : 'subject:' + (subjects[cat] || cat));
+        return OPENLIBRARY_API + '?q=' + encodeURIComponent(query) +
+            '&fields=key,title,author_name,cover_i,first_publish_year,subject&limit=24&page=' + page +
+            (cat === 'new' && !q ? '&sort=new' : '');
+    }
+
+    if (currentSource === 'poetrydb') {
+        var terms = { winter: 'Winter', love: 'Love', nature: 'Nature', sonnet: 'Sonnet', dickinson: 'Emily Dickinson', shakespeare: 'William Shakespeare' };
+        var term = q || terms[cat] || 'Love';
+        var field = (cat === 'dickinson' || cat === 'shakespeare') && !q ? 'author' : 'title';
+        return POETRYDB_API + '/' + field + '/' + encodeURIComponent(term);
+    }
+
+    // Bible API: passages are fixed per category, search accepts a reference
+    var books = { john: 'John', genesis: 'Genesis', psalms: 'Psalms', proverbs: 'Proverbs', matthew: 'Matthew', romans: 'Romans' };
+    var ref = q || (books[cat] || 'John') + ' 1';
+    return BIBLE_API + '/' + encodeURIComponent(ref) + '?translation=web';
+}
+
+// Normalize Gutendex book object
+function gutendexToNovel(book) {
+    var formats = book.formats || {};
+    var textUrl = formats['text/plain; charset=utf-8'] || formats['text/plain; charset=us-ascii'] || formats['text/plain'] || formats['text/html'] || '';
+    if (!textUrl) return null;
+    var cover = formats['image/jpeg'] || '';
+    var authors = (book.authors || []).map(function(a) { return a.name; }).join(', ');
+    return { title: book.title || 'Untitled', url: GUTENDEX_API + '/' + book.id, src: 'gutendex', image: cover, author: authors };
+}
+
+// Normalize Open Library search doc
+function openlibraryToNovel(doc) {
+    var key = doc.key || '';
+    if (!key) return null;
+    var cover = doc.cover_i ? 'https://covers.openlibrary.org/b/id/' + doc.cover_i + '-M.jpg' : '';
+    return { title: doc.title || 'Untitled', url: 'https://openlibrary.org' + key + '.json', src: 'openlibrary', image: cover, author: (doc.author_name || []).join(', ') };
+}
+
+// Normalize PoetryDB poem (encode its title/author into the reader URL)
+function poetrydbToNovel(poem) {
+    var title = poem.title || 'Untitled Poem';
+    var author = poem.author || '';
+    var url = POETRYDB_API + '/title/' + encodeURIComponent(title) + '?author=' + encodeURIComponent(author);
+    return { title: title, url: url, src: 'poetrydb', image: '', author: author };
+}
+
+// Bible API: one passage per card; chapters are generated in the reader
+function bibleToNovel(data, url) {
+    return { title: data.reference || 'Bible Passage', url: url, src: 'bible', image: '', author: data.translation_name || 'Bible API' };
+}
+
 // Load novels from source
-function loadNovels(url, append = true) {
+function loadNovels(ignoredUrl, append = false) {
     if (isLoading) return;
     isLoading = true;
     showLoading(true);
-    
-    fetchWithProxy(url)
+
+    var page = append ? pnum : 1;
+    var url = buildListUrl(page);
+    currentListUrl = url;
+
+    fetchJSONWithProxy(url)
         .then(function(data) {
-            var parser = new DOMParser();
-            var html = parser.parseFromString(data, 'text/html');
             var novels = [];
-            if (currentSource === 'royalroad') {
-                // Royal Road
-                html.querySelectorAll('.fiction-list-item').forEach(function(item) {
-                    var titleEl = item.querySelector('.fiction-title a');
-                    var title = titleEl ? titleEl.textContent.trim() : '';
-                    var novelUrl = titleEl ? 'https://www.royalroad.com' + titleEl.getAttribute('href') : '';
-                    var imageEl = item.querySelector('img');
-                    var image = imageEl ? imageEl.getAttribute('src') : '';
-                    var authorEl = item.querySelector('.author a');
-                    var author = authorEl ? authorEl.textContent.trim() : '';
-                    
-                    if (title && novelUrl) {
-                        novels.push({
-                            title: title,
-                            url: novelUrl,
-                            image: image || '../images/noimage.jpeg',
-                            author: author
-                        });
-                    }
-                });
-            } else if (currentSource === 'hetushu') {
-                // 和图书: list/library/search cards are blocks containing a /book/{id}/index.html link
-                var cardMap = {};
-                html.querySelectorAll('a[href*="/book/"]').forEach(function(a) {
-                    var href = a.getAttribute('href') || '';
-                    var m = href.match(/\/book\/(\d+)\//);
-                    if (!m) return;
-                    var key = m[1];
-                    if (!cardMap[key]) {
-                        cardMap[key] = {
-                            title: '',
-                            url: 'https://www.hetushu.com/book/' + key + '/index.html',
-                            image: '',
-                            author: ''
-                        };
-                    }
-                    var card = cardMap[key];
-                    if (!card.image) {
-                        var img = a.querySelector('img');
-                        if (img) {
-                            var imgSrc = img.getAttribute('src') || '';
-                            if (imgSrc && imgSrc.charAt(0) === '/') imgSrc = 'https://www.hetushu.com' + imgSrc;
-                            card.image = imgSrc;
-                        }
-                    }
-                    if (!card.title) {
-                        var t = a.getAttribute('title') || a.textContent.trim();
-                        if (t) card.title = t;
-                    }
-                });
-                // Second pass: author name from surrounding <li> containers
-                html.querySelectorAll('li').forEach(function(li) {
-                    var a = li.querySelector('a[href*="/book/"]');
-                    if (!a) return;
-                    var m = (a.getAttribute('href') || '').match(/\/book\/(\d+)\//);
-                    if (m && cardMap[m[1]] && !cardMap[m[1]].author) {
-                        var au = li.querySelector('.author');
-                        if (au) cardMap[m[1]].author = au.textContent.replace(/^作者[:：]?/, '').trim();
-                    }
-                });
-                Object.keys(cardMap).forEach(function(key) {
-                    var card = cardMap[key];
-                    if (card.title) {
-                        if (!card.image) card.image = '../images/noimage.jpeg';
-                        novels.push(card);
-                    }
-                });
+            var hasMore = false;
+
+            if (currentSource === 'gutendex') {
+                novels = ((data && data.results) || []).map(gutendexToNovel).filter(Boolean);
+                hasMore = !!(data && data.next);
+            } else if (currentSource === 'openlibrary') {
+                novels = ((data && data.docs) || []).map(openlibraryToNovel).filter(Boolean);
+                var numFound = (data && (data.numFound || data.num_found)) || 0;
+                hasMore = page * 24 < numFound;
+            } else if (currentSource === 'poetrydb') {
+                var poems = Array.isArray(data) ? data : [];
+                novels = poems.slice(0, 24).map(poetrydbToNovel).filter(Boolean);
+                hasMore = false;
+            } else if (currentSource === 'bible') {
+                novels = (data && data.verses) ? [bibleToNovel(data, url)] : [];
+                hasMore = false;
             }
-            
+
             renderNovels(novels, append);
-            
-            // An empty page means we reached the end of the list.
-            // hetushu repeats page 1 content on out-of-range pages instead of returning an
-            // empty page, so stop paginating when the first novel matches the previous page.
-            if (novels.length > 0 && novels[0].url === lastFirstNovelUrl) {
-                hasMoreNovels = false;
-            } else {
-                hasMoreNovels = novels.length > 0;
-            }
-            if (novels.length > 0) {
-                lastFirstNovelUrl = novels[0].url;
-            }
-            
+            hasMoreNovels = hasMore && novels.length > 0;
+            if (hasMoreNovels) pnum = page + 1;
             isLoading = false;
             showLoading(false);
         })
         .catch(function(error) {
-            showToast('Failed to load novels', 'error');
+            console.error('Failed to load novels (' + currentSource + '):', error);
+            if (!append) renderNovels([], false);
+            showToast('Failed to load books', 'error');
             isLoading = false;
             showLoading(false);
         });
@@ -301,44 +339,29 @@ function loadNovels(url, append = true) {
 // Load categories from source (all categories are predefined per source, no fetch needed)
 function loadCategories() {
     document.getElementById('categoryList').innerHTML = '<div class="loading-state"><i class="fas fa-spinner"></i><span>Loading...</span></div>';
-    
     var source = NOVEL_SOURCES[currentSource];
     var categories = source ? source.categories : [];
-    
     renderCategories(categories);
-    
-    // Load first category
+
     if (categories.length > 0) {
-        currentCategory = categories[0].url;
-        currentListUrl = categories[0].url;
+        currentCategory = categories[0].id;
+        currentListUrl = '';
+        searchKeyword = '';
         pnum = 1;
         hasMoreNovels = true;
         lastFirstNovelUrl = '';
-        loadNovels(categories[0].url, false);
+        loadNovels('', false);
     }
 }
 
 // Search novels
 function searchNovels(keyword) {
     if (!keyword) return;
-    
-    var searchUrl = '';
-    
-    if (currentSource === 'royalroad') {
-        searchUrl = 'https://www.royalroad.com/fictions/search?title=' + encodeURIComponent(keyword);
-    } else if (currentSource === 'hetushu') {
-        searchUrl = 'https://www.hetushu.com/search/?keyword=' + encodeURIComponent(keyword);
-    }
-    
-    if (searchUrl) {
-        lastFirstNovelUrl = '';
-        currentListUrl = searchUrl;
-        pnum = 1;
-        hasMoreNovels = true;
-        loadNovels(searchUrl, false);
-    } else {
-        showToast('Search not available for this source', 'warning');
-    }
+    searchKeyword = keyword;
+    currentListUrl = '';
+    pnum = 1;
+    hasMoreNovels = true;
+    loadNovels('', false);
 }
 
 // Initialize
@@ -354,14 +377,12 @@ document.addEventListener('DOMContentLoaded', function() {
             option.textContent = NOVEL_SOURCES[id].name;
             sourceSelect.appendChild(option);
         });
-        
-        // Set initial source
         currentSource = sourceSelect.value;
     }
-    
+
     // Load initial data
     loadCategories();
-    
+
     // Source change handler
     if (sourceSelect) {
         sourceSelect.addEventListener('change', function() {
@@ -419,21 +440,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Scroll to load more: paginate the current list with ?page=N
-    // (Royal Road supports ?page=N on both category lists and search results;
-    //  use & as separator when the base URL already has a query string)
+    // Scroll to load more: request the next page of the current API list
     var contentArea = document.getElementById('contentArea');
     if (contentArea) {
         contentArea.addEventListener('scroll', function() {
             var scrollTop = this.scrollTop;
             var scrollHeight = this.scrollHeight;
             var height = this.offsetHeight;
-            
+
             if (scrollTop + height >= scrollHeight - 100) {
-                if (!isLoading && hasMoreNovels && currentListUrl) {
-                    pnum++;
-                    var separator = currentListUrl.indexOf('?') > -1 ? '&' : '?';
-                    loadNovels(currentListUrl + separator + 'page=' + pnum, true);
+                if (!isLoading && hasMoreNovels) {
+                    loadNovels('', true);
                 }
             }
         });

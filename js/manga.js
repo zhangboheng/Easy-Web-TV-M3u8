@@ -1,13 +1,14 @@
 /**
- * Manga Reader - MangaDex API Integration
- * Using MangaDex API (free, no key required)
+ * Manga Reader - public-apis sources (Jikan / xkcd)
  * Native JavaScript (No jQuery)
+ *
+ * Jikan provides manga metadata and official pictures (no page scans); the
+ * reader presents its picture gallery as chapters. xkcd provides actual comic
+ * images, one issue per chapter. MangaDex / MangaPill readers were removed.
  */
 
-// API Base URL
-const MANGADEX_API = 'https://api.mangadex.org';
-const MANGADEX_COVER = 'https://uploads.mangadex.org/covers';
-// CORS proxy + failover now live in ../js/apiproxy.js (fetchJSONWithProxy)
+const JIKAN_API = 'https://api.jikan.moe/v4';
+const XKCD_API = 'https://xkcd.com';
 
 // State
 let currentManga = null;
@@ -22,10 +23,8 @@ let isScrollMode = true;
 function getReaderParams() {
     const params = new URLSearchParams(window.location.search);
     return {
-        src: params.get('src') || 'mangadex',
-        mangaId: params.get('id') || params.get('mangaId'),
-        mid: params.get('mid'),
-        slug: params.get('slug'),
+        src: params.get('src') || 'jikan',
+        id: params.get('id') || params.get('mangaId'),
         chapterId: params.get('chapter')
     };
 }
@@ -33,15 +32,15 @@ function getReaderParams() {
 // DOM Ready
 document.addEventListener('DOMContentLoaded', function() {
     const p = getReaderParams();
-    
-    if (p.src === 'mangapill' && p.mid && p.slug) {
-        loadMangaPill(p.mid, p.slug, p.chapterId);
-    } else if (p.mangaId) {
-        loadManga(p.mangaId, p.chapterId);
+
+    if (p.src === 'xkcd' && p.id) {
+        loadXkcd(p.id, p.chapterId);
+    } else if (p.id) {
+        loadJikan(p.id, p.chapterId);
     } else {
         showError('No manga specified');
     }
-    
+
     setupEventListeners();
 });
 
@@ -179,126 +178,121 @@ function setupEventListeners() {
     });
 }
 
-// Load Manga
-async function loadManga(mangaId, chapterId) {
+// Load Jikan manga: metadata + official pictures (Jikan does not expose scan pages).
+// Each picture becomes a one-image "chapter" so the existing gallery UI works.
+async function loadJikan(mangaId, chapterId) {
     try {
         showLoading('Loading manga...');
-        
-        // Get manga info
-        const mangaData = await fetchJSONWithProxy(`${MANGADEX_API}/manga/${mangaId}`);
-        
-        if (mangaData.result === 'ok') {
-            currentManga = mangaData.data;
-            mangaInfo = currentManga;
-            updateMangaInfo();
-        }
-        
-        // Get chapters
-        const chaptersData = await fetchJSONWithProxy(`${MANGADEX_API}/manga/${mangaId}/feed?translatedLanguage[]=en&order[chapter]=desc&limit=500`);
-        
-        if (chaptersData.result === 'ok') {
-            chapters = chaptersData.data;
-            displayChapters();
-            
-            // Load first chapter or specified chapter
-            if (chapterId) {
-                await loadChapter(chapterId);
-            } else if (chapters.length > 0) {
-                await loadChapter(chapters[0].id);
-            }
-        }
-        
-    } catch (error) {
-        console.error('Error loading manga:', error);
-        showError('Failed to load manga: ' + error.message);
-    }
-}
 
-// Load Manga from MangaPill (server-rendered HTML)
-async function loadMangaPill(mid, slug, chapterId) {
-    try {
-        showLoading('Loading manga...');
-        
-        const data = await fetchWithProxy(`https://mangapill.com/manga/${mid}/${slug}`);
-        const html = new DOMParser().parseFromString(data, 'text/html');
-        
-        let title = (html.querySelector('meta[property="og:title"]') || {}).content ||
-                    (html.querySelector('h1') || {}).textContent ||
-                    'Unknown Title';
-        title = String(title).replace(/\s*[-|]\s*MangaPill.*$/i, '').trim();
-        
-        const cover = (html.querySelector('meta[property="og:image"]') || {}).content || '';
-        const desc = String((html.querySelector('meta[property="og:description"]') || {}).content || 'No description available.').trim();
-        
-        document.getElementById('mangaTitle').textContent = title;
-        document.getElementById('mangaInfoTitle').textContent = title;
-        if (cover) document.getElementById('mangaCover').src = cover;
-        document.getElementById('mangaTags').innerHTML = '<span class="tag">MangaPill</span>';
-        document.getElementById('mangaInfoContent').innerHTML = `<p>${escapeHtml(desc)}</p>`;
-        document.title = title + ' - Manga Reader';
-        
-        // Chapters: /chapters/{mid}-{cid}/{slug}-chapter-{num}
+        const [fullData, picturesData] = await Promise.all([
+            fetchJSONWithProxy(`${JIKAN_API}/manga/${encodeURIComponent(mangaId)}/full`),
+            fetchJSONWithProxy(`${JIKAN_API}/manga/${encodeURIComponent(mangaId)}/pictures`).catch(() => ({ data: [] }))
+        ]);
+
+        if (!fullData || !fullData.data) throw new Error('Manga not found');
+        currentManga = fullData.data;
+        mangaInfo = currentManga;
+        updateMangaInfo();
+
+        const jpg = (mangaInfo.images && mangaInfo.images.jpg) || {};
+        const cover = jpg.large_image_url || jpg.image_url || '';
+        const pictures = (picturesData && picturesData.data) || [];
         chapters = [];
-        const seen = new Set();
-        html.querySelectorAll('a[href^="/chapters/"]').forEach(function(a) {
-            const href = a.getAttribute('href') || '';
-            if (href === '/chapters' || seen.has(href)) return;
-            const m = href.match(/chapter-([0-9.]+)/);
-            seen.add(href);
+        var pictureIndex = 0;
+
+        if (cover) {
             chapters.push({
-                id: href,
-                attributes: { chapter: m ? m[1] : '?', title: '' }
+                id: 'cover',
+                attributes: { chapter: 'Cover', title: 'Official Cover' }
             });
-        });
-        
-        displayChapters();
-        
-        // Load first chapter or specified chapter
-        if (chapterId) {
-            await loadChapter(chapterId);
-        } else if (chapters.length > 0) {
-            await loadChapter(chapters[0].id);
         }
+        pictures.forEach(function(pic) {
+            const picJpg = (pic && pic.jpg) || {};
+            const url = picJpg.large_image_url || picJpg.image_url || '';
+            if (url) {
+                chapters.push({
+                    id: 'pic' + pictureIndex,
+                    pageUrl: url,
+                    attributes: { chapter: 'Image ' + (pictureIndex + 1), title: 'Official Art' }
+                });
+                pictureIndex++;
+            }
+        });
+
+        if (chapters.length === 0) throw new Error('No images available for this manga');
+
+        displayChapters();
+        const first = chapterId || chapters[0].id;
+        await loadChapter(first);
     } catch (error) {
-        console.error('Error loading manga (mangapill):', error);
+        console.error('Error loading manga (Jikan):', error);
         showError('Failed to load manga: ' + error.message);
     }
 }
 
-// Update Manga Info
+// Load xkcd: one issue, plus previous/next issues as "chapters".
+async function loadXkcd(comicId, chapterId) {
+    try {
+        showLoading('Loading comic...');
+        const num = parseInt(comicId, 10);
+        if (!num || num < 1) throw new Error('Invalid comic number');
+
+        const comic = await fetchJSONWithProxy(`${XKCD_API}/${num}/info.0.json`);
+        if (!comic || !comic.img) throw new Error('Comic not found');
+
+        currentManga = comic;
+        mangaInfo = comic;
+        document.getElementById('mangaTitle').textContent = '#' + comic.num + ' ' + (comic.safe_title || comic.title);
+        document.getElementById('mangaInfoTitle').textContent = comic.safe_title || comic.title;
+        document.getElementById('mangaCover').src = comic.img;
+        document.getElementById('mangaTags').innerHTML = '<span class="tag">xkcd</span><span class="tag">' + escapeHtml(comic.year + '-' + comic.month + '-' + comic.day) + '</span>';
+        document.getElementById('mangaInfoContent').innerHTML = '<p>' + escapeHtml(comic.alt || '') + '</p><p>' + escapeHtml(comic.transcript || '') + '</p>';
+        document.title = (comic.title || 'xkcd') + ' - Manga Reader';
+
+        chapters = [];
+        const latest = await fetchJSONWithProxy(`${XKCD_API}/info.0.json`).catch(() => ({ num: num }));
+        const max = latest && latest.num ? latest.num : num;
+        for (var n = Math.min(max, num + 3); n >= Math.max(1, num - 3); n--) {
+            chapters.push({ id: String(n), attributes: { chapter: n, title: 'Issue ' + n } });
+        }
+
+        displayChapters();
+        await loadChapter(chapterId || String(num));
+    } catch (error) {
+        console.error('Error loading manga (xkcd):', error);
+        showError('Failed to load comic: ' + error.message);
+    }
+}
+
+// Update Manga Info (Jikan full entry)
 function updateMangaInfo() {
     if (!mangaInfo) return;
-    
-    const title = mangaInfo.attributes.title.en || 
-                  Object.values(mangaInfo.attributes.title)[0] || 
-                  'Unknown Title';
-    
+
+    const title = mangaInfo.title_english || mangaInfo.title || 'Unknown Title';
     document.getElementById('mangaTitle').textContent = title;
     document.getElementById('mangaInfoTitle').textContent = title;
-    
-    // Get cover
-    const coverArt = mangaInfo.relationships.find(r => r.type === 'cover_art');
-    if (coverArt) {
-        const coverUrl = `${MANGADEX_COVER}/${mangaInfo.id}/${coverArt.attributes?.fileName || 'cover.jpg'}`;
-        document.getElementById('mangaCover').src = coverUrl;
-    }
-    
-    // Get tags
-    const tags = mangaInfo.attributes.tags
-        .filter(t => t.attributes.group === 'genre')
-        .map(t => t.attributes.name.en)
+
+    const jpg = (mangaInfo.images && mangaInfo.images.jpg) || {};
+    const coverUrl = jpg.large_image_url || jpg.image_url || '';
+    if (coverUrl) document.getElementById('mangaCover').src = coverUrl;
+
+    const tags = (mangaInfo.genres || []).map(function(g) { return g.name; })
+        .concat((mangaInfo.themes || []).map(function(g) { return g.name; }))
         .slice(0, 5);
-    
-    if (tags.length > 0) {
-        document.getElementById('mangaTags').innerHTML = tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('');
+    document.getElementById('mangaTags').innerHTML = tags.length
+        ? tags.map(function(t) { return '<span class="tag">' + escapeHtml(t) + '</span>'; }).join('')
+        : '<span class="tag">Jikan</span>';
+
+    const parts = [mangaInfo.synopsis || 'No description available.'];
+    if (mangaInfo.status) parts.push('Status: ' + mangaInfo.status);
+    if (mangaInfo.chapters) parts.push('Chapters: ' + mangaInfo.chapters);
+    if (mangaInfo.score) parts.push('Score: ' + mangaInfo.score);
+    let html = parts.map(function(p) { return '<p>' + escapeHtml(p) + '</p>'; }).join('');
+    if (mangaInfo.url) {
+        html += '<p><a href="' + escapeHtml(mangaInfo.url) + '" target="_blank" rel="noopener">View on MyAnimeList</a></p>';
     }
-    
-    // Get description
-    const description = mangaInfo.attributes.description.en || 
-                        Object.values(mangaInfo.attributes.description)[0] || 
-                        'No description available.';
-    
-    document.getElementById('mangaInfoContent').innerHTML = `<p>${escapeHtml(description)}</p>`;
+    document.getElementById('mangaInfoContent').innerHTML = html;
+    document.title = title + ' - Manga Reader';
 }
 
 // Display Chapters
@@ -342,76 +336,45 @@ function displayChapters() {
     });
 }
 
-// Load Chapter
+// Load Chapter (one official Jikan image or one xkcd issue)
 async function loadChapter(chapterId) {
     try {
         currentChapter = chapterId;
-        
-        // Update active state
+
         document.querySelectorAll('.chapter-item').forEach(function(item) {
             item.classList.remove('active');
         });
         const activeItem = document.querySelector(`.chapter-item[data-id="${chapterId}"]`);
-        if (activeItem) {
-            activeItem.classList.add('active');
-        }
-        
+        if (activeItem) activeItem.classList.add('active');
+
         showLoading('Loading chapter pages...');
-        
-        // MangaPill: chapter pages are server-rendered HTML with img.js-page[data-src]
-        if (getReaderParams().src === 'mangapill') {
-            const pageData = await fetchWithProxy('https://mangapill.com' + chapterId);
-            const pageHtml = new DOMParser().parseFromString(pageData, 'text/html');
-            
-            let imgEls = Array.from(pageHtml.querySelectorAll('img.js-page'));
-            if (imgEls.length === 0) {
-                imgEls = Array.from(pageHtml.querySelectorAll('img[data-src]')).filter(function(img) {
-                    const u = img.getAttribute('data-src') || '';
-                    return u.indexOf('/mangap/') > -1;
-                });
-            }
-            currentPages = imgEls.map(function(img) {
-                return img.getAttribute('data-src') || img.getAttribute('src');
-            }).filter(Boolean);
+        const src = getReaderParams().src;
+
+        if (src === 'xkcd') {
+            const num = parseInt(chapterId, 10);
+            const comic = await fetchJSONWithProxy(`${XKCD_API}/${num}/info.0.json`);
+            if (!comic || !comic.img) throw new Error('Comic not found');
+            currentPages = [comic.img];
             currentPageIndex = 0;
-            
-            const chapterEntry = chapters.find(c => c.id === chapterId);
-            if (chapterEntry) {
-                const chapterNum = chapterEntry.attributes.chapter || '?';
-                const chapterTitle = chapterEntry.attributes.title || '';
-                document.getElementById('currentChapter').textContent = `Ch. ${chapterNum}: ${chapterTitle}`;
-            }
-            
-            displayPages();
-            updateNavigation();
-            return;
-        }
-        
-        // Get chapter pages (MangaDex)
-        const data = await fetchJSONWithProxy(`${MANGADEX_API}/at-home/server/${chapterId}`);
-        
-        if (data.result === 'ok') {
-            const baseUrl = data.baseUrl;
-            const chapterHash = data.chapter.hash;
-            const pages = data.chapter.data;
-            
-            currentPages = pages.map(page => `${baseUrl}/data/${chapterHash}/${page}`);
-            currentPageIndex = 0;
-            
-            // Update chapter title
+            document.getElementById('currentChapter').textContent = '#' + comic.num + ' ' + (comic.safe_title || comic.title);
+        } else if (src === 'jikan') {
             const chapter = chapters.find(c => c.id === chapterId);
-            if (chapter) {
-                const chapterNum = chapter.attributes.chapter || '?';
-                const title = chapter.attributes.title || '';
-                document.getElementById('currentChapter').textContent = `Ch. ${chapterNum}: ${title}`;
+            if (!chapter) throw new Error('Chapter not found');
+            if (chapterId === 'cover') {
+                const jpg = (mangaInfo.images && mangaInfo.images.jpg) || {};
+                currentPages = [jpg.large_image_url || jpg.image_url].filter(Boolean);
+            } else {
+                currentPages = [chapter.pageUrl].filter(Boolean);
             }
-            
-            displayPages();
-            updateNavigation();
+            currentPageIndex = 0;
+            document.getElementById('currentChapter').textContent = 'Ch. ' + chapter.attributes.chapter + ': ' + chapter.attributes.title;
         } else {
-            throw new Error('Failed to load chapter');
+            throw new Error('Unsupported manga source');
         }
-        
+
+        if (currentPages.length === 0) throw new Error('No pages available');
+        displayPages();
+        updateNavigation();
     } catch (error) {
         console.error('Error loading chapter:', error);
         showError('Failed to load chapter: ' + error.message);
