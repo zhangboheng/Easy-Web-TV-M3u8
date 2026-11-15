@@ -213,6 +213,22 @@ var games = [
         url: '../routes/emulatorjs.html?core=mednafen_pce'
     },
     {
+        id: 39,
+        name: 'WonderSwan Emulator',
+        platform: 'WS',
+        category: 'emulator',
+        image: '../images/wonderswan.svg',
+        url: '../routes/emulatorjs.html?core=mednafen_wswan'
+    },
+    {
+        id: 40,
+        name: 'Neo Geo Pocket Emulator',
+        platform: 'NGP',
+        category: 'emulator',
+        image: '../images/ngp.svg',
+        url: '../routes/emulatorjs.html?core=mednafen_ngp'
+    },
+    {
         id: 9,
         name: 'N64 Emulator',
         platform: 'N64',

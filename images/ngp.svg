@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <rect x="40" y="12" width="120" height="96" rx="10" fill="#37414b" stroke="#22282e" stroke-width="2"/>
+  <rect x="52" y="30" width="96" height="42" rx="3" fill="#c9d2d8" stroke="#22282e" stroke-width="1.5"/>
+  <text x="100" y="57" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#37414b" text-anchor="middle">NEO GEO</text>
+  <circle cx="66" cy="88" r="10" fill="#e04f3f"/>
+  <circle cx="134" cy="88" r="10" fill="#e04f3f"/>
+  <rect x="84" y="82" width="32" height="9" rx="4" fill="#22282e"/>
+  <text x="100" y="23" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#e04f3f" text-anchor="middle">POCKET</text>
+</svg>

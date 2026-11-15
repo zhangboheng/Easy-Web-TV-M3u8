@@ -1,0 +1,1046 @@
+{
+ "platform": "wonderswan",
+ "core": "mednafen_wswan",
+ "games": [
+  {
+   "name": "Alchemist Marie & Elie - Futari no Atelier (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Alchemist%20Marie%20%26%20Elie%20-%20Futari%20no%20Atelier%20%28Japan%29.zip",
+   "filename": "Alchemist Marie & Elie - Futari no Atelier (Japan).zip"
+  },
+  {
+   "name": "Anchorz Field (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Anchorz%20Field%20%28Japan%29.zip",
+   "filename": "Anchorz Field (Japan).zip"
+  },
+  {
+   "name": "Another Heaven - Memory of those Days (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Another%20Heaven%20-%20Memory%20of%20those%20Days%20%28Japan%29.zip",
+   "filename": "Another Heaven - Memory of those Days (Japan).zip"
+  },
+  {
+   "name": "Arc the Lad - Kishin Fukkatsu (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Arc%20the%20Lad%20-%20Kishin%20Fukkatsu%20%28Japan%29.zip",
+   "filename": "Arc the Lad - Kishin Fukkatsu (Japan).zip"
+  },
+  {
+   "name": "Armored Unit (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Armored%20Unit%20%28Japan%29.zip",
+   "filename": "Armored Unit (Japan).zip"
+  },
+  {
+   "name": "Bakusou Dekotora Densetsu for WonderSwan (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Bakusou%20Dekotora%20Densetsu%20for%20WonderSwan%20%28Japan%29.zip",
+   "filename": "Bakusou Dekotora Densetsu for WonderSwan (Japan).zip"
+  },
+  {
+   "name": "Battle Spirit - Digimon Frontier (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Battle%20Spirit%20-%20Digimon%20Frontier%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Battle Spirit - Digimon Frontier (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "beatmania for WonderSwan (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/beatmania%20for%20WonderSwan%20%28Japan%29.zip",
+   "filename": "beatmania for WonderSwan (Japan).zip"
+  },
+  {
+   "name": "Blue Wing Blitz (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Blue%20Wing%20Blitz%20%28Japan%29.zip",
+   "filename": "Blue Wing Blitz (Japan).zip"
+  },
+  {
+   "name": "Buffers Evolution (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Buffers%20Evolution%20%28Japan%29.zip",
+   "filename": "Buffers Evolution (Japan).zip"
+  },
+  {
+   "name": "Cardcaptor Sakura - Sakura to Fushigi na Clow Card (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Cardcaptor%20Sakura%20-%20Sakura%20to%20Fushigi%20na%20Clow%20Card%20%28Japan%29.zip",
+   "filename": "Cardcaptor Sakura - Sakura to Fushigi na Clow Card (Japan).zip"
+  },
+  {
+   "name": "Chaos Gear - Michibikareshi Mono (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Chaos%20Gear%20-%20Michibikareshi%20Mono%20%28Japan%29.zip",
+   "filename": "Chaos Gear - Michibikareshi Mono (Japan).zip"
+  },
+  {
+   "name": "Chocobo no Fushigi na Dungeon for WonderSwan (Japan) (Rev 3)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Chocobo%20no%20Fushigi%20na%20Dungeon%20for%20WonderSwan%20%28Japan%29%20%28Rev%203%29.zip",
+   "filename": "Chocobo no Fushigi na Dungeon for WonderSwan (Japan) (Rev 3).zip"
+  },
+  {
+   "name": "Chou Aniki - Otoko no Tamafuda (Japan) (Rev 4)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Chou%20Aniki%20-%20Otoko%20no%20Tamafuda%20%28Japan%29%20%28Rev%204%29.zip",
+   "filename": "Chou Aniki - Otoko no Tamafuda (Japan) (Rev 4).zip"
+  },
+  {
+   "name": "Chou Denki Card Battle - Youfu Makai (Japan) (Rev 3)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Chou%20Denki%20Card%20Battle%20-%20Youfu%20Makai%20%28Japan%29%20%28Rev%203%29.zip",
+   "filename": "Chou Denki Card Battle - Youfu Makai (Japan) (Rev 3).zip"
+  },
+  {
+   "name": "Clock Tower for WonderSwan (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Clock%20Tower%20for%20WonderSwan%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Clock Tower for WonderSwan (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Crazy Climber (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Crazy%20Climber%20%28Japan%29.zip",
+   "filename": "Crazy Climber (Japan).zip"
+  },
+  {
+   "name": "D's Garage 21 Koubo Game - Tane o Maku Tori (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/D%27s%20Garage%2021%20Koubo%20Game%20-%20Tane%20o%20Maku%20Tori%20%28Japan%29.zip",
+   "filename": "D's Garage 21 Koubo Game - Tane o Maku Tori (Japan).zip"
+  },
+  {
+   "name": "Dark Eyes - Battle Gate (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Dark%20Eyes%20-%20Battle%20Gate%20%28Japan%29.zip",
+   "filename": "Dark Eyes - Battle Gate (Japan).zip"
+  },
+  {
+   "name": "Densha de Go! (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Densha%20de%20Go%21%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Densha de Go! (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Densha de Go! 2 (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Densha%20de%20Go%21%202%20%28Japan%29.zip",
+   "filename": "Densha de Go! 2 (Japan).zip"
+  },
+  {
+   "name": "Dicing Knight. (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Dicing%20Knight.%20%28Japan%29.zip",
+   "filename": "Dicing Knight. (Japan).zip"
+  },
+  {
+   "name": "Digimon - Anode Tamer & Cathode Tamer - Veedramon Version (Hong Kong) (En)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Digimon%20-%20Anode%20Tamer%20%26%20Cathode%20Tamer%20-%20Veedramon%20Version%20%28Hong%20Kong%29%20%28En%29.zip",
+   "filename": "Digimon - Anode Tamer & Cathode Tamer - Veedramon Version (Hong Kong) (En).zip"
+  },
+  {
+   "name": "Digimon - Anode Tamer & Cathode Tamer - Veedramon Version (Korea) (En)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Digimon%20-%20Anode%20Tamer%20%26%20Cathode%20Tamer%20-%20Veedramon%20Version%20%28Korea%29%20%28En%29.zip",
+   "filename": "Digimon - Anode Tamer & Cathode Tamer - Veedramon Version (Korea) (En).zip"
+  },
+  {
+   "name": "Digimon - Ver. WonderSwan (Hong Kong) (En)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Digimon%20-%20Ver.%20WonderSwan%20%28Hong%20Kong%29%20%28En%29.zip",
+   "filename": "Digimon - Ver. WonderSwan (Hong Kong) (En).zip"
+  },
+  {
+   "name": "Digimon Adventure - Anode Tamer (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Digimon%20Adventure%20-%20Anode%20Tamer%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Digimon Adventure - Anode Tamer (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Digimon Adventure - Cathode Tamer (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Digimon%20Adventure%20-%20Cathode%20Tamer%20%28Japan%29.zip",
+   "filename": "Digimon Adventure - Cathode Tamer (Japan).zip"
+  },
+  {
+   "name": "Digimon Adventure 02 - D1 Tamers (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Digimon%20Adventure%2002%20-%20D1%20Tamers%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Digimon Adventure 02 - D1 Tamers (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Digimon Adventure 02 - Tag Tamers (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Digimon%20Adventure%2002%20-%20Tag%20Tamers%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Digimon Adventure 02 - Tag Tamers (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Digimon Tamers - Battle Spirit (Japan, Korea) (En,Ja)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Digimon%20Tamers%20-%20Battle%20Spirit%20%28Japan%2C%20Korea%29%20%28En%2CJa%29.zip",
+   "filename": "Digimon Tamers - Battle Spirit (Japan, Korea) (En,Ja).zip"
+  },
+  {
+   "name": "Digimon Tamers - Battle Spirit Ver. 1.5 (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Digimon%20Tamers%20-%20Battle%20Spirit%20Ver.%201.5%20%28Japan%29.zip",
+   "filename": "Digimon Tamers - Battle Spirit Ver. 1.5 (Japan).zip"
+  },
+  {
+   "name": "Digimon Tamers - Brave Tamer (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Digimon%20Tamers%20-%20Brave%20Tamer%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Digimon Tamers - Brave Tamer (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Digimon Tamers - Digimon Medley (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Digimon%20Tamers%20-%20Digimon%20Medley%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Digimon Tamers - Digimon Medley (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Digital Monster - D-Project (Japan) (Rev 2)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Digital%20Monster%20-%20D-Project%20%28Japan%29%20%28Rev%202%29.zip",
+   "filename": "Digital Monster - D-Project (Japan) (Rev 2).zip"
+  },
+  {
+   "name": "Digital Monster - Ver. WonderSwan (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Digital%20Monster%20-%20Ver.%20WonderSwan%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Digital Monster - Ver. WonderSwan (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Digital Monster Card Game - Ver. WonderSwan Color (Japan) (Rev 2)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Digital%20Monster%20Card%20Game%20-%20Ver.%20WonderSwan%20Color%20%28Japan%29%20%28Rev%202%29.zip",
+   "filename": "Digital Monster Card Game - Ver. WonderSwan Color (Japan) (Rev 2).zip"
+  },
+  {
+   "name": "Digital Partner (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Digital%20Partner%20%28Japan%29.zip",
+   "filename": "Digital Partner (Japan).zip"
+  },
+  {
+   "name": "Dokodemo Hamster (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Dokodemo%20Hamster%20%28Japan%29.zip",
+   "filename": "Dokodemo Hamster (Japan).zip"
+  },
+  {
+   "name": "Dokodemo Hamster 3 - Odekake Saffron (Japan) (Rev 2)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Dokodemo%20Hamster%203%20-%20Odekake%20Saffron%20%28Japan%29%20%28Rev%202%29.zip",
+   "filename": "Dokodemo Hamster 3 - Odekake Saffron (Japan) (Rev 2).zip"
+  },
+  {
+   "name": "Dragon Ball (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Dragon%20Ball%20%28Japan%29.zip",
+   "filename": "Dragon Ball (Japan).zip"
+  },
+  {
+   "name": "Engacho! for WonderSwan (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Engacho%21%20for%20WonderSwan%20%28Japan%29.zip",
+   "filename": "Engacho! for WonderSwan (Japan).zip"
+  },
+  {
+   "name": "Fever - Sankyo Koushiki Pachinko Simulation for WonderSwan (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Fever%20-%20Sankyo%20Koushiki%20Pachinko%20Simulation%20for%20WonderSwan%20%28Japan%29.zip",
+   "filename": "Fever - Sankyo Koushiki Pachinko Simulation for WonderSwan (Japan).zip"
+  },
+  {
+   "name": "Final Fantasy (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Final%20Fantasy%20%28Japan%29.zip",
+   "filename": "Final Fantasy (Japan).zip"
+  },
+  {
+   "name": "Final Fantasy II (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Final%20Fantasy%20II%20%28Japan%29.zip",
+   "filename": "Final Fantasy II (Japan).zip"
+  },
+  {
+   "name": "Final Fantasy IV (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Final%20Fantasy%20IV%20%28Japan%29.zip",
+   "filename": "Final Fantasy IV (Japan).zip"
+  },
+  {
+   "name": "Final Lap 2000 (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Final%20Lap%202000%20%28Japan%29.zip",
+   "filename": "Final Lap 2000 (Japan).zip"
+  },
+  {
+   "name": "Final Lap Special - GT & Formula Machine (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Final%20Lap%20Special%20-%20GT%20%26%20Formula%20Machine%20%28Japan%29.zip",
+   "filename": "Final Lap Special - GT & Formula Machine (Japan).zip"
+  },
+  {
+   "name": "Fire Pro Wrestling for WonderSwan (Japan) (Rev 5)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Fire%20Pro%20Wrestling%20for%20WonderSwan%20%28Japan%29%20%28Rev%205%29.zip",
+   "filename": "Fire Pro Wrestling for WonderSwan (Japan) (Rev 5).zip"
+  },
+  {
+   "name": "Fishing Freaks - Bass Rise for WonderSwan (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Fishing%20Freaks%20-%20Bass%20Rise%20for%20WonderSwan%20%28Japan%29.zip",
+   "filename": "Fishing Freaks - Bass Rise for WonderSwan (Japan).zip"
+  },
+  {
+   "name": "Flash Koibito-kun (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Flash%20Koibito-kun%20%28Japan%29.zip",
+   "filename": "Flash Koibito-kun (Japan).zip"
+  },
+  {
+   "name": "From TV Animation One Piece - Chopper no Daibouken (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/From%20TV%20Animation%20One%20Piece%20-%20Chopper%20no%20Daibouken%20%28Japan%29.zip",
+   "filename": "From TV Animation One Piece - Chopper no Daibouken (Japan).zip"
+  },
+  {
+   "name": "From TV Animation One Piece - Grand Battle Swan Colosseum (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/From%20TV%20Animation%20One%20Piece%20-%20Grand%20Battle%20Swan%20Colosseum%20%28Japan%29.zip",
+   "filename": "From TV Animation One Piece - Grand Battle Swan Colosseum (Japan).zip"
+  },
+  {
+   "name": "From TV Animation One Piece - Mezase Kaizoku Ou! (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/From%20TV%20Animation%20One%20Piece%20-%20Mezase%20Kaizoku%20Ou%21%20%28Japan%29.zip",
+   "filename": "From TV Animation One Piece - Mezase Kaizoku Ou! (Japan).zip"
+  },
+  {
+   "name": "From TV Animation One Piece - Niji no Shima Densetsu (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/From%20TV%20Animation%20One%20Piece%20-%20Niji%20no%20Shima%20Densetsu%20%28Japan%29.zip",
+   "filename": "From TV Animation One Piece - Niji no Shima Densetsu (Japan).zip"
+  },
+  {
+   "name": "From TV Animation One Piece - Treasure Wars (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/From%20TV%20Animation%20One%20Piece%20-%20Treasure%20Wars%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "From TV Animation One Piece - Treasure Wars (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "From TV Animation One Piece - Treasure Wars 2 - Buggy Land e Youkoso (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/From%20TV%20Animation%20One%20Piece%20-%20Treasure%20Wars%202%20-%20Buggy%20Land%20e%20Youkoso%20%28Japan%29.zip",
+   "filename": "From TV Animation One Piece - Treasure Wars 2 - Buggy Land e Youkoso (Japan).zip"
+  },
+  {
+   "name": "Front Mission (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Front%20Mission%20%28Japan%29.zip",
+   "filename": "Front Mission (Japan).zip"
+  },
+  {
+   "name": "Ganso Jajamaru-kun (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Ganso%20Jajamaru-kun%20%28Japan%29.zip",
+   "filename": "Ganso Jajamaru-kun (Japan).zip"
+  },
+  {
+   "name": "Gekitou! Crash Gear Turbo - Gear Champion League (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Gekitou%21%20Crash%20Gear%20Turbo%20-%20Gear%20Champion%20League%20%28Japan%29.zip",
+   "filename": "Gekitou! Crash Gear Turbo - Gear Champion League (Japan).zip"
+  },
+  {
+   "name": "Gensou Maden Saiyuuki Retribution - Hi no Ataru Basho de (Japan) (Rev 2)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Gensou%20Maden%20Saiyuuki%20Retribution%20-%20Hi%20no%20Ataru%20Basho%20de%20%28Japan%29%20%28Rev%202%29.zip",
+   "filename": "Gensou Maden Saiyuuki Retribution - Hi no Ataru Basho de (Japan) (Rev 2).zip"
+  },
+  {
+   "name": "Glocal Hexcite (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Glocal%20Hexcite%20%28Japan%29.zip",
+   "filename": "Glocal Hexcite (Japan).zip"
+  },
+  {
+   "name": "Golden Axe (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Golden%20Axe%20%28Japan%29.zip",
+   "filename": "Golden Axe (Japan).zip"
+  },
+  {
+   "name": "Gomoku Narabe & Reversi - Touryuumon (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Gomoku%20Narabe%20%26%20Reversi%20-%20Touryuumon%20%28Japan%29.zip",
+   "filename": "Gomoku Narabe & Reversi - Touryuumon (Japan).zip"
+  },
+  {
+   "name": "Goraku Ou Tango! (Japan) (Rev 2)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Goraku%20Ou%20Tango%21%20%28Japan%29%20%28Rev%202%29.zip",
+   "filename": "Goraku Ou Tango! (Japan) (Rev 2).zip"
+  },
+  {
+   "name": "Gransta Chronicle (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Gransta%20Chronicle%20%28Japan%29.zip",
+   "filename": "Gransta Chronicle (Japan).zip"
+  },
+  {
+   "name": "Guilty Gear Petit (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Guilty%20Gear%20Petit%20%28Japan%29.zip",
+   "filename": "Guilty Gear Petit (Japan).zip"
+  },
+  {
+   "name": "Guilty Gear Petit 2 (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Guilty%20Gear%20Petit%202%20%28Japan%29.zip",
+   "filename": "Guilty Gear Petit 2 (Japan).zip"
+  },
+  {
+   "name": "GunPey (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/GunPey%20%28Japan%29.zip",
+   "filename": "GunPey (Japan).zip"
+  },
+  {
+   "name": "GunPey EX (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/GunPey%20EX%20%28Japan%29.zip",
+   "filename": "GunPey EX (Japan).zip"
+  },
+  {
+   "name": "Hanafuda Shiyouyo (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Hanafuda%20Shiyouyo%20%28Japan%29.zip",
+   "filename": "Hanafuda Shiyouyo (Japan).zip"
+  },
+  {
+   "name": "Hanjuku Hero - Ah, Sekai yo Hanjuku Nare...!! (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Hanjuku%20Hero%20-%20Ah%2C%20Sekai%20yo%20Hanjuku%20Nare...%21%21%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Hanjuku Hero - Ah, Sekai yo Hanjuku Nare...!! (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Harobots (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Harobots%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Harobots (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Hataraku Chocobo (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Hataraku%20Chocobo%20%28Japan%29.zip",
+   "filename": "Hataraku Chocobo (Japan).zip"
+  },
+  {
+   "name": "Hunter X Hunter - Greed Island (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Hunter%20X%20Hunter%20-%20Greed%20Island%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Hunter X Hunter - Greed Island (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Hunter X Hunter - Ishi o Tsugu Mono (Japan) (Rev 2)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Hunter%20X%20Hunter%20-%20Ishi%20o%20Tsugu%20Mono%20%28Japan%29%20%28Rev%202%29.zip",
+   "filename": "Hunter X Hunter - Ishi o Tsugu Mono (Japan) (Rev 2).zip"
+  },
+  {
+   "name": "Hunter X Hunter - Michibikareshi Mono (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Hunter%20X%20Hunter%20-%20Michibikareshi%20Mono%20%28Japan%29.zip",
+   "filename": "Hunter X Hunter - Michibikareshi Mono (Japan).zip"
+  },
+  {
+   "name": "Hunter X Hunter - Sorezore no Ketsui (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Hunter%20X%20Hunter%20-%20Sorezore%20no%20Ketsui%20%28Japan%29.zip",
+   "filename": "Hunter X Hunter - Sorezore no Ketsui (Japan).zip"
+  },
+  {
+   "name": "Inuyasha - Fuuun Emaki (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Inuyasha%20-%20Fuuun%20Emaki%20%28Japan%29.zip",
+   "filename": "Inuyasha - Fuuun Emaki (Japan).zip"
+  },
+  {
+   "name": "Inuyasha - Kagome no Sengoku Nikki (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Inuyasha%20-%20Kagome%20no%20Sengoku%20Nikki%20%28Japan%29.zip",
+   "filename": "Inuyasha - Kagome no Sengoku Nikki (Japan).zip"
+  },
+  {
+   "name": "Inuyasha - Kagome no Yume Nikki (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Inuyasha%20-%20Kagome%20no%20Yume%20Nikki%20%28Japan%29.zip",
+   "filename": "Inuyasha - Kagome no Yume Nikki (Japan).zip"
+  },
+  {
+   "name": "Judgement Silversword - Rebirth Edition (Japan) (Rev 4321)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Judgement%20Silversword%20-%20Rebirth%20Edition%20%28Japan%29%20%28Rev%204321%29.zip",
+   "filename": "Judgement Silversword - Rebirth Edition (Japan) (Rev 4321).zip"
+  },
+  {
+   "name": "Judgement Silversword - Rebirth Edition (Japan) (Rev 5C21)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Judgement%20Silversword%20-%20Rebirth%20Edition%20%28Japan%29%20%28Rev%205C21%29.zip",
+   "filename": "Judgement Silversword - Rebirth Edition (Japan) (Rev 5C21).zip"
+  },
+  {
+   "name": "Kakutou Ryouri Densetsu Bistro Recipe - Wonder Battle Hen (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Kakutou%20Ryouri%20Densetsu%20Bistro%20Recipe%20-%20Wonder%20Battle%20Hen%20%28Japan%29.zip",
+   "filename": "Kakutou Ryouri Densetsu Bistro Recipe - Wonder Battle Hen (Japan).zip"
+  },
+  {
+   "name": "Kaze no Klonoa - Moonlight Museum (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Kaze%20no%20Klonoa%20-%20Moonlight%20Museum%20%28Japan%29.zip",
+   "filename": "Kaze no Klonoa - Moonlight Museum (Japan).zip"
+  },
+  {
+   "name": "Keiba Yosou Shien Soft - Yosou Shinkaron (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Keiba%20Yosou%20Shien%20Soft%20-%20Yosou%20Shinkaron%20%28Japan%29.zip",
+   "filename": "Keiba Yosou Shien Soft - Yosou Shinkaron (Japan).zip"
+  },
+  {
+   "name": "Kidou Senshi Gundam - Giren no Yabou - Tokubetsu Hen - Aoki Hoshi no Hasha (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Kidou%20Senshi%20Gundam%20-%20Giren%20no%20Yabou%20-%20Tokubetsu%20Hen%20-%20Aoki%20Hoshi%20no%20Hasha%20%28Japan%29.zip",
+   "filename": "Kidou Senshi Gundam - Giren no Yabou - Tokubetsu Hen - Aoki Hoshi no Hasha (Japan).zip"
+  },
+  {
+   "name": "Kidou Senshi Gundam Seed (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Kidou%20Senshi%20Gundam%20Seed%20%28Japan%29.zip",
+   "filename": "Kidou Senshi Gundam Seed (Japan).zip"
+  },
+  {
+   "name": "Kidou Senshi Gundam Vol. 1 - Side 7 (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Kidou%20Senshi%20Gundam%20Vol.%201%20-%20Side%207%20%28Japan%29.zip",
+   "filename": "Kidou Senshi Gundam Vol. 1 - Side 7 (Japan).zip"
+  },
+  {
+   "name": "Kidou Senshi Gundam Vol. 2 - Jaburo (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Kidou%20Senshi%20Gundam%20Vol.%202%20-%20Jaburo%20%28Japan%29.zip",
+   "filename": "Kidou Senshi Gundam Vol. 2 - Jaburo (Japan).zip"
+  },
+  {
+   "name": "Kidou Senshi Gundam Vol. 3 - A Baoa Qu (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Kidou%20Senshi%20Gundam%20Vol.%203%20-%20A%20Baoa%20Qu%20%28Japan%29.zip",
+   "filename": "Kidou Senshi Gundam Vol. 3 - A Baoa Qu (Japan).zip"
+  },
+  {
+   "name": "Kinnikuman II-Sei - Choujin Seisenshi (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Kinnikuman%20II-Sei%20-%20Choujin%20Seisenshi%20%28Japan%29.zip",
+   "filename": "Kinnikuman II-Sei - Choujin Seisenshi (Japan).zip"
+  },
+  {
+   "name": "Kinnikuman II-Sei - Dream Tag Match (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Kinnikuman%20II-Sei%20-%20Dream%20Tag%20Match%20%28Japan%29.zip",
+   "filename": "Kinnikuman II-Sei - Dream Tag Match (Japan).zip"
+  },
+  {
+   "name": "Kiss Yori... - Seaside Serenade (Japan) (Rev 2)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Kiss%20Yori...%20-%20Seaside%20Serenade%20%28Japan%29%20%28Rev%202%29.zip",
+   "filename": "Kiss Yori... - Seaside Serenade (Japan) (Rev 2).zip"
+  },
+  {
+   "name": "Kosodate Quiz - Dokodemo My Angel (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Kosodate%20Quiz%20-%20Dokodemo%20My%20Angel%20%28Japan%29.zip",
+   "filename": "Kosodate Quiz - Dokodemo My Angel (Japan).zip"
+  },
+  {
+   "name": "Kurupara! (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Kurupara%21%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Kurupara! (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Kyousouba Ikusei Simulation - Keiba (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Kyousouba%20Ikusei%20Simulation%20-%20Keiba%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Kyousouba Ikusei Simulation - Keiba (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Langrisser Millennium WS - The Last Century (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Langrisser%20Millennium%20WS%20-%20The%20Last%20Century%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Langrisser Millennium WS - The Last Century (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Last Alive (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Last%20Alive%20%28Japan%29.zip",
+   "filename": "Last Alive (Japan).zip"
+  },
+  {
+   "name": "Last Stand (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Last%20Stand%20%28Japan%29.zip",
+   "filename": "Last Stand (Japan).zip"
+  },
+  {
+   "name": "Lode Runner for WonderSwan (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Lode%20Runner%20for%20WonderSwan%20%28Japan%29.zip",
+   "filename": "Lode Runner for WonderSwan (Japan).zip"
+  },
+  {
+   "name": "Macross - True Love Song (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Macross%20-%20True%20Love%20Song%20%28Japan%29.zip",
+   "filename": "Macross - True Love Song (Japan).zip"
+  },
+  {
+   "name": "Magical Drop for WonderSwan (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Magical%20Drop%20for%20WonderSwan%20%28Japan%29.zip",
+   "filename": "Magical Drop for WonderSwan (Japan).zip"
+  },
+  {
+   "name": "Mahjong Touryuumon (Japan) (Rev 3)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Mahjong%20Touryuumon%20%28Japan%29%20%28Rev%203%29.zip",
+   "filename": "Mahjong Touryuumon (Japan) (Rev 3).zip"
+  },
+  {
+   "name": "Makai Toushi Sa-Ga (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Makai%20Toushi%20Sa-Ga%20%28Japan%29.zip",
+   "filename": "Makai Toushi Sa-Ga (Japan).zip"
+  },
+  {
+   "name": "Makaimura for WonderSwan (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Makaimura%20for%20WonderSwan%20%28Japan%29.zip",
+   "filename": "Makaimura for WonderSwan (Japan).zip"
+  },
+  {
+   "name": "Medarot Perfect Edition - Kabuto Version (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Medarot%20Perfect%20Edition%20-%20Kabuto%20Version%20%28Japan%29.zip",
+   "filename": "Medarot Perfect Edition - Kabuto Version (Japan).zip"
+  },
+  {
+   "name": "Medarot Perfect Edition - Kuwagata Version (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Medarot%20Perfect%20Edition%20-%20Kuwagata%20Version%20%28Japan%29.zip",
+   "filename": "Medarot Perfect Edition - Kuwagata Version (Japan).zip"
+  },
+  {
+   "name": "Meitantei Conan - Majutsushi no Chousenjou! (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Meitantei%20Conan%20-%20Majutsushi%20no%20Chousenjou%21%20%28Japan%29.zip",
+   "filename": "Meitantei Conan - Majutsushi no Chousenjou! (Japan).zip"
+  },
+  {
+   "name": "Meitantei Conan - Nishi no Meitantei Saidai no Kiki! (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Meitantei%20Conan%20-%20Nishi%20no%20Meitantei%20Saidai%20no%20Kiki%21%20%28Japan%29.zip",
+   "filename": "Meitantei Conan - Nishi no Meitantei Saidai no Kiki! (Japan).zip"
+  },
+  {
+   "name": "Meitantei Conan - Yuugure no Oujo (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Meitantei%20Conan%20-%20Yuugure%20no%20Oujo%20%28Japan%29.zip",
+   "filename": "Meitantei Conan - Yuugure no Oujo (Japan).zip"
+  },
+  {
+   "name": "Memories Off - Festa (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Memories%20Off%20-%20Festa%20%28Japan%29.zip",
+   "filename": "Memories Off - Festa (Japan).zip"
+  },
+  {
+   "name": "Metakomi Theraphy - Nee Kiite! (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Metakomi%20Theraphy%20-%20Nee%20Kiite%21%20%28Japan%29.zip",
+   "filename": "Metakomi Theraphy - Nee Kiite! (Japan).zip"
+  },
+  {
+   "name": "Mikeneko Holmes - Ghost Panic (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Mikeneko%20Holmes%20-%20Ghost%20Panic%20%28Japan%29.zip",
+   "filename": "Mikeneko Holmes - Ghost Panic (Japan).zip"
+  },
+  {
+   "name": "Mingle Magnet (Japan) (En,Ja) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Mingle%20Magnet%20%28Japan%29%20%28En%2CJa%29%20%28Rev%201%29.zip",
+   "filename": "Mingle Magnet (Japan) (En,Ja) (Rev 1).zip"
+  },
+  {
+   "name": "Mobile Suit Gundam MSVS (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Mobile%20Suit%20Gundam%20MSVS%20%28Japan%29.zip",
+   "filename": "Mobile Suit Gundam MSVS (Japan).zip"
+  },
+  {
+   "name": "MobileWonderGate (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/MobileWonderGate%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "MobileWonderGate (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Moero!! Pro Yakyuu Rookies (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Moero%21%21%20Pro%20Yakyuu%20Rookies%20%28Japan%29.zip",
+   "filename": "Moero!! Pro Yakyuu Rookies (Japan).zip"
+  },
+  {
+   "name": "Morita Shougi for WonderSwan (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Morita%20Shougi%20for%20WonderSwan%20%28Japan%29.zip",
+   "filename": "Morita Shougi for WonderSwan (Japan).zip"
+  },
+  {
+   "name": "Mr. Driller (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Mr.%20Driller%20%28Japan%29.zip",
+   "filename": "Mr. Driller (Japan).zip"
+  },
+  {
+   "name": "Namco Super Wars (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Namco%20Super%20Wars%20%28Japan%29.zip",
+   "filename": "Namco Super Wars (Japan).zip"
+  },
+  {
+   "name": "Naruto - Konoha Ninpouchou (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Naruto%20-%20Konoha%20Ninpouchou%20%28Japan%29.zip",
+   "filename": "Naruto - Konoha Ninpouchou (Japan).zip"
+  },
+  {
+   "name": "Nazo Ou Pocket (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Nazo%20Ou%20Pocket%20%28Japan%29.zip",
+   "filename": "Nazo Ou Pocket (Japan).zip"
+  },
+  {
+   "name": "Neon Genesis Evangelion - Shito Ikusei (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Neon%20Genesis%20Evangelion%20-%20Shito%20Ikusei%20%28Japan%29.zip",
+   "filename": "Neon Genesis Evangelion - Shito Ikusei (Japan).zip"
+  },
+  {
+   "name": "Nice On (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Nice%20On%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Nice On (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Nihon Pro Mahjong Renmei Kounin - Tetsuman (Japan) (Rev 2)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Nihon%20Pro%20Mahjong%20Renmei%20Kounin%20-%20Tetsuman%20%28Japan%29%20%28Rev%202%29.zip",
+   "filename": "Nihon Pro Mahjong Renmei Kounin - Tetsuman (Japan) (Rev 2).zip"
+  },
+  {
+   "name": "Nobunaga no Yabou for WonderSwan (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Nobunaga%20no%20Yabou%20for%20WonderSwan%20%28Japan%29.zip",
+   "filename": "Nobunaga no Yabou for WonderSwan (Japan).zip"
+  },
+  {
+   "name": "Ou-chan no Oekaki Logic (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Ou-chan%20no%20Oekaki%20Logic%20%28Japan%29.zip",
+   "filename": "Ou-chan no Oekaki Logic (Japan).zip"
+  },
+  {
+   "name": "Pocket Fighter (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Pocket%20Fighter%20%28Japan%29.zip",
+   "filename": "Pocket Fighter (Japan).zip"
+  },
+  {
+   "name": "Pocket no Naka no Doraemon (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Pocket%20no%20Naka%20no%20Doraemon%20%28Japan%29.zip",
+   "filename": "Pocket no Naka no Doraemon (Japan).zip"
+  },
+  {
+   "name": "Pro Mahjong Kiwame for WonderSwan (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Pro%20Mahjong%20Kiwame%20for%20WonderSwan%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Pro Mahjong Kiwame for WonderSwan (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Puyo Puyo Tsuu (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Puyo%20Puyo%20Tsuu%20%28Japan%29.zip",
+   "filename": "Puyo Puyo Tsuu (Japan).zip"
+  },
+  {
+   "name": "Puzzle Bobble (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Puzzle%20Bobble%20%28Japan%29.zip",
+   "filename": "Puzzle Bobble (Japan).zip"
+  },
+  {
+   "name": "Rainbow Islands - Putty's Party (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Rainbow%20Islands%20-%20Putty%27s%20Party%20%28Japan%29.zip",
+   "filename": "Rainbow Islands - Putty's Party (Japan).zip"
+  },
+  {
+   "name": "Raku Jongg (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Raku%20Jongg%20%28Japan%29.zip",
+   "filename": "Raku Jongg (Japan).zip"
+  },
+  {
+   "name": "Rhyme Rider Kerorican (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Rhyme%20Rider%20Kerorican%20%28Japan%29.zip",
+   "filename": "Rhyme Rider Kerorican (Japan).zip"
+  },
+  {
+   "name": "Ring Infinity (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Ring%20Infinity%20%28Japan%29.zip",
+   "filename": "Ring Infinity (Japan).zip"
+  },
+  {
+   "name": "Riviera - Yakusoku no Chi Riviera (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Riviera%20-%20Yakusoku%20no%20Chi%20Riviera%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Riviera - Yakusoku no Chi Riviera (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Robot Works (Hong Kong) (En,Ja) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Robot%20Works%20%28Hong%20Kong%29%20%28En%2CJa%29%20%28Rev%201%29.zip",
+   "filename": "Robot Works (Hong Kong) (En,Ja) (Rev 1).zip"
+  },
+  {
+   "name": "Robot Works (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Robot%20Works%20%28Japan%29.zip",
+   "filename": "Robot Works (Japan).zip"
+  },
+  {
+   "name": "Rockman & Forte - Mirai Kara no Chousensha (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Rockman%20%26%20Forte%20-%20Mirai%20Kara%20no%20Chousensha%20%28Japan%29.zip",
+   "filename": "Rockman & Forte - Mirai Kara no Chousensha (Japan).zip"
+  },
+  {
+   "name": "Rockman EXE - N1 Battle (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Rockman%20EXE%20-%20N1%20Battle%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Rockman EXE - N1 Battle (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Rockman EXE WS (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Rockman%20EXE%20WS%20%28Japan%29.zip",
+   "filename": "Rockman EXE WS (Japan).zip"
+  },
+  {
+   "name": "Romancing Sa-Ga (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Romancing%20Sa-Ga%20%28Japan%29.zip",
+   "filename": "Romancing Sa-Ga (Japan).zip"
+  },
+  {
+   "name": "RUN=DIM - Return to Earth (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/RUN%3DDIM%20-%20Return%20to%20Earth%20%28Japan%29.zip",
+   "filename": "RUN=DIM - Return to Earth (Japan).zip"
+  },
+  {
+   "name": "Saint Seiya - Ougon Densetsu Hen - Perfect Edition (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Saint%20Seiya%20-%20Ougon%20Densetsu%20Hen%20-%20Perfect%20Edition%20%28Japan%29.zip",
+   "filename": "Saint Seiya - Ougon Densetsu Hen - Perfect Edition (Japan).zip"
+  },
+  {
+   "name": "Sangokushi for WonderSwan (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Sangokushi%20for%20WonderSwan%20%28Japan%29.zip",
+   "filename": "Sangokushi for WonderSwan (Japan).zip"
+  },
+  {
+   "name": "Sangokushi II for WonderSwan (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Sangokushi%20II%20for%20WonderSwan%20%28Japan%29.zip",
+   "filename": "Sangokushi II for WonderSwan (Japan).zip"
+  },
+  {
+   "name": "SD Gundam - Emotional Jam (Japan) (Rev 3)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/SD%20Gundam%20-%20Emotional%20Jam%20%28Japan%29%20%28Rev%203%29.zip",
+   "filename": "SD Gundam - Emotional Jam (Japan) (Rev 3).zip"
+  },
+  {
+   "name": "SD Gundam - Operation U.C. (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/SD%20Gundam%20-%20Operation%20U.C.%20%28Japan%29.zip",
+   "filename": "SD Gundam - Operation U.C. (Japan).zip"
+  },
+  {
+   "name": "SD Gundam Eiyuu Den - Kishi Densetsu (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/SD%20Gundam%20Eiyuu%20Den%20-%20Kishi%20Densetsu%20%28Japan%29.zip",
+   "filename": "SD Gundam Eiyuu Den - Kishi Densetsu (Japan).zip"
+  },
+  {
+   "name": "SD Gundam Eiyuu Den - Musha Densetsu (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/SD%20Gundam%20Eiyuu%20Den%20-%20Musha%20Densetsu%20%28Japan%29.zip",
+   "filename": "SD Gundam Eiyuu Den - Musha Densetsu (Japan).zip"
+  },
+  {
+   "name": "SD Gundam G Generation - Gather Beat (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/SD%20Gundam%20G%20Generation%20-%20Gather%20Beat%20%28Japan%29.zip",
+   "filename": "SD Gundam G Generation - Gather Beat (Japan).zip"
+  },
+  {
+   "name": "SD Gundam G Generation - Gather Beat 2 (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/SD%20Gundam%20G%20Generation%20-%20Gather%20Beat%202%20%28Japan%29.zip",
+   "filename": "SD Gundam G Generation - Gather Beat 2 (Japan).zip"
+  },
+  {
+   "name": "SD Gundam G Generation - Mono-Eye Gundams (Japan) (Rev 2)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/SD%20Gundam%20G%20Generation%20-%20Mono-Eye%20Gundams%20%28Japan%29%20%28Rev%202%29.zip",
+   "filename": "SD Gundam G Generation - Mono-Eye Gundams (Japan) (Rev 2).zip"
+  },
+  {
+   "name": "SD Gundam Gashapon Senki - Episode 1 (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/SD%20Gundam%20Gashapon%20Senki%20-%20Episode%201%20%28Japan%29.zip",
+   "filename": "SD Gundam Gashapon Senki - Episode 1 (Japan).zip"
+  },
+  {
+   "name": "SD Gundam Gashapon Senki - Episode 1 (Japan) (Alt)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/SD%20Gundam%20Gashapon%20Senki%20-%20Episode%201%20%28Japan%29%20%28Alt%29.zip",
+   "filename": "SD Gundam Gashapon Senki - Episode 1 (Japan) (Alt).zip"
+  },
+  {
+   "name": "Senkaiden - TV Animation Senkaiden Houshin Engi Yori (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Senkaiden%20-%20TV%20Animation%20Senkaiden%20Houshin%20Engi%20Yori%20%28Japan%29.zip",
+   "filename": "Senkaiden - TV Animation Senkaiden Houshin Engi Yori (Japan).zip"
+  },
+  {
+   "name": "Senkaiden Ni - TV Animation Senkaiden Houshin Engi Yori (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Senkaiden%20Ni%20-%20TV%20Animation%20Senkaiden%20Houshin%20Engi%20Yori%20%28Japan%29.zip",
+   "filename": "Senkaiden Ni - TV Animation Senkaiden Houshin Engi Yori (Japan).zip"
+  },
+  {
+   "name": "Sennou Millennium (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Sennou%20Millennium%20%28Japan%29.zip",
+   "filename": "Sennou Millennium (Japan).zip"
+  },
+  {
+   "name": "Shaman King - Asu e no Ishi (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Shaman%20King%20-%20Asu%20e%20no%20Ishi%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Shaman King - Asu e no Ishi (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Shanghai Pocket (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Shanghai%20Pocket%20%28Japan%29.zip",
+   "filename": "Shanghai Pocket (Japan).zip"
+  },
+  {
+   "name": "Shin Nihon Pro Wrestling - Toukon Retsuden (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Shin%20Nihon%20Pro%20Wrestling%20-%20Toukon%20Retsuden%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Shin Nihon Pro Wrestling - Toukon Retsuden (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Shougi Touryuumon (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Shougi%20Touryuumon%20%28Japan%29.zip",
+   "filename": "Shougi Touryuumon (Japan).zip"
+  },
+  {
+   "name": "Side Pocket for WonderSwan (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Side%20Pocket%20for%20WonderSwan%20%28Japan%29.zip",
+   "filename": "Side Pocket for WonderSwan (Japan).zip"
+  },
+  {
+   "name": "Slither Link (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Slither%20Link%20%28Japan%29.zip",
+   "filename": "Slither Link (Japan).zip"
+  },
+  {
+   "name": "Soccer Yarou! - Challenge the World (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Soccer%20Yarou%21%20-%20Challenge%20the%20World%20%28Japan%29.zip",
+   "filename": "Soccer Yarou! - Challenge the World (Japan).zip"
+  },
+  {
+   "name": "Sorobang (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Sorobang%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Sorobang (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Sotsugyou for WonderSwan (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Sotsugyou%20for%20WonderSwan%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Sotsugyou for WonderSwan (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Space Invaders (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Space%20Invaders%20%28Japan%29.zip",
+   "filename": "Space Invaders (Japan).zip"
+  },
+  {
+   "name": "Star Hearts - Hoshi to Daichi no Shisha (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Star%20Hearts%20-%20Hoshi%20to%20Daichi%20no%20Shisha%20%28Japan%29.zip",
+   "filename": "Star Hearts - Hoshi to Daichi no Shisha (Japan).zip"
+  },
+  {
+   "name": "Star Hearts - Hoshi to Daichi no Shisha - Taikenban (Japan) (Not For Sale)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Star%20Hearts%20-%20Hoshi%20to%20Daichi%20no%20Shisha%20-%20Taikenban%20%28Japan%29%20%28Not%20For%20Sale%29.zip",
+   "filename": "Star Hearts - Hoshi to Daichi no Shisha - Taikenban (Japan) (Not For Sale).zip"
+  },
+  {
+   "name": "Super Robot Taisen Compact (Japan) (Rev 2)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Super%20Robot%20Taisen%20Compact%20%28Japan%29%20%28Rev%202%29.zip",
+   "filename": "Super Robot Taisen Compact (Japan) (Rev 2).zip"
+  },
+  {
+   "name": "Super Robot Taisen Compact 2 - Dai-1-bu - Chijou Gekidou Hen (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Super%20Robot%20Taisen%20Compact%202%20-%20Dai-1-bu%20-%20Chijou%20Gekidou%20Hen%20%28Japan%29.zip",
+   "filename": "Super Robot Taisen Compact 2 - Dai-1-bu - Chijou Gekidou Hen (Japan).zip"
+  },
+  {
+   "name": "Super Robot Taisen Compact 2 - Dai-2-bu - Uchuu Gekishin Hen (Japan) (Rev 4)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Super%20Robot%20Taisen%20Compact%202%20-%20Dai-2-bu%20-%20Uchuu%20Gekishin%20Hen%20%28Japan%29%20%28Rev%204%29.zip",
+   "filename": "Super Robot Taisen Compact 2 - Dai-2-bu - Uchuu Gekishin Hen (Japan) (Rev 4).zip"
+  },
+  {
+   "name": "Super Robot Taisen Compact 2 - Dai-3-bu - Ginga Kessen Hen (Japan) (Rev 2)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Super%20Robot%20Taisen%20Compact%202%20-%20Dai-3-bu%20-%20Ginga%20Kessen%20Hen%20%28Japan%29%20%28Rev%202%29.zip",
+   "filename": "Super Robot Taisen Compact 2 - Dai-3-bu - Ginga Kessen Hen (Japan) (Rev 2).zip"
+  },
+  {
+   "name": "Super Robot Taisen Compact 3 (Japan) (Rev 6)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Super%20Robot%20Taisen%20Compact%203%20%28Japan%29%20%28Rev%206%29.zip",
+   "filename": "Super Robot Taisen Compact 3 (Japan) (Rev 6).zip"
+  },
+  {
+   "name": "Super Robot Taisen Compact for WonderSwan Color (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Super%20Robot%20Taisen%20Compact%20for%20WonderSwan%20Color%20%28Japan%29.zip",
+   "filename": "Super Robot Taisen Compact for WonderSwan Color (Japan).zip"
+  },
+  {
+   "name": "Taikyoku Igo - Heisei Kiin (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Taikyoku%20Igo%20-%20Heisei%20Kiin%20%28Japan%29.zip",
+   "filename": "Taikyoku Igo - Heisei Kiin (Japan).zip"
+  },
+  {
+   "name": "Tanjou Debut for WonderSwan (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Tanjou%20Debut%20for%20WonderSwan%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Tanjou Debut for WonderSwan (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Tare Panda no GunPey (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Tare%20Panda%20no%20GunPey%20%28Japan%29.zip",
+   "filename": "Tare Panda no GunPey (Japan).zip"
+  },
+  {
+   "name": "Tekken Card Challenge (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Tekken%20Card%20Challenge%20%28Japan%29.zip",
+   "filename": "Tekken Card Challenge (Japan).zip"
+  },
+  {
+   "name": "Tenori-on (Japan) (En)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Tenori-on%20%28Japan%29%20%28En%29.zip",
+   "filename": "Tenori-on (Japan) (En).zip"
+  },
+  {
+   "name": "Terrors (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Terrors%20%28Japan%29.zip",
+   "filename": "Terrors (Japan).zip"
+  },
+  {
+   "name": "Terrors 2 (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Terrors%202%20%28Japan%29.zip",
+   "filename": "Terrors 2 (Japan).zip"
+  },
+  {
+   "name": "Tetris (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Tetris%20%28Japan%29.zip",
+   "filename": "Tetris (Japan).zip"
+  },
+  {
+   "name": "Tetsujin 28 Gou (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Tetsujin%2028%20Gou%20%28Japan%29.zip",
+   "filename": "Tetsujin 28 Gou (Japan).zip"
+  },
+  {
+   "name": "Time Bokan Series - Bokan Densetsu - Buta mo Odaterya Doronboo (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Time%20Bokan%20Series%20-%20Bokan%20Densetsu%20-%20Buta%20mo%20Odaterya%20Doronboo%20%28Japan%29.zip",
+   "filename": "Time Bokan Series - Bokan Densetsu - Buta mo Odaterya Doronboo (Japan).zip"
+  },
+  {
+   "name": "Tokyo Majin Gakuen - Fuju Houroku (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Tokyo%20Majin%20Gakuen%20-%20Fuju%20Houroku%20%28Japan%29.zip",
+   "filename": "Tokyo Majin Gakuen - Fuju Houroku (Japan).zip"
+  },
+  {
+   "name": "Tonpuusou (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Tonpuusou%20%28Japan%29.zip",
+   "filename": "Tonpuusou (Japan).zip"
+  },
+  {
+   "name": "Trump Collection - Bottom-Up Teki Trump Seikatsu (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Trump%20Collection%20-%20Bottom-Up%20Teki%20Trump%20Seikatsu%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Trump Collection - Bottom-Up Teki Trump Seikatsu (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Trump Collection 2 - Bottom-Up Teki Sekaiisshuu no Tabi (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Trump%20Collection%202%20-%20Bottom-Up%20Teki%20Sekaiisshuu%20no%20Tabi%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Trump Collection 2 - Bottom-Up Teki Sekaiisshuu no Tabi (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Turntablist - DJ Battle (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Turntablist%20-%20DJ%20Battle%20%28Japan%29.zip",
+   "filename": "Turntablist - DJ Battle (Japan).zip"
+  },
+  {
+   "name": "Uchuu Senkan Yamato (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Uchuu%20Senkan%20Yamato%20%28Japan%29.zip",
+   "filename": "Uchuu Senkan Yamato (Japan).zip"
+  },
+  {
+   "name": "Ultraman - Hikari no Kuni no Shisha (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Ultraman%20-%20Hikari%20no%20Kuni%20no%20Shisha%20%28Japan%29.zip",
+   "filename": "Ultraman - Hikari no Kuni no Shisha (Japan).zip"
+  },
+  {
+   "name": "Umizuri ni Ikou! (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Umizuri%20ni%20Ikou%21%20%28Japan%29.zip",
+   "filename": "Umizuri ni Ikou! (Japan).zip"
+  },
+  {
+   "name": "Uzumaki - Denshi Kaiki Hen (Japan) (Rev 4)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Uzumaki%20-%20Denshi%20Kaiki%20Hen%20%28Japan%29%20%28Rev%204%29.zip",
+   "filename": "Uzumaki - Denshi Kaiki Hen (Japan) (Rev 4).zip"
+  },
+  {
+   "name": "Uzumaki - Noroi Simulation (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Uzumaki%20-%20Noroi%20Simulation%20%28Japan%29.zip",
+   "filename": "Uzumaki - Noroi Simulation (Japan).zip"
+  },
+  {
+   "name": "Vaitz Blade (Japan) (Rev 1)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Vaitz%20Blade%20%28Japan%29%20%28Rev%201%29.zip",
+   "filename": "Vaitz Blade (Japan) (Rev 1).zip"
+  },
+  {
+   "name": "Wasabi Produce - Street Dancer (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Wasabi%20Produce%20-%20Street%20Dancer%20%28Japan%29.zip",
+   "filename": "Wasabi Produce - Street Dancer (Japan).zip"
+  },
+  {
+   "name": "Wild Card (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Wild%20Card%20%28Japan%29.zip",
+   "filename": "Wild Card (Japan).zip"
+  },
+  {
+   "name": "With You - Mitsumete Itai (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/With%20You%20-%20Mitsumete%20Itai%20%28Japan%29.zip",
+   "filename": "With You - Mitsumete Itai (Japan).zip"
+  },
+  {
+   "name": "Wizardry Scenario 1 - Proving Grounds of the Mad Overlord (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Wizardry%20Scenario%201%20-%20Proving%20Grounds%20of%20the%20Mad%20Overlord%20%28Japan%29.zip",
+   "filename": "Wizardry Scenario 1 - Proving Grounds of the Mad Overlord (Japan).zip"
+  },
+  {
+   "name": "Wonder Classic (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/Wonder%20Classic%20%28Japan%29.zip",
+   "filename": "Wonder Classic (Japan).zip"
+  },
+  {
+   "name": "Wonder Stadium '99 (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Wonder%20Stadium%20%2799%20%28Japan%29.zip",
+   "filename": "Wonder Stadium '99 (Japan).zip"
+  },
+  {
+   "name": "Wonder Stadium (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/Wonder%20Stadium%20%28Japan%29.zip",
+   "filename": "Wonder Stadium (Japan).zip"
+  },
+  {
+   "name": "WonderSwan Handy Sonar (Japan) (Rev 2)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_no-intro_2024-04-08/WonderSwan%20Handy%20Sonar%20%28Japan%29%20%28Rev%202%29.zip",
+   "filename": "WonderSwan Handy Sonar (Japan) (Rev 2).zip"
+  },
+  {
+   "name": "X - Card of Fate (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/X%20-%20Card%20of%20Fate%20%28Japan%29.zip",
+   "filename": "X - Card of Fate (Japan).zip"
+  },
+  {
+   "name": "XI Little (Japan)",
+   "url": "https://archive.org/download/ef_bandai_wonderswan_color_no-intro_2024-04-08/XI%20Little%20%28Japan%29.zip",
+   "filename": "XI Little (Japan).zip"
+  }
+ ]
+}

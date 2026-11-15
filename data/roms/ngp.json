@@ -1,0 +1,416 @@
+{
+ "platform": "ngp",
+ "core": "mednafen_ngp",
+ "games": [
+  {
+   "name": "Baseball Stars - Pocket Sports Series (Japan, Europe) (En,Ja",
+   "url": "https://archive.org/download/ngp-1g1r-mattb258_202604/Baseball%20Stars%20-%20Pocket%20Sports%20Series%20%28Japan%2C%20Europe%29%20%28En%2CJa%29.7z",
+   "filename": "Baseball Stars - Pocket Sports Series (Japan, Europe) (En,Ja).7z"
+  },
+  {
+   "name": "Baseball Stars Color - Pocket Sports Series (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Baseball%20Stars%20Color%20-%20Pocket%20Sports%20Series%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "Baseball Stars Color - Pocket Sports Series (World) (En,Ja).7z"
+  },
+  {
+   "name": "Big Bang Pro Wrestling (Japan) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Big%20Bang%20Pro%20Wrestling%20%28Japan%29%20%28En%2CJa%29.7z",
+   "filename": "Big Bang Pro Wrestling (Japan) (En,Ja).7z"
+  },
+  {
+   "name": "Bikkuriman 2000 - Viva! Pocket Festival! (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Bikkuriman%202000%20-%20Viva%21%20Pocket%20Festival%21%20%28Japan%29.7z",
+   "filename": "Bikkuriman 2000 - Viva! Pocket Festival! (Japan).7z"
+  },
+  {
+   "name": "Biomotor Unitron (USA, Europe",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Biomotor%20Unitron%20%28USA%2C%20Europe%29.7z",
+   "filename": "Biomotor Unitron (USA, Europe).7z"
+  },
+  {
+   "name": "Bust-A-Move Pocket (USA",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Bust-A-Move%20Pocket%20%28USA%29.7z",
+   "filename": "Bust-A-Move Pocket (USA).7z"
+  },
+  {
+   "name": "Cool Boarders Pocket (Japan, Europe) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Cool%20Boarders%20Pocket%20%28Japan%2C%20Europe%29%20%28En%2CJa%29.7z",
+   "filename": "Cool Boarders Pocket (Japan, Europe) (En,Ja).7z"
+  },
+  {
+   "name": "Cool Cool Jam (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Cool%20Cool%20Jam%20%28Japan%29.7z",
+   "filename": "Cool Cool Jam (Japan).7z"
+  },
+  {
+   "name": "Crush Roller (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Crush%20Roller%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "Crush Roller (World) (En,Ja).7z"
+  },
+  {
+   "name": "Dark Arms - Beast Buster 1999 (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Dark%20Arms%20-%20Beast%20Buster%201999%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "Dark Arms - Beast Buster 1999 (World) (En,Ja).7z"
+  },
+  {
+   "name": "Delta Warp (Japan) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Delta%20Warp%20%28Japan%29%20%28En%2CJa%29.7z",
+   "filename": "Delta Warp (Japan) (En,Ja).7z"
+  },
+  {
+   "name": "Densetsu no Ogre Battle Gaiden - Zenobia no Ouji (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Densetsu%20no%20Ogre%20Battle%20Gaiden%20-%20Zenobia%20no%20Ouji%20%28Japan%29.7z",
+   "filename": "Densetsu no Ogre Battle Gaiden - Zenobia no Ouji (Japan).7z"
+  },
+  {
+   "name": "Densha de Go! 2 on NeoGeo Pocket (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Densha%20de%20Go%21%202%20on%20NeoGeo%20Pocket%20%28Japan%29.7z",
+   "filename": "Densha de Go! 2 on NeoGeo Pocket (Japan).7z"
+  },
+  {
+   "name": "Dive Alert - Becky's Version (USA, Europe",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Dive%20Alert%20-%20Becky%27s%20Version%20%28USA%2C%20Europe%29.7z",
+   "filename": "Dive Alert - Becky's Version (USA, Europe).7z"
+  },
+  {
+   "name": "Dive Alert - Matt's Version (USA, Europe",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Dive%20Alert%20-%20Matt%27s%20Version%20%28USA%2C%20Europe%29.7z",
+   "filename": "Dive Alert - Matt's Version (USA, Europe).7z"
+  },
+  {
+   "name": "Dokodemo Mahjong (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Dokodemo%20Mahjong%20%28Japan%29.7z",
+   "filename": "Dokodemo Mahjong (Japan).7z"
+  },
+  {
+   "name": "Dynamite Slugger (Japan, Europe) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Dynamite%20Slugger%20%28Japan%2C%20Europe%29%20%28En%2CJa%29.7z",
+   "filename": "Dynamite Slugger (Japan, Europe) (En,Ja).7z"
+  },
+  {
+   "name": "Evolution - Eternal Dungeons (Europe) (vA1",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Evolution%20-%20Eternal%20Dungeons%20%28Europe%29%20%28vA1%29.7z",
+   "filename": "Evolution - Eternal Dungeons (Europe) (vA1).7z"
+  },
+  {
+   "name": "Fantastic Night Dreams - Cotton (Europe",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Fantastic%20Night%20Dreams%20-%20Cotton%20%28Europe%29.7z",
+   "filename": "Fantastic Night Dreams - Cotton (Europe).7z"
+  },
+  {
+   "name": "Faselei! (USA, Europe",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Faselei%21%20%28USA%2C%20Europe%29.7z",
+   "filename": "Faselei! (USA, Europe).7z"
+  },
+  {
+   "name": "Fatal Fury F-Contact - Pocket Fighting Series (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Fatal%20Fury%20F-Contact%20-%20Pocket%20Fighting%20Series%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "Fatal Fury F-Contact - Pocket Fighting Series (World) (En,Ja).7z"
+  },
+  {
+   "name": "Ganbare Neo Poke-kun (Kari) (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Ganbare%20Neo%20Poke-kun%20%28Kari%29%20%28Japan%29.7z",
+   "filename": "Ganbare Neo Poke-kun (Kari) (Japan).7z"
+  },
+  {
+   "name": "Infinity Cure (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Infinity%20Cure%20%28Japan%29.7z",
+   "filename": "Infinity Cure (Japan).7z"
+  },
+  {
+   "name": "Kikou Seiki Unitron - Sono Tsuide. Hikari Umareru Chi Yori. (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Kikou%20Seiki%20Unitron%20-%20Sono%20Tsuide.%20Hikari%20Umareru%20Chi%20Yori.%20%28Japan%29.7z",
+   "filename": "Kikou Seiki Unitron - Sono Tsuide. Hikari Umareru Chi Yori. (Japan).7z"
+  },
+  {
+   "name": "King of Fighters R-1 - Pocket Fighting Series (Japan, Europe) (En,Ja",
+   "url": "https://archive.org/download/ngp-1g1r-mattb258_202604/King%20of%20Fighters%20R-1%20-%20Pocket%20Fighting%20Series%20%28Japan%2C%20Europe%29%20%28En%2CJa%29.7z",
+   "filename": "King of Fighters R-1 - Pocket Fighting Series (Japan, Europe) (En,Ja).7z"
+  },
+  {
+   "name": "King of Fighters R-2 - Pocket Fighting Series (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/King%20of%20Fighters%20R-2%20-%20Pocket%20Fighting%20Series%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "King of Fighters R-2 - Pocket Fighting Series (World) (En,Ja).7z"
+  },
+  {
+   "name": "King of Fighters, The - Battle de Paradise (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/King%20of%20Fighters%2C%20The%20-%20Battle%20de%20Paradise%20%28Japan%29.7z",
+   "filename": "King of Fighters, The - Battle de Paradise (Japan).7z"
+  },
+  {
+   "name": "Koi Koi Mahjong (Japan) (v0B",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Koi%20Koi%20Mahjong%20%28Japan%29%20%28v0B%29.7z",
+   "filename": "Koi Koi Mahjong (Japan) (v0B).7z"
+  },
+  {
+   "name": "Last Blade, The - Beyond the Destiny (USA, Europe",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Last%20Blade%2C%20The%20-%20Beyond%20the%20Destiny%20%28USA%2C%20Europe%29.7z",
+   "filename": "Last Blade, The - Beyond the Destiny (USA, Europe).7z"
+  },
+  {
+   "name": "Magical Drop Pocket (USA, Europe",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Magical%20Drop%20Pocket%20%28USA%2C%20Europe%29.7z",
+   "filename": "Magical Drop Pocket (USA, Europe).7z"
+  },
+  {
+   "name": "Melon-chan no Seichou Nikki (Japan",
+   "url": "https://archive.org/download/ngp-1g1r-mattb258_202604/Melon-chan%20no%20Seichou%20Nikki%20%28Japan%29.7z",
+   "filename": "Melon-chan no Seichou Nikki (Japan).7z"
+  },
+  {
+   "name": "Memories Off - Pure (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Memories%20Off%20-%20Pure%20%28Japan%29.7z",
+   "filename": "Memories Off - Pure (Japan).7z"
+  },
+  {
+   "name": "Metal Slug - 1st Mission (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Metal%20Slug%20-%201st%20Mission%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "Metal Slug - 1st Mission (World) (En,Ja).7z"
+  },
+  {
+   "name": "Metal Slug - 2nd Mission (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Metal%20Slug%20-%202nd%20Mission%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "Metal Slug - 2nd Mission (World) (En,Ja).7z"
+  },
+  {
+   "name": "Mezase! Kanji Ou (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Mezase%21%20Kanji%20Ou%20%28Japan%29.7z",
+   "filename": "Mezase! Kanji Ou (Japan).7z"
+  },
+  {
+   "name": "Mizuki Shigeru no Youkai Shashinkan (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Mizuki%20Shigeru%20no%20Youkai%20Shashinkan%20%28Japan%29.7z",
+   "filename": "Mizuki Shigeru no Youkai Shashinkan (Japan).7z"
+  },
+  {
+   "name": "Neo 21 - Pocket Casino Series (World",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Neo%2021%20-%20Pocket%20Casino%20Series%20%28World%29.7z",
+   "filename": "Neo 21 - Pocket Casino Series (World).7z"
+  },
+  {
+   "name": "Neo Baccarat - Pocket Casino Series (Japan, Europe) (En) (v16",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Neo%20Baccarat%20-%20Pocket%20Casino%20Series%20%28Japan%2C%20Europe%29%20%28En%29%20%28v16%29.7z",
+   "filename": "Neo Baccarat - Pocket Casino Series (Japan, Europe) (En) (v16).7z"
+  },
+  {
+   "name": "Neo Cherry Master - Real Casino Series (Japan) (En,Ja",
+   "url": "https://archive.org/download/ngp-1g1r-mattb258_202604/Neo%20Cherry%20Master%20-%20Real%20Casino%20Series%20%28Japan%29%20%28En%2CJa%29.7z",
+   "filename": "Neo Cherry Master - Real Casino Series (Japan) (En,Ja).7z"
+  },
+  {
+   "name": "Neo Cherry Master Color - Pocket Casino Series (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Neo%20Cherry%20Master%20Color%20-%20Pocket%20Casino%20Series%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "Neo Cherry Master Color - Pocket Casino Series (World) (En,Ja).7z"
+  },
+  {
+   "name": "Neo Derby Champ Daiyosou (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Neo%20Derby%20Champ%20Daiyosou%20%28Japan%29.7z",
+   "filename": "Neo Derby Champ Daiyosou (Japan).7z"
+  },
+  {
+   "name": "Neo Dragon's Wild - Real Casino Series (World) (En,Ja) (v13",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Neo%20Dragon%27s%20Wild%20-%20Real%20Casino%20Series%20%28World%29%20%28En%2CJa%29%20%28v13%29.7z",
+   "filename": "Neo Dragon's Wild - Real Casino Series (World) (En,Ja) (v13).7z"
+  },
+  {
+   "name": "Neo Mystery Bonus - Pocket Casino Series (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Neo%20Mystery%20Bonus%20-%20Pocket%20Casino%20Series%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "Neo Mystery Bonus - Pocket Casino Series (World) (En,Ja).7z"
+  },
+  {
+   "name": "Neo Poke Pro Yakyuu (Japan) (v32",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Neo%20Poke%20Pro%20Yakyuu%20%28Japan%29%20%28v32%29.7z",
+   "filename": "Neo Poke Pro Yakyuu (Japan) (v32).7z"
+  },
+  {
+   "name": "Neo Turf Masters (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Neo%20Turf%20Masters%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "Neo Turf Masters (World) (En,Ja).7z"
+  },
+  {
+   "name": "NeoGeo Cup '98 (Japan, Europe) (En,Ja",
+   "url": "https://archive.org/download/ngp-1g1r-mattb258_202604/NeoGeo%20Cup%20%2798%20%28Japan%2C%20Europe%29%20%28En%2CJa%29.7z",
+   "filename": "NeoGeo Cup '98 (Japan, Europe) (En,Ja).7z"
+  },
+  {
+   "name": "NeoGeo Cup '98 Plus Color - Pocket Sports Series (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/NeoGeo%20Cup%20%2798%20Plus%20Color%20-%20Pocket%20Sports%20Series%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "NeoGeo Cup '98 Plus Color - Pocket Sports Series (World) (En,Ja).7z"
+  },
+  {
+   "name": "Nige-ron-pa (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Nige-ron-pa%20%28Japan%29.7z",
+   "filename": "Nige-ron-pa (Japan).7z"
+  },
+  {
+   "name": "Pac-Man (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Pac-Man%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "Pac-Man (World) (En,Ja).7z"
+  },
+  {
+   "name": "Pachi-Slot Aruze Oukoku - Porcano 2 (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Pachi-Slot%20Aruze%20Oukoku%20-%20Porcano%202%20%28Japan%29.7z",
+   "filename": "Pachi-Slot Aruze Oukoku - Porcano 2 (Japan).7z"
+  },
+  {
+   "name": "Pachi-Slot Aruze Oukoku Pocket - Azteca (Japan) (v06",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Pachi-Slot%20Aruze%20Oukoku%20Pocket%20-%20Azteca%20%28Japan%29%20%28v06%29.7z",
+   "filename": "Pachi-Slot Aruze Oukoku Pocket - Azteca (Japan) (v06).7z"
+  },
+  {
+   "name": "Pachi-Slot Aruze Oukoku Pocket - Dekahel 2 (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Pachi-Slot%20Aruze%20Oukoku%20Pocket%20-%20Dekahel%202%20%28Japan%29.7z",
+   "filename": "Pachi-Slot Aruze Oukoku Pocket - Dekahel 2 (Japan).7z"
+  },
+  {
+   "name": "Pachi-Slot Aruze Oukoku Pocket - Delsol 2 (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Pachi-Slot%20Aruze%20Oukoku%20Pocket%20-%20Delsol%202%20%28Japan%29.7z",
+   "filename": "Pachi-Slot Aruze Oukoku Pocket - Delsol 2 (Japan).7z"
+  },
+  {
+   "name": "Pachi-Slot Aruze Oukoku Pocket - e-CUP (Japan) (v04",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Pachi-Slot%20Aruze%20Oukoku%20Pocket%20-%20e-CUP%20%28Japan%29%20%28v04%29.7z",
+   "filename": "Pachi-Slot Aruze Oukoku Pocket - e-CUP (Japan) (v04).7z"
+  },
+  {
+   "name": "Pachi-Slot Aruze Oukoku Pocket - Hanabi (Japan) (v05",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Pachi-Slot%20Aruze%20Oukoku%20Pocket%20-%20Hanabi%20%28Japan%29%20%28v05%29.7z",
+   "filename": "Pachi-Slot Aruze Oukoku Pocket - Hanabi (Japan) (v05).7z"
+  },
+  {
+   "name": "Pachi-Slot Aruze Oukoku Pocket - Ohanabi (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Pachi-Slot%20Aruze%20Oukoku%20Pocket%20-%20Ohanabi%20%28Japan%29.7z",
+   "filename": "Pachi-Slot Aruze Oukoku Pocket - Ohanabi (Japan).7z"
+  },
+  {
+   "name": "Pachi-Slot Aruze Oukoku Pocket - Ward of Lights (Japan) (v04",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Pachi-Slot%20Aruze%20Oukoku%20Pocket%20-%20Ward%20of%20Lights%20%28Japan%29%20%28v04%29.7z",
+   "filename": "Pachi-Slot Aruze Oukoku Pocket - Ward of Lights (Japan) (v04).7z"
+  },
+  {
+   "name": "Pachinko Hisshou Guide - Pocket Parlor (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Pachinko%20Hisshou%20Guide%20-%20Pocket%20Parlor%20%28Japan%29.7z",
+   "filename": "Pachinko Hisshou Guide - Pocket Parlor (Japan).7z"
+  },
+  {
+   "name": "Party Mail (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Party%20Mail%20%28Japan%29.7z",
+   "filename": "Party Mail (Japan).7z"
+  },
+  {
+   "name": "Picture Puzzle (Europe",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Picture%20Puzzle%20%28Europe%29.7z",
+   "filename": "Picture Puzzle (Europe).7z"
+  },
+  {
+   "name": "Pocket Love - if (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Pocket%20Love%20-%20if%20%28Japan%29.7z",
+   "filename": "Pocket Love - if (Japan).7z"
+  },
+  {
+   "name": "Pocket Reversi (Europe) (vA1",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Pocket%20Reversi%20%28Europe%29%20%28vA1%29.7z",
+   "filename": "Pocket Reversi (Europe) (vA1).7z"
+  },
+  {
+   "name": "Pocket Tennis - Pocket Sports Series (Japan, Europe) (En,Ja",
+   "url": "https://archive.org/download/ngp-1g1r-mattb258_202604/Pocket%20Tennis%20-%20Pocket%20Sports%20Series%20%28Japan%2C%20Europe%29%20%28En%2CJa%29.7z",
+   "filename": "Pocket Tennis - Pocket Sports Series (Japan, Europe) (En,Ja).7z"
+  },
+  {
+   "name": "Pocket Tennis Color - Pocket Sports Series (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Pocket%20Tennis%20Color%20-%20Pocket%20Sports%20Series%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "Pocket Tennis Color - Pocket Sports Series (World) (En,Ja).7z"
+  },
+  {
+   "name": "Puyo Pop (USA) (En,Ja) (v06",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Puyo%20Pop%20%28USA%29%20%28En%2CJa%29%20%28v06%29.7z",
+   "filename": "Puyo Pop (USA) (En,Ja) (v06).7z"
+  },
+  {
+   "name": "Puzzle Link (USA, Europe",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Puzzle%20Link%20%28USA%2C%20Europe%29.7z",
+   "filename": "Puzzle Link (USA, Europe).7z"
+  },
+  {
+   "name": "Puzzle Link 2 (USA, Europe",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Puzzle%20Link%202%20%28USA%2C%20Europe%29.7z",
+   "filename": "Puzzle Link 2 (USA, Europe).7z"
+  },
+  {
+   "name": "Renketsu Puzzle Tsunagete Pon! (Japan",
+   "url": "https://archive.org/download/ngp-1g1r-mattb258_202604/Renketsu%20Puzzle%20Tsunagete%20Pon%21%20%28Japan%29.7z",
+   "filename": "Renketsu Puzzle Tsunagete Pon! (Japan).7z"
+  },
+  {
+   "name": "Rockman - Battle & Fighters (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Rockman%20-%20Battle%20%26%20Fighters%20%28Japan%29.7z",
+   "filename": "Rockman - Battle & Fighters (Japan).7z"
+  },
+  {
+   "name": "Samurai Shodown! - Pocket Fighting Series (Japan, Europe) (En,Ja",
+   "url": "https://archive.org/download/ngp-1g1r-mattb258_202604/Samurai%20Shodown%21%20-%20Pocket%20Fighting%20Series%20%28Japan%2C%20Europe%29%20%28En%2CJa%29.7z",
+   "filename": "Samurai Shodown! - Pocket Fighting Series (Japan, Europe) (En,Ja).7z"
+  },
+  {
+   "name": "Samurai Shodown! 2 - Pocket Fighting Series (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Samurai%20Shodown%21%202%20-%20Pocket%20Fighting%20Series%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "Samurai Shodown! 2 - Pocket Fighting Series (World) (En,Ja).7z"
+  },
+  {
+   "name": "Shanghai Mini (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Shanghai%20Mini%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "Shanghai Mini (World) (En,Ja).7z"
+  },
+  {
+   "name": "Shougi no Tatsujin (Japan",
+   "url": "https://archive.org/download/ngp-1g1r-mattb258_202604/Shougi%20no%20Tatsujin%20%28Japan%29.7z",
+   "filename": "Shougi no Tatsujin (Japan).7z"
+  },
+  {
+   "name": "Shougi no Tatsujin Color (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Shougi%20no%20Tatsujin%20Color%20%28Japan%29.7z",
+   "filename": "Shougi no Tatsujin Color (Japan).7z"
+  },
+  {
+   "name": "SNK Gals' Fighters (USA, Europe",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/SNK%20Gals%27%20Fighters%20%28USA%2C%20Europe%29.7z",
+   "filename": "SNK Gals' Fighters (USA, Europe).7z"
+  },
+  {
+   "name": "SNK vs. Capcom - Card Fighters 2 - Expand Edition (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/SNK%20vs.%20Capcom%20-%20Card%20Fighters%202%20-%20Expand%20Edition%20%28Japan%29.7z",
+   "filename": "SNK vs. Capcom - Card Fighters 2 - Expand Edition (Japan).7z"
+  },
+  {
+   "name": "SNK vs. Capcom - Card Fighters' Clash - Capcom Version (USA, Europe",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/SNK%20vs.%20Capcom%20-%20Card%20Fighters%27%20Clash%20-%20Capcom%20Version%20%28USA%2C%20Europe%29.7z",
+   "filename": "SNK vs. Capcom - Card Fighters' Clash - Capcom Version (USA, Europe).7z"
+  },
+  {
+   "name": "SNK vs. Capcom - Card Fighters' Clash - SNK Version (USA, Europe",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/SNK%20vs.%20Capcom%20-%20Card%20Fighters%27%20Clash%20-%20SNK%20Version%20%28USA%2C%20Europe%29.7z",
+   "filename": "SNK vs. Capcom - Card Fighters' Clash - SNK Version (USA, Europe).7z"
+  },
+  {
+   "name": "SNK vs. Capcom - The Match of the Millennium (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/SNK%20vs.%20Capcom%20-%20The%20Match%20of%20the%20Millennium%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "SNK vs. Capcom - The Match of the Millennium (World) (En,Ja).7z"
+  },
+  {
+   "name": "Sonic The Hedgehog - Pocket Adventure (World) (En,Ja",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Sonic%20The%20Hedgehog%20-%20Pocket%20Adventure%20%28World%29%20%28En%2CJa%29.7z",
+   "filename": "Sonic The Hedgehog - Pocket Adventure (World) (En,Ja).7z"
+  },
+  {
+   "name": "Soreike!! Hanafuda Doujou (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Soreike%21%21%20Hanafuda%20Doujou%20%28Japan%29.7z",
+   "filename": "Soreike!! Hanafuda Doujou (Japan).7z"
+  },
+  {
+   "name": "Super Real Mahjong - Premium Collection (Japan",
+   "url": "https://archive.org/download/ngpc-1g1r-mattb258_202604/Super%20Real%20Mahjong%20-%20Premium%20Collection%20%28Japan%29.7z",
+   "filename": "Super Real Mahjong - Premium Collection (Japan).7z"
+  }
+ ]
+}

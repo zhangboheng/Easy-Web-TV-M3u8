@@ -63,13 +63,15 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **Sega**: Genesis/Mega Drive, Master System, Game Gear, Sega CD, Sega 32X, Saturn
   - **Atari**: 2600, 5200, 7800, Jaguar, Lynx
   - **Commodore**: C64, C128, VIC-20, PET, Plus/4, Amiga
+  - **SNK**: Neo Geo Pocket / Color
+  - **Bandai**: WonderSwan / Color
   - **NEC**: PC Engine / TurboGrafx-16
   - **Other**: 3DO, Arcade (FBNeo, MAME 2003), ColecoVision, Virtual Boy
-- **13000+ preset ROMs** across 30 platforms, with search on the game launcher
+- **13600+ preset ROMs** across 32 platforms, with search on the game launcher
   - Nintendo: NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116)
   - Sega: Genesis/Mega Drive (1841), Master System + Game Gear (1283)
   - Atari: 2600 (4145), 5200 (72), 7800 (27), Jaguar (49), Lynx (77)
-  - Other: ColecoVision (94), Virtual Boy (28), Commodore 64 (49)
+  - Other: ColecoVision (94), Virtual Boy (28), Commodore 64 (49), WonderSwan/Color (208), Neo Geo Pocket/Color (82)
   - Arcade (FBNeo): 149 games incl. the full Neo Geo MVS lineup (Metal Slug 1–5/X, King of Fighters '94–2003, Samurai Shodown I–V, The Last Blade 1/2, Garou, Real Bout Fatal Fury series, World Heroes series, Puzzle Bobble...), CPS1 classics (Cadillacs and Dinosaurs, Knights of the Round, King of Dragons, Magic Sword, Warriors of Fate, Ghouls 'n Ghosts), CPS3 (Marvel vs. Capcom 2) and 14 MAME-era classics (from the marlon-santana/roms-retro-arcade, roms-retro-neogeo, roms-retro-cps1 and roms-retro-cps3 sets on GitHub)
 - **Three ways to load a ROM**: pick from the preset list, upload a file (core auto-detected by extension), or paste a ROM URL
 - **Fast ROM fetching**: direct download for CORS-enabled sources (e.g. GitHub-hosted ROMs), public CORS proxies only as fallback
@@ -146,7 +148,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Supported Platforms
 
-All 30 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **13402** games across 24 JSON files.
+All 32 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **13692** games across 26 JSON files.
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -175,12 +177,14 @@ All 30 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Commodore | Plus/4 | vice_xplus4 | 5 | plus4.json |
 | Commodore | Amiga | puae | 1455 | amiga.json |
 | NEC | PC Engine / TurboGrafx-16 | mednafen_pce | 280 | pce.json |
+| Other | WonderSwan / Color | mednafen_wswan | 208 | wonderswan.json |
+| Other | Neo Geo Pocket / Color | mednafen_ngp | 82 | ngp.json |
 | Other | 3DO | opera | – | – |
 | Other | Arcade (FBNeo, incl. Neo Geo / CPS1 / CPS3) | fbneo | 149 | arcade.json |
 | Other | Arcade (MAME 2003+) | mame2003_plus | 153 | mame.json |
 | Other | ColecoVision | gearcoleco | 94 | coleco.json |
 | Other | Virtual Boy | beetle_vb | 28 | vb.json |
-| **Total** | **30 platforms** | – | **13402** | **24 files** |
+| **Total** | **32 platforms** | – | **13692** | **26 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 
@@ -262,6 +266,8 @@ Easy-Web-TV-M3u8/
 │       ├── atarilynx.json    # 77 Atari Lynx games
 │       ├── coleco.json       # 94 ColecoVision games
 │       ├── vb.json           # 28 Virtual Boy games
+│       ├── wonderswan.json   # 208 WonderSwan / WonderSwan Color games (No-Intro sets on archive.org)
+│       ├── ngp.json          # 82 Neo Geo Pocket / Color games (No-Intro 1G1R sets on archive.org)
 │       ├── c64.json          # 51 Commodore 64 games
 │       ├── c128.json         # 5 Commodore 128 games
 │       ├── vic20.json        # 156 VIC-20 games

@@ -1462,6 +1462,10 @@ var coreMapping = {
     'adz': 'puae',
     'pce': 'mednafen_pce',
     'sgx': 'mednafen_pce',
+    'ws': 'mednafen_wswan',
+    'wsc': 'mednafen_wswan',
+    'ngp': 'mednafen_ngp',
+    'ngc': 'mednafen_ngp',
     '32x': 'picodrive'
 };
 
@@ -2031,6 +2035,8 @@ document.addEventListener('DOMContentLoaded', function() {
         'vice_xplus4': 'plus4',
         'puae': 'amiga',
         'mednafen_pce': 'pce',
+        'mednafen_wswan': 'wonderswan',
+        'mednafen_ngp': 'ngp',
         'beetle_vb': 'vb'
 };
 
