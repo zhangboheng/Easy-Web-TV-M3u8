@@ -205,6 +205,14 @@ var games = [
         url: '../routes/emulatorjs.html?core=beetle_vb'
     },
     {
+        id: 38,
+        name: 'PC Engine Emulator',
+        platform: 'PCE',
+        category: 'emulator',
+        image: '../images/pcengine.svg',
+        url: '../routes/emulatorjs.html?core=mednafen_pce'
+    },
+    {
         id: 9,
         name: 'N64 Emulator',
         platform: 'N64',

@@ -1460,6 +1460,8 @@ var coreMapping = {
     'g64': 'vice_x64',
     'adf': 'puae',
     'adz': 'puae',
+    'pce': 'mednafen_pce',
+    'sgx': 'mednafen_pce',
     '32x': 'picodrive'
 };
 
@@ -2028,6 +2030,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'vice_xpet': 'pet',
         'vice_xplus4': 'plus4',
         'puae': 'amiga',
+        'mednafen_pce': 'pce',
         'beetle_vb': 'vb'
 };
 

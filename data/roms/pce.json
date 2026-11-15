@@ -1,0 +1,1406 @@
+{
+ "platform": "pce",
+ "core": "mednafen_pce",
+ "games": [
+  {
+   "name": "Adventure Island",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Adventure%20Island%20%28J%29.zip",
+   "filename": "Adventure Island (J).zip"
+  },
+  {
+   "name": "Aero Blasters",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Aero%20Blasters%20%28U%29.zip",
+   "filename": "Aero Blasters (U).zip"
+  },
+  {
+   "name": "After Burner II",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/After%20Burner%20II%20%28J%29.zip",
+   "filename": "After Burner II (J).zip"
+  },
+  {
+   "name": "Air Zonk",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Air%20Zonk%20%28U%29.zip",
+   "filename": "Air Zonk (U).zip"
+  },
+  {
+   "name": "Aldynes (SGX)",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Aldynes%20%28J%29%20%28SGX%29.zip",
+   "filename": "Aldynes (J) (SGX).zip"
+  },
+  {
+   "name": "Alien Crush",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Alien%20Crush%20%28U%29.zip",
+   "filename": "Alien Crush (U).zip"
+  },
+  {
+   "name": "Ankuku Densetsu",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Ankuku%20Densetsu%20%28J%29.zip",
+   "filename": "Ankuku Densetsu (J).zip"
+  },
+  {
+   "name": "Aoi Blink",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Aoi%20Blink%20%28J%29.zip",
+   "filename": "Aoi Blink (J).zip"
+  },
+  {
+   "name": "Appare Gateball",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Appare%20Gateball%20%28J%29.zip",
+   "filename": "Appare Gateball (J).zip"
+  },
+  {
+   "name": "Armed Formation F",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Armed%20Formation%20F%20%28J%29.zip",
+   "filename": "Armed Formation F (J).zip"
+  },
+  {
+   "name": "Atomic Robo-Kid Special",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Atomic%20Robo-Kid%20Special%20%28J%29.zip",
+   "filename": "Atomic Robo-Kid Special (J).zip"
+  },
+  {
+   "name": "Av Poker",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Av%20Poker%20%28J%29.zip",
+   "filename": "Av Poker (J).zip"
+  },
+  {
+   "name": "Ballistix",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Ballistix%20%28J%29.zip",
+   "filename": "Ballistix (J).zip"
+  },
+  {
+   "name": "Bari Bari Densetsu",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Bari%20Bari%20Densetsu%20%28J%29.zip",
+   "filename": "Bari Bari Densetsu (J).zip"
+  },
+  {
+   "name": "Barunba",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Barunba%20%28J%29.zip",
+   "filename": "Barunba (J).zip"
+  },
+  {
+   "name": "Batman",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Batman%20%28J%29.zip",
+   "filename": "Batman (J).zip"
+  },
+  {
+   "name": "Battle Ace (SGX)",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Battle%20Ace%20%28J%29%20%28SGX%29.zip",
+   "filename": "Battle Ace (J) (SGX).zip"
+  },
+  {
+   "name": "Battle Lode Runner",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Battle%20Lode%20Runner%20%28J%29.zip",
+   "filename": "Battle Lode Runner (J).zip"
+  },
+  {
+   "name": "Battle Royale",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Battle%20Royale%20%28U%29.zip",
+   "filename": "Battle Royale (U).zip"
+  },
+  {
+   "name": "Be Ball (Tai Sang Version)",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Be%20Ball%20%28Tai%20Sang%20Version%29%20%28J%29.zip",
+   "filename": "Be Ball (Tai Sang Version) (J).zip"
+  },
+  {
+   "name": "Benkei Gaiden",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Benkei%20Gaiden%20%28J%29%20%5Ba1%5D.zip",
+   "filename": "Benkei Gaiden (J) [a1].zip"
+  },
+  {
+   "name": "Bikkuriman World",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Bikkuriman%20World%20%28J%29%20%5BT-Eng_Partial_DemiForce%5D.zip",
+   "filename": "Bikkuriman World (J) [T-Eng_Partial_DemiForce].zip"
+  },
+  {
+   "name": "Blazing Lazers",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Blazing%20Lazers%20%28U%29.zip",
+   "filename": "Blazing Lazers (U).zip"
+  },
+  {
+   "name": "Blodia - turbografx16",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Blodia%20%28J%29%20-%20turbografx16.zip",
+   "filename": "Blodia (J) - turbografx16.zip"
+  },
+  {
+   "name": "Bloody Wolf",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Bloody%20Wolf%20%28U%29.zip",
+   "filename": "Bloody Wolf (U).zip"
+  },
+  {
+   "name": "Body Conquest II",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Body%20Conquest%20II%20%28J%29.zip",
+   "filename": "Body Conquest II (J).zip"
+  },
+  {
+   "name": "Bomberman",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Bomberman%20%28U%29.zip",
+   "filename": "Bomberman (U).zip"
+  },
+  {
+   "name": "Bomberman '93",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Bomberman%20%2793%20%28U%29.zip",
+   "filename": "Bomberman '93 (U).zip"
+  },
+  {
+   "name": "Bomberman '93 Special",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Bomberman%20%2793%20Special%20%28J%29%20%5B%21%5D.zip",
+   "filename": "Bomberman '93 Special (J) [!].zip"
+  },
+  {
+   "name": "Bomberman Users Battle",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Bomberman%20Users%20Battle%20%28J%29%20%5B%21%5D.zip",
+   "filename": "Bomberman Users Battle (J) [!].zip"
+  },
+  {
+   "name": "Bonk III - Bonk's Big Adventure",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Bonk%20III%20-%20Bonk%27s%20Big%20Adventure%20%28U%29.zip",
+   "filename": "Bonk III - Bonk's Big Adventure (U).zip"
+  },
+  {
+   "name": "Bonk's Adventure",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Bonk%27s%20Adventure%20%28USA%29.zip",
+   "filename": "Bonk's Adventure (USA).zip"
+  },
+  {
+   "name": "Bonk's Revenge",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Bonk%27s%20Revenge%20%28U%29.zip",
+   "filename": "Bonk's Revenge (U).zip"
+  },
+  {
+   "name": "Boxy Boy",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Boxy%20Boy%20%28U%29.zip",
+   "filename": "Boxy Boy (U).zip"
+  },
+  {
+   "name": "Bravoman",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Bravoman%20%28U%29.zip",
+   "filename": "Bravoman (U).zip"
+  },
+  {
+   "name": "Break In",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Break%20In%20%28J%29.zip",
+   "filename": "Break In (J).zip"
+  },
+  {
+   "name": "Bubblegum Crash! - Knight Sabers 2034",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Bubblegum%20Crash%21%20-%20Knight%20Sabers%202034%20%28J%29.zip",
+   "filename": "Bubblegum Crash! - Knight Sabers 2034 (J).zip"
+  },
+  {
+   "name": "Bullfight - Ring no Hasha",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Bullfight%20-%20Ring%20no%20Hasha%20%28J%29.zip",
+   "filename": "Bullfight - Ring no Hasha (J).zip"
+  },
+  {
+   "name": "Busou Keiji Cyber Cross",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Busou%20Keiji%20Cyber%20Cross%20%28J%29.zip",
+   "filename": "Busou Keiji Cyber Cross (J).zip"
+  },
+  {
+   "name": "Cadash",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Cadash%20%28U%29.zip",
+   "filename": "Cadash (U).zip"
+  },
+  {
+   "name": "Champion Wrestler",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Champion%20Wrestler%20%28J%29.zip",
+   "filename": "Champion Wrestler (J).zip"
+  },
+  {
+   "name": "Chikuden Yatoubei - Kubikiri Yakata Yori",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Chikuden%20Yatoubei%20-%20Kubikiri%20Yakata%20Yori%20%28J%29.zip",
+   "filename": "Chikuden Yatoubei - Kubikiri Yakata Yori (J).zip"
+  },
+  {
+   "name": "China Warrior",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/China%20Warrior%20%28U%29.zip",
+   "filename": "China Warrior (U).zip"
+  },
+  {
+   "name": "Chouzetsu Rinjin Berabou Man",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Chouzetsu%20Rinjin%20Berabou%20Man%20%28J%29.zip",
+   "filename": "Chouzetsu Rinjin Berabou Man (J).zip"
+  },
+  {
+   "name": "Circus Lido",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Circus%20Lido%20%28J%29.zip",
+   "filename": "Circus Lido (J).zip"
+  },
+  {
+   "name": "City Hunter",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/City%20Hunter%20%28J%29.zip",
+   "filename": "City Hunter (J).zip"
+  },
+  {
+   "name": "Columns",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Columns%20%28J%29.zip",
+   "filename": "Columns (J).zip"
+  },
+  {
+   "name": "Coryoon - Child of Dragon",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Coryoon%20-%20Child%20of%20Dragon%20%28J%29.zip",
+   "filename": "Coryoon - Child of Dragon (J).zip"
+  },
+  {
+   "name": "Cratermaze",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Cratermaze%20%28U%29.zip",
+   "filename": "Cratermaze (U).zip"
+  },
+  {
+   "name": "Cross Wiber - Cyber Combat Police",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Cross%20Wiber%20-%20Cyber%20Combat%20Police%20%28J%29.zip",
+   "filename": "Cross Wiber - Cyber Combat Police (J).zip"
+  },
+  {
+   "name": "Cyber Core",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Cyber%20Core%20%28U%29.zip",
+   "filename": "Cyber Core (U).zip"
+  },
+  {
+   "name": "Cyber Dodgeball",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Cyber%20Dodgeball%20%28J%29.zip",
+   "filename": "Cyber Dodgeball (J).zip"
+  },
+  {
+   "name": "Cyber Knight",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Cyber%20Knight%20%28J%29.zip",
+   "filename": "Cyber Knight (J).zip"
+  },
+  {
+   "name": "Daichikun Crisis",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Daichikun%20Crisis%20%28J%29.zip",
+   "filename": "Daichikun Crisis (J).zip"
+  },
+  {
+   "name": "Daimakaimura (SGX)",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Daimakaimura%20%28J%29%20%28SGX%29.zip",
+   "filename": "Daimakaimura (J) (SGX).zip"
+  },
+  {
+   "name": "Daisenpuu",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Daisenpuu%20%28J%29.zip",
+   "filename": "Daisenpuu (J).zip"
+  },
+  {
+   "name": "Darius Alpha",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Darius%20Alpha%20%28J%29.zip",
+   "filename": "Darius Alpha (J).zip"
+  },
+  {
+   "name": "Darkwing Duck",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Darkwing%20Duck%20%28U%29.zip",
+   "filename": "Darkwing Duck (U).zip"
+  },
+  {
+   "name": "Dead Moon - Tsuki Sekai no Akumu",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Dead%20Moon%20-%20Tsuki%20Sekai%20no%20Akumu%20%28J%29.zip",
+   "filename": "Dead Moon - Tsuki Sekai no Akumu (J).zip"
+  },
+  {
+   "name": "Deep Blue - Kaitei Shinwa",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Deep%20Blue%20-%20Kaitei%20Shinwa%20%28J%29.zip",
+   "filename": "Deep Blue - Kaitei Shinwa (J).zip"
+  },
+  {
+   "name": "Devil's Crush",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Devil%27s%20Crush%20%28U%29.zip",
+   "filename": "Devil's Crush (U).zip"
+  },
+  {
+   "name": "Die Hard",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Die%20Hard%20%28J%29.zip",
+   "filename": "Die Hard (J).zip"
+  },
+  {
+   "name": "Digital Champ",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Digital%20Champ%20%28J%29.zip",
+   "filename": "Digital Champ (J).zip"
+  },
+  {
+   "name": "Don Doko Don",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Don%20Doko%20Don%20%28J%29.zip",
+   "filename": "Don Doko Don (J).zip"
+  },
+  {
+   "name": "Doraemon - Meikyuu Daisakusen",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Doraemon%20-%20Meikyuu%20Daisakusen%20%28J%29.zip",
+   "filename": "Doraemon - Meikyuu Daisakusen (J).zip"
+  },
+  {
+   "name": "Doraemon - Nobita no Dorabian Night",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Doraemon%20-%20Nobita%20no%20Dorabian%20Night%20%28J%29.zip",
+   "filename": "Doraemon - Nobita no Dorabian Night (J).zip"
+  },
+  {
+   "name": "Dragon Saber - After Story of Dragon Spirit",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Dragon%20Saber%20-%20After%20Story%20of%20Dragon%20Spirit%20%28J%29.zip",
+   "filename": "Dragon Saber - After Story of Dragon Spirit (J).zip"
+  },
+  {
+   "name": "Dragon Spirit",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Dragon%20Spirit%20%28U%29.zip",
+   "filename": "Dragon Spirit (U).zip"
+  },
+  {
+   "name": "Dragon's Curse",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Dragon%27s%20Curse%20%28U%29.zip",
+   "filename": "Dragon's Curse (U).zip"
+  },
+  {
+   "name": "Energy",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Energy%20%28J%29.zip",
+   "filename": "Energy (J).zip"
+  },
+  {
+   "name": "F-1 Dream",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/F-1%20Dream%20%28J%29.zip",
+   "filename": "F-1 Dream (J).zip"
+  },
+  {
+   "name": "F-1 Pilot - You're King of Kings",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/F-1%20Pilot%20-%20You%27re%20King%20of%20Kings%20%28J%29%20%5Ba1%5D.zip",
+   "filename": "F-1 Pilot - You're King of Kings (J) [a1].zip"
+  },
+  {
+   "name": "F1 Circus '91 - World Championship",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/F1%20Circus%20%2791%20-%20World%20Championship%20%28J%29.zip",
+   "filename": "F1 Circus '91 - World Championship (J).zip"
+  },
+  {
+   "name": "F1 Circus '92 - The Speed of Sound",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/F1%20Circus%20%2792%20-%20The%20Speed%20of%20Sound%20%28J%29.zip",
+   "filename": "F1 Circus '92 - The Speed of Sound (J).zip"
+  },
+  {
+   "name": "F1 Triple Battle",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/F1%20Triple%20Battle%20%28J%29.zip",
+   "filename": "F1 Triple Battle (J).zip"
+  },
+  {
+   "name": "Falcon",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Falcon%20%28U%29.zip",
+   "filename": "Falcon (U).zip"
+  },
+  {
+   "name": "Fantasy Zone",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Fantasy%20Zone%20%28U%29.zip",
+   "filename": "Fantasy Zone (U).zip"
+  },
+  {
+   "name": "Fighting Run",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Fighting%20Run%20%28J%29.zip",
+   "filename": "Fighting Run (J).zip"
+  },
+  {
+   "name": "Final Blaster",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Final%20Blaster%20%28J%29.zip",
+   "filename": "Final Blaster (J).zip"
+  },
+  {
+   "name": "Final Lap Twin",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Final%20Lap%20Twin%20%28U%29.zip",
+   "filename": "Final Lap Twin (U).zip"
+  },
+  {
+   "name": "Final Match Tennis",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Final%20Match%20Tennis%20%28J%29.zip",
+   "filename": "Final Match Tennis (J).zip"
+  },
+  {
+   "name": "Final Soldier",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Final%20Soldier%20%28J%29.zip",
+   "filename": "Final Soldier (J).zip"
+  },
+  {
+   "name": "Final Soldier Special Version",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Final%20Soldier%20Special%20Version%20%28J%29.zip",
+   "filename": "Final Soldier Special Version (J).zip"
+  },
+  {
+   "name": "Fire Pro Wrestling - 2nd Bout",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Fire%20Pro%20Wrestling%20-%202nd%20Bout%20%28J%29.zip",
+   "filename": "Fire Pro Wrestling - 2nd Bout (J).zip"
+  },
+  {
+   "name": "Fire Pro Wrestling 3 - Legend Bout",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Fire%20Pro%20Wrestling%203%20-%20Legend%20Bout%20%28J%29.zip",
+   "filename": "Fire Pro Wrestling 3 - Legend Bout (J).zip"
+  },
+  {
+   "name": "Formation Soccer - Human Cup '90",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Formation%20Soccer%20-%20Human%20Cup%20%2790%20%28J%29.zip",
+   "filename": "Formation Soccer - Human Cup '90 (J).zip"
+  },
+  {
+   "name": "Formation Soccer on J. League",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Formation%20Soccer%20on%20J.%20League%20%28J%29.zip",
+   "filename": "Formation Soccer on J. League (J).zip"
+  },
+  {
+   "name": "Fushigi no Yume no Alice",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Fushigi%20no%20Yume%20no%20Alice%20%28J%29.zip",
+   "filename": "Fushigi no Yume no Alice (J).zip"
+  },
+  {
+   "name": "Gai Flame",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Gai%20Flame%20%28J%29.zip",
+   "filename": "Gai Flame (J).zip"
+  },
+  {
+   "name": "Gaia no Monshou",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Gaia%20no%20Monshou%20%28J%29.zip",
+   "filename": "Gaia no Monshou (J).zip"
+  },
+  {
+   "name": "Galaga '90",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Galaga%20%2790%20%28U%29.zip",
+   "filename": "Galaga '90 (U).zip"
+  },
+  {
+   "name": "Galaga '90 (Tai Sang Version)",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Galaga%20%2790%20%28Tai%20Sang%20Version%29%20%28U%29.zip",
+   "filename": "Galaga '90 (Tai Sang Version) (U).zip"
+  },
+  {
+   "name": "Games Express CD Card 1993",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Games%20Express%20CD%20Card%201993%20%28J%29.zip",
+   "filename": "Games Express CD Card 1993 (J).zip"
+  },
+  {
+   "name": "Ganbare Golf Boys",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Ganbare%20Golf%20Boys%20%28J%29.zip",
+   "filename": "Ganbare Golf Boys (J).zip"
+  },
+  {
+   "name": "Gekisha Boy",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Gekisha%20Boy%20%28J%29.zip",
+   "filename": "Gekisha Boy (J).zip"
+  },
+  {
+   "name": "Genji Tsuushin Agedama",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Genji%20Tsuushin%20Agedama%20%28J%29.zip",
+   "filename": "Genji Tsuushin Agedama (J).zip"
+  },
+  {
+   "name": "Ghost Manor",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Ghost%20Manor%20%28U%29.zip",
+   "filename": "Ghost Manor (U).zip"
+  },
+  {
+   "name": "Gokuraku! Chuuka Taisen",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Gokuraku%21%20Chuuka%20Taisen%20%28J%29.zip",
+   "filename": "Gokuraku! Chuuka Taisen (J).zip"
+  },
+  {
+   "name": "Gomola Speed",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Gomola%20Speed%20%28J%29.zip",
+   "filename": "Gomola Speed (J).zip"
+  },
+  {
+   "name": "Gradius",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Gradius%20%28J%29.zip",
+   "filename": "Gradius (J).zip"
+  },
+  {
+   "name": "Gunboat",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Gunboat%20%28U%29.zip",
+   "filename": "Gunboat (U).zip"
+  },
+  {
+   "name": "Gunhed",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Gunhed%20%28J%29.zip",
+   "filename": "Gunhed (J).zip"
+  },
+  {
+   "name": "Gunhed Taikai",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Gunhed%20Taikai%20%28J%29.zip",
+   "filename": "Gunhed Taikai (J).zip"
+  },
+  {
+   "name": "Hana Taka Daka!",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Hana%20Taka%20Daka%21%20%28J%29.zip",
+   "filename": "Hana Taka Daka! (J).zip"
+  },
+  {
+   "name": "Hatris",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Hatris%20%28J%29.zip",
+   "filename": "Hatris (J).zip"
+  },
+  {
+   "name": "Heavy Unit",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Heavy%20Unit%20%28J%29.zip",
+   "filename": "Heavy Unit (J).zip"
+  },
+  {
+   "name": "Hisou Kihei X Serd",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Hisou%20Kihei%20X%20Serd%20%28J%29.zip",
+   "filename": "Hisou Kihei X Serd (J).zip"
+  },
+  {
+   "name": "Hit the Ice - VHL - The Video Hockey League",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Hit%20the%20Ice%20-%20VHL%20-%20The%20Video%20Hockey%20League%20%28J%29.zip",
+   "filename": "Hit the Ice - VHL - The Video Hockey League (J).zip"
+  },
+  {
+   "name": "Honey in the Sky",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Honey%20in%20the%20Sky%20%28J%29.zip",
+   "filename": "Honey in the Sky (J).zip"
+  },
+  {
+   "name": "Honey on the Road",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Honey%20on%20the%20Road%20%28J%29.zip",
+   "filename": "Honey on the Road (J).zip"
+  },
+  {
+   "name": "Honoo no Toukyuuji Dodge Danpei",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Honoo%20no%20Toukyuuji%20Dodge%20Danpei%20%28J%29.zip",
+   "filename": "Honoo no Toukyuuji Dodge Danpei (J).zip"
+  },
+  {
+   "name": "Idol Hanafuda Fan Club",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Idol%20Hanafuda%20Fan%20Club%20%28J%29.zip",
+   "filename": "Idol Hanafuda Fan Club (J).zip"
+  },
+  {
+   "name": "Image Fight",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Image%20Fight%20%28J%29.zip",
+   "filename": "Image Fight (J).zip"
+  },
+  {
+   "name": "J. League Greatest Eleven",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/J.%20League%20Greatest%20Eleven%20%28J%29.zip",
+   "filename": "J. League Greatest Eleven (J).zip"
+  },
+  {
+   "name": "Jack Nicklaus' Greatest 18 Holes of Major Champ. Golf",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Jack%20Nicklaus%27%20Greatest%2018%20Holes%20of%20Major%20Champ.%20Golf%20%28J%29.zip",
+   "filename": "Jack Nicklaus' Greatest 18 Holes of Major Champ. Golf (J).zip"
+  },
+  {
+   "name": "Jackie Chan",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Jackie%20Chan%20%28J%29.zip",
+   "filename": "Jackie Chan (J).zip"
+  },
+  {
+   "name": "Jigoku Meguri",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Jigoku%20Meguri%20%28J%29.zip",
+   "filename": "Jigoku Meguri (J).zip"
+  },
+  {
+   "name": "Kaizou Choujin Shubibinman 2 - Aratanaru Teki",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Kaizou%20Choujin%20Shubibinman%202%20-%20Aratanaru%20Teki%20%28J%29.zip",
+   "filename": "Kaizou Choujin Shubibinman 2 - Aratanaru Teki (J).zip"
+  },
+  {
+   "name": "Kato Chan & Ken Chan",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Kato%20Chan%20%26%20Ken%20Chan%20%28J%29.zip",
+   "filename": "Kato Chan & Ken Chan (J).zip"
+  },
+  {
+   "name": "Kattobi! Takuhaikun",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Kattobi%21%20Takuhaikun%20%28J%29.zip",
+   "filename": "Kattobi! Takuhaikun (J).zip"
+  },
+  {
+   "name": "Keith Courage in Alpha Zones",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Keith%20Courage%20in%20Alpha%20Zones%20%28U%29.zip",
+   "filename": "Keith Courage in Alpha Zones (U).zip"
+  },
+  {
+   "name": "Kick Ball",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Kick%20Ball%20%28J%29.zip",
+   "filename": "Kick Ball (J).zip"
+  },
+  {
+   "name": "Kiki Kaikai",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Kiki%20Kaikai%20%28J%29.zip",
+   "filename": "Kiki Kaikai (J).zip"
+  },
+  {
+   "name": "Klax",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Klax%20%28J%29.zip",
+   "filename": "Klax (J).zip"
+  },
+  {
+   "name": "Kore ga Pro Yakyuu '89",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Kore%20ga%20Pro%20Yakyuu%20%2789%20%28J%29.zip",
+   "filename": "Kore ga Pro Yakyuu '89 (J).zip"
+  },
+  {
+   "name": "Kyuukyoku Mahjong Idol Graphic",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Kyuukyoku%20Mahjong%20Idol%20Graphic%20%28J%29.zip",
+   "filename": "Kyuukyoku Mahjong Idol Graphic (J).zip"
+  },
+  {
+   "name": "Kyuukyoku Tiger",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Kyuukyoku%20Tiger%20%28J%29.zip",
+   "filename": "Kyuukyoku Tiger (J).zip"
+  },
+  {
+   "name": "Lady Sword",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Lady%20Sword%20%28J%29.zip",
+   "filename": "Lady Sword (J).zip"
+  },
+  {
+   "name": "Legend of Hero Tonma",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Legend%20of%20Hero%20Tonma%20%28U%29.zip",
+   "filename": "Legend of Hero Tonma (U).zip"
+  },
+  {
+   "name": "Legend of Hero Tonma,",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Legend%20of%20Hero%20Tonma%2C%20%28U%29%20%5BTFre95_FagEmul%5D.zip",
+   "filename": "Legend of Hero Tonma, (U) [TFre95_FagEmul].zip"
+  },
+  {
+   "name": "Legendary Axe II, The",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Legendary%20Axe%20II%2C%20The%20%28U%29.zip",
+   "filename": "Legendary Axe II, The (U).zip"
+  },
+  {
+   "name": "Legendary Axe, The",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Legendary%20Axe%2C%20The%20%28USA%29.zip",
+   "filename": "Legendary Axe, The (USA).zip"
+  },
+  {
+   "name": "Lode Runner - Lost Labyrinth",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Lode%20Runner%20-%20Lost%20Labyrinth%20%28J%29.zip",
+   "filename": "Lode Runner - Lost Labyrinth (J).zip"
+  },
+  {
+   "name": "Madouou Granzort (SGX)",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Madouou%20Granzort%20%28J%29%20%28SGX%29.zip",
+   "filename": "Madouou Granzort (J) (SGX).zip"
+  },
+  {
+   "name": "Mahjong Gakuen - Toumasou Shirou Toujou",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Mahjong%20Gakuen%20-%20Toumasou%20Shirou%20Toujou%20%28J%29.zip",
+   "filename": "Mahjong Gakuen - Toumasou Shirou Toujou (J).zip"
+  },
+  {
+   "name": "Mahjong Gakuen Mild - Touma Soujirou Toujou",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Mahjong%20Gakuen%20Mild%20-%20Touma%20Soujirou%20Toujou%20%28J%29.zip",
+   "filename": "Mahjong Gakuen Mild - Touma Soujirou Toujou (J).zip"
+  },
+  {
+   "name": "Mahjong Gokuu Special",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Mahjong%20Gokuu%20Special%20%28J%29.zip",
+   "filename": "Mahjong Gokuu Special (J).zip"
+  },
+  {
+   "name": "Mahjong Haouden - Kaiser's Quest",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Mahjong%20Haouden%20-%20Kaiser%27s%20Quest%20%28J%29%20%5Ba1%5D.zip",
+   "filename": "Mahjong Haouden - Kaiser's Quest (J) [a1].zip"
+  },
+  {
+   "name": "Mahjong Shikaka Retsuden Mahjong Wars",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Mahjong%20Shikaka%20Retsuden%20Mahjong%20Wars%20%28J%29.zip",
+   "filename": "Mahjong Shikaka Retsuden Mahjong Wars (J).zip"
+  },
+  {
+   "name": "Majin Eiyuu Den Wataru",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Majin%20Eiyuu%20Den%20Wataru%20%28J%29.zip",
+   "filename": "Majin Eiyuu Den Wataru (J).zip"
+  },
+  {
+   "name": "Makai Hakkenden Shada",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Makai%20Hakkenden%20Shada%20%28J%29.zip",
+   "filename": "Makai Hakkenden Shada (J).zip"
+  },
+  {
+   "name": "Makai Prince Dorabocchan",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Makai%20Prince%20Dorabocchan%20%28J%29.zip",
+   "filename": "Makai Prince Dorabocchan (J).zip"
+  },
+  {
+   "name": "Makyou Densetsu - The Legendary Axe",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Makyou%20Densetsu%20-%20The%20Legendary%20Axe%20%28J%29.zip",
+   "filename": "Makyou Densetsu - The Legendary Axe (J).zip"
+  },
+  {
+   "name": "Maniac Pro Wrestling - Asu he no Tatakai",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Maniac%20Pro%20Wrestling%20-%20Asu%20he%20no%20Tatakai%20%28J%29.zip",
+   "filename": "Maniac Pro Wrestling - Asu he no Tatakai (J).zip"
+  },
+  {
+   "name": "Marchen Maze",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Marchen%20Maze%20%28J%29.zip",
+   "filename": "Marchen Maze (J).zip"
+  },
+  {
+   "name": "Mesopotamia",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Mesopotamia%20%28J%29.zip",
+   "filename": "Mesopotamia (J).zip"
+  },
+  {
+   "name": "Metal Stoker",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Metal%20Stoker%20%28J%29.zip",
+   "filename": "Metal Stoker (J).zip"
+  },
+  {
+   "name": "Military Madness",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Military%20Madness%20%28U%29.zip",
+   "filename": "Military Madness (U).zip"
+  },
+  {
+   "name": "Mizubaku Daibouken",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Mizubaku%20Daibouken%20%28J%29.zip",
+   "filename": "Mizubaku Daibouken (J).zip"
+  },
+  {
+   "name": "Momotarou Densetsu Gaiden - Dai 1 Shuu",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Momotarou%20Densetsu%20Gaiden%20-%20Dai%201%20Shuu%20%28J%29.zip",
+   "filename": "Momotarou Densetsu Gaiden - Dai 1 Shuu (J).zip"
+  },
+  {
+   "name": "Momotarou Densetsu Turbo",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Momotarou%20Densetsu%20Turbo%20%28J%29.zip",
+   "filename": "Momotarou Densetsu Turbo (J).zip"
+  },
+  {
+   "name": "Momotarou Katsugeki",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Momotarou%20Katsugeki%20%28J%29.zip",
+   "filename": "Momotarou Katsugeki (J).zip"
+  },
+  {
+   "name": "Monster Pro Wrestling",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Monster%20Pro%20Wrestling%20%28J%29.zip",
+   "filename": "Monster Pro Wrestling (J).zip"
+  },
+  {
+   "name": "Moto Roader",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Moto%20Roader%20%28J%29.zip",
+   "filename": "Moto Roader (J).zip"
+  },
+  {
+   "name": "Mr. Heli no Daibouken",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Mr.%20Heli%20no%20Daibouken%20%28J%29.zip",
+   "filename": "Mr. Heli no Daibouken (J).zip"
+  },
+  {
+   "name": "NHK Okaasan to Issho Niko Niko Pun",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/NHK%20Okaasan%20to%20Issho%20Niko%20Niko%20Pun%20%28J%29.zip",
+   "filename": "NHK Okaasan to Issho Niko Niko Pun (J).zip"
+  },
+  {
+   "name": "NHK Taiga Drama Taiheiki",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/NHK%20Taiga%20Drama%20Taiheiki%20%28J%29.zip",
+   "filename": "NHK Taiga Drama Taiheiki (J).zip"
+  },
+  {
+   "name": "Narazumo no Sentou Butai Bloody Wolf",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Narazumo%20no%20Sentou%20Butai%20Bloody%20Wolf%20%28J%29.zip",
+   "filename": "Narazumo no Sentou Butai Bloody Wolf (J).zip"
+  },
+  {
+   "name": "Naxat Open",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Naxat%20Open%20%28J%29.zip",
+   "filename": "Naxat Open (J).zip"
+  },
+  {
+   "name": "Naxat Stadium",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Naxat%20Stadium%20%28J%29.zip",
+   "filename": "Naxat Stadium (J).zip"
+  },
+  {
+   "name": "Naxat Stadium (Tai Sang Version)",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Naxat%20Stadium%20%28Tai%20Sang%20Version%29%20%28J%29.zip",
+   "filename": "Naxat Stadium (Tai Sang Version) (J).zip"
+  },
+  {
+   "name": "Nazo no Masquerade",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Nazo%20no%20Masquerade%20%28J%29.zip",
+   "filename": "Nazo no Masquerade (J).zip"
+  },
+  {
+   "name": "Necromancer",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Necromancer%20%28J%29.zip",
+   "filename": "Necromancer (J).zip"
+  },
+  {
+   "name": "Necros no Yousai",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Necros%20no%20Yousai%20%28J%29.zip",
+   "filename": "Necros no Yousai (J).zip"
+  },
+  {
+   "name": "Nectaris",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Nectaris%20%28J%29.zip",
+   "filename": "Nectaris (J).zip"
+  },
+  {
+   "name": "Nekketsu Koukou Dodgeball Bu PC Bangai Hen",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Nekketsu%20Koukou%20Dodgeball%20Bu%20PC%20Bangai%20Hen%20%28J%29.zip",
+   "filename": "Nekketsu Koukou Dodgeball Bu PC Bangai Hen (J).zip"
+  },
+  {
+   "name": "Nekketsu Koukou Dodgeball Bu PC Soccer Hen",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Nekketsu%20Koukou%20Dodgeball%20Bu%20PC%20Soccer%20Hen%20%28J%29.zip",
+   "filename": "Nekketsu Koukou Dodgeball Bu PC Soccer Hen (J).zip"
+  },
+  {
+   "name": "Neutopia",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Neutopia%20%28U%29.zip",
+   "filename": "Neutopia (U).zip"
+  },
+  {
+   "name": "Neutopia II",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Neutopia%20II%20%28U%29.zip",
+   "filename": "Neutopia II (U).zip"
+  },
+  {
+   "name": "New Adventure Island",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/New%20Adventure%20Island%20%28U%29.zip",
+   "filename": "New Adventure Island (U).zip"
+  },
+  {
+   "name": "New Zealand Story, The",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/New%20Zealand%20Story%2C%20The%20%28J%29.zip",
+   "filename": "New Zealand Story, The (J).zip"
+  },
+  {
+   "name": "Ninja Ryukenden",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Ninja%20Ryukenden%20%28J%29.zip",
+   "filename": "Ninja Ryukenden (J).zip"
+  },
+  {
+   "name": "Ninja Spirit",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Ninja%20Spirit%20%28USA%29.zip",
+   "filename": "Ninja Spirit (USA).zip"
+  },
+  {
+   "name": "Obocchamakun",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Obocchamakun%20%28J%29.zip",
+   "filename": "Obocchamakun (J).zip"
+  },
+  {
+   "name": "Operation Wolf",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Operation%20Wolf%20%28J%29.zip",
+   "filename": "Operation Wolf (J).zip"
+  },
+  {
+   "name": "Order of the Griffon",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Order%20of%20the%20Griffon%20%28U%29.zip",
+   "filename": "Order of the Griffon (U).zip"
+  },
+  {
+   "name": "Ordyne",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Ordyne%20%28J%29.zip",
+   "filename": "Ordyne (J).zip"
+  },
+  {
+   "name": "Out Live - It's Far a Future on Planet",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Out%20Live%20-%20It%27s%20Far%20a%20Future%20on%20Planet%20%28J%29.zip",
+   "filename": "Out Live - It's Far a Future on Planet (J).zip"
+  },
+  {
+   "name": "OutRun",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/OutRun%20%28J%29.zip",
+   "filename": "OutRun (J).zip"
+  },
+  {
+   "name": "Override - Mission Code -Override-",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Override%20-%20Mission%20Code%20-Override-%20%28J%29.zip",
+   "filename": "Override - Mission Code -Override- (J).zip"
+  },
+  {
+   "name": "P-47 - The Freedom Fighter",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/P-47%20-%20The%20Freedom%20Fighter%20%28J%29.zip",
+   "filename": "P-47 - The Freedom Fighter (J).zip"
+  },
+  {
+   "name": "PC Genjin 2 - Pithecanthropus Computerurus",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/PC%20Genjin%202%20-%20Pithecanthropus%20Computerurus%20%28J%29.zip",
+   "filename": "PC Genjin 2 - Pithecanthropus Computerurus (J).zip"
+  },
+  {
+   "name": "PC Genjin 3 Special",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/PC%20Genjin%203%20Special%20%28J%29%20%5B%21%5D.zip",
+   "filename": "PC Genjin 3 Special (J) [!].zip"
+  },
+  {
+   "name": "PC Pachi-Slot 777",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/PC%20Pachi-Slot%20777%20%28J%29.zip",
+   "filename": "PC Pachi-Slot 777 (J).zip"
+  },
+  {
+   "name": "Pac-Land",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Pac-Land%20%28U%29.zip",
+   "filename": "Pac-Land (U).zip"
+  },
+  {
+   "name": "Pachiokun Juuban Shoubu",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Pachiokun%20Juuban%20Shoubu%20%28J%29.zip",
+   "filename": "Pachiokun Juuban Shoubu (J).zip"
+  },
+  {
+   "name": "Paranoia",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Paranoia%20%28J%29.zip",
+   "filename": "Paranoia (J).zip"
+  },
+  {
+   "name": "Parodius Da! - Shinwa kara Owarai he",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Parodius%20Da%21%20-%20Shinwa%20kara%20Owarai%20he%20%28J%29.zip",
+   "filename": "Parodius Da! - Shinwa kara Owarai he (J).zip"
+  },
+  {
+   "name": "Populous",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Populous%20%28J%29.zip",
+   "filename": "Populous (J).zip"
+  },
+  {
+   "name": "Power Drift",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Power%20Drift%20%28J%29.zip",
+   "filename": "Power Drift (J).zip"
+  },
+  {
+   "name": "Power Gate",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Power%20Gate%20%28J%29.zip",
+   "filename": "Power Gate (J).zip"
+  },
+  {
+   "name": "Power Golf",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Power%20Golf%20%28J%29.zip",
+   "filename": "Power Golf (J).zip"
+  },
+  {
+   "name": "Power League",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Power%20League%20%28J%29.zip",
+   "filename": "Power League (J).zip"
+  },
+  {
+   "name": "Power League All Stars GOLD",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Power%20League%20All%20Stars%20GOLD%20%28J%29%20%5B%21%5D.zip",
+   "filename": "Power League All Stars GOLD (J) [!].zip"
+  },
+  {
+   "name": "Power Tennis",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Power%20Tennis%20%28J%29.zip",
+   "filename": "Power Tennis (J).zip"
+  },
+  {
+   "name": "Pro Tennis World Court",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Pro%20Tennis%20World%20Court%20%28J%29.zip",
+   "filename": "Pro Tennis World Court (J).zip"
+  },
+  {
+   "name": "Pro Yakyuu World Stadium",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Pro%20Yakyuu%20World%20Stadium%20%28J%29.zip",
+   "filename": "Pro Yakyuu World Stadium (J).zip"
+  },
+  {
+   "name": "Psycho Chaser",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Psycho%20Chaser%20%28J%29.zip",
+   "filename": "Psycho Chaser (J).zip"
+  },
+  {
+   "name": "Puzzle Boy",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Puzzle%20Boy%20%28J%29.zip",
+   "filename": "Puzzle Boy (J).zip"
+  },
+  {
+   "name": "Quiz Toukou Shashin",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Quiz%20Toukou%20Shashin%20%28J%29.zip",
+   "filename": "Quiz Toukou Shashin (J).zip"
+  },
+  {
+   "name": "R-Type",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/R-Type%20%28USA%29.zip",
+   "filename": "R-Type (USA).zip"
+  },
+  {
+   "name": "R-Type Part-2",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/R-Type%20Part-2%20%28J%29%20%5Ba1%5D.zip",
+   "filename": "R-Type Part-2 (J) [a1].zip"
+  },
+  {
+   "name": "R-Type Part-2 (Tai Sang Version)",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/R-Type%20Part-2%20%28Tai%20Sang%20Version%29%20%28J%29.zip",
+   "filename": "R-Type Part-2 (Tai Sang Version) (J).zip"
+  },
+  {
+   "name": "Rabio Lepus Special",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Rabio%20Lepus%20Special%20%28J%29.zip",
+   "filename": "Rabio Lepus Special (J).zip"
+  },
+  {
+   "name": "Racing Damashii",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Racing%20Damashii%20%28J%29.zip",
+   "filename": "Racing Damashii (J).zip"
+  },
+  {
+   "name": "Raiden",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Raiden%20%28U%29.zip",
+   "filename": "Raiden (U).zip"
+  },
+  {
+   "name": "Rastan Saga II",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Rastan%20Saga%20II%20%28J%29.zip",
+   "filename": "Rastan Saga II (J).zip"
+  },
+  {
+   "name": "Ryuukyuu",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Ryuukyuu%20%28J%29.zip",
+   "filename": "Ryuukyuu (J).zip"
+  },
+  {
+   "name": "S.C.I. - Special Criminal Investigation",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/S.C.I.%20-%20Special%20Criminal%20Investigation%20%28J%29.zip",
+   "filename": "S.C.I. - Special Criminal Investigation (J).zip"
+  },
+  {
+   "name": "Sadakichi Nanaban Series Hideyoshi no Ougon",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Sadakichi%20Nanaban%20Series%20Hideyoshi%20no%20Ougon%20%28J%29.zip",
+   "filename": "Sadakichi Nanaban Series Hideyoshi no Ougon (J).zip"
+  },
+  {
+   "name": "Saigo no Nindou - Ninja Spirit",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Saigo%20no%20Nindou%20-%20Ninja%20Spirit%20%28J%29.zip",
+   "filename": "Saigo no Nindou - Ninja Spirit (J).zip"
+  },
+  {
+   "name": "Salamander",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Salamander%20%28J%29.zip",
+   "filename": "Salamander (J).zip"
+  },
+  {
+   "name": "Sekigahara",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Sekigahara%20%28J%29.zip",
+   "filename": "Sekigahara (J).zip"
+  },
+  {
+   "name": "Shanghai",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Shanghai%20%28J%29.zip",
+   "filename": "Shanghai (J).zip"
+  },
+  {
+   "name": "Shinobi",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Shinobi%20%28J%29.zip",
+   "filename": "Shinobi (J).zip"
+  },
+  {
+   "name": "Shiryou Sensen",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Shiryou%20Sensen%20%28J%29.zip",
+   "filename": "Shiryou Sensen (J).zip"
+  },
+  {
+   "name": "Shougi Shodan Icchokusen",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Shougi%20Shodan%20Icchokusen%20%28J%29.zip",
+   "filename": "Shougi Shodan Icchokusen (J).zip"
+  },
+  {
+   "name": "Shougi Shoshinsha Muyou",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Shougi%20Shoshinsha%20Muyou%20%28J%29.zip",
+   "filename": "Shougi Shoshinsha Muyou (J).zip"
+  },
+  {
+   "name": "Side Arms - Hyper Dyne",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Side%20Arms%20-%20Hyper%20Dyne%20%28J%29.zip",
+   "filename": "Side Arms - Hyper Dyne (J).zip"
+  },
+  {
+   "name": "Side Arms - Hyper Dyne (Magea Chip)",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Side%20Arms%20-%20Hyper%20Dyne%20%28Magea%20Chip%29%20%28U%29%20%5Bp1%5D.zip",
+   "filename": "Side Arms - Hyper Dyne (Magea Chip) (U) [p1].zip"
+  },
+  {
+   "name": "Silent Debuggers",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Silent%20Debuggers%20%28J%29.zip",
+   "filename": "Silent Debuggers (J).zip"
+  },
+  {
+   "name": "Sindibad - Chitei no Daimakyuu",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Sindibad%20-%20Chitei%20no%20Daimakyuu%20%28J%29.zip",
+   "filename": "Sindibad - Chitei no Daimakyuu (J).zip"
+  },
+  {
+   "name": "Soldier Blade",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Soldier%20Blade%20%28U%29.zip",
+   "filename": "Soldier Blade (U).zip"
+  },
+  {
+   "name": "Soldier Blade Special - Caravan Stage",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Soldier%20Blade%20Special%20-%20Caravan%20Stage%20%28J%29%20%5B%21%5D.zip",
+   "filename": "Soldier Blade Special - Caravan Stage (J) [!].zip"
+  },
+  {
+   "name": "Son Son II",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Son%20Son%20II%20%28J%29.zip",
+   "filename": "Son Son II (J).zip"
+  },
+  {
+   "name": "Soukoban World",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Soukoban%20World%20%28J%29.zip",
+   "filename": "Soukoban World (J).zip"
+  },
+  {
+   "name": "Space Harrier",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Space%20Harrier%20%28U%29.zip",
+   "filename": "Space Harrier (U).zip"
+  },
+  {
+   "name": "Space Invaders - Fukkatsu no Hi",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Space%20Invaders%20-%20Fukkatsu%20no%20Hi%20%28J%29.zip",
+   "filename": "Space Invaders - Fukkatsu no Hi (J).zip"
+  },
+  {
+   "name": "Spin Pair",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Spin%20Pair%20%28J%29.zip",
+   "filename": "Spin Pair (J).zip"
+  },
+  {
+   "name": "Spiral Wave",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Spiral%20Wave%20%28J%29.zip",
+   "filename": "Spiral Wave (J).zip"
+  },
+  {
+   "name": "Splatterhouse",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Splatterhouse%20%28USA%29.zip",
+   "filename": "Splatterhouse (USA).zip"
+  },
+  {
+   "name": "Stratego",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Stratego%20%28J%29.zip",
+   "filename": "Stratego (J).zip"
+  },
+  {
+   "name": "Street Fighter II' - Champion Edition",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Street%20Fighter%20II%27%20-%20Champion%20Edition%20%28Japan%29.zip",
+   "filename": "Street Fighter II' - Champion Edition (Japan).zip"
+  },
+  {
+   "name": "Strip Fighter II",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Strip%20Fighter%20II%20%28J%29.zip",
+   "filename": "Strip Fighter II (J).zip"
+  },
+  {
+   "name": "Super CD-ROM2 System V3.00",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Super%20CD-ROM2%20System%20V3.00%20%28J%29.zip",
+   "filename": "Super CD-ROM2 System V3.00 (J).zip"
+  },
+  {
+   "name": "Super CD-ROM2 System V3.01",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Super%20CD-ROM2%20System%20V3.01%20%28U%29.zip",
+   "filename": "Super CD-ROM2 System V3.01 (U).zip"
+  },
+  {
+   "name": "Super Mario Bros",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Super%20Mario%20Bros%20%28J%29%20%5Bp1%5D.zip",
+   "filename": "Super Mario Bros (J) [p1].zip"
+  },
+  {
+   "name": "Super Mario Bros - grafix",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Super%20Mario%20Bros%20%28J%29%20%5Bp1%5D%20-%20grafix.zip",
+   "filename": "Super Mario Bros (J) [p1] - grafix.zip"
+  },
+  {
+   "name": "Super Metal Crusher",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Super%20Metal%20Crusher%20%28J%29.zip",
+   "filename": "Super Metal Crusher (J).zip"
+  },
+  {
+   "name": "Super Momotarou Dentetsu",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Super%20Momotarou%20Dentetsu%20%28J%29.zip",
+   "filename": "Super Momotarou Dentetsu (J).zip"
+  },
+  {
+   "name": "Super Star Soldier",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Super%20Star%20Soldier%20%28U%29.zip",
+   "filename": "Super Star Soldier (U).zip"
+  },
+  {
+   "name": "Super Volley Ball",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Super%20Volley%20Ball%20%28J%29.zip",
+   "filename": "Super Volley Ball (J).zip"
+  },
+  {
+   "name": "Susanoou Densetsu",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Susanoou%20Densetsu%20%28J%29.zip",
+   "filename": "Susanoou Densetsu (J).zip"
+  },
+  {
+   "name": "TV Sports Basketball",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/TV%20Sports%20Basketball%20%28J%29.zip",
+   "filename": "TV Sports Basketball (J).zip"
+  },
+  {
+   "name": "TV Sports Football",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/TV%20Sports%20Football%20%28J%29.zip",
+   "filename": "TV Sports Football (J).zip"
+  },
+  {
+   "name": "TV Sports Hockey",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/TV%20Sports%20Hockey%20%28J%29.zip",
+   "filename": "TV Sports Hockey (J).zip"
+  },
+  {
+   "name": "Taito Chase H.Q.",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Taito%20Chase%20H.Q.%20%28J%29.zip",
+   "filename": "Taito Chase H.Q. (J).zip"
+  },
+  {
+   "name": "Takeda Shingen",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Takeda%20Shingen%20%28J%29.zip",
+   "filename": "Takeda Shingen (J).zip"
+  },
+  {
+   "name": "Tatsu no Ko Fighter",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Tatsu%20no%20Ko%20Fighter%20%28J%29.zip",
+   "filename": "Tatsu no Ko Fighter (J).zip"
+  },
+  {
+   "name": "Tatsujin (Prototype)",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Tatsujin%20%28J%29%20%28Prototype%29.zip",
+   "filename": "Tatsujin (J) (Prototype).zip"
+  },
+  {
+   "name": "Tenseiryuu - Saint Dragon",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Tenseiryuu%20-%20Saint%20Dragon%20%28J%29.zip",
+   "filename": "Tenseiryuu - Saint Dragon (J).zip"
+  },
+  {
+   "name": "Terra Cresta II - Mandrer no Gyakushuu",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Terra%20Cresta%20II%20-%20Mandrer%20no%20Gyakushuu%20%28J%29.zip",
+   "filename": "Terra Cresta II - Mandrer no Gyakushuu (J).zip"
+  },
+  {
+   "name": "Thunder Blade",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Thunder%20Blade%20%28J%29.zip",
+   "filename": "Thunder Blade (J).zip"
+  },
+  {
+   "name": "Titan",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Titan%20%28J%29.zip",
+   "filename": "Titan (J).zip"
+  },
+  {
+   "name": "Toilet Kids",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Toilet%20Kids%20%28J%29.zip",
+   "filename": "Toilet Kids (J).zip"
+  },
+  {
+   "name": "Tora eno Michi - Tiger Road",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Tora%20eno%20Michi%20-%20Tiger%20Road%20%28J%29.zip",
+   "filename": "Tora eno Michi - Tiger Road (J).zip"
+  },
+  {
+   "name": "Toshi Tensou Keikaku - Eternal City",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Toshi%20Tensou%20Keikaku%20-%20Eternal%20City%20%28J%29.zip",
+   "filename": "Toshi Tensou Keikaku - Eternal City (J).zip"
+  },
+  {
+   "name": "Tower of Druaga, The - Druaga no Tou",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Tower%20of%20Druaga%2C%20The%20-%20Druaga%20no%20Tou%20%28J%29.zip",
+   "filename": "Tower of Druaga, The - Druaga no Tou (J).zip"
+  },
+  {
+   "name": "Toy Shop Boys",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Toy%20Shop%20Boys%20%28J%29.zip",
+   "filename": "Toy Shop Boys (J).zip"
+  },
+  {
+   "name": "Tricky",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Tricky%20%28J%29.zip",
+   "filename": "Tricky (J).zip"
+  },
+  {
+   "name": "Tsuppari Oozumo - Heiseiban",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Tsuppari%20Oozumo%20-%20Heiseiban%20%28J%29.zip",
+   "filename": "Tsuppari Oozumo - Heiseiban (J).zip"
+  },
+  {
+   "name": "Tsuru Teruhito no Jissen Kabushiki Bai Bai Game",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Tsuru%20Teruhito%20no%20Jissen%20Kabushiki%20Bai%20Bai%20Game%20%28J%29.zip",
+   "filename": "Tsuru Teruhito no Jissen Kabushiki Bai Bai Game (J).zip"
+  },
+  {
+   "name": "Usagi no Kuni no Kangaroo Race Wallaby!!",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Usagi%20no%20Kuni%20no%20Kangaroo%20Race%20Wallaby%21%21%20%28J%29.zip",
+   "filename": "Usagi no Kuni no Kangaroo Race Wallaby!! (J).zip"
+  },
+  {
+   "name": "Valkyrie no Densetsu",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Valkyrie%20no%20Densetsu%20%28J%29.zip",
+   "filename": "Valkyrie no Densetsu (J).zip"
+  },
+  {
+   "name": "Veigues Tactical Gladiator",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Veigues%20Tactical%20Gladiator%20%28J%29.zip",
+   "filename": "Veigues Tactical Gladiator (J).zip"
+  },
+  {
+   "name": "Victory Life - Yuu Yuu Jinsei",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Victory%20Life%20-%20Yuu%20Yuu%20Jinsei%20%28J%29.zip",
+   "filename": "Victory Life - Yuu Yuu Jinsei (J).zip"
+  },
+  {
+   "name": "Vigilante",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Vigilante%20%28U%29.zip",
+   "filename": "Vigilante (U).zip"
+  },
+  {
+   "name": "Violent Soldier",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Violent%20Soldier%20%28J%29.zip",
+   "filename": "Violent Soldier (J).zip"
+  },
+  {
+   "name": "Volfied",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Volfied%20%28J%29.zip",
+   "filename": "Volfied (J).zip"
+  },
+  {
+   "name": "W Ring - The Double Rings",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/W%20Ring%20-%20The%20Double%20Rings%20%28J%29.zip",
+   "filename": "W Ring - The Double Rings (J).zip"
+  },
+  {
+   "name": "Wai Wai Mahjong - Yukai na Janyuutachi",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Wai%20Wai%20Mahjong%20-%20Yukai%20na%20Janyuutachi%20%28J%29.zip",
+   "filename": "Wai Wai Mahjong - Yukai na Janyuutachi (J).zip"
+  },
+  {
+   "name": "Winning Shot",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Winning%20Shot%20%28J%29.zip",
+   "filename": "Winning Shot (J).zip"
+  },
+  {
+   "name": "Wonder Momo",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Wonder%20Momo%20%28J%29.zip",
+   "filename": "Wonder Momo (J).zip"
+  },
+  {
+   "name": "World Beach Volley",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/World%20Beach%20Volley%20%28J%29.zip",
+   "filename": "World Beach Volley (J).zip"
+  },
+  {
+   "name": "World Circuit",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/World%20Circuit%20%28J%29.zip",
+   "filename": "World Circuit (J).zip"
+  },
+  {
+   "name": "World Jockey",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/World%20Jockey%20%28J%29.zip",
+   "filename": "World Jockey (J).zip"
+  },
+  {
+   "name": "Xevious - Fardraut Densetsu",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Xevious%20-%20Fardraut%20Densetsu%20%28J%29.zip",
+   "filename": "Xevious - Fardraut Densetsu (J).zip"
+  },
+  {
+   "name": "Yo, Bro",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Yo%2C%20Bro%20%28U%29.zip",
+   "filename": "Yo, Bro (U).zip"
+  },
+  {
+   "name": "Zero 4 Champ",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Zero%204%20Champ%20%28J%29.zip",
+   "filename": "Zero 4 Champ (J).zip"
+  },
+  {
+   "name": "Zipang",
+   "url": "https://archive.org/download/katalog-retro-mibi13-pc-engine/Zipang%20%28J%29.zip",
+   "filename": "Zipang (J).zip"
+  }
+ ]
+}

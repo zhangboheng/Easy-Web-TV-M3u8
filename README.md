@@ -63,6 +63,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **Sega**: Genesis/Mega Drive, Master System, Game Gear, Sega CD, Sega 32X, Saturn
   - **Atari**: 2600, 5200, 7800, Jaguar, Lynx
   - **Commodore**: C64, C128, VIC-20, PET, Plus/4, Amiga
+  - **NEC**: PC Engine / TurboGrafx-16
   - **Other**: 3DO, Arcade (FBNeo, MAME 2003), ColecoVision, Virtual Boy
 - **11000+ preset ROMs** across 18 platforms, with search on the game launcher
   - Nintendo: NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116)
@@ -145,7 +146,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Supported Platforms
 
-All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **13057** games across 23 JSON files.
+All 30 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **13337** games across 24 JSON files.
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -173,6 +174,7 @@ All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Commodore | PET | vice_xpet | 14 | pet.json |
 | Commodore | Plus/4 | vice_xplus4 | 5 | plus4.json |
 | Commodore | Amiga | puae | 1525 | amiga.json |
+| NEC | PC Engine / TurboGrafx-16 | mednafen_pce | 280 | pce.json |
 | Other | 3DO | opera | – | – |
 | Other | Arcade (FBNeo) | fbneo | 14 | arcade.json |
 | Other | Arcade (MAME 2003+) | mame2003_plus | 153 | mame.json |
@@ -268,7 +270,8 @@ Easy-Web-TV-M3u8/
 │       ├── pet.json          # 14 Commodore PET games (milasoft64 on GitHub + archive.org)
 │       ├── plus4.json        # 5 Commodore Plus/4 games (No-Intro set on archive.org)
 │       ├── sega32x.json      # 33 Sega 32X games (No-Intro-style set on archive.org)
-│       └── amiga.json        # 1525 Commodore Amiga games, single-disk ADF (TOSEC sets on archive.org)
+│       ├── amiga.json        # 1525 Commodore Amiga games, single-disk ADF (TOSEC sets on archive.org)
+│       └── pce.json          # 280 PC Engine / TurboGrafx-16 HuCard games (GoodPCE set on archive.org)
 ├── routes/
 │   ├── tv.html            # TV page
 │   ├── movie.html         # Movie page
