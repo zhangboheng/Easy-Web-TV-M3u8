@@ -145,7 +145,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Supported Platforms
 
-All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **11499** games across 21 JSON files.
+All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **11532** games across 22 JSON files.
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -160,7 +160,7 @@ All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Sega | Master System | smsplus | 1283 | sms.json |
 | Sega | Game Gear | smsplus | – ¹ | sms.json |
 | Sega | Sega CD | picodrive | – | – |
-| Sega | Sega 32X | picodrive | – | – |
+| Sega | Sega 32X | picodrive | 33 | sega32x.json |
 | Sega | Saturn | yabause | – | – |
 | Atari | Atari 2600 | stella2014 | 4145 | atari2600.json |
 | Atari | Atari 5200 | a5200 | 72 | atari5200.json |
@@ -187,7 +187,7 @@ All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 - **URL parameter support**: Direct link to specific platform (e.g., `?core=snes9x`)
 - **No core selection UI**: Simplified interface with automatic detection
 - **Error handling**: Comprehensive error handling with user-friendly messages
-- **Smart CORS strategy**: Direct fetch first for CORS-enabled hosts (GitHub raw, archive.org APIs); resilient proxy failover with 30s timeout for free-tier proxies, and detection of proxy error pages returned as HTTP 200
+- **Smart CORS strategy**: Direct fetch first for CORS-enabled hosts (GitHub raw, archive.org APIs); resilient proxy failover with 30s timeout for free-tier proxies, detection of proxy error pages returned as HTTP 200, and detection of binary-corrupting proxies that transcode responses as text (U+FFFD mangling)
 
 ## 🚀 Getting Started
 
@@ -266,7 +266,8 @@ Easy-Web-TV-M3u8/
 │       ├── arcade.json       # 14 Arcade (FBNeo) games (marlon-santana/roms-retro-* on GitHub)
 │       ├── mame.json         # 153 Arcade (MAME 2003+) games, CRC-verified against the MAME 0.78 DAT
 │       ├── pet.json          # 14 Commodore PET games (milasoft64 on GitHub + archive.org)
-│       └── plus4.json        # 5 Commodore Plus/4 games (No-Intro set on archive.org)
+│       ├── plus4.json        # 5 Commodore Plus/4 games (No-Intro set on archive.org)
+│       └── sega32x.json      # 33 Sega 32X games (No-Intro-style set on archive.org)
 ├── routes/
 │   ├── tv.html            # TV page
 │   ├── movie.html         # Movie page

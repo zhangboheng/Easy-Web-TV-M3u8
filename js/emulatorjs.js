@@ -742,12 +742,12 @@ function applyTranslations() {
 }
 
 // CORS proxy list (tried in order).
-// Status verified 2026-09: corsmirror is live (Render free tier: cold start
-// can take 30s+); luckydesigner and api.cors.lol can fetch archive.org but
-// rate-limit aggressively; codetabs is unstable. allorigins was unreachable
-// and has been removed.
+// Status verified 2026-11: luckydesigner and api.cors.lol can fetch archive.org
+// but rate-limit aggressively; codetabs is unstable. allorigins was unreachable
+// and has been removed. corsmirror (Render) was also removed: it mangles
+// binary responses (every non-ASCII byte becomes the UTF-8 replacement
+// character U+FFFD), silently corrupting ROM/BIOS downloads.
 var corsProxies = [
-    'https://corsmirror.onrender.com/v1/cors?url=',
     'https://cors.luckydesigner.workers.dev/?',
     'https://api.cors.lol/?url=',
     'https://api.codetabs.com/v1/proxy?quest='
@@ -787,10 +787,36 @@ function isLikelyErrorBody(blob) {
     });
 }
 
+// Detect binary corruption from text-mangling proxies: a broken proxy may
+// transcode the response as text, replacing every non-ASCII byte with the
+// UTF-8 replacement character (EF BF BD). Count occurrences in the head of
+// the file - a handful of them in a row means the data is garbage.
+function hasBinaryCorruption(blob) {
+    return new Promise(function(resolve) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var bytes = new Uint8Array(reader.result || new ArrayBuffer(0));
+            var hits = 0;
+            for (var i = 0; i + 2 < bytes.length; i++) {
+                if (bytes[i] === 0xEF && bytes[i + 1] === 0xBF && bytes[i + 2] === 0xBD) {
+                    hits++;
+                    if (hits >= 3) { resolve(true); return; }
+                    i += 2;
+                }
+            }
+            resolve(false);
+        };
+        reader.onerror = function() { resolve(false); };
+        reader.readAsArrayBuffer(blob.slice(0, 512));
+    });
+}
+
 // Cache Storage for downloaded ROMs: avoids re-downloading (and re-proxying)
 // the same game. Especially valuable for archive.org sources, which have no
 // CORS headers and depend entirely on public proxies.
-var ROM_CACHE_NAME = 'ewtv-rom-cache-v1';
+// v2: discard v1 caches that may hold ROMs corrupted by the removed
+// corsmirror proxy (U+FFFD transcoding bug)
+var ROM_CACHE_NAME = 'ewtv-rom-cache-v2';
 
 function cacheGetRom(url) {
     if (!window.caches || !window.caches.open) return Promise.resolve(null);
@@ -926,7 +952,12 @@ function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError, dire
                 if (isError) {
                     throw new Error('Proxy returned an error page');
                 }
-                return blob;
+                return hasBinaryCorruption(blob).then(function(corrupt) {
+                    if (corrupt) {
+                        throw new Error('Proxy corrupted the binary data (U+FFFD transcoding)');
+                    }
+                    return blob;
+                });
             });
         })
         .then(function(blob) {
@@ -1534,8 +1565,13 @@ function fetchBlobWithProxy(originalUrl, proxyIndex, onSuccess, onError) {
             if (blob.size < 1024) {
                 throw new Error('File too small, possibly an error page');
             }
-            console.log('BIOS downloaded (' + blob.size + ' bytes)');
-            onSuccess(blob);
+            return hasBinaryCorruption(blob).then(function(corrupt) {
+                if (corrupt) {
+                    throw new Error('Proxy corrupted the binary data (U+FFFD transcoding)');
+                }
+                console.log('BIOS downloaded (' + blob.size + ' bytes)');
+                onSuccess(blob);
+            });
         })
         .catch(function(error) {
             clearTimeout(fetchTimer);

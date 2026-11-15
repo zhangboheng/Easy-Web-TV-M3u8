@@ -1,0 +1,171 @@
+{
+  "platform": "sega32x",
+  "core": "picodrive",
+  "games": [
+    {
+      "name": "After Burner Complete",
+      "url": "https://archive.org/download/sg32x_20251124/After%20Burner%20Complete%20%28Japan%2C%20USA%29%20%28En%29.zip",
+      "filename": "After Burner Complete (Japan, USA) (En).zip"
+    },
+    {
+      "name": "The Amazing Spider-Man: Web of Fire",
+      "url": "https://archive.org/download/sg32x_20251124/Amazing%20Spider-Man%2C%20The%20-%20Web%20of%20Fire%20%28USA%29.zip",
+      "filename": "Amazing Spider-Man, The - Web of Fire (USA).zip"
+    },
+    {
+      "name": "BC Racers",
+      "url": "https://archive.org/download/sg32x_20251124/BC%20Racers%20%28USA%29.zip",
+      "filename": "BC Racers (USA).zip"
+    },
+    {
+      "name": "Blackthorne",
+      "url": "https://archive.org/download/sg32x_20251124/Blackthorne%20%28USA%29.zip",
+      "filename": "Blackthorne (USA).zip"
+    },
+    {
+      "name": "Brutal Unleashed: Above the Claw",
+      "url": "https://archive.org/download/sg32x_20251124/Brutal%20-%20Above%20the%20Claw%20%28USA%29.zip",
+      "filename": "Brutal - Above the Claw (USA).zip"
+    },
+    {
+      "name": "Cosmic Carnage",
+      "url": "https://archive.org/download/sg32x_20251124/Cosmic%20Carnage%20%28Japan%2C%20USA%29%20%28En%29.zip",
+      "filename": "Cosmic Carnage (Japan, USA) (En).zip"
+    },
+    {
+      "name": "Darxide",
+      "url": "https://archive.org/download/sg32x_20251124/Darxide%20%28Europe%29%20%28En%2CFr%2CDe%2CEs%29.zip",
+      "filename": "Darxide (Europe) (En,Fr,De,Es).zip"
+    },
+    {
+      "name": "Doom",
+      "url": "https://archive.org/download/sg32x_20251124/Doom%20%28Japan%2C%20USA%29%20%28En%29.zip",
+      "filename": "Doom (Japan, USA) (En).zip"
+    },
+    {
+      "name": "FIFA Soccer 96",
+      "url": "https://archive.org/download/sg32x_20251124/FIFA%20Soccer%2096%20%28Europe%29%20%28En%2CFr%2CDe%2CEs%2CIt%2CSv%29.zip",
+      "filename": "FIFA Soccer 96 (Europe) (En,Fr,De,Es,It,Sv).zip"
+    },
+    {
+      "name": "36 Great Holes Starring Fred Couples",
+      "url": "https://archive.org/download/sg32x_20251124/Golf%20Magazine%20Presents%20-%2036%20Great%20Holes%20Starring%20Fred%20Couples%20%28Japan%2C%20USA%29%20%28En%29.zip",
+      "filename": "Golf Magazine Presents - 36 Great Holes Starring Fred Couples (Japan, USA) (En).zip"
+    },
+    {
+      "name": "Knuckles' Chaotix",
+      "url": "https://archive.org/download/sg32x_20251124/Knuckles%27%20Chaotix%20%28Japan%2C%20USA%29%20%28En%29.zip",
+      "filename": "Knuckles' Chaotix (Japan, USA) (En).zip"
+    },
+    {
+      "name": "Kolibri",
+      "url": "https://archive.org/download/sg32x_20251124/Kolibri%20%28USA%2C%20Europe%29.zip",
+      "filename": "Kolibri (USA, Europe).zip"
+    },
+    {
+      "name": "Metal Head",
+      "url": "https://archive.org/download/sg32x_20251124/Metal%20Head%20%28Japan%2C%20USA%29%20%28En%2CJa%29.zip",
+      "filename": "Metal Head (Japan, USA) (En,Ja).zip"
+    },
+    {
+      "name": "Mortal Kombat II",
+      "url": "https://archive.org/download/sg32x_20251124/Mortal%20Kombat%20II%20%28Japan%2C%20USA%29%20%28En%29.zip",
+      "filename": "Mortal Kombat II (Japan, USA) (En).zip"
+    },
+    {
+      "name": "Motocross Championship",
+      "url": "https://archive.org/download/sg32x_20251124/Motocross%20Championship%20%28USA%29.zip",
+      "filename": "Motocross Championship (USA).zip"
+    },
+    {
+      "name": "NBA Jam: Tournament Edition",
+      "url": "https://archive.org/download/sg32x_20251124/NBA%20Jam%20-%20Tournament%20Edition%20%28World%29.zip",
+      "filename": "NBA Jam - Tournament Edition (World).zip"
+    },
+    {
+      "name": "NFL Quarterback Club 96",
+      "url": "https://archive.org/download/sg32x_20251124/NFL%20Quarterback%20Club%20%28World%29.zip",
+      "filename": "NFL Quarterback Club (World).zip"
+    },
+    {
+      "name": "Pitfall: The Mayan Adventure",
+      "url": "https://archive.org/download/sg32x_20251124/Pitfall%20-%20The%20Mayan%20Adventure%20%28USA%29.zip",
+      "filename": "Pitfall - The Mayan Adventure (USA).zip"
+    },
+    {
+      "name": "Primal Rage",
+      "url": "https://archive.org/download/sg32x_20251124/Primal%20Rage%20%28USA%2C%20Europe%29.zip",
+      "filename": "Primal Rage (USA, Europe).zip"
+    },
+    {
+      "name": "RBI Baseball '95",
+      "url": "https://archive.org/download/sg32x_20251124/RBI%20Baseball%20%2795%20%28USA%29.zip",
+      "filename": "RBI Baseball '95 (USA).zip"
+    },
+    {
+      "name": "Space Harrier",
+      "url": "https://archive.org/download/sg32x_20251124/Space%20Harrier%20%28Japan%2C%20USA%29%20%28En%29.zip",
+      "filename": "Space Harrier (Japan, USA) (En).zip"
+    },
+    {
+      "name": "Star Trek: Starfleet Academy",
+      "url": "https://archive.org/download/sg32x_20251124/Star%20Trek%20-%20Starfleet%20Academy%20-%20Starship%20Bridge%20Simulator%20%28USA%29.zip",
+      "filename": "Star Trek - Starfleet Academy - Starship Bridge Simulator (USA).zip"
+    },
+    {
+      "name": "Star Wars Arcade",
+      "url": "https://archive.org/download/sg32x_20251124/Star%20Wars%20Arcade%20%28USA%29.zip",
+      "filename": "Star Wars Arcade (USA).zip"
+    },
+    {
+      "name": "Stellar Assault",
+      "url": "https://archive.org/download/sg32x_20251124/Stellar%20Assault%20%28USA%2C%20Europe%29.zip",
+      "filename": "Stellar Assault (USA, Europe).zip"
+    },
+    {
+      "name": "T-Mek",
+      "url": "https://archive.org/download/sg32x_20251124/T-MEK%20%28USA%2C%20Europe%29.zip",
+      "filename": "T-MEK (USA, Europe).zip"
+    },
+    {
+      "name": "Tempo",
+      "url": "https://archive.org/download/sg32x_20251124/Tempo%20%28Japan%2C%20USA%29%20%28En%29.zip",
+      "filename": "Tempo (Japan, USA) (En).zip"
+    },
+    {
+      "name": "Toughman Contest",
+      "url": "https://archive.org/download/sg32x_20251124/Toughman%20Contest%20%28USA%2C%20Europe%29.zip",
+      "filename": "Toughman Contest (USA, Europe).zip"
+    },
+    {
+      "name": "Virtua Fighter",
+      "url": "https://archive.org/download/sg32x_20251124/Virtua%20Fighter%20%28Japan%2C%20USA%29%20%28En%29.zip",
+      "filename": "Virtua Fighter (Japan, USA) (En).zip"
+    },
+    {
+      "name": "Virtua Racing Deluxe",
+      "url": "https://archive.org/download/sg32x_20251124/Virtua%20Racing%20Deluxe%20%28USA%29.zip",
+      "filename": "Virtua Racing Deluxe (USA).zip"
+    },
+    {
+      "name": "WWF Raw",
+      "url": "https://archive.org/download/sg32x_20251124/WWF%20Raw%20%28World%29.zip",
+      "filename": "WWF Raw (World).zip"
+    },
+    {
+      "name": "WWF WrestleMania: The Arcade Game",
+      "url": "https://archive.org/download/sg32x_20251124/WWF%20WrestleMania%20-%20The%20Arcade%20Game%20%28USA%29.zip",
+      "filename": "WWF WrestleMania - The Arcade Game (USA).zip"
+    },
+    {
+      "name": "World Series Baseball '95",
+      "url": "https://archive.org/download/sg32x_20251124/World%20Series%20Baseball%20Starring%20Deion%20Sanders%20%28USA%29.zip",
+      "filename": "World Series Baseball Starring Deion Sanders (USA).zip"
+    },
+    {
+      "name": "Zaxxon's Motherbase 2000",
+      "url": "https://archive.org/download/sg32x_20251124/Zaxxon%27s%20Motherbase%202000%20%28Japan%2C%20USA%29%20%28En%29.zip",
+      "filename": "Zaxxon's Motherbase 2000 (Japan, USA) (En).zip"
+    }
+  ]
+}
