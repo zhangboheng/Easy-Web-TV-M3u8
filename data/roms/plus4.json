@@ -1,0 +1,31 @@
+{
+  "platform": "plus4",
+  "core": "vice_xplus4",
+  "games": [
+    {
+      "name": "Atomic Mission",
+      "url": "https://archive.org/download/nointro-commodore-plus4-vic20/Commodore%20-%20Plus-4/Atomic%20Mission%20(USA%2C%20Europe).zip",
+      "filename": "Atomic Mission (USA, Europe).zip"
+    },
+    {
+      "name": "Jack Attack",
+      "url": "https://archive.org/download/nointro-commodore-plus4-vic20/Commodore%20-%20Plus-4/Jack%20Attack%20(USA%2C%20Europe).zip",
+      "filename": "Jack Attack (USA, Europe).zip"
+    },
+    {
+      "name": "Pirate Adventure",
+      "url": "https://archive.org/download/nointro-commodore-plus4-vic20/Commodore%20-%20Plus-4/Pirate%20Adventure%20(USA%2C%20Europe).zip",
+      "filename": "Pirate Adventure (USA, Europe).zip"
+    },
+    {
+      "name": "Strange Odyssey",
+      "url": "https://archive.org/download/nointro-commodore-plus4-vic20/Commodore%20-%20Plus-4/Strange%20Odyssey%20(USA%2C%20Europe).zip",
+      "filename": "Strange Odyssey (USA, Europe).zip"
+    },
+    {
+      "name": "Viduzzles",
+      "url": "https://archive.org/download/nointro-commodore-plus4-vic20/Commodore%20-%20Plus-4/Viduzzles%20(USA%2C%20Europe).zip",
+      "filename": "Viduzzles (USA, Europe).zip"
+    }
+  ]
+}

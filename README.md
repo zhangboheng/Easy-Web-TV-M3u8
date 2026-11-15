@@ -145,7 +145,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Supported Platforms
 
-All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **11480** games across 19 JSON files.
+All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **11499** games across 21 JSON files.
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -170,8 +170,8 @@ All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Commodore | Commodore 64 | vice_x64 | 51 | c64.json |
 | Commodore | Commodore 128 | vice_x128 | 5 | c128.json |
 | Commodore | VIC-20 | vice_xvic | 156 | vic20.json |
-| Commodore | PET | vice_xpet | – | – |
-| Commodore | Plus/4 | vice_xplus4 | – | – |
+| Commodore | PET | vice_xpet | 14 | pet.json |
+| Commodore | Plus/4 | vice_xplus4 | 5 | plus4.json |
 | Commodore | Amiga | puae | – | – |
 | Other | 3DO | opera | – | – |
 | Other | Arcade (FBNeo) | fbneo | 14 | arcade.json |
@@ -264,7 +264,9 @@ Easy-Web-TV-M3u8/
 │       ├── c128.json         # 5 Commodore 128 games
 │       ├── vic20.json        # 156 VIC-20 games
 │       ├── arcade.json       # 14 Arcade (FBNeo) games (marlon-santana/roms-retro-* on GitHub)
-│       └── mame.json         # 153 Arcade (MAME 2003+) games, CRC-verified against the MAME 0.78 DAT
+│       ├── mame.json         # 153 Arcade (MAME 2003+) games, CRC-verified against the MAME 0.78 DAT
+│       ├── pet.json          # 14 Commodore PET games (milasoft64 on GitHub + archive.org)
+│       └── plus4.json        # 5 Commodore Plus/4 games (No-Intro set on archive.org)
 ├── routes/
 │   ├── tv.html            # TV page
 │   ├── movie.html         # Movie page

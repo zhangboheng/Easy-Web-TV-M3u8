@@ -1,0 +1,76 @@
+{
+  "platform": "pet",
+  "core": "vice_xpet",
+  "games": [
+    {
+      "name": "Castle Smash (80-column PET)",
+      "url": "https://raw.githubusercontent.com/milasoft64/commodorepet-atari2600-games/main/castlesmash-80columnpet.prg",
+      "filename": "castlesmash-80columnpet.prg"
+    },
+    {
+      "name": "Castle Smash (32K PET)",
+      "url": "https://raw.githubusercontent.com/milasoft64/commodorepet-atari2600-games/main/castlesmash_32kpet.prg",
+      "filename": "castlesmash_32kpet.prg"
+    },
+    {
+      "name": "Commodore PET Fall",
+      "url": "https://raw.githubusercontent.com/milasoft64/commodorepet-atari2600-games/main/commodorepetfall.prg",
+      "filename": "commodorepetfall.prg"
+    },
+    {
+      "name": "River Run (32K PET)",
+      "url": "https://raw.githubusercontent.com/milasoft64/commodorepet-atari2600-games/main/riverrun-32kpetversion.prg",
+      "filename": "riverrun-32kpetversion.prg"
+    },
+    {
+      "name": "Yars' Galaxy",
+      "url": "https://raw.githubusercontent.com/milasoft64/commodorepet-atari2600-games/main/yars-galaxy-commodorepet.prg",
+      "filename": "yars-galaxy-commodorepet.prg"
+    },
+    {
+      "name": "Color Space Invaders",
+      "url": "https://archive.org/download/color-space-invaders/color%20space%20invaders.prg",
+      "filename": "color space invaders.prg"
+    },
+    {
+      "name": "Fill In The Stars",
+      "url": "https://archive.org/download/staradd-for-commodore-pet/staradd.prg",
+      "filename": "staradd.prg"
+    },
+    {
+      "name": "Qixie (2001)",
+      "url": "https://archive.org/download/qixie-pet-2001-version/Qixie%20PET%202001%20Version.prg",
+      "filename": "Qixie PET 2001 Version.prg"
+    },
+    {
+      "name": "Invaders",
+      "url": "https://archive.org/download/PETGames/INVADERS",
+      "filename": "INVADERS.prg"
+    },
+    {
+      "name": "Jason (Part 1)",
+      "url": "https://archive.org/download/PETGames/JASON.1",
+      "filename": "JASON.1"
+    },
+    {
+      "name": "Jason (Part 2)",
+      "url": "https://archive.org/download/PETGames/JASON.2",
+      "filename": "JASON.2"
+    },
+    {
+      "name": "Macronoia",
+      "url": "https://archive.org/download/PETGames/macronoia",
+      "filename": "macronoia.prg"
+    },
+    {
+      "name": "Jumbo Jet Lander",
+      "url": "https://archive.org/download/Jumbo_Jet_Lander_1980_Courbois_Software/Jumbo_Jet_Lander_1980_Courbois_Software.d64",
+      "filename": "Jumbo_Jet_Lander_1980_Courbois_Software.d64"
+    },
+    {
+      "name": "Maxit",
+      "url": "https://archive.org/download/d64_Maxit_1983_Courbois_Software_nl/Maxit_1983_Courbois_Software_nl.d64",
+      "filename": "Maxit_1983_Courbois_Software_nl.d64"
+    }
+  ]
+}
