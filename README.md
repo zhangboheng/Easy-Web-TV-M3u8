@@ -64,12 +64,12 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **Atari**: 2600, 5200, 7800, Jaguar, Lynx
   - **Commodore**: C64, C128, VIC-20, PET, Plus/4, Amiga
   - **Other**: 3DO, Arcade (FBNeo, MAME 2003), ColecoVision, Virtual Boy
-- **11000+ preset ROMs** across 17 platforms, with search on the game launcher
+- **11000+ preset ROMs** across 18 platforms, with search on the game launcher
   - Nintendo: NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116)
   - Sega: Genesis/Mega Drive (1841), Master System + Game Gear (1283)
   - Atari: 2600 (4145), 5200 (72), 7800 (27), Jaguar (49), Lynx (77)
   - Other: ColecoVision (94), Virtual Boy (28), Commodore 64 (49)
-  - Arcade preset is currently empty - bring your own or load from a URL
+  - Arcade (FBNeo): Defender, Joust, Bubbles, Sinistar, Gyruss, Juno First, Lady Bug, Ghosts'n Goblins, Final Fight, Mega Twins, Metal Slug 1/2, Magical Drop III, Samurai Shodown II (14, from the marlon-santana/roms-retro-arcade and roms-retro-neogeo sets on GitHub)
 - **Three ways to load a ROM**: pick from the preset list, upload a file (core auto-detected by extension), or paste a ROM URL
 - **Fast ROM fetching**: direct download for CORS-enabled sources (e.g. GitHub-hosted ROMs), public CORS proxies only as fallback
 - **ROM caching**: downloaded ROMs are stored in Cache Storage, so replaying the same game is instant and works even when proxies are down
@@ -145,7 +145,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Supported Platforms
 
-All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **11313** games across 18 JSON files (Arcade/FBNeo preset is currently empty).
+All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **11327** games across 18 JSON files.
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -174,11 +174,11 @@ All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Commodore | Plus/4 | vice_xplus4 | – | – |
 | Commodore | Amiga | puae | – | – |
 | Other | 3DO | opera | – | – |
-| Other | Arcade (FBNeo) | fbneo | 0 (empty) | arcade.json |
+| Other | Arcade (FBNeo) | fbneo | 14 | arcade.json |
 | Other | Arcade (MAME 2003) | mame2003 | – | – |
 | Other | ColecoVision | gearcoleco | 94 | coleco.json |
 | Other | Virtual Boy | beetle_vb | 28 | vb.json |
-| **Total** | **29 platforms** | – | **11313** | **18 files** |
+| **Total** | **29 platforms** | – | **11330** | **18 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 
@@ -263,7 +263,7 @@ Easy-Web-TV-M3u8/
 │       ├── c64.json          # 51 Commodore 64 games
 │       ├── c128.json         # 5 Commodore 128 games
 │       ├── vic20.json        # 156 VIC-20 games
-│       └── arcade.json       # Arcade (FBNeo) presets (currently empty)
+│       └── arcade.json       # 14 Arcade (FBNeo) games (marlon-santana/roms-retro-* on GitHub)
 ├── routes/
 │   ├── tv.html            # TV page
 │   ├── movie.html         # Movie page

@@ -816,39 +816,45 @@ function processRomBlob(blob, filename) {
     var urlLoadBtn = document.getElementById('urlLoadBtn');
     if (urlLoadBtn) urlLoadBtn.disabled = false;
     
-    var reader = new FileReader();
-    reader.onload = function(e) {
-        var romData = e.target.result;
-        
-        // Set current game info
-        currentGame.name = filename.replace(/\.[^/.]+$/, "");
-        currentGame.core = userSelectedCore || detectCore(filename) || 'fceumm';
-        currentGame.romData = romData;
-        
-        // Update core select
-                
-        // Configure EmulatorJS
-        EJS_core = currentGame.core;
-        EJS_gameUrl = romData;
-        
-        // Show emulator section
-        document.getElementById('uploadSection').classList.add('hidden');
-        document.getElementById('emulatorSection').classList.add('active');
-        
-        // Show loading overlay
-        document.getElementById('loadingOverlay').classList.remove('hidden');
-        
-        // Show reset button (guard against a missing element during cache transitions)
-        var resetBtn = document.getElementById('resetBtn');
-        if (resetBtn) resetBtn.style.display = 'flex';
-        
-        // Update title
-        document.getElementById('pageTitle').textContent = currentGame.name;
-        
-        // Load EmulatorJS
-        loadEmulatorJS();
-    };
-    reader.readAsDataURL(blob);
+    // Use a blob: URL instead of a base64 data: URL. EmulatorJS resolves the ROM
+    // file name via getBaseFileName(): when EJS_gameUrl does NOT start with
+    // "blob:", it returns gameUrl.split("/").pop() - for a data: URL that is a
+    // garbage base64 fragment (base64 contains "/"), and EJS_gameName is ignored.
+    // Arcade cores (FBNeo) then receive this garbage name, cannot match a romset,
+    // and show "Romset is unknown". A blob: URL makes getBaseFileName() fall back
+    // to EJS_gameName (the romset name, e.g. "defender"). EmulatorJS fetches and
+    // revokes the blob URL itself.
+    var romData = URL.createObjectURL(blob);
+    
+    // Set current game info
+    currentGame.name = filename.replace(/\.[^/.]+$/, "");
+    // Keep the original file name (with extension) - arcade cores need it, see loadEmulatorJS()
+    currentGame.fileName = filename;
+    currentGame.core = userSelectedCore || detectCore(filename) || 'fceumm';
+    currentGame.romData = romData;
+    
+    // Update core select
+            
+    // Configure EmulatorJS
+    EJS_core = currentGame.core;
+    EJS_gameUrl = romData;
+    
+    // Show emulator section
+    document.getElementById('uploadSection').classList.add('hidden');
+    document.getElementById('emulatorSection').classList.add('active');
+    
+    // Show loading overlay
+    document.getElementById('loadingOverlay').classList.remove('hidden');
+    
+    // Show reset button (guard against a missing element during cache transitions)
+    var resetBtn = document.getElementById('resetBtn');
+    if (resetBtn) resetBtn.style.display = 'flex';
+    
+    // Update title
+    document.getElementById('pageTitle').textContent = currentGame.name;
+    
+    // Load EmulatorJS
+    loadEmulatorJS();
 }
 
 // Fetch a ROM: direct first for CORS-enabled hosts (e.g. raw.githubusercontent.com),
@@ -1284,9 +1290,14 @@ var EJS_gamepadSupport = true;
 // Use CDN path instead of local
 var EJS_pathtodata = 'https://cdn.emulatorjs.org/4.2.3/data/';
 
-// NeoGeo BIOS configuration
-var EJS_biosUrl = './bios/neogeo.zip';
-var EJS_dontExtractBIOS = false;
+// NeoGeo BIOS configuration. FBNeo/MAME arcade cores must find a complete
+// "neogeo.zip" ARCHIVE in their FS search paths - loose extracted files are NOT
+// recognized ("None of those archives was found in your paths"). With
+// EJS_dontExtractBIOS=true EmulatorJS writes EJS_biosUrl as-is via FS.writeFile,
+// so the URL must be exactly "neogeo.zip" (resolved next to this page: routes/).
+// A local copy is kept at routes/neogeo.zip (duplicate of routes/bios/neogeo.zip).
+var EJS_biosUrl = 'neogeo.zip';
+var EJS_dontExtractBIOS = true;
 // Enable soft load for FBNeo core
 var EJS_softLoad = true;
 // Remote NeoGeo BIOS fallback source (auto-fetched when local routes/bios/neogeo.zip is missing)
@@ -1451,42 +1462,42 @@ function detectCore(filename) {
 
 // Handle ROM upload
 function handleRomUpload(file) {
-    var reader = new FileReader();
+    // Use a blob: URL instead of a base64 data: URL - same reason as in
+    // processRomBlob(): EJS_gameUrl must start with "blob:" so EmulatorJS
+    // resolves the ROM name from EJS_gameName (romset name for FBNeo) instead
+    // of a garbage base64 fragment, otherwise arcade cores show "Romset is unknown".
+    var romData = URL.createObjectURL(file);
+    var filename = file.name;
     
-    reader.onload = function(e) {
-        var romData = e.target.result;
-        var filename = file.name;
-        
-        // Set current game info
-        currentGame.name = filename.replace(/\.[^/.]+$/, "");
-        currentGame.core = userSelectedCore || detectCore(filename) || 'fceumm';
-        currentGame.romData = romData;
-        
-        // Update core select
-                
-        // Configure EmulatorJS
-        EJS_core = currentGame.core;
-        EJS_gameUrl = romData;
-        
-        // Show emulator section
-        document.getElementById('uploadSection').classList.add('hidden');
-        document.getElementById('emulatorSection').classList.add('active');
-        
-        // Show loading overlay
-        document.getElementById('loadingOverlay').classList.remove('hidden');
-        
-        // Show reset button (guard against a missing element during cache transitions)
-        var resetBtn = document.getElementById('resetBtn');
-        if (resetBtn) resetBtn.style.display = 'flex';
-        
-        // Update title
-        document.getElementById('pageTitle').textContent = currentGame.name;
-        
-        // Load EmulatorJS
-        loadEmulatorJS();
-    };
+    // Set current game info
+    currentGame.name = filename.replace(/\.[^/.]+$/, "");
+    // Keep the original file name (with extension) - arcade cores need it, see loadEmulatorJS()
+    currentGame.fileName = filename;
+    currentGame.core = userSelectedCore || detectCore(filename) || 'fceumm';
+    currentGame.romData = romData;
     
-    reader.readAsDataURL(file);
+    // Update core select
+            
+    // Configure EmulatorJS
+    EJS_core = currentGame.core;
+    EJS_gameUrl = romData;
+    
+    // Show emulator section
+    document.getElementById('uploadSection').classList.add('hidden');
+    document.getElementById('emulatorSection').classList.add('active');
+    
+    // Show loading overlay
+    document.getElementById('loadingOverlay').classList.remove('hidden');
+    
+    // Show reset button (guard against a missing element during cache transitions)
+    var resetBtn = document.getElementById('resetBtn');
+    if (resetBtn) resetBtn.style.display = 'flex';
+    
+    // Update title
+    document.getElementById('pageTitle').textContent = currentGame.name;
+    
+    // Load EmulatorJS
+    loadEmulatorJS();
 }
 
 // Fetch a binary file as blob through CORS proxies, then direct fetch
@@ -1546,13 +1557,13 @@ function fetchRemoteBios(callback) {
             return;
         }
         fetchBlobWithProxy(REMOTE_BIOS_URLS[index], 0, function(blob) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                EJS_biosUrl = e.target.result; // data URL
-                showToast(t('biosDownloaded'));
-                callback(true);
-            };
-            reader.readAsDataURL(blob);
+            // Hand the remote BIOS to EmulatorJS as a File named "neogeo.zip".
+            // With EJS_dontExtractBIOS=true EmulatorJS writes the BIOS via
+            // FS.writeFile(EJS_biosUrl), so the name must be exactly "neogeo.zip"
+            // (a data URL would become a garbage file name the core cannot find).
+            EJS_biosUrl = new File([blob], 'neogeo.zip', { type: 'application/zip' });
+            showToast(t('biosDownloaded'));
+            callback(true);
         }, function() {
             tryNext(index + 1);
         });
@@ -1566,7 +1577,8 @@ function ensureArcadeBios(callback) {
         callback(true);
         return;
     }
-    if (!EJS_biosUrl) {
+    if (!EJS_biosUrl || typeof EJS_biosUrl !== 'string') {
+        // Also covers a File object (remote BIOS already fetched) - no check needed
         callback(true);
         return;
     }
@@ -1594,7 +1606,11 @@ function loadEmulatorJS() {
     EJS_controlScheme = getControlSchemeForCore(EJS_core);
     // For arcade/fbneo and similar cores, the game's romset name must be set, otherwise the core shows "Romset is unknown"
     if (EJS_core === 'fbneo' || EJS_core === 'mame2003') {
-        EJS_gameName = currentGame.name || '';
+        // EmulatorJS writes the arcade ROM into its virtual FS using EJS_gameName as
+        // the file name, and FBNeo/MAME2003 only recognize archives by their ".zip"
+        // extension - without it every game fails with "None of those archives was
+        // found in your paths". So the name MUST keep the extension, e.g. "defender.zip".
+        EJS_gameName = currentGame.fileName || ((currentGame.name || 'game') + '.zip');
         console.log('EJS_gameName:', EJS_gameName);
     }
     // Ensure the BIOS is available before loading the emulator
@@ -1660,76 +1676,25 @@ function doLoadEmulatorJS() {
     document.body.appendChild(script);
 }
 
-// Reset back to the ROM selection screen (initial state) so a different game can be loaded,
-// WITHOUT reloading the whole page. Cleanly shuts down the running EmulatorJS instance first.
+// Reset back to the ROM selection screen so a different game can be loaded.
+// EmulatorJS 4.2.3 CANNOT be initialized twice in the same document: re-injecting
+// loader.js re-runs the core script, which redeclares page-level globals such as
+// "EJS_STORAGE" (SyntaxError: Identifier has already been declared) and the new
+// emulator never starts. So after cleanly stopping the running instance we reload
+// the document - the URL keeps its ?core= parameter, so the page returns to the
+// same platform's ROM selection screen, ready to load another game.
 function resetEmulatorToSelection() {
-    var emulatorSection = document.getElementById('emulatorSection');
-    var uploadSection = document.getElementById('uploadSection');
-    var emuContainer = document.getElementById('emulator');
-    var resetBtn = document.getElementById('resetBtn');
-
     // 1) Gracefully stop the running EmulatorJS instance (EmulatorJS 4.2.3 public API).
-    var stopInstance = function() {
-        var e = window.EJS_emulator;
-        if (e && typeof e.callEvent === 'function') {
-            try { e.callEvent('exit'); } catch (err) { console.warn('EmulatorJS exit failed:', err); }
-        }
-    };
-    if (window.EJS_emulator) {
-        stopInstance();
-    } else {
-        // Core still initializing (instance not created yet): the pending loader.js will mount
-        // one into the (now hidden) #emulator shortly. Stop it once it appears, but ONLY if we
-        // are still on the selection screen (i.e. the user hasn't already started a new load).
-        setTimeout(function() {
-            var e = window.EJS_emulator;
-            var stillOnSelection = emulatorSection && !emulatorSection.classList.contains('active');
-            if (e && typeof e.callEvent === 'function' && stillOnSelection) {
-                try { e.callEvent('exit'); } catch (err) {}
-            }
-        }, 1800);
+    var e = window.EJS_emulator;
+    if (e && typeof e.callEvent === 'function') {
+        try { e.callEvent('exit'); } catch (err) { console.warn('EmulatorJS exit failed:', err); }
     }
 
-    // Drop our handle so the next load starts from a clean slate.
-    window.EJS_emulator = undefined;
-
-    // 2) Restore #emulator to its initial DOM: removes the old canvas/menu and re-creates the
-    //    loading overlay that processRomBlob() expects to exist on the next load.
-    if (emuContainer) {
-        emuContainer.innerHTML =
-            '<div class="loading-overlay" id="loadingOverlay">' +
-                '<div class="loading-spinner"></div>' +
-                '<div class="loading-text">' +
-                    '<span data-i18n="loading">Loading game, please wait...</span>' +
-                    '<small data-i18n="loadingTip">This may take a few seconds</small>' +
-                '</div>' +
-            '</div>';
-    }
-
-    // 3) Show the selection screen again and hide the emulator.
-    if (uploadSection) uploadSection.classList.remove('hidden');
-    if (emulatorSection) emulatorSection.classList.remove('active');
-
-    // 4) Reset the upload tabs to the default "File Upload" tab.
-    document.getElementById('tabFile').classList.add('active');
-    document.getElementById('tabUrl').classList.remove('active');
-    document.getElementById('tabSearch').classList.remove('active');
-    document.getElementById('uploadBox').classList.remove('hidden');
-    document.getElementById('urlBox').classList.add('hidden');
-    document.getElementById('searchBox').classList.add('hidden');
-
-    // 5) Clear transient input/error state so the screen is pristine.
-    var urlErr = document.getElementById('urlLoadError');
-    if (urlErr) { urlErr.innerHTML = ''; urlErr.classList.add('hidden'); }
-    var searchResults = document.getElementById('searchResults');
-    if (searchResults) { searchResults.innerHTML = ''; }
-
-    // 6) Hide the reset button and restore the title + current-game state.
-    if (resetBtn) resetBtn.style.display = 'none';
-    document.getElementById('pageTitle').textContent = 'Emulator';
-
-    currentGame = { name: '', core: userSelectedCore || '', romData: null };
-    EJS_gameUrl = '';
+    // 2) Reload the document in a fresh context so the next ROM load re-initializes
+    //    EmulatorJS cleanly (see comment above).
+    setTimeout(function() {
+        window.location.reload();
+    }, 50);
 }
 
 // Gamepad detection variables

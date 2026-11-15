@@ -1,5 +1,76 @@
 {
   "platform": "arcade",
   "core": "fbneo",
-  "games": []
+  "games": [
+    {
+      "name": "Defender (Williams, 1981)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/defender.zip",
+      "filename": "defender.zip"
+    },
+    {
+      "name": "Joust (Williams, 1982)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/joust.zip",
+      "filename": "joust.zip"
+    },
+    {
+      "name": "Bubbles (Williams, 1982)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/bubbles.zip",
+      "filename": "bubbles.zip"
+    },
+    {
+      "name": "Sinistar (Williams, 1982)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/sinistar.zip",
+      "filename": "sinistar.zip"
+    },
+    {
+      "name": "Gyruss (Konami, 1983)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/gyruss.zip",
+      "filename": "gyruss.zip"
+    },
+    {
+      "name": "Juno First (Konami, 1983)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/junofrst.zip",
+      "filename": "junofrst.zip"
+    },
+    {
+      "name": "Lady Bug (Universal, 1981)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/ladybug.zip",
+      "filename": "ladybug.zip"
+    },
+    {
+      "name": "Ghosts'n Goblins (Capcom, 1985)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/gng.zip",
+      "filename": "gng.zip"
+    },
+    {
+      "name": "Final Fight (Capcom, 1989)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/ffight.zip",
+      "filename": "ffight.zip"
+    },
+    {
+      "name": "Mega Twins (Capcom, 1990)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/mtwins.zip",
+      "filename": "mtwins.zip"
+    },
+    {
+      "name": "Metal Slug (SNK, 1996)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/mslug.zip",
+      "filename": "mslug.zip"
+    },
+    {
+      "name": "Metal Slug 2 (SNK, 1998)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/mslug2.zip",
+      "filename": "mslug2.zip"
+    },
+    {
+      "name": "Magical Drop III (Data East, 1997)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/magdrop3.zip",
+      "filename": "magdrop3.zip"
+    },
+    {
+      "name": "Samurai Shodown II (SNK, 1994)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/samsho2.zip",
+      "filename": "samsho2.zip"
+    }
+  ]
 }
