@@ -1,76 +1,751 @@
 {
-  "platform": "arcade",
-  "core": "fbneo",
-  "games": [
-    {
-      "name": "Defender (Williams, 1981)",
-      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/defender.zip",
-      "filename": "defender.zip"
-    },
-    {
-      "name": "Joust (Williams, 1982)",
-      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/joust.zip",
-      "filename": "joust.zip"
-    },
-    {
-      "name": "Bubbles (Williams, 1982)",
-      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/bubbles.zip",
-      "filename": "bubbles.zip"
-    },
-    {
-      "name": "Sinistar (Williams, 1982)",
-      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/sinistar.zip",
-      "filename": "sinistar.zip"
-    },
-    {
-      "name": "Gyruss (Konami, 1983)",
-      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/gyruss.zip",
-      "filename": "gyruss.zip"
-    },
-    {
-      "name": "Juno First (Konami, 1983)",
-      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/junofrst.zip",
-      "filename": "junofrst.zip"
-    },
-    {
-      "name": "Lady Bug (Universal, 1981)",
-      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/ladybug.zip",
-      "filename": "ladybug.zip"
-    },
-    {
-      "name": "Ghosts'n Goblins (Capcom, 1985)",
-      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/gng.zip",
-      "filename": "gng.zip"
-    },
-    {
-      "name": "Final Fight (Capcom, 1989)",
-      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/ffight.zip",
-      "filename": "ffight.zip"
-    },
-    {
-      "name": "Mega Twins (Capcom, 1990)",
-      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/mtwins.zip",
-      "filename": "mtwins.zip"
-    },
-    {
-      "name": "Metal Slug (SNK, 1996)",
-      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/mslug.zip",
-      "filename": "mslug.zip"
-    },
-    {
-      "name": "Metal Slug 2 (SNK, 1998)",
-      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/mslug2.zip",
-      "filename": "mslug2.zip"
-    },
-    {
-      "name": "Magical Drop III (Data East, 1997)",
-      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/magdrop3.zip",
-      "filename": "magdrop3.zip"
-    },
-    {
-      "name": "Samurai Shodown II (SNK, 1994)",
-      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/samsho2.zip",
-      "filename": "samsho2.zip"
-    }
-  ]
+ "platform": "arcade",
+ "core": "fbneo",
+ "games": [
+  {
+   "name": "2020 Super Baseball",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/2020bb.zip",
+   "filename": "2020bb.zip"
+  },
+  {
+   "name": "Aggressors of Dark Kombat",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/aodk.zip",
+   "filename": "aodk.zip"
+  },
+  {
+   "name": "Alpha Mission II",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/alpham2.zip",
+   "filename": "alpham2.zip"
+  },
+  {
+   "name": "Andro Dunos",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/androdun.zip",
+   "filename": "androdun.zip"
+  },
+  {
+   "name": "Art of Fighting",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/aof.zip",
+   "filename": "aof.zip"
+  },
+  {
+   "name": "Art of Fighting 2",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/aof2.zip",
+   "filename": "aof2.zip"
+  },
+  {
+   "name": "Art of Fighting 3",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/aof3.zip",
+   "filename": "aof3.zip"
+  },
+  {
+   "name": "Bakatono-sama: Mahjong Manyuuki",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/bakatono.zip",
+   "filename": "bakatono.zip"
+  },
+  {
+   "name": "Bang Bead",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/bangbead.zip",
+   "filename": "bangbead.zip"
+  },
+  {
+   "name": "Blazing Star",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/blazstar.zip",
+   "filename": "blazstar.zip"
+  },
+  {
+   "name": "Blue's Journey",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/bjourney.zip",
+   "filename": "bjourney.zip"
+  },
+  {
+   "name": "Breakers",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/breakers.zip",
+   "filename": "breakers.zip"
+  },
+  {
+   "name": "Breakers Revenge",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/breakrev.zip",
+   "filename": "breakrev.zip"
+  },
+  {
+   "name": "Bubbles (Williams, 1982)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/bubbles.zip",
+   "filename": "bubbles.zip"
+  },
+  {
+   "name": "Burning Fight",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/burningf.zip",
+   "filename": "burningf.zip"
+  },
+  {
+   "name": "Cadillacs and Dinosaurs",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-cps1/main/dino.zip",
+   "filename": "dino.zip"
+  },
+  {
+   "name": "Crossed Swords",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/crsword.zip",
+   "filename": "crsword.zip"
+  },
+  {
+   "name": "Cyber-Lip",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/cyberlip.zip",
+   "filename": "cyberlip.zip"
+  },
+  {
+   "name": "Defender (Williams, 1981)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/defender.zip",
+   "filename": "defender.zip"
+  },
+  {
+   "name": "Digger Man",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/diggerma.zip",
+   "filename": "diggerma.zip"
+  },
+  {
+   "name": "Double Dragon (Neo Geo)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/doubledr.zip",
+   "filename": "doubledr.zip"
+  },
+  {
+   "name": "Eight Man",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/eightman.zip",
+   "filename": "eightman.zip"
+  },
+  {
+   "name": "Fatal Fury 2",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/fatfury2.zip",
+   "filename": "fatfury2.zip"
+  },
+  {
+   "name": "Fatal Fury 3: Road to the Final Victory",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/fatfury3.zip",
+   "filename": "fatfury3.zip"
+  },
+  {
+   "name": "Fatal Fury Special",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/fatfursp.zip",
+   "filename": "fatfursp.zip"
+  },
+  {
+   "name": "Fatal Fury: King of Fighters",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/fatfury1.zip",
+   "filename": "fatfury1.zip"
+  },
+  {
+   "name": "Fight Fever",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/fightfev.zip",
+   "filename": "fightfev.zip"
+  },
+  {
+   "name": "Final Fight (Capcom, 1989)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/ffight.zip",
+   "filename": "ffight.zip"
+  },
+  {
+   "name": "Flip Shot: The Battle of Ball",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/flipshot.zip",
+   "filename": "flipshot.zip"
+  },
+  {
+   "name": "Football Frenzy",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/fbfrenzy.zip",
+   "filename": "fbfrenzy.zip"
+  },
+  {
+   "name": "Galaxy Fight: Universal Warriors",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/galaxyfg.zip",
+   "filename": "galaxyfg.zip"
+  },
+  {
+   "name": "Ganryu",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/ganryu.zip",
+   "filename": "ganryu.zip"
+  },
+  {
+   "name": "Garou: Mark of the Wolves",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/garou.zip",
+   "filename": "garou.zip"
+  },
+  {
+   "name": "Ghost Pilots",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/gpilots.zip",
+   "filename": "gpilots.zip"
+  },
+  {
+   "name": "Ghostlop",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/ghostlop.zip",
+   "filename": "ghostlop.zip"
+  },
+  {
+   "name": "Ghosts'n Goblins (Capcom, 1985)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/gng.zip",
+   "filename": "gng.zip"
+  },
+  {
+   "name": "Ghouls 'n Ghosts (US)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-cps1/main/ghoulsu.zip",
+   "filename": "ghoulsu.zip"
+  },
+  {
+   "name": "Goal! Goal! Goal!",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/goalx3.zip",
+   "filename": "goalx3.zip"
+  },
+  {
+   "name": "Gyruss (Konami, 1983)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/gyruss.zip",
+   "filename": "gyruss.zip"
+  },
+  {
+   "name": "Joust (Williams, 1982)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/joust.zip",
+   "filename": "joust.zip"
+  },
+  {
+   "name": "Juno First (Konami, 1983)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/junofrst.zip",
+   "filename": "junofrst.zip"
+  },
+  {
+   "name": "Kabuki Klash: Far East of Eden",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/kabukikl.zip",
+   "filename": "kabukikl.zip"
+  },
+  {
+   "name": "Karnov's Revenge",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/karnovr.zip",
+   "filename": "karnovr.zip"
+  },
+  {
+   "name": "King of Dragons (US)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-cps1/main/kodu.zip",
+   "filename": "kodu.zip"
+  },
+  {
+   "name": "King of the Monsters",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/kotm.zip",
+   "filename": "kotm.zip"
+  },
+  {
+   "name": "King of the Monsters 2",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/kotm2.zip",
+   "filename": "kotm2.zip"
+  },
+  {
+   "name": "Kizuna Encounter: Super Tag Battle",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/kizuna.zip",
+   "filename": "kizuna.zip"
+  },
+  {
+   "name": "Knights of the Round (US)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-cps1/main/knightsu.zip",
+   "filename": "knightsu.zip"
+  },
+  {
+   "name": "Lady Bug (Universal, 1981)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/ladybug.zip",
+   "filename": "ladybug.zip"
+  },
+  {
+   "name": "Last Resort",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/lresort.zip",
+   "filename": "lresort.zip"
+  },
+  {
+   "name": "Mag Lord",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/maglord.zip",
+   "filename": "maglord.zip"
+  },
+  {
+   "name": "Magic Sword (US)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-cps1/main/mswordu.zip",
+   "filename": "mswordu.zip"
+  },
+  {
+   "name": "Magical Drop II",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/magdrop2.zip",
+   "filename": "magdrop2.zip"
+  },
+  {
+   "name": "Magical Drop III (Data East, 1997)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/magdrop3.zip",
+   "filename": "magdrop3.zip"
+  },
+  {
+   "name": "Mahjong Kyo Retsuden",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/mahretsu.zip",
+   "filename": "mahretsu.zip"
+  },
+  {
+   "name": "Maruko Deluxe Quiz",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/marukodq.zip",
+   "filename": "marukodq.zip"
+  },
+  {
+   "name": "Marvel vs. Capcom 2",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-cps3/main/mvsc2u.zip",
+   "filename": "mvsc2u.zip"
+  },
+  {
+   "name": "Mega Twins (Capcom, 1990)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/mtwins.zip",
+   "filename": "mtwins.zip"
+  },
+  {
+   "name": "Metal Slug (SNK, 1996)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/mslug.zip",
+   "filename": "mslug.zip"
+  },
+  {
+   "name": "Metal Slug 2 (SNK, 1998)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/mslug2.zip",
+   "filename": "mslug2.zip"
+  },
+  {
+   "name": "Metal Slug 3",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/mslug3.zip",
+   "filename": "mslug3.zip"
+  },
+  {
+   "name": "Metal Slug 4",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/mslug4.zip",
+   "filename": "mslug4.zip"
+  },
+  {
+   "name": "Metal Slug 5",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/mslug5.zip",
+   "filename": "mslug5.zip"
+  },
+  {
+   "name": "Metal Slug X",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/mslugx.zip",
+   "filename": "mslugx.zip"
+  },
+  {
+   "name": "Minasan no Okagesama Desu",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/minasan.zip",
+   "filename": "minasan.zip"
+  },
+  {
+   "name": "Money Idol Exchanger",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/miexchng.zip",
+   "filename": "miexchng.zip"
+  },
+  {
+   "name": "NAM-1975",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/nam1975.zip",
+   "filename": "nam1975.zip"
+  },
+  {
+   "name": "Neo Bomberman",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/neobombe.zip",
+   "filename": "neobombe.zip"
+  },
+  {
+   "name": "Neo Drift Out: New Technology",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/neodrift.zip",
+   "filename": "neodrift.zip"
+  },
+  {
+   "name": "Neo Geo Cup '98",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/neocup98.zip",
+   "filename": "neocup98.zip"
+  },
+  {
+   "name": "Neo Mr. Do!",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/neomrdo.zip",
+   "filename": "neomrdo.zip"
+  },
+  {
+   "name": "Neo Turf Golf (Turf Masters)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/turfmast.zip",
+   "filename": "turfmast.zip"
+  },
+  {
+   "name": "Nightmare in the Dark",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/nitd.zip",
+   "filename": "nitd.zip"
+  },
+  {
+   "name": "Ninja Combat",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/ncombat.zip",
+   "filename": "ncombat.zip"
+  },
+  {
+   "name": "Ninja Commando",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/ncommand.zip",
+   "filename": "ncommand.zip"
+  },
+  {
+   "name": "Ninja Master's: Haoh Ninpo Cho",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/ninjamas.zip",
+   "filename": "ninjamas.zip"
+  },
+  {
+   "name": "Over Top",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/overtop.zip",
+   "filename": "overtop.zip"
+  },
+  {
+   "name": "Panic Bomber",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/panicbom.zip",
+   "filename": "panicbom.zip"
+  },
+  {
+   "name": "Pleasure Goal",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/pgoal.zip",
+   "filename": "pgoal.zip"
+  },
+  {
+   "name": "Pochi and Nyaa",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/pnyaa.zip",
+   "filename": "pnyaa.zip"
+  },
+  {
+   "name": "Pop'n Bounce",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/popbounc.zip",
+   "filename": "popbounc.zip"
+  },
+  {
+   "name": "Power Spikes II",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/pspikes2.zip",
+   "filename": "pspikes2.zip"
+  },
+  {
+   "name": "Prehistoric Isle 2",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/preisle2.zip",
+   "filename": "preisle2.zip"
+  },
+  {
+   "name": "Pulstar",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/pulstar.zip",
+   "filename": "pulstar.zip"
+  },
+  {
+   "name": "Puzzle Bobble",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/pbobblen.zip",
+   "filename": "pbobblen.zip"
+  },
+  {
+   "name": "Puzzle Bobble 2",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/pbobbl2n.zip",
+   "filename": "pbobbl2n.zip"
+  },
+  {
+   "name": "Quiz King of Fighters",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/quizkof.zip",
+   "filename": "quizkof.zip"
+  },
+  {
+   "name": "Rage of the Dragons",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/rotd.zip",
+   "filename": "rotd.zip"
+  },
+  {
+   "name": "Ragnagard",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/ragnagrd.zip",
+   "filename": "ragnagrd.zip"
+  },
+  {
+   "name": "Real Bout Fatal Fury",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/rbff1.zip",
+   "filename": "rbff1.zip"
+  },
+  {
+   "name": "Real Bout Fatal Fury 2: The Newcomers",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/rbff2.zip",
+   "filename": "rbff2.zip"
+  },
+  {
+   "name": "Real Bout Fatal Fury Special",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/rbffspec.zip",
+   "filename": "rbffspec.zip"
+  },
+  {
+   "name": "Riding Hero",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/ridhero.zip",
+   "filename": "ridhero.zip"
+  },
+  {
+   "name": "Robo Army",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/roboarmy.zip",
+   "filename": "roboarmy.zip"
+  },
+  {
+   "name": "Samurai Shodown",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/samsho.zip",
+   "filename": "samsho.zip"
+  },
+  {
+   "name": "Samurai Shodown II (SNK, 1994)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/samsho2.zip",
+   "filename": "samsho2.zip"
+  },
+  {
+   "name": "Samurai Shodown III",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/samsho3.zip",
+   "filename": "samsho3.zip"
+  },
+  {
+   "name": "Samurai Shodown IV",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/samsho4.zip",
+   "filename": "samsho4.zip"
+  },
+  {
+   "name": "Samurai Shodown V",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/samsho5.zip",
+   "filename": "samsho5.zip"
+  },
+  {
+   "name": "Savage Reign",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/savagere.zip",
+   "filename": "savagere.zip"
+  },
+  {
+   "name": "Sengoku",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/sengoku.zip",
+   "filename": "sengoku.zip"
+  },
+  {
+   "name": "Sengoku 2",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/sengoku2.zip",
+   "filename": "sengoku2.zip"
+  },
+  {
+   "name": "Sengoku 3",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/sengoku3.zip",
+   "filename": "sengoku3.zip"
+  },
+  {
+   "name": "Shock Troopers",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/shocktro.zip",
+   "filename": "shocktro.zip"
+  },
+  {
+   "name": "Shock Troopers: 2nd Squad",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/shocktr2.zip",
+   "filename": "shocktr2.zip"
+  },
+  {
+   "name": "Sinistar (Williams, 1982)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/sinistar.zip",
+   "filename": "sinistar.zip"
+  },
+  {
+   "name": "SNK vs. Capcom: SVC Chaos",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/svc.zip",
+   "filename": "svc.zip"
+  },
+  {
+   "name": "Soccer Brawl",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/socbrawl.zip",
+   "filename": "socbrawl.zip"
+  },
+  {
+   "name": "Sonic Wings 2",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/sonicwi2.zip",
+   "filename": "sonicwi2.zip"
+  },
+  {
+   "name": "Sonic Wings 3",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/sonicwi3.zip",
+   "filename": "sonicwi3.zip"
+  },
+  {
+   "name": "Spin Master",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/spinmast.zip",
+   "filename": "spinmast.zip"
+  },
+  {
+   "name": "Stakes Winner",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/stakwin.zip",
+   "filename": "stakwin.zip"
+  },
+  {
+   "name": "Stakes Winner 2",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/stakwin2.zip",
+   "filename": "stakwin2.zip"
+  },
+  {
+   "name": "Street Hoop",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/strhoop.zip",
+   "filename": "strhoop.zip"
+  },
+  {
+   "name": "Strikers 1945 Plus",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/s1945p.zip",
+   "filename": "s1945p.zip"
+  },
+  {
+   "name": "Super Dodge Ball",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/sdodgeb.zip",
+   "filename": "sdodgeb.zip"
+  },
+  {
+   "name": "Super Sidekicks",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/ssideki.zip",
+   "filename": "ssideki.zip"
+  },
+  {
+   "name": "Super Sidekicks 2",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/ssideki2.zip",
+   "filename": "ssideki2.zip"
+  },
+  {
+   "name": "Super Sidekicks 3",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/ssideki3.zip",
+   "filename": "ssideki3.zip"
+  },
+  {
+   "name": "Super Sidekicks 4: The Ultimate 11",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/ssideki4.zip",
+   "filename": "ssideki4.zip"
+  },
+  {
+   "name": "Tecmo World Soccer '96",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/tws96.zip",
+   "filename": "tws96.zip"
+  },
+  {
+   "name": "The King of Fighters '94",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/kof94.zip",
+   "filename": "kof94.zip"
+  },
+  {
+   "name": "The King of Fighters '95",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/kof95.zip",
+   "filename": "kof95.zip"
+  },
+  {
+   "name": "The King of Fighters '96",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/kof96.zip",
+   "filename": "kof96.zip"
+  },
+  {
+   "name": "The King of Fighters '97",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/kof97.zip",
+   "filename": "kof97.zip"
+  },
+  {
+   "name": "The King of Fighters '98",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/kof98.zip",
+   "filename": "kof98.zip"
+  },
+  {
+   "name": "The King of Fighters '99",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/kof99.zip",
+   "filename": "kof99.zip"
+  },
+  {
+   "name": "The King of Fighters 2000",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/kof2000.zip",
+   "filename": "kof2000.zip"
+  },
+  {
+   "name": "The King of Fighters 2001",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/kof2001.zip",
+   "filename": "kof2001.zip"
+  },
+  {
+   "name": "The King of Fighters 2002",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/kof2002.zip",
+   "filename": "kof2002.zip"
+  },
+  {
+   "name": "The King of Fighters 2003",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/kof2003.zip",
+   "filename": "kof2003.zip"
+  },
+  {
+   "name": "The Last Blade",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/lastblad.zip",
+   "filename": "lastblad.zip"
+  },
+  {
+   "name": "The Last Blade 2",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/lastbld2.zip",
+   "filename": "lastbld2.zip"
+  },
+  {
+   "name": "The Super Spy",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/superspy.zip",
+   "filename": "superspy.zip"
+  },
+  {
+   "name": "Thrash Rally",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/trally.zip",
+   "filename": "trally.zip"
+  },
+  {
+   "name": "Top Hunter: Roddy & Cathy",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/tophuntr.zip",
+   "filename": "tophuntr.zip"
+  },
+  {
+   "name": "Top Player's Golf",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/tpgolf.zip",
+   "filename": "tpgolf.zip"
+  },
+  {
+   "name": "Twinkle Star Sprites",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/twinspri.zip",
+   "filename": "twinspri.zip"
+  },
+  {
+   "name": "Viewpoint",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/viewpoin.zip",
+   "filename": "viewpoin.zip"
+  },
+  {
+   "name": "Voltage Fighter Gowcaizer",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/gowcaizr.zip",
+   "filename": "gowcaizr.zip"
+  },
+  {
+   "name": "Waku Waku 7",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/wakuwak7.zip",
+   "filename": "wakuwak7.zip"
+  },
+  {
+   "name": "Warriors of Fate (US)",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-cps1/main/wofu.zip",
+   "filename": "wofu.zip"
+  },
+  {
+   "name": "Windjammers",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/wjammers.zip",
+   "filename": "wjammers.zip"
+  },
+  {
+   "name": "World Heroes",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/wh1.zip",
+   "filename": "wh1.zip"
+  },
+  {
+   "name": "World Heroes 2",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/wh2.zip",
+   "filename": "wh2.zip"
+  },
+  {
+   "name": "World Heroes 2 Jet",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/wh2j.zip",
+   "filename": "wh2j.zip"
+  },
+  {
+   "name": "World Heroes Perfect",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/whp.zip",
+   "filename": "whp.zip"
+  },
+  {
+   "name": "Zed Blade",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/zedblade.zip",
+   "filename": "zedblade.zip"
+  },
+  {
+   "name": "Zupapa!",
+   "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-neogeo/main/zupapa.zip",
+   "filename": "zupapa.zip"
+  }
+ ]
 }
