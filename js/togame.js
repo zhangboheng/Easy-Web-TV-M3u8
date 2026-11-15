@@ -214,11 +214,11 @@ var games = [
     },
     {
         id: 27,
-        name: 'MAME 2003 Emulator',
+        name: 'MAME 2003+ Emulator',
         platform: 'MAME',
         category: 'emulator',
         image: '../images/mame.svg',
-        url: '../routes/emulatorjs.html?core=mame2003'
+        url: '../routes/emulatorjs.html?core=mame2003_plus'
     },
     {
         id: 7,

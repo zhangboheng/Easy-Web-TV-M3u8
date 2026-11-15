@@ -1572,8 +1572,11 @@ function fetchRemoteBios(callback) {
 }
 
 // Ensure the arcade core's BIOS is available (local first, remote fallback) to avoid "Romset is unknown"
+// Only the FBNeo core needs the NeoGeo BIOS (data/roms/arcade.json contains NeoGeo games);
+// the MAME cores do not, so they skip the check entirely.
 function ensureArcadeBios(callback) {
-    if (EJS_core !== 'fbneo' && EJS_core !== 'mame2003') {
+    if (EJS_core !== 'fbneo') {
+        EJS_biosUrl = ''; // MAME cores must not download the unused NeoGeo BIOS
         callback(true);
         return;
     }
@@ -1605,7 +1608,7 @@ function loadEmulatorJS() {
     // correct gamepad layout (stable/4.2.3 menu lacks segaMD; Genesis needs segaCD, see controlSchemeMapping)
     EJS_controlScheme = getControlSchemeForCore(EJS_core);
     // For arcade/fbneo and similar cores, the game's romset name must be set, otherwise the core shows "Romset is unknown"
-    if (EJS_core === 'fbneo' || EJS_core === 'mame2003') {
+    if (EJS_core === 'fbneo' || EJS_core === 'mame2003' || EJS_core === 'mame2003_plus') {
         // EmulatorJS writes the arcade ROM into its virtual FS using EJS_gameName as
         // the file name, and FBNeo/MAME2003 only recognize archives by their ".zip"
         // extension - without it every game fails with "None of those archives was
@@ -1981,6 +1984,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'opera': '3do',
         'fbneo': 'arcade',
         'mame2003': 'mame',
+        'mame2003_plus': 'mame',
         'gearcoleco': 'coleco',
         'vice_x64': 'c64',
         'vice_x128': 'c128',

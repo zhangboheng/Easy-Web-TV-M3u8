@@ -145,7 +145,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Supported Platforms
 
-All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **11327** games across 18 JSON files.
+All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **11480** games across 19 JSON files.
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -175,7 +175,7 @@ All 29 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Commodore | Amiga | puae | – | – |
 | Other | 3DO | opera | – | – |
 | Other | Arcade (FBNeo) | fbneo | 14 | arcade.json |
-| Other | Arcade (MAME 2003) | mame2003 | – | – |
+| Other | Arcade (MAME 2003+) | mame2003_plus | 153 | mame.json |
 | Other | ColecoVision | gearcoleco | 94 | coleco.json |
 | Other | Virtual Boy | beetle_vb | 28 | vb.json |
 | **Total** | **29 platforms** | – | **11330** | **18 files** |
@@ -263,7 +263,8 @@ Easy-Web-TV-M3u8/
 │       ├── c64.json          # 51 Commodore 64 games
 │       ├── c128.json         # 5 Commodore 128 games
 │       ├── vic20.json        # 156 VIC-20 games
-│       └── arcade.json       # 14 Arcade (FBNeo) games (marlon-santana/roms-retro-* on GitHub)
+│       ├── arcade.json       # 14 Arcade (FBNeo) games (marlon-santana/roms-retro-* on GitHub)
+│       └── mame.json         # 153 Arcade (MAME 2003+) games, CRC-verified against the MAME 0.78 DAT
 ├── routes/
 │   ├── tv.html            # TV page
 │   ├── movie.html         # Movie page

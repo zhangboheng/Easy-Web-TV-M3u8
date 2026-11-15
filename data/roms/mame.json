@@ -1,0 +1,771 @@
+{
+  "platform": "mame",
+  "core": "mame2003_plus",
+  "games": [
+    {
+      "name": "005",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/005.zip",
+      "filename": "005.zip"
+    },
+    {
+      "name": "The Three Stooges In Brides Is Brides",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/3stooges.zip",
+      "filename": "3stooges.zip"
+    },
+    {
+      "name": "Arabian (Atari)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/arabiana.zip",
+      "filename": "arabiana.zip"
+    },
+    {
+      "name": "Asteroids (rev 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/asteroi1.zip",
+      "filename": "asteroi1.zip"
+    },
+    {
+      "name": "Asteroids (rev 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/asteroid.zip",
+      "filename": "asteroid.zip"
+    },
+    {
+      "name": "Astro Invader",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/astinvad.zip",
+      "filename": "astinvad.zip"
+    },
+    {
+      "name": "Astro Blaster (version 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/astrob1.zip",
+      "filename": "astrob1.zip"
+    },
+    {
+      "name": "Astro Blaster (version 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/astrob2.zip",
+      "filename": "astrob2.zip"
+    },
+    {
+      "name": "Tetris (Cocktail set 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/atetckt2.zip",
+      "filename": "atetckt2.zip"
+    },
+    {
+      "name": "Tetris (set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/atetris.zip",
+      "filename": "atetris.zip"
+    },
+    {
+      "name": "Tetris (set 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/atetrisa.zip",
+      "filename": "atetrisa.zip"
+    },
+    {
+      "name": "Tetris (bootleg)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/atetrisb.zip",
+      "filename": "atetrisb.zip"
+    },
+    {
+      "name": "Bad Dudes vs. Dragonninja (US)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/baddudes.zip",
+      "filename": "baddudes.zip"
+    },
+    {
+      "name": "Berzerk (set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/berzerk.zip",
+      "filename": "berzerk.zip"
+    },
+    {
+      "name": "Blockade",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/blockade.zip",
+      "filename": "blockade.zip"
+    },
+    {
+      "name": "Blue Print (Midway)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/blueprnt.zip",
+      "filename": "blueprnt.zip"
+    },
+    {
+      "name": "Bump 'n' Jump",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/bnj.zip",
+      "filename": "bnj.zip"
+    },
+    {
+      "name": "Bomb Jack (set 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/bombjac2.zip",
+      "filename": "bombjac2.zip"
+    },
+    {
+      "name": "Burnin' Rubber",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/brubber.zip",
+      "filename": "brubber.zip"
+    },
+    {
+      "name": "Basketball",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/bsktball.zip",
+      "filename": "bsktball.zip"
+    },
+    {
+      "name": "Burger Time (Data East set 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/btime2.zip",
+      "filename": "btime2.zip"
+    },
+    {
+      "name": "Burger Time (Midway)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/btimem.zip",
+      "filename": "btimem.zip"
+    },
+    {
+      "name": "Bubbles",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/bubbles.zip",
+      "filename": "bubbles.zip"
+    },
+    {
+      "name": "Bubbles (Solid Red label)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/bubblesr.zip",
+      "filename": "bubblesr.zip"
+    },
+    {
+      "name": "Battle Zone (set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/bzone.zip",
+      "filename": "bzone.zip"
+    },
+    {
+      "name": "Battle Zone (set 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/bzone2.zip",
+      "filename": "bzone2.zip"
+    },
+    {
+      "name": "Car Action",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/caractn.zip",
+      "filename": "caractn.zip"
+    },
+    {
+      "name": "Cosmic Avenger",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/cavenger.zip",
+      "filename": "cavenger.zip"
+    },
+    {
+      "name": "Champion Baseball",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/champbas.zip",
+      "filename": "champbas.zip"
+    },
+    {
+      "name": "Chelnov - Atomic Runner (Japan)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/chelnovj.zip",
+      "filename": "chelnovj.zip"
+    },
+    {
+      "name": "Circus",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/circus.zip",
+      "filename": "circus.zip"
+    },
+    {
+      "name": "City Connection (set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/citycon.zip",
+      "filename": "citycon.zip"
+    },
+    {
+      "name": "Crazy Kong (Alca bootleg)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/ckongalc.zip",
+      "filename": "ckongalc.zip"
+    },
+    {
+      "name": "Crazy Kong (Scramble hardware)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/ckongs.zip",
+      "filename": "ckongs.zip"
+    },
+    {
+      "name": "Cloak &amp; Dagger (rev 5)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/cloak.zip",
+      "filename": "cloak.zip"
+    },
+    {
+      "name": "Clowns (rev. 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/clowns.zip",
+      "filename": "clowns.zip"
+    },
+    {
+      "name": "Cobra-Command (Japan)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/cobracmj.zip",
+      "filename": "cobracmj.zip"
+    },
+    {
+      "name": "Colony 7 (set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/colony7.zip",
+      "filename": "colony7.zip"
+    },
+    {
+      "name": "Colony 7 (set 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/colony7a.zip",
+      "filename": "colony7a.zip"
+    },
+    {
+      "name": "Comotion",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/comotion.zip",
+      "filename": "comotion.zip"
+    },
+    {
+      "name": "Cosmic Monsters",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/cosmicmo.zip",
+      "filename": "cosmicmo.zip"
+    },
+    {
+      "name": "Crash",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/crash.zip",
+      "filename": "crash.zip"
+    },
+    {
+      "name": "Defender (Red label)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/defender.zip",
+      "filename": "defender.zip"
+    },
+    {
+      "name": "Mr. Do vs. Unicorns",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/douni.zip",
+      "filename": "douni.zip"
+    },
+    {
+      "name": "Dragonninja (Japan)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/drgninja.zip",
+      "filename": "drgninja.zip"
+    },
+    {
+      "name": "Eagle (set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/eagle.zip",
+      "filename": "eagle.zip"
+    },
+    {
+      "name": "Super Earth Invasion",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/earthinv.zip",
+      "filename": "earthinv.zip"
+    },
+    {
+      "name": "Extra Bases",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/ebases.zip",
+      "filename": "ebases.zip"
+    },
+    {
+      "name": "Far West",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/farwest.zip",
+      "filename": "farwest.zip"
+    },
+    {
+      "name": "Final Fight (World)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/ffight.zip",
+      "filename": "ffight.zip"
+    },
+    {
+      "name": "Food Fight (rev 3)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/foodf.zip",
+      "filename": "foodf.zip"
+    },
+    {
+      "name": "Frenzy",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/frenzy.zip",
+      "filename": "frenzy.zip"
+    },
+    {
+      "name": "Frog",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/froggers.zip",
+      "filename": "froggers.zip"
+    },
+    {
+      "name": "Ninja Gaiden (US)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/gaiden.zip",
+      "filename": "gaiden.zip"
+    },
+    {
+      "name": "Gemini Wing",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/gemini.zip",
+      "filename": "gemini.zip"
+    },
+    {
+      "name": "Guided Missile",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/gmissile.zip",
+      "filename": "gmissile.zip"
+    },
+    {
+      "name": "Gorf",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/gorf.zip",
+      "filename": "gorf.zip"
+    },
+    {
+      "name": "Gorf (Program 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/gorfpgm1.zip",
+      "filename": "gorfpgm1.zip"
+    },
+    {
+      "name": "Gravitar (version 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/gravitr2.zip",
+      "filename": "gravitr2.zip"
+    },
+    {
+      "name": "Gingateikoku No Gyakushu",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/gteikoku.zip",
+      "filename": "gteikoku.zip"
+    },
+    {
+      "name": "Gun Dealer (set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/gundealr.zip",
+      "filename": "gundealr.zip"
+    },
+    {
+      "name": "Gyruss (Konami)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/gyruss.zip",
+      "filename": "gyruss.zip"
+    },
+    {
+      "name": "Video Hustler",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/hustler.zip",
+      "filename": "hustler.zip"
+    },
+    {
+      "name": "Space Invaders",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/invaders.zip",
+      "filename": "invaders.zip"
+    },
+    {
+      "name": "Invinco / Deep Scan",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/invds.zip",
+      "filename": "invds.zip"
+    },
+    {
+      "name": "Invader's Revenge",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/invrvnge.zip",
+      "filename": "invrvnge.zip"
+    },
+    {
+      "name": "I, Robot",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/irobot.zip",
+      "filename": "irobot.zip"
+    },
+    {
+      "name": "Jack the Giantkiller (set 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/jack2.zip",
+      "filename": "jack2.zip"
+    },
+    {
+      "name": "Jumping Jack",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/jjack.zip",
+      "filename": "jjack.zip"
+    },
+    {
+      "name": "Joust (White/Green label)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/joust.zip",
+      "filename": "joust.zip"
+    },
+    {
+      "name": "Joust (Solid Red label)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/joustr.zip",
+      "filename": "joustr.zip"
+    },
+    {
+      "name": "Joust (White/Red label)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/joustwr.zip",
+      "filename": "joustwr.zip"
+    },
+    {
+      "name": "Jump Coaster",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/jumpcoas.zip",
+      "filename": "jumpcoas.zip"
+    },
+    {
+      "name": "Juno First",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/junofrst.zip",
+      "filename": "junofrst.zip"
+    },
+    {
+      "name": "Kangaroo (Atari)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/kangaroa.zip",
+      "filename": "kangaroa.zip"
+    },
+    {
+      "name": "Kaos",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/kaos.zip",
+      "filename": "kaos.zip"
+    },
+    {
+      "name": "Karnov (US)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/karnov.zip",
+      "filename": "karnov.zip"
+    },
+    {
+      "name": "Karnov (Japan)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/karnovj.zip",
+      "filename": "karnovj.zip"
+    },
+    {
+      "name": "Klax (set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/klax.zip",
+      "filename": "klax.zip"
+    },
+    {
+      "name": "Krull",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/krull.zip",
+      "filename": "krull.zip"
+    },
+    {
+      "name": "Kung-Fu Master",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/kungfum.zip",
+      "filename": "kungfum.zip"
+    },
+    {
+      "name": "Lady Bug",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/ladybug.zip",
+      "filename": "ladybug.zip"
+    },
+    {
+      "name": "Leprechaun",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/leprechn.zip",
+      "filename": "leprechn.zip"
+    },
+    {
+      "name": "Lunar Lander (rev 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/llander.zip",
+      "filename": "llander.zip"
+    },
+    {
+      "name": "Lock'n'Chase",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/lnc.zip",
+      "filename": "lnc.zip"
+    },
+    {
+      "name": "Lupin III",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/lupin3.zip",
+      "filename": "lupin3.zip"
+    },
+    {
+      "name": "Amazing Maze",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/maze.zip",
+      "filename": "maze.zip"
+    },
+    {
+      "name": "MegaTack",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/megatack.zip",
+      "filename": "megatack.zip"
+    },
+    {
+      "name": "Major Havoc (rev 3)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/mhavoc.zip",
+      "filename": "mhavoc.zip"
+    },
+    {
+      "name": "Major Havoc (rev 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/mhavoc2.zip",
+      "filename": "mhavoc2.zip"
+    },
+    {
+      "name": "Major Havoc (Return to Vax)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/mhavocrv.zip",
+      "filename": "mhavocrv.zip"
+    },
+    {
+      "name": "Moon Alien Part 2",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/moonal2.zip",
+      "filename": "moonal2.zip"
+    },
+    {
+      "name": "Mad Planets",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/mplanets.zip",
+      "filename": "mplanets.zip"
+    },
+    {
+      "name": "Mouse Trap (version 5)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/mtrap.zip",
+      "filename": "mtrap.zip"
+    },
+    {
+      "name": "Mega Twins (World 900619)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/mtwins.zip",
+      "filename": "mtwins.zip"
+    },
+    {
+      "name": "Omega Race",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/omegrace.zip",
+      "filename": "omegrace.zip"
+    },
+    {
+      "name": "Pac-Man (Galaxian hardware)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/pacmanbl.zip",
+      "filename": "pacmanbl.zip"
+    },
+    {
+      "name": "Pac &amp; Pal",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/pacnpal.zip",
+      "filename": "pacnpal.zip"
+    },
+    {
+      "name": "Pinball Action (set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/pbaction.zip",
+      "filename": "pbaction.zip"
+    },
+    {
+      "name": "Pulsar",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/pulsar.zip",
+      "filename": "pulsar.zip"
+    },
+    {
+      "name": "Q*bert (US)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/qbert.zip",
+      "filename": "qbert.zip"
+    },
+    {
+      "name": "Q*bert's Qubes",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/qbertqub.zip",
+      "filename": "qbertqub.zip"
+    },
+    {
+      "name": "Quantum (rev 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/quantum.zip",
+      "filename": "quantum.zip"
+    },
+    {
+      "name": "Quantum (rev 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/quantum1.zip",
+      "filename": "quantum1.zip"
+    },
+    {
+      "name": "Rainbow Islands (Extra)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/rainbowe.zip",
+      "filename": "rainbowe.zip"
+    },
+    {
+      "name": "Rampage (revision 3)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/rampage.zip",
+      "filename": "rampage.zip"
+    },
+    {
+      "name": "Reactor",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/reactor.zip",
+      "filename": "reactor.zip"
+    },
+    {
+      "name": "Red Baron",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/redbaron.zip",
+      "filename": "redbaron.zip"
+    },
+    {
+      "name": "Robby Roto",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/robby.zip",
+      "filename": "robby.zip"
+    },
+    {
+      "name": "Robocop (World bootleg)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/robocopb.zip",
+      "filename": "robocopb.zip"
+    },
+    {
+      "name": "Robot Bowl",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/robotbwl.zip",
+      "filename": "robotbwl.zip"
+    },
+    {
+      "name": "Robotron (Yellow/Orange label)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/robotryo.zip",
+      "filename": "robotryo.zip"
+    },
+    {
+      "name": "Rolling Crash / Moon Base",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/rollingc.zip",
+      "filename": "rollingc.zip"
+    },
+    {
+      "name": "Sarge",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/sarge.zip",
+      "filename": "sarge.zip"
+    },
+    {
+      "name": "Satan of Saturn",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/satansat.zip",
+      "filename": "satansat.zip"
+    },
+    {
+      "name": "Scrambled Egg",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/scregg.zip",
+      "filename": "scregg.zip"
+    },
+    {
+      "name": "Sea Wolf",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/seawolf.zip",
+      "filename": "seawolf.zip"
+    },
+    {
+      "name": "Silk Worm (set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/silkworm.zip",
+      "filename": "silkworm.zip"
+    },
+    {
+      "name": "Sinistar (revision 3)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/sinistar.zip",
+      "filename": "sinistar.zip"
+    },
+    {
+      "name": "Snap Jack",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/snapjack.zip",
+      "filename": "snapjack.zip"
+    },
+    {
+      "name": "Space Duel",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/spacduel.zip",
+      "filename": "spacduel.zip"
+    },
+    {
+      "name": "Space Odyssey",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/spaceod.zip",
+      "filename": "spaceod.zip"
+    },
+    {
+      "name": "Space Phantoms",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/spaceph.zip",
+      "filename": "spaceph.zip"
+    },
+    {
+      "name": "Space Seeker",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/spaceskr.zip",
+      "filename": "spaceskr.zip"
+    },
+    {
+      "name": "Space Trek (upright)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/spacetrk.zip",
+      "filename": "spacetrk.zip"
+    },
+    {
+      "name": "Space Zap",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/spacezap.zip",
+      "filename": "spacezap.zip"
+    },
+    {
+      "name": "Space Encounters",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/spcenctr.zip",
+      "filename": "spcenctr.zip"
+    },
+    {
+      "name": "Super Pierrot (Japan)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/spiero.zip",
+      "filename": "spiero.zip"
+    },
+    {
+      "name": "Splat!",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/splat.zip",
+      "filename": "splat.zip"
+    },
+    {
+      "name": "Faster, Harder, More Challenging Q*bert (prototype)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/sqbert.zip",
+      "filename": "sqbert.zip"
+    },
+    {
+      "name": "Super Qix (bootleg)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/sqixbl.zip",
+      "filename": "sqixbl.zip"
+    },
+    {
+      "name": "Star Fire (set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/starfire.zip",
+      "filename": "starfire.zip"
+    },
+    {
+      "name": "Star Wars (rev 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/starwars.zip",
+      "filename": "starwars.zip"
+    },
+    {
+      "name": "Stratovox",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/stratvox.zip",
+      "filename": "stratvox.zip"
+    },
+    {
+      "name": "Strider (US set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/strider.zip",
+      "filename": "strider.zip"
+    },
+    {
+      "name": "Super Missile Attack",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/suprmatk.zip",
+      "filename": "suprmatk.zip"
+    },
+    {
+      "name": "Super Zaxxon",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/szaxxon.zip",
+      "filename": "szaxxon.zip"
+    },
+    {
+      "name": "Tac/Scan",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/tacscan.zip",
+      "filename": "tacscan.zip"
+    },
+    {
+      "name": "Targ",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/targ.zip",
+      "filename": "targ.zip"
+    },
+    {
+      "name": "Tazz-Mania (set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/tazmania.zip",
+      "filename": "tazmania.zip"
+    },
+    {
+      "name": "Tiger Road (US)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/tigeroad.zip",
+      "filename": "tigeroad.zip"
+    },
+    {
+      "name": "Toobin' (rev 3)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/toobin.zip",
+      "filename": "toobin.zip"
+    },
+    {
+      "name": "Time Pilot '84 (set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/tp84.zip",
+      "filename": "tp84.zip"
+    },
+    {
+      "name": "Triple Punch",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/triplep.zip",
+      "filename": "triplep.zip"
+    },
+    {
+      "name": "Tutankham (Stern)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/tutankst.zip",
+      "filename": "tutankst.zip"
+    },
+    {
+      "name": "U.N. Squadron (US)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/unsquad.zip",
+      "filename": "unsquad.zip"
+    },
+    {
+      "name": "Venture (version 5 set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/venture.zip",
+      "filename": "venture.zip"
+    },
+    {
+      "name": "Tecmo World Cup '90 (set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/wc90.zip",
+      "filename": "wc90.zip"
+    },
+    {
+      "name": "Euro League",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/wc90b.zip",
+      "filename": "wc90b.zip"
+    },
+    {
+      "name": "Wizard of Wor",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/wow.zip",
+      "filename": "wow.zip"
+    },
+    {
+      "name": "Xybots (rev 2)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/xybots.zip",
+      "filename": "xybots.zip"
+    },
+    {
+      "name": "Zarzon",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/zarzon.zip",
+      "filename": "zarzon.zip"
+    },
+    {
+      "name": "Zzyzzyxx (set 1)",
+      "url": "https://raw.githubusercontent.com/marlon-santana/roms-retro-arcade/main/zzyzzyxx.zip",
+      "filename": "zzyzzyxx.zip"
+    }
+  ]
+}
