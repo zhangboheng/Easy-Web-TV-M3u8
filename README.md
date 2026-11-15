@@ -146,7 +146,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Supported Platforms
 
-All 30 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **13337** games across 24 JSON files.
+All 30 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **13267** games across 24 JSON files.
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -173,7 +173,7 @@ All 30 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Commodore | VIC-20 | vice_xvic | 156 | vic20.json |
 | Commodore | PET | vice_xpet | 14 | pet.json |
 | Commodore | Plus/4 | vice_xplus4 | 5 | plus4.json |
-| Commodore | Amiga | puae | 1525 | amiga.json |
+| Commodore | Amiga | puae | 1455 | amiga.json |
 | NEC | PC Engine / TurboGrafx-16 | mednafen_pce | 280 | pce.json |
 | Other | 3DO | opera | – | – |
 | Other | Arcade (FBNeo) | fbneo | 14 | arcade.json |
@@ -270,7 +270,7 @@ Easy-Web-TV-M3u8/
 │       ├── pet.json          # 14 Commodore PET games (milasoft64 on GitHub + archive.org)
 │       ├── plus4.json        # 5 Commodore Plus/4 games (No-Intro set on archive.org)
 │       ├── sega32x.json      # 33 Sega 32X games (No-Intro-style set on archive.org)
-│       ├── amiga.json        # 1525 Commodore Amiga games, single-disk ADF (TOSEC sets on archive.org)
+│       ├── amiga.json        # 1455 Commodore Amiga games, single-disk ADF (TOSEC sets on archive.org)
 │       └── pce.json          # 280 PC Engine / TurboGrafx-16 HuCard games (GoodPCE set on archive.org)
 ├── routes/
 │   ├── tv.html            # TV page
