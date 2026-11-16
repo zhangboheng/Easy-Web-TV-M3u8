@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
-  <rect x="30" y="15" width="140" height="85" rx="5" fill="#1a1a1a" stroke="#333" stroke-width="3"/>
-  <rect x="40" y="25" width="120" height="65" fill="#000" rx="2"/>
-  <text x="50" y="45" font-family="Courier New, monospace" font-size="10" fill="#aaaaaa">C:\&gt;</text>
-  <text x="50" y="60" font-family="Courier New, monospace" font-size="10" fill="#00ff00">_</text>
-  <rect x="80" y="100" width="40" height="8" fill="#333"/>
-  <rect x="70" y="108" width="60" height="5" rx="2" fill="#444"/>
-  <text x="100" y="10" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="#888">MS-DOS</text>
-</svg>
