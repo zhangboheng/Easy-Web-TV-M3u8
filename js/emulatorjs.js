@@ -1019,12 +1019,22 @@ function handleRomFromUrl(url) {
     });
 }
 
+// Escape a string for safe interpolation into innerHTML (text nodes and double-quoted attributes)
+function escapeHtml(s) {
+    return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
 // Show manual download link when auto-download fails
 function showManualDownload(url, filename) {
     var resultsDiv = document.getElementById("searchResults");
     resultsDiv.innerHTML = "<div class='search-error'>" + t("searchDownloadFailed") + "</div>" +
         "<div class='search-manual'>" +
-            "<a href='" + url + "' download target='_blank' class='search-manual-link'>" + t("searchManualDownload") + ": " + filename + "</a>" +
+            "<a href='" + escapeHtml(url) + "' download target='_blank' rel='noopener' class='search-manual-link'>" + t("searchManualDownload") + ": " + escapeHtml(filename) + "</a>" +
             "<p class='search-manual-tip'>" + t("searchManualTip") + "</p>" +
         "</div>";
 }
@@ -1037,8 +1047,8 @@ function showUrlManualDownload(url, filename) {
     if (!el) return;
     el.innerHTML = "<div class='search-error'>" + t('urlFetchFailed') + "</div>" +
         "<div class='search-manual'>" +
-        "<a href='" + url + "' download target='_blank' class='search-manual-link'>" +
-        "<i class='fas fa-download'></i> " + t('searchManualDownload') + ": " + filename + "</a>" +
+        "<a href='" + escapeHtml(url) + "' download target='_blank' rel='noopener' class='search-manual-link'>" +
+        "<i class='fas fa-download'></i> " + t('searchManualDownload') + ": " + escapeHtml(filename) + "</a>" +
         "<p class='search-manual-tip'>" + t('searchManualTip') + "</p>" +
         "</div>";
     el.classList.remove('hidden');

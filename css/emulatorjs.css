@@ -504,6 +504,9 @@ body {
     border: 1px solid rgba(163,0,27,0.3);
     border-radius: 10px;
     text-align: center;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
 }
 
 .search-manual-link {
@@ -519,6 +522,12 @@ body {
     text-decoration: none;
     cursor: pointer;
     transition: all 0.2s ease;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: normal;
+    line-height: 1.5;
 }
 
 .search-manual-link:hover {
