@@ -1,168 +1,577 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        
-        canvas {
-            border: 1px solid #d3d3d3;
-            background-image: url('../../images/bg.jpg');
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Square Obstacles</title>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100%;
+        background: #0b0e1a;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+    #gameCanvas {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        cursor: pointer;
+        touch-action: none;
+    }
+</style>
 </head>
+<body>
+<canvas id="gameCanvas" tabindex="0"></canvas>
+<script>
+(function () {
+    'use strict';
 
-<body onload="startGame()">
-    <script>
-        var myGamePiece;
-        var myObstacles = [];
-        var myScore;
+    // ============================== Setup ==============================
+    var canvas = document.getElementById('gameCanvas');
+    var ctx = canvas.getContext('2d');
+    var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
 
-        function startGame() {
-            myGamePiece = new component(20, 20, randomColor(), 50, 120);
-            myGamePiece.gravity = 0.05;
-            myScore = new component("30px", "Consolas", "white", 20, 40, "text");
-            myGameArea.start();
+    function resize() {
+        W = window.innerWidth;
+        H = window.innerHeight;
+        canvas.width = W * DPR;
+        canvas.height = H * DPR;
+        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+        buildStars();
+        buildHills();
+    }
+    window.addEventListener('resize', resize);
+
+    // ============================== Audio (WebAudio, synthesized) ==============================
+    var audioCtx = null;
+    var muted = false;
+    function beep(freq, dur, type, vol) {
+        if (muted) return;
+        try {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            var o = audioCtx.createOscillator();
+            var g = audioCtx.createGain();
+            o.type = type || 'square';
+            o.frequency.value = freq;
+            g.gain.setValueAtTime(vol || 0.08, audioCtx.currentTime);
+            g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+            o.connect(g).connect(audioCtx.destination);
+            o.start();
+            o.stop(audioCtx.currentTime + dur);
+        } catch (e) { /* audio unavailable - play silently */ }
+    }
+    var sfx = {
+        flap:  function () { beep(340, 0.09, 'square', 0.05); },
+        score: function () { beep(660, 0.08, 'square', 0.07); beep(880, 0.10, 'square', 0.05); },
+        star:  function () { beep(1046, 0.07, 'triangle', 0.09); beep(1568, 0.12, 'triangle', 0.07); },
+        die:   function () { beep(160, 0.35, 'sawtooth', 0.10); beep(80, 0.5, 'sawtooth', 0.08); }
+    };
+
+    // ============================== Stars & hills (parallax layers) ==============================
+    var stars = [], hills = [];
+    function buildStars() {
+        stars = [];
+        for (var i = 0; i < 70; i++) {
+            stars.push({
+                x: Math.random() * W,
+                y: Math.random() * H * 0.7,
+                r: Math.random() * 1.6 + 0.4,
+                tw: Math.random() * Math.PI * 2,
+                layer: Math.random() < 0.5 ? 0.15 : 0.35
+            });
+        }
+    }
+    function buildHills() {
+        hills = [];
+        var y = H * 0.78;
+        for (var x = 0; x <= W + 80; x += 80) {
+            hills.push({ x: x, y: y + Math.sin(x * 0.011) * 34 + Math.sin(x * 0.037) * 16 });
+        }
+    }
+
+    // ============================== State ==============================
+    var STATE = { READY: 0, PLAYING: 1, DEAD: 2, PAUSED: 3 };
+    var state = STATE.READY;
+    var score = 0;
+    var best = 0;
+    try { best = parseInt(localStorage.getItem('sqobs_best') || '0', 10) || 0; } catch (e) { best = 0; }
+    var shake = 0;
+    var flash = 0;
+    var lastT = 0;
+    var deathT = 0;
+
+    var player = null;
+    var obstacles = [];
+    var coins = [];
+    var particles = [];
+    var trail = [];
+    var speed = 3.2;
+    var spawnTimer = 0;
+
+    var GROUND_H = 46;
+
+    function newPlayer() {
+        return {
+            x: Math.max(90, W * 0.22),
+            y: H * 0.42,
+            size: Math.max(22, Math.min(30, H * 0.042)),
+            vy: 0,
+            gravity: 0.28,
+            lift: -4.6,
+            rot: 0,
+            hue: 8
+        };
+    }
+
+    function difficulty() {
+        speed = Math.min(5.4, 3.2 + score * 0.045);
+        return Math.max(H * 0.17, H * 0.32 - score * (H * 0.0035));
+    }
+
+    function resetGame() {
+        GROUND_H = Math.max(46, H * 0.07);
+        player = newPlayer();
+        obstacles = [];
+        coins = [];
+        particles = [];
+        trail = [];
+        score = 0;
+        speed = 3.2;
+        spawnTimer = 0;
+        shake = 0;
+        flash = 0;
+        deathT = 0;
+    }
+    resetGame();
+
+    // ============================== Update ==============================
+    function update(dt) {
+        var i, j, o, c, p;
+
+        // parallax always moves (even on ready/dead) for a living background
+        var bgSpeed = (state === STATE.PLAYING ? speed : speed * 0.4) * dt;
+        for (i = 0; i < stars.length; i++) {
+            stars[i].x -= stars[i].layer * bgSpeed * 3.6;
+            stars[i].tw += 0.04 * dt;
+            if (stars[i].x < -4) { stars[i].x = W + 4; stars[i].y = Math.random() * H * 0.7; }
+        }
+        for (i = 0; i < hills.length; i++) {
+            hills[i].x -= bgSpeed * 0.35;
+        }
+        if (hills.length && hills[0].x < -80) {
+            var lastH = hills[hills.length - 1];
+            hills.shift();
+            hills.push({ x: lastH.x + 80, y: H * 0.78 + Math.sin(lastH.x * 0.011) * 34 + Math.sin(lastH.x * 0.037) * 16 });
         }
 
-        var myGameArea = {
-            canvas: document.createElement("canvas"),
-            start: function() {
-                this.canvas.width = window.innerWidth - 2;
-                this.canvas.height = window.innerHeight - 2;
-                this.context = this.canvas.getContext("2d");
-                document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-                this.frameNo = 0;
-                this.interval = setInterval(updateGameArea, 20);
-            },
-            clear: function() {
-                this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-            }
+        // particles tick in every state
+        for (i = particles.length - 1; i >= 0; i--) {
+            p = particles[i];
+            p.x += p.vx * dt; p.y += p.vy * dt;
+            p.vy += 0.12 * dt;
+            p.life -= p.decay * dt;
+            if (p.life <= 0) particles.splice(i, 1);
         }
 
-        function component(width, height, color, x, y, type) {
-            this.type = type;
-            this.score = 0;
-            this.width = width;
-            this.height = height;
-            this.speedX = 0;
-            this.speedY = 0;
-            this.x = x;
-            this.y = y;
-            this.gravity = 0;
-            this.gravitySpeed = 0;
-            this.update = function() {
-                ctx = myGameArea.context;
-                if (this.type == "text") {
-                    ctx.font = this.width + " " + this.height;
-                    ctx.fillStyle = color;
-                    ctx.fillText(this.text, this.x, this.y);
-                } else {
-                    ctx.fillStyle = color;
-                    ctx.fillRect(this.x, this.y, this.width, this.height);
-                }
-            }
-            this.newPos = function() {
-                this.gravitySpeed += this.gravity;
-                this.x += this.speedX;
-                this.y += this.speedY + this.gravitySpeed;
-                this.hitBottom();
-            }
-            this.hitBottom = function() {
-                var rockbottom = myGameArea.canvas.height - this.height;
-                if (this.y > rockbottom) {
-                    this.y = rockbottom;
-                    this.gravitySpeed = 0;
-                }
-            }
-            this.crashWith = function(otherobj) {
-                var myleft = this.x;
-                var myright = this.x + (this.width);
-                var mytop = this.y;
-                var mybottom = this.y + (this.height);
-                var otherleft = otherobj.x;
-                var otherright = otherobj.x + (otherobj.width);
-                var othertop = otherobj.y;
-                var otherbottom = otherobj.y + (otherobj.height);
-                var crash = true;
-                if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
-                    crash = false;
-                }
-                return crash;
-            }
+        if (state === STATE.DEAD) {
+            deathT += dt;
+            if (shake > 0) shake *= Math.pow(0.88, dt);
+            return;
+        }
+        if (state !== STATE.PLAYING) return;
+
+        if (shake > 0) shake *= Math.pow(0.88, dt);
+        if (flash > 0) flash -= 0.05 * dt;
+
+        // --- player physics ---
+        player.vy += holding ? player.lift * dt : player.gravity * dt * 1.6;
+        player.vy = Math.max(-9, Math.min(11, player.vy));
+        player.y += player.vy * dt;
+        player.rot = Math.max(-0.5, Math.min(0.9, player.vy * 0.055));
+
+        // trail
+        trail.push({ x: player.x + player.size / 2, y: player.y + player.size / 2, life: 1 });
+        for (i = trail.length - 1; i >= 0; i--) {
+            trail[i].life -= 0.06 * dt;
+            trail[i].x -= speed * dt * 0.4;
+            if (trail[i].life <= 0) trail.splice(i, 1);
         }
 
-        function updateGameArea() {
-            var x, height, gap, minHeight, maxHeight, minGap, maxGap;
-            for (i = 0; i < myObstacles.length; i += 1) {
-                //Set end game conditions
-                if (myGamePiece.crashWith(myObstacles[i]) || myGamePiece.y == window.innerHeight - 22 || myGamePiece.y <= 0) {
-                    return;
-                }
-            }
-            myGameArea.clear();
-            myGameArea.frameNo += 1;
-            if (myGameArea.frameNo == 1 || everyinterval(100)) {
-                x = myGameArea.canvas.width;
-                minHeight = 20;
-                maxHeight = 200;
-                height = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
-                minGap = 50;
-                maxGap = 200;
-                gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
-                myObstacles.push(new component(10, height, randomlor(), x, 0));
-                myObstacles.push(new component(10, x - height - gap, randomlor(), x, height + gap));
-            }
-            for (i = 0; i < myObstacles.length; i += 1) {
-                console.log(myObstacles[i].x);
-                myObstacles[i].x += -1;
-                myObstacles[i].update();
-            }
-            myScore.text = "SCORE: " + myGameArea.frameNo;
-            myScore.update();
-            myGamePiece.newPos();
-            myGamePiece.update();
+        // --- obstacles ---
+        spawnTimer -= speed * dt;
+        if (spawnTimer <= 0) {
+            spawnObstaclePair();
+            spawnTimer = Math.max(W * 0.42, W * 0.62 - score * (W * 0.004));
         }
 
-        function everyinterval(n) {
-            if ((myGameArea.frameNo / n) % 1 == 0) {
-                return true;
+        var hx = player.x + player.size * 0.14, hy = player.y + player.size * 0.14;
+        var hs = player.size * 0.72;
+
+        for (i = obstacles.length - 1; i >= 0; i--) {
+            o = obstacles[i];
+            o.x -= speed * dt;
+
+            if (!o.passed && o.x + o.w < player.x) {
+                o.passed = true;
+                score++;
+                sfx.score();
+                burst(o.x + o.w, player.y + player.size / 2, 60, 8, 3);
+                if (score % 10 === 0) { flash = 1; beep(1320, 0.15, 'triangle', 0.08); }
             }
-            return false;
+
+            // pillars: top pillar (0..o.top) and bottom pillar (o.top+o.gap .. floor)
+            if (rectsOverlap(hx, hy, hs, hs, o.x, 0, o.w, o.top) ||
+                rectsOverlap(hx, hy, hs, hs, o.x, o.top + o.gap, o.w, H)) {
+                die();
+                return;
+            }
+            if (o.x + o.w < -20) obstacles.splice(i, 1);
         }
 
-        function accelerate(n) {
-            myGamePiece.gravity = n;
-        }
-        //Set random square colors
-        function randomColor() {
-            let r = Math.floor(Math.random() * 256);
-            let g = Math.floor(Math.random() * 256);
-            let b = Math.floor(Math.random() * 256);
-            return "rgb(" + r + "," + g + "," + b + ")";
+        // --- stars ---
+        for (i = coins.length - 1; i >= 0; i--) {
+            c = coins[i];
+            c.x -= speed * dt;
+            c.t += 0.08 * dt;
+            if (!c.taken && rectsOverlap(hx, hy, hs, hs, c.x - c.r, c.y - c.r, c.r * 2, c.r * 2)) {
+                c.taken = true;
+                score += 5;
+                sfx.star();
+                burst(c.x, c.y, 50, 14, 4);
+            }
+            if (c.x < -30 || c.taken) coins.splice(i, 1);
         }
 
-        //Set random line colors
-        function randomlor() {
-            let r = Math.floor(Math.random() * 256);
-            let g = Math.floor(Math.random() * 256);
-            let b = Math.floor(Math.random() * 256);
-            return "rgb(" + r + "," + g + "," + b + ")";
+        // --- ground & ceiling ---
+        if (player.y + player.size > H - GROUND_H) {
+            player.y = H - GROUND_H - player.size;
+            die();
+        } else if (player.y < -player.size * 0.4) {
+            player.y = -player.size * 0.4;
+            die();
         }
-        //Restart game
-        function restartGame() {
-            window.location.reload();
+    }
+
+    function spawnObstaclePair() {
+        var gap = difficulty();
+        var margin = H * 0.08;
+        var top = margin + Math.random() * (H - GROUND_H - gap - margin * 2);
+        var pw = Math.max(46, W * 0.055);
+        var pair = {
+            x: W + pw,
+            w: pw,
+            top: top,
+            gap: gap,
+            passed: false,
+            hue: Math.random() < 0.5 ? 195 : 275
+        };
+        obstacles.push(pair);
+        // star inside the gap, sometimes
+        if (Math.random() < 0.45) {
+            coins.push({
+                x: pair.x + pw / 2 + gap * 0.35,
+                y: top + gap / 2,
+                r: Math.max(9, gap * 0.09),
+                taken: false,
+                t: Math.random() * Math.PI * 2
+            });
         }
-    </script>
-    <div style="position: relative; bottom: 50px; text-align: center;">
-        <button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
-        <button onclick="restartGame()">RESTART</button>
-    </div>
+    }
+
+    // ============================== Particles ==============================
+    function burst(x, y, hue, n, power) {
+        for (var i = 0; i < n; i++) {
+            var a = Math.random() * Math.PI * 2;
+            var v = (Math.random() * 0.7 + 0.3) * (power || 4);
+            particles.push({
+                x: x, y: y,
+                vx: Math.cos(a) * v,
+                vy: Math.sin(a) * v,
+                life: 1,
+                decay: 0.02 + Math.random() * 0.02,
+                r: Math.random() * 4 + 2,
+                hue: hue + Math.random() * 40 - 20
+            });
+        }
+    }
+
+    // ============================== Input ==============================
+    var holding = false;
+    function press() {
+        if (state === STATE.READY) {
+            state = STATE.PLAYING;
+            holding = true;
+            sfx.flap();
+        } else if (state === STATE.PLAYING) {
+            holding = true;
+        } else if (state === STATE.DEAD && deathT > 45) {
+            resetGame();
+            state = STATE.PLAYING;
+            holding = true;
+        }
+    }
+    function release() { holding = false; }
+
+    canvas.addEventListener('mousedown', function (e) { e.preventDefault(); press(); });
+    window.addEventListener('mouseup', release);
+    canvas.addEventListener('touchstart', function (e) { e.preventDefault(); press(); }, { passive: false });
+    window.addEventListener('touchend', function () { release(); }, { passive: false });
+    window.addEventListener('keydown', function (e) {
+        if (e.code === 'Space' || e.code === 'ArrowUp') {
+            e.preventDefault();
+            if (!e.repeat) press(); else holding = true;
+        } else if (e.code === 'KeyP') {
+            if (state === STATE.PLAYING) state = STATE.PAUSED;
+            else if (state === STATE.PAUSED) state = STATE.PLAYING;
+        } else if (e.code === 'KeyM') {
+            muted = !muted;
+        } else if (e.code === 'KeyR') {
+            if (state === STATE.DEAD || state === STATE.PAUSED) { resetGame(); state = STATE.PLAYING; }
+        }
+    });
+    window.addEventListener('keyup', function (e) {
+        if (e.code === 'Space' || e.code === 'ArrowUp') release();
+    });
+
+    // ============================== Collision helpers ==============================
+    function rectsOverlap(ax, ay, aw, ah, bx, by, bw, bh) {
+        return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
+    }
+
+    // ============================== Render ==============================
+    function roundRect(x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.arcTo(x + w, y, x + w, y + h, r);
+        ctx.arcTo(x + w, y + h, x, y + h, r);
+        ctx.arcTo(x, y + h, x, y, r);
+        ctx.arcTo(x, y, x + w, y, r);
+        ctx.closePath();
+    }
+
+    function drawBackground() {
+        var sky = ctx.createLinearGradient(0, 0, 0, H);
+        sky.addColorStop(0, '#0b0e1a');
+        sky.addColorStop(0.55, '#1a1030');
+        sky.addColorStop(1, '#2d1533');
+        ctx.fillStyle = sky;
+        ctx.fillRect(0, 0, W, H);
+
+        // moon
+        ctx.fillStyle = 'rgba(240,238,220,0.9)';
+        ctx.beginPath();
+        ctx.arc(W * 0.82, H * 0.16, Math.min(W, H) * 0.045, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(240,238,220,0.12)';
+        ctx.beginPath();
+        ctx.arc(W * 0.82, H * 0.16, Math.min(W, H) * 0.075, 0, Math.PI * 2);
+        ctx.fill();
+
+        // stars
+        for (var i = 0; i < stars.length; i++) {
+            var s = stars[i];
+            var a = 0.4 + Math.sin(s.tw) * 0.35;
+            ctx.fillStyle = 'rgba(200,215,255,' + a.toFixed(2) + ')';
+            ctx.fillRect(s.x, s.y, s.r, s.r);
+        }
+
+        // distant hills
+        ctx.fillStyle = 'rgba(20,14,44,0.9)';
+        ctx.beginPath();
+        ctx.moveTo(hills[0].x, H);
+        for (var j = 0; j < hills.length; j++) ctx.lineTo(hills[j].x, hills[j].y);
+        ctx.lineTo(W, H);
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    function drawGround() {
+        var g = ctx.createLinearGradient(0, H - GROUND_H, 0, H);
+        g.addColorStop(0, '#3d2050');
+        g.addColorStop(1, '#1a0e28');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, H - GROUND_H, W, GROUND_H);
+        ctx.fillStyle = 'rgba(126,87,255,0.55)';
+        ctx.fillRect(0, H - GROUND_H, W, 3);
+        var off = (performance.now() * 0.006 * speed) % 40;
+        ctx.fillStyle = 'rgba(126,87,255,0.18)';
+        for (var x = -off; x < W; x += 40) ctx.fillRect(x, H - GROUND_H + 8, 18, 2);
+    }
+
+    function drawObstacle(o) {
+        ctx.save();
+        ctx.shadowColor = 'hsla(' + o.hue + ',90%,60%,0.9)';
+        ctx.shadowBlur = 14;
+        ctx.fillStyle = 'hsl(' + o.hue + ',45%,26%)';
+        ctx.fillRect(o.x, 0, o.w, o.top);
+        ctx.fillRect(o.x, o.top + o.gap, o.w, H - o.top - o.gap);
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = o.passed ? 'hsla(' + o.hue + ',95%,45%,1)' : 'hsla(' + o.hue + ',95%,62%,1)';
+        ctx.fillRect(o.x, o.top - 4, o.w, 4);
+        ctx.fillRect(o.x, o.top + o.gap, o.w, 4);
+        ctx.fillStyle = 'rgba(255,255,255,0.07)';
+        for (var yy = 14; yy < o.top - 8; yy += 26) ctx.fillRect(o.x + 6, yy, o.w - 12, 2);
+        for (var y2 = o.top + o.gap + 12; y2 < H; y2 += 26) ctx.fillRect(o.x + 6, y2, o.w - 12, 2);
+        ctx.restore();
+    }
+
+    function drawStar(c) {
+        ctx.save();
+        ctx.translate(c.x, c.y + Math.sin(c.t) * 4);
+        ctx.rotate(c.t * 0.6);
+        ctx.shadowColor = 'rgba(255,214,74,0.9)';
+        ctx.shadowBlur = 12;
+        ctx.fillStyle = '#ffd64a';
+        ctx.beginPath();
+        for (var i = 0; i < 5; i++) {
+            var a = -Math.PI / 2 + i * Math.PI * 2 / 5;
+            var a2 = a + Math.PI / 5;
+            ctx.lineTo(Math.cos(a) * c.r, Math.sin(a) * c.r);
+            ctx.lineTo(Math.cos(a2) * c.r * 0.45, Math.sin(a2) * c.r * 0.45);
+        }
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+    }
+
+    function drawPlayer() {
+        var s = player.size;
+        for (var i = 0; i < trail.length; i++) {
+            var t = trail[i];
+            ctx.fillStyle = 'hsla(' + player.hue + ',95%,60%,' + (t.life * 0.25).toFixed(2) + ')';
+            var ts = s * 0.5 * t.life;
+            ctx.fillRect(t.x - ts / 2, t.y - ts / 2, ts, ts);
+        }
+        ctx.save();
+        ctx.translate(player.x + s / 2, player.y + s / 2);
+        ctx.rotate(player.rot);
+        ctx.shadowColor = 'hsla(' + player.hue + ',100%,60%,0.9)';
+        ctx.shadowBlur = 16;
+        var g = ctx.createLinearGradient(-s / 2, -s / 2, s / 2, s / 2);
+        g.addColorStop(0, 'hsl(' + player.hue + ',95%,62%)');
+        g.addColorStop(1, 'hsl(' + (player.hue + 24) + ',90%,48%)');
+        ctx.fillStyle = g;
+        roundRect(-s / 2, -s / 2, s, s, 5);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(s * 0.08, -s * 0.22, s * 0.2, s * 0.2);
+        ctx.fillRect(s * 0.36, -s * 0.22, s * 0.2, s * 0.2);
+        ctx.fillStyle = '#111';
+        ctx.fillRect(s * 0.14, -s * 0.16, s * 0.09, s * 0.12);
+        ctx.fillRect(s * 0.42, -s * 0.16, s * 0.09, s * 0.12);
+        ctx.restore();
+    }
+
+    function drawParticles() {
+        for (var i = 0; i < particles.length; i++) {
+            var p = particles[i];
+            ctx.fillStyle = 'hsla(' + p.hue + ',95%,62%,' + Math.max(0, p.life).toFixed(2) + ')';
+            ctx.fillRect(p.x - p.r / 2, p.y - p.r / 2, p.r, p.r);
+        }
+    }
+
+    function die() {
+        if (state !== STATE.PLAYING) return;
+        state = STATE.DEAD;
+        deathT = 0;
+        shake = 14;
+        sfx.die();
+        burst(player.x + player.size / 2, player.y + player.size / 2, player.hue, 46, 6);
+        if (score > best) {
+            best = score;
+            try { localStorage.setItem('sqobs_best', String(best)); } catch (e) { /* storage blocked */ }
+        }
+    }
+
+    function text(str, x, y, size, color, align) {
+        ctx.font = '700 ' + size + 'px "Segoe UI", Arial, sans-serif';
+        ctx.fillStyle = color;
+        ctx.textAlign = align || 'left';
+        ctx.textBaseline = 'top';
+        ctx.fillText(str, x, y);
+    }
+
+    function drawHUD() {
+        text('SCORE ' + score, 16, 14, 26, 'rgba(255,255,255,0.95)');
+        text('BEST ' + best, W - 16, 14, 18, 'rgba(255,255,255,0.55)', 'right');
+        text('P pause · M sound · R restart', 16, H - GROUND_H + 12, 12, 'rgba(255,255,255,0.35)');
+        if (muted) text('MUTED', W - 16, 40, 13, 'rgba(255,120,120,0.8)', 'right');
+        if (flash > 0) {
+            ctx.fillStyle = 'rgba(255,255,255,' + (flash * 0.25).toFixed(2) + ')';
+            ctx.fillRect(0, 0, W, H);
+        }
+    }
+
+    function drawReady() {
+        ctx.fillStyle = 'rgba(6,8,18,0.55)';
+        ctx.fillRect(0, 0, W, H);
+        text('SQUARE OBSTACLES', W / 2, H * 0.26, Math.min(44, W * 0.08), '#fff', 'center');
+        text('Hold to fly up · Release to fall', W / 2, H * 0.38, Math.min(20, W * 0.035), 'rgba(255,255,255,0.85)', 'center');
+        text('CLICK / TAP / SPACE to start', W / 2, H * 0.46, Math.min(17, W * 0.03), '#ffd64a', 'center');
+        text('Grab ★ for +5 · every 10 pts = speed up', W / 2, H * 0.53, Math.min(15, W * 0.026), 'rgba(255,255,255,0.55)', 'center');
+        if (best > 0) text('BEST ' + best, W / 2, H * 0.62, Math.min(22, W * 0.04), 'rgba(255,255,255,0.8)', 'center');
+    }
+
+    function drawDead() {
+        ctx.fillStyle = 'rgba(6,8,18,0.62)';
+        ctx.fillRect(0, 0, W, H);
+        text('GAME OVER', W / 2, H * 0.3, Math.min(42, W * 0.08), '#ff5566', 'center');
+        text('SCORE ' + score, W / 2, H * 0.42, Math.min(30, W * 0.055), '#fff', 'center');
+        if (score >= best && score > 0) {
+            text('★ NEW BEST ★', W / 2, H * 0.5, Math.min(20, W * 0.038), '#ffd64a', 'center');
+        } else {
+            text('BEST ' + best, W / 2, H * 0.5, Math.min(20, W * 0.038), 'rgba(255,255,255,0.7)', 'center');
+        }
+        if (deathT > 45) {
+            text('CLICK / TAP / SPACE to retry', W / 2, H * 0.6, Math.min(17, W * 0.032), '#7dff7d', 'center');
+        }
+    }
+
+    function drawPaused() {
+        ctx.fillStyle = 'rgba(6,8,18,0.55)';
+        ctx.fillRect(0, 0, W, H);
+        text('PAUSED', W / 2, H * 0.42, Math.min(36, W * 0.07), '#fff', 'center');
+        text('press P to resume', W / 2, H * 0.52, Math.min(16, W * 0.03), 'rgba(255,255,255,0.6)', 'center');
+    }
+
+    function render() {
+        ctx.save();
+        if (shake > 0.5) {
+            ctx.translate((Math.random() - 0.5) * shake, (Math.random() - 0.5) * shake);
+        }
+        drawBackground();
+        for (var i = 0; i < obstacles.length; i++) drawObstacle(obstacles[i]);
+        for (var j = 0; j < coins.length; j++) if (!coins[j].taken) drawStar(coins[j]);
+        drawGround();
+        drawParticles();
+        if (state !== STATE.DEAD) drawPlayer();
+        drawHUD();
+        ctx.restore();
+        if (state === STATE.READY) drawReady();
+        else if (state === STATE.DEAD) drawDead();
+        else if (state === STATE.PAUSED) drawPaused();
+    }
+
+    // ============================== Main loop (rAF + delta time) ==============================
+    function loop(t) {
+        var dt = Math.min(3, Math.max(0.5, (t - lastT) / 16.667));  // normalize to 60fps units
+        lastT = t;
+        if (state !== STATE.PAUSED) update(dt);
+        render();
+        requestAnimationFrame(loop);
+    }
+
+    resize();
+    requestAnimationFrame(function (t) { lastT = t; requestAnimationFrame(loop); });
+})();
+</script>
 </body>
-
 </html>
+
