@@ -7,6 +7,64 @@ var currentChannelIndex = -1;  // Track current playing channel index
 // Favorite prefix for localStorage - ensures only this app's favorites are shown
 var FAV_PREFIX = 'fav_tvplay_';
 
+// ============================== Stream diagnostics ==============================
+// Explain why a channel may fail on this device. The #1 real-world cause is
+// mixed content: the site runs on HTTPS (GitHub Pages) while the channel is a
+// plain http:// stream - desktop Chrome/Edge/Firefox block that, while some
+// mobile/TV webviews allow it. That matches "works on my other devices".
+function currentChannelUrl() {
+    if (currentChannelIndex >= 0 && channels[currentChannelIndex]) return channels[currentChannelIndex];
+    var el = document.querySelector('.channel-item.active');
+    return el ? el.dataset.url : '';
+}
+
+function isMixedContent(url) {
+    return window.location.protocol === 'https:' && url && url.indexOf('http://') === 0;
+}
+
+function showStreamNotice(url) {
+    var wrapper = document.querySelector('.video-wrapper');
+    if (!wrapper) return;
+    var old = document.getElementById('streamNotice');
+    if (old) old.remove();
+
+    var msg = null, kind = 'warn';
+    if (url && isMixedContent(url)) {
+        msg = isZhUser()
+            ? '此频道使用不安全的 HTTP 流。桌面浏览器会在 HTTPS 页面上阻止它（混合内容策略），但在部分手机 / TV 应用中可能正常。可复制链接用 VLC 等 IPTV 播放器打开。'
+            : 'This channel uses an insecure HTTP stream. Desktop browsers block it on HTTPS pages (mixed content), though it may still play in some mobile/TV apps. Copy the link into VLC or another IPTV player instead.';
+    } else if (player && player.error()) {
+        msg = isZhUser()
+            ? '频道加载失败——源可能已失效、有地域限制，或使用了本浏览器不支持的编码（如 HEVC/H.265，桌面 Chrome 常不支持而手机/TV 支持）。'
+            : 'Channel failed to load - the source may be offline, geo-blocked, or encoded with a codec this browser lacks (e.g. HEVC/H.265, which desktop Chrome often cannot decode but phones/TVs can).';
+        kind = 'err';
+    }
+    if (!msg) return;
+
+    var box = document.createElement('div');
+    box.id = 'streamNotice';
+    box.style.cssText = 'position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:20;max-width:92%;' +
+        'background:rgba(10,10,18,0.92);color:#fff;padding:10px 14px;border-radius:10px;font-size:13px;line-height:1.5;' +
+        'box-shadow:0 4px 18px rgba(0,0,0,0.5);border:1px solid ' + (kind === 'err' ? '#ff5566' : '#ffb84d') + ';display:flex;gap:10px;align-items:flex-start;';
+    var icon = document.createElement('i');
+    icon.className = 'fas ' + (kind === 'err' ? 'fa-exclamation-circle' : 'fa-unlock-alt');
+    icon.style.cssText = 'margin-top:2px;color:' + (kind === 'err' ? '#ff5566' : '#ffb84d') + ';';
+    var txt = document.createElement('span');
+    txt.textContent = msg;
+    var close = document.createElement('i');
+    close.className = 'fas fa-times';
+    close.style.cssText = 'cursor:pointer;color:rgba(255,255,255,0.6);margin-top:2px;';
+    close.addEventListener('click', function () { box.remove(); });
+    box.appendChild(icon); box.appendChild(txt); box.appendChild(close);
+    wrapper.style.position = wrapper.style.position || 'relative';
+    wrapper.appendChild(box);
+}
+
+function isZhUser() {
+    return (navigator.language || '').toLowerCase().indexOf('zh') === 0;
+}
+
+
 // Helper functions
 function $(selector) {
     return document.querySelector(selector);
@@ -20,10 +78,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize video player
     player = videojs(document.querySelector('#video1'));
     
-    // Error handling - prevent loading spinner and error icon showing simultaneously
+    // Error handling - prevent loading spinner and error icon showing simultaneously,
+    // and explain to the user WHY a channel may refuse to play on this device.
     player.on('error', function() {
         player.removeClass('vjs-waiting');
         player.removeClass('vjs-loading');
+        showStreamNotice(currentChannelUrl());
     });
     
     // Auto-play next channel when current channel ends
@@ -299,6 +359,11 @@ function playChannel(url, name) {
     if (!player) {
         player = videojs('video1');
     }
+    
+    // Warn early when an insecure HTTP stream is played on an HTTPS page:
+    // desktop browsers block it as mixed content (a very common reason why a
+    // channel works on some devices but not on a PC).
+    showStreamNotice(url);
     
     // Update current channel index
     for (var i = 0; i < channels.length; i++) {
