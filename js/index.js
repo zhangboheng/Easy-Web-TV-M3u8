@@ -1200,10 +1200,10 @@ function goToSource() {
     if (sourceName.value == 1) {
         sourceitem.innerHTML = `
             <div id="selectform" style="display:flex;">
+                <input type="checkbox" name="movie" value="archive_classic" checked />
+                <label for="movie"> Classic Movies (EN)</label><br />
                 <input type="checkbox" name="movie" value="hyzy" checked />
                 <label for="movie"> 虎牙资源</label><br />
-                <input type="checkbox" name="movie" value="wlys" checked />
-                <label for="movie"> 卧龙影视</label><br />
                 <input type="checkbox" name="movie" value="gszy" checked />
                 <label for="movie"> 光速资源</label><br />
             </div>
@@ -1220,7 +1220,7 @@ function goToSource() {
         var ms = window.localStorage.getItem('movie');
         if (ms) {
             ms = ms.split(",");
-            var arr = ["hyzy", "wlys", "gszy", "hnzy", "tky", "bjy"];
+            var arr = ["archive_classic", "hyzy", "gszy", "hnzy", "tky", "bjy"];
             var lst = arr.filter(function(x) { return ms.includes(x); }).map(function(x) { return arr.indexOf(x); });
             var cat = arr.filter(function(x) { return !ms.includes(x); }).map(function(x) { return arr.indexOf(x); });
             var checkboxes = document.querySelectorAll('input[name="movie"]');
