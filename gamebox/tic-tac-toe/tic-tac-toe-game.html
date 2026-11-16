@@ -1,66 +1,505 @@
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FreeCodeCamp: Tictactoe</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="tictactoe.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Tic Tac Toe</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            background: radial-gradient(circle at 50% 25%, #16203a 0%, #0d1121 55%, #070a14 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+            touch-action: none;
+        }
+
+        #stage {
+            position: relative;
+            width: min(100vw, calc((100vh - 16px) * 760 / 640));
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 40px rgba(80, 120, 255, 0.25), 0 0 0 1px rgba(120, 150, 255, 0.18) inset;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="app">
-        <div class="container-fluid app-container">
-            <div class="row app-row">
-                <div class="col-xs-4 play-box" id="0">
-                    <div class="symbol"></div>
-                </div>
-                <div class="col-xs-4 play-box" id="1">
-                    <div class="symbol"></div>
-                </div>
-                <div class="col-xs-4 play-box last-right" id="2">
-                    <div class="symbol"></div>
-                </div>
-                <div class="col-xs-4 play-box" id="3">
-                    <div class="symbol"></div>
-                </div>
-                <div class="col-xs-4 play-box" id="4">
-                    <div class="symbol"></div>
-                </div>
-                <div class="col-xs-4 play-box last-right" id="5">
-                    <div class="symbol"></div>
-                </div>
-                <div class="col-xs-4 play-box last-bottom" id="6">
-                    <div class="symbol"></div>
-                </div>
-                <div class="col-xs-4 play-box last-bottom" id="7">
-                    <div class="symbol"></div>
-                </div>
-                <div class="col-xs-4 play-box last-right last-bottom" id="8">
-                    <div class="symbol"></div>
-                </div>
-            </div>
-        </div>
+    <div id="stage">
+        <canvas id="board"></canvas>
     </div>
 
-    <div class="modal fade app-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-size">
-            <div class="modal-content">
-                <h3 class="content heading">Warning!!!</h3>
-                <hr class="warning-hr">
-                <div class="content body">
-                    Please save your time and don't even think you're smart. <br><strong><em>I'M SMARTER THAN YOU! HA-HA-HA!!!</em></strong> <br> Wana try me? Chose : <br>
-                    <div class="center-block symbol-options">
-                        <button class="symbol-option btn btn-default btn-md" data-dismiss="modal">X</button> OR <button class="symbol-option btn btn-default btn-md" data-dismiss="modal">O</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <script>
+        // ----------------- constants -----------------
+        var W = 760, H = 640;
+        var CELL = 150, GAP = 14;
+        var BOARD_X = (W - (CELL * 3 + GAP * 2)) / 2, BOARD_Y = 104;
+        var LINES = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+        ];
+        var X_COLOR = '#38e1ff', O_COLOR = '#ff5c9d', DRAW_COLOR = '#ffd23f';
+        var AI_THINK_MS = 420;
 
-    <script src="tictactoe.js">
+        var canvas = document.getElementById('board');
+        var ctx = canvas.getContext('2d');
+        (function fitCanvas() {
+            var dpr = Math.min(window.devicePixelRatio || 1, 2);
+            canvas.width = W * dpr;
+            canvas.height = H * dpr;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        })();
+
+        // ----------------- state -----------------
+        var STATE_MENU = 'menu', STATE_HUMAN = 'human', STATE_AI = 'ai',
+            STATE_END = 'end';
+        var state = STATE_MENU;
+        var humanSym = 'X', aiSym = 'O';
+        var hardMode = false;
+        var board = [null, null, null, null, null, null, null, null, null];
+        var moveAnims = {}; // cellIdx -> {sym, t0(ms)}
+        var winInfo = null; // {sym, line}
+        var endTimer = 0, endResult = null;
+        var hoverCell = -1;
+        var scores = { win: 0, loss: 0, draw: 0 };
+        try {
+            var saved = JSON.parse(localStorage.getItem('ewtv-tictactoe-score') || '{}');
+            if (typeof saved.win === 'number') scores = saved;
+        } catch (e) { }
+        function saveScores() {
+            try { localStorage.setItem('ewtv-tictactoe-score', JSON.stringify(scores)); } catch (e) { }
+        }
+        var muted = false;
+
+        // ----------------- audio (WebAudio synth) -----------------
+        var audioCtx = null;
+        function ensureAudio() {
+            if (!audioCtx) {
+                try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { }
+            }
+            if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+        }
+        function beep(freq, dur, type, vol, slideTo) {
+            if (muted || !audioCtx) return;
+            var o = audioCtx.createOscillator(), g = audioCtx.createGain();
+            o.type = type || 'sine';
+            o.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            if (slideTo) o.frequency.exponentialRampToValueAtTime(slideTo, audioCtx.currentTime + dur);
+            g.gain.setValueAtTime(vol || 0.08, audioCtx.currentTime);
+            g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+            o.connect(g); g.connect(audioCtx.destination);
+            o.start(); o.stop(audioCtx.currentTime + dur);
+        }
+        function sfxPlace(sym) { beep(sym === 'X' ? 520 : 340, 0.1, 'triangle', 0.09); }
+        function sfxWin() { [523, 659, 784, 1046].forEach(function (f, i) { setTimeout(function () { beep(f, 0.15, 'triangle', 0.08); }, i * 100); }); }
+        function sfxLose() { beep(280, 0.55, 'sawtooth', 0.08, 90); }
+        function sfxDraw() { beep(330, 0.18, 'sine', 0.07); setTimeout(function () { beep(262, 0.3, 'sine', 0.07); }, 180); }
+
+        // ----------------- AI: minimax -----------------
+        function winnerOf(b) {
+            for (var i = 0; i < LINES.length; i++) {
+                var l = LINES[i];
+                if (b[l[0]] && b[l[0]] === b[l[1]] && b[l[1]] === b[l[2]]) return { sym: b[l[0]], line: l };
+            }
+            return null;
+        }
+        function minimax(b, turn, depth) {
+            var w = winnerOf(b);
+            if (w) return { score: w.sym === aiSym ? 10 - depth : depth - 10 };
+            var full = true;
+            for (var i = 0; i < 9; i++) if (!b[i]) { full = false; break; }
+            if (full) return { score: 0 };
+            var best = null;
+            var isMax = turn === aiSym;
+            for (var j = 0; j < 9; j++) {
+                if (b[j]) continue;
+                b[j] = turn;
+                var r = minimax(b, turn === aiSym ? humanSym : aiSym, depth + 1);
+                b[j] = null;
+                if (!best || (isMax ? r.score > best.score : r.score < best.score)) best = { score: r.score, move: j };
+            }
+            return best;
+        }
+        function smartMove(sym) { // win if possible, block if needed, else random
+            var i, l, vals;
+            for (i = 0; i < LINES.length; i++) {
+                l = LINES[i];
+                vals = [board[l[0]], board[l[1]], board[l[2]]];
+                if (vals.filter(function (v) { return v === sym; }).length === 2 && vals.indexOf(null) !== -1) return l[vals.indexOf(null)];
+            }
+            for (i = 0; i < LINES.length; i++) {
+                l = LINES[i];
+                vals = [board[l[0]], board[l[1]], board[l[2]]];
+                if (vals.filter(function (v) { return v === humanSym; }).length === 2 && vals.indexOf(null) !== -1) return l[vals.indexOf(null)];
+            }
+            var empty = [];
+            for (i = 0; i < 9; i++) if (!board[i]) empty.push(i);
+            return empty[Math.floor(Math.random() * empty.length)];
+        }
+        function aiChooseMove() {
+            var empty = [], i;
+            for (i = 0; i < 9; i++) if (!board[i]) empty.push(i);
+            if (!empty.length) return -1;
+            if (hardMode) {
+                // full minimax with random tie-breaks so games vary; unbeatable
+                var bestScore = -Infinity, bestMoves = [];
+                for (var k = 0; k < empty.length; k++) {
+                    board[empty[k]] = aiSym;
+                    var r = minimax(board, humanSym, 1);
+                    board[empty[k]] = null;
+                    if (r.score > bestScore) { bestScore = r.score; bestMoves = [empty[k]]; }
+                    else if (r.score === bestScore) bestMoves.push(empty[k]);
+                }
+                return bestMoves[Math.floor(Math.random() * bestMoves.length)];
+            }
+            // easy: sometimes takes win/block, otherwise random
+            if (Math.random() < 0.45) return smartMove(aiSym);
+            return empty[Math.floor(Math.random() * empty.length)];
+        }
+
+        // ----------------- game flow -----------------
+        function newRound() {
+            board = [null, null, null, null, null, null, null, null, null];
+            moveAnims = {};
+            winInfo = null;
+            endResult = null;
+            state = humanSym === 'X' ? STATE_HUMAN : STATE_AI;
+            if (state === STATE_AI) scheduleAiMove();
+        }
+        function scheduleAiMove() {
+            state = STATE_AI;
+            setTimeout(function () {
+                if (state !== STATE_AI) return;
+                var m = aiChooseMove();
+                if (m >= 0) place(m, aiSym);
+            }, AI_THINK_MS);
+        }
+        function place(idx, sym) {
+            board[idx] = sym;
+            moveAnims[idx] = { sym: sym, t0: performance.now() };
+            sfxPlace(sym);
+            var w = winnerOf(board);
+            if (w) {
+                winInfo = w;
+                winInfo.t0 = performance.now();
+                endResult = w.sym === humanSym ? 'win' : 'loss';
+                if (endResult === 'win') { scores.win++; sfxWin(); } else { scores.loss++; sfxLose(); }
+                saveScores();
+                endTimer = performance.now() + 1500;
+                state = STATE_END;
+                return;
+            }
+            var full = true;
+            for (var i = 0; i < 9; i++) if (!board[i]) { full = false; break; }
+            if (full) {
+                endResult = 'draw';
+                scores.draw++;
+                saveScores();
+                sfxDraw();
+                endTimer = performance.now() + 1200;
+                state = STATE_END;
+                return;
+            }
+            state = sym === humanSym ? STATE_AI : STATE_HUMAN;
+            if (state === STATE_AI) scheduleAiMove();
+        }
+
+        // ----------------- drawing -----------------
+        var buttons = [];
+        function roundRect(x, y, w, h, r) {
+            ctx.beginPath();
+            ctx.moveTo(x + r, y);
+            ctx.arcTo(x + w, y, x + w, y + h, r);
+            ctx.arcTo(x + w, y + h, x, y + h, r);
+            ctx.arcTo(x, y + h, x, y, r);
+            ctx.arcTo(x, y, x + w, y, r);
+            ctx.closePath();
+        }
+        function cellRect(i) {
+            var col = i % 3, row = Math.floor(i / 3);
+            return { x: BOARD_X + col * (CELL + GAP), y: BOARD_Y + row * (CELL + GAP) };
+        }
+        function cellAt(lx, ly) {
+            for (var i = 0; i < 9; i++) {
+                var r = cellRect(i);
+                if (lx >= r.x && lx <= r.x + CELL && ly >= r.y && ly <= r.y + CELL) return i;
+            }
+            return -1;
+        }
+        function drawBackground() {
+            var g = ctx.createLinearGradient(0, 0, 0, H);
+            g.addColorStop(0, '#131a30');
+            g.addColorStop(1, '#0a0e1c');
+            ctx.fillStyle = g;
+            ctx.fillRect(0, 0, W, H);
+            ctx.strokeStyle = 'rgba(120,150,255,0.05)';
+            ctx.lineWidth = 1;
+            for (var gx = 60; gx < W; gx += 60) { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke(); }
+            for (var gy = 60; gy < H; gy += 60) { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke(); }
+        }
+        function drawBoardCells() {
+            for (var i = 0; i < 9; i++) {
+                var r = cellRect(i);
+                var hovered = i === hoverCell && state === STATE_HUMAN && !board[i];
+                ctx.fillStyle = hovered ? 'rgba(56,225,255,0.12)' : 'rgba(30,42,80,0.55)';
+                roundRect(r.x, r.y, CELL, CELL, 14);
+                ctx.fill();
+                ctx.strokeStyle = hovered ? 'rgba(56,225,255,0.55)' : 'rgba(120,150,255,0.16)';
+                ctx.lineWidth = hovered ? 2 : 1;
+                ctx.stroke();
+                if (hovered) {
+                    ctx.save();
+                    ctx.shadowColor = 'rgba(56,225,255,0.5)';
+                    ctx.shadowBlur = 18;
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+        }
+        function drawX(cx, cy, half, progress, color, glow) {
+            ctx.save();
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 12;
+            ctx.lineCap = 'round';
+            ctx.shadowColor = color;
+            ctx.shadowBlur = glow;
+            // stroke 1: top-left -> bottom-right
+            var p1 = Math.min(1, progress / 0.55);
+            ctx.beginPath();
+            ctx.moveTo(cx - half, cy - half);
+            ctx.lineTo(cx - half + 2 * half * p1, cy - half + 2 * half * p1);
+            ctx.stroke();
+            // stroke 2: top-right -> bottom-left
+            if (progress > 0.45) {
+                var p2 = (progress - 0.45) / 0.55;
+                ctx.beginPath();
+                ctx.moveTo(cx + half, cy - half);
+                ctx.lineTo(cx + half - 2 * half * p2, cy - half + 2 * half * p2);
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+        function drawO(cx, cy, radius, progress, color, glow) {
+            ctx.save();
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 12;
+            ctx.lineCap = 'round';
+            ctx.shadowColor = color;
+            ctx.shadowBlur = glow;
+            ctx.beginPath();
+            ctx.arc(cx, cy, radius, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * progress);
+            ctx.stroke();
+            ctx.restore();
+        }
+        function drawSymbols(now) {
+            for (var i = 0; i < 9; i++) {
+                if (!board[i]) continue;
+                var r = cellRect(i);
+                var cx = r.x + CELL / 2, cy = r.y + CELL / 2;
+                var anim = moveAnims[i];
+                var progress = anim ? Math.min(1, (now - anim.t0) / 280) : 1;
+                progress = 1 - Math.pow(1 - progress, 3); // ease-out
+                var isX = board[i] === 'X';
+                var color = isX ? X_COLOR : O_COLOR;
+                var glow = 16;
+                if (winInfo && winInfo.line.indexOf(i) !== -1) glow = 22 + Math.sin(now / 160) * 8;
+                if (isX) drawX(cx, cy, 46, progress, color, glow);
+                else drawO(cx, cy, 42, progress, color, glow);
+            }
+        }
+        function drawWinLine(now) {
+            if (!winInfo) return;
+            var p = Math.min(1, (now - winInfo.t0) / 500);
+            p = 1 - Math.pow(1 - p, 3);
+            var a = cellRect(winInfo.line[0]), c = cellRect(winInfo.line[2]);
+            var x1 = a.x + CELL / 2, y1 = a.y + CELL / 2;
+            var x2 = x1 + (c.x + CELL / 2 - x1) * p, y2 = y1 + (c.y + CELL / 2 - y1) * p;
+            var color = winInfo.sym === 'X' ? X_COLOR : O_COLOR;
+            ctx.save();
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 9;
+            ctx.lineCap = 'round';
+            ctx.shadowColor = color;
+            ctx.shadowBlur = 20;
+            ctx.globalAlpha = 0.85;
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        // ----------------- HUD & overlays -----------------
+        function drawButton(id, x, y, w, h, label, active, color) {
+            buttons.push({ id: id, x: x, y: y, w: w, h: h });
+            ctx.fillStyle = active ? color : 'rgba(30,42,80,0.75)';
+            roundRect(x, y, w, h, 12);
+            ctx.fill();
+            ctx.strokeStyle = active ? 'rgba(255,255,255,0.85)' : 'rgba(140,170,255,0.45)';
+            ctx.lineWidth = active ? 2 : 1;
+            ctx.stroke();
+            ctx.fillStyle = active ? '#0a0e1c' : '#c7d6ff';
+            ctx.font = 'bold 22px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(label, x + w / 2, y + h / 2 + 1);
+        }
+        function drawHUD(now) {
+            ctx.font = 'bold 24px Arial';
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'right';
+            ctx.fillStyle = X_COLOR;
+            ctx.fillText('YOU ' + scores.win, W / 2 - 78, 52);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = 'rgba(200,215,255,0.6)';
+            ctx.fillText('-', W / 2 - 30, 52);
+            ctx.fillStyle = O_COLOR;
+            ctx.fillText(scores.loss + ' CPU', W / 2 + 40, 52);
+            ctx.textAlign = 'left';
+            ctx.fillStyle = 'rgba(200,215,255,0.6)';
+            ctx.font = '16px Arial';
+            ctx.fillText('DRAWS ' + scores.draw, W / 2 + 108, 52);
+            ctx.font = '14px Arial';
+            ctx.fillStyle = 'rgba(157,184,255,0.55)';
+            ctx.textAlign = 'center';
+            ctx.fillText('You are ' + humanSym, W / 2 - 4, 78);
+            drawButton('mute', W - 56, 26, 40, 40, muted ? '\u{1F507}' : '\u{1F50A}', false, '');
+            drawButton('menu', 16, 26, 118, 40, '\u27F3 MENU', false, '');
+            if (state === STATE_HUMAN) {
+                ctx.font = 'bold 18px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillStyle = humanSym === 'X' ? X_COLOR : O_COLOR;
+                ctx.fillText('YOUR TURN', W / 2, BOARD_Y + CELL * 3 + GAP * 2 + 34);
+            } else if (state === STATE_AI) {
+                ctx.font = 'bold 18px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillStyle = 'rgba(200,215,255,0.55)';
+                ctx.fillText('CPU IS THINKING' + '.'.repeat(1 + Math.floor(now / 350) % 3), W / 2, BOARD_Y + CELL * 3 + GAP * 2 + 34);
+            }
+        }
+        function overlayBg(alpha) {
+            ctx.fillStyle = 'rgba(7,10,20,' + alpha + ')';
+            ctx.fillRect(0, 0, W, H);
+        }
+        function bigText(txt, y, size, color) {
+            ctx.save();
+            ctx.font = 'bold ' + size + 'px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.shadowColor = color;
+            ctx.shadowBlur = 26;
+            ctx.fillStyle = color;
+            ctx.fillText(txt, W / 2, y);
+            ctx.restore();
+        }
+        function smallText(txt, y) {
+            ctx.font = '18px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = 'rgba(200,215,255,0.85)';
+            ctx.fillText(txt, W / 2, y);
+        }
+        function drawMenu(now) {
+            overlayBg(0.82);
+            bigText('TIC TAC TOE', 132, 58, '#6ea8ff');
+            smallText('Pick your symbol', 208);
+            var bx = W / 2 - 130;
+            drawButton('pickX', bx, 240, 120, 78, 'X', humanSym === 'X', X_COLOR);
+            drawButton('pickO', bx + 140, 240, 120, 78, 'O', humanSym === 'O', O_COLOR);
+            smallText('CPU difficulty', 356);
+            drawButton('easy', bx, 380, 120, 52, 'EASY', !hardMode, '#3ddc84');
+            drawButton('hard', bx + 140, 380, 120, 52, 'HARD', hardMode, '#ff9f45');
+            drawButton('start', W / 2 - 90, 470, 180, 62, 'START', true, '#6ea8ff');
+            if (scores.win + scores.loss + scores.draw > 0) {
+                smallText('Session record  W ' + scores.win + ' - L ' + scores.loss + ' - D ' + scores.draw, 566);
+            }
+        }
+        function drawEnd(now) {
+            if (now < endTimer) return;
+            overlayBg(0.72);
+            if (endResult === 'win') bigText('YOU WIN!', 200, 62, X_COLOR);
+            else if (endResult === 'loss') bigText('CPU WINS', 200, 62, O_COLOR);
+            else bigText('DRAW', 200, 62, DRAW_COLOR);
+            smallText('W ' + scores.win + '  -  L ' + scores.loss + '  -  D ' + scores.draw, 268);
+            drawButton('again', W / 2 - 110, 320, 220, 62, 'PLAY AGAIN', true, '#6ea8ff');
+            smallText('Click anywhere to play again', 420);
+        }
+        function hitButton(lx, ly) {
+            for (var i = 0; i < buttons.length; i++) {
+                var b = buttons[i];
+                if (lx >= b.x && lx <= b.x + b.w && ly >= b.y && ly <= b.y + b.h) return b.id;
+            }
+            return null;
+        }
+
+        // ----------------- input -----------------
+        function toLogic(e) {
+            var rect = canvas.getBoundingClientRect();
+            var cx = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX);
+            var cy = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY);
+            return { x: (cx - rect.left) * (W / rect.width), y: (cy - rect.top) * (H / rect.height) };
+        }
+        function onMove(e) {
+            var p = toLogic(e);
+            hoverCell = cellAt(p.x, p.y);
+        }
+        function onTap(e) {
+            ensureAudio();
+            if (e.type === 'touchstart') e.preventDefault();
+            var p = toLogic(e);
+            var id = hitButton(p.x, p.y);
+            var now = performance.now();
+            if (state === STATE_MENU) {
+                if (id === 'pickX') { humanSym = 'X'; aiSym = 'O'; }
+                else if (id === 'pickO') { humanSym = 'O'; aiSym = 'X'; }
+                else if (id === 'easy') hardMode = false;
+                else if (id === 'hard') hardMode = true;
+                else if (id === 'start') { beep(660, 0.12, 'triangle', 0.08); newRound(); }
+                return;
+            }
+            if (id === 'mute') { muted = !muted; return; }
+            if (id === 'menu') { state = STATE_MENU; return; }
+            if (state === STATE_HUMAN) {
+                var c = cellAt(p.x, p.y);
+                if (c >= 0 && !board[c]) place(c, humanSym);
+                return;
+            }
+            if (state === STATE_END && now >= endTimer) {
+                newRound();
+            }
+        }
+        canvas.addEventListener('mousemove', onMove);
+        canvas.addEventListener('mousedown', onTap);
+        canvas.addEventListener('touchstart', onTap, { passive: false });
+
+        // ----------------- main loop -----------------
+        function frame(now) {
+            buttons = [];
+            drawBackground();
+            drawBoardCells();
+            drawSymbols(now);
+            drawWinLine(now);
+            drawHUD(now);
+            if (state === STATE_MENU) drawMenu(now);
+            if (state === STATE_END) drawEnd(now);
+            requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
     </script>
 </body>
 

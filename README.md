@@ -6,7 +6,7 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.4.6-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.4.7-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
@@ -150,7 +150,6 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
 - **Library**: jQuery 3.6.0
 - **Video Player**: Video.js
-- **Image Viewer**: Spotlight.js
 - **Emulator**: EmulatorJS (RetroArch-based)
 - **APIs**:
   - [iptv-org](https://github.com/iptv-org/iptv) - TV channels
@@ -351,7 +350,6 @@ This project uses the following open source projects:
 - [iptv-org](https://github.com/iptv-org/iptv) - IPTV channels database
 - [Radiobrowser](https://github.com/segler-alex/radiobrowser-api-rust) - Radio stations API
 - [Video.js](https://github.com/videojs/video.js) - Video player
-- [Spotlight.js](https://github.com/nextapps-de/spotlight) - Image viewer
 - [EmulatorJS](https://github.com/EmulatorJS/EmulatorJS) - RetroArch-based emulator
 - [Font Awesome](https://fontawesome.com/) - Icons
 
