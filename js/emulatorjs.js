@@ -1710,6 +1710,91 @@ function ensureArcadeBios(callback) {
         });
 }
 
+// Core-to-platform mapping for preset filtering
+var corePlatformMap = {
+    'fceumm': 'nes',
+    'snes9x': 'snes',
+    'mgba': 'gba',
+    'gambatte': 'gb',
+    'mupen64plus_next': 'n64',
+    'melonds': 'nds',
+    'pcsx_rearmed': 'psx',
+    'genesis_plus_gx': 'genesis',
+    'smsplus': 'sms',
+    'picodrive': 'sega32x',
+    'yabause': 'saturn',
+    'stella2014': 'atari2600',
+    'prosystem': 'atari7800',
+    'a5200': 'atari5200',
+    'virtualjaguar': 'atarijaguar',
+    'handy': 'atarilynx',
+    'opera': '3do',
+    'fbneo': 'arcade',
+    'mame2003': 'mame',
+    'mame2003_plus': 'mame',
+    'gearcoleco': 'coleco',
+    'vice_x64': 'c64',
+    'vice_x128': 'c128',
+    'vice_xvic': 'vic20',
+    'vice_xpet': 'pet',
+    'vice_xplus4': 'plus4',
+    'puae': 'amiga',
+    'mednafen_pce': 'pce',
+    'mednafen_wswan': 'wonderswan',
+    'mednafen_ngp': 'ngp',
+    'cap32': 'cpc',
+    'fuse': 'zx',
+    'ppsspp': 'psp',
+    'mednafen_pcfx': 'pcfx',
+    'prboom': 'doom',
+    'beetle_vb': 'vb'
+};
+
+// Platforms whose games cannot run without a user-supplied BIOS (uploaded on the page).
+// picodrive only needs one when running Sega CD discs (platform=segacd), not for
+// Genesis/32X cartridges; mednafen_pcfx always needs pcfx.rom.
+var BIOS_REQUIREMENTS = {
+'segacd': { file: 'bios_CD_U.bin / bios_CD_J.bin / bios_CD_E.bin (any one region)' },
+'pcfx': { file: 'pcfx.rom' }
+};
+
+// Resolve the preset/platform key for a core. A ?platform= URL parameter wins over
+// the static map so one core can serve several platforms (picodrive: 32X vs Sega CD).
+function getPlatformForCore(core) {
+var p = new URLSearchParams(window.location.search).get('platform');
+return p || corePlatformMap[core] || '';
+}
+
+// BIOS upload UI (Sega CD / PC-FX): show the requirement box and remember the
+// user's BIOS file; loadEmulatorJS() passes it to EmulatorJS as EJS_biosUrl.
+var pendingBiosFile = null;
+function initBiosUI() {
+var biosBox = document.getElementById('biosBox');
+if (!biosBox) return;
+var req = BIOS_REQUIREMENTS[getPlatformForCore(EJS_core)];
+if (!req) return; // platform needs no BIOS - keep the box hidden
+var fileNameEl = document.getElementById('biosFileName');
+var biosInput = document.getElementById('biosInput');
+var biosBtn = document.getElementById('biosBtn');
+var biosStatus = document.getElementById('biosStatus');
+if (!fileNameEl || !biosInput || !biosBtn || !biosStatus) return;
+fileNameEl.textContent = t('biosFileLabel') + ' ' + req.file;
+biosBtn.addEventListener('click', function() {
+    biosInput.click();
+});
+biosInput.addEventListener('change', function() {
+    var f = this.files && this.files[0];
+    if (!f) return;
+    pendingBiosFile = f;
+    biosStatus.textContent = t('biosSelected') + f.name;
+    biosStatus.classList.remove('hidden');
+    console.log('BIOS file selected:', f.name, Math.round(f.size / 1024) + 'KB');
+});
+biosBox.classList.remove('hidden');
+}
+
+
+
 // Load EmulatorJS script
 function loadEmulatorJS() {
     // Platforms that need a user-supplied BIOS (Sega CD / PC-FX) cannot start without it
@@ -2085,90 +2170,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Core-to-platform mapping for preset filtering
-    var corePlatformMap = {
-        'fceumm': 'nes',
-        'snes9x': 'snes',
-        'mgba': 'gba',
-        'gambatte': 'gb',
-        'mupen64plus_next': 'n64',
-        'melonds': 'nds',
-        'pcsx_rearmed': 'psx',
-        'genesis_plus_gx': 'genesis',
-        'smsplus': 'sms',
-        'picodrive': 'sega32x',
-        'yabause': 'saturn',
-        'stella2014': 'atari2600',
-        'prosystem': 'atari7800',
-        'a5200': 'atari5200',
-        'virtualjaguar': 'atarijaguar',
-        'handy': 'atarilynx',
-        'opera': '3do',
-        'fbneo': 'arcade',
-        'mame2003': 'mame',
-        'mame2003_plus': 'mame',
-        'gearcoleco': 'coleco',
-        'vice_x64': 'c64',
-        'vice_x128': 'c128',
-        'vice_xvic': 'vic20',
-        'vice_xpet': 'pet',
-        'vice_xplus4': 'plus4',
-        'puae': 'amiga',
-        'mednafen_pce': 'pce',
-        'mednafen_wswan': 'wonderswan',
-        'mednafen_ngp': 'ngp',
-        'cap32': 'cpc',
-        'fuse': 'zx',
-        'ppsspp': 'psp',
-        'mednafen_pcfx': 'pcfx',
-        'prboom': 'doom',
-        'beetle_vb': 'vb'
-};
-
-// Platforms whose games cannot run without a user-supplied BIOS (uploaded on the page).
-// picodrive only needs one when running Sega CD discs (platform=segacd), not for
-// Genesis/32X cartridges; mednafen_pcfx always needs pcfx.rom.
-var BIOS_REQUIREMENTS = {
-    'segacd': { file: 'bios_CD_U.bin / bios_CD_J.bin / bios_CD_E.bin (any one region)' },
-    'pcfx': { file: 'pcfx.rom' }
-};
-
-// Resolve the preset/platform key for a core. A ?platform= URL parameter wins over
-// the static map so one core can serve several platforms (picodrive: 32X vs Sega CD).
-function getPlatformForCore(core) {
-    var p = new URLSearchParams(window.location.search).get('platform');
-    return p || corePlatformMap[core] || '';
-}
-
-// BIOS upload UI (Sega CD / PC-FX): show the requirement box and remember the
-// user's BIOS file; loadEmulatorJS() passes it to EmulatorJS as EJS_biosUrl.
-var pendingBiosFile = null;
-function initBiosUI() {
-    var biosBox = document.getElementById('biosBox');
-    if (!biosBox) return;
-    var req = BIOS_REQUIREMENTS[getPlatformForCore(EJS_core)];
-    if (!req) return; // platform needs no BIOS - keep the box hidden
-    var fileNameEl = document.getElementById('biosFileName');
-    var biosInput = document.getElementById('biosInput');
-    var biosBtn = document.getElementById('biosBtn');
-    var biosStatus = document.getElementById('biosStatus');
-    if (!fileNameEl || !biosInput || !biosBtn || !biosStatus) return;
-    fileNameEl.textContent = t('biosFileLabel') + ' ' + req.file;
-    biosBtn.addEventListener('click', function() {
-        biosInput.click();
-    });
-    biosInput.addEventListener('change', function() {
-        var f = this.files && this.files[0];
-        if (!f) return;
-        pendingBiosFile = f;
-        biosStatus.textContent = t('biosSelected') + f.name;
-        biosStatus.classList.remove('hidden');
-        console.log('BIOS file selected:', f.name, Math.round(f.size / 1024) + 'KB');
-    });
-    biosBox.classList.remove('hidden');
-}
-
-
     // Preset ROM cache
     var presetCache = {};
 
