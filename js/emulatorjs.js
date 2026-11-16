@@ -1755,6 +1755,7 @@ var corePlatformMap = {
 // Genesis/32X cartridges; mednafen_pcfx always needs pcfx.rom.
 var BIOS_REQUIREMENTS = {
 'segacd': { file: 'bios_CD_U.bin / bios_CD_J.bin / bios_CD_E.bin (any one region)' },
+'3do': { file: 'panafz1.bin / panafz10.bin / goldstar.bin / sanyotry.bin (any one)' },
 'pcfx': { file: 'pcfx.rom' }
 };
 
