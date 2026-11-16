@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  <rect x="42" y="22" width="116" height="76" rx="8" fill="#000000"/>
+  <text x="56" y="58" font-family="'Courier New', Courier, monospace" font-weight="bold" font-size="26" fill="#33ff66">C:\&gt;_</text>
+  <text x="56" y="86" font-family="'Courier New', Courier, monospace" font-weight="bold" font-size="18" fill="#33ff66">DOS</text>
+  <circle cx="138" cy="34" r="5" fill="#ffd166"/>
+  <rect x="52" y="104" width="96" height="3" rx="1.5" fill="#3a3a3a"/>
+</svg>

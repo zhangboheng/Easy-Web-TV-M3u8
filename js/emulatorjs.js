@@ -1756,7 +1756,9 @@ var corePlatformMap = {
 var BIOS_REQUIREMENTS = {
 'segacd': { file: 'bios_CD_U.bin / bios_CD_J.bin / bios_CD_E.bin (any one region)' },
 '3do': { file: 'panafz1.bin / panafz10.bin / goldstar.bin / sanyotry.bin (any one)' },
-'pcfx': { file: 'pcfx.rom' }
+'pcfx': { file: 'pcfx.rom' },
+// Gearcoleco requires the ColecoVision OS-7 BIOS; it accepts these three names.
+'coleco': { file: 'colecovision.rom / coleco.rom / os7.u2 (any one, 8KB)' }
 };
 
 // Resolve the preset/platform key for a core. A ?platform= URL parameter wins over

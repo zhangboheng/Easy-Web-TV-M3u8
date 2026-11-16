@@ -294,6 +294,14 @@ var games = [
         url: '../routes/flash.html'
     },
     {
+        id: 49,
+        name: 'DOS Emulator (js-dos)',
+        platform: 'DOS',
+        category: 'emulator',
+        image: '../images/dos.svg',
+        url: '../routes/dos.html'
+    },
+    {
         id: 9,
         name: 'N64 Emulator',
         platform: 'N64',

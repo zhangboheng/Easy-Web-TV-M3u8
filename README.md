@@ -74,8 +74,9 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **Coleco**: ColecoVision
   - **3DO**: 3DO (bring your own firmware: panafz1/panafz10/goldstar/sanyotry .bin)
   - **Flash**: Flash Player powered by [Ruffle](https://ruffle.rs/) (100 preset games, or load your own .swf via upload/URL/archive.org search; keyboard & mouse recommended)
+  - **DOS**: MS-DOS games powered by [js-dos](https://js-dos.com/) (100 preset classics, or load your own .zip/.jsdos via upload/URL/archive.org search; built-in DOS environment, no BIOS needed)
   - **Arcade**: FBNeo (incl. Neo Geo / CPS1 / CPS3), MAME 2003
-- **20000+ preset games** across 39 platforms, with search on the game launcher
+- **20000+ preset games** across 40 platforms, with search on the game launcher
   - Nintendo: NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116), Virtual Boy (28)
   - Sega: Genesis/Mega Drive (1841), Master System + Game Gear (1283)
   - Coleco: ColecoVision (94)
@@ -86,6 +87,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - Amstrad: CPC (6719)
   - Sinclair: ZX Spectrum (67)
   - Flash: 100 classic games (.swf, Ruffle)
+  - DOS: 100 classics like Oregon Trail, Prince of Persia, Wolfenstein 3D, Pac-Man and SimCity (.zip, js-dos)
   - Doom engine: DOOM Shareware (4), Freedoom, Freedm, HacX
   - Arcade (FBNeo): 149 games incl. the full Neo Geo MVS lineup (Metal Slug 1–5/X, King of Fighters '94–2003, Samurai Shodown I–V, The Last Blade 1/2, Garou, Real Bout Fatal Fury series, World Heroes series, Puzzle Bobble...), CPS1 classics (Cadillacs and Dinosaurs, Knights of the Round, King of Dragons, Magic Sword, Warriors of Fate, Ghouls 'n Ghosts), CPS3 (Marvel vs. Capcom 2) and 14 MAME-era classics (from the marlon-santana/roms-retro-arcade, roms-retro-neogeo, roms-retro-cps1 and roms-retro-cps3 sets on GitHub)
 - **Three ways to load a ROM**: pick from the preset list, upload a file (core auto-detected by extension), or paste a ROM URL
@@ -202,11 +204,12 @@ All 38 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Bandai | WonderSwan / Color | mednafen_wswan | 208 | wonderswan.json |
 | Coleco | ColecoVision | gearcoleco | 94 | coleco.json |
 | 3DO | 3DO | opera | – | – |
-| Other | Flash (Ruffle) | ruffle | 100 | flash.json |
 | Arcade | Arcade (FBNeo, incl. Neo Geo / CPS1 / CPS3) | fbneo | 149 | arcade.json |
 | Arcade | Arcade (MAME 2003+) | mame2003_plus | 153 | mame.json |
+| Other | Flash (Ruffle) | ruffle | 100 | flash.json |
+| Other | DOS (js-dos) | js-dos | 100 | dos.json |
 | Other | Doom Engine (prboom) | prboom | 4 | doom.json |
-| **Total** | **39 platforms** | – | **20582** | **30 files** |
+| **Total** | **40 platforms** | – | **20682** | **31 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 ² No bundled games: load your own disc image via upload/URL, plus a BIOS file dumped from your own console (Sega CD: `bios_CD_U/J/E.bin`; PC-FX: `pcfx.rom`) using the BIOS upload box on the emulator page.
@@ -304,7 +307,8 @@ Easy-Web-TV-M3u8/
 │       ├── amiga.json        # 1455 Commodore Amiga games, single-disk ADF (TOSEC sets on archive.org)
 │       ├── pce.json          # 280 PC Engine / TurboGrafx-16 HuCard games (GoodPCE set on archive.org)
 │       ├── zx.json           # 67 ZX Spectrum games (snapshots .z80 / tapes .tzx / disks .dsk from single-game items on archive.org)
-│       └── flash.json        # 100 Flash games (.swf from the archive.org softwarelibrary_flash_games collection, served by Ruffle)
+│       ├── flash.json        # 100 Flash games (.swf from the archive.org softwarelibrary_flash_games collection, served by Ruffle)
+│       └── dos.json          # 100 MS-DOS games (.zip from the archive.org softwarelibrary_msdos_games collection, served by js-dos)
 ├── routes/
 │   ├── tv.html            # TV page
 │   ├── movie.html         # Movie page

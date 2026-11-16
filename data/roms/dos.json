@@ -1,0 +1,506 @@
+{
+ "platform": "dos",
+ "core": "js-dos",
+ "games": [
+  {
+   "name": "Oregon Trail, The (1990)",
+   "url": "https://archive.org/download/msdos_Oregon_Trail_The_1990/Oregon_Trail_The_1990.zip",
+   "filename": "Oregon_Trail_The_1990.zip"
+  },
+  {
+   "name": "Prince of Persia (1990)",
+   "url": "https://archive.org/download/msdos_Prince_of_Persia_1990/Prince_of_Persia_1990.zip",
+   "filename": "Prince_of_Persia_1990.zip"
+  },
+  {
+   "name": "Oregon Trail Deluxe, The (1992)",
+   "url": "https://archive.org/download/msdos_Oregon_Trail_Deluxe_The_1992/Oregon_Trail_Deluxe_The_1992.zip",
+   "filename": "Oregon_Trail_Deluxe_The_1992.zip"
+  },
+  {
+   "name": "Wolfenstein 3D (1992)",
+   "url": "https://archive.org/download/msdos_Wolfenstein_3D_1992/Wolfenstein_3D_1992.zip",
+   "filename": "Wolfenstein_3D_1992.zip"
+  },
+  {
+   "name": "Pac-Man (1983)",
+   "url": "https://archive.org/download/msdos_Pac-Man_1983/Pac-Man_1983.zip",
+   "filename": "Pac-Man_1983.zip"
+  },
+  {
+   "name": "SimCity (1989)",
+   "url": "https://archive.org/download/msdos_SimCity_1989/SimCity_1989.zip",
+   "filename": "SimCity_1989.zip"
+  },
+  {
+   "name": "Die Siedler 2 – Gold Edition (1997)",
+   "url": "https://archive.org/download/die_siedler_2_151/siedler2.zip",
+   "filename": "siedler2.zip"
+  },
+  {
+   "name": "Doom 2 (MS-DOS) (1994)",
+   "url": "https://archive.org/download/Doom-2/Doom2.zip",
+   "filename": "Doom2.zip"
+  },
+  {
+   "name": "Prehistorik 2 (1993)",
+   "url": "https://archive.org/download/msdos_Prehistorik_2_1993/Prehistorik_2_1993.zip",
+   "filename": "Prehistorik_2_1993.zip"
+  },
+  {
+   "name": "Disney's Aladdin (1994)",
+   "url": "https://archive.org/download/msdos_Disneys_Aladdin_1994/Disneys_Aladdin_1994.zip",
+   "filename": "Disneys_Aladdin_1994.zip"
+  },
+  {
+   "name": "4D Prince of Persia (1994)",
+   "url": "https://archive.org/download/msdos_4D_Prince_of_Persia_1994/4D_Prince_of_Persia_1994.zip",
+   "filename": "4D_Prince_of_Persia_1994.zip"
+  },
+  {
+   "name": "Stunts (1990)",
+   "url": "https://archive.org/download/msdos_Stunts_1990/Stunts_1990.zip",
+   "filename": "Stunts_1990.zip"
+  },
+  {
+   "name": "Where in the World is Carmen Sandiego Enhanced (1989)",
+   "url": "https://archive.org/download/msdos_Where_in_the_World_is_Carmen_Sandiego_Enhanced_1989/Where_in_the_World_is_Carmen_Sandiego_Enhanced_1989.zip",
+   "filename": "Where_in_the_World_is_Carmen_Sandiego_Enhanced_1989.zip"
+  },
+  {
+   "name": "Ms. Pac-Man (1983)",
+   "url": "https://archive.org/download/msdos_Ms._Pac-Man_1983/Ms._Pac-Man_1983.zip",
+   "filename": "Ms._Pac-Man_1983.zip"
+  },
+  {
+   "name": "Donkey Kong (1983)",
+   "url": "https://archive.org/download/msdos_Donkey_Kong_1983/Donkey_Kong_1983.zip",
+   "filename": "Donkey_Kong_1983.zip"
+  },
+  {
+   "name": "Dune 2 - The Building of a Dynasty (1992)",
+   "url": "https://archive.org/download/msdos_Dune_2_-_The_Building_of_a_Dynasty_1992/Dune_2_-_The_Building_of_a_Dynasty_1992.zip",
+   "filename": "Dune_2_-_The_Building_of_a_Dynasty_1992.zip"
+  },
+  {
+   "name": "Scorched Earth (1991)",
+   "url": "https://archive.org/download/msdos_Scorched_Earth_1991/Scorched_Earth_1991.zip",
+   "filename": "Scorched_Earth_1991.zip"
+  },
+  {
+   "name": "Bust-A-Move (1997)",
+   "url": "https://archive.org/download/msdos_Bust-A-Move_1997/Bust-A-Move_1997.zip",
+   "filename": "Bust-A-Move_1997.zip"
+  },
+  {
+   "name": "Golden Axe (1990)",
+   "url": "https://archive.org/download/msdos_Golden_Axe_1990/Golden_Axe_1990.zip",
+   "filename": "Golden_Axe_1990.zip"
+  },
+  {
+   "name": "Leisure Suit Larry 1 - Land of the Lounge Lizards (1987)",
+   "url": "https://archive.org/download/msdos_Leisure_Suit_Larry_1_-_Land_of_the_Lounge_Lizards_1987/Leisure_Suit_Larry_1_-_Land_of_the_Lounge_Lizards_1987.zip",
+   "filename": "Leisure_Suit_Larry_1_-_Land_of_the_Lounge_Lizards_1987.zip"
+  },
+  {
+   "name": "Batman Returns (1993)",
+   "url": "https://archive.org/download/msdos_Batman_Returns_1993/Batman_Returns_1993.zip",
+   "filename": "Batman_Returns_1993.zip"
+  },
+  {
+   "name": "Mario Brothers VGA (1990)",
+   "url": "https://archive.org/download/msdos_Mario_Brothers_VGA_1990/Mario_Brothers_VGA_1990.zip",
+   "filename": "Mario_Brothers_VGA_1990.zip"
+  },
+  {
+   "name": "Number Munchers (1990)",
+   "url": "https://archive.org/download/msdos_Number_Munchers_1990/Number_Munchers_1990.zip",
+   "filename": "Number_Munchers_1990.zip"
+  },
+  {
+   "name": "Indiana Jones and The Last Crusade (1989)",
+   "url": "https://archive.org/download/msdos_Indiana_Jones_and_The_Last_Crusade_1989/Indiana_Jones_and_The_Last_Crusade_1989.zip",
+   "filename": "Indiana_Jones_and_The_Last_Crusade_1989.zip"
+  },
+  {
+   "name": "European Championship 1992 (1992)",
+   "url": "https://archive.org/download/msdos_European_Championship_1992_1992/European_Championship_1992_1992.zip",
+   "filename": "European_Championship_1992_1992.zip"
+  },
+  {
+   "name": "Master of Orion (1993)",
+   "url": "https://archive.org/download/msdos_Master_of_Orion_1993/Master_of_Orion_1993.zip",
+   "filename": "Master_of_Orion_1993.zip"
+  },
+  {
+   "name": "Test Drive III The Passion (1990)",
+   "url": "https://archive.org/download/msdos_Test_Drive_III_The_Passion_1990/Test_Drive_III_The_Passion_1990.zip",
+   "filename": "Test_Drive_III_The_Passion_1990.zip"
+  },
+  {
+   "name": "Ferrari Formula One (1989)",
+   "url": "https://archive.org/download/msdos_Ferrari_Formula_One_1989/Ferrari_Formula_One_1989.zip",
+   "filename": "Ferrari_Formula_One_1989.zip"
+  },
+  {
+   "name": "Centurion - Defender of Rome (1990)",
+   "url": "https://archive.org/download/msdos_Centurion_-_Defender_of_Rome_1990/Centurion_-_Defender_of_Rome_1990.zip",
+   "filename": "Centurion_-_Defender_of_Rome_1990.zip"
+  },
+  {
+   "name": "Castle Wolfenstein (1984)",
+   "url": "https://archive.org/download/msdos_Castle_Wolfenstein_1984/Castle_Wolfenstein_1984.zip",
+   "filename": "Castle_Wolfenstein_1984.zip"
+  },
+  {
+   "name": "Crosscountry Canada (1991)",
+   "url": "https://archive.org/download/msdos_Crosscountry_Canada_1991/Crosscountry_Canada_1991.zip",
+   "filename": "Crosscountry_Canada_1991.zip"
+  },
+  {
+   "name": "Monopoly Deluxe (1992)",
+   "url": "https://archive.org/download/msdos_Monopoly_Deluxe_1992/Monopoly_Deluxe_1992.zip",
+   "filename": "Monopoly_Deluxe_1992.zip"
+  },
+  {
+   "name": "SimAnt - The Electronic Ant Colony (1991)",
+   "url": "https://archive.org/download/msdos_SimAnt_-_The_Electronic_Ant_Colony_1991/SimAnt_-_The_Electronic_Ant_Colony_1991.zip",
+   "filename": "SimAnt_-_The_Electronic_Ant_Colony_1991.zip"
+  },
+  {
+   "name": "Oregon Trail Deluxe (1992)",
+   "url": "https://archive.org/download/oregon-trail-deluxe/Oregon%20Trail%20Deluxe.zip",
+   "filename": "Oregon Trail Deluxe.zip"
+  },
+  {
+   "name": "Warlords II (1993)",
+   "url": "https://archive.org/download/msdos_Warlords_II_1993/Warlords_II_1993.zip",
+   "filename": "Warlords_II_1993.zip"
+  },
+  {
+   "name": "Super Mario World DX (2002)",
+   "url": "https://archive.org/download/msdos_Super_Mario_World_DX_2002/Super_Mario_World_DX_2002.zip",
+   "filename": "Super_Mario_World_DX_2002.zip"
+  },
+  {
+   "name": "Where in the World is Carmen Sandiego Deluxe (1990)",
+   "url": "https://archive.org/download/msdos_Where_in_the_World_is_Carmen_Sandiego_Deluxe_1990/Where_in_the_World_is_Carmen_Sandiego_Deluxe_1990.zip",
+   "filename": "Where_in_the_World_is_Carmen_Sandiego_Deluxe_1990.zip"
+  },
+  {
+   "name": "Mario's Game Gallery (1995)",
+   "url": "https://archive.org/download/msdos_Marios_Game_Gallery_1995/Marios_Game_Gallery_1995.zip",
+   "filename": "Marios_Game_Gallery_1995.zip"
+  },
+  {
+   "name": "Jazz Jackrabbit (1994)",
+   "url": "https://archive.org/download/msdos_Jazz_Jackrabbit_1994/Jazz_Jackrabbit_1994.zip",
+   "filename": "Jazz_Jackrabbit_1994.zip"
+  },
+  {
+   "name": "Digger (1983)",
+   "url": "https://archive.org/download/msdos_Digger_1983_1983/Digger_1983_1983.zip",
+   "filename": "Digger_1983_1983.zip"
+  },
+  {
+   "name": "Duke it out in D.C. (1997)",
+   "url": "https://archive.org/download/msdos_Duke_it_out_in_D.C._1997/Duke_it_out_in_D.C._1997.zip",
+   "filename": "Duke_it_out_in_D.C._1997.zip"
+  },
+  {
+   "name": "Maniac Mansion (1987)",
+   "url": "https://archive.org/download/msdos_Maniac_Mansion_1987/Maniac_Mansion_1987.zip",
+   "filename": "Maniac_Mansion_1987.zip"
+  },
+  {
+   "name": "Doom - The Roguelike (2005)",
+   "url": "https://archive.org/download/msdos_Doom_-_The_Roguelike_2005/Doom_-_The_Roguelike_2005.zip",
+   "filename": "Doom_-_The_Roguelike_2005.zip"
+  },
+  {
+   "name": "Disney's Duck Tales - The Quest for Gold (1990)",
+   "url": "https://archive.org/download/msdos_Disneys_Duck_Tales_-_The_Quest_for_Gold_1990/Disneys_Duck_Tales_-_The_Quest_for_Gold_1990.zip",
+   "filename": "Disneys_Duck_Tales_-_The_Quest_for_Gold_1990.zip"
+  },
+  {
+   "name": "Championship Manager 93-94 (1993)",
+   "url": "https://archive.org/download/msdos_Championship_Manager_93-94_1993/Championship_Manager_93-94_1993.zip",
+   "filename": "Championship_Manager_93-94_1993.zip"
+  },
+  {
+   "name": "Battle Chess (1988)",
+   "url": "https://archive.org/download/battle_chess_1988/battle_chess.zip",
+   "filename": "battle_chess.zip"
+  },
+  {
+   "name": "Tetris (1986)",
+   "url": "https://archive.org/download/msdos_Tetris_1986/Tetris_1986.zip",
+   "filename": "Tetris_1986.zip"
+  },
+  {
+   "name": "Strip Poker Professional rev. B (1995)",
+   "url": "https://archive.org/download/msdos_Strip_Poker_Professional_rev._B_1995/Strip_Poker_Professional_rev._B_1995.zip",
+   "filename": "Strip_Poker_Professional_rev._B_1995.zip"
+  },
+  {
+   "name": "Duke Nukem 3D (DOS) (1996)",
+   "url": "https://archive.org/download/DUKE3D_DOS/DUKE3D.zip",
+   "filename": "DUKE3D.zip"
+  },
+  {
+   "name": "DOOM (MS-DOS) (1993)",
+   "url": "https://archive.org/download/doom_dos/doom.zip",
+   "filename": "doom.zip"
+  },
+  {
+   "name": "Leisure Suit Larry 5 - Passionate Patti Does a Little Undercover Work (1991)",
+   "url": "https://archive.org/download/msdos_Leisure_Suit_Larry_5_-_Passionate_Patti_Does_a_Little_Undercover_Work_1991/Leisure_Suit_Larry_5_-_Passionate_Patti_Does_a_Little_Undercover_Work_1991.zip",
+   "filename": "Leisure_Suit_Larry_5_-_Passionate_Patti_Does_a_Little_Undercover_Work_1991.zip"
+  },
+  {
+   "name": "The Incredible Machine (1992)",
+   "url": "https://archive.org/download/the_incredible_machine_1992/tim1.zip",
+   "filename": "tim1.zip"
+  },
+  {
+   "name": "Tomb Raider (1996) (1996)",
+   "url": "https://archive.org/download/tomb_raider_1996/tomb_raider.zip",
+   "filename": "tomb_raider.zip"
+  },
+  {
+   "name": "Total Carnage (1994)",
+   "url": "https://archive.org/download/msdos_Total_Carnage_1994/Total_Carnage_1994.zip",
+   "filename": "Total_Carnage_1994.zip"
+  },
+  {
+   "name": "Secret of Monkey Island, The (1990)",
+   "url": "https://archive.org/download/msdos_Secret_of_Monkey_Island_The_1990/Secret_of_Monkey_Island_The_1990.zip",
+   "filename": "Secret_of_Monkey_Island_The_1990.zip"
+  },
+  {
+   "name": "Softporn II (1985)",
+   "url": "https://archive.org/download/msdos_Softporn_II_1985/Softporn_II_1985.zip",
+   "filename": "Softporn_II_1985.zip"
+  },
+  {
+   "name": "Mortal Kombat (1993)",
+   "url": "https://archive.org/download/msdos_Mortal_Kombat_1993/Mortal_Kombat_1993.zip",
+   "filename": "Mortal_Kombat_1993.zip"
+  },
+  {
+   "name": "Jazz Jackrabbit - Holiday Hare 1995 (1995)",
+   "url": "https://archive.org/download/msdos_Jazz_Jackrabbit_-_Holiday_Hare_1995_1995/Jazz_Jackrabbit_-_Holiday_Hare_1995_1995.zip",
+   "filename": "Jazz_Jackrabbit_-_Holiday_Hare_1995_1995.zip"
+  },
+  {
+   "name": "DOOM (1993)",
+   "url": "https://archive.org/download/msdos_DOOM_1993/DOOM_1993.zip",
+   "filename": "DOOM_1993.zip"
+  },
+  {
+   "name": "Demon Gate - 666 New Levels for Doom and Doom II (1995)",
+   "url": "https://archive.org/download/msdos_Demon_Gate_-_666_New_Levels_for_Doom_and_Doom_II_1995/Demon_Gate_-_666_New_Levels_for_Doom_and_Doom_II_1995.zip",
+   "filename": "Demon_Gate_-_666_New_Levels_for_Doom_and_Doom_II_1995.zip"
+  },
+  {
+   "name": "SimFarm (1993)",
+   "url": "https://archive.org/download/msdos_SimFarm_1993/SimFarm_1993.zip",
+   "filename": "SimFarm_1993.zip"
+  },
+  {
+   "name": "Lode Runner (1983)",
+   "url": "https://archive.org/download/msdos_Lode_Runner_1983_1983/Lode_Runner_1983_1983.zip",
+   "filename": "Lode_Runner_1983_1983.zip"
+  },
+  {
+   "name": "SimCity Classic (1994)",
+   "url": "https://archive.org/download/msdos_SimCity_Classic_1994/SimCity_Classic_1994.zip",
+   "filename": "SimCity_Classic_1994.zip"
+  },
+  {
+   "name": "Dyna Blaster (Bomberman) - DOS (1992)",
+   "url": "https://archive.org/download/chenall_dyna/dyna.zip",
+   "filename": "dyna.zip"
+  },
+  {
+   "name": "Alley Cat (1984)",
+   "url": "https://archive.org/download/msdos_Alley_Cat_1984/Alley_Cat_1984.zip",
+   "filename": "Alley_Cat_1984.zip"
+  },
+  {
+   "name": "MS-DOS: Prince of Persia (CGA Graphics and PC Speaker) (1990)",
+   "url": "https://archive.org/download/PERSIA_CGA/PERSIA.zip",
+   "filename": "PERSIA.zip"
+  },
+  {
+   "name": "Cool World (1992)",
+   "url": "https://archive.org/download/msdos_Cool_World_1992/Cool_World_1992.zip",
+   "filename": "Cool_World_1992.zip"
+  },
+  {
+   "name": "3D Bomber (1998)",
+   "url": "https://archive.org/download/msdos_3D_Bomber_1998/3D_Bomber_1998.zip",
+   "filename": "3D_Bomber_1998.zip"
+  },
+  {
+   "name": "Budokan The Martial Spirit (1989)",
+   "url": "https://archive.org/download/msdos_Budokan_The_Martial_Spirit_1989/Budokan_The_Martial_Spirit_1989.zip",
+   "filename": "Budokan_The_Martial_Spirit_1989.zip"
+  },
+  {
+   "name": "Volfied (1991)",
+   "url": "https://archive.org/download/msdos_Volfied_1991/Volfied_1991.zip",
+   "filename": "Volfied_1991.zip"
+  },
+  {
+   "name": "Toi Acid Game (1989)",
+   "url": "https://archive.org/download/msdos_Toi_Acid_Game_1989/Toi_Acid_Game_1989.zip",
+   "filename": "Toi_Acid_Game_1989.zip"
+  },
+  {
+   "name": "President Elect - 1988 Edition (1987)",
+   "url": "https://archive.org/download/msdos_President_Elect_-_1988_Edition_1987/President_Elect_-_1988_Edition_1987.zip",
+   "filename": "President_Elect_-_1988_Edition_1987.zip"
+  },
+  {
+   "name": "The Secret of Monkey Island (MS-DOS) (1990)",
+   "url": "https://archive.org/download/monkey_dos/MONKEY.zip",
+   "filename": "MONKEY.zip"
+  },
+  {
+   "name": "Executive Suite (1982)",
+   "url": "https://archive.org/download/msdos_Executive_Suite_1982/Executive_Suite_1982.zip",
+   "filename": "Executive_Suite_1982.zip"
+  },
+  {
+   "name": "Star Wars (1988)",
+   "url": "https://archive.org/download/msdos_Star_Wars_1988/Star_Wars_1988.zip",
+   "filename": "Star_Wars_1988.zip"
+  },
+  {
+   "name": "Empire Deluxe (1993)",
+   "url": "https://archive.org/download/msdos_Empire_Deluxe_1993/Empire_Deluxe_1993.zip",
+   "filename": "Empire_Deluxe_1993.zip"
+  },
+  {
+   "name": "Where in the World is Carmen Sandiego (1985)",
+   "url": "https://archive.org/download/msdos_Where_in_the_World_is_Carmen_Sandiego_1985/Where_in_the_World_is_Carmen_Sandiego_1985.zip",
+   "filename": "Where_in_the_World_is_Carmen_Sandiego_1985.zip"
+  },
+  {
+   "name": "Castle of Dr. Brain (1991)",
+   "url": "https://archive.org/download/msdos_Castle_of_Dr._Brain_1991/Castle_of_Dr._Brain_1991.zip",
+   "filename": "Castle_of_Dr._Brain_1991.zip"
+  },
+  {
+   "name": "Double Dragon (1988)",
+   "url": "https://archive.org/download/msdos_Double_Dragon_1988/Double_Dragon_1988.zip",
+   "filename": "Double_Dragon_1988.zip"
+  },
+  {
+   "name": "The Ultimate Doom (1995)",
+   "url": "https://archive.org/download/The_Ultimate_Doom/The_Ultimate_Doom.zip",
+   "filename": "The_Ultimate_Doom.zip"
+  },
+  {
+   "name": "Warlords II Deluxe (1995)",
+   "url": "https://archive.org/download/msdos_Warlords_II_Deluxe_1995/Warlords_II_Deluxe_1995.zip",
+   "filename": "Warlords_II_Deluxe_1995.zip"
+  },
+  {
+   "name": "Cover Girl Strip Poker (1991)",
+   "url": "https://archive.org/download/msdos_Cover_Girl_Strip_Poker_1991/Cover_Girl_Strip_Poker_1991.zip",
+   "filename": "Cover_Girl_Strip_Poker_1991.zip"
+  },
+  {
+   "name": "World Circuit (1992)",
+   "url": "https://archive.org/download/msdos_World_Circuit_1992/World_Circuit_1992.zip",
+   "filename": "World_Circuit_1992.zip"
+  },
+  {
+   "name": "Bubble Bobble (1988)",
+   "url": "https://archive.org/download/msdos_Bubble_Bobble_1988/Bubble_Bobble_1988.zip",
+   "filename": "Bubble_Bobble_1988.zip"
+  },
+  {
+   "name": "Monkey Island 2 - LeChuck's Revenge (1991)",
+   "url": "https://archive.org/download/msdos_Monkey_Island_2_-_LeChucks_Revenge_1991/Monkey_Island_2_-_LeChucks_Revenge_1991.zip",
+   "filename": "Monkey_Island_2_-_LeChucks_Revenge_1991.zip"
+  },
+  {
+   "name": "Hugo 3 (1995)",
+   "url": "https://archive.org/download/msdos_Hugo_3_1995/Hugo_3_1995.zip",
+   "filename": "Hugo_3_1995.zip"
+  },
+  {
+   "name": "Ski or Die (1990)",
+   "url": "https://archive.org/download/msdos_Ski_or_Die_1990/Ski_or_Die_1990.zip",
+   "filename": "Ski_or_Die_1990.zip"
+  },
+  {
+   "name": "Das Boot German U-Boat Simulation (1990)",
+   "url": "https://archive.org/download/msdos_Das_Boot_German_U-Boat_Simulation_1990/Das_Boot_German_U-Boat_Simulation_1990.zip",
+   "filename": "Das_Boot_German_U-Boat_Simulation_1990.zip"
+  },
+  {
+   "name": "VGA Miner (1989)",
+   "url": "https://archive.org/download/msdos_VGA_Miner_1989/VGA_Miner_1989.zip",
+   "filename": "VGA_Miner_1989.zip"
+  },
+  {
+   "name": "Dragon's Lair (1993)",
+   "url": "https://archive.org/download/msdos_Dragons_Lair_1993_1993/Dragons_Lair_1993_1993.zip",
+   "filename": "Dragons_Lair_1993_1993.zip"
+  },
+  {
+   "name": "PC Futbol 5.0 (1996)",
+   "url": "https://archive.org/download/msdos_PC_Futbol_5.0_1996/PC_Futbol_5.0_1996.zip",
+   "filename": "PC_Futbol_5.0_1996.zip"
+  },
+  {
+   "name": "Paperboy 2 (1991)",
+   "url": "https://archive.org/download/msdos_Paperboy_2_1991/Paperboy_2_1991.zip",
+   "filename": "Paperboy_2_1991.zip"
+  },
+  {
+   "name": "Fuck Quest 2: Romancing the Bone (2004)",
+   "url": "https://archive.org/download/agi_fuck-quest-2/fuck-quest-2.zip",
+   "filename": "fuck-quest-2.zip"
+  },
+  {
+   "name": "Dangerous Dave in the Deserted Pirate's Hideout (1990)",
+   "url": "https://archive.org/download/msdos_Dangerous_Dave_in_the_Deserted_Pirates_Hideout_1990/Dangerous_Dave_in_the_Deserted_Pirates_Hideout_1990.zip",
+   "filename": "Dangerous_Dave_in_the_Deserted_Pirates_Hideout_1990.zip"
+  },
+  {
+   "name": "Karateka (1986)",
+   "url": "https://archive.org/download/msdos_Karateka_1986/Karateka_1986.zip",
+   "filename": "Karateka_1986.zip"
+  },
+  {
+   "name": "Nuclear War (1989)",
+   "url": "https://archive.org/download/msdos_Nuclear_War_1989/Nuclear_War_1989.zip",
+   "filename": "Nuclear_War_1989.zip"
+  },
+  {
+   "name": "Prince of Persia 2 - The Shadow & The Flame (1993)",
+   "url": "https://archive.org/download/msdos_Prince_of_Persia_2_-_The_Shadow__The_Flame_1993/Prince_of_Persia_2_-_The_Shadow__The_Flame_1993.zip",
+   "filename": "Prince_of_Persia_2_-_The_Shadow__The_Flame_1993.zip"
+  },
+  {
+   "name": "Back to the Future Part III (1991)",
+   "url": "https://archive.org/download/msdos_Back_to_the_Future_Part_III_1991/Back_to_the_Future_Part_III_1991.zip",
+   "filename": "Back_to_the_Future_Part_III_1991.zip"
+  },
+  {
+   "name": "Rayman (1995)",
+   "url": "https://archive.org/download/msdos_Rayman_1995/msdos_Rayman_1995.zip",
+   "filename": "msdos_Rayman_1995.zip"
+  },
+  {
+   "name": "Prehistorik (1991)",
+   "url": "https://archive.org/download/msdos_Prehistorik_1991/Prehistorik_1991.zip",
+   "filename": "Prehistorik_1991.zip"
+  }
+ ]
+}
