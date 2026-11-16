@@ -603,6 +603,132 @@
         #left, #right, #div1, #control, #menuicon, #player, #prev, #github, #favorite, #channelist, #shuffleplay, #inputlink, .toggle, #root, .itemContainer, .hiddens, .loadingimg {
             display: none !important;
         }
+
+        /* Source picker dialog (matches the Theater dark-red theme) */
+        .source-dialog-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .source-dialog-overlay.hidden { display: none; }
+        .source-dialog {
+            background: rgba(0,0,0,0.9);
+            border: 1px solid rgba(163,0,27,0.5);
+            border-radius: 15px;
+            max-width: 480px;
+            width: 100%;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 24px 18px;
+            box-shadow: 0 10px 30px rgba(163,0,27,0.3);
+        }
+        .source-dialog-title {
+            color: #fff;
+            font-size: 20px;
+            margin: 0 0 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        .source-dialog-title i { color: #a3001b; }
+        .source-dialog-desc {
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0 0 12px;
+            flex-shrink: 0;
+        }
+        .source-dialog-list {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            margin-bottom: 14px;
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+        }
+        .source-dialog-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .source-dialog-list::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+        }
+        .source-dialog-list::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #a3001b 0%, #8a0016 100%);
+            border-radius: 3px;
+        }
+        .source-dialog-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.05);
+            cursor: pointer;
+            color: rgba(255,255,255,0.85);
+            font-size: 14px;
+            transition: all 0.15s ease;
+        }
+        .source-dialog-item:hover {
+            border-color: rgba(163,0,27,0.6);
+            background: rgba(163,0,27,0.15);
+        }
+        .source-dialog-item.checked {
+            border-color: #a3001b;
+            background: rgba(163,0,27,0.15);
+        }
+        .source-dialog-item input { accent-color: #a3001b; width: 16px; height: 16px; }
+        .source-dialog-item .src-name { flex: 1; }
+        .lang-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 20px;
+            letter-spacing: 0.4px;
+        }
+        .lang-badge.zh { background: rgba(163,0,27,0.25); color: #ff5c5c; border: 1px solid rgba(163,0,27,0.5); }
+        .lang-badge.en { background: rgba(76,140,255,0.15); color: #82b1ff; border: 1px solid rgba(76,140,255,0.35); }
+        .source-dialog-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            flex-shrink: 0;
+            padding-top: 4px;
+        }
+        .source-dialog-btn {
+            padding: 10px 18px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.15s ease;
+        }
+        .source-dialog-btn:hover {
+            border-color: #a3001b;
+            background: rgba(163,0,27,0.3);
+        }
+        .source-dialog-btn.primary {
+            background: linear-gradient(135deg, #a3001b 0%, #8a0016 100%);
+            border-color: #a3001b;
+        }
+        .source-dialog-btn.primary:hover {
+            background: linear-gradient(135deg, #b81c31 0%, #9c0f24 100%);
+            filter: none;
+        }
+
     </style>
 </head>
 
@@ -633,6 +759,19 @@
                 </select>
             </div>
         </header>
+
+        <!-- Source Picker Dialog (shown on first visit) -->
+        <div class="source-dialog-overlay hidden" id="sourceDialogOverlay">
+            <div class="source-dialog">
+                <h2 class="source-dialog-title"><i class="fas fa-film"></i> <span data-tc="dlgTitle">Choose Movie Sources</span></h2>
+                <p class="source-dialog-desc" data-tc="dlgDesc">Movie feeds come from community CMS APIs. Pick the sources you want to see — you can change this later from the source dropdown at the top.</p>
+                <div class="source-dialog-list" id="sourceDialogList"></div>
+                <div class="source-dialog-actions">
+                    <button class="source-dialog-btn primary" id="sourceDialogConfirm"><i class="fas fa-check"></i> <span data-tc="dlgConfirm">Confirm</span></button>
+                    <button class="source-dialog-btn" id="sourceDialogSkip"><i class="fas fa-globe"></i> <span data-tc="dlgSkip">Use all sources</span></button>
+                </div>
+            </div>
+        </div>
         
         <!-- Main Content -->
         <div class="main-content">

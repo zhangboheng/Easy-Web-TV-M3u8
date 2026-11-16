@@ -59,7 +59,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var id = urlParams.get('tab') || '';
     
     // Load video data
-    loadVideoData(initlink, id);
+    if (initlink === 'https://archive.org') {
+        loadArchiveVideo(id);
+    } else {
+        loadVideoData(initlink, id);
+    }
     
     // Initialize UI interactions
     initUIInteractions();
@@ -69,6 +73,72 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Load video data from API
+// ============================== archive.org classic movies ==============================
+// Load a public-domain movie from archive.org: fetch its metadata, pick the
+// first playable mp4/ogv file, and feed it through the normal episode player.
+function loadArchiveVideo(videoId) {
+    if (!videoId) {
+        showError('No video id provided');
+        return;
+    }
+    fetchJSONWithProxy('https://archive.org/metadata/' + encodeURIComponent(videoId))
+        .then(function (data) {
+            var episodeList = document.getElementById('episodeList');
+            episodeList.innerHTML = '';
+
+            var md = data || {};
+            var meta = md.metadata || {};
+            videoName = meta.title || videoId;
+            videoDes = meta.description || 'Public-domain movie from archive.org.';
+            try {
+                // descriptions may contain raw HTML from archive.org
+                var tmp = document.createElement('div');
+                tmp.innerHTML = videoDes;
+                videoDes = tmp.textContent || videoDes;
+            } catch (e) { /* keep raw text */ }
+
+            document.getElementById('videoTitle').textContent = videoName;
+            document.getElementById('detailContent').innerHTML = '<p>' + escapeHtml(videoDes) + '</p>';
+
+            // Pick playable files: prefer mp4, then ogv/mkv, keep the order
+            var files = (md.files || []).filter(function (f) {
+                var n = (f.name || '').toLowerCase();
+                return n.endsWith('.mp4') || n.endsWith('.ogv') || n.endsWith('.mkv');
+            });
+            files.sort(function (a, b) {
+                var score = function (f) { return (f.name || '').toLowerCase().endsWith('.mp4') ? 0 : 1; };
+                return score(a) - score(b);
+            });
+
+            episodes = [];
+            links = [];
+            for (var i = 0; i < files.length; i++) {
+                var f = files[i];
+                episodes.push(f.name.replace(/\.(mp4|ogv|mkv)$/i, ''));
+                links.push('https://archive.org/download/' + encodeURIComponent(videoId) + '/' + encodeURIComponent(f.name));
+            }
+
+            document.getElementById('episodeCount').textContent = episodes.length;
+
+            if (episodes.length === 0) {
+                episodeList.innerHTML =
+                    '<div class="no-episodes">' +
+                        '<i class="fas fa-video-slash"></i>' +
+                        '<span>No playable video files</span>' +
+                    '</div>';
+                return;
+            }
+
+            renderEpisodeList();
+            if (links.length > 0) {
+                playEpisode(0);
+            }
+        })
+        .catch(function () {
+            showError('Failed to load video data from archive.org. Please check your internet connection.');
+        });
+}
+
 function loadVideoData(linkUrl, videoId) {
     var baseUrl = linkUrl.endsWith('/') ? linkUrl : linkUrl + '/';
     var apiUrl = baseUrl + '?ac=videolist&ids=' + videoId;
@@ -202,9 +272,12 @@ function playEpisode(index) {
     var url = links[index];
     var name = episodes[index];
     
+    // HLS (.m3u8) needs video.js's VHS engine; plain files (mp4/ogg from
+    // archive.org classics) play natively with the matching MIME type.
+    var type = url.toLowerCase().indexOf('.m3u8') > -1 ? 'application/x-mpegURL' : 'video/mp4';
     player.src({
         src: url,
-        type: 'application/x-mpegURL'
+        type: type
     });
     player.play();
     
