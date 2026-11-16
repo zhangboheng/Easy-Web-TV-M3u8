@@ -160,6 +160,12 @@ body {
     background: rgba(163,0,27,0.1);
 }
 
+/* BIOS requirement box sits above the active tab box; keep a uniform 20px
+   rhythm with every tab box below it (url-box/search-box have no margin-top) */
+.bios-box {
+    margin-bottom: 20px;
+}
+
 .upload-box.hidden {
     display: none;
 }
@@ -270,7 +276,6 @@ body {
     padding: 40px;
     text-align: center;
     transition: all 0.3s ease;
-    margin-top: 20px;
 }
 
 .url-box.hidden {
@@ -366,7 +371,6 @@ body {
     padding: 30px;
     text-align: center;
     transition: all 0.3s ease;
-    margin-top: 20px;
 }
 
 .search-box.hidden {
