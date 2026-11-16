@@ -245,6 +245,15 @@ var games = [
         url: '../routes/emulatorjs.html?core=prboom'
     },
     {
+        id: 43,
+        name: 'PS2 Emulator (External)',
+        platform: 'PS2',
+        category: 'emulator',
+        image: '../images/ps2.svg',
+        url: 'https://tabstationtoo.github.io/TabStationToo/',
+        external: true
+    },
+    {
         id: 9,
         name: 'N64 Emulator',
         platform: 'N64',
@@ -351,7 +360,7 @@ function renderGames() {
     
     var html = '';
     filteredGames.forEach(function(game) {
-        html += '<a href="' + game.url + '" class="game-card">';
+        html += '<a href="' + game.url + '"' + (game.external ? ' target="_blank" rel="noopener"' : '') + ' class="game-card">';
         html += '  <div class="game-image-wrapper">';
         html += '    <img class="game-image" src="' + game.image + '" alt="' + game.name + '" onerror="this.src=\'../images/noimage.jpeg\'">';
         html += '  </div>';

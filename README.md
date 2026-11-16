@@ -67,6 +67,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **Bandai**: WonderSwan / Color
   - **Amstrad**: CPC (464/6128)
   - **Doom engine**: DOOM Shareware, Freedoom/Freedm, HacX (prboom)
+  - **Sony PlayStation 2**: external [TabStationToo](https://tabstationtoo.github.io/TabStationToo/) (PCSX2 compiled to WebAssembly; opens in a new tab, bring your own BIOS and disc images; desktop Chrome/Edge only)
   - **NEC**: PC Engine / TurboGrafx-16
   - **Coleco**: ColecoVision
   - **3DO**: 3DO
