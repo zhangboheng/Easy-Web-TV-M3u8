@@ -58,7 +58,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 ### 🎮 Games
 - Built-in mini games (Square Obstacles, Pong, Breakout, Tic Tac Toe)
 - **Emulator support** - Play retro console games, powered by [EmulatorJS](https://emulatorjs.org/)
-  - **Nintendo**: NES, SNES, N64, GB/GBC, GBA, NDS
+  - **Nintendo**: NES, SNES, N64, GB/GBC, GBA, NDS, Virtual Boy
   - **PlayStation**: PS1/PSX
   - **Sega**: Genesis/Mega Drive, Master System, Game Gear, Sega CD, Sega 32X, Saturn
   - **Atari**: 2600, 5200, 7800, Jaguar, Lynx
@@ -66,12 +66,12 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **SNK**: Neo Geo Pocket / Color
   - **Bandai**: WonderSwan / Color
   - **NEC**: PC Engine / TurboGrafx-16
-  - **Other**: 3DO, Arcade (FBNeo, MAME 2003), ColecoVision, Virtual Boy
+  - **Other**: 3DO, Arcade (FBNeo, MAME 2003), ColecoVision
 - **13600+ preset ROMs** across 32 platforms, with search on the game launcher
-  - Nintendo: NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116)
+  - Nintendo: NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116), Virtual Boy (28)
   - Sega: Genesis/Mega Drive (1841), Master System + Game Gear (1283)
   - Atari: 2600 (4145), 5200 (72), 7800 (27), Jaguar (49), Lynx (77)
-  - Other: ColecoVision (94), Virtual Boy (28), Commodore 64 (49), WonderSwan/Color (208), Neo Geo Pocket/Color (82)
+  - Other: ColecoVision (94), Commodore 64 (49), WonderSwan/Color (208), Neo Geo Pocket/Color (82)
   - Arcade (FBNeo): 149 games incl. the full Neo Geo MVS lineup (Metal Slug 1–5/X, King of Fighters '94–2003, Samurai Shodown I–V, The Last Blade 1/2, Garou, Real Bout Fatal Fury series, World Heroes series, Puzzle Bobble...), CPS1 classics (Cadillacs and Dinosaurs, Knights of the Round, King of Dragons, Magic Sword, Warriors of Fate, Ghouls 'n Ghosts), CPS3 (Marvel vs. Capcom 2) and 14 MAME-era classics (from the marlon-santana/roms-retro-arcade, roms-retro-neogeo, roms-retro-cps1 and roms-retro-cps3 sets on GitHub)
 - **Three ways to load a ROM**: pick from the preset list, upload a file (core auto-detected by extension), or paste a ROM URL
 - **Fast ROM fetching**: direct download for CORS-enabled sources (e.g. GitHub-hosted ROMs), public CORS proxies only as fallback
@@ -158,6 +158,7 @@ All 32 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Nintendo | GBA | mgba | 992 | gba.json |
 | Nintendo | Nintendo 64 | mupen64plus_next | 116 | n64.json |
 | Nintendo | Nintendo DS | melonds | – | – |
+| Nintendo | Virtual Boy | beetle_vb | 28 | vb.json |
 | PlayStation | PS1 / PSX | pcsx_rearmed | – | – |
 | Sega | Genesis / Mega Drive | genesis_plus_gx | 1841 | genesis.json |
 | Sega | Master System | smsplus | 1283 | sms.json |
@@ -183,7 +184,6 @@ All 32 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Other | Arcade (FBNeo, incl. Neo Geo / CPS1 / CPS3) | fbneo | 149 | arcade.json |
 | Other | Arcade (MAME 2003+) | mame2003_plus | 153 | mame.json |
 | Other | ColecoVision | gearcoleco | 94 | coleco.json |
-| Other | Virtual Boy | beetle_vb | 28 | vb.json |
 | **Total** | **32 platforms** | – | **13692** | **26 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
