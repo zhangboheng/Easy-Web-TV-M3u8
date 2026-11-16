@@ -1,0 +1,341 @@
+{
+ "platform": "zx",
+ "core": "fuse",
+ "games": [
+  {
+   "name": "Aftermath (1985)",
+   "url": "https://archive.org/download/zx_Aftermath_1985_Spectrum_Computing/Aftermath_1985_Spectrum_Computing.z80",
+   "filename": "Aftermath_1985_Spectrum_Computing.z80"
+  },
+  {
+   "name": "AI Warp Engine (2019)",
+   "url": "https://archive.org/download/ai-warp-engine-web-6.4.21-spectrum-rgb/AI-WARP-ENGINE-web-6.4.21-spectrum-rgb.zip",
+   "filename": "AI-WARP-ENGINE-web-6.4.21-spectrum-rgb.zip"
+  },
+  {
+   "name": "Aliens - Neoplasma (V.1.3) (EN,ES,RU) (2019)",
+   "url": "https://archive.org/download/aliens-neoplasma-v.-1.3-en-es-ru-2019-adventure-tap-zx-spectrum/Aliens%20-%20Neoplasma%20%28V.1.3%29%20%28EN%2CES%2CRU%29%20%282019%29%20%28Adventure%29%20%28TAP%29%20%28ZX%20Spectrum%29.zip",
+   "filename": "Aliens - Neoplasma (V.1.3) (EN,ES,RU) (2019) (Adventure) (TAP) (ZX Spectrum).zip"
+  },
+  {
+   "name": "Astrocode",
+   "url": "https://archive.org/download/astrocode-zx-spectrum/Astrocode.tzx",
+   "filename": "Astrocode.tzx"
+  },
+  {
+   "name": "Bandit (1984)",
+   "url": "https://archive.org/download/zx_Bandit_1984_Spectrum_Computing/Bandit_1984_Spectrum_Computing.z80",
+   "filename": "Bandit_1984_Spectrum_Computing.z80"
+  },
+  {
+   "name": "Beautiful Dreamer (1986)",
+   "url": "https://archive.org/download/zx_Beautiful_Dreamer_1986_Spectrum_Adventure_Exch_Club_a/Beautiful_Dreamer_1986_Spectrum_Adventure_Exch_Club_a.z80",
+   "filename": "Beautiful_Dreamer_1986_Spectrum_Adventure_Exch_Club_a.z80"
+  },
+  {
+   "name": "Bomber (1983)",
+   "url": "https://archive.org/download/zx_Bomber_1983_Spectrum_Computing_a_16K/Bomber_1983_Spectrum_Computing_a_16K.z80",
+   "filename": "Bomber_1983_Spectrum_Computing_a_16K.z80"
+  },
+  {
+   "name": "Caterpilla (1984)",
+   "url": "https://archive.org/download/zx_Caterpilla_1984_Spectrum_Games_16K/Caterpilla_1984_Spectrum_Games_16K.z80",
+   "filename": "Caterpilla_1984_Spectrum_Games_16K.z80"
+  },
+  {
+   "name": "Chopper Chase (1984)",
+   "url": "https://archive.org/download/zx_Chopper_Chase_1984_Spectrum_Computing/Chopper_Chase_1984_Spectrum_Computing.z80",
+   "filename": "Chopper_Chase_1984_Spectrum_Computing.z80"
+  },
+  {
+   "name": "Conveyor Belt Capers (1984)",
+   "url": "https://archive.org/download/zx_Conveyor_Belt_Capers_1984_Spectrum_Computing_16K/Conveyor_Belt_Capers_1984_Spectrum_Computing_16K.z80",
+   "filename": "Conveyor_Belt_Capers_1984_Spectrum_Computing_16K.z80"
+  },
+  {
+   "name": "Cribbage (1985)",
+   "url": "https://archive.org/download/zx_Cribbage_1985_Spectrum_Computing/Cribbage_1985_Spectrum_Computing.z80",
+   "filename": "Cribbage_1985_Spectrum_Computing.z80"
+  },
+  {
+   "name": "Cybertanks (1984)",
+   "url": "https://archive.org/download/cybertanks-1984-star-dreams.-zx-spectrum/Cybertanks%20%281984%29%28Star%20Dreams%29.ZX%20Spectrum.zip",
+   "filename": "Cybertanks (1984)(Star Dreams).ZX Spectrum.zip"
+  },
+  {
+   "name": "Dome Trooper (1988)",
+   "url": "https://archive.org/download/dome-trooper-1988-matand-software.-zx-spectrum.-7z/Dome%20Trooper%20%281988%29%28Matand%20Software%29.ZX%20Spectrum.7z",
+   "filename": "Dome Trooper (1988)(Matand Software).ZX Spectrum.7z"
+  },
+  {
+   "name": "Escape The (1985)",
+   "url": "https://archive.org/download/zx_Escape_The_1985_Spectrum_Computing/Escape_The_1985_Spectrum_Computing.z80",
+   "filename": "Escape_The_1985_Spectrum_Computing.z80"
+  },
+  {
+   "name": "Exploding Atoms (1991)",
+   "url": "https://archive.org/download/exploding-atoms-1991-proxima-software.-zx-spectrum/Exploding%20Atoms%20%281991%29%28Proxima%20Software%29.%20ZX%20Spectrum.zip",
+   "filename": "Exploding Atoms (1991)(Proxima Software). ZX Spectrum.zip"
+  },
+  {
+   "name": "Flucht aus der Pyramide.",
+   "url": "https://archive.org/download/flucht-aus-der-pyramide.-zx-spectrum/Flucht%20aus%20der%20Pyramide.%20ZX%20Spectrum.zip",
+   "filename": "Flucht aus der Pyramide. ZX Spectrum.zip"
+  },
+  {
+   "name": "Highrise Harry (1983)",
+   "url": "https://archive.org/download/highrise-harry-1983-blaby-computer-games.-zx-spectrum/Highrise%20Harry%20%281983%29%28Blaby%20Computer%20Games%29.%20ZX%20Spectrum.zip",
+   "filename": "Highrise Harry (1983)(Blaby Computer Games). ZX Spectrum.zip"
+  },
+  {
+   "name": "Leapfrog",
+   "url": "https://archive.org/download/leapfrogzxspectrumtapen/Leapfrog_ZX-Spectrum_TAP_EN.zip",
+   "filename": "Leapfrog_ZX-Spectrum_TAP_EN.zip"
+  },
+  {
+   "name": "Persian Editor",
+   "url": "https://archive.org/download/PersianTextEditor_ZXSpectrum/Persian%20Editor.tzx",
+   "filename": "Persian Editor.tzx"
+  },
+  {
+   "name": "PSP.Spectrum",
+   "url": "https://archive.org/download/psp.-spectrum.-7z/PSP.Spectrum.zip",
+   "filename": "PSP.Spectrum.zip"
+  },
+  {
+   "name": "Quake (1998)",
+   "url": "https://archive.org/download/quake-1998-csscgc.-zx-spectrum/Quake%20%281998%29%28CSSCGC%29.ZX%20Spectrum.zip",
+   "filename": "Quake (1998)(CSSCGC).ZX Spectrum.zip"
+  },
+  {
+   "name": "samouk",
+   "url": "https://archive.org/download/samouk_zxspectrum_1992/samouk.tzx",
+   "filename": "samouk.tzx"
+  },
+  {
+   "name": "Show 11 Spectrum",
+   "url": "https://archive.org/download/show-11-spectrum/Show_11_Spectrum.zip",
+   "filename": "Show_11_Spectrum.zip"
+  },
+  {
+   "name": "SlicksnSlideV1.26fiensw1994timoKauppinenactionRacing-Driving",
+   "url": "https://archive.org/download/SlicksnSlideV1.30DMulti8SW1997SpectrumPacificPublishingActionRacingDriving/SlicksnSlideV1.26fiensw1994timoKauppinenactionRacing-Driving.zip",
+   "filename": "SlicksnSlideV1.26fiensw1994timoKauppinenactionRacing-Driving.zip"
+  },
+  {
+   "name": "SlicksnSlideV1.272fienfrsw1994timoKauppinenactionRacing-Driving",
+   "url": "https://archive.org/download/SlicksnSlideV1.30DMulti8SW1997SpectrumPacificPublishingActionRacingDriving/SlicksnSlideV1.272fienfrsw1994timoKauppinenactionRacing-Driving.zip",
+   "filename": "SlicksnSlideV1.272fienfrsw1994timoKauppinenactionRacing-Driving.zip"
+  },
+  {
+   "name": "SlicksnSlideV1.286fiendesw1994timoKauppinenactionRacing-Driving",
+   "url": "https://archive.org/download/SlicksnSlideV1.30DMulti8SW1997SpectrumPacificPublishingActionRacingDriving/SlicksnSlideV1.286fiendesw1994timoKauppinenactionRacing-Driving.zip",
+   "filename": "SlicksnSlideV1.286fiendesw1994timoKauppinenactionRacing-Driving.zip"
+  },
+  {
+   "name": "SlicksnSlideV1.29dmulti-5sw1995techsoftactionRacing-Driving",
+   "url": "https://archive.org/download/SlicksnSlideV1.30DMulti8SW1997SpectrumPacificPublishingActionRacingDriving/SlicksnSlideV1.29dmulti-5sw1995techsoftactionRacing-Driving.zip",
+   "filename": "SlicksnSlideV1.29dmulti-5sw1995techsoftactionRacing-Driving.zip"
+  },
+  {
+   "name": "SlicksnSlidev1.30D",
+   "url": "https://archive.org/download/SlicksnSlideV1.30DMulti8SW1997SpectrumPacificPublishingActionRacingDriving/SlicksnSlidev1.30D.ZIP",
+   "filename": "SlicksnSlidev1.30D.ZIP"
+  },
+  {
+   "name": "Sokoban (1984)",
+   "url": "https://archive.org/download/Sokoban_1984_Spectrum_Holobyte/Sokoban_1984_Spectrum_Holobyte_Disk_1_of_2.dsk",
+   "filename": "Sokoban_1984_Spectrum_Holobyte_Disk_1_of_2.dsk"
+  },
+  {
+   "name": "Space Defender (1983)",
+   "url": "https://archive.org/download/zx_Space_Defender_1983_Spectrum_Computing_16K/Space_Defender_1983_Spectrum_Computing_16K.z80",
+   "filename": "Space_Defender_1983_Spectrum_Computing_16K.z80"
+  },
+  {
+   "name": "Spectrum Automatic Copier 1985 H. de Groot a",
+   "url": "https://archive.org/download/zx_Spectrum_Automatic_Copier_1985_H._de_Groot_a/Spectrum_Automatic_Copier_1985_H._de_Groot_a.z80",
+   "filename": "Spectrum_Automatic_Copier_1985_H._de_Groot_a.z80"
+  },
+  {
+   "name": "Spectrum Chess 1982 Artic Computing a",
+   "url": "https://archive.org/download/zx_Spectrum_Chess_1982_Artic_Computing_a/Spectrum_Chess_1982_Artic_Computing_a.z80",
+   "filename": "Spectrum_Chess_1982_Artic_Computing_a.z80"
+  },
+  {
+   "name": "Spectrum Database 1984 Gemini Marketing",
+   "url": "https://archive.org/download/zx_Spectrum_Database_1984_Gemini_Marketing/Spectrum_Database_1984_Gemini_Marketing.z80",
+   "filename": "Spectrum_Database_1984_Gemini_Marketing.z80"
+  },
+  {
+   "name": "Spectrum DBMS v1 19xx   de",
+   "url": "https://archive.org/download/zx_Spectrum_DBMS_v1_19xx__de/Spectrum_DBMS_v1_19xx___de.z80",
+   "filename": "Spectrum_DBMS_v1_19xx___de.z80"
+  },
+  {
+   "name": "Spectrum EDV 19xx   de",
+   "url": "https://archive.org/download/zx_Spectrum_EDV_19xx__de/Spectrum_EDV_19xx___de.z80",
+   "filename": "Spectrum_EDV_19xx___de.z80"
+  },
+  {
+   "name": "Spectrum Forth Game 1983 CP Software",
+   "url": "https://archive.org/download/zx_Spectrum_Forth_Game_1983_CP_Software/Spectrum_Forth_Game_1983_CP_Software.z80",
+   "filename": "Spectrum_Forth_Game_1983_CP_Software.z80"
+  },
+  {
+   "name": "Spectrum Forth v2.0 1983 CP Software a",
+   "url": "https://archive.org/download/zx_Spectrum_Forth_v2.0_1983_CP_Software_a/Spectrum_Forth_v2.0_1983_CP_Software_a.z80",
+   "filename": "Spectrum_Forth_v2.0_1983_CP_Software_a.z80"
+  },
+  {
+   "name": "Spectrum Game Writers Pack Cards 1983 Collins Educational",
+   "url": "https://archive.org/download/zx_Spectrum_Game_Writers_Pack_Cards_1983_Collins_Educational/Spectrum_Game_Writers_Pack_Cards_1983_Collins_Educational.z80",
+   "filename": "Spectrum_Game_Writers_Pack_Cards_1983_Collins_Educational.z80"
+  },
+  {
+   "name": "Spectrum Game Writers Pack Noughts  Crosses 1983 Collins Educational",
+   "url": "https://archive.org/download/zx_Spectrum_Game_Writers_Pack_Noughts_Crosses_1983_Collins_Educational/Spectrum_Game_Writers_Pack_Noughts__Crosses_1983_Collins_Educational.z80",
+   "filename": "Spectrum_Game_Writers_Pack_Noughts__Crosses_1983_Collins_Educational.z80"
+  },
+  {
+   "name": "Spectrum Golf 1982 RR Software 16K",
+   "url": "https://archive.org/download/zx_Spectrum_Golf_1982_RR_Software_16K/Spectrum_Golf_1982_RR_Software_16K.z80",
+   "filename": "Spectrum_Golf_1982_RR_Software_16K.z80"
+  },
+  {
+   "name": "Spectrum Graph Plot 1984 Gemini Marketing",
+   "url": "https://archive.org/download/zx_Spectrum_Graph_Plot_1984_Gemini_Marketing/Spectrum_Graph_Plot_1984_Gemini_Marketing.z80",
+   "filename": "Spectrum_Graph_Plot_1984_Gemini_Marketing.z80"
+  },
+  {
+   "name": "Spectrum Horoskop 19xx   de",
+   "url": "https://archive.org/download/zx_Spectrum_Horoskop_19xx__de/Spectrum_Horoskop_19xx___de.z80",
+   "filename": "Spectrum_Horoskop_19xx___de.z80"
+  },
+  {
+   "name": "Spectrum Integer Compiler v1.0 1982 Threlfall  Hodgson",
+   "url": "https://archive.org/download/zx_Spectrum_Integer_Compiler_v1.0_1982_Threlfall_Hodgson/Spectrum_Integer_Compiler_v1.0_1982_Threlfall__Hodgson.z80",
+   "filename": "Spectrum_Integer_Compiler_v1.0_1982_Threlfall__Hodgson.z80"
+  },
+  {
+   "name": "Spectrum Integer Compiler v1.0 1982 Threlfall  Hodgson 16K",
+   "url": "https://archive.org/download/zx_Spectrum_Integer_Compiler_v1.0_1982_Threlfall_Hodgson_16K/Spectrum_Integer_Compiler_v1.0_1982_Threlfall__Hodgson_16K.z80",
+   "filename": "Spectrum_Integer_Compiler_v1.0_1982_Threlfall__Hodgson_16K.z80"
+  },
+  {
+   "name": "Spectrum Integer Compiler v1.0 1982 Threlfall  Hodgson a",
+   "url": "https://archive.org/download/zx_Spectrum_Integer_Compiler_v1.0_1982_Threlfall_Hodgson_a/Spectrum_Integer_Compiler_v1.0_1982_Threlfall__Hodgson_a.z80",
+   "filename": "Spectrum_Integer_Compiler_v1.0_1982_Threlfall__Hodgson_a.z80"
+  },
+  {
+   "name": "Spectrum Integer Compiler v2.0 1983 Threlfall  Hodgson",
+   "url": "https://archive.org/download/zx_Spectrum_Integer_Compiler_v2.0_1983_Threlfall_Hodgson/Spectrum_Integer_Compiler_v2.0_1983_Threlfall__Hodgson.z80",
+   "filename": "Spectrum_Integer_Compiler_v2.0_1983_Threlfall__Hodgson.z80"
+  },
+  {
+   "name": "Spectrum Mailist 1984 Gemini Marketing",
+   "url": "https://archive.org/download/zx_Spectrum_Mailist_1984_Gemini_Marketing/Spectrum_Mailist_1984_Gemini_Marketing.z80",
+   "filename": "Spectrum_Mailist_1984_Gemini_Marketing.z80"
+  },
+  {
+   "name": "Spectrum Monitor 1982 Picturesque 16K",
+   "url": "https://archive.org/download/zx_Spectrum_Monitor_1982_Picturesque_16K/Spectrum_Monitor_1982_Picturesque_16K.z80",
+   "filename": "Spectrum_Monitor_1982_Picturesque_16K.z80"
+  },
+  {
+   "name": "spectrum ppc",
+   "url": "https://archive.org/download/tucows_44438_Sinclair_Spectrum_Emulator/spectrum_ppc.zip",
+   "filename": "spectrum_ppc.zip"
+  },
+  {
+   "name": "Spectrum Safari 1983 CDS Microsystems",
+   "url": "https://archive.org/download/zx_Spectrum_Safari_1983_CDS_Microsystems/Spectrum_Safari_1983_CDS_Microsystems.z80",
+   "filename": "Spectrum_Safari_1983_CDS_Microsystems.z80"
+  },
+  {
+   "name": "Spectrum Scramble 1982 Work Force 16K",
+   "url": "https://archive.org/download/zx_Spectrum_Scramble_1982_Work_Force_16K/Spectrum_Scramble_1982_Work_Force_16K.z80",
+   "filename": "Spectrum_Scramble_1982_Work_Force_16K.z80"
+  },
+  {
+   "name": "Spectrum Skiing 19xx Jonathan Yeomans",
+   "url": "https://archive.org/download/zx_Spectrum_Skiing_19xx_Jonathan_Yeomans/Spectrum_Skiing_19xx_Jonathan_Yeomans.z80",
+   "filename": "Spectrum_Skiing_19xx_Jonathan_Yeomans.z80"
+  },
+  {
+   "name": "Spectrum Snooker 1983 Artic Computing 128K",
+   "url": "https://archive.org/download/zx_Spectrum_Snooker_1983_Artic_Computing_128K/Spectrum_Snooker_1983_Artic_Computing_128K.z80",
+   "filename": "Spectrum_Snooker_1983_Artic_Computing_128K.z80"
+  },
+  {
+   "name": "Submarine Strike (1984)",
+   "url": "https://archive.org/download/submarine-strike-1984-pulsonic.-zx-spectrum.-7z/Submarine%20Strike%20%281984%29%28Pulsonic%29.ZX%20Spectrum.7z",
+   "filename": "Submarine Strike (1984)(Pulsonic).ZX Spectrum.7z"
+  },
+  {
+   "name": "Tetris r880617 (1988)",
+   "url": "https://archive.org/download/tetris-1988-spectrum-holo-byte-inc./Tetris%20r880617%20%281988%29%28Spectrum%20HoloByte%2C%20Inc.%29%20%5BIMA%5D%5B360k%5D%5B%21%5D.zip",
+   "filename": "Tetris r880617 (1988)(Spectrum HoloByte, Inc.) [IMA][360k][!].zip"
+  },
+  {
+   "name": "TheArchers-Side1",
+   "url": "https://archive.org/download/The_Archers_ZX_Spectrum/TheArchers-Side1.tzx",
+   "filename": "TheArchers-Side1.tzx"
+  },
+  {
+   "name": "TheArchers-Side2",
+   "url": "https://archive.org/download/The_Archers_ZX_Spectrum/TheArchers-Side2.tzx",
+   "filename": "TheArchers-Side2.tzx"
+  },
+  {
+   "name": "Wizard Prangs Headache Mantra (1985)",
+   "url": "https://archive.org/download/zx_Wizard_Prangs_Headache_Mantra_1985_Spectrum_Computing/Wizard_Prangs_Headache_Mantra_1985_Spectrum_Computing.z80",
+   "filename": "Wizard_Prangs_Headache_Mantra_1985_Spectrum_Computing.z80"
+  },
+  {
+   "name": "Zulu Raid + 3 More (471b Compilation)",
+   "url": "https://archive.org/download/471b_Compilation_Zulu_Raid_Spectrum_Proton_Passage_Monster_Scientist/471b_Compilation_Zulu_Raid_Spectrum_Proton_Passage_Monster_Scientist.dsk",
+   "filename": "471b_Compilation_Zulu_Raid_Spectrum_Proton_Passage_Monster_Scientist.dsk"
+  },
+  {
+   "name": "ZX Spectrum Graphics Pack 1985 Dorling Kindersley Software Part 2 of 4",
+   "url": "https://archive.org/download/zx_ZX_Spectrum_Graphics_Pack_1985_Dorling_Kindersley_Software_Part_2_of_4/ZX_Spectrum_Graphics_Pack_1985_Dorling_Kindersley_Software_Part_2_of_4.z80",
+   "filename": "ZX_Spectrum_Graphics_Pack_1985_Dorling_Kindersley_Software_Part_2_of_4.z80"
+  },
+  {
+   "name": "ZX Spectrum Scan Converter 1984 A. Tencati",
+   "url": "https://archive.org/download/zx_ZX_Spectrum_Scan_Converter_1984_A._Tencati/ZX_Spectrum_Scan_Converter_1984_A._Tencati.z80",
+   "filename": "ZX_Spectrum_Scan_Converter_1984_A._Tencati.z80"
+  },
+  {
+   "name": "ZX Spectrum Scan Converter 1984 A. Tencati a",
+   "url": "https://archive.org/download/zx_ZX_Spectrum_Scan_Converter_1984_A._Tencati_a/ZX_Spectrum_Scan_Converter_1984_A._Tencati_a.z80",
+   "filename": "ZX_Spectrum_Scan_Converter_1984_A._Tencati_a.z80"
+  },
+  {
+   "name": "ZX Spectrum Scan Converter 1984 A. Tencati a2",
+   "url": "https://archive.org/download/zx_ZX_Spectrum_Scan_Converter_1984_A._Tencati_a2/ZX_Spectrum_Scan_Converter_1984_A._Tencati_a2.z80",
+   "filename": "ZX_Spectrum_Scan_Converter_1984_A._Tencati_a2.z80"
+  },
+  {
+   "name": "ZX Spectrum Speech 1982",
+   "url": "https://archive.org/download/zx_ZX_Spectrum_Speech_1982_/ZX_Spectrum_Speech_1982__.z80",
+   "filename": "ZX_Spectrum_Speech_1982__.z80"
+  },
+  {
+   "name": "ZX Spectrum User Guide Companion Cassette 1984 Sinclair Research fr",
+   "url": "https://archive.org/download/zx_ZX_Spectrum_User_Guide_Companion_Cassette_1984_Sinclair_Research_fr/ZX_Spectrum_User_Guide_Companion_Cassette_1984_Sinclair_Research_fr.z80",
+   "filename": "ZX_Spectrum_User_Guide_Companion_Cassette_1984_Sinclair_Research_fr.z80"
+  },
+  {
+   "name": "ZXED Spectrum Toolkit 1982 DKTronics",
+   "url": "https://archive.org/download/zx_ZXED_Spectrum_Toolkit_1982_DKTronics/ZXED_Spectrum_Toolkit_1982_DKTronics.z80",
+   "filename": "ZXED_Spectrum_Toolkit_1982_DKTronics.z80"
+  },
+  {
+   "name": "Zynaps (Hewson) [ ]",
+   "url": "https://archive.org/download/spectrum-zynaps-hewson/Zynaps%20%28Hewson%29%20%5B_%5D.tap",
+   "filename": "Zynaps (Hewson) [_].tap"
+  }
+ ]
+}

@@ -66,13 +66,14 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **SNK**: Neo Geo Pocket / Color
   - **Bandai**: WonderSwan / Color
   - **Amstrad**: CPC (464/6128)
+  - **Sinclair**: ZX Spectrum
   - **Doom engine**: DOOM Shareware, Freedoom/Freedm, HacX (prboom)
   - **Sony PlayStation 2**: external [TabStationToo](https://tabstationtoo.github.io/TabStationToo/) (PCSX2 compiled to WebAssembly; opens in a new tab, bring your own BIOS and disc images; desktop Chrome/Edge only)
   - **NEC**: PC Engine / TurboGrafx-16
   - **Coleco**: ColecoVision
   - **3DO**: 3DO
   - **Arcade**: FBNeo (incl. Neo Geo / CPS1 / CPS3), MAME 2003
-- **20000+ preset ROMs** across 34 platforms, with search on the game launcher
+- **20000+ preset ROMs** across 35 platforms, with search on the game launcher
   - Nintendo: NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116), Virtual Boy (28)
   - Sega: Genesis/Mega Drive (1841), Master System + Game Gear (1283)
   - Coleco: ColecoVision (94)
@@ -81,6 +82,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - Atari: 2600 (4145), 5200 (72), 7800 (27), Jaguar (49), Lynx (77)
   - Commodore: Commodore 64 (49)
   - Amstrad: CPC (6719)
+  - Sinclair: ZX Spectrum (67)
   - Doom engine: DOOM Shareware (4), Freedoom, Freedm, HacX
   - Arcade (FBNeo): 149 games incl. the full Neo Geo MVS lineup (Metal Slug 1–5/X, King of Fighters '94–2003, Samurai Shodown I–V, The Last Blade 1/2, Garou, Real Bout Fatal Fury series, World Heroes series, Puzzle Bobble...), CPS1 classics (Cadillacs and Dinosaurs, Knights of the Round, King of Dragons, Magic Sword, Warriors of Fate, Ghouls 'n Ghosts), CPS3 (Marvel vs. Capcom 2) and 14 MAME-era classics (from the marlon-santana/roms-retro-arcade, roms-retro-neogeo, roms-retro-cps1 and roms-retro-cps3 sets on GitHub)
 - **Three ways to load a ROM**: pick from the preset list, upload a file (core auto-detected by extension), or paste a ROM URL

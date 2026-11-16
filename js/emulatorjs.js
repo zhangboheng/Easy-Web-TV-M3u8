@@ -2051,6 +2051,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'mednafen_wswan': 'wonderswan',
         'mednafen_ngp': 'ngp',
         'cap32': 'cpc',
+        'fuse': 'zx',
         'prboom': 'doom',
         'beetle_vb': 'vb'
 };

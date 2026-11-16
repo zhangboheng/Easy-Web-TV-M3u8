@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <defs>
+    <linearGradient id="zxg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b2b2b"/>
+      <stop offset="1" stop-color="#141414"/>
+    </linearGradient>
+  </defs>
+  <rect x="30" y="30" width="140" height="62" rx="10" fill="url(#zxg)" stroke="#000" stroke-width="2"/>
+  <rect x="52" y="18" width="96" height="14" rx="7" fill="#0d0d0d"/>
+  <rect x="42" y="40" width="52" height="40" rx="4" fill="#1a6a1a"/>
+  <text x="68" y="64" font-family="Courier New, monospace" font-size="11" font-weight="bold" fill="#7dff7d" text-anchor="middle">ZX</text>
+  <rect x="104" y="44" width="56" height="10" rx="3" fill="#4a4a4a"/>
+  <rect x="104" y="58" width="56" height="10" rx="3" fill="#5a3aa8"/>
+  <circle cx="112" cy="79" r="4" fill="#c33"/>
+  <circle cx="126" cy="79" r="4" fill="#3c7"/>
+  <circle cx="140" cy="79" r="4" fill="#cc3"/>
+  <circle cx="154" cy="79" r="4" fill="#36c"/>
+</svg>

@@ -254,6 +254,14 @@ var games = [
         external: true
     },
     {
+        id: 44,
+        name: 'ZX Spectrum Emulator',
+        platform: 'ZX',
+        category: 'emulator',
+        image: '../images/zx.svg',
+        url: '../routes/emulatorjs.html?core=fuse'
+    },
+    {
         id: 9,
         name: 'N64 Emulator',
         platform: 'N64',
