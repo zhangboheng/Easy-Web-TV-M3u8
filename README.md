@@ -160,7 +160,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Supported Platforms
 
-All 34 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **20415** games across 28 JSON files.
+All 35 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **20482** games across 29 JSON files.
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -190,6 +190,7 @@ All 34 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Commodore | Plus/4 | vice_xplus4 | 5 | plus4.json |
 | Commodore | Amiga | puae | 1455 | amiga.json |
 | Amstrad | Amstrad CPC | cap32 | 6719 | cpc.json |
+| Sinclair | ZX Spectrum | fuse | 67 | zx.json |
 | NEC | PC Engine / TurboGrafx-16 | mednafen_pce | 280 | pce.json |
 | SNK | Neo Geo Pocket / Color | mednafen_ngp | 82 | ngp.json |
 | Bandai | WonderSwan / Color | mednafen_wswan | 208 | wonderswan.json |
@@ -198,7 +199,7 @@ All 34 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Arcade | Arcade (FBNeo, incl. Neo Geo / CPS1 / CPS3) | fbneo | 149 | arcade.json |
 | Arcade | Arcade (MAME 2003+) | mame2003_plus | 153 | mame.json |
 | Other | Doom Engine (prboom) | prboom | 4 | doom.json |
-| **Total** | **34 platforms** | – | **20415** | **28 files** |
+| **Total** | **35 platforms** | – | **20482** | **29 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 
@@ -293,7 +294,8 @@ Easy-Web-TV-M3u8/
 │       ├── plus4.json        # 5 Commodore Plus/4 games (No-Intro set on archive.org)
 │       ├── sega32x.json      # 33 Sega 32X games (No-Intro-style set on archive.org)
 │       ├── amiga.json        # 1455 Commodore Amiga games, single-disk ADF (TOSEC sets on archive.org)
-│       └── pce.json          # 280 PC Engine / TurboGrafx-16 HuCard games (GoodPCE set on archive.org)
+│       ├── pce.json          # 280 PC Engine / TurboGrafx-16 HuCard games (GoodPCE set on archive.org)
+│       └── zx.json           # 67 ZX Spectrum games (snapshots .z80 / tapes .tzx / disks .dsk from single-game items on archive.org)
 ├── routes/
 │   ├── tv.html            # TV page
 │   ├── movie.html         # Movie page
