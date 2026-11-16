@@ -286,6 +286,14 @@ var games = [
         url: '../routes/emulatorjs.html?core=mednafen_pcfx'
     },
     {
+        id: 48,
+        name: 'Flash Player (Ruffle)',
+        platform: 'Flash',
+        category: 'emulator',
+        image: '../images/flash.svg',
+        url: '../routes/flash.html'
+    },
+    {
         id: 9,
         name: 'N64 Emulator',
         platform: 'N64',

@@ -1142,6 +1142,7 @@ DOM.ready(function() {
     if (scrollidbar) {
         scrollidbar.innerHTML = '';
         DOM.append(scrollidbar, `
+            <p>[2026-11-16] V8.4.6 release Add Flash game player (Ruffle) with 100 preset games, 3DO BIOS upload, movie source selection dialog with archive.org classic movies</p>
             <p>[2026-11-10] V8.4.5 release Add second data sources for novels and manga</p>
             <p>[2026-09-25] V8.4.3 release Add dynamic ROM loading with 5000+ preset ROMs across 5 platforms</p>
             <p>[2026-05-18] V8.4.2 release change jQuery to JavaScript</p>

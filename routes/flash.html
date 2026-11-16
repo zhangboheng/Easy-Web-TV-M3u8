@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Flash Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="header-title">
+                <i class="fas fa-bolt"></i>
+                <span id="pageTitle" data-i18n="pageTitle">Flash Player</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="resetBtn" style="display: none;">
+                <i class="fas fa-redo"></i>
+                <span data-i18n="reset">Reset</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Upload Section -->
+        <section class="upload-section" id="uploadSection">
+            <!-- Tab Switch -->
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabFile" data-tab="file">
+                    <i class="fas fa-file-upload"></i>
+                    <span data-i18n="tabFile">File Upload</span>
+                </div>
+                <div class="upload-tab" id="tabUrl" data-tab="url">
+                    <i class="fas fa-link"></i>
+                    <span data-i18n="tabUrl">URL Input</span>
+                </div>
+                <div class="upload-tab" id="tabSearch" data-tab="search">
+                    <i class="fas fa-search"></i>
+                    <span data-i18n="tabSearch">Search Flash</span>
+                </div>
+            </div>
+
+            <!-- File Upload Box -->
+            <div class="upload-box" id="uploadBox">
+                <div class="upload-icon">
+                    <i class="fas fa-file-video"></i>
+                </div>
+                <h2 class="upload-title" data-i18n="flashUploadTitle">Upload SWF File</h2>
+                <p class="upload-desc" data-i18n="flashUploadDesc">Drag and drop a .swf Flash game here or click to select</p>
+                <input type="file" class="upload-input" id="swfInput" accept=".swf">
+                <button class="upload-btn" id="uploadBtn">
+                    <i class="fas fa-file-upload"></i>
+                    <span data-i18n="flashSelect">Select SWF File</span>
+                </button>
+                <p class="upload-desc" style="margin-top:14px;">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="flashHint">Flash games use keyboard and mouse. On mobile, playability depends on the game itself.</span>
+                </p>
+            </div>
+
+            <!-- URL Input Box -->
+            <div class="url-box hidden" id="urlBox">
+                <div class="upload-icon">
+                    <i class="fas fa-link"></i>
+                </div>
+                <h2 class="upload-title" data-i18n="urlTitle">Load SWF from URL</h2>
+                <p class="upload-desc" data-i18n="urlDesc">Enter the direct URL of a .swf file to load</p>
+                <div class="url-input-group">
+                    <input type="url" class="url-input" id="romUrlInput" placeholder="https://example.com/game.swf" data-i18n-placeholder="urlPlaceholder">
+                    <button class="url-load-btn" id="urlLoadBtn">
+                        <i class="fas fa-download"></i>
+                        <span data-i18n="loadRom">Load SWF</span>
+                    </button>
+                </div>
+                <div class="url-preset-group">
+                    <label class="url-preset-label" data-i18n="urlPreset">Preset Flash games:</label>
+                    <select class="url-preset-select" id="romPresetSelect">
+                        <option value="">-- Select a game --</option>
+                    </select>
+                </div>
+                <div class="url-load-error hidden" id="urlLoadError" role="alert"></div>
+                <p class="url-tip">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="urlTip">Tip: Enter a direct link to the .swf file. Games that load extra files at runtime work best when loaded from their original host.</span>
+                </p>
+            </div>
+
+            <!-- Search Box -->
+            <div class="search-box hidden" id="searchBox">
+                <div class="upload-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h2 class="upload-title" data-i18n="searchTitle">Search Flash Games</h2>
+                <p class="upload-desc" data-i18n="searchDesc">Search archive.org for .swf Flash games</p>
+                <div class="search-input-group">
+                    <input type="text" class="search-input" id="romSearchInput" placeholder="Pac-Man flash game" data-i18n-placeholder="searchPlaceholder">
+                    <button class="search-btn" id="romSearchBtn">
+                        <i class="fas fa-search"></i>
+                        <span data-i18n="search">Search</span>
+                    </button>
+                </div>
+                <p class="search-disclaimer">
+                    <i class="fas fa-balance-scale"></i>
+                    <span data-i18n="searchDisclaimer">Results from archive.org. Some Flash games may not be fully supported by Ruffle yet.</span>
+                </p>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+
+            <!-- Instructions Panel -->
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title">
+                        <i class="fas fa-info-circle"></i>
+                        <span data-i18n="instructions">Instructions</span>
+                    </h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="flashControlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="flashHint">Flash games use keyboard and mouse. On mobile, playability depends on the game itself.</span></li>
+                            <li><i class="fas fa-mouse"></i> <span data-i18n="flashRightClick">Right-click on the screen to open the Flash player menu</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-expand"></i> <span data-i18n="flashFullscreen">Fullscreen</span></h4>
+                        <ul>
+                            <li><i class="fas fa-expand-arrows-alt"></i> <span data-i18n="flashFullscreenDesc">Right-click the game screen and choose "Enter Fullscreen"</span></li>
+                            <li><i class="fas fa-compress-arrows-alt"></i> <span data-i18n="exitFullscreen">Press ESC to exit fullscreen</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-volume-up"></i> <span data-i18n="flashSoundTitle">Sound</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="flashSoundDesc">Use the speaker icon in the player menu (right-click) to unmute</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Player Section -->
+        <section class="emulator-section active" id="playerSection">
+            <div id="emulator">
+                <!-- Loading Overlay -->
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="flashLoading">Loading Flash player, please wait...</span>
+                        <small data-i18n="flashLoadingTip">The first launch downloads ~14MB of components and may take a while</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast hidden" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- Ruffle Flash Player (selfhosted, MIT/Apache-2.0 - see vendor/ruffle/README.md) -->
+    <script src="../vendor/ruffle/ruffle.js"></script>
+    <!-- Flash page logic -->
+    <script src="../js/toflash.js"></script>
+</body>
+
+</html>

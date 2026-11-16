@@ -6,7 +6,7 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.4.5-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.4.6-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
@@ -38,8 +38,9 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 ### 🎬 Movies & Series
 - Search and watch movies, series, animes, and shows
 - Multiple source options
+- **Source selection dialog** with language badges (EN/CN) and an archive.org classic-movies source (public-domain films); reopen it anytime from the source dropdown
 - Favorites and watch history
-- 🎮 **Player controls**: playback speed (0.5x–2x), ±10s skip buttons around the progress bar, keyboard shortcuts (Space = play/pause, ←/→ = seek ±10s), plus Video.js built-ins (F fullscreen, M mute)
+- 🎮 **Player controls**: playback speed (0.5x–2x), ±10s skip buttons around the progress bar, keyboard shortcuts (Space = play/pause, ←/→ = seek ±10s), plus Video.js built-ins (F fullscreen, M mute); mobile-friendly control bar
 
 ### 🎵 Music & Radio
 - Search and listen to music
@@ -71,9 +72,10 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **Sony PlayStation 2**: external [TabStationToo](https://tabstationtoo.github.io/TabStationToo/) (PCSX2 compiled to WebAssembly; opens in a new tab, bring your own BIOS and disc images; desktop Chrome/Edge only)
   - **NEC**: PC Engine / TurboGrafx-16, PC-FX (bring your own disc image + BIOS)
   - **Coleco**: ColecoVision
-  - **3DO**: 3DO
+  - **3DO**: 3DO (bring your own firmware: panafz1/panafz10/goldstar/sanyotry .bin)
+  - **Flash**: Flash Player powered by [Ruffle](https://ruffle.rs/) (100 preset games, or load your own .swf via upload/URL/archive.org search; keyboard & mouse recommended)
   - **Arcade**: FBNeo (incl. Neo Geo / CPS1 / CPS3), MAME 2003
-- **20000+ preset ROMs** across 38 platforms, with search on the game launcher
+- **20000+ preset games** across 39 platforms, with search on the game launcher
   - Nintendo: NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116), Virtual Boy (28)
   - Sega: Genesis/Mega Drive (1841), Master System + Game Gear (1283)
   - Coleco: ColecoVision (94)
@@ -83,12 +85,13 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - Commodore: Commodore 64 (49)
   - Amstrad: CPC (6719)
   - Sinclair: ZX Spectrum (67)
+  - Flash: 100 classic games (.swf, Ruffle)
   - Doom engine: DOOM Shareware (4), Freedoom, Freedm, HacX
   - Arcade (FBNeo): 149 games incl. the full Neo Geo MVS lineup (Metal Slug 1–5/X, King of Fighters '94–2003, Samurai Shodown I–V, The Last Blade 1/2, Garou, Real Bout Fatal Fury series, World Heroes series, Puzzle Bobble...), CPS1 classics (Cadillacs and Dinosaurs, Knights of the Round, King of Dragons, Magic Sword, Warriors of Fate, Ghouls 'n Ghosts), CPS3 (Marvel vs. Capcom 2) and 14 MAME-era classics (from the marlon-santana/roms-retro-arcade, roms-retro-neogeo, roms-retro-cps1 and roms-retro-cps3 sets on GitHub)
 - **Three ways to load a ROM**: pick from the preset list, upload a file (core auto-detected by extension), or paste a ROM URL
-- **BIOS upload support**: platforms needing a BIOS (Sega CD, PC-FX) show a dedicated upload box on the emulator page; PSP needs none
+- **BIOS upload support**: platforms needing a BIOS/firmware (Sega CD, 3DO, PC-FX) show a dedicated upload box on the emulator page; PSP needs none
 - **Fast ROM fetching**: direct download for CORS-enabled sources (e.g. GitHub-hosted ROMs), public CORS proxies only as fallback
-- **ROM caching**: downloaded ROMs are stored in Cache Storage, so replaying the same game is instant and works even when proxies are down
+- **ROM caching**: downloaded ROMs and SWFs are stored in Cache Storage, so replaying the same game is instant and works even when proxies are down
 - **Manual download fallback**: if a preset or URL fails to load, an inline button lets you download the ROM file directly, then load it via upload
 - Gamepad support
 - Save/load states and fullscreen via the in-emulator controls
@@ -199,10 +202,11 @@ All 38 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Bandai | WonderSwan / Color | mednafen_wswan | 208 | wonderswan.json |
 | Coleco | ColecoVision | gearcoleco | 94 | coleco.json |
 | 3DO | 3DO | opera | – | – |
+| Other | Flash (Ruffle) | ruffle | 100 | flash.json |
 | Arcade | Arcade (FBNeo, incl. Neo Geo / CPS1 / CPS3) | fbneo | 149 | arcade.json |
 | Arcade | Arcade (MAME 2003+) | mame2003_plus | 153 | mame.json |
 | Other | Doom Engine (prboom) | prboom | 4 | doom.json |
-| **Total** | **38 platforms** | – | **20482** | **29 files** |
+| **Total** | **39 platforms** | – | **20582** | **30 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 ² No bundled games: load your own disc image via upload/URL, plus a BIOS file dumped from your own console (Sega CD: `bios_CD_U/J/E.bin`; PC-FX: `pcfx.rom`) using the BIOS upload box on the emulator page.
@@ -299,7 +303,8 @@ Easy-Web-TV-M3u8/
 │       ├── sega32x.json      # 33 Sega 32X games (No-Intro-style set on archive.org)
 │       ├── amiga.json        # 1455 Commodore Amiga games, single-disk ADF (TOSEC sets on archive.org)
 │       ├── pce.json          # 280 PC Engine / TurboGrafx-16 HuCard games (GoodPCE set on archive.org)
-│       └── zx.json           # 67 ZX Spectrum games (snapshots .z80 / tapes .tzx / disks .dsk from single-game items on archive.org)
+│       ├── zx.json           # 67 ZX Spectrum games (snapshots .z80 / tapes .tzx / disks .dsk from single-game items on archive.org)
+│       └── flash.json        # 100 Flash games (.swf from the archive.org softwarelibrary_flash_games collection, served by Ruffle)
 ├── routes/
 │   ├── tv.html            # TV page
 │   ├── movie.html         # Movie page

@@ -1,0 +1,506 @@
+{
+ "platform": "flash",
+ "core": "ruffle",
+ "games": [
+  {
+   "name": "The Binding Of Isaac: Wrath of the Lamb (Flash) (2012)",
+   "url": "https://archive.org/download/the-binding-of-isaac_202111/The%20Binding%20of%20Isaac.swf",
+   "filename": "The Binding of Isaac.swf"
+  },
+  {
+   "name": "homerun",
+   "url": "https://archive.org/download/homerun_20201126/homerun.swf",
+   "filename": "homerun.swf"
+  },
+  {
+   "name": "Stick RPG Complete (2003)",
+   "url": "https://archive.org/download/stick-rpg-complete/Stick-RPG-Complete.swf",
+   "filename": "Stick-RPG-Complete.swf"
+  },
+  {
+   "name": "Cannibals & Missioneries (2001)",
+   "url": "https://archive.org/download/cannibals-missioneries/Cannibals_%26_Missioneries.swf",
+   "filename": "Cannibals_&_Missioneries.swf"
+  },
+  {
+   "name": "Swords And Sandals 2 (v 2.1.0) (2006)",
+   "url": "https://archive.org/download/swords-and-sandals-2/Swords%20and%20Sandals%202%20%28v%202.1.0%29.swf",
+   "filename": "Swords and Sandals 2 (v 2.1.0).swf"
+  },
+  {
+   "name": "チーズクエスト",
+   "url": "https://archive.org/download/cheese-quest/cheese.swf",
+   "filename": "cheese.swf"
+  },
+  {
+   "name": "Bloxorz (2007)",
+   "url": "https://archive.org/download/bloxors/bloxors.swf",
+   "filename": "bloxors.swf"
+  },
+  {
+   "name": "Firey's Candy Bar Adventure (2009)",
+   "url": "https://archive.org/download/candy-bar-adventure-1/CandyBarAdventure%20%281%29.swf",
+   "filename": "CandyBarAdventure (1).swf"
+  },
+  {
+   "name": "Super Mario Crossover Offline (2013)",
+   "url": "https://archive.org/download/SuperMarioCrossoverOffline/super_mario_bros_crossover.swf",
+   "filename": "super_mario_bros_crossover.swf"
+  },
+  {
+   "name": "Mutilate-a-Doll 2",
+   "url": "https://archive.org/download/mutilate-a-doll-2_202011/164481_mutilate-a-doll-2_v4.swf",
+   "filename": "164481_mutilate-a-doll-2_v4.swf"
+  },
+  {
+   "name": "Pico's School (2006)",
+   "url": "https://archive.org/download/flash_picosschool/flash_picosschool.swf",
+   "filename": "flash_picosschool.swf"
+  },
+  {
+   "name": "Bubble Shooter",
+   "url": "https://archive.org/download/bubble-shooter_swf/bubble-shooter.swf",
+   "filename": "bubble-shooter.swf"
+  },
+  {
+   "name": "Robot Unicorn Attack (2010)",
+   "url": "https://archive.org/download/robotunicornattack_flash/robotunicornattack_flash.swf",
+   "filename": "robotunicornattack_flash.swf"
+  },
+  {
+   "name": "A Koopa's Revenge 2",
+   "url": "https://archive.org/download/a-koopas-revenge-2/a%20koopa%27s%20revenge%202.swf",
+   "filename": "a koopa's revenge 2.swf"
+  },
+  {
+   "name": "Get to the Top Althrough There is No Top BFDI",
+   "url": "https://archive.org/download/bfdi_swf/ag-bfdi.swf",
+   "filename": "ag-bfdi.swf"
+  },
+  {
+   "name": "impossible quiz deluxe newgrounds",
+   "url": "https://archive.org/download/impossible-quiz-deluxe-newgrounds/365143_Impossible_Quiz_Deluxe_NG..swf",
+   "filename": "365143_Impossible_Quiz_Deluxe_NG..swf"
+  },
+  {
+   "name": "The Big Adventure of Owata's Life | 人生オワタの大冒険",
+   "url": "https://archive.org/download/owata/owata.swf",
+   "filename": "owata.swf"
+  },
+  {
+   "name": "Super Mario Flash 2 (2012)",
+   "url": "https://archive.org/download/super-mario-flash-2/super-mario-flash-2.swf",
+   "filename": "super-mario-flash-2.swf"
+  },
+  {
+   "name": "Don't Shoot the Puppy",
+   "url": "https://archive.org/download/noshootpuppy_flash/dont-shoot-the-puppy.swf",
+   "filename": "dont-shoot-the-puppy.swf"
+  },
+  {
+   "name": "Pilsner Urquell Beer game",
+   "url": "https://archive.org/download/game-12537905211/game-1253790521%281%29.swf",
+   "filename": "game-1253790521(1).swf"
+  },
+  {
+   "name": "Madness: Project Nexus Classic",
+   "url": "https://archive.org/download/madness-project-nexus-classic/Madness%20Project%20Nexus%20Classic.swf",
+   "filename": "Madness Project Nexus Classic.swf"
+  },
+  {
+   "name": "Super Smash Flash (2006)",
+   "url": "https://archive.org/download/supersmashflash_swf/SuperSmash.swf",
+   "filename": "SuperSmash.swf"
+  },
+  {
+   "name": "Escaping the Prison (2010)",
+   "url": "https://archive.org/download/etp_20200826/533001_PrisonNG.swf",
+   "filename": "533001_PrisonNG.swf"
+  },
+  {
+   "name": "The Impossible Quiz 2 (2007)",
+   "url": "https://archive.org/download/tiq2_swf/theimpossiblequiz2.swf",
+   "filename": "theimpossiblequiz2.swf"
+  },
+  {
+   "name": "625 Sandwich Stacker",
+   "url": "https://archive.org/download/flash_625-sandwich-stacker/625-sandwich-stacker.swf",
+   "filename": "625-sandwich-stacker.swf"
+  },
+  {
+   "name": "Reimu's Donation Box | 霊夢の賽銭箱",
+   "url": "https://archive.org/download/saisen/saisen.swf",
+   "filename": "saisen.swf"
+  },
+  {
+   "name": "Alien Hominid (2002)",
+   "url": "https://archive.org/download/flash_alien_hominid/alien_hominid.swf",
+   "filename": "alien_hominid.swf"
+  },
+  {
+   "name": "Super Smash Flash 2: Classic Edition (2021)",
+   "url": "https://archive.org/download/ssf2-2007_20210626/ssf2-2007_20210626.swf",
+   "filename": "ssf2-2007_20210626.swf"
+  },
+  {
+   "name": "Family Crisis (2004)",
+   "url": "https://archive.org/download/family-crisis/Family_Crisis.swf",
+   "filename": "Family_Crisis.swf"
+  },
+  {
+   "name": "Minecraft Tower Defence 2",
+   "url": "https://archive.org/download/minecraft-tower-defence-2/minecraft-tower-defence-2.swf",
+   "filename": "minecraft-tower-defence-2.swf"
+  },
+  {
+   "name": "the-last-stand-union-city (2011)",
+   "url": "https://archive.org/download/the-last-stand-union-city/the-last-stand-union-city.swf",
+   "filename": "the-last-stand-union-city.swf"
+  },
+  {
+   "name": "Fiash!",
+   "url": "https://archive.org/download/flash_fishy/flash_fishy.swf",
+   "filename": "flash_fishy.swf"
+  },
+  {
+   "name": "Drag Racer V3 - Flash Game (2006)",
+   "url": "https://archive.org/download/dragracerv3_202012/20.swf",
+   "filename": "20.swf"
+  },
+  {
+   "name": "Papa's Pizzeria (2007)",
+   "url": "https://archive.org/download/flash_papaspizzeria/papaspizzeria_v2.swf",
+   "filename": "papaspizzeria_v2.swf"
+  },
+  {
+   "name": "Talking Tom Cat 2 (Flash Version)",
+   "url": "https://archive.org/download/talking-tom-cat-2-flash/talking_tom_cat_2_in_flash___by_adreamyhead0_d4x9xp2.swf",
+   "filename": "talking_tom_cat_2_in_flash___by_adreamyhead0_d4x9xp2.swf"
+  },
+  {
+   "name": "The Boohbah Zone (2003)",
+   "url": "https://archive.org/download/boobah_zone_flash/boobah.swf",
+   "filename": "boobah.swf"
+  },
+  {
+   "name": "Pokémon Trainer Creator (2013)",
+   "url": "https://archive.org/download/trainercreator/trainercreator.swf",
+   "filename": "trainercreator.swf"
+  },
+  {
+   "name": "Binding Of Isaac",
+   "url": "https://archive.org/download/binding-of-isaac/Binding%20of%20Isaac.swf",
+   "filename": "Binding of Isaac.swf"
+  },
+  {
+   "name": "You Are An Idiot! Virus",
+   "url": "https://archive.org/download/youare_202403/youare.swf",
+   "filename": "youare.swf"
+  },
+  {
+   "name": "Super Mario Sunshine 64 (2006)",
+   "url": "https://archive.org/download/super-mario-sunshine-64/super-mario-sunshine-64.swf",
+   "filename": "super-mario-sunshine-64.swf"
+  },
+  {
+   "name": "Black Licorice (Flash) (2002)",
+   "url": "https://archive.org/download/licorice_swf/licorice.swf",
+   "filename": "licorice.swf"
+  },
+  {
+   "name": "Portal: The Flash Version (2007)",
+   "url": "https://archive.org/download/portal_flash_version/Portal_wcs2.swf",
+   "filename": "Portal_wcs2.swf"
+  },
+  {
+   "name": "Age of War (2007)",
+   "url": "https://archive.org/download/flash_age_of_war/age_of_war.swf",
+   "filename": "age_of_war.swf"
+  },
+  {
+   "name": "Pacman",
+   "url": "https://archive.org/download/pacman_flash_202011/pacman.swf",
+   "filename": "pacman.swf"
+  },
+  {
+   "name": "Helicopter Game",
+   "url": "https://archive.org/download/helicoptergame_flash/helicoptergame.swf",
+   "filename": "helicoptergame.swf"
+  },
+  {
+   "name": "Social Interaction Trainer (2014)",
+   "url": "https://archive.org/download/social-interaction-trainer-flash/sit.swf",
+   "filename": "sit.swf"
+  },
+  {
+   "name": "Mario Combat (2008)",
+   "url": "https://archive.org/download/flash_Mario_Combat/Mario_Combat.swf",
+   "filename": "Mario_Combat.swf"
+  },
+  {
+   "name": "Plumber 2",
+   "url": "https://archive.org/download/1100_plumber_2/plumber_2.swf",
+   "filename": "plumber_2.swf"
+  },
+  {
+   "name": "Pac-Xon (Flash)",
+   "url": "https://archive.org/download/pacxon_swf/pacxon.swf",
+   "filename": "pacxon.swf"
+  },
+  {
+   "name": "unfair_mario",
+   "url": "https://archive.org/download/unfair_mario/unfair_mario.swf",
+   "filename": "unfair_mario.swf"
+  },
+  {
+   "name": "Pacman Advanced (2007)",
+   "url": "https://archive.org/download/pacmanx-advanced_flash/PacmanxAdvanced.swf",
+   "filename": "PacmanxAdvanced.swf"
+  },
+  {
+   "name": "The Right Mix",
+   "url": "https://archive.org/download/flash_therightmix/flash_therightmix.swf",
+   "filename": "flash_therightmix.swf"
+  },
+  {
+   "name": "[ UZINAGAZ]watch Out Behind Hunter Girl Ver",
+   "url": "https://archive.org/download/uzinagazwatch-out-behind-hunter-girl-ver/%5BUZINAGAZ%5Dwatch-out-behind-hunter-girl-ver.swf",
+   "filename": "[UZINAGAZ]watch-out-behind-hunter-girl-ver.swf"
+  },
+  {
+   "name": "The World's Hardest Game 2",
+   "url": "https://archive.org/download/flash_theworldshardestgame2/theworldshardestgame2.swf",
+   "filename": "theworldshardestgame2.swf"
+  },
+  {
+   "name": "Angry Birds Online (2018)",
+   "url": "https://archive.org/download/angry-birds-online_202312/AngryBirdsOnline.swf",
+   "filename": "AngryBirdsOnline.swf"
+  },
+  {
+   "name": "Breaking The Bank (2008)",
+   "url": "https://archive.org/download/flash_breaking_the_bank/breaking_the_bank.swf",
+   "filename": "breaking_the_bank.swf"
+  },
+  {
+   "name": "Prince of Persia",
+   "url": "https://archive.org/download/1100_prince_of_persia/prince_of_persia.swf",
+   "filename": "prince_of_persia.swf"
+  },
+  {
+   "name": "The Binding of Isaac - Wrath of the Lamb (2011)",
+   "url": "https://archive.org/download/isaac_20210228/The%20Binding%20of%20Isaac%20-%20Wrath%20of%20the%20Lamb.swf",
+   "filename": "The Binding of Isaac - Wrath of the Lamb.swf"
+  },
+  {
+   "name": "The Impossible Quiz Book: Chapter 1 (2012)",
+   "url": "https://archive.org/download/flash_theimpossiblequizbook/theimpossiblequizbook.swf",
+   "filename": "theimpossiblequizbook.swf"
+  },
+  {
+   "name": "Germinator",
+   "url": "https://archive.org/download/germinator/germinator.swf",
+   "filename": "germinator.swf"
+  },
+  {
+   "name": "The Binding of Isaac: Wrath of the Lamb Eternal Edition v1.666",
+   "url": "https://archive.org/download/tboiwotl-v1.666/tboiwotl-v1.666.swf",
+   "filename": "tboiwotl-v1.666.swf"
+  },
+  {
+   "name": "Happy Wheels flash original",
+   "url": "https://archive.org/download/happy-wheels_20210204/HappyWheels.swf",
+   "filename": "HappyWheels.swf"
+  },
+  {
+   "name": "Create a Touhou Character (Walfas/create.swf) (2015)",
+   "url": "https://archive.org/download/create.swf/create.swf",
+   "filename": "create.swf"
+  },
+  {
+   "name": "Bang, Boom, Splat! (2008)",
+   "url": "https://archive.org/download/bang-boom-splat-swf/Bang%2C%20Boom%2C%20Splat%21.swf",
+   "filename": "Bang, Boom, Splat!.swf"
+  },
+  {
+   "name": "Whack Your Boss (2014)",
+   "url": "https://archive.org/download/dont_whack_your_boss_202012/dont_whack_your_boss.swf",
+   "filename": "dont_whack_your_boss.swf"
+  },
+  {
+   "name": "All your base are belong to us (2001)",
+   "url": "https://archive.org/download/flash_allyourbase/AYB2.swf",
+   "filename": "AYB2.swf"
+  },
+  {
+   "name": "Burger Tycoon (2008)",
+   "url": "https://archive.org/download/burger-tycoon/Burger%20Tycoon.swf",
+   "filename": "Burger Tycoon.swf"
+  },
+  {
+   "name": "Whack Your Boss (19 ways) (2010)",
+   "url": "https://archive.org/download/dont_whack_your_boss/dont_whack_your_boss.swf",
+   "filename": "dont_whack_your_boss.swf"
+  },
+  {
+   "name": "Sports Heads: Football Championship",
+   "url": "https://archive.org/download/sports_heads_football_championship_flash/sports_heads_football_championship.swf",
+   "filename": "sports_heads_football_championship.swf"
+  },
+  {
+   "name": "Scary Maze Game (2003, Winterrowd) (2003)",
+   "url": "https://archive.org/download/scary-maze-gamewinterrowd/Scary-Maze-Game%28winterrowd.com%29.swf",
+   "filename": "Scary-Maze-Game(winterrowd.com).swf"
+  },
+  {
+   "name": "Yeti Sports: Pingu Throw (2004)",
+   "url": "https://archive.org/download/yetisports1_flash/yetisports1free.swf",
+   "filename": "yetisports1free.swf"
+  },
+  {
+   "name": "Breeding Season (v. Alpha 7.7.2) (2016)",
+   "url": "https://archive.org/download/breeding_season/Breeding%20Season%207.7.2.swf",
+   "filename": "Breeding Season 7.7.2.swf"
+  },
+  {
+   "name": "Wolf Sheep & Cabbage (2002)",
+   "url": "https://archive.org/download/wolf-sheep-cabbage/Wolf_Sheep_%26_Cabbage.swf",
+   "filename": "Wolf_Sheep_&_Cabbage.swf"
+  },
+  {
+   "name": "Samurai Jack: Code of the Samurai",
+   "url": "https://archive.org/download/samurai-jack/Samurai_Jack.swf",
+   "filename": "Samurai_Jack.swf"
+  },
+  {
+   "name": "Papa's freezeria",
+   "url": "https://archive.org/download/papasfreezeria_202011/papasfreezeria.swf",
+   "filename": "papasfreezeria.swf"
+  },
+  {
+   "name": "Papa's Pizzeria (2007)",
+   "url": "https://archive.org/download/papaspizzeria_v2/papaspizzeria_v2.swf",
+   "filename": "papaspizzeria_v2.swf"
+  },
+  {
+   "name": "Pony Creator Full Version by General Zoi (2011)",
+   "url": "https://archive.org/download/pony-creator_202202/pony-creator.swf",
+   "filename": "pony-creator.swf"
+  },
+  {
+   "name": "Wubbzy's Amazing Adventure (level .swf only) (2006)",
+   "url": "https://archive.org/download/wubbzy_swf/wplatform_levels.swf",
+   "filename": "wplatform_levels.swf"
+  },
+  {
+   "name": "Sonic Smash Bros (2007)",
+   "url": "https://archive.org/download/sonic-smash-bros_flash/ssb.swf",
+   "filename": "ssb.swf"
+  },
+  {
+   "name": "Gems",
+   "url": "https://archive.org/download/1100_gems/gems.swf",
+   "filename": "gems.swf"
+  },
+  {
+   "name": "Cirno's Ramune Burst | チルノのラムネバースト三段ロケット (2010)",
+   "url": "https://archive.org/download/cirno_lamune/cirno_lamune.swf",
+   "filename": "cirno_lamune.swf"
+  },
+  {
+   "name": "Old Talking Tom Cat (Flash Version)",
+   "url": "https://archive.org/download/tomtalk1/tomtalk1.swf",
+   "filename": "tomtalk1.swf"
+  },
+  {
+   "name": "The World's Hardest Game (2007)",
+   "url": "https://archive.org/download/the-worlds-hardest-game_202310/the-worlds-hardest-g-1043817f.swf",
+   "filename": "the-worlds-hardest-g-1043817f.swf"
+  },
+  {
+   "name": "Smoothie Operator",
+   "url": "https://archive.org/download/ruff-bb-smoothie-6/RuffBB_Smoothie6.swf",
+   "filename": "RuffBB_Smoothie6.swf"
+  },
+  {
+   "name": "Gunblood",
+   "url": "https://archive.org/download/gunblood_flash/gunblood.swf",
+   "filename": "gunblood.swf"
+  },
+  {
+   "name": "魔理沙のぐるぐる魔砲陣 (2009)",
+   "url": "https://archive.org/download/guruguru_202104/guruguru.swf",
+   "filename": "guruguru.swf"
+  },
+  {
+   "name": "Gun Mayhem 2 More Mayhem (2012)",
+   "url": "https://archive.org/download/gun-mayhem-two/Gun%20Mayhem%202%20More%20Mayhem.swf",
+   "filename": "Gun Mayhem 2 More Mayhem.swf"
+  },
+  {
+   "name": "Dad n Me",
+   "url": "https://archive.org/download/dadnme/dadnme.swf",
+   "filename": "dadnme.swf"
+  },
+  {
+   "name": "Don't Whack Your Boss With Super Power",
+   "url": "https://archive.org/download/dont-whack-your-boss-with-super-power/whack-your-boss-superhero-style206urlfix.swf",
+   "filename": "whack-your-boss-superhero-style206urlfix.swf"
+  },
+  {
+   "name": "Spank The Booty Game",
+   "url": "https://archive.org/download/spank-the-booty-game/Spank%20The%20Booty%20Game.swf",
+   "filename": "Spank The Booty Game.swf"
+  },
+  {
+   "name": "Swords And Sandals Crusader (v 1.1.0)",
+   "url": "https://archive.org/download/swords-and-sandals-crusader/Swords%20and%20Sandals%20-%20Crusader%20%28v%201.1.0%29.swf",
+   "filename": "Swords and Sandals - Crusader (v 1.1.0).swf"
+  },
+  {
+   "name": "ultimate-flash-sonic",
+   "url": "https://archive.org/download/ultimate-flash-sonic_202101/ultimate-flash-sonic.swf",
+   "filename": "ultimate-flash-sonic.swf"
+  },
+  {
+   "name": "Papa Louie: When Pizza Attack! (2006)",
+   "url": "https://archive.org/download/flash_papalouie_v2/papalouie_v2.swf",
+   "filename": "papalouie_v2.swf"
+  },
+  {
+   "name": "Big Time Butter Baron (2012)",
+   "url": "https://archive.org/download/big-time-butter-baron/Big_Time_Butter_Baron.swf",
+   "filename": "Big_Time_Butter_Baron.swf"
+  },
+  {
+   "name": "Questionaut (2008)",
+   "url": "https://archive.org/download/questionaut/grammar.swf",
+   "filename": "grammar.swf"
+  },
+  {
+   "name": "Canterlot Siege 3: Inversion (2014)",
+   "url": "https://archive.org/download/canterlot_siege_3__inversion_by_futzi01-d7pt6s3/canterlot_siege_3__inversion_by_futzi01-d7pt6s3.swf",
+   "filename": "canterlot_siege_3__inversion_by_futzi01-d7pt6s3.swf"
+  },
+  {
+   "name": "Godzilla Daikaiju Battle Royale (Flash Version)",
+   "url": "https://archive.org/download/gdbr_20210915/gdbr.swf",
+   "filename": "gdbr.swf"
+  },
+  {
+   "name": "Duck Life 4",
+   "url": "https://archive.org/download/duck-life-4_20210406/duck-life-4_20210406.swf",
+   "filename": "duck-life-4_20210406.swf"
+  },
+  {
+   "name": "Shanghai Dynasty",
+   "url": "https://archive.org/download/flash_shanghai-dynasty/flash_shanghai-dynasty.swf",
+   "filename": "flash_shanghai-dynasty.swf"
+  },
+  {
+   "name": "Learn to Fly 3 (2016)",
+   "url": "https://archive.org/download/learn_to_fly_3/secureLtF3NAPE.swf",
+   "filename": "secureLtF3NAPE.swf"
+  }
+ ]
+}
