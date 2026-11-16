@@ -237,6 +237,14 @@ var games = [
         url: '../routes/emulatorjs.html?core=cap32'
     },
     {
+        id: 42,
+        name: 'Doom Engine (prboom)',
+        platform: 'DOOM',
+        category: 'emulator',
+        image: '../images/doom.svg',
+        url: '../routes/emulatorjs.html?core=prboom'
+    },
+    {
         id: 9,
         name: 'N64 Emulator',
         platform: 'N64',

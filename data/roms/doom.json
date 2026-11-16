@@ -1,0 +1,26 @@
+{
+ "platform": "doom",
+ "core": "prboom",
+ "games": [
+  {
+   "name": "DOOM Shareware (1993)",
+   "url": "https://archive.org/download/doom-shareware_1996/DOOM1.WAD",
+   "filename": "DOOM1.WAD"
+  },
+  {
+   "name": "Freedoom (Phase 1 & 2, v0.13.0)",
+   "url": "https://github.com/freedoom/freedoom/releases/download/v0.13.0/freedoom-0.13.0.zip",
+   "filename": "freedoom-0.13.0.zip"
+  },
+  {
+   "name": "Freedm: Deathmatch (v0.13.0)",
+   "url": "https://github.com/freedoom/freedoom/releases/download/v0.13.0/freedm-0.13.0.zip",
+   "filename": "freedm-0.13.0.zip"
+  },
+  {
+   "name": "HacX 1.2 (Freeware)",
+   "url": "https://archive.org/download/hacx_12/HACX.zip",
+   "filename": "HACX.zip"
+  }
+ ]
+}

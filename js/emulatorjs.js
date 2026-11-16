@@ -1478,6 +1478,7 @@ var coreMapping = {
     'ngc': 'mednafen_ngp',
     'cdt': 'cap32',
     'sna': 'cap32',
+    'wad': 'prboom',
     '32x': 'picodrive'
 };
 
@@ -2050,6 +2051,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'mednafen_wswan': 'wonderswan',
         'mednafen_ngp': 'ngp',
         'cap32': 'cpc',
+        'prboom': 'doom',
         'beetle_vb': 'vb'
 };
 
