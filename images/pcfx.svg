@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <rect x="30" y="42" width="140" height="42" rx="8" fill="#e8e6e0" stroke="#9a968e" stroke-width="2"/>
+  <ellipse cx="75" cy="63" rx="26" ry="12" fill="#c8c4bc" stroke="#8a867e"/>
+  <ellipse cx="75" cy="61" rx="18" ry="8" fill="#7f5fc4"/>
+  <text x="130" y="60" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#4a3a6e" text-anchor="middle">PC-FX</text>
+  <circle cx="152" cy="74" r="3" fill="#c33"/>
+  <rect x="60" y="28" width="80" height="12" rx="4" fill="#d4d0c8"/>
+  <text x="100" y="38" font-family="Arial, sans-serif" font-size="8" fill="#7a7468" text-anchor="middle">NEC</text>
+</svg>

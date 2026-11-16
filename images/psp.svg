@@ -1,17 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
-  <rect x="20" y="15" width="160" height="90" rx="8" fill="#222" stroke="#444" stroke-width="2"/>
-  <rect x="30" y="25" width="140" height="60" rx="5" fill="#111"/>
-  <rect x="35" y="30" width="130" height="50" fill="#3366aa"/>
-  <circle cx="50" cy="90" r="10" fill="#333" stroke="#555" stroke-width="1"/>
-  <circle cx="50" cy="90" r="5" fill="#222"/>
-  <rect x="65" y="85" width="5" height="12" rx="1" fill="#444"/>
-  <rect x="73" y="85" width="5" height="12" rx="1" fill="#444"/>
-  <rect x="81" y="85" width="5" height="12" rx="1" fill="#444"/>
-  <rect x="89" y="85" width="5" height="12" rx="1" fill="#444"/>
-  <rect x="100" y="85" width="8" height="10" rx="1" fill="#555"/>
-  <rect x="112" y="85" width="8" height="10" rx="1" fill="#555"/>
-  <rect x="124" y="85" width="8" height="10" rx="1" fill="#555"/>
-  <rect x="136" y="85" width="8" height="10" rx="1" fill="#555"/>
-  <rect x="150" y="85" width="20" height="10" rx="2" fill="#666"/>
-  <text x="100" y="10" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#444">PSP</text>
+  <rect x="45" y="15" width="110" height="90" rx="12" fill="#181818" stroke="#000" stroke-width="2"/>
+  <rect x="45" y="28" width="110" height="52" fill="#0a0a0a"/>
+  <text x="100" y="58" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#e8e8e8" text-anchor="middle">PSP</text>
+  <circle cx="63" cy="93" r="7" fill="#333" stroke="#555"/>
+  <circle cx="137" cy="93" r="7" fill="#333" stroke="#555"/>
+  <rect x="88" y="88" width="24" height="10" rx="3" fill="#2a2a2a"/>
+  <rect x="52" y="15" width="96" height="6" rx="3" fill="#242424"/>
 </svg>

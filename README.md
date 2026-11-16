@@ -59,7 +59,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 - Built-in mini games (Square Obstacles, Pong, Breakout, Tic Tac Toe)
 - **Emulator support** - Play retro console games, powered by [EmulatorJS](https://emulatorjs.org/)
   - **Nintendo**: NES, SNES, N64, GB/GBC, GBA, NDS, Virtual Boy
-  - **PlayStation**: PS1/PSX
+  - **PlayStation**: PS1/PSX, PSP (bring your own disc image; desktop recommended)
   - **Sega**: Genesis/Mega Drive, Master System, Game Gear, Sega CD, Sega 32X, Saturn
   - **Atari**: 2600, 5200, 7800, Jaguar, Lynx
   - **Commodore**: C64, C128, VIC-20, PET, Plus/4, Amiga
@@ -69,11 +69,11 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **Sinclair**: ZX Spectrum
   - **Doom engine**: DOOM Shareware, Freedoom/Freedm, HacX (prboom)
   - **Sony PlayStation 2**: external [TabStationToo](https://tabstationtoo.github.io/TabStationToo/) (PCSX2 compiled to WebAssembly; opens in a new tab, bring your own BIOS and disc images; desktop Chrome/Edge only)
-  - **NEC**: PC Engine / TurboGrafx-16
+  - **NEC**: PC Engine / TurboGrafx-16, PC-FX (bring your own disc image + BIOS)
   - **Coleco**: ColecoVision
   - **3DO**: 3DO
   - **Arcade**: FBNeo (incl. Neo Geo / CPS1 / CPS3), MAME 2003
-- **20000+ preset ROMs** across 35 platforms, with search on the game launcher
+- **20000+ preset ROMs** across 38 platforms, with search on the game launcher
   - Nintendo: NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116), Virtual Boy (28)
   - Sega: Genesis/Mega Drive (1841), Master System + Game Gear (1283)
   - Coleco: ColecoVision (94)
@@ -86,6 +86,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - Doom engine: DOOM Shareware (4), Freedoom, Freedm, HacX
   - Arcade (FBNeo): 149 games incl. the full Neo Geo MVS lineup (Metal Slug 1–5/X, King of Fighters '94–2003, Samurai Shodown I–V, The Last Blade 1/2, Garou, Real Bout Fatal Fury series, World Heroes series, Puzzle Bobble...), CPS1 classics (Cadillacs and Dinosaurs, Knights of the Round, King of Dragons, Magic Sword, Warriors of Fate, Ghouls 'n Ghosts), CPS3 (Marvel vs. Capcom 2) and 14 MAME-era classics (from the marlon-santana/roms-retro-arcade, roms-retro-neogeo, roms-retro-cps1 and roms-retro-cps3 sets on GitHub)
 - **Three ways to load a ROM**: pick from the preset list, upload a file (core auto-detected by extension), or paste a ROM URL
+- **BIOS upload support**: platforms needing a BIOS (Sega CD, PC-FX) show a dedicated upload box on the emulator page; PSP needs none
 - **Fast ROM fetching**: direct download for CORS-enabled sources (e.g. GitHub-hosted ROMs), public CORS proxies only as fallback
 - **ROM caching**: downloaded ROMs are stored in Cache Storage, so replaying the same game is instant and works even when proxies are down
 - **Manual download fallback**: if a preset or URL fails to load, an inline button lets you download the ROM file directly, then load it via upload
@@ -160,7 +161,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Supported Platforms
 
-All 35 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **20482** games across 29 JSON files.
+All 38 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **20482** games across 29 JSON files. Sega CD and PC-FX have no bundled games and require a BIOS file (uploaded on the emulator page) dumped from your own console.
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -172,10 +173,11 @@ All 35 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Nintendo | Nintendo DS | melonds | – | – |
 | Nintendo | Virtual Boy | beetle_vb | 28 | vb.json |
 | PlayStation | PS1 / PSX | pcsx_rearmed | – | – |
+| PlayStation | PSP | ppsspp | – | – |
 | Sega | Genesis / Mega Drive | genesis_plus_gx | 1841 | genesis.json |
 | Sega | Master System | smsplus | 1283 | sms.json |
 | Sega | Game Gear | smsplus | – ¹ | sms.json |
-| Sega | Sega CD | picodrive | – | – |
+| Sega | Sega CD | picodrive | – ² | – |
 | Sega | Sega 32X | picodrive | 33 | sega32x.json |
 | Sega | Saturn | yabause | – | – |
 | Atari | Atari 2600 | stella2014 | 4145 | atari2600.json |
@@ -192,6 +194,7 @@ All 35 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Amstrad | Amstrad CPC | cap32 | 6719 | cpc.json |
 | Sinclair | ZX Spectrum | fuse | 67 | zx.json |
 | NEC | PC Engine / TurboGrafx-16 | mednafen_pce | 280 | pce.json |
+| NEC | PC-FX | mednafen_pcfx | – ² | – |
 | SNK | Neo Geo Pocket / Color | mednafen_ngp | 82 | ngp.json |
 | Bandai | WonderSwan / Color | mednafen_wswan | 208 | wonderswan.json |
 | Coleco | ColecoVision | gearcoleco | 94 | coleco.json |
@@ -199,9 +202,10 @@ All 35 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Arcade | Arcade (FBNeo, incl. Neo Geo / CPS1 / CPS3) | fbneo | 149 | arcade.json |
 | Arcade | Arcade (MAME 2003+) | mame2003_plus | 153 | mame.json |
 | Other | Doom Engine (prboom) | prboom | 4 | doom.json |
-| **Total** | **35 platforms** | – | **20482** | **29 files** |
+| **Total** | **38 platforms** | – | **20482** | **29 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
+² No bundled games: load your own disc image via upload/URL, plus a BIOS file dumped from your own console (Sega CD: `bios_CD_U/J/E.bin`; PC-FX: `pcfx.rom`) using the BIOS upload box on the emulator page.
 
 ### Core Features
 - **Automatic core detection**: Upload any ROM file and the system automatically detects the platform

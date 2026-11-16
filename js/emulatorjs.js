@@ -90,6 +90,12 @@ var i18n = {
         searchSource: '搜索源：',
         urlPreset: '预设 ROM：',
         biosMissing: '缺少 NeoGeo BIOS，街机游戏无法启动。请将 neogeo.zip 放入 routes/bios/ 目录后刷新重试。',
+        biosTitle: '需要 BIOS',
+        biosDesc: '此平台需要你自己主机的 BIOS 文件才能启动。请在加载游戏前先选择 BIOS 文件。',
+        biosFileLabel: '所需的 BIOS 文件：',
+        selectBios: '选择 BIOS 文件',
+        biosSelected: 'BIOS 已选择：',
+        biosRequired: '此平台需要 BIOS 文件才能启动。请先在页面上方上传 BIOS。',
         biosDownloaded: '已自动获取 NeoGeo BIOS'
     },
     en: {
@@ -180,6 +186,12 @@ var i18n = {
         searchSource: 'Search Source:',
         urlPreset: 'Preset ROMs:',
         biosMissing: 'NeoGeo BIOS is missing. Arcade games cannot start. Please place neogeo.zip in the routes/bios/ folder and refresh.',
+        biosTitle: 'BIOS Required',
+        biosDesc: 'This platform needs a BIOS file dumped from your own console. Select it before loading a game.',
+        biosFileLabel: 'Required BIOS file:',
+        selectBios: 'Select BIOS File',
+        biosSelected: 'BIOS selected: ',
+        biosRequired: 'This platform requires a BIOS file to start. Please upload the BIOS first (see the box above).',
         biosDownloaded: 'NeoGeo BIOS downloaded automatically'
     },
     ja: {
@@ -269,6 +281,12 @@ var i18n = {
         searchSource: '検索元：',
         urlPreset: 'ROMプリセット：',
         biosMissing: 'NeoGeo BIOS がありません。アーケードゲームを起動できません。routes/bios/ フォルダに neogeo.zip を配置して再読み込みしてください。',
+        biosTitle: 'BIOS が必要です',
+        biosDesc: 'このプラットフォームは、あなたの本体から吸い出した BIOS ファイルが必要です。ゲームを読み込む前に選択してください。',
+        biosFileLabel: '必要な BIOS ファイル：',
+        selectBios: 'BIOS ファイルを選択',
+        biosSelected: 'BIOS 選択済み：',
+        biosRequired: 'このプラットフォームの起動には BIOS ファイルが必要です。先にページ上部で BIOS をアップロードしてください。',
         biosDownloaded: 'NeoGeo BIOS を自動取得しました'
     },
     ko: {
@@ -358,6 +376,12 @@ var i18n = {
         searchSource: '검색 소스：',
         urlPreset: 'ROM 프리셋:',
         biosMissing: 'NeoGeo BIOS가 없어 아케이드 게임을 시작할 수 없습니다. routes/bios/ 폴더에 neogeo.zip을 넣고 새로고침하세요.',
+        biosTitle: 'BIOS 필요',
+        biosDesc: '이 플랫폼은 본인 콘솔에서 덤프한 BIOS 파일이 필요합니다. 게임을 불러오기 전에 선택하세요.',
+        biosFileLabel: '필요한 BIOS 파일:',
+        selectBios: 'BIOS 파일 선택',
+        biosSelected: 'BIOS 선택됨: ',
+        biosRequired: '이 플랫폼은 시작하려면 BIOS 파일이 필요합니다. 먼저 페이지 상단에서 BIOS를 업로드하세요.',
         biosDownloaded: 'NeoGeo BIOS를 자동으로 가져왔습니다'
     },
     fr: {
@@ -446,6 +470,12 @@ var i18n = {
         searchSource: 'Source de recherche:',
         urlPreset: 'ROM prédéfinis :',
         biosMissing: 'Le BIOS NeoGeo est manquant, les jeux d\'arcade ne peuvent pas démarrer. Placez neogeo.zip dans le dossier routes/bios/ puis actualisez.',
+        biosTitle: 'BIOS requis',
+        biosDesc: 'Cette plateforme nécessite un fichier BIOS extrait de votre propre console. Sélectionnez-le avant de charger un jeu.',
+        biosFileLabel: 'Fichier BIOS requis :',
+        selectBios: 'Sélectionner le fichier BIOS',
+        biosSelected: 'BIOS sélectionné : ',
+        biosRequired: 'Cette plateforme nécessite un fichier BIOS pour démarrer. Veuillez d\'abord téléverser le BIOS (voir le cadre ci-dessus).',
         biosDownloaded: 'BIOS NeoGeo téléchargé automatiquement'
     },
     de: {
@@ -534,6 +564,12 @@ var i18n = {
         searchSource: 'Suchquelle:',
         urlPreset: 'ROM-Vorlagen:',
         biosMissing: 'NeoGeo-BIOS fehlt, Arcade-Spiele können nicht starten. Legen Sie neogeo.zip in den Ordner routes/bios/ und aktualisieren Sie die Seite.',
+        biosTitle: 'BIOS erforderlich',
+        biosDesc: 'Diese Plattform benötigt eine BIOS-Datei aus Ihrem eigenen Konsolen-Dump. Wählen Sie sie, bevor Sie ein Spiel laden.',
+        biosFileLabel: 'Erforderliche BIOS-Datei:',
+        selectBios: 'BIOS-Datei auswählen',
+        biosSelected: 'BIOS ausgewählt: ',
+        biosRequired: 'Diese Plattform benötigt zum Starten eine BIOS-Datei. Bitte laden Sie zuerst den BIOS hoch (siehe Feld oben).',
         biosDownloaded: 'NeoGeo-BIOS automatisch geladen'
     },
     es: {
@@ -622,6 +658,12 @@ var i18n = {
         searchSource: 'Fuente de búsqueda:',
         urlPreset: 'ROM predefinidos:',
         biosMissing: 'Falta el BIOS de NeoGeo, los juegos arcade no pueden iniciar. Coloque neogeo.zip en la carpeta routes/bios/ y actualice.',
+        biosTitle: 'BIOS requerido',
+        biosDesc: 'Esta plataforma necesita un archivo BIOS volcado de tu propia consola. Selecciónalo antes de cargar un juego.',
+        biosFileLabel: 'Archivo BIOS requerido:',
+        selectBios: 'Seleccionar archivo BIOS',
+        biosSelected: 'BIOS seleccionado: ',
+        biosRequired: 'Esta plataforma requiere un archivo BIOS para iniciar. Sube primero el BIOS (ver el recuadro de arriba).',
         biosDownloaded: 'BIOS de NeoGeo descargado automáticamente'
     },
     ru: {
@@ -710,6 +752,12 @@ var i18n = {
         searchSource: 'Источник поиска:',
         urlPreset: 'Предустановленные ROM:',
         biosMissing: 'Отсутствует BIOS NeoGeo, аркадные игры не могут запуститься. Поместите neogeo.zip в папку routes/bios/ и обновите страницу.',
+        biosTitle: 'Требуется BIOS',
+        biosDesc: 'Этой платформе нужен файл BIOS, снятый с вашей собственной консоли. Выберите его перед загрузкой игры.',
+        biosFileLabel: 'Требуемый файл BIOS:',
+        selectBios: 'Выбрать файл BIOS',
+        biosSelected: 'BIOS выбран: ',
+        biosRequired: 'Для запуска этой платформы требуется файл BIOS. Сначала загрузите BIOS (см. блок выше).',
         biosDownloaded: 'BIOS NeoGeo загружен автоматически'
     }
 };
@@ -1631,7 +1679,12 @@ function fetchRemoteBios(callback) {
 // the MAME cores do not, so they skip the check entirely.
 function ensureArcadeBios(callback) {
     if (EJS_core !== 'fbneo') {
-        EJS_biosUrl = ''; // MAME cores must not download the unused NeoGeo BIOS
+        // A user-provided BIOS File (Sega CD / PC-FX) must survive this check
+        if (EJS_biosUrl && typeof EJS_biosUrl === 'object') {
+            callback(true);
+            return;
+        }
+        EJS_biosUrl = ''; // Other cores must not download the unused NeoGeo BIOS
         callback(true);
         return;
     }
@@ -1659,6 +1712,20 @@ function ensureArcadeBios(callback) {
 
 // Load EmulatorJS script
 function loadEmulatorJS() {
+    // Platforms that need a user-supplied BIOS (Sega CD / PC-FX) cannot start without it
+    var biosReq = BIOS_REQUIREMENTS[getPlatformForCore(EJS_core)];
+    if (biosReq) {
+        if (!pendingBiosFile) {
+            console.error('BIOS file is required for platform:', getPlatformForCore(EJS_core));
+            var biosOverlay = document.getElementById('loadingOverlay');
+            if (biosOverlay) {
+                biosOverlay.classList.add('hidden');
+            }
+            showToast(t('biosRequired'));
+            return;
+        }
+        EJS_biosUrl = pendingBiosFile; // File object - EmulatorJS writes it into the FS by its name
+    }
     // Set controlScheme from the current core so "Control Settings" / virtual gamepad use the
     // correct gamepad layout (stable/4.2.3 menu lacks segaMD; Genesis needs segaCD, see controlSchemeMapping)
     EJS_controlScheme = getControlSchemeForCore(EJS_core);
@@ -2052,9 +2119,54 @@ document.addEventListener('DOMContentLoaded', function() {
         'mednafen_ngp': 'ngp',
         'cap32': 'cpc',
         'fuse': 'zx',
+        'ppsspp': 'psp',
+        'mednafen_pcfx': 'pcfx',
         'prboom': 'doom',
         'beetle_vb': 'vb'
 };
+
+// Platforms whose games cannot run without a user-supplied BIOS (uploaded on the page).
+// picodrive only needs one when running Sega CD discs (platform=segacd), not for
+// Genesis/32X cartridges; mednafen_pcfx always needs pcfx.rom.
+var BIOS_REQUIREMENTS = {
+    'segacd': { file: 'bios_CD_U.bin / bios_CD_J.bin / bios_CD_E.bin (any one region)' },
+    'pcfx': { file: 'pcfx.rom' }
+};
+
+// Resolve the preset/platform key for a core. A ?platform= URL parameter wins over
+// the static map so one core can serve several platforms (picodrive: 32X vs Sega CD).
+function getPlatformForCore(core) {
+    var p = new URLSearchParams(window.location.search).get('platform');
+    return p || corePlatformMap[core] || '';
+}
+
+// BIOS upload UI (Sega CD / PC-FX): show the requirement box and remember the
+// user's BIOS file; loadEmulatorJS() passes it to EmulatorJS as EJS_biosUrl.
+var pendingBiosFile = null;
+function initBiosUI() {
+    var biosBox = document.getElementById('biosBox');
+    if (!biosBox) return;
+    var req = BIOS_REQUIREMENTS[getPlatformForCore(EJS_core)];
+    if (!req) return; // platform needs no BIOS - keep the box hidden
+    var fileNameEl = document.getElementById('biosFileName');
+    var biosInput = document.getElementById('biosInput');
+    var biosBtn = document.getElementById('biosBtn');
+    var biosStatus = document.getElementById('biosStatus');
+    if (!fileNameEl || !biosInput || !biosBtn || !biosStatus) return;
+    fileNameEl.textContent = t('biosFileLabel') + ' ' + req.file;
+    biosBtn.addEventListener('click', function() {
+        biosInput.click();
+    });
+    biosInput.addEventListener('change', function() {
+        var f = this.files && this.files[0];
+        if (!f) return;
+        pendingBiosFile = f;
+        biosStatus.textContent = t('biosSelected') + f.name;
+        biosStatus.classList.remove('hidden');
+        console.log('BIOS file selected:', f.name, Math.round(f.size / 1024) + 'KB');
+    });
+    biosBox.classList.remove('hidden');
+}
 
 
     // Preset ROM cache
@@ -2062,7 +2174,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load preset ROM options from JSON file based on core
     function loadPresetOptions(core) {
-        var platform = corePlatformMap[core] || '';
+        var platform = getPlatformForCore(core);
         var select = document.getElementById('romPresetSelect');
         if (!select) return;
         
@@ -2148,6 +2260,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize preset options based on current core
     loadPresetOptions(EJS_core);
+    
+    // BIOS upload UI (only for platforms that require a BIOS: Sega CD / PC-FX)
+    initBiosUI();
     
     // Reset button - return to the ROM selection screen (initial state, no page reload),
     // stopping the running emulator so a different game can be loaded.

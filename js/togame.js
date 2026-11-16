@@ -262,6 +262,30 @@ var games = [
         url: '../routes/emulatorjs.html?core=fuse'
     },
     {
+        id: 45,
+        name: 'PSP Emulator',
+        platform: 'PSP',
+        category: 'emulator',
+        image: '../images/psp.svg',
+        url: '../routes/emulatorjs.html?core=ppsspp'
+    },
+    {
+        id: 46,
+        name: 'Sega CD Emulator',
+        platform: 'Sega CD',
+        category: 'emulator',
+        image: '../images/segacd.svg',
+        url: '../routes/emulatorjs.html?core=picodrive&platform=segacd'
+    },
+    {
+        id: 47,
+        name: 'PC-FX Emulator',
+        platform: 'PC-FX',
+        category: 'emulator',
+        image: '../images/pcfx.svg',
+        url: '../routes/emulatorjs.html?core=mednafen_pcfx'
+    },
+    {
         id: 9,
         name: 'N64 Emulator',
         platform: 'N64',

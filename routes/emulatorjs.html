@@ -50,6 +50,22 @@
                 </div>
             </div>
 
+            <!-- BIOS Upload Box (shown only for platforms that require a BIOS, e.g. Sega CD / PC-FX) -->
+            <div class="upload-box hidden" id="biosBox">
+                <div class="upload-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h2 class="upload-title" data-i18n="biosTitle">BIOS Required</h2>
+                <p class="upload-desc" data-i18n="biosDesc">This platform needs a BIOS file dumped from your own console. Select it before loading a game.</p>
+                <p class="upload-desc bios-requirement" id="biosFileName"></p>
+                <input type="file" class="upload-input" id="biosInput">
+                <button class="upload-btn" id="biosBtn">
+                    <i class="fas fa-file-upload"></i>
+                    <span data-i18n="selectBios">Select BIOS File</span>
+                </button>
+                <p class="upload-desc hidden" id="biosStatus" style="color:#7dff7d;"></p>
+            </div>
+
             <!-- File Upload Box -->
             <div class="upload-box" id="uploadBox">
                 <div class="upload-icon">
