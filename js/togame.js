@@ -229,6 +229,14 @@ var games = [
         url: '../routes/emulatorjs.html?core=mednafen_ngp'
     },
     {
+        id: 41,
+        name: 'Amstrad CPC Emulator',
+        platform: 'CPC',
+        category: 'emulator',
+        image: '../images/amstrad.svg',
+        url: '../routes/emulatorjs.html?core=cap32'
+    },
+    {
         id: 9,
         name: 'N64 Emulator',
         platform: 'N64',

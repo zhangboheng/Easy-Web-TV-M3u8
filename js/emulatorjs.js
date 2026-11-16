@@ -1476,6 +1476,8 @@ var coreMapping = {
     'wsc': 'mednafen_wswan',
     'ngp': 'mednafen_ngp',
     'ngc': 'mednafen_ngp',
+    'cdt': 'cap32',
+    'sna': 'cap32',
     '32x': 'picodrive'
 };
 
@@ -2047,6 +2049,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'mednafen_pce': 'pce',
         'mednafen_wswan': 'wonderswan',
         'mednafen_ngp': 'ngp',
+        'cap32': 'cpc',
         'beetle_vb': 'vb'
 };
 
