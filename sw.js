@@ -1,5 +1,5 @@
 // Easy Web TV Service Worker
-const CACHE_NAME = 'easy-web-tv-v8.4.8';
+const CACHE_NAME = 'easy-web-tv-v8.4.9';
 
 // Assets to cache on install - only local assets that exist
 const PRECACHE_ASSETS = [

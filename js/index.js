@@ -1,7 +1,7 @@
 /**
  * Easy Web TV - Main Application
  * Native JavaScript (No jQuery)
- * @version 8.4.8
+ * @version 8.4.9
  */
 
 // Adult content translations for all supported languages
@@ -1142,6 +1142,7 @@ DOM.ready(function() {
     if (scrollidbar) {
         scrollidbar.innerHTML = '';
         DOM.append(scrollidbar, `
+            <p>[2026-11-17] V8.4.9 release Add MSX emulator (WebMSX embed, 3 open-source homebrew presets) and J2ME mobile games (J2meJS embed, jar URL/upload), new Computers and Mobile game categories, game page category deep-link fix, PICO-8 preset list alignment fix</p>
             <p>[2026-11-17] V8.4.8 release Fix invisible v86/WASM-4 emulator screens, Win30 auto-boot and centered 4:3 graphics, loading spinners for embedded BBC Micro/Apple II, mobile search input auto-zoom on iOS</p>
             <p>[2026-11-16] V8.4.7 release Add DOS game support (js-dos) with 100 preset games, x86 Retro PC (v86), BBC Micro (jsbeeb), Apple II (apple2js), WASM-4 fantasy console, ColecoVision BIOS upload, neon rebuilds of Breakout and Tic Tac Toe, removed 13 unused files</p>
             <p>[2026-11-16] V8.4.6 release Add Flash game player (Ruffle) with 100 preset games, 3DO BIOS upload, movie source selection dialog with archive.org classic movies</p>
