@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>PICO-8 Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .pico8-wrapper {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #000;
+        }
+        .pico8-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: min(78vh, 640px);
+            border: 2px solid rgba(163,0,27,0.5);
+            border-radius: 10px;
+            background: #111;
+        }
+        .preset-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .preset-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(163,0,27,0.35);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .preset-item:hover { background: rgba(163,0,27,0.25); }
+        .preset-item .pi-icon { color: #FFEC27; font-size: 18px; width: 24px; text-align: center; }
+        .preset-item .pi-name { color: #fff; font-weight: 600; font-size: 14px; }
+        .preset-item .pi-desc { color: rgba(255,255,255,0.55); font-size: 12px; }
+        .preset-item .pi-size {
+            margin-left: auto;
+            color: #ffd166;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="header-title">
+                <i class="fas fa-magic"></i>
+                <span id="pageTitle" data-i18n="pageTitle">PICO-8</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="resetBtn" style="display: none;">
+                <i class="fas fa-redo"></i>
+                <span data-i18n="reset">Reset</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Upload Section -->
+        <section class="upload-section" id="uploadSection">
+            <!-- Tab Switch -->
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabPreset" data-tab="preset">
+                    <i class="fas fa-star"></i>
+                    <span data-i18n="tabPreset">Featured Games</span>
+                </div>
+                <div class="upload-tab" id="tabUrl" data-tab="url">
+                    <i class="fas fa-link"></i>
+                    <span data-i18n="tabUrl">Web Build URL</span>
+                </div>
+                <div class="upload-tab" id="tabFile" data-tab="file">
+                    <i class="fas fa-file-upload"></i>
+                    <span data-i18n="tabFile">Local Build</span>
+                </div>
+            </div>
+
+            <!-- Preset Box -->
+            <div class="search-box" id="presetBox">
+                <div class="upload-icon"><i class="fas fa-magic"></i></div>
+                <h2 class="upload-title" data-i18n="presetTitle">PICO-8 Web Games</h2>
+                <p class="upload-desc" data-i18n="presetDesc">Featured free PICO-8 games, played via each author's official web build. PICO-8 itself is a paid fantasy console by Lexaloffle and is not bundled here; buy it to export your own builds.</p>
+                <div class="preset-list" id="presetList"></div>
+            </div>
+
+            <!-- URL Input Box -->
+            <div class="url-box hidden" id="urlBox">
+                <div class="upload-icon">
+                    <i class="fas fa-link"></i>
+                </div>
+                <h2 class="upload-title" data-i18n="urlTitle">Load a Web Build from URL</h2>
+                <p class="upload-desc" data-i18n="urlDesc">Enter the URL of an exported PICO-8 HTML build (index.html) or an itch.io game page</p>
+                <div class="url-input-group">
+                    <input type="url" class="url-input" id="buildUrlInput" placeholder="https://example.itch.io/my-game" data-i18n-placeholder="urlPlaceholder">
+                    <button class="url-load-btn" id="urlLoadBtn">
+                        <i class="fas fa-play"></i>
+                        <span data-i18n="loadBuild">Play Build</span>
+                    </button>
+                </div>
+                <div class="url-load-error hidden" id="urlLoadError" role="alert"></div>
+                <p class="url-tip">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="urlTip">Tip: for an itch.io game page this resolves the official embed URL automatically.</span>
+                </p>
+            </div>
+
+            <!-- File Upload Box -->
+            <div class="upload-box hidden" id="uploadBox">
+                <div class="upload-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h2 class="upload-title" data-i18n="uploadTitle">Play a Local Web Build</h2>
+                <p class="upload-desc" data-i18n="uploadDesc">Select the index.html of a PICO-8 HTML export you made with your own PICO-8 license</p>
+                <input type="file" class="upload-input" id="buildInput" accept=".html,.htm">
+                <button class="upload-btn" id="uploadBtn">
+                    <i class="fas fa-file-upload"></i>
+                    <span data-i18n="uploadSelect">Select index.html</span>
+                </button>
+                <p class="upload-desc" style="margin-top:14px;">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="uploadHint">PICO-8 is a paid fantasy console by Lexaloffle ($14.99). It is not bundled here - buy it to make and export your own games. Multi-file exports only work via the URL tab (hosted builds).</span>
+                </p>
+            </div>
+
+            <!-- Instructions Panel -->
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title">
+                        <i class="fas fa-info-circle"></i>
+                        <span data-i18n="instructions">Instructions</span>
+                    </h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">Arrow keys / WASD = D-pad, Z and X / C and V = O and X action buttons</span></li>
+                            <li><i class="fas fa-mouse"></i> <span data-i18n="controlsHint2">Click inside the game frame first so it captures the keyboard</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-bolt"></i> <span data-i18n="aboutTitle">About</span></h4>
+                        <ul>
+                            <li><i class="fas fa-info-circle"></i> <span data-i18n="aboutHint">PICO-8: 128x128 pixels, 16 colours, P8 Lua, 32k carts - a fantasy console by Lexaloffle (paid, closed source)</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="emulator-section" id="playerSection">
+            <div class="pico8-wrapper" id="pico8Wrapper">
+                <iframe id="picoFrame" title="PICO-8 web game" allow="fullscreen; autoplay; gamepad" allowfullscreen></iframe>
+                <!-- Loading Overlay -->
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Loading game, please wait...</span>
+                        <small data-i18n="loadingTip">The web build streams from the author's host; first load can take a while</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast hidden" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- PICO-8 page logic -->
+    <script src="../js/topico8.js"></script>
+</body>
+
+</html>

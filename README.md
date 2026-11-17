@@ -214,6 +214,7 @@ All 38 EmulatorJS-based emulators + 4 standalone engines (v86, jsbeeb, apple2js,
 | Retro PC | BBC Micro (jsbeeb) | jsbeeb (embedded) | – | – |
 | Retro PC | Apple II (apple2js) | apple2js (embedded) | – | – |
 | Fantasy | WASM-4 | wasm4 (vendored runtime) | – ³ | – |
+| Fantasy | PICO-8 (hot-linked web builds) | pico8 (no runtime bundled) | 5 | – |
 | **Total** | **44 platforms** | – | **20682** | **31 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
@@ -280,6 +281,7 @@ Easy-Web-TV-M3u8/
 │   ├── todos.js           # DOS games page (js-dos)
 │   ├── tov86.js           # Retro PC page (v86, presets & URL loading)
 │   ├── towasm4.js         # WASM-4 fantasy console page
+│   ├── topico8.js         # PICO-8 web games page (featured itch.io builds)
 │   ├── tojsbeeb.js        # BBC Micro page (official jsbeeb embed)
 │   ├── toapple2js.js      # Apple II page (official apple2js embed)
 │   ├── tv.js              # TV channels page (tabs & search)
@@ -332,6 +334,7 @@ Easy-Web-TV-M3u8/
 │   ├── dos.html           # MS-DOS games (js-dos)
 │   ├── v86.html           # Retro PC / x86 emulation (v86)
 │   ├── wasm4.html         # WASM-4 fantasy console
+│   ├── pico8.html         # PICO-8 web games (featured builds, no runtime)
 │   ├── jsbeeb.html        # BBC Micro (embedded jsbeeb)
 │   ├── apple2.html        # Apple II (embedded apple2js)
 │   └── ...                # Other pages

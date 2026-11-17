@@ -367,6 +367,14 @@ var games = [
         url: '../routes/wasm4.html'
     },
     {
+        id: 45,
+        name: 'PICO-8 Web Games',
+        platform: 'PICO-8',
+        category: 'fantasy',
+        image: '../images/pico8.svg',
+        url: '../routes/pico8.html'
+    },
+    {
         id: 1,
         name: 'Square Obstacles',
         platform: 'PC',
