@@ -78,7 +78,7 @@ function setupEventListeners() {
     
     // Back button
     document.getElementById('backBtn').addEventListener('click', function() {
-        window.history.back();
+        window.location.href = '../routes/manga.html';
     });
     
     // Chapter search

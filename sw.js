@@ -1,7 +1,9 @@
 // Easy Web TV Service Worker
-const CACHE_NAME = 'easy-web-tv-v8.4.9';
+const CACHE_NAME = 'easy-web-tv-v8.5.0';
 
 // Assets to cache on install - only local assets that exist
+// v8.5.0: slimmed down to the index shell only; route pages, engines and
+// platform assets are cached at runtime by the fetch handler on first visit.
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
@@ -27,33 +29,7 @@ const PRECACHE_ASSETS = [
   '/images/category.svg',
   '/images/language.svg',
   '/images/earth.svg',
-  '/manifest.json',
-  // v8.4.7+ standalone engines and game launcher
-  '/routes/dos.html',
-  '/routes/v86.html',
-  '/routes/wasm4.html',
-  '/routes/jsbeeb.html',
-  '/routes/apple2.html',
-  '/routes/pico8.html',
-  '/routes/msx.html',
-  '/routes/j2me.html',
-  '/js/todos.js',
-  '/js/tov86.js',
-  '/js/towasm4.js',
-  '/js/topico8.js',
-  '/js/tomsx.js',
-  '/js/toj2me.js',
-  '/js/tojsbeeb.js',
-  '/js/toapple2js.js',
-  '/js/togame.js',
-  '/css/emulatorjs.css',
-  '/images/v86.svg',
-  '/images/wasm4.svg',
-  '/images/jsbeeb.svg',
-  '/images/apple2.svg',
-  '/images/pico8.svg',
-  '/images/msx.svg',
-  '/images/j2me.svg'
+  '/manifest.json'
 ];
 
 // External domains to skip caching (CDN, cross-origin resources)

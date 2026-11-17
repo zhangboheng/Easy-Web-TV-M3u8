@@ -2067,7 +2067,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Back button
     document.getElementById('backBtn').addEventListener('click', function() {
-        window.history.back();
+        window.location.href = 'game.html';
     });
     
     // Tab switching

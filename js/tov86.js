@@ -657,7 +657,7 @@ function updatePauseLabel() {
 function bindEvents() {
     // Back / reset
     document.getElementById('backBtn').addEventListener('click', function() {
-        window.history.back();
+        window.location.href = 'game.html';
     });
     document.getElementById('resetBtn').addEventListener('click', function() {
         backToUpload();

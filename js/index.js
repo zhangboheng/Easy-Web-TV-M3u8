@@ -1,7 +1,7 @@
 /**
  * Easy Web TV - Main Application
  * Native JavaScript (No jQuery)
- * @version 8.4.9
+ * @version 8.5.0
  */
 
 // Adult content translations for all supported languages
@@ -658,6 +658,21 @@ const SettingsModal = {
             SettingsModal.clearCache();
         });
         
+        // v8.5.0: data backup / restore
+        DOM.on('#export-data-btn', 'click', function() {
+            SettingsModal.exportData();
+        });
+        DOM.on('#import-data-btn', 'click', function() {
+            var input = DOM.$('#import-data-input');
+            if (input) input.click();
+        });
+        DOM.on('#import-data-input', 'change', function() {
+            if (this.files && this.files[0]) {
+                SettingsModal.importData(this.files[0]);
+                this.value = '';
+            }
+        });
+        
         // Theme toggle in settings
         DOM.on('#settings-theme-toggle', 'change', function() {
             ThemeManager.setTheme(this.checked ? 'dark' : 'light');
@@ -893,6 +908,74 @@ const SettingsModal = {
             ThemeManager.setTheme('light');
             this.syncThemeToggle();
         }
+    },
+    
+    // v8.5.0: export a full localStorage snapshot as a JSON backup file
+    exportData: function() {
+        try {
+            var data = {};
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                data[key] = localStorage.getItem(key);
+            }
+            var payload = {
+                app: 'easy-web-tv',
+                version: '8.5.0',
+                exportedAt: new Date().toISOString(),
+                data: data
+            };
+            var blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            var d = new Date();
+            var stamp = d.getFullYear() + ('0' + (d.getMonth() + 1)).slice(-2) + ('0' + d.getDate()).slice(-2);
+            a.href = url;
+            a.download = 'easy-web-tv-backup-' + stamp + '.json';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
+            ErrorToast.show('Backup exported successfully!', 2000);
+        } catch (e) {
+            console.error('Export failed:', e);
+            ErrorToast.show('Export failed: ' + e.message, 3000);
+        }
+    },
+    
+    // v8.5.0: import a backup file and merge it into localStorage
+    importData: function(file) {
+        var self = this;
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function() {
+            try {
+                var payload = JSON.parse(reader.result);
+                if (!payload || payload.app !== 'easy-web-tv' || typeof payload.data !== 'object' || payload.data === null) {
+                    ErrorToast.show('Invalid backup file', 3000);
+                    return;
+                }
+                var keys = Object.keys(payload.data);
+                if (!keys.length) {
+                    ErrorToast.show('Backup file is empty', 3000);
+                    return;
+                }
+                if (!confirm('Import ' + keys.length + ' entries? Existing entries with the same name will be overwritten.')) {
+                    return;
+                }
+                keys.forEach(function(k) {
+                    localStorage.setItem(k, payload.data[k]);
+                });
+                ErrorToast.show('Data imported successfully!', 2000);
+                setTimeout(function() { window.location.reload(); }, 1200);
+            } catch (e) {
+                console.error('Import failed:', e);
+                ErrorToast.show('Import failed: invalid JSON', 3000);
+            }
+        };
+        reader.onerror = function() {
+            ErrorToast.show('Import failed: cannot read file', 3000);
+        };
+        reader.readAsText(file);
     }
 };
 
@@ -1142,6 +1225,7 @@ DOM.ready(function() {
     if (scrollidbar) {
         scrollidbar.innerHTML = '';
         DOM.append(scrollidbar, `
+            <p>[2026-11-17] V8.5.0 release Add game favorites and Continue Playing section on game page, gamepad and keyboard navigation for the game hub, settings Backup &amp; Restore (export/import all app data as JSON), slimmed service worker precache to index shell for faster install, Tamaweb virtual pet game (vendored from autosam/Tamaweb, CC BY-NC-SA 4.0)</p>
             <p>[2026-11-17] V8.4.9 release Add MSX emulator (WebMSX embed, 3 open-source homebrew presets) and J2ME mobile games (J2meJS embed, jar URL/upload), new Computers and Mobile game categories, game page category deep-link fix, PICO-8 preset list alignment fix</p>
             <p>[2026-11-17] V8.4.8 release Fix invisible v86/WASM-4 emulator screens, Win30 auto-boot and centered 4:3 graphics, loading spinners for embedded BBC Micro/Apple II, mobile search input auto-zoom on iOS</p>
             <p>[2026-11-16] V8.4.7 release Add DOS game support (js-dos) with 100 preset games, x86 Retro PC (v86), BBC Micro (jsbeeb), Apple II (apple2js), WASM-4 fantasy console, ColecoVision BIOS upload, neon rebuilds of Breakout and Tic Tac Toe, removed 13 unused files</p>

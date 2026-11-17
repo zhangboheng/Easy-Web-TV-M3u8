@@ -1,6 +1,7 @@
 {
   "name": "Easy Web TV - Online SmartTV",
   "short_name": "EasyTV",
+  "version": "8.5.0",
   "description": "Watch 6000+ TV channels, movies, series, anime, listen to 28000+ radio stations, read novels, manga, and play games - all in one place.",
   "start_url": "/",
   "scope": "/",
@@ -8,7 +9,12 @@
   "orientation": "any",
   "background_color": "#000000",
   "theme_color": "#a3001b",
-  "categories": ["entertainment", "video", "music", "games"],
+  "categories": [
+    "entertainment",
+    "video",
+    "music",
+    "games"
+  ],
   "lang": "en",
   "dir": "ltr",
   "icons": [
@@ -39,21 +45,36 @@
       "short_name": "TV",
       "description": "Watch TV channels",
       "url": "/routes/countries.html",
-      "icons": [{ "src": "images/tv.svg", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "images/tv.svg",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
       "name": "Movies",
       "short_name": "Movies",
       "description": "Watch movies and series",
       "url": "/routes/comprehensive.html",
-      "icons": [{ "src": "images/comprehensive.svg", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "images/comprehensive.svg",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
       "name": "Radio",
       "short_name": "Radio",
       "description": "Listen to radio stations",
       "url": "/routes/radio.html",
-      "icons": [{ "src": "images/radio.svg", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "images/radio.svg",
+          "sizes": "96x96"
+        }
+      ]
     }
   ],
   "related_applications": [],

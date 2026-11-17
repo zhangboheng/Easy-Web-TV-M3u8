@@ -927,7 +927,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Back button
     document.getElementById('backBtn').addEventListener('click', function() {
-        window.history.back();
+        window.location.href = 'game.html';
     });
 
     // Reset button - back to the SWF selection screen with a fresh player

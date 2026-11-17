@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // Back button
     $('#backBtn').addEventListener('click', function () {
-        window.history.back();
+        window.location.href = '../index.html';
     });
     
     // Tab switching

@@ -6,13 +6,14 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.4.9-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.5.0-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
 ## 📋 Table of Contents
 
 - [Demo](#-demo)
+- [What's New](#-whats-new-v850)
 - [Features](#-features)
 - [Screenshots](#-screenshots)
 - [Tech Stack](#-tech-stack)
@@ -26,6 +27,13 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 ## 🎬 Demo
 
 **[Live Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)**
+
+## 🆕 What's New (v8.5.0)
+
+- **Game hub overhaul**: favorites (star any game), a Continue Playing row with your last 12 games, and full gamepad/keyboard navigation (D-pad/stick or arrow keys) - TV friendly
+- **Backup & Restore**: export all app data (favorites, history, settings) as a JSON file from the settings and import it on any device
+- **Tamaweb virtual pet**: raise a pixel pet in real time (feeding, cleaning, school, adventures, multi-stage growth) - vendored from [Tamaweb](https://github.com/autosam/Tamaweb) with trackers stripped and its service worker disabled
+- **Slimmer service worker**: the pre-cache list is trimmed to the index shell, so first install is much faster; route pages and engines are cached on first visit instead
 
 ## ✨ Features
 
@@ -58,6 +66,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### 🎮 Games
 - Built-in mini games (Square Obstacles, Pong, Breakout, Tic Tac Toe)
+- **Tamaweb virtual pet** - raise a pixel pet in real time (feeding, cleaning, adventures, growth); vendored from [Tamaweb](https://github.com/autosam/Tamaweb) by autosam under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 - **Emulator support** - Play retro console games, powered by [EmulatorJS](https://emulatorjs.org/)
   - **Nintendo**: NES, SNES, N64, GB/GBC, GBA, NDS, Virtual Boy
   - **PlayStation**: PS1/PSX, PSP (bring your own disc image; desktop recommended)
@@ -97,6 +106,8 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 - **Fast ROM fetching**: direct download for CORS-enabled sources (e.g. GitHub-hosted ROMs), public CORS proxies only as fallback
 - **ROM caching**: downloaded ROMs and SWFs are stored in Cache Storage, so replaying the same game is instant and works even when proxies are down
 - **Manual download fallback**: if a preset or URL fails to load, an inline button lets you download the ROM file directly, then load it via upload
+- **Favorites & Continue Playing**: star any game to pin it to the top of the launcher, and the last 12 played games appear in a Continue Playing row
+- **Gamepad navigation on the game hub**: browse categories and game cards with a gamepad D-pad/stick or keyboard arrow keys (TV friendly)
 - Gamepad support
 - Save/load states and fullscreen via the in-emulator controls
 - Reset button to return to the ROM selection screen
@@ -112,6 +123,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 - 📱 Responsive design for mobile devices
 - 🎨 Modern dark theme UI
 - 🔒 Sensitive content filter (adult content)
+- 💾 **Backup & Restore**: export all app data (favorites, history, settings) as a JSON file and import it on any device
 
 ## 📸 Screenshots
 
@@ -149,10 +161,10 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Library**: jQuery 3.6.0
+- **Frontend**: HTML5, CSS3, Vanilla JavaScript (ES6+, no framework - jQuery was fully removed in v8.4.2)
 - **Video Player**: Video.js
-- **Emulator**: EmulatorJS (RetroArch-based)
+- **Emulator**: EmulatorJS (RetroArch-based), plus vendored engines: js-dos, Ruffle, WASM-4, v86
+- **Persistence**: localStorage (favorites, settings, backups) + IndexedDB (Tamaweb saves)
 - **APIs**:
   - [iptv-org](https://github.com/iptv-org/iptv) - TV channels
   - [Radiobrowser](https://github.com/segler-alex/radiobrowser-api-rust) - Radio stations
@@ -268,17 +280,20 @@ All 38 EmulatorJS-based emulators + 4 standalone engines (v86, jsbeeb, apple2js,
 Easy-Web-TV-M3u8/
 ├── index.html              # Main entry point
 ├── manifest.json           # PWA manifest
-├── sw.js                   # Service worker
+├── sw.js                   # Service worker (v8.5.0: index-shell precache + runtime caching)
 ├── css/
 │   ├── main.css           # Main styles
 │   ├── style.css          # Additional styles
 │   └── emulatorjs.css     # Emulator-specific styles
 ├── js/
-│   ├── index.js           # Main JavaScript
+│   ├── index.js           # Main JavaScript (incl. Backup & Restore, changelog)
 │   ├── apiproxy.js        # Shared CORS-proxy failover helpers
 │   ├── core/
+│   │   ├── dom.js             # DOM helper ($ / DOM utilities)
 │   │   └── header-height.js  # Header height measurement (--header-height CSS var)
-│   ├── translator.js      # Translation handler
+│   ├── locales/
+│   │   └── translations.js  # 90+ language translations + i18n applier
+│   ├── translator.js      # Language detection & switching
 │   ├── emulatorjs.js      # Emulator logic & ROM loading
 │   ├── togame.js          # Game launcher & emulator picker
 │   ├── todos.js           # DOS games page (js-dos)
@@ -352,7 +367,8 @@ Easy-Web-TV-M3u8/
 ├── catalogues/
 │   └── *play.html         # Player pages
 ├── gamebox/
-│   └── ...                # Mini games
+│   ├── ball/ bong/ breakout/ tic-tac-toe/  # Built-in mini games
+│   └── tamaweb/             # Tamaweb virtual pet (vendored, trackers stripped)
 └── images/
     └── ...                # Image assets
 ```
@@ -377,12 +393,15 @@ If you like this project, consider buying me a coffee! ☕
 
 This project uses the following open source projects:
 
-- [jQuery](https://github.com/jquery/jquery) - JavaScript library
+- [jQuery](https://github.com/jquery/jquery) - JavaScript library (used before v8.4.2)
 - [iptv-org](https://github.com/iptv-org/iptv) - IPTV channels database
 - [Radiobrowser](https://github.com/segler-alex/radiobrowser-api-rust) - Radio stations API
 - [Video.js](https://github.com/videojs/video.js) - Video player
 - [EmulatorJS](https://github.com/EmulatorJS/EmulatorJS) - RetroArch-based emulator
 - [Font Awesome](https://fontawesome.com/) - Icons
+- [Tamaweb](https://github.com/autosam/Tamaweb) - Virtual pet game (vendored under `gamebox/tamaweb/`, CC BY-NC-SA 4.0)
+- [js-dos](https://js-dos.com/), [Ruffle](https://ruffle.rs/), [WASM-4](https://wasm4.org/), [v86](https://github.com/copy/v86) - Vendored game runtimes
+- [iptv-org/iptv](https://github.com/iptv-org/iptv), archive.org collections - Preset ROM/SWF sources
 
 ## Star History
 
@@ -399,6 +418,8 @@ This project uses the following open source projects:
 This project is licensed under the GNU Affero General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
 
 Permissions of this weak copyleft license are conditioned on making available source code of licensed files and modifications of those files under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.
+
+**Third-party components** keep their own licenses: the vendored Tamaweb virtual pet (`gamebox/tamaweb/`) is CC BY-NC-SA 4.0 (non-commercial - do not monetize this component separately), and the vendored runtimes carry their own licenses (js-dos GPL-2.0, WASM-4 MIT, v86 BSD-2/LGPL, Ruffle Apache-2.0/MIT dual).
 
 ---
 

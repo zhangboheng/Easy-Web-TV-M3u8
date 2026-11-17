@@ -22,6 +22,11 @@ var games = {
         name: 'Tic Tac Toe',
         category: 'puzzle',
         url: '../gamebox/tic-tac-toe/tic-tac-toe-game.html'
+    },
+    'tamaweb': {
+        name: 'Tamaweb',
+        category: 'virtual pet',
+        url: '../gamebox/tamaweb/index.html'
     }
 };
 
@@ -133,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var backBtn = document.getElementById('backBtn');
     if (backBtn) {
         backBtn.addEventListener('click', function() {
-            window.history.back();
+            window.location.href = '../routes/game.html';
         });
     }
     

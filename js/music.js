@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // Back Button
     $('#backBtn').addEventListener('click', function () {
-        window.history.back();
+        window.location.href = '../routes/music.html';
     });
     
     // Favorite Panel Toggle

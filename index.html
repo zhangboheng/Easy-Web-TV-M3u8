@@ -172,6 +172,17 @@
                 <div class="settings-content">
                     <div class="settings-item">
                         <div>
+                            <div class="item-label" data-i18n="settings_data_label">Backup & Restore</div>
+                            <div class="item-description" data-i18n="settings_data_desc">Export or import your favorites and history</div>
+                        </div>
+                        <div class="item-control" style="display: flex; gap: 8px;">
+                            <button class="settings-btn" id="export-data-btn" aria-label="Export data" data-i18n="settings_data_btn_export">Export</button>
+                            <button class="settings-btn" id="import-data-btn" aria-label="Import data" data-i18n="settings_data_btn_import">Import</button>
+                            <input type="file" id="import-data-input" accept=".json" hidden>
+                        </div>
+                    </div>
+                    <div class="settings-item">
+                        <div>
                             <div class="item-label" data-i18n="settings_cache_label">Clear Cache</div>
                             <div class="item-description" data-i18n="settings_cache_desc">Clear all cached data</div>
                         </div>
@@ -288,7 +299,7 @@
                             <div class="item-description" data-i18n="settings_version_desc">Current application version</div>
                         </div>
                         <div class="item-control">
-                            <span class="settings-version">8.4.9</span>
+                            <span class="settings-version">8.5.0</span>
                         </div>
                     </div>
                     <div class="settings-item">

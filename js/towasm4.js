@@ -453,7 +453,7 @@ function downloadCart(url) {
 // ---------------------------------------------------------------------------
 function bindEvents() {
     document.getElementById('backBtn').addEventListener('click', function() {
-        window.history.back();
+        window.location.href = 'game.html';
     });
 
     // Reset: reboot the current cart from the beginning (WASM-4 has no reset

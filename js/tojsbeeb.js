@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
     applyTranslations();
 
     document.getElementById('backBtn').addEventListener('click', function() {
-        window.history.back();
+        window.location.href = 'game.html';
     });
 
     // Instructions toggle

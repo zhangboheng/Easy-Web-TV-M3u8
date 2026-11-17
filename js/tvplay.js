@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var backBtn = $('#backBtn');
     if (backBtn) {
         backBtn.addEventListener('click', function() {
-            window.history.back();
+            window.location.href = '../routes/tv.html';
         });
     }
     

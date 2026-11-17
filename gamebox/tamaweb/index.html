@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+        Tamaweb - vendored for Easy-Web-TV-M3u8
+        Original project: https://github.com/autosam/Tamaweb (by autosam)
+        License: CC BY-NC-SA 4.0 (see LICENSE and TERMS_OF_USE.md in this directory)
+        Local modifications: removed Google Analytics / Sentry / RudderStack
+        tracker scripts, disabled the built-in service worker registration,
+        and trimmed PWA-only assets (icons/manifest).
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamaweb</title>
+    <meta name="description" content="A virtual pet game inspired by modern Tamagotchis where you get to raise your own pets!">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="themes.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="src/libs/font-awesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="src/libs/font-awesome/css/solid.min.css">
+</head>
+<body class="theme-default">
+    <div class="background"></div>
+    <!-- main -->
+    <div class="root">
+        <!-- canvas -->
+        <canvas class="background-canvas" width="96" height="96"></canvas>
+        <!-- bg overlay -->
+        <div class="bg-pattern"></div>
+        <!-- dom shell -->
+        <div class="overlay-container"></div>
+
+        <!-- loading text -->
+        <div class="loading-text">
+            <img class="loading-logo blink" src="resources/img/ui/logo_trans_01.png"></img>
+            <b id="loading-error"style="font-size: small;"></b>
+            <i class="fa-solid fa-circle-notch fa-spin loading-spinner"></i>
+        </div>
+
+        <!-- error -->
+         <div class="error-container" style="display: none;">
+            <i class="fa-solid fa-warning"></i>
+            <span id="error-message"></span>
+            <div onclick="document.querySelector('.error-container').style.display = 'none'" class="close flex-center cursor-pointer">
+                <i class="fa-solid fa-times"></i>
+            </div>
+         </div>
+
+        <div class="dom-shell" style="display: none;">
+            <img class="logo" src="resources/img/ui/logo_trans_01.png"></img>
+            <button class="shell-btn main mute" onclick="App.handlers.shell_button(1)"></button>
+            <button class="shell-btn left mute" onclick="App.handlers.shell_button(0)"></button>
+            <button class="shell-btn right mute" onclick="App.handlers.shell_button(2)"></button>
+        </div>
+        <!-- graphics -->
+        <div class="graphics-wrapper">
+            <!-- save indicator -->
+            <div style="display: none;" class="save-indicator">
+                <i class="fa-solid fa-save fa-spin_"></i>
+            </div>
+            <!-- screen wrapper -->
+            <div class="screen-wrapper">
+                <!-- canvas -->
+                <canvas style="cursor: pointer;" onclick="App.handlers.open_main_menu();" class="graphics-canvas" width="96" height="96"></canvas>
+
+                <!-- tapping reminder -->
+                <div class="full-device-overlay tap-reminder" style="display: none;">
+                    <img src="resources/img/ui/tap_01.png"></img>
+                </div>
+
+                <!-- screenshot overlay -->
+                <div class="full-device-overlay screenshot-overlay" style="display: none;">
+                    <img class="width-full" src="resources/img/ui/screenshot_overlay.png"></img>
+                </div>
+
+                <!-- phone call notification -->
+                <div style="display: none;" class="ringing-phone flex flex-center fa-shake">
+                    <img src="resources/img/ui/mobile-phone.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- downloading -->
+    <div style="display: none;" id="download-container" class="side-container">
+        <div class="side-icon">
+            <i class="fa-solid fa-arrow-down"></i>
+        </div>
+        <span> Downloading update... </span>
+    </div>
+
+    <!-- download complete -->
+    <div style="display: none;" id="download-complete-container" class="side-container">
+        <div class="side-icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <span> Download complete! <a href="">Refresh</a> </span>
+    </div>
+
+    <!-- cloneables -->
+    <div style="display: none;" class="cloneables">
+        <div class="post-container display" style="display: none;">
+            <canvas width="96" height="96" class="post-canvas"></canvas>
+            <div class="post-text">Post Bottom Text</div>
+            <div class="post-header">Post Header</div>
+            <div class="post-profile-icon"></div>
+            <button class="post-close back-btn"><i class="fa-solid fa-times"></i></button>
+            <button data-fb-keep-index class="post-next"><i class="fa-solid fa-angle-right"></i></button>
+            <button class="post-like"><i class="fa-solid fa-heart"></i></button>
+        </div>
+
+        <div class="generic-list-container display menu-animation"></div>
+
+        <div class="generic-slider-container display">
+            <div class="main-container">
+                <button class="slide-action mute generic-btn stylized slide-left flex-center"> <i class="fa-solid fa-angle-left"></i> </button>
+                <div class="content surface-stylized"></div>
+                <button class="slide-action mute generic-btn stylized slide-right flex-center"> <i class="fa-solid fa-angle-right"></i> </button>
+
+                <!-- remove later -->
+                <div style="display: none;" class="additional-text surface-stylized"></div>
+
+                <div class="top-slot left surface-stylized"></div>
+                <div class="top-slot right surface-stylized"></div>
+            </div>
+            <div class="actions-container">
+                <button id="cancel-btn" class="generic-btn stylized back-btn">CANCEL</button>
+                <button data-fb-keep-index id="accept-btn" class="generic-btn stylized">ACCEPT</button>
+            </div>
+        </div>
+
+        <div class="generic-list-container generic-grid-container display menu-animation"></div>
+
+        <div class="generic-empty-container display menu-animation"></div>
+
+        <div class="generic-empty-container display webcam-container">
+            <video class="webcam-video"></video>
+            <button style="display: none;" id="webcam-button"></button>
+            <button id="webcam-change-button">
+                <i class="fa-solid fa-camera-rotate"></i>
+            </button>
+            <canvas style="display: none;" id="webcam-canvas"></canvas>
+        </div>
+
+        <div class="progressbar">
+            <div class="progressbar-background">
+                <div class="progressbar-rod">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- install prompt removed (vendored for Easy-Web-TV-M3u8: not applicable in iframe) -->
+
+    <!-- data & resources -->
+    <script src="resources/data/SpriteDefinitions.js"></script>
+    <script src="resources/data/CharacterDefinitions.js"></script>
+    <script src="resources/data/SoundDefinitions.js"></script>
+    <script src="resources/data/GrowthChart.js"></script>
+
+    <!-- libs -->
+    <script src="src/libs/noise.js"></script>
+    <script src="src/libs/profanity-cleaner-0.0.3.js"></script>
+    <script src="src/libs/moment.js"></script>
+    <script src="src/libs/idb-keyval.js"></script>
+
+    <!-- scripts -->
+    <script src="src/Version.js"></script>
+    <script src="src/UiHelper.js"></script>
+    <script src="src/Utils.js"></script>
+    <script src="src/Drawer.js"></script>
+    <script src="src/Object2d.js"></script>
+    <script src="src/Activities.js"></script>
+    <script src="src/PetDefinition.js"></script>
+    <script src="src/Pet.js"></script>
+    <script src="src/Animal.js"></script>
+    <script src="src/Plant.js"></script>
+    <script src="src/App.js"></script>
+    <script src="src/app/scene.js"></script>
+    <script src="src/app/handlers.js"></script>
+    <script src="src/Definitions.js"></script>
+    <script src="src/Prefab.js"></script>
+    <script src="src/Missions.js"></script>
+    <script defer src="src/StoryGen.js"></script>
+    <script src="src/Main.js"></script>
+</body>
+</html>

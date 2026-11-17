@@ -608,7 +608,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var backBtn = document.getElementById('backBtn');
     if (backBtn) {
         backBtn.addEventListener('click', function() {
-            window.history.back();
+            window.location.href = '../routes/novel.html';
         });
     }
     

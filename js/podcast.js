@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!feedUrl) { showError('No podcast feed URL provided.'); return; }
     
     // Back button
-    document.getElementById('backBtn').addEventListener('click', function () { window.history.back(); });
+    document.getElementById('backBtn').addEventListener('click', function () { window.location.href = '../routes/music.html'; });
     
     // Toggle sidebar - toggle episode list and toolbar visibility
     function toggleSidebar() {

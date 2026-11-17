@@ -572,7 +572,7 @@ function setupUIInteractions() {
     
     // Back
     $('#backBtn').addEventListener('click', function() {
-        window.history.back();
+        window.location.href = '../routes/adult.html';
     });
     
     // Search

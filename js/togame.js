@@ -422,10 +422,212 @@ var games = [
         image: '../gamebox/tic-tac-toe/tictactoe.png',
         url: '../catalogues/gameplay.html?game=tic-tac-toe'
     },
+    // Tamaweb virtual pet (vendored from https://github.com/autosam/Tamaweb, CC BY-NC-SA 4.0)
+    {
+        id: 100,
+        name: 'Tamaweb',
+        platform: 'PC',
+        category: 'others',
+        image: '../gamebox/tamaweb/resources/img/character/chara_100b.png',
+        url: '../catalogues/gameplay.html?game=tamaweb'
+    },
 ];
 
 var currentCategory = 'all';
 var searchQuery = '';
+
+// ---------- Favorites & Recent (v8.5.0) ----------
+var FAV_KEY = 'ewtv_game_favs';
+var RECENT_KEY = 'ewtv_game_recent';
+
+function loadJson(key, fallback) {
+    try {
+        var raw = localStorage.getItem(key);
+        if (!raw) return fallback;
+        var val = JSON.parse(raw);
+        return val === null || val === undefined ? fallback : val;
+    } catch (e) {
+        return fallback;
+    }
+}
+
+function saveJson(key, val) {
+    try {
+        localStorage.setItem(key, JSON.stringify(val));
+    } catch (e) {
+        console.warn('localStorage save failed:', key, e);
+    }
+}
+
+function getFavs() {
+    return loadJson(FAV_KEY, []);
+}
+
+function isFav(id) {
+    return getFavs().indexOf(String(id)) !== -1;
+}
+
+function toggleFav(id) {
+    var favs = getFavs();
+    var sid = String(id);
+    var idx = favs.indexOf(sid);
+    if (idx === -1) {
+        favs.unshift(sid);
+    } else {
+        favs.splice(idx, 1);
+    }
+    saveJson(FAV_KEY, favs);
+    return idx === -1;
+}
+
+function getRecent() {
+    return loadJson(RECENT_KEY, []);
+}
+
+function pushRecent(id) {
+    var recent = getRecent();
+    var sid = String(id);
+    var idx = -1;
+    for (var i = 0; i < recent.length; i++) {
+        if (recent[i].id === sid) { idx = i; break; }
+    }
+    if (idx !== -1) recent.splice(idx, 1);
+    recent.unshift({ id: sid, ts: Date.now() });
+    if (recent.length > 12) recent.length = 12;
+    saveJson(RECENT_KEY, recent);
+}
+
+function findGameById(id) {
+    var sid = String(id);
+    for (var i = 0; i < games.length; i++) {
+        if (String(games[i].id) === sid) return games[i];
+    }
+    return null;
+}
+
+// ---------- Keyboard / Gamepad focus navigation (v8.5.0) ----------
+var GamepadNav = {
+    repeatDelay: 200,
+    _lastRepeat: 0,
+    _rafId: null,
+
+    // All focusable elements in navigation order: sidebar categories first, then visible cards
+    getFocusables: function() {
+        var items = [];
+        $$('.category-item').forEach(function(el) {
+            if (el.offsetParent) items.push(el);
+        });
+        $$('.game-card').forEach(function(el) {
+            if (el.offsetParent) items.push(el);
+        });
+        return items;
+    },
+
+    // Move focus to the geometrically nearest element in the given direction
+    move: function(el, dx, dy) {
+        var items = this.getFocusables();
+        if (!items.length) return;
+        var idx = items.indexOf(el);
+        if (idx === -1) { items[0].focus(); return; }
+        var rect = el.getBoundingClientRect();
+        var cx = rect.left + rect.width / 2;
+        var cy = rect.top + rect.height / 2;
+        var best = null, bestScore = Infinity;
+        for (var i = 0; i < items.length; i++) {
+            if (i === idx) continue;
+            var r = items[i].getBoundingClientRect();
+            var ox = r.left + r.width / 2 - cx;
+            var oy = r.top + r.height / 2 - cy;
+            var sameRow = Math.abs(oy) < rect.height * 0.6;
+            var forward;
+            if (dx > 0) forward = sameRow && ox > 0;
+            else if (dx < 0) forward = sameRow && ox < 0;
+            else if (dy > 0) forward = oy > 0;
+            else forward = oy < 0;
+            if (!forward) continue;
+            // Score: dominant-axis distance + small cross-axis penalty
+            var score = dy !== 0 ? Math.abs(oy) * 2 + Math.abs(ox) * 3 : Math.abs(ox) * 2 + Math.abs(oy) * 3;
+            if (score < bestScore) { bestScore = score; best = items[i]; }
+        }
+        // Fallback for left/right: if nothing on the same row, jump to the nearest
+        // element in that direction (e.g. sidebar -> game grid)
+        if (!best && dx !== 0) {
+            for (var j = 0; j < items.length; j++) {
+                if (j === idx) continue;
+                var r2 = items[j].getBoundingClientRect();
+                var ox2 = r2.left + r2.width / 2 - cx;
+                var oy2 = Math.abs(r2.top + r2.height / 2 - cy);
+                if ((dx > 0 && ox2 > 0) || (dx < 0 && ox2 < 0)) {
+                    var score2 = Math.abs(ox2) + oy2;
+                    if (score2 < bestScore) { bestScore = score2; best = items[j]; }
+                }
+            }
+        }
+        if (best) best.focus();
+    },
+
+    handleKey: function(e) {
+        var target = e.target;
+        // Don't hijack typing in the search box or other form controls
+        if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT')) {
+            return;
+        }
+        var focused = document.activeElement;
+        var items = this.getFocusables();
+        var inside = focused && (items.indexOf(focused) !== -1);
+        var key = e.key;
+        if (key === 'ArrowRight' || key === 'ArrowLeft' || key === 'ArrowUp' || key === 'ArrowDown') {
+            e.preventDefault();
+            if (!inside) { items[0].focus(); return; }
+            this.move(focused, key === 'ArrowRight' ? 1 : key === 'ArrowLeft' ? -1 : 0, key === 'ArrowDown' ? 1 : key === 'ArrowUp' ? -1 : 0);
+        } else if (key === 'Enter') {
+            if (inside && focused.classList.contains('game-card')) {
+                e.preventDefault();
+                focused.click();
+            }
+            // Enter on .category-item and native buttons uses default behavior
+        }
+    },
+
+    handleGamepad: function(gp) {
+        var now = Date.now();
+        if (now - this._lastRepeat < this.repeatDelay) return;
+        var pressed =
+            ((gp.buttons[14] && gp.buttons[14].pressed) || (gp.axes[0] !== undefined && gp.axes[0] < -0.5)) ? 'left' :
+            ((gp.buttons[15] && gp.buttons[15].pressed) || (gp.axes[0] !== undefined && gp.axes[0] > 0.5)) ? 'right' :
+            ((gp.buttons[12] && gp.buttons[12].pressed) || (gp.axes[1] !== undefined && gp.axes[1] < -0.5)) ? 'up' :
+            ((gp.buttons[13] && gp.buttons[13].pressed) || (gp.axes[1] !== undefined && gp.axes[1] > 0.5)) ? 'down' :
+            (gp.buttons[0] && gp.buttons[0].pressed) ? 'ok' : null;
+        if (!pressed) return;
+        this._lastRepeat = now;
+        var focused = document.activeElement;
+        var items = this.getFocusables();
+        if (pressed === 'ok') {
+            if (focused && items.indexOf(focused) !== -1) focused.click();
+            else items[0].focus();
+            return;
+        }
+        if (!focused || items.indexOf(focused) === -1) { items[0].focus(); return; }
+        this.move(focused,
+            pressed === 'right' ? 1 : pressed === 'left' ? -1 : 0,
+            pressed === 'down' ? 1 : pressed === 'up' ? -1 : 0);
+    },
+
+    pollGamepads: function() {
+        var self = this;
+        var poll = function() {
+            var pads = navigator.getGamepads ? navigator.getGamepads() : [];
+            for (var i = 0; i < pads.length; i++) {
+                if (pads[i] && pads[i].connected) {
+                    self.handleGamepad(pads[i]);
+                    break;
+                }
+            }
+            self._rafId = requestAnimationFrame(poll);
+        };
+        if (this._rafId === null) poll();
+    }
+};
 
 // Helper functions
 function $(selector) {
@@ -434,6 +636,45 @@ function $(selector) {
 
 function $$(selector) {
     return document.querySelectorAll(selector);
+}
+
+// Build one card's HTML (shared by grid + recent row)
+function gameCardHtml(game) {
+    var fav = isFav(game.id);
+    var html = '<a href="' + game.url + '"' + (game.external ? ' target="_blank" rel="noopener"' : '') + ' class="game-card" data-game-id="' + game.id + '" tabindex="0">';
+    html += '  <div class="game-image-wrapper">';
+    html += '    <img class="game-image" src="' + game.image + '" alt="' + game.name + '" onerror="this.src=\'../images/noimage.jpeg\'">';
+    html += '    <button class="game-fav-btn' + (fav ? ' active' : '') + '" data-fav-id="' + game.id + '" title="Favorite" aria-label="Toggle favorite"><i class="fa' + (fav ? 's' : 'r') + ' fa-star"></i></button>';
+    html += '  </div>';
+    html += '  <div class="game-overlay"></div>';
+    html += '  <div class="play-icon"><i class="fas fa-play"></i></div>';
+    html += '  <div class="game-info">';
+    html += '    <span class="game-platform">' + game.platform + '</span>';
+    html += '    <h4 class="game-name">' + game.name + '</h4>';
+    html += '  </div>';
+    html += '</a>';
+    return html;
+}
+
+// Render the "Continue Playing" row (only on unfiltered All view)
+function recentSectionHtml() {
+    if (currentCategory !== 'all' || searchQuery) return '';
+    var recent = getRecent();
+    if (!recent.length) return '';
+    var cards = '';
+    var shown = 0;
+    for (var i = 0; i < recent.length && shown < 8; i++) {
+        var game = findGameById(recent[i].id);
+        if (game) {
+            cards += gameCardHtml(game);
+            shown++;
+        }
+    }
+    if (!shown) return '';
+    return '<div class="recent-section">' +
+        '<h3 class="recent-title"><i class="fas fa-clock-rotate-left"></i> Continue Playing</h3>' +
+        '<div class="recent-row">' + cards + '</div>' +
+        '</div>';
 }
 
 // Render games
@@ -457,27 +698,25 @@ function renderGames() {
     var grid = $('#gameGrid');
     grid.innerHTML = '';
     
-    if (filteredGames.length === 0) {
+    var recentHtml = recentSectionHtml();
+    if (recentHtml) {
+        grid.innerHTML = recentHtml;
+    }
+    
+    if (filteredGames.length === 0 && !recentHtml) {
         grid.innerHTML = '<div class="no-results"><i class="fas fa-gamepad"></i><p>No games found</p></div>';
+        return;
+    }
+    if (filteredGames.length === 0) {
         return;
     }
     
     var html = '';
     filteredGames.forEach(function(game) {
-        html += '<a href="' + game.url + '"' + (game.external ? ' target="_blank" rel="noopener"' : '') + ' class="game-card">';
-        html += '  <div class="game-image-wrapper">';
-        html += '    <img class="game-image" src="' + game.image + '" alt="' + game.name + '" onerror="this.src=\'../images/noimage.jpeg\'">';
-        html += '  </div>';
-        html += '  <div class="game-overlay"></div>';
-        html += '  <div class="play-icon"><i class="fas fa-play"></i></div>';
-        html += '  <div class="game-info">';
-        html += '    <span class="game-platform">' + game.platform + '</span>';
-        html += '    <h4 class="game-name">' + game.name + '</h4>';
-        html += '  </div>';
-        html += '</a>';
+        html += gameCardHtml(game);
     });
     
-    grid.innerHTML = html;
+    grid.innerHTML += html;
 }
 
 // Toggle sidebar
@@ -538,9 +777,44 @@ document.addEventListener('DOMContentLoaded', function() {
     // Render initial games
     renderGames();
     
+    // Favorites & recent: event delegation on the grid (v8.5.0)
+    $('#gameGrid').addEventListener('click', function(e) {
+        var favBtn = e.target.closest ? e.target.closest('.game-fav-btn') : null;
+        if (favBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleFav(favBtn.dataset.favId);
+            renderGames();
+            return;
+        }
+        var card = e.target.closest ? e.target.closest('.game-card[data-game-id]') : null;
+        if (card) {
+            pushRecent(card.dataset.gameId);
+            // navigation proceeds normally via the anchor href
+        }
+    });
+    
+    // Keyboard arrows/Enter navigation + gamepad polling (v8.5.0)
+    document.addEventListener('keydown', function(e) {
+        GamepadNav.handleKey(e);
+    });
+    if (navigator.getGamepads) {
+        window.addEventListener('gamepadconnected', function() {
+            GamepadNav.pollGamepads();
+        });
+        // Start polling immediately if a pad is already connected
+        var existingPads = navigator.getGamepads();
+        for (var pi = 0; pi < existingPads.length; pi++) {
+            if (existingPads[pi] && existingPads[pi].connected) {
+                GamepadNav.pollGamepads();
+                break;
+            }
+        }
+    }
+    
     // Back button
     $('#backBtn').addEventListener('click', function() {
-        window.history.back();
+        window.location.href = '../index.html';
     });
     
     // Menu toggle
