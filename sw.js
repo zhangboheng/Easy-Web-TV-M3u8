@@ -35,10 +35,14 @@ const PRECACHE_ASSETS = [
   '/routes/jsbeeb.html',
   '/routes/apple2.html',
   '/routes/pico8.html',
+  '/routes/msx.html',
+  '/routes/j2me.html',
   '/js/todos.js',
   '/js/tov86.js',
   '/js/towasm4.js',
   '/js/topico8.js',
+  '/js/tomsx.js',
+  '/js/toj2me.js',
   '/js/tojsbeeb.js',
   '/js/toapple2js.js',
   '/js/togame.js',
@@ -47,7 +51,9 @@ const PRECACHE_ASSETS = [
   '/images/wasm4.svg',
   '/images/jsbeeb.svg',
   '/images/apple2.svg',
-  '/images/pico8.svg'
+  '/images/pico8.svg',
+  '/images/msx.svg',
+  '/images/j2me.svg'
 ];
 
 // External domains to skip caching (CDN, cross-origin resources)

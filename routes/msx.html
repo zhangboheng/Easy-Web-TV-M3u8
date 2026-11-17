@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>MSX Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .msx-wrapper {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #000;
+        }
+        .msx-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: min(78vh, 640px);
+            border: 2px solid rgba(0,82,165,0.5);
+            border-radius: 10px;
+            background: #111;
+        }
+        .preset-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .preset-item,
+        .preset-item .pi-name,
+        .preset-item .pi-desc {
+            text-align: left;
+        }
+        .preset-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(0,82,165,0.45);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .preset-item:hover { background: rgba(0,82,165,0.3); }
+        .preset-item .pi-icon {
+            flex: 0 0 24px;
+            color: #ffe100;
+            font-size: 18px;
+            text-align: center;
+        }
+        .preset-item .pi-text {
+            flex: 1;
+            min-width: 0;
+            text-align: left;
+        }
+        .preset-item .pi-name { color: #fff; font-weight: 600; font-size: 14px; }
+        .preset-item .pi-desc { color: rgba(255,255,255,0.55); font-size: 12px; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="header-title">
+                <i class="fas fa-desktop"></i>
+                <span id="pageTitle" data-i18n="pageTitle">MSX</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="resetBtn" style="display: none;">
+                <i class="fas fa-redo"></i>
+                <span data-i18n="reset">Reset</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Upload Section -->
+        <section class="upload-section" id="uploadSection">
+            <!-- Tab Switch -->
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabPreset" data-tab="preset">
+                    <i class="fas fa-star"></i>
+                    <span data-i18n="tabPreset">Featured Homebrew</span>
+                </div>
+                <div class="upload-tab" id="tabUrl" data-tab="url">
+                    <i class="fas fa-link"></i>
+                    <span data-i18n="tabUrl">Media URL</span>
+                </div>
+                <div class="upload-tab" id="tabFile" data-tab="file">
+                    <i class="fas fa-file-upload"></i>
+                    <span data-i18n="tabFile">Local File</span>
+                </div>
+            </div>
+
+            <!-- Preset Box -->
+            <div class="search-box" id="presetBox">
+                <div class="upload-icon"><i class="fas fa-desktop"></i></div>
+                <h2 class="upload-title" data-i18n="presetTitle">MSX Homebrew Games</h2>
+                <p class="upload-desc" data-i18n="presetDesc">Featured free/open MSX games, loaded from each author's official GitHub release into the WebMSX emulator (embedded by hotlink). Commercial ROMs are not included - use your own legally dumped files.</p>
+                <div class="preset-list" id="presetList"></div>
+            </div>
+
+            <!-- URL Input Box -->
+            <div class="url-box hidden" id="urlBox">
+                <div class="upload-icon">
+                    <i class="fas fa-link"></i>
+                </div>
+                <h2 class="upload-title" data-i18n="urlTitle">Load Media from URL</h2>
+                <p class="upload-desc" data-i18n="urlDesc">Enter the direct URL of a ROM (.rom), disk (.dsk/.zip) or tape (.cas) image - format is auto-detected</p>
+                <div class="url-input-group">
+                    <input type="url" class="url-input" id="mediaUrlInput" placeholder="https://example.com/game.rom" data-i18n-placeholder="urlPlaceholder">
+                    <button class="url-load-btn" id="urlLoadBtn">
+                        <i class="fas fa-play"></i>
+                        <span data-i18n="loadMedia">Load Media</span>
+                    </button>
+                </div>
+                <div class="url-load-error hidden" id="urlLoadError" role="alert"></div>
+                <p class="url-tip">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="urlTip">Tip: the file server must allow cross-origin access (CORS). GitHub raw and release links work.</span>
+                </p>
+            </div>
+
+            <!-- File Upload Box -->
+            <div class="upload-box hidden" id="uploadBox">
+                <div class="upload-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h2 class="upload-title" data-i18n="uploadTitle">Play a Local Media File</h2>
+                <p class="upload-desc" data-i18n="uploadDesc">Select your own ROM (.rom), disk (.dsk/.zip) or tape (.cas) image</p>
+                <input type="file" class="upload-input" id="mediaInput" accept=".rom,.dsk,.cas,.zip,.gz">
+                <button class="upload-btn" id="uploadBtn">
+                    <i class="fas fa-file-upload"></i>
+                    <span data-i18n="uploadSelect">Select File</span>
+                </button>
+                <p class="upload-desc" style="margin-top:14px;">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="uploadHint">Only run software you own or that is freely distributed. The file stays in your browser - nothing is uploaded to any server.</span>
+                </p>
+            </div>
+
+            <!-- Instructions Panel -->
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title">
+                        <i class="fas fa-info-circle"></i>
+                        <span data-i18n="instructions">Instructions</span>
+                    </h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">Arrow keys = cursor keys, Z or Space = SPACE key, X = ESC/STOP, Enter = RETURN</span></li>
+                            <li><i class="fas fa-mouse"></i> <span data-i18n="controlsHint2">Click inside the emulator first so it captures the keyboard; F1 opens the WebMSX menu</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-bolt"></i> <span data-i18n="aboutTitle">About</span></h4>
+                        <ul>
+                            <li><i class="fas fa-info-circle"></i> <span data-i18n="aboutHint">MSX: Z80-based 8-bit home computer standard (MSX1/2/2+/turbo R) by ASCII &amp; Microsoft, 1983. Emulation via WebMSX by ppeccin, embedded by hotlink.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Player Section -->
+        <section class="emulator-section" id="playerSection">
+            <div class="msx-wrapper" id="msxWrapper">
+                <iframe id="msxFrame" title="MSX emulator" allow="fullscreen; autoplay; gamepad" allowfullscreen></iframe>
+                <!-- Loading Overlay -->
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Booting MSX, please wait...</span>
+                        <small data-i18n="loadingTip">The media file downloads from its host; first load can take a while</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast hidden" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- MSX page logic -->
+    <script src="../js/tomsx.js"></script>
+</body>
+
+</html>

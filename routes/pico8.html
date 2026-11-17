@@ -41,7 +41,22 @@
             transition: all 0.25s ease;
         }
         .preset-item:hover { background: rgba(163,0,27,0.25); }
-        .preset-item .pi-icon { color: #FFEC27; font-size: 18px; width: 24px; text-align: center; }
+        .preset-item,
+        .preset-item .pi-name,
+        .preset-item .pi-desc {
+            text-align: left;
+        }
+        .preset-item .pi-icon {
+            flex: 0 0 24px;
+            color: #FFEC27;
+            font-size: 18px;
+            text-align: center;
+        }
+        .preset-item .pi-text {
+            flex: 1;
+            min-width: 0;
+            text-align: left;
+        }
         .preset-item .pi-name { color: #fff; font-weight: 600; font-size: 14px; }
         .preset-item .pi-desc { color: rgba(255,255,255,0.55); font-size: 12px; }
         .preset-item .pi-size {

@@ -345,6 +345,7 @@ function buildPresetList() {
         var icon = document.createElement('i');
         icon.className = 'fas fa-gamepad pi-icon';
         var textWrap = document.createElement('div');
+        textWrap.className = 'pi-text';
         var name = document.createElement('div');
         name.className = 'pi-name';
         name.textContent = p.name;

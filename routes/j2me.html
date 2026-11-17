@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>J2ME Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .j2me-wrapper {
+            position: relative;
+            max-width: 480px;
+            margin: 0 auto;
+            background: #000;
+        }
+        .j2me-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: min(80vh, 720px);
+            border: 2px solid rgba(0,150,136,0.5);
+            border-radius: 10px;
+            background: #111;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="header-title">
+                <i class="fas fa-mobile-screen"></i>
+                <span id="pageTitle" data-i18n="pageTitle">J2ME</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="resetBtn" style="display: none;">
+                <i class="fas fa-redo"></i>
+                <span data-i18n="reset">Reset</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Upload Section -->
+        <section class="upload-section" id="uploadSection">
+            <!-- Tab Switch -->
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabDemo" data-tab="demo">
+                    <i class="fas fa-globe"></i>
+                    <span data-i18n="tabDemo">Official Demo</span>
+                </div>
+                <div class="upload-tab" id="tabUrl" data-tab="url">
+                    <i class="fas fa-link"></i>
+                    <span data-i18n="tabUrl">Jar URL</span>
+                </div>
+                <div class="upload-tab" id="tabFile" data-tab="file">
+                    <i class="fas fa-file-upload"></i>
+                    <span data-i18n="tabFile">Local Jar</span>
+                </div>
+            </div>
+
+            <!-- Demo Box -->
+            <div class="search-box" id="demoBox">
+                <div class="upload-icon"><i class="fas fa-mobile-screen"></i></div>
+                <h2 class="upload-title" data-i18n="demoTitle">J2ME Mobile Games</h2>
+                <p class="upload-desc" data-i18n="demoDesc">Run Java ME (J2ME) phone games in your browser with J2meJS (GPL-2.0, embedded by hotlink to the official demo). The official demo hosts a library of classic midlets - open it to pick a game, or load your own .jar below.</p>
+                <button class="upload-btn" id="demoOpenBtn" style="margin: 10px auto;">
+                    <i class="fas fa-up-right-from-square"></i>
+                    <span data-i18n="demoOpen">Open Official Demo</span>
+                </button>
+                <p class="upload-desc" style="margin-top:14px;">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="demoHint">Commercial midlets hosted elsewhere are not hotlinked here - run jars you own or that are freely distributed.</span>
+                </p>
+            </div>
+
+            <!-- URL Input Box -->
+            <div class="url-box hidden" id="urlBox">
+                <div class="upload-icon">
+                    <i class="fas fa-link"></i>
+                </div>
+                <h2 class="upload-title" data-i18n="urlTitle">Load a Jar from URL</h2>
+                <p class="upload-desc" data-i18n="urlDesc">Enter the direct URL of a .jar (Java ME midlet) file</p>
+                <div class="url-input-group">
+                    <input type="url" class="url-input" id="jarUrlInput" placeholder="https://example.com/midlet.jar" data-i18n-placeholder="urlPlaceholder">
+                    <button class="url-load-btn" id="urlLoadBtn">
+                        <i class="fas fa-play"></i>
+                        <span data-i18n="loadJar">Run Jar</span>
+                    </button>
+                </div>
+                <div class="url-load-error hidden" id="urlLoadError" role="alert"></div>
+                <p class="url-tip">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="urlTip">Tip: the file server must allow cross-origin access (CORS). GitHub raw and release links work.</span>
+                </p>
+            </div>
+
+            <!-- File Upload Box -->
+            <div class="upload-box hidden" id="uploadBox">
+                <div class="upload-icon">
+                    <i class="fas fa-mobile-screen-button"></i>
+                </div>
+                <h2 class="upload-title" data-i18n="uploadTitle">Run a Local Jar</h2>
+                <p class="upload-desc" data-i18n="uploadDesc">Select your own Java ME .jar (midlet) file</p>
+                <input type="file" class="upload-input" id="jarInput" accept=".jar">
+                <button class="upload-btn" id="uploadBtn">
+                    <i class="fas fa-file-upload"></i>
+                    <span data-i18n="uploadSelect">Select .jar File</span>
+                </button>
+                <p class="upload-desc" style="margin-top:14px;">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="uploadHint">The jar stays in your browser - nothing is uploaded to any server. Run only software you own or that is freely distributed.</span>
+                </p>
+            </div>
+
+            <!-- Instructions Panel -->
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title">
+                        <i class="fas fa-info-circle"></i>
+                        <span data-i18n="instructions">Instructions</span>
+                    </h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">Number keys / arrows map to the phone keypad; 5 = action, * and # are supported</span></li>
+                            <li><i class="fas fa-mobile-screen"></i> <span data-i18n="controlsHint2">A virtual keypad appears inside the emulator for touch devices</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-bolt"></i> <span data-i18n="aboutTitle">About</span></h4>
+                        <ul>
+                            <li><i class="fas fa-info-circle"></i> <span data-i18n="aboutHint">J2ME: Java Platform, Micro Edition - the platform of 2000s feature-phone games (MIDP 2.0). Emulation via J2meJS by Rosabis (GPL-2.0), embedded by hotlink.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="emulator-section" id="playerSection">
+            <div class="j2me-wrapper" id="j2meWrapper">
+                <iframe id="j2meFrame" title="J2ME emulator" allow="fullscreen; autoplay" allowfullscreen></iframe>
+                <!-- Loading Overlay -->
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Starting the JVM, please wait...</span>
+                        <small data-i18n="loadingTip">The jar downloads from its host; first load can take a while</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast hidden" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- J2ME page logic -->
+    <script src="../js/toj2me.js"></script>
+</body>
+
+</html>

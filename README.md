@@ -215,10 +215,13 @@ All 38 EmulatorJS-based emulators + 4 standalone engines (v86, jsbeeb, apple2js,
 | Retro PC | Apple II (apple2js) | apple2js (embedded) | – | – |
 | Fantasy | WASM-4 | wasm4 (vendored runtime) | – ³ | – |
 | Fantasy | PICO-8 (hot-linked web builds) | pico8 (no runtime bundled) | 5 | – |
+| Computer | MSX (WebMSX embed) | webmsx (hot-linked embed) | 3 ⁴ | – |
+| Mobile | J2ME (J2meJS embed) | j2mejs (hot-linked embed) | – | – |
 | **Total** | **44 platforms** | – | **20682** | **31 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 ² No bundled games: load your own disc image via upload/URL, plus a BIOS file dumped from your own console (Sega CD: `bios_CD_U/J/E.bin`; PC-FX: `pcfx.rom`) using the BIOS upload box on the emulator page.
+⁴ MSX presets are free/open homebrew ROMs hot-linked from their authors' official GitHub releases (nohzdyve GPL-3.0, Go Penguin!, Zeros Houkou R MIT); J2ME has no presets - open the official demo or load your own jars. Neither engine is bundled: WebMSX and J2meJS are embedded by hotlink per their authors' intended web-embedding use.
 
 ### Core Features
 - **Automatic core detection**: Upload any ROM file and the system automatically detects the platform
@@ -282,6 +285,8 @@ Easy-Web-TV-M3u8/
 │   ├── tov86.js           # Retro PC page (v86, presets & URL loading)
 │   ├── towasm4.js         # WASM-4 fantasy console page
 │   ├── topico8.js         # PICO-8 web games page (featured itch.io builds)
+│   ├── tomsx.js           # MSX page (WebMSX embed, homebrew presets)
+│   ├── toj2me.js          # J2ME page (J2meJS embed, jar upload/URL)
 │   ├── tojsbeeb.js        # BBC Micro page (official jsbeeb embed)
 │   ├── toapple2js.js      # Apple II page (official apple2js embed)
 │   ├── tv.js              # TV channels page (tabs & search)
@@ -335,6 +340,8 @@ Easy-Web-TV-M3u8/
 │   ├── v86.html           # Retro PC / x86 emulation (v86)
 │   ├── wasm4.html         # WASM-4 fantasy console
 │   ├── pico8.html         # PICO-8 web games (featured builds, no runtime)
+│   ├── msx.html           # MSX (WebMSX embed, homebrew presets)
+│   ├── j2me.html          # J2ME (J2meJS embed, jar loading)
 │   ├── jsbeeb.html        # BBC Micro (embedded jsbeeb)
 │   ├── apple2.html        # Apple II (embedded apple2js)
 │   └── ...                # Other pages

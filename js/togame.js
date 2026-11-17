@@ -375,6 +375,22 @@ var games = [
         url: '../routes/pico8.html'
     },
     {
+        id: 46,
+        name: 'MSX Homebrew',
+        platform: 'MSX',
+        category: 'computer',
+        image: '../images/msx.svg',
+        url: '../routes/msx.html'
+    },
+    {
+        id: 47,
+        name: 'J2ME Mobile Games',
+        platform: 'J2ME',
+        category: 'mobile',
+        image: '../images/j2me.svg',
+        url: '../routes/j2me.html'
+    },
+    {
         id: 1,
         name: 'Square Obstacles',
         platform: 'PC',
@@ -506,7 +522,19 @@ function showToast(message, type) {
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
     console.log('=== Game Page Loaded ===');
-    
+
+    // Deep link: ?category=<id> selects the category (e.g. back links from
+    // the standalone emulator pages: fantasy / computer / mobile / retropc)
+    var urlCategory = new URLSearchParams(window.location.search).get('category');
+    if (urlCategory) {
+        var target = document.querySelector('.category-item[data-category="' + urlCategory + '"]');
+        if (target) {
+            $$('.category-item').forEach(function(el) { el.classList.remove('active'); });
+            target.classList.add('active');
+            currentCategory = urlCategory;
+        }
+    }
+
     // Render initial games
     renderGames();
     
