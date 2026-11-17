@@ -395,6 +395,12 @@
                 max-width: 100%;
                 order: 2;
             }
+            /* iOS Safari force-zooms the page when focusing inputs with
+               font-size < 16px, which visually displaces the box while typing
+               ("text never appears in the field"). 16px keeps the layout put. */
+            .search-container input {
+                font-size: 16px;
+            }
             
             .tab-nav {
                 width: 100%;

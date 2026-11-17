@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  <!-- BBC Micro style: beige case + dark screen -->
+  <rect x="46" y="22" width="108" height="66" rx="6" fill="#c8b892"/>
+  <rect x="58" y="32" width="84" height="34" rx="3" fill="#101010"/>
+  <text x="66" y="54" font-family="'Courier New', Courier, monospace" font-weight="bold" font-size="15" fill="#c8ff66">BBC</text>
+  <!-- red function keys row (BBC Master style) -->
+  <g fill="#a3001b">
+    <rect x="58" y="72" width="12" height="9" rx="2"/>
+    <rect x="74" y="72" width="12" height="9" rx="2"/>
+    <rect x="90" y="72" width="12" height="9" rx="2"/>
+    <rect x="106" y="72" width="12" height="9" rx="2"/>
+    <rect x="122" y="72" width="20" height="9" rx="2"/>
+  </g>
+  <text x="46" y="105" font-family="'Courier New', Courier, monospace" font-weight="bold" font-size="12" fill="#c8b892">MICRO</text>
+  <circle cx="160" cy="99" r="4" fill="#33ff66"/>
+</svg>

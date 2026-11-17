@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  <!-- WASM-4 4x4 pixel logo -->
+  <g>
+    <rect x="66" y="30" width="14" height="14" fill="#ffe04d"/>
+    <rect x="82" y="30" width="14" height="14" fill="#fff5a8"/>
+    <rect x="98" y="30" width="14" height="14" fill="#ffe04d"/>
+    <rect x="114" y="30" width="14" height="14" fill="#fff5a8"/>
+    <rect x="66" y="46" width="14" height="14" fill="#fff5a8"/>
+    <rect x="82" y="46" width="14" height="14" fill="#ffd166"/>
+    <rect x="98" y="46" width="14" height="14" fill="#ffd166"/>
+    <rect x="114" y="46" width="14" height="14" fill="#fff5a8"/>
+    <rect x="66" y="62" width="14" height="14" fill="#ffe04d"/>
+    <rect x="82" y="62" width="14" height="14" fill="#ffd166"/>
+    <rect x="98" y="62" width="14" height="14" fill="#ffd166"/>
+    <rect x="114" y="62" width="14" height="14" fill="#ffe04d"/>
+    <rect x="66" y="78" width="14" height="14" fill="#fff5a8"/>
+    <rect x="82" y="78" width="14" height="14" fill="#ffe04d"/>
+    <rect x="98" y="78" width="14" height="14" fill="#fff5a8"/>
+    <rect x="114" y="78" width="14" height="14" fill="#ffd166"/>
+  </g>
+  <circle cx="160" cy="97" r="4" fill="#33ff66"/>
+</svg>

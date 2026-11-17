@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Retro PC Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .preset-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .preset-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(163,0,27,0.35);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .preset-item:hover { background: rgba(163,0,27,0.25); }
+        .preset-item .pi-icon { color: #4da3ff; font-size: 18px; width: 24px; text-align: center; }
+        .preset-item .pi-name { color: #fff; font-weight: 600; font-size: 14px; }
+        .preset-item .pi-desc { color: rgba(255,255,255,0.55); font-size: 12px; }
+        .preset-item .pi-size {
+            margin-left: auto;
+            color: #ffd166;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .v86-toolbar {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+        .v86-tool-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(163,0,27,0.5);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .v86-tool-btn:hover { background: rgba(163,0,27,0.4); }
+        .v86-screen-wrapper {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #000;
+        }
+        /* v86 swaps between the text <div> and the graphical <canvas> as the
+           guest changes video modes (e.g. Windows 3.0 switches to 640x480),
+           so keep both centered inside a fixed black "monitor" area. */
+        #screen_container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            min-height: 350px;
+        }
+        #screen_container canvas {
+            max-width: 100%;
+            /* v86 sets an inline height that can be non-proportional when the
+               guest switches video modes; keep the aspect ratio locked. */
+            height: auto !important;
+        }
+        .v86-screen-wrapper:fullscreen { background: #000; }
+        .v86-screen-wrapper:fullscreen #screen_container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="header-title">
+                <i class="fas fa-desktop"></i>
+                <span id="pageTitle" data-i18n="pageTitle">Retro PC (x86)</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="resetBtn" style="display: none;">
+                <i class="fas fa-redo"></i>
+                <span data-i18n="reset">Reset</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <section class="upload-section" id="uploadSection">
+            <!-- Tab Switch -->
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabFile" data-tab="file">
+                    <i class="fas fa-file-upload"></i>
+                    <span data-i18n="tabFile">Disk Image</span>
+                </div>
+                <div class="upload-tab" id="tabUrl" data-tab="url">
+                    <i class="fas fa-link"></i>
+                    <span data-i18n="tabUrl">URL Input</span>
+                </div>
+                <div class="upload-tab" id="tabPreset" data-tab="preset">
+                    <i class="fas fa-microchip"></i>
+                    <span data-i18n="tabPreset">Preset Systems</span>
+                </div>
+            </div>
+
+            <!-- File Upload Box -->
+            <div class="upload-box" id="uploadBox">
+                <div class="upload-icon"><i class="fas fa-hdd"></i></div>
+                <h2 class="upload-title" data-i18n="uploadTitle">Boot a PC Disk Image</h2>
+                <p class="upload-desc" data-i18n="uploadDesc">Select a floppy / hard disk / CD-ROM image or a Linux kernel (bzImage) to boot in the browser</p>
+                <input type="file" class="upload-input" id="diskInput" accept=".img,.ima,.dsk,.vfd,.vhd,.vdi,.qcow,.qcow2,.iso,.bin,.bzimage">
+                <button class="upload-btn" id="uploadBtn">
+                    <i class="fas fa-file-upload"></i>
+                    <span data-i18n="uploadSelect">Select Disk Image</span>
+                </button>
+                <div class="url-preset-group">
+                    <label class="url-preset-label" data-i18n="mountLabel">Mount as:</label>
+                    <select class="url-preset-select" id="mountSelect">
+                        <option value="auto" data-i18n="mountAuto">Auto detect</option>
+                        <option value="fda" data-i18n="mountFloppy">Floppy disk</option>
+                        <option value="hda" data-i18n="mountHdd">Hard disk</option>
+                        <option value="cdrom" data-i18n="mountCdrom">CD-ROM</option>
+                        <option value="bzimage" data-i18n="mountKernel">Linux kernel (bzImage)</option>
+                    </select>
+                </div>
+                <p class="upload-desc" style="margin-top:14px;">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="uploadHint">Images never leave your device. Click the screen to capture the keyboard, double-click to lock the mouse.</span>
+                </p>
+            </div>
+            <!-- URL Input Box -->
+            <div class="url-box hidden" id="urlBox">
+                <div class="upload-icon"><i class="fas fa-link"></i></div>
+                <h2 class="upload-title" data-i18n="urlTitle">Load a Disk Image from URL</h2>
+                <p class="upload-desc" data-i18n="urlDesc">Enter the direct URL of a disk image (.img / .iso / .vhd / bzImage)</p>
+                <div class="url-input-group">
+                    <input type="url" class="url-input" id="diskUrlInput" placeholder="https://example.com/disk.img" data-i18n-placeholder="urlPlaceholder">
+                    <button class="url-load-btn" id="urlLoadBtn">
+                        <i class="fas fa-download"></i>
+                        <span data-i18n="loadImage">Load Image</span>
+                    </button>
+                </div>
+                <div class="url-load-error hidden" id="urlLoadError" role="alert"></div>
+                <p class="url-tip">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="urlTip">Tip: downloads go through a public CORS proxy when needed, so large images can be slow.</span>
+                </p>
+            </div>
+
+            <!-- Preset Box -->
+            <div class="search-box hidden" id="presetBox">
+                <div class="upload-icon"><i class="fas fa-microchip"></i></div>
+                <h2 class="upload-title" data-i18n="presetTitle">Preset Systems</h2>
+                <p class="upload-desc" data-i18n="presetDesc">Open-source bootsector games boot instantly with one click; OS images from the official v86 demo CDN are downloaded, then select them on the Disk Image tab to boot</p>
+                <div class="preset-list" id="presetList"></div>
+            </div>
+
+            <!-- Instructions Panel -->
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title">
+                        <i class="fas fa-info-circle"></i>
+                        <span data-i18n="instructions">Instructions</span>
+                    </h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint">Click the screen to give it keyboard focus; the guest OS handles input like a real PC</span></li>
+                            <li><i class="fas fa-mouse"></i> <span data-i18n="mouseHint">Double-click the screen to lock the mouse, press Esc or double-click again to release</span></li>
+                            <li><i class="fas fa-hand-pointer"></i> <span data-i18n="anyKeyHint">If the screen stalls at "Press any key" or a DOS prompt, click it and press Enter; for the Windows 3.0 preset type WIN/3</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-expand"></i> <span data-i18n="fullscreenDesc">Fullscreen: use the toolbar buttons above the screen</span></h4>
+                        <ul>
+                            <li><i class="fas fa-compress-arrows-alt"></i> <span data-i18n="exitFullscreen">Press ESC to exit fullscreen</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Player Section -->
+        <section class="emulator-section" id="playerSection">
+            <div class="v86-toolbar">
+                <button class="v86-tool-btn" id="pauseBtn"><i class="fas fa-pause"></i><span data-i18n="pause">Pause</span></button>
+                <button class="v86-tool-btn" id="restartBtn"><i class="fas fa-redo"></i><span data-i18n="restart">Restart</span></button>
+                <button class="v86-tool-btn" id="fullscreenBtn"><i class="fas fa-expand"></i><span data-i18n="fullscreen">Fullscreen</span></button>
+            </div>
+            <div class="v86-screen-wrapper" id="screenWrapper">
+                <!-- Minimal structure required by v86 ScreenAdapter -->
+                <div id="screen_container">
+                    <div style="white-space: pre; font: 14px monospace; line-height: 14px"></div>
+                    <canvas style="display: none"></canvas>
+                </div>
+                <!-- Loading Overlay -->
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Loading disk image, please wait...</span>
+                        <small data-i18n="loadingTip">The x86 machine starts after the image is decoded; big images may take a while</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast hidden" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- v86 runtime (vendored, BSD-2 - see vendor/v86/README.md) -->
+    <script src="../vendor/v86/libv86.js"></script>
+    <!-- Retro PC page logic -->
+    <script src="../js/tov86.js"></script>
+</body>
+
+</html>

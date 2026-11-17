@@ -1,5 +1,5 @@
 // Easy Web TV Service Worker
-const CACHE_NAME = 'easy-web-tv-v8';
+const CACHE_NAME = 'easy-web-tv-v8.4.8';
 
 // Assets to cache on install - only local assets that exist
 const PRECACHE_ASSETS = [
@@ -27,7 +27,24 @@ const PRECACHE_ASSETS = [
   '/images/category.svg',
   '/images/language.svg',
   '/images/earth.svg',
-  '/manifest.json'
+  '/manifest.json',
+  // v8.4.7+ standalone engines and game launcher
+  '/routes/dos.html',
+  '/routes/v86.html',
+  '/routes/wasm4.html',
+  '/routes/jsbeeb.html',
+  '/routes/apple2.html',
+  '/js/todos.js',
+  '/js/tov86.js',
+  '/js/towasm4.js',
+  '/js/tojsbeeb.js',
+  '/js/toapple2js.js',
+  '/js/togame.js',
+  '/css/emulatorjs.css',
+  '/images/v86.svg',
+  '/images/wasm4.svg',
+  '/images/jsbeeb.svg',
+  '/images/apple2.svg'
 ];
 
 // External domains to skip caching (CDN, cross-origin resources)

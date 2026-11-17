@@ -6,7 +6,7 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.4.7-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.4.8-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
@@ -75,6 +75,8 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **3DO**: 3DO (bring your own firmware: panafz1/panafz10/goldstar/sanyotry .bin)
   - **Flash**: Flash Player powered by [Ruffle](https://ruffle.rs/) (100 preset games, or load your own .swf via upload/URL/archive.org search; keyboard & mouse recommended)
   - **DOS**: MS-DOS games powered by [js-dos](https://js-dos.com/) (100 preset classics, or load your own .zip/.jsdos via upload/URL/archive.org search; built-in DOS environment, no BIOS needed)
+  - **Retro PC**: full x86 PC emulation powered by [v86](https://github.com/copy/v86) (boot your own floppy/hard disk/CD image or Linux kernel; instant-play open-source bootsector games fetched live from GitHub, plus downloadable OS images from the official demo CDN), plus [jsbeeb](https://bbc.godbolt.org/) (BBC Micro) and [apple2js](https://www.scullinsteel.com/apple2/) (Apple II) embedded from their official deployments
+  - **Fantasy Console**: [WASM-4](https://wasm4.org/) (load any .wasm cart via upload or URL; self-contained vendored runtime)
   - **Arcade**: FBNeo (incl. Neo Geo / CPS1 / CPS3), MAME 2003
 - **20000+ preset games** across 40 platforms, with search on the game launcher
   - Nintendo: NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116), Virtual Boy (28)
@@ -165,7 +167,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Supported Platforms
 
-All 38 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **20482** games across 29 JSON files. Sega CD and PC-FX have no bundled games and require a BIOS file (uploaded on the emulator page) dumped from your own console.
+All 38 EmulatorJS-based emulators + 4 standalone engines (v86, jsbeeb, apple2js, WASM-4) and their cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **20482** games across 29 JSON files. Sega CD and PC-FX have no bundled games and require a BIOS file (uploaded on the emulator page) dumped from your own console. ³ v86 bootsector games (BootRogue/BootBASIC/bootOS, BSD-2) boot instantly via GitHub; OS images come from the official v86 demo CDN (copy.sh) and are downloaded, then booted via the Disk Image tab; WASM-4 has no bundled carts.
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -208,7 +210,11 @@ All 38 emulators and their EmulatorJS cores. **Preset ROMs** = bundled games (`�
 | Other | Flash (Ruffle) | ruffle | 100 | flash.json |
 | Other | DOS (js-dos) | js-dos | 100 | dos.json |
 | Other | Doom Engine (prboom) | prboom | 4 | doom.json |
-| **Total** | **40 platforms** | – | **20682** | **31 files** |
+| Retro PC | x86 PC (v86) | v86 | – ³ | – |
+| Retro PC | BBC Micro (jsbeeb) | jsbeeb (embedded) | – | – |
+| Retro PC | Apple II (apple2js) | apple2js (embedded) | – | – |
+| Fantasy | WASM-4 | wasm4 (vendored runtime) | – ³ | – |
+| **Total** | **44 platforms** | – | **20682** | **31 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 ² No bundled games: load your own disc image via upload/URL, plus a BIOS file dumped from your own console (Sega CD: `bios_CD_U/J/E.bin`; PC-FX: `pcfx.rom`) using the BIOS upload box on the emulator page.
@@ -271,6 +277,12 @@ Easy-Web-TV-M3u8/
 │   ├── translator.js      # Translation handler
 │   ├── emulatorjs.js      # Emulator logic & ROM loading
 │   ├── togame.js          # Game launcher & emulator picker
+│   ├── todos.js           # DOS games page (js-dos)
+│   ├── tov86.js           # Retro PC page (v86, presets & URL loading)
+│   ├── towasm4.js         # WASM-4 fantasy console page
+│   ├── tojsbeeb.js        # BBC Micro page (official jsbeeb embed)
+│   ├── toapple2js.js      # Apple II page (official apple2js embed)
+│   ├── tv.js              # TV channels page (tabs & search)
 │   ├── music.js           # Music player logic
 │   ├── podcast.js         # Podcast player with favorites
 │   ├── tomusic.js         # Music page navigation & podcast browsing
@@ -317,7 +329,16 @@ Easy-Web-TV-M3u8/
 │   ├── manga.html         # Manga page
 │   ├── game.html          # Game page
 │   ├── emulatorjs.html    # Emulator pages
+│   ├── dos.html           # MS-DOS games (js-dos)
+│   ├── v86.html           # Retro PC / x86 emulation (v86)
+│   ├── wasm4.html         # WASM-4 fantasy console
+│   ├── jsbeeb.html        # BBC Micro (embedded jsbeeb)
+│   ├── apple2.html        # Apple II (embedded apple2js)
 │   └── ...                # Other pages
+├── vendor/
+│   ├── v86/               # v86 runtime: libv86.js + v86.wasm + SeaBIOS (BSD-2 / LGPL)
+│   ├── wasm4/             # WASM-4 slim runtime (MIT)
+│   └── js-dos/            # js-dos runtime (GPL-2.0)
 ├── catalogues/
 │   └── *play.html         # Player pages
 ├── gamebox/

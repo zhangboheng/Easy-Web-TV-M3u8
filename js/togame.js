@@ -335,6 +335,38 @@ var games = [
     },
 
     {
+        id: 33,
+        name: 'Retro PC (x86)',
+        platform: 'x86 PC',
+        category: 'retropc',
+        image: '../images/v86.svg',
+        url: '../routes/v86.html'
+    },
+    {
+        id: 34,
+        name: 'BBC Micro Emulator',
+        platform: 'BBC Micro',
+        category: 'retropc',
+        image: '../images/jsbeeb.svg',
+        url: '../routes/jsbeeb.html'
+    },
+    {
+        id: 35,
+        name: 'Apple II Emulator',
+        platform: 'Apple II',
+        category: 'retropc',
+        image: '../images/apple2.svg',
+        url: '../routes/apple2.html'
+    },
+    {
+        id: 36,
+        name: 'WASM-4 Fantasy Console',
+        platform: 'WASM-4',
+        category: 'fantasy',
+        image: '../images/wasm4.svg',
+        url: '../routes/wasm4.html'
+    },
+    {
         id: 1,
         name: 'Square Obstacles',
         platform: 'PC',

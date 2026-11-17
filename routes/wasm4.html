@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>WASM-4 Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <link rel="stylesheet" href="../vendor/wasm4/wasm4.css">
+    <style>
+        .wasm4-wrapper {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .wasm4-wrapper wasm4-app {
+            display: block;
+            width: 100%;
+            min-height: 480px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="header-title">
+                <i class="fas fa-magic"></i>
+                <span id="pageTitle" data-i18n="pageTitle">WASM-4</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="resetBtn" style="display: none;">
+                <i class="fas fa-redo"></i>
+                <span data-i18n="reset">Reset</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Upload Section -->
+        <section class="upload-section" id="uploadSection">
+            <!-- Tab Switch -->
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabFile" data-tab="file">
+                    <i class="fas fa-file-upload"></i>
+                    <span data-i18n="tabFile">Game Cart</span>
+                </div>
+                <div class="upload-tab" id="tabUrl" data-tab="url">
+                    <i class="fas fa-link"></i>
+                    <span data-i18n="tabUrl">URL Input</span>
+                </div>
+            </div>
+
+            <!-- File Upload Box -->
+            <div class="upload-box" id="uploadBox">
+                <div class="upload-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h2 class="upload-title" data-i18n="uploadTitle">Load a WASM-4 Game Cart</h2>
+                <p class="upload-desc" data-i18n="uploadDesc">Drag and drop a .wasm cart here or click to select</p>
+                <input type="file" class="upload-input" id="cartInput" accept=".wasm">
+                <button class="upload-btn" id="uploadBtn">
+                    <i class="fas fa-file-upload"></i>
+                    <span data-i18n="uploadSelect">Select .wasm Cart</span>
+                </button>
+                <p class="upload-desc" style="margin-top:14px;">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="uploadHint">WASM-4 is a fantasy console: 160x160 pixels, 4-color palettes, tiny .wasm carts built with Rust / C / Zig / AssemblyScript.</span>
+                </p>
+            </div>
+            <!-- URL Input Box -->
+            <div class="url-box hidden" id="urlBox">
+                <div class="upload-icon">
+                    <i class="fas fa-link"></i>
+                </div>
+                <h2 class="upload-title" data-i18n="urlTitle">Load a Cart from URL</h2>
+                <p class="upload-desc" data-i18n="urlDesc">Enter the direct URL of a .wasm cart file</p>
+                <div class="url-input-group">
+                    <input type="url" class="url-input" id="cartUrlInput" placeholder="https://example.com/game.wasm" data-i18n-placeholder="urlPlaceholder">
+                    <button class="url-load-btn" id="urlLoadBtn">
+                        <i class="fas fa-download"></i>
+                        <span data-i18n="loadCart">Load Cart</span>
+                    </button>
+                </div>
+                <div class="url-load-error hidden" id="urlLoadError" role="alert"></div>
+                <p class="url-tip">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="urlTip">Tip: downloads go through a public CORS proxy when needed.</span>
+                </p>
+            </div>
+
+            <!-- Instructions Panel -->
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title">
+                        <i class="fas fa-info-circle"></i>
+                        <span data-i18n="instructions">Instructions</span>
+                    </h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">Arrow keys = D-pad, Z and X = action buttons</span></li>
+                            <li><i class="fas fa-mouse"></i> <span data-i18n="controlsHint2">The player toolbar offers fullscreen, save states and volume</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-expand"></i> <span data-i18n="fullscreenDesc">Fullscreen: use the toolbar button</span></h4>
+                        <ul>
+                            <li><i class="fas fa-compress-arrows-alt"></i> <span data-i18n="exitFullscreen">Press ESC to exit fullscreen</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Player Section -->
+        <section class="emulator-section" id="playerSection">
+            <div class="wasm4-wrapper" id="wasm4Wrapper">
+                <!-- wasm4-app and the cart-json payload are created by towasm4.js
+                     when a cart is loaded; a bare element would try to fetch
+                     cart.wasm and error out. -->
+                <!-- Loading Overlay -->
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Loading WASM-4 runtime, please wait...</span>
+                        <small data-i18n="loadingTip">The fantasy console boots in a second or two</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast hidden" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- WASM-4 web runtime (vendored, ISC - see vendor/wasm4/README.md) -->
+    <script src="../vendor/wasm4/wasm4.js"></script>
+    <!-- WASM-4 page logic -->
+    <script src="../js/towasm4.js"></script>
+</body>
+
+</html>

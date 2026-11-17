@@ -16,6 +16,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 content.classList.remove('active');
             });
             document.getElementById(targetTab).classList.add('active');
+            
+            // Re-apply the current search term to the newly shown tab
+            var activeSearch = document.getElementById('searchInput');
+            if (activeSearch && activeSearch.value.trim()) {
+                activeSearch.dispatchEvent(new Event('input'));
+            }
         });
     });
     

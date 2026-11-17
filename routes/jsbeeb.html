@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>BBC Micro Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .embed-wrap {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .embed-frame {
+            display: block;
+            width: 100%;
+            height: min(78vh, 720px);
+            border: 2px solid rgba(163,0,27,0.5);
+            border-radius: 10px;
+            background: #222;
+        }
+        .embed-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 14px 0;
+        }
+        .embed-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(163,0,27,0.5);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .embed-action-btn:hover { background: rgba(163,0,27,0.4); }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="header-title">
+                <i class="fas fa-keyboard"></i>
+                <span id="pageTitle" data-i18n="pageTitle">BBC Micro</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Intro Section -->
+        <section class="upload-section" id="introSection">
+            <div class="upload-box" id="introBox">
+                <div class="upload-icon">
+                    <i class="fas fa-keyboard"></i>
+                </div>
+                <h2 class="upload-title" data-i18n="introTitle">BBC Micro Emulator (jsbeeb)</h2>
+                <p class="upload-desc" data-i18n="introDesc">jsbeeb emulates the classic 1981 BBC Micro home computer (Model B), including its BASIC interpreter, cassette games and disc system.</p>
+                <div class="embed-actions">
+                    <button class="embed-action-btn" id="startBtn">
+                        <i class="fas fa-play"></i>
+                        <span data-i18n="startEmulator">Start Emulator</span>
+                    </button>
+                    <a class="embed-action-btn" href="https://bbc.godbolt.org/" target="_blank" rel="noopener">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-i18n="openStandalone">Open Standalone</span>
+                    </a>
+                </div>
+                <p class="upload-desc" style="margin-top:10px;">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="introHint">Powered by jsbeeb (GPL-3.0 by Matt Godbolt and contributors), embedded from the official bbc.godbolt.org deployment. Discs and cassettes load inside the emulator UI.</span>
+                </p>
+            </div>
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title">
+                        <i class="fas fa-info-circle"></i>
+                        <span data-i18n="instructions">Instructions</span>
+                    </h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint">Click inside the emulator screen, then type like on a real BBC Micro keyboard</span></li>
+                            <li><i class="fas fa-gamepad"></i> <span data-i18n="gamesHint">Type CHAIN"GAMES" and press Enter at the BASIC prompt for the built-in game menu</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Embed Section -->
+        <section class="emulator-section" id="embedSection">
+            <div class="embed-wrap">
+                <iframe class="embed-frame" id="embedFrame" title="BBC Micro emulator" allow="fullscreen" loading="lazy"></iframe>
+                <div class="loading-overlay" id="embedLoading">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="embedLoading">Loading the official emulator site - the first visit may take a while...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast hidden" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="../js/tojsbeeb.js"></script>
+</body>
+
+</html>

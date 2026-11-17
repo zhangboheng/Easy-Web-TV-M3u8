@@ -1257,3 +1257,14 @@ body {
     background: #1e1e1e;
     color: #fff;
 }
+
+/* iOS Safari force-zooms the page when a form control with font-size < 16px
+   gains focus (user-scalable=no is ignored since iOS 10). The zoom displaces
+   the field and keyboard mid-typing, which reads as "text never appears".
+   Keep text inputs at 16px on phones so the layout stays put. */
+@media screen and (max-width: 768px) {
+    .url-input,
+    .search-input {
+        font-size: 16px;
+    }
+}

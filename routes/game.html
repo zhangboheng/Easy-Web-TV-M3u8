@@ -475,6 +475,8 @@
             
             .search-box input {
                 width: 200px;
+                /* keep >=16px on phones: iOS auto-zooms smaller inputs on focus */
+                font-size: 16px;
             }
             
             .search-box input:focus {
@@ -593,6 +595,14 @@
                 <div class="category-item" data-category="emulator">
                     <i class="fas fa-microchip"></i>
                     <span>Emulator</span>
+                </div>
+                <div class="category-item" data-category="retropc">
+                    <i class="fas fa-desktop"></i>
+                    <span>Retro PC</span>
+                </div>
+                <div class="category-item" data-category="fantasy">
+                    <i class="fas fa-magic"></i>
+                    <span>Fantasy Console</span>
                 </div>
                 <div class="category-item" data-category="others">
                     <i class="fas fa-gamepad"></i>

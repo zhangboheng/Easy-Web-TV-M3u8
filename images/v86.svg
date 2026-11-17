@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  <!-- CPU die -->
+  <rect x="72" y="32" width="56" height="46" rx="6" fill="#0d2b45" stroke="#4da3ff" stroke-width="2"/>
+  <text x="100" y="61" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-weight="bold" font-size="19" fill="#4da3ff">x86</text>
+  <!-- pins top/bottom -->
+  <g stroke="#ffd166" stroke-width="3" stroke-linecap="round">
+    <line x1="82" y1="24" x2="82" y2="32"/><line x1="94" y1="24" x2="94" y2="32"/><line x1="106" y1="24" x2="106" y2="32"/><line x1="118" y1="24" x2="118" y2="32"/>
+    <line x1="82" y1="78" x2="82" y2="86"/><line x1="94" y1="78" x2="94" y2="86"/><line x1="106" y1="78" x2="106" y2="86"/><line x1="118" y1="78" x2="118" y2="86"/>
+    <line x1="64" y1="42" x2="72" y2="42"/><line x1="64" y1="55" x2="72" y2="55"/><line x1="64" y1="68" x2="72" y2="68"/>
+    <line x1="128" y1="42" x2="136" y2="42"/><line x1="128" y1="55" x2="136" y2="55"/><line x1="128" y1="68" x2="136" y2="68"/>
+  </g>
+  <text x="42" y="98" font-family="'Courier New', Courier, monospace" font-weight="bold" font-size="13" fill="#33ff66">PC</text>
+  <circle cx="158" cy="97" r="4" fill="#33ff66"/>
+</svg>
