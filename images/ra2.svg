@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <rect x="24" y="8" width="116" height="86" rx="10" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  <!-- screen -->
+  <rect x="34" y="18" width="92" height="58" rx="6" fill="#0d0d0d" stroke="#2a2a2a" stroke-width="1.5"/>
+  <!-- red army units (soviet) -->
+  <g fill="#e24b4b">
+    <rect x="46" y="28" width="7" height="7"/>
+    <rect x="55" y="28" width="7" height="7"/>
+    <rect x="46" y="39" width="7" height="7"/>
+    <rect x="55" y="39" width="7" height="7"/>
+    <rect x="46" y="50" width="7" height="7"/>
+  </g>
+  <!-- blue army units (allies) -->
+  <g fill="#4b7be2">
+    <rect x="108" y="50" width="7" height="7"/>
+    <rect x="117" y="50" width="7" height="7"/>
+    <rect x="108" y="39" width="7" height="7"/>
+    <rect x="117" y="39" width="7" height="7"/>
+    <rect x="108" y="28" width="7" height="7"/>
+  </g>
+  <!-- base -->
+  <rect x="66" y="94" width="68" height="10" rx="3" fill="#232323" stroke="#3a3a3a" stroke-width="1"/>
+  <rect x="84" y="104" width="32" height="5" rx="2" fill="#1c1c1c"/>
+  <circle cx="160" cy="97" r="4" fill="#33ff66"/>
+</svg>

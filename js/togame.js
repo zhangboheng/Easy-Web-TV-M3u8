@@ -342,6 +342,15 @@ var games = [
         image: '../images/v86.svg',
         url: '../routes/v86.html'
     },
+    // Red Alert 2 (RA2 VM: v86 + Win32/DirectX layer, hot-link) - retropc category
+    {
+        id: 110,
+        name: 'Red Alert 2',
+        platform: 'Red Alert 2',
+        category: 'retropc',
+        image: '../images/ra2.svg',
+        url: '../routes/ra2.html'
+    },
     {
         id: 104,
         name: 'BBC Micro Emulator',

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Red Alert 2 Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .ra2-wrapper {
+            position: relative;
+            max-width: 960px;
+            margin: 0 auto;
+            background: #000;
+        }
+        .ra2-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: min(80vh, 720px);
+            border: 2px solid rgba(51,255,102,0.4);
+            border-radius: 10px;
+            background: #111;
+        }
+        .ra2-wrapper iframe:fullscreen {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            border-radius: 0;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="header-title">
+                <i class="fas fa-crosshairs"></i>
+                <span id="pageTitle" data-i18n="pageTitle">Red Alert 2</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="fullscreenBtn" style="display: none;">
+                <i class="fas fa-expand"></i>
+                <span data-i18n="fullscreen">Fullscreen</span>
+            </div>
+            <div class="header-action-btn" id="resetBtn" style="display: none;">
+                <i class="fas fa-redo"></i>
+                <span data-i18n="reset">Reset</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Upload Section -->
+        <section class="upload-section" id="uploadSection">
+            <!-- Tab Switch -->
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabDemo" data-tab="demo">
+                    <i class="fas fa-globe"></i>
+                    <span data-i18n="tabDemo">Emulator</span>
+                </div>
+            </div>
+
+            <!-- Demo Box -->
+            <div class="search-box" id="demoBox">
+                <div class="upload-icon"><i class="fas fa-crosshairs"></i></div>
+                <h2 class="upload-title" data-i18n="demoTitle">Red Alert 2 Games</h2>
+                <p class="upload-desc" data-i18n="demoDesc">Run Red Alert 2 and Yuri's Revenge directly in your browser with RA2 VM (v86 + Win32/DirectX compatibility layer, embedded by hotlink to the official site). Supports skirmish, saves and multiplayer.</p>
+                <button class="upload-btn" id="demoOpenBtn" style="margin: 10px auto;">
+                    <i class="fas fa-play"></i>
+                    <span data-i18n="demoOpen">Launch Game</span>
+                </button>
+                <p class="upload-desc" style="margin-top:14px;">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="demoHint">No games are bundled - bring your own copies of Red Alert 2 or Yuri's Revenge and import them in the page to play. Not endorsed by EA.</span>
+                </p>
+            </div>
+
+            <!-- Instructions Panel -->
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title">
+                        <i class="fas fa-info-circle"></i>
+                        <span data-i18n="instructions">Instructions</span>
+                    </h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">Build, select units and fight with mouse/touch, or use keyboard shortcuts</span></li>
+                            <li><i class="fas fa-crosshairs"></i> <span data-i18n="controlsHint2">On first launch, import your own Red Alert 2 or Yuri's Revenge game resources inside the emulator, then pick a version to start a skirmish</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-bolt"></i> <span data-i18n="aboutTitle">About</span></h4>
+                        <ul>
+                            <li><i class="fas fa-info-circle"></i> <span data-i18n="aboutHint">Red Alert 2: the 2000 classic PC RTS from Westwood/EA. The web version is provided by RA2 VM (v86 engine, GPL-3.0), embedded by hotlink; currently Alpha.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="emulator-section" id="playerSection">
+            <div class="ra2-wrapper" id="ra2Wrapper">
+                <iframe id="ra2Frame" title="Red Alert 2 player" allow="fullscreen; autoplay" allowfullscreen></iframe>
+                <!-- Loading Overlay -->
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Starting RA2 VM, please wait...</span>
+                        <small data-i18n="loadingTip">The emulator loads from its host; first launch can take a while</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast hidden" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- Red Alert 2 page logic -->
+    <script src="../js/tora2.js"></script>
+</body>
+
+</html>

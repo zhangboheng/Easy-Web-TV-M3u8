@@ -84,7 +84,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **3DO**: 3DO (bring your own firmware: panafz1/panafz10/goldstar/sanyotry .bin)
   - **Flash**: Flash Player powered by [Ruffle](https://ruffle.rs/) (100 preset games, or load your own .swf via upload/URL/archive.org search; keyboard & mouse recommended)
   - **DOS**: MS-DOS games powered by [js-dos](https://js-dos.com/) (100 preset classics, or load your own .zip/.jsdos via upload/URL/archive.org search; built-in DOS environment, no BIOS needed)
-  - **Retro PC**: full x86 PC emulation powered by [v86](https://github.com/copy/v86) (boot your own floppy/hard disk/CD image or Linux kernel; instant-play open-source bootsector games fetched live from GitHub, plus downloadable OS images from the official demo CDN), plus [jsbeeb](https://bbc.godbolt.org/) (BBC Micro) and [apple2js](https://www.scullinsteel.com/apple2/) (Apple II) embedded from their official deployments
+  - **Retro PC**: full x86 PC emulation powered by [v86](https://github.com/copy/v86) (boot your own floppy/hard disk/CD image or Linux kernel; instant-play open-source bootsector games fetched live from GitHub, plus downloadable OS images from the official demo CDN), plus [jsbeeb](https://bbc.godbolt.org/) (BBC Micro) and [apple2js](https://www.scullinsteel.com/apple2/) (Apple II) embedded from their official deployments, and [Red Alert 2](https://ra2.games) running via [RA2 VM](https://github.com/ra2-games/ra2) (v86 + Win32/DirectX layer, GPL-3.0, Alpha; bring your own RA2/Yuri's Revenge files, hot-linked official web app)
   - **Fantasy Console**: [WASM-4](https://wasm4.org/) (load any .wasm cart via upload or URL; self-contained vendored runtime)
   - **Arcade**: FBNeo (incl. Neo Geo / CPS1 / CPS3), MAME 2003
   - **Mobile platforms**: Palm OS via [CloudpilotEmu](https://github.com/cloudpilot-emu/cloudpilot-emu) (GPL-3.0) and Korean WIPI/SKVM/J2ME via [WIE](https://github.com/dlunch/wie) (MIT) - both hot-linked official web apps, bring your own ROM/files
@@ -226,13 +226,14 @@ All 38 EmulatorJS-based emulators + 4 standalone engines (v86, jsbeeb, apple2js,
 | Retro PC | x86 PC (v86) | v86 | – ³ | – |
 | Retro PC | BBC Micro (jsbeeb) | jsbeeb (embedded) | – | – |
 | Retro PC | Apple II (apple2js) | apple2js (embedded) | – | – |
+| Retro PC | Red Alert 2 / Yuri's Revenge (RA2 VM) | ra2vm (hot-linked embed, Alpha) | – | – |
 | Fantasy | WASM-4 | wasm4 (vendored runtime) | – ³ | – |
 | Fantasy | PICO-8 (hot-linked web builds) | pico8 (no runtime bundled) | 5 | – |
 | Computer | MSX (WebMSX embed) | webmsx (hot-linked embed) | 3 ⁴ | – |
 | Mobile | J2ME (J2meJS embed) | j2mejs (hot-linked embed) | – | – |
 | Mobile | Palm OS (CloudpilotEmu embed) | cloudpilot-emu (hot-linked embed) | – | – |
 | Mobile | WIPI (WIE embed) | wie (hot-linked embed) | – | – |
-| **Total** | **46 platforms** | – | **20682** | **31 files** |
+| **Total** | **47 platforms** | – | **20682** | **31 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 ² No bundled games: load your own disc image via upload/URL, plus a BIOS file dumped from your own console (Sega CD: `bios_CD_U/J/E.bin`; PC-FX: `pcfx.rom`) using the BIOS upload box on the emulator page.
@@ -307,6 +308,7 @@ Easy-Web-TV-M3u8/
 │   ├── toj2me.js          # J2ME page (J2meJS embed, jar upload/URL)
 │   ├── topalm.js          # Palm OS page (CloudpilotEmu embed, bring-your-own ROM)
 │   ├── towipi.js          # WIPI page (WIE embed, bring-your-own files)
+│   ├── tora2.js           # Red Alert 2 page (RA2 VM embed, bring-your-own game files)
 │   ├── tojsbeeb.js        # BBC Micro page (official jsbeeb embed)
 │   ├── toapple2js.js      # Apple II page (official apple2js embed)
 │   ├── tv.js              # TV channels page (tabs & search)
@@ -364,6 +366,7 @@ Easy-Web-TV-M3u8/
 │   ├── j2me.html          # J2ME (J2meJS embed, jar loading)
 │   ├── palm.html          # Palm OS (CloudpilotEmu embed, bring-your-own ROM)
 │   ├── wipi.html          # WIPI (WIE embed, bring-your-own files)
+│   ├── ra2.html           # Red Alert 2 (RA2 VM embed, bring-your-own game files)
 │   ├── jsbeeb.html        # BBC Micro (embedded jsbeeb)
 │   ├── apple2.html        # Apple II (embedded apple2js)
 │   └── ...                # Other pages
@@ -407,6 +410,7 @@ This project uses the following open source projects:
 - [EmulatorJS](https://github.com/EmulatorJS/EmulatorJS) - RetroArch-based emulator
 - [CloudpilotEmu](https://github.com/cloudpilot-emu/cloudpilot-emu) - Palm OS emulator (GPL-3.0, hot-linked embed)
 - [WIE](https://github.com/dlunch/wie) - WIPI/SKVM/J2ME emulator (MIT, hot-linked embed)
+- [RA2 VM](https://github.com/ra2-games/ra2) - Red Alert 2 in the browser via v86 (GPL-3.0, hot-linked embed)
 - [Font Awesome](https://fontawesome.com/) - Icons
 - [Tamaweb](https://github.com/autosam/Tamaweb) - Virtual pet game (vendored under `gamebox/tamaweb/`, CC BY-NC-SA 4.0)
 - [js-dos](https://js-dos.com/), [Ruffle](https://ruffle.rs/), [WASM-4](https://wasm4.org/), [v86](https://github.com/copy/v86) - Vendored game runtimes
