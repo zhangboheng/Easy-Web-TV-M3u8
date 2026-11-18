@@ -1,25 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
-  <rect x="24" y="8" width="116" height="86" rx="10" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
-  <!-- screen -->
-  <rect x="34" y="18" width="92" height="58" rx="6" fill="#0d0d0d" stroke="#2a2a2a" stroke-width="1.5"/>
-  <!-- red army units (soviet) -->
-  <g fill="#e24b4b">
-    <rect x="46" y="28" width="7" height="7"/>
-    <rect x="55" y="28" width="7" height="7"/>
-    <rect x="46" y="39" width="7" height="7"/>
-    <rect x="55" y="39" width="7" height="7"/>
-    <rect x="46" y="50" width="7" height="7"/>
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  <!-- screen: Red Alert 2 cover style (crimson field, soviet star, tank) -->
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#7a0c0c"/>
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#4b7be2" opacity="0.12"/>
+  <!-- soviet red star -->
+  <polygon points="100,32 103.4,41.4 113.4,41.8 105.5,47.8 108.3,57.4 100,51.8 91.7,57.4 94.5,47.8 86.6,41.8 96.6,41.4" fill="#ffd166"/>
+  <!-- allied jet (blue) -->
+  <polygon points="138,34 152,39 138,44 142,39" fill="#4b7be2"/>
+  <!-- tank silhouette -->
+  <g fill="#3d0505">
+    <rect x="58" y="72" width="52" height="10" rx="2"/>
+    <rect x="70" y="64" width="24" height="9" rx="2"/>
+    <rect x="93" y="66" width="26" height="3" rx="1"/>
+    <circle cx="66" cy="82" r="3"/>
+    <circle cx="76" cy="82" r="3"/>
+    <circle cx="86" cy="82" r="3"/>
+    <circle cx="96" cy="82" r="3"/>
+    <circle cx="104" cy="82" r="3"/>
   </g>
-  <!-- blue army units (allies) -->
-  <g fill="#4b7be2">
-    <rect x="108" y="50" width="7" height="7"/>
-    <rect x="117" y="50" width="7" height="7"/>
-    <rect x="108" y="39" width="7" height="7"/>
-    <rect x="117" y="39" width="7" height="7"/>
-    <rect x="108" y="28" width="7" height="7"/>
-  </g>
-  <!-- base -->
-  <rect x="66" y="94" width="68" height="10" rx="3" fill="#232323" stroke="#3a3a3a" stroke-width="1"/>
-  <rect x="84" y="104" width="32" height="5" rx="2" fill="#1c1c1c"/>
+  <!-- RA2 lettering -->
+  <text x="134" y="82" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#ffd166">RA2</text>
   <circle cx="160" cy="97" r="4" fill="#33ff66"/>
 </svg>

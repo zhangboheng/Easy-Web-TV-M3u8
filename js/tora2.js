@@ -292,7 +292,7 @@ document.getElementById('demoOpenBtn').addEventListener('click', playRa2);
 document.getElementById('backBtn').addEventListener('click', function () {
     var playerSection = document.getElementById('playerSection');
     if (playerSection.classList.contains('active')) { stopPlayback(); return; }
-    window.location.href = '../routes/game.html?category=retropc';
+    window.location.href = '../routes/game.html?category=recomp';
 });
 document.getElementById('resetBtn').addEventListener('click', stopPlayback);
 
