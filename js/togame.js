@@ -351,6 +351,24 @@ var games = [
         image: '../images/ra2.svg',
         url: '../routes/ra2.html'
     },
+    // Diablo (diabloweb: WASM port of the open-source Devilution engine, hot-link) - recomp category
+    {
+        id: 111,
+        name: 'Diablo',
+        platform: 'Diablo',
+        category: 'recomp',
+        image: '../images/diablo.svg',
+        url: '../routes/diablo.html'
+    },
+    // Zelda II (z2rs: Rust clean-room reconstruction compiled to WASM, hot-link, BYO ROM) - recomp category
+    {
+        id: 112,
+        name: 'Zelda II',
+        platform: 'Zelda II',
+        category: 'recomp',
+        image: '../images/z2rs.svg',
+        url: '../routes/z2rs.html'
+    },
     {
         id: 104,
         name: 'BBC Micro Emulator',
@@ -421,7 +439,7 @@ var games = [
         id: 1,
         name: 'Square Obstacles',
         platform: 'PC',
-        category: 'others',
+        category: 'webgames',
         image: '../gamebox/ball/squareobstacle.png',
         url: '../catalogues/gameplay.html?game=square-obstacles'
     },
@@ -429,7 +447,7 @@ var games = [
         id: 2,
         name: 'Pong',
         platform: 'PC',
-        category: 'others',
+        category: 'webgames',
         image: '../gamebox/bong/bong.png',
         url: '../catalogues/gameplay.html?game=pong'
     },
@@ -437,7 +455,7 @@ var games = [
         id: 3,
         name: 'Breakout',
         platform: 'PC',
-        category: 'others',
+        category: 'webgames',
         image: '../gamebox/breakout/breakout.png',
         url: '../catalogues/gameplay.html?game=breakout'
     },
@@ -445,7 +463,7 @@ var games = [
         id: 4,
         name: 'Tic Tac Toe',
         platform: 'PC',
-        category: 'others',
+        category: 'webgames',
         image: '../gamebox/tic-tac-toe/tictactoe.png',
         url: '../catalogues/gameplay.html?game=tic-tac-toe'
     },
@@ -454,9 +472,90 @@ var games = [
         id: 100,
         name: 'Tamaweb',
         platform: 'PC',
-        category: 'others',
+        category: 'webgames',
         image: '../gamebox/tamaweb/resources/img/character/chara_100b.png',
         url: '../catalogues/gameplay.html?game=tamaweb'
+    },
+    // Open-source web games (hot-link via the generic player routes/webgame.html?game=<key>)
+    {
+        id: 113,
+        name: '2048',
+        platform: 'PC',
+        category: 'webgames',
+        image: '../images/web2048.svg',
+        url: '../routes/webgame.html?game=2048'
+    },
+    {
+        id: 114,
+        name: 'Pac-Man',
+        platform: 'PC',
+        category: 'webgames',
+        image: '../images/pacman.svg',
+        url: '../routes/webgame.html?game=pacman'
+    },
+    {
+        id: 115,
+        name: 'T-Rex Runner',
+        platform: 'PC',
+        category: 'webgames',
+        image: '../images/trex.svg',
+        url: '../routes/webgame.html?game=trex'
+    },
+    {
+        id: 116,
+        name: 'Space Invaders',
+        platform: 'PC',
+        category: 'webgames',
+        image: '../images/spaceinvaders.svg',
+        url: '../routes/webgame.html?game=spaceinvaders'
+    },
+    {
+        id: 117,
+        name: 'SkiFree',
+        platform: 'PC',
+        category: 'webgames',
+        image: '../images/skifree.svg',
+        url: '../routes/webgame.html?game=skifree'
+    },
+    {
+        id: 118,
+        name: 'Flappy Bird',
+        platform: 'PC',
+        category: 'webgames',
+        image: '../images/floppybird.svg',
+        url: '../routes/webgame.html?game=floppybird'
+    },
+    {
+        id: 119,
+        name: 'HexGL',
+        platform: 'PC',
+        category: 'webgames',
+        image: '../images/hexgl.svg',
+        url: '../routes/webgame.html?game=hexgl'
+    },
+    {
+        id: 120,
+        name: 'Astray',
+        platform: 'PC',
+        category: 'webgames',
+        image: '../images/astray.svg',
+        url: '../routes/webgame.html?game=astray'
+    },
+    {
+        id: 121,
+        name: 'Q1K3',
+        platform: 'PC',
+        category: 'webgames',
+        image: '../images/q1k3.svg',
+        url: '../routes/webgame.html?game=q1k3'
+    },
+    {
+        id: 122,
+        name: 'Underrun',
+        platform: 'PC',
+        category: 'webgames',
+        image: '../images/underrun.svg',
+        url: '../routes/webgame.html?game=underrun'
     },
 ];
 
@@ -792,6 +891,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Deep link: ?category=<id> selects the category (e.g. back links from
     // the standalone emulator pages: fantasy / computer / mobile / retropc)
     var urlCategory = new URLSearchParams(window.location.search).get('category');
+    // Backward compatibility: the category was renamed 'others' -> 'webgames'
+    // (v8.5.2); old deep links / bookmarks keep working.
+    if (urlCategory === 'others') urlCategory = 'webgames';
     if (urlCategory) {
         var target = document.querySelector('.category-item[data-category="' + urlCategory + '"]');
         if (target) {

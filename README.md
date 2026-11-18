@@ -6,14 +6,14 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.5.1-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.5.2-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
 ## 📋 Table of Contents
 
 - [Demo](#-demo)
-- [What's New](#-whats-new-v851)
+- [What's New](#-whats-new-v852)
 - [Features](#-features)
 - [Screenshots](#-screenshots)
 - [Tech Stack](#-tech-stack)
@@ -27,6 +27,24 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 ## 🎬 Demo
 
 **[Live Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)**
+
+## 🆕 What's New (v8.5.2)
+
+- **10 new Web Games via a generic hot-link player**: the Web Games category grows from 5 to 15 titles. A single player page (`routes/webgame.html`) driven by a `?game=<key>` registry serves them all - each game hot-links its author's official demo build, nothing is bundled:
+  - [2048](https://devrsi0n.github.io/React-2048-game/) via [devrsi0n/React-2048-game](https://github.com/devrsi0n/React-2048-game) (MIT)
+  - [Pac-Man](https://masonicgit.github.io/pacman/) via [masonicGIT/pacman](https://github.com/masonicGIT/pacman) (GPL-3.0)
+  - [T-Rex Runner](https://wayou.github.io/t-rex-runner/) via [wayou/t-rex-runner](https://github.com/wayou/t-rex-runner) (BSD-3-Clause)
+  - [Space Invaders](https://dwmkerr.github.io/spaceinvaders/) via [dwmkerr/spaceinvaders](https://github.com/dwmkerr/spaceinvaders) (MIT)
+  - [SkiFree](https://basicallydan.github.io/skifree.js/) via [basicallydan/skifree.js](https://github.com/basicallydan/skifree.js) (MIT)
+  - [Flappy Bird](https://nebez.github.io/floppybird/) via [nebez/floppybird](https://github.com/nebez/floppybird) (Apache-2.0)
+  - [HexGL](https://hexgl.bkcore.com/play/) via [BKcore/HexGL](https://github.com/BKcore/HexGL) (MIT)
+  - [Astray](https://wwwtyro.github.io/Astray/) via [wwwtyro/Astray](https://github.com/wwwtyro/Astray) (Unlicense)
+  - [Q1K3](https://phoboslab.org/q1k3/) via [phoboslab/q1k3](https://github.com/phoboslab/q1k3) (MIT)
+  - [Underrun](https://phoboslab.org/underrun/) via [phoboslab/underrun](https://github.com/phoboslab/underrun) (MIT)
+
+- **Two more Recomp-class games**: the Recomp category grows from one title to three, both hot-linked WebAssembly ports that need no native install
+  - **[Diablo](https://d07riv.github.io/diabloweb/)** via [diabloweb](https://github.com/d07RiV/diabloweb) (WebAssembly build of the source-released [Devilution](https://github.com/diasurgical/devilution) engine) - the **shareware episode is included upstream and plays instantly**; the full game needs your own `DIABDAT.MPQ`
+  - **[Zelda II: The Adventure of Link](https://z2rs.com/)** via [z2rs](https://github.com/troyedwardsjr/z2rs) (MIT-licensed clean-room Rust reconstruction compiled to WebAssembly, verified frame by frame against the original ROM) - adds widescreen, save states and optional online co-op; bring your own ROM (No-Intro USA dump, CRC32 `BA322865`), read in place and never uploaded
 
 ## 🆕 What's New (v8.5.1)
 
@@ -86,7 +104,11 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **Flash**: Flash Player powered by [Ruffle](https://ruffle.rs/) (100 preset games, or load your own .swf via upload/URL/archive.org search; keyboard & mouse recommended)
   - **DOS**: MS-DOS games powered by [js-dos](https://js-dos.com/) (100 preset classics, or load your own .zip/.jsdos via upload/URL/archive.org search; built-in DOS environment, no BIOS needed)
   - **Retro PC**: full x86 PC emulation powered by [v86](https://github.com/copy/v86) (boot your own floppy/hard disk/CD image or Linux kernel; instant-play open-source bootsector games fetched live from GitHub, plus downloadable OS images from the official demo CDN), plus [jsbeeb](https://bbc.godbolt.org/) (BBC Micro) and [apple2js](https://www.scullinsteel.com/apple2/) (Apple II) embedded from their official deployments
-  - **Recomp**: [Red Alert 2 / Yuri's Revenge](https://ra2.games) running via [RA2 VM](https://github.com/ra2-games/ra2) (v86 + Win32/DirectX compatibility layer, GPL-3.0, Alpha; bring your own RA2/YR files, hot-linked official web app)
+  - **Web Games**: classic open-source web games - the 5 built-in titles (Square Obstacles, Pong, Breakout, Tic Tac Toe, Tamaweb) plus 10 hot-linked classics (2048, Pac-Man, T-Rex Runner, Space Invaders, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun) served through one generic `?game=` hot-link player page
+  - **Recomp**: native-class ports recompiled or rebuilt for the browser, all hot-linked official web apps:
+    - [Red Alert 2 / Yuri's Revenge](https://ra2.games) via [RA2 VM](https://github.com/ra2-games/ra2) (v86 + Win32/DirectX compatibility layer, GPL-3.0, Alpha; bring your own RA2/YR files)
+    - [Diablo](https://d07riv.github.io/diabloweb/) via [diabloweb](https://github.com/d07RiV/diabloweb) (WebAssembly port of the source-released Devilution engine; the shareware episode is included, the full game needs your own `DIABDAT.MPQ`)
+    - [Zelda II: The Adventure of Link](https://z2rs.com/) via [z2rs](https://github.com/troyedwardsjr/z2rs) (MIT, clean-room Rust reconstruction compiled to WebAssembly; bring your own ROM)
   - **Fantasy Console**: [WASM-4](https://wasm4.org/) (load any .wasm cart via upload or URL; self-contained vendored runtime)
   - **Arcade**: FBNeo (incl. Neo Geo / CPS1 / CPS3), MAME 2003
   - **Mobile platforms**: Palm OS via [CloudpilotEmu](https://github.com/cloudpilot-emu/cloudpilot-emu) (GPL-3.0) and Korean WIPI/SKVM/J2ME via [WIE](https://github.com/dlunch/wie) (MIT) - both hot-linked official web apps, bring your own ROM/files
@@ -413,6 +435,9 @@ This project uses the following open source projects:
 - [CloudpilotEmu](https://github.com/cloudpilot-emu/cloudpilot-emu) - Palm OS emulator (GPL-3.0, hot-linked embed)
 - [WIE](https://github.com/dlunch/wie) - WIPI/SKVM/J2ME emulator (MIT, hot-linked embed)
 - [RA2 VM](https://github.com/ra2-games/ra2) - Red Alert 2 in the browser via v86 (GPL-3.0, hot-linked embed)
+- [diabloweb](https://github.com/d07RiV/diabloweb) - Diablo in the browser via WebAssembly (built on the source-released [Devilution](https://github.com/diasurgical/devilution) engine; hot-linked embed)
+- [z2rs](https://github.com/troyedwardsjr/z2rs) - Zelda II clean-room reconstruction in Rust/WebAssembly (MIT, hot-linked embed)
+- [2048](https://github.com/devrsi0n/React-2048-game) (React-2048-game), [pacman](https://github.com/masonicGIT/pacman), [t-rex-runner](https://github.com/wayou/t-rex-runner), [spaceinvaders](https://github.com/dwmkerr/spaceinvaders), [skifree.js](https://github.com/basicallydan/skifree.js), [floppybird](https://github.com/nebez/floppybird), [HexGL](https://github.com/BKcore/HexGL), [Astray](https://github.com/wwwtyro/Astray), [q1k3](https://github.com/phoboslab/q1k3), [underrun](https://github.com/phoboslab/underrun) - open-source web games (MIT / GPL-3.0 / BSD-3-Clause / Apache-2.0 / Unlicense, hot-linked embeds)
 - [Font Awesome](https://fontawesome.com/) - Icons
 - [Tamaweb](https://github.com/autosam/Tamaweb) - Virtual pet game (vendored under `gamebox/tamaweb/`, CC BY-NC-SA 4.0)
 - [js-dos](https://js-dos.com/), [Ruffle](https://ruffle.rs/), [WASM-4](https://wasm4.org/), [v86](https://github.com/copy/v86) - Vendored game runtimes

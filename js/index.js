@@ -1,7 +1,7 @@
 /**
  * Easy Web TV - Main Application
  * Native JavaScript (No jQuery)
- * @version 8.5.1
+ * @version 8.5.2
  */
 
 // Adult content translations for all supported languages
@@ -920,7 +920,7 @@ const SettingsModal = {
             }
             var payload = {
                 app: 'easy-web-tv',
-                version: '8.5.1',
+                version: '8.5.2',
                 exportedAt: new Date().toISOString(),
                 data: data
             };
@@ -1225,6 +1225,8 @@ DOM.ready(function() {
     if (scrollidbar) {
         scrollidbar.innerHTML = '';
         DOM.append(scrollidbar, `
+            <p>[2026-11-18] V8.5.2 release Add 10 open-source web games to Web Games via a generic ?game= hot-link player page (2048, Pac-Man, T-Rex Runner, Space Invaders, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun); the Others category was renamed to Web Games</p>
+            <p>[2026-11-18] V8.5.2 release Add Diablo (diabloweb WebAssembly port, shareware episode included, bring-your-own DIABDAT.MPQ for the full game) and Zelda II: The Adventure of Link (z2rs Rust/WebAssembly clean-room reconstruction, bring-your-own ROM) to the Recomp game category</p>
             <p>[2026-11-18] V8.5.1 release Add Palm OS and WIPI mobile emulators (CloudpilotEmu + WIE, hot-linked embeds) to the Mobile game category and Red Alert 2 (RA2 VM hot-link, bring-your-own-files, Alpha) to the new Recomp game category; fixed duplicate game card IDs that broke favorites and Continue Playing for the Retro PC/BBC Micro/Apple II/WASM-4/PICO-8/MSX/J2ME entries</p>
             <p>[2026-11-17] V8.5.0 release Add game favorites and Continue Playing section on game page, gamepad and keyboard navigation for the game hub, settings Backup &amp; Restore (export/import all app data as JSON), slimmed service worker precache to index shell for faster install, Tamaweb virtual pet game (vendored from autosam/Tamaweb, CC BY-NC-SA 4.0)</p>
             <p>[2026-11-17] V8.4.9 release Add MSX emulator (WebMSX embed, 3 open-source homebrew presets) and J2ME mobile games (J2meJS embed, jar URL/upload), new Computers and Mobile game categories, game page category deep-link fix, PICO-8 preset list alignment fix</p>
