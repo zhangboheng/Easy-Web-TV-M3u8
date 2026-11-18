@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Palm OS Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .palm-wrapper {
+            position: relative;
+            max-width: 480px;
+            margin: 0 auto;
+            background: #000;
+        }
+        .palm-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: min(80vh, 720px);
+            border: 2px solid rgba(51,255,102,0.4);
+            border-radius: 10px;
+            background: #111;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="header-title">
+                <i class="fas fa-mobile-screen"></i>
+                <span id="pageTitle" data-i18n="pageTitle">Palm OS</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="resetBtn" style="display: none;">
+                <i class="fas fa-redo"></i>
+                <span data-i18n="reset">Reset</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Upload Section -->
+        <section class="upload-section" id="uploadSection">
+            <!-- Tab Switch -->
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabDemo" data-tab="demo">
+                    <i class="fas fa-globe"></i>
+                    <span data-i18n="tabDemo">Emulator</span>
+                </div>
+            </div>
+
+            <!-- Demo Box -->
+            <div class="search-box" id="demoBox">
+                <div class="upload-icon"><i class="fas fa-mobile-screen"></i></div>
+                <h2 class="upload-title" data-i18n="demoTitle">Palm OS Games</h2>
+                <p class="upload-desc" data-i18n="demoDesc">Run Palm OS apps and games in your browser with CloudpilotEmu (GPL-3.0, embedded by hotlink to the official web app). It emulates Dragonball devices (Palm OS 1-4) and the ARM-based Tungsten E2 (OS 5).</p>
+                <button class="upload-btn" id="demoOpenBtn" style="margin: 10px auto;">
+                    <i class="fas fa-play"></i>
+                    <span data-i18n="demoOpen">Launch Emulator</span>
+                </button>
+                <p class="upload-desc" style="margin-top:14px;">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="demoHint">No ROMs are bundled - a Palm OS ROM image is required and must be provided by you from your own device. Commercial software is not hot-linked here.</span>
+                </p>
+            </div>
+
+            <!-- Instructions Panel -->
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title">
+                        <i class="fas fa-info-circle"></i>
+                        <span data-i18n="instructions">Instructions</span>
+                    </h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">Use the on-screen device buttons with mouse/touch, or the keyboard once the emulator has focus</span></li>
+                            <li><i class="fas fa-mobile-screen"></i> <span data-i18n="controlsHint2">Inside the emulator, pick a device and install a ROM image, then add your own .prc apps and databases</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-bolt"></i> <span data-i18n="aboutTitle">About</span></h4>
+                        <ul>
+                            <li><i class="fas fa-info-circle"></i> <span data-i18n="aboutHint">Palm OS: the classic PDA/palm-size platform (1996-2007) with a large library of games. Emulation via CloudpilotEmu (GPL-3.0), embedded by hotlink.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="emulator-section" id="playerSection">
+            <div class="palm-wrapper" id="palmWrapper">
+                <iframe id="palmFrame" title="Palm OS emulator" allow="fullscreen; autoplay" allowfullscreen></iframe>
+                <!-- Loading Overlay -->
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Starting CloudpilotEmu, please wait...</span>
+                        <small data-i18n="loadingTip">The emulator downloads from its host; first load can take a while</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast hidden" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- Palm OS page logic -->
+    <script src="../js/topalm.js"></script>
+</body>
+
+</html>
