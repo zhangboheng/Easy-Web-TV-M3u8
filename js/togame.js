@@ -335,7 +335,7 @@ var games = [
     },
 
     {
-        id: 33,
+        id: 103,
         name: 'Retro PC (x86)',
         platform: 'x86 PC',
         category: 'retropc',
@@ -343,7 +343,7 @@ var games = [
         url: '../routes/v86.html'
     },
     {
-        id: 34,
+        id: 104,
         name: 'BBC Micro Emulator',
         platform: 'BBC Micro',
         category: 'retropc',
@@ -351,7 +351,7 @@ var games = [
         url: '../routes/jsbeeb.html'
     },
     {
-        id: 35,
+        id: 105,
         name: 'Apple II Emulator',
         platform: 'Apple II',
         category: 'retropc',
@@ -359,7 +359,7 @@ var games = [
         url: '../routes/apple2.html'
     },
     {
-        id: 36,
+        id: 106,
         name: 'WASM-4 Fantasy Console',
         platform: 'WASM-4',
         category: 'fantasy',
@@ -367,7 +367,7 @@ var games = [
         url: '../routes/wasm4.html'
     },
     {
-        id: 45,
+        id: 107,
         name: 'PICO-8 Web Games',
         platform: 'PICO-8',
         category: 'fantasy',
@@ -375,7 +375,7 @@ var games = [
         url: '../routes/pico8.html'
     },
     {
-        id: 46,
+        id: 108,
         name: 'MSX Homebrew',
         platform: 'MSX',
         category: 'computer',
@@ -383,7 +383,7 @@ var games = [
         url: '../routes/msx.html'
     },
     {
-        id: 47,
+        id: 109,
         name: 'J2ME Mobile Games',
         platform: 'J2ME',
         category: 'mobile',

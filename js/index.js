@@ -1225,7 +1225,7 @@ DOM.ready(function() {
     if (scrollidbar) {
         scrollidbar.innerHTML = '';
         DOM.append(scrollidbar, `
-            <p>[2026-11-18] V8.5.1 release Add Palm OS and WIPI mobile emulators (CloudpilotEmu + WIE, hot-linked embeds) to the Mobile game category</p>
+            <p>[2026-11-18] V8.5.1 release Add Palm OS and WIPI mobile emulators (CloudpilotEmu + WIE, hot-linked embeds) to the Mobile game category; fixed duplicate game card IDs that broke favorites and Continue Playing for the Retro PC/BBC Micro/Apple II/WASM-4/PICO-8/MSX/J2ME entries</p>
             <p>[2026-11-17] V8.5.0 release Add game favorites and Continue Playing section on game page, gamepad and keyboard navigation for the game hub, settings Backup &amp; Restore (export/import all app data as JSON), slimmed service worker precache to index shell for faster install, Tamaweb virtual pet game (vendored from autosam/Tamaweb, CC BY-NC-SA 4.0)</p>
             <p>[2026-11-17] V8.4.9 release Add MSX emulator (WebMSX embed, 3 open-source homebrew presets) and J2ME mobile games (J2meJS embed, jar URL/upload), new Computers and Mobile game categories, game page category deep-link fix, PICO-8 preset list alignment fix</p>
             <p>[2026-11-17] V8.4.8 release Fix invisible v86/WASM-4 emulator screens, Win30 auto-boot and centered 4:3 graphics, loading spinners for embedded BBC Micro/Apple II, mobile search input auto-zoom on iOS</p>
