@@ -1,7 +1,7 @@
 /**
  * Easy Web TV - Main Application
  * Native JavaScript (No jQuery)
- * @version 8.5.0
+ * @version 8.5.1
  */
 
 // Adult content translations for all supported languages
@@ -920,7 +920,7 @@ const SettingsModal = {
             }
             var payload = {
                 app: 'easy-web-tv',
-                version: '8.5.0',
+                version: '8.5.1',
                 exportedAt: new Date().toISOString(),
                 data: data
             };
