@@ -30,10 +30,11 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ## 🆕 What's New (v8.5.1)
 
-- **Game hub overhaul**: favorites (star any game), a Continue Playing row with your last 12 games, and full gamepad/keyboard navigation (D-pad/stick or arrow keys) - TV friendly
-- **Backup & Restore**: export all app data (favorites, history, settings) as a JSON file from the settings and import it on any device
-- **Tamaweb virtual pet**: raise a pixel pet in real time (feeding, cleaning, school, adventures, multi-stage growth) - vendored from [Tamaweb](https://github.com/autosam/Tamaweb) with trackers stripped and its service worker disabled
-- **Slimmer service worker**: the pre-cache list is trimmed to the index shell, so first install is much faster; route pages and engines are cached on first visit instead
+- **Palm OS & WIPI mobile emulators**: two new hot-linked embeds in the Mobile game category - [CloudpilotEmu](https://github.com/cloudpilot-emu/cloudpilot-emu) (Palm OS, GPL-3.0) and [WIE](https://github.com/dlunch/wie) (Korean WIPI/SKVM/J2ME, MIT). Both run the official web app in an iframe and take your own ROM/files; nothing is bundled
+- **New Recomp game category with Red Alert 2**: [Red Alert 2 / Yuri's Revenge](https://ra2.games) via [RA2 VM](https://github.com/ra2-games/ra2) (v86 + Win32/DirectX compatibility layer, GPL-3.0, **Alpha**) - hot-linked official web app, bring your own RA2/YR game files
+- **Host-side fullscreen buttons** on every iframe hot-link emulator page (Palm, WIPI, MSX, PICO-8, J2ME, RA2), since those upstream apps ship no fullscreen control of their own
+- **Stalled-embed fallback**: Palm and WIPI pages now surface an "open in new tab" link when the embedded app fails to finish loading within 15 seconds
+- **Fixed duplicate game card IDs**: the Retro PC / BBC Micro / Apple II / WASM-4 / PICO-8 / MSX / J2ME entries were shadowed by emulator entries, which broke their favorites and Continue Playing tracking. IDs reassigned to 101-110, and `check-games.js` now enforces global ID uniqueness
 
 ## ✨ Features
 
