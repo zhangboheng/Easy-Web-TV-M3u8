@@ -35,6 +35,7 @@ var i18n = {
         aboutTitle: '关于',
         aboutHint: 'J2ME：Java Platform, Micro Edition——2000 年代功能机游戏平台（MIDP 2.0）。模拟由 Rosabis 的 J2meJS（GPL-2.0）热链提供。',
         playing: '正在运行：',
+        fullscreen: '全屏',
         loadFailed: '无法加载该 jar，请检查地址或稍后重试',
         invalidFile: '请选择 .jar 文件'
     },
@@ -67,6 +68,7 @@ var i18n = {
         aboutTitle: 'About',
         aboutHint: 'J2ME: Java Platform, Micro Edition - the platform of 2000s feature-phone games (MIDP 2.0). Emulation via J2meJS by Rosabis (GPL-2.0), embedded by hotlink.',
         playing: 'Now running: ',
+        fullscreen: 'Fullscreen',
         loadFailed: 'Failed to load that jar - check the URL or try again later',
         invalidFile: 'Please select a .jar file'
     },
@@ -99,6 +101,7 @@ var i18n = {
         aboutTitle: 'J2ME について',
         aboutHint: 'J2ME：Java Platform, Micro Edition——2000年代のフィーチャーフォンゲームのプラットフォーム（MIDP 2.0）。エミュレーションはRosabisのJ2meJS（GPL-2.0）をホットリンクで提供。',
         playing: '実行中：',
+        fullscreen: '全画面',
         loadFailed: 'そのjarを読み込めませんでした。URLを確認するか後でお試しください',
         invalidFile: '.jar ファイルを選択してください'
     },
@@ -131,6 +134,7 @@ var i18n = {
         aboutTitle: '소개',
         aboutHint: 'J2ME: Java Platform, Micro Edition - 2000년대 피처폰 게임의 플랫폼(MIDP 2.0). Rosabis의 J2meJS(GPL-2.0)를 핫링크로 제공.',
         playing: '실행 중: ',
+        fullscreen: '전체 화면',
         loadFailed: 'jar를 불러오지 못했습니다. URL을 확인하거나 나중에 다시 시도하세요',
         invalidFile: '.jar 파일을 선택하세요'
     },
@@ -163,6 +167,7 @@ var i18n = {
         aboutTitle: 'À propos',
         aboutHint: "J2ME : Java Platform, Micro Edition - la plateforme des jeux sur téléphones des années 2000 (MIDP 2.0). Émulation via J2meJS de Rosabis (GPL-2.0), intégré par lien direct.",
         playing: 'En cours : ',
+        fullscreen: 'Plein écran',
         loadFailed: "Impossible de charger ce jar - vérifiez l'URL ou réessayez plus tard",
         invalidFile: "Veuillez sélectionner un fichier .jar"
     },
@@ -195,6 +200,7 @@ var i18n = {
         aboutTitle: 'Über',
         aboutHint: 'J2ME: Java Platform, Micro Edition - die Plattform der Handygames der 2000er (MIDP 2.0). Emulation via J2meJS von Rosabis (GPL-2.0), per Hotlink eingebettet.',
         playing: 'Läuft: ',
+        fullscreen: 'Vollbild',
         loadFailed: 'Jar konnte nicht geladen werden - URL prüfen oder später erneut versuchen',
         invalidFile: 'Bitte eine .jar-Datei auswählen'
     },
@@ -227,6 +233,7 @@ var i18n = {
         aboutTitle: 'Acerca de',
         aboutHint: 'J2ME: Java Platform, Micro Edition - la plataforma de los juegos de móviles de los 2000 (MIDP 2.0). Emulación vía J2meJS de Rosabis (GPL-2.0), incrustado por enlace directo.',
         playing: 'Ejecutando: ',
+        fullscreen: 'Pantalla completa',
         loadFailed: 'No se pudo cargar ese jar - comprueba la URL o inténtalo más tarde',
         invalidFile: 'Selecciona un archivo .jar'
     },
@@ -259,6 +266,7 @@ var i18n = {
         aboutTitle: 'О платформе',
         aboutHint: 'J2ME: Java Platform, Micro Edition - платформа игр на кнопочных телефонах 2000-х (MIDP 2.0). Эмуляция через J2meJS (Rosabis, GPL-2.0), встраивание горячей ссылкой.',
         playing: 'Запущено: ',
+        fullscreen: 'Полный экран',
         loadFailed: 'Не удалось загрузить jar - проверьте URL или попробуйте позже',
         invalidFile: 'Выберите файл .jar'
     }
@@ -325,6 +333,7 @@ function showPlayer(title) {
     document.getElementById('playerSection').classList.add('active');
     document.getElementById('pageTitle').textContent = t('playing') + (title || 'J2ME');
     document.getElementById('resetBtn').style.display = '';
+    document.getElementById('fullscreenBtn').style.display = '';
     document.getElementById('loadingOverlay').classList.remove('hidden');
 }
 
@@ -347,6 +356,7 @@ function stopPlayback() {
     document.getElementById('uploadSection').classList.remove('hidden');
     document.getElementById('pageTitle').textContent = t('pageTitle');
     document.getElementById('resetBtn').style.display = 'none';
+    document.getElementById('fullscreenBtn').style.display = 'none';
 }
 
 // ---- URL tab -----------------------------------------------------------
@@ -387,6 +397,21 @@ document.getElementById('instructionsHeader').addEventListener('click', function
     var icon = document.getElementById('instructionsToggle');
     if (icon) {
         icon.style.transform = document.getElementById('instructionsContent').classList.contains('hidden') ? '' : 'rotate(180deg)';
+    }
+});
+
+// ---- fullscreen --------------------------------------------------------
+// The upstream app does not ship its own fullscreen control, so the host
+// page requests fullscreen on the iframe itself (allowed via allowfullscreen).
+document.getElementById('fullscreenBtn').addEventListener('click', function () {
+    var frame = document.getElementById('j2meFrame');
+    if (!frame) return;
+    if (document.fullscreenElement) {
+        if (document.exitFullscreen) document.exitFullscreen();
+    } else if (frame.requestFullscreen) {
+        frame.requestFullscreen();
+    } else if (frame.webkitRequestFullscreen) {
+        frame.webkitRequestFullscreen();
     }
 });
 

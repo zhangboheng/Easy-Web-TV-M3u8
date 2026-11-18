@@ -23,7 +23,14 @@
             border-radius: 10px;
             background: #111;
         }
-    </style>
+
+.wipi-wrapper iframe:fullscreen {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            border-radius: 0;
+            background: #000;
+        }    </style>
 </head>
 <body>
     <!-- Header -->
@@ -38,6 +45,10 @@
             </div>
         </div>
         <div class="header-right">
+            <div class="header-action-btn" id="fullscreenBtn" style="display: none;">
+                <i class="fas fa-expand"></i>
+                <span data-i18n="fullscreen">Fullscreen</span>
+            </div>
             <div class="header-action-btn" id="resetBtn" style="display: none;">
                 <i class="fas fa-redo"></i>
                 <span data-i18n="reset">Reset</span>

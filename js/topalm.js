@@ -24,7 +24,8 @@ var i18n = {
         controlsHint2: '在模拟器内选择机型并安装 ROM 镜像，然后添加你自己的 .prc 应用与数据库',
         aboutTitle: '关于',
         aboutHint: 'Palm OS：经典 PDA/掌上平台（1996–2007），拥有大量游戏。模拟由 CloudpilotEmu（GPL-3.0）热链提供。',
-        playing: '正在运行：'
+        playing: '正在运行：',
+        fullscreen: '全屏'
     },
     en: {
         pageTitle: 'Palm OS',
@@ -44,7 +45,8 @@ var i18n = {
         controlsHint2: 'Inside the emulator, pick a device and install a ROM image, then add your own .prc apps and databases',
         aboutTitle: 'About',
         aboutHint: 'Palm OS: the classic PDA/palm-size platform (1996-2007) with a large library of games. Emulation via CloudpilotEmu (GPL-3.0), embedded by hotlink.',
-        playing: 'Now running: '
+        playing: 'Now running: ',
+        fullscreen: 'Fullscreen'
     },
     ja: {
         pageTitle: 'Palm OS',
@@ -64,7 +66,8 @@ var i18n = {
         controlsHint2: 'エミュレータ内で機種を選びROMイメージをインストールし、自分の .prc アプリとデータベースを追加してください',
         aboutTitle: 'Palm OS について',
         aboutHint: 'Palm OS：1996-2007年のクラシックなPDA/ハンドヘルドプラットフォーム。多くのゲームがあります。エミュレーションはCloudpilotEmu（GPL-3.0）をホットリンクで提供。',
-        playing: '実行中：'
+        playing: '実行中：',
+        fullscreen: '全画面'
     },
     ko: {
         pageTitle: 'Palm OS',
@@ -84,7 +87,8 @@ var i18n = {
         controlsHint2: '에뮬레이터 안에서 기기를 선택하고 ROM 이미지를 설치한 뒤, 자신의 .prc 앱과 데이터베이스를 추가하세요',
         aboutTitle: '소개',
         aboutHint: 'Palm OS: 1996-2007년의 클래식 PDA/핸드헬드 플랫폼으로 풍부한 게임 라이브러리를 보유. CloudpilotEmu(GPL-3.0)를 핫링크로 제공.',
-        playing: '실행 중: '
+        playing: '실행 중: ',
+        fullscreen: '전체 화면'
     },
     fr: {
         pageTitle: 'Palm OS',
@@ -104,7 +108,8 @@ var i18n = {
         controlsHint2: "Dans l'émulateur, choisissez un appareil et installez une image ROM, puis ajoutez vos applications .prc et bases de données",
         aboutTitle: 'À propos',
         aboutHint: "Palm OS : la plateforme PDA classique (1996-2007) avec une vaste bibliothèque de jeux. Émulation via CloudpilotEmu (GPL-3.0), intégré par lien direct.",
-        playing: 'En cours : '
+        playing: 'En cours : ',
+        fullscreen: 'Plein écran'
     },
     de: {
         pageTitle: 'Palm OS',
@@ -124,7 +129,8 @@ var i18n = {
         controlsHint2: 'Wählen Sie im Emulator ein Gerät und installieren Sie ein ROM-Image, dann fügen Sie Ihre eigenen .prc-Apps und Datenbanken hinzu',
         aboutTitle: 'Über',
         aboutHint: 'Palm OS: die klassische PDA-Plattform (1996-2007) mit einer großen Spielesammlung. Emulation via CloudpilotEmu (GPL-3.0), per Hotlink eingebettet.',
-        playing: 'Läuft: '
+        playing: 'Läuft: ',
+        fullscreen: 'Vollbild'
     },
 
     es: {
@@ -145,7 +151,8 @@ var i18n = {
         controlsHint2: 'Dentro del emulador, elige un dispositivo e instala una imagen ROM, luego añade tus propias aplicaciones .prc y bases de datos',
         aboutTitle: 'Acerca de',
         aboutHint: 'Palm OS: la clásica plataforma PDA (1996-2007) con una gran biblioteca de juegos. Emulación vía CloudpilotEmu (GPL-3.0), incrustado por enlace directo.',
-        playing: 'Ejecutando: '
+        playing: 'Ejecutando: ',
+        fullscreen: 'Pantalla completa'
     },
     ru: {
         pageTitle: 'Palm OS',
@@ -165,7 +172,8 @@ var i18n = {
         controlsHint2: 'В эмуляторе выберите устройство и установите образ ROM, затем добавьте свои приложения .prc и базы данных',
         aboutTitle: 'О платформе',
         aboutHint: 'Palm OS: классическая платформа КПК (1996-2007) с большой библиотекой игр. Эмуляция через CloudpilotEmu (GPL-3.0), встраивание горячей ссылкой.',
-        playing: 'Запущено: '
+        playing: 'Запущено: ',
+        fullscreen: 'Полный экран'
     }
 };
 
@@ -234,6 +242,7 @@ function showPlayer(title) {
     document.getElementById('playerSection').classList.add('active');
     document.getElementById('pageTitle').textContent = t('playing') + (title || 'Palm OS');
     document.getElementById('resetBtn').style.display = '';
+    document.getElementById('fullscreenBtn').style.display = '';
     document.getElementById('loadingOverlay').classList.remove('hidden');
 }
 
@@ -259,6 +268,7 @@ function stopPlayback() {
     document.getElementById('uploadSection').classList.remove('hidden');
     document.getElementById('pageTitle').textContent = t('pageTitle');
     document.getElementById('resetBtn').style.display = 'none';
+    document.getElementById('fullscreenBtn').style.display = 'none';
 }
 
 // ---- demo tab ----------------------------------------------------------
@@ -278,6 +288,21 @@ document.getElementById('instructionsHeader').addEventListener('click', function
     var icon = document.getElementById('instructionsToggle');
     if (icon) {
         icon.style.transform = document.getElementById('instructionsContent').classList.contains('hidden') ? '' : 'rotate(180deg)';
+    }
+});
+
+// ---- fullscreen --------------------------------------------------------
+// The upstream app does not ship its own fullscreen control, so the host
+// page requests fullscreen on the iframe itself (allowed via allowfullscreen).
+document.getElementById('fullscreenBtn').addEventListener('click', function () {
+    var frame = document.getElementById('palmFrame');
+    if (!frame) return;
+    if (document.fullscreenElement) {
+        if (document.exitFullscreen) document.exitFullscreen();
+    } else if (frame.requestFullscreen) {
+        frame.requestFullscreen();
+    } else if (frame.webkitRequestFullscreen) {
+        frame.webkitRequestFullscreen();
     }
 });
 

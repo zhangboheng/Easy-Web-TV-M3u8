@@ -24,7 +24,8 @@ var i18n = {
         controlsHint2: '若游戏无法运行，可在模拟器设置中尝试切换引擎类型（SKVM/WIPI/J2ME）或兼容性选项',
         aboutTitle: '关于',
         aboutHint: 'WIPI：Wireless Internet Platform for Interoperability——韩国 2001–2009 年的手机应用标准，运行 SKVM/J2ME 程序。模拟由 dlunch 的 WIE（MIT）热链提供。',
-        playing: '正在运行：'
+        playing: '正在运行：',
+        fullscreen: '全屏'
     },
     en: {
         pageTitle: 'WIPI',
@@ -44,7 +45,8 @@ var i18n = {
         controlsHint2: 'If a game does not run, try changing the engine type (SKVM/WIPI/J2ME) or compatibility flags in the emulator settings',
         aboutTitle: 'About',
         aboutHint: 'WIPI: Wireless Internet Platform for Interoperability - the Korean mobile standard (2001-2009) that ran SKVM/J2ME apps. Emulation via WIE by dlunch (MIT), embedded by hotlink.',
-        playing: 'Now running: '
+        playing: 'Now running: ',
+        fullscreen: 'Fullscreen'
     },
     ja: {
         pageTitle: 'WIPI',
@@ -64,7 +66,8 @@ var i18n = {
         controlsHint2: 'ゲームが動かない場合は、エミュレータ設定でエンジンタイプ（SKVM/WIPI/J2ME）や互換性オプションを変更してみてください',
         aboutTitle: 'WIPI について',
         aboutHint: 'WIPI：Wireless Internet Platform for Interoperability——2001〜2009年の韓国標準モバイルプラットフォーム。SKVM/J2MEアプリを実行。エミュレーションはdlunchのWIE（MIT）をホットリンクで提供。',
-        playing: '実行中：'
+        playing: '実行中：',
+        fullscreen: '全画面'
     },
     ko: {
         pageTitle: 'WIPI',
@@ -84,7 +87,8 @@ var i18n = {
         controlsHint2: '게임이 실행되지 않으면 에뮬레이터 설정에서 엔진 유형(SKVM/WIPI/J2ME)이나 호환성 옵션을 바꿔 보세요',
         aboutTitle: '소개',
         aboutHint: 'WIPI: Wireless Internet Platform for Interoperability - 2001-2009년 대한민국 표준 모바일 플랫폼. SKVM/J2ME 앱을 실행했습니다. 에뮬레이션은 dlunch의 WIE(MIT)를 핫링크로 제공.',
-        playing: '실행 중: '
+        playing: '실행 중: ',
+        fullscreen: '전체 화면'
     },
     fr: {
         pageTitle: 'WIPI',
@@ -104,7 +108,8 @@ var i18n = {
         controlsHint2: "Si un jeu ne fonctionne pas, essayez de changer le type de moteur (SKVM/WIPI/J2ME) ou les options de compatibilité dans les paramètres de l'émulateur",
         aboutTitle: 'À propos',
         aboutHint: "WIPI : Wireless Internet Platform for Interoperability - la norme mobile coréenne (2001-2009) qui exécutait des applications SKVM/J2ME. Émulation via WIE de dlunch (MIT), intégré par lien direct.",
-        playing: 'En cours : '
+        playing: 'En cours : ',
+        fullscreen: 'Plein écran'
     },
     de: {
         pageTitle: 'WIPI',
@@ -124,7 +129,8 @@ var i18n = {
         controlsHint2: 'Wenn ein Spiel nicht läuft, ändern Sie im Emulator den Engine-Typ (SKVM/WIPI/J2ME) oder die Kompatibilitätsoptionen',
         aboutTitle: 'Über',
         aboutHint: 'WIPI: Wireless Internet Platform for Interoperability - der koreanische Mobilstandard (2001-2009), der SKVM/J2ME-Apps ausführte. Emulation via WIE von dlunch (MIT), per Hotlink eingebettet.',
-        playing: 'Läuft: '
+        playing: 'Läuft: ',
+        fullscreen: 'Vollbild'
     },
 
     es: {
@@ -145,7 +151,8 @@ var i18n = {
         controlsHint2: 'Si un juego no funciona, prueba a cambiar el tipo de motor (SKVM/WIPI/J2ME) o las opciones de compatibilidad en la configuración del emulador',
         aboutTitle: 'Acerca de',
         aboutHint: 'WIPI: Wireless Internet Platform for Interoperability - el estándar móvil coreano (2001-2009) que ejecutaba aplicaciones SKVM/J2ME. Emulación vía WIE de dlunch (MIT), incrustado por enlace directo.',
-        playing: 'Ejecutando: '
+        playing: 'Ejecutando: ',
+        fullscreen: 'Pantalla completa'
     },
     ru: {
         pageTitle: 'WIPI',
@@ -165,7 +172,8 @@ var i18n = {
         controlsHint2: 'Если игра не запускается, попробуйте в настройках эмулятора сменить тип движка (SKVM/WIPI/J2ME) или параметры совместимости',
         aboutTitle: 'О платформе',
         aboutHint: 'WIPI: Wireless Internet Platform for Interoperability - корейский мобильный стандарт (2001-2009), исполнявший приложения SKVM/J2ME. Эмуляция через WIE (dlunch, MIT), встраивание горячей ссылкой.',
-        playing: 'Запущено: '
+        playing: 'Запущено: ',
+        fullscreen: 'Полный экран'
     }
 };
 
@@ -235,6 +243,7 @@ function showPlayer(title) {
     document.getElementById('playerSection').classList.add('active');
     document.getElementById('pageTitle').textContent = t('playing') + (title || 'WIPI');
     document.getElementById('resetBtn').style.display = '';
+    document.getElementById('fullscreenBtn').style.display = '';
     document.getElementById('loadingOverlay').classList.remove('hidden');
 }
 
@@ -260,6 +269,7 @@ function stopPlayback() {
     document.getElementById('uploadSection').classList.remove('hidden');
     document.getElementById('pageTitle').textContent = t('pageTitle');
     document.getElementById('resetBtn').style.display = 'none';
+    document.getElementById('fullscreenBtn').style.display = 'none';
 }
 
 // ---- demo tab ----------------------------------------------------------
@@ -279,6 +289,21 @@ document.getElementById('instructionsHeader').addEventListener('click', function
     var icon = document.getElementById('instructionsToggle');
     if (icon) {
         icon.style.transform = document.getElementById('instructionsContent').classList.contains('hidden') ? '' : 'rotate(180deg)';
+    }
+});
+
+// ---- fullscreen --------------------------------------------------------
+// The upstream app does not ship its own fullscreen control, so the host
+// page requests fullscreen on the iframe itself (allowed via allowfullscreen).
+document.getElementById('fullscreenBtn').addEventListener('click', function () {
+    var frame = document.getElementById('wipiFrame');
+    if (!frame) return;
+    if (document.fullscreenElement) {
+        if (document.exitFullscreen) document.exitFullscreen();
+    } else if (frame.requestFullscreen) {
+        frame.requestFullscreen();
+    } else if (frame.webkitRequestFullscreen) {
+        frame.webkitRequestFullscreen();
     }
 });
 

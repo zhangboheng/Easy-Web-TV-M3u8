@@ -58,6 +58,7 @@ var i18n = {
         aboutTitle: '关于',
         aboutHint: 'MSX：基于 Z80 的 8 位家用电脑标准（MSX1/2/2+/turbo R），ASCII 与 Microsoft 1983 年制定。模拟由 ppeccin 的 WebMSX 热链提供。',
         playing: '正在运行：',
+        fullscreen: '全屏',
         loadFailed: '无法加载该媒体文件，请检查地址或稍后重试',
         invalidFile: '请选择 .rom / .dsk / .cas / .zip 镜像文件',
         blobHint: '本地文件通过浏览器内存加载，不会上传'
@@ -89,6 +90,7 @@ var i18n = {
         aboutTitle: 'About',
         aboutHint: 'MSX: Z80-based 8-bit home computer standard (MSX1/2/2+/turbo R) by ASCII & Microsoft, 1983. Emulation via WebMSX by ppeccin, embedded by hotlink.',
         playing: 'Now running: ',
+        fullscreen: 'Fullscreen',
         loadFailed: 'Failed to load that media file - check the URL or try again later',
         invalidFile: 'Please select a .rom / .dsk / .cas / .zip image file',
         blobHint: 'Local files are loaded through browser memory, never uploaded'
@@ -120,6 +122,7 @@ var i18n = {
         aboutTitle: 'MSX について',
         aboutHint: 'MSX：Z80ベースの8ビットホームコンピュータ規格（MSX1/2/2+/turbo R）、ASCIIとマイクロソフト、1983年。エミュレーションはppeccinのWebMSXをホットリンクで提供。',
         playing: '実行中：',
+        fullscreen: '全画面',
         loadFailed: 'そのメディアを読み込めませんでした。URLを確認するか後でお試しください',
         invalidFile: '.rom / .dsk / .cas / .zip イメージを選択してください',
         blobHint: 'ローカルファイルはブラウザメモリ経由で読み込まれ、アップロードされません'
@@ -151,6 +154,7 @@ var i18n = {
         aboutTitle: '소개',
         aboutHint: 'MSX: Z80 기반 8비트 홈 컴퓨터 표준(MSX1/2/2+/turbo R), ASCII & Microsoft, 1983. ppeccin의 WebMSX를 핫링크로 제공.',
         playing: '실행 중: ',
+        fullscreen: '전체 화면',
         loadFailed: '미디어를 불러오지 못했습니다. URL을 확인하거나 나중에 다시 시도하세요',
         invalidFile: '.rom / .dsk / .cas / .zip 이미지를 선택하세요',
         blobHint: '로컬 파일은 브라우저 메모리를 통해 로드되며 업로드되지 않습니다'
@@ -182,6 +186,7 @@ var i18n = {
         aboutTitle: 'À propos',
         aboutHint: "MSX : standard d'ordinateur familial 8 bits à base de Z80 (MSX1/2/2+/turbo R) par ASCII & Microsoft, 1983. Émulation via WebMSX de ppeccin, intégré par lien direct.",
         playing: 'En cours : ',
+        fullscreen: 'Plein écran',
         loadFailed: "Impossible de charger ce média - vérifiez l'URL ou réessayez plus tard",
         invalidFile: "Veuillez sélectionner une image .rom / .dsk / .cas / .zip",
         blobHint: "Les fichiers locaux sont chargés via la mémoire du navigateur, jamais téléversés"
@@ -213,6 +218,7 @@ var i18n = {
         aboutTitle: 'Über',
         aboutHint: 'MSX: Z80-basierter 8-Bit-Heimcomputer-Standard (MSX1/2/2+/turbo R) von ASCII & Microsoft, 1983. Emulation via WebMSX von ppeccin, per Hotlink eingebettet.',
         playing: 'Läuft: ',
+        fullscreen: 'Vollbild',
         loadFailed: 'Medium konnte nicht geladen werden - URL prüfen oder später erneut versuchen',
         invalidFile: 'Bitte ein .rom / .dsk / .cas / .zip-Abbild auswählen',
         blobHint: 'Lokale Dateien werden über den Browserspeicher geladen, nie hochgeladen'
@@ -244,6 +250,7 @@ var i18n = {
         aboutTitle: 'Acerca de',
         aboutHint: 'MSX: estándar de ordenador doméstico de 8 bits basado en Z80 (MSX1/2/2+/turbo R) por ASCII y Microsoft, 1983. Emulación vía WebMSX de ppeccin, incrustado por enlace directo.',
         playing: 'Ejecutando: ',
+        fullscreen: 'Pantalla completa',
         loadFailed: 'No se pudo cargar ese medio - comprueba la URL o inténtalo más tarde',
         invalidFile: 'Selecciona una imagen .rom / .dsk / .cas / .zip',
         blobHint: 'Los archivos locales se cargan por memoria del navegador, nunca se suben'
@@ -275,6 +282,7 @@ var i18n = {
         aboutTitle: 'О консоли',
         aboutHint: 'MSX: стандарт 8-битного домашнего компьютера на базе Z80 (MSX1/2/2+/turbo R) от ASCII и Microsoft, 1983. Эмуляция через WebMSX (ppeccin), встраивание горячей ссылкой.',
         playing: 'Запущено: ',
+        fullscreen: 'Полный экран',
         loadFailed: 'Не удалось загрузить медиа - проверьте URL или попробуйте позже',
         invalidFile: 'Выберите образ .rom / .dsk / .cas / .zip',
         blobHint: 'Локальные файлы загружаются через память браузера, никуда не отправляются'
@@ -381,6 +389,7 @@ function playMedia(mediaUrl, title, type, machine) {
     document.getElementById('playerSection').classList.add('active');
     document.getElementById('pageTitle').textContent = t('playing') + (title || 'MSX');
     document.getElementById('resetBtn').style.display = '';
+    document.getElementById('fullscreenBtn').style.display = '';
     document.getElementById('loadingOverlay').classList.remove('hidden');
     frame.src = buildWebMsxUrl(mediaUrl, type, machine);
     setTimeout(function () {
@@ -399,6 +408,7 @@ function stopPlayback() {
     document.getElementById('uploadSection').classList.remove('hidden');
     document.getElementById('pageTitle').textContent = t('pageTitle');
     document.getElementById('resetBtn').style.display = 'none';
+    document.getElementById('fullscreenBtn').style.display = 'none';
 }
 
 // Guess WebMSX media type from URL/file extension
@@ -428,6 +438,7 @@ document.getElementById('urlLoadBtn').addEventListener('click', function () {
     document.getElementById('playerSection').classList.add('active');
     document.getElementById('pageTitle').textContent = t('playing') + 'MSX';
     document.getElementById('resetBtn').style.display = '';
+    document.getElementById('fullscreenBtn').style.display = '';
     document.getElementById('loadingOverlay').classList.remove('hidden');
     frame.src = 'https://webmsx.org?AUTO=' + encodeURIComponent(url);
     setTimeout(hideOverlay, 800);
@@ -461,6 +472,21 @@ document.getElementById('instructionsHeader').addEventListener('click', function
     var icon = document.getElementById('instructionsToggle');
     if (icon) {
         icon.style.transform = document.getElementById('instructionsContent').classList.contains('hidden') ? '' : 'rotate(180deg)';
+    }
+});
+
+// ---- fullscreen --------------------------------------------------------
+// The upstream app does not ship its own fullscreen control, so the host
+// page requests fullscreen on the iframe itself (allowed via allowfullscreen).
+document.getElementById('fullscreenBtn').addEventListener('click', function () {
+    var frame = document.getElementById('msxFrame');
+    if (!frame) return;
+    if (document.fullscreenElement) {
+        if (document.exitFullscreen) document.exitFullscreen();
+    } else if (frame.requestFullscreen) {
+        frame.requestFullscreen();
+    } else if (frame.webkitRequestFullscreen) {
+        frame.webkitRequestFullscreen();
     }
 });
 

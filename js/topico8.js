@@ -68,6 +68,7 @@ var i18n = {
         aboutTitle: '关于',
         aboutHint: 'PICO-8：128×128 像素、16 色、P8 Lua、32K 卡带——Lexaloffle 出品的付费闭源幻想主机',
         playing: '正在播放：',
+        fullscreen: '全屏',
         loadFailed: '无法加载该构建，请检查地址或稍后重试',
         invalidFile: '请选择导出构建的 index.html 文件',
         fileProtocolHint: '请通过 HTTP 服务器访问本页（file:// 直开无法解析 itch 游戏页）'
@@ -99,6 +100,7 @@ var i18n = {
         aboutTitle: 'About',
         aboutHint: 'PICO-8: 128x128 pixels, 16 colours, P8 Lua, 32k carts - a fantasy console by Lexaloffle (paid, closed source)',
         playing: 'Now playing: ',
+        fullscreen: 'Fullscreen',
         loadFailed: 'Failed to load that build - check the URL or try again later',
         invalidFile: 'Please select the index.html of an exported build',
         fileProtocolHint: 'Please open this page through an HTTP server (file:// cannot resolve itch game pages)'
@@ -130,6 +132,7 @@ var i18n = {
         aboutTitle: 'PICO-8 について',
         aboutHint: 'PICO-8：128x128ピクセル、16色、P8 Lua、32Kカートリッジ——Lexaloffleによる有料クローズドソースのファンタジーコンソール',
         playing: '再生中：',
+        fullscreen: '全画面',
         loadFailed: 'そのビルドを読み込めませんでした。URLを確認するか後でお試しください',
         invalidFile: '書き出したビルドの index.html を選択してください',
         fileProtocolHint: 'このページはHTTPサーバー経由で開いてください（file://ではitchページを解決できません）'
@@ -161,6 +164,7 @@ var i18n = {
         aboutTitle: '소개',
         aboutHint: 'PICO-8: 128x128 픽셀, 16색, P8 Lua, 32K 카트리지 - Lexaloffle의 유료 클로즈드소스 판타지 콘솔',
         playing: '재생 중: ',
+        fullscreen: '전체 화면',
         loadFailed: '빌드를 불러오지 못했습니다. URL을 확인하거나 나중에 다시 시도하세요',
         invalidFile: '내보낸 빌드의 index.html을 선택하세요',
         fileProtocolHint: '이 페이지는 HTTP 서버를 통해 열어주세요 (file://에서는 itch 페이지를 확인할 수 없습니다)'
@@ -192,6 +196,7 @@ var i18n = {
         aboutTitle: 'À propos',
         aboutHint: 'PICO-8 : 128x128 pixels, 16 couleurs, P8 Lua, cartouches 32k - une console fantasy de Lexaloffle (payante, closed source)',
         playing: 'Lecture : ',
+        fullscreen: 'Plein écran',
         loadFailed: "Impossible de charger ce build - vérifiez l'URL ou réessayez plus tard",
         invalidFile: "Veuillez sélectionner l'index.html d'un build exporté",
         fileProtocolHint: "Veuillez ouvrir cette page via un serveur HTTP (file:// ne peut pas résoudre les pages itch)"
@@ -223,6 +228,7 @@ var i18n = {
         aboutTitle: 'Über',
         aboutHint: 'PICO-8: 128x128 Pixel, 16 Farben, P8 Lua, 32k-Cartridges - eine Fantasy-Konsole von Lexaloffle (kostenpflichtig, closed source)',
         playing: 'Läuft: ',
+        fullscreen: 'Vollbild',
         loadFailed: 'Build konnte nicht geladen werden - URL prüfen oder später erneut versuchen',
         invalidFile: 'Bitte die index.html eines exportierten Builds auswählen',
         fileProtocolHint: 'Bitte diese Seite über einen HTTP-Server öffnen (file:// kann itch-Seiten nicht auflösen)'
@@ -254,6 +260,7 @@ var i18n = {
         aboutTitle: 'Acerca de',
         aboutHint: 'PICO-8: 128x128 píxeles, 16 colores, P8 Lua, cartuchos de 32k - una consola fantasy de Lexaloffle (de pago, código cerrado)',
         playing: 'Jugando: ',
+        fullscreen: 'Pantalla completa',
         loadFailed: 'No se pudo cargar ese build - comprueba la URL o inténtalo más tarde',
         invalidFile: 'Selecciona el index.html de un build exportado',
         fileProtocolHint: 'Abre esta página a través de un servidor HTTP (file:// no puede resolver páginas de itch)'
@@ -285,6 +292,7 @@ var i18n = {
         aboutTitle: 'О консоли',
         aboutHint: 'PICO-8: 128x128 пикселей, 16 цветов, P8 Lua, картриджи 32k - фантазийная консоль от Lexaloffle (платная, закрытый код)',
         playing: 'Запущено: ',
+        fullscreen: 'Полный экран',
         loadFailed: 'Не удалось загрузить сборку - проверьте URL или попробуйте позже',
         invalidFile: 'Выберите index.html экспортированной сборки',
         fileProtocolHint: 'Откройте эту страницу через HTTP-сервер (file:// не может обработать страницы itch)'
@@ -382,6 +390,7 @@ function playUrl(url, title) {
     document.getElementById('playerSection').classList.add('active');
     document.getElementById('pageTitle').textContent = t('playing') + (title || 'PICO-8');
     document.getElementById('resetBtn').style.display = '';
+    document.getElementById('fullscreenBtn').style.display = '';
     document.getElementById('loadingOverlay').classList.remove('hidden');
     frame.src = url;
     // Cross-origin iframe load events can be unreliable; hide the overlay
@@ -402,6 +411,7 @@ function stopPlayback() {
     document.getElementById('uploadSection').classList.remove('hidden');
     document.getElementById('pageTitle').textContent = t('pageTitle');
     document.getElementById('resetBtn').style.display = 'none';
+    document.getElementById('fullscreenBtn').style.display = 'none';
 }
 
 // itch.io game page -> official embed widget URL (bypasses itch.zone
@@ -468,6 +478,21 @@ document.getElementById('instructionsHeader').addEventListener('click', function
     var icon = document.getElementById('instructionsToggle');
     if (icon) {
         icon.style.transform = document.getElementById('instructionsContent').classList.contains('hidden') ? '' : 'rotate(180deg)';
+    }
+});
+
+// ---- fullscreen --------------------------------------------------------
+// The upstream app does not ship its own fullscreen control, so the host
+// page requests fullscreen on the iframe itself (allowed via allowfullscreen).
+document.getElementById('fullscreenBtn').addEventListener('click', function () {
+    var frame = document.getElementById('picoFrame');
+    if (!frame) return;
+    if (document.fullscreenElement) {
+        if (document.exitFullscreen) document.exitFullscreen();
+    } else if (frame.requestFullscreen) {
+        frame.requestFullscreen();
+    } else if (frame.webkitRequestFullscreen) {
+        frame.webkitRequestFullscreen();
     }
 });
 
