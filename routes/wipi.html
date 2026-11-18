@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>WIPI Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .wipi-wrapper {
+            position: relative;
+            max-width: 480px;
+            margin: 0 auto;
+            background: #000;
+        }
+        .wipi-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: min(80vh, 720px);
+            border: 2px solid rgba(57,192,255,0.4);
+            border-radius: 10px;
+            background: #111;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="header-title">
+                <i class="fas fa-mobile-screen"></i>
+                <span id="pageTitle" data-i18n="pageTitle">WIPI</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="resetBtn" style="display: none;">
+                <i class="fas fa-redo"></i>
+                <span data-i18n="reset">Reset</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Upload Section -->
+        <section class="upload-section" id="uploadSection">
+            <!-- Tab Switch -->
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabDemo" data-tab="demo">
+                    <i class="fas fa-globe"></i>
+                    <span data-i18n="tabDemo">Emulator</span>
+                </div>
+            </div>
+
+            <!-- Demo Box -->
+            <div class="search-box" id="demoBox">
+                <div class="upload-icon"><i class="fas fa-mobile-screen"></i></div>
+                <h2 class="upload-title" data-i18n="demoTitle">WIPI Mobile Games</h2>
+                <p class="upload-desc" data-i18n="demoDesc">Run Korean WIPI (SKVM/J2ME) feature-phone games in your browser with WIE (MIT, embedded by hotlink to the official web app). WIPI was the standard mobile platform in South Korea from 2001 to 2009.</p>
+                <button class="upload-btn" id="demoOpenBtn" style="margin: 10px auto;">
+                    <i class="fas fa-play"></i>
+                    <span data-i18n="demoOpen">Launch Emulator</span>
+                </button>
+                <p class="upload-desc" style="margin-top:14px;">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="demoHint">No games are bundled - load your own .jar / .bin files inside the emulator. Only run software you own or that is freely distributed.</span>
+                </p>
+            </div>
+
+            <!-- Instructions Panel -->
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title">
+                        <i class="fas fa-info-circle"></i>
+                        <span data-i18n="instructions">Instructions</span>
+                    </h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">Number keys / arrows map to the phone keypad; use the on-screen buttons with mouse/touch</span></li>
+                            <li><i class="fas fa-gear"></i> <span data-i18n="controlsHint2">If a game does not run, try changing the engine type (SKVM/WIPI/J2ME) or compatibility flags in the emulator settings</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-bolt"></i> <span data-i18n="aboutTitle">About</span></h4>
+                        <ul>
+                            <li><i class="fas fa-info-circle"></i> <span data-i18n="aboutHint">WIPI: Wireless Internet Platform for Interoperability - the Korean mobile standard (2001-2009) that ran SKVM/J2ME apps. Emulation via WIE by dlunch (MIT), embedded by hotlink.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="emulator-section" id="playerSection">
+            <div class="wipi-wrapper" id="wipiWrapper">
+                <iframe id="wipiFrame" title="WIPI emulator" allow="fullscreen; autoplay" allowfullscreen></iframe>
+                <!-- Loading Overlay -->
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Starting WIE, please wait...</span>
+                        <small data-i18n="loadingTip">The emulator downloads from its host; first load can take a while</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast hidden" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- WIPI page logic -->
+    <script src="../js/towipi.js"></script>
+</body>
+
+</html>
