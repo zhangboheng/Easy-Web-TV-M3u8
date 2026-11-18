@@ -87,6 +87,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **Retro PC**: full x86 PC emulation powered by [v86](https://github.com/copy/v86) (boot your own floppy/hard disk/CD image or Linux kernel; instant-play open-source bootsector games fetched live from GitHub, plus downloadable OS images from the official demo CDN), plus [jsbeeb](https://bbc.godbolt.org/) (BBC Micro) and [apple2js](https://www.scullinsteel.com/apple2/) (Apple II) embedded from their official deployments
   - **Fantasy Console**: [WASM-4](https://wasm4.org/) (load any .wasm cart via upload or URL; self-contained vendored runtime)
   - **Arcade**: FBNeo (incl. Neo Geo / CPS1 / CPS3), MAME 2003
+  - **Mobile platforms**: Palm OS via [CloudpilotEmu](https://github.com/cloudpilot-emu/cloudpilot-emu) (GPL-3.0) and Korean WIPI/SKVM/J2ME via [WIE](https://github.com/dlunch/wie) (MIT) - both hot-linked official web apps, bring your own ROM/files
 - **20000+ preset games** across 40 platforms, with search on the game launcher
   - Nintendo: NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116), Virtual Boy (28)
   - Sega: Genesis/Mega Drive (1841), Master System + Game Gear (1283)
@@ -229,7 +230,9 @@ All 38 EmulatorJS-based emulators + 4 standalone engines (v86, jsbeeb, apple2js,
 | Fantasy | PICO-8 (hot-linked web builds) | pico8 (no runtime bundled) | 5 | – |
 | Computer | MSX (WebMSX embed) | webmsx (hot-linked embed) | 3 ⁴ | – |
 | Mobile | J2ME (J2meJS embed) | j2mejs (hot-linked embed) | – | – |
-| **Total** | **44 platforms** | – | **20682** | **31 files** |
+| Mobile | Palm OS (CloudpilotEmu embed) | cloudpilot-emu (hot-linked embed) | – | – |
+| Mobile | WIPI (WIE embed) | wie (hot-linked embed) | – | – |
+| **Total** | **46 platforms** | – | **20682** | **31 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 ² No bundled games: load your own disc image via upload/URL, plus a BIOS file dumped from your own console (Sega CD: `bios_CD_U/J/E.bin`; PC-FX: `pcfx.rom`) using the BIOS upload box on the emulator page.
@@ -302,6 +305,8 @@ Easy-Web-TV-M3u8/
 │   ├── topico8.js         # PICO-8 web games page (featured itch.io builds)
 │   ├── tomsx.js           # MSX page (WebMSX embed, homebrew presets)
 │   ├── toj2me.js          # J2ME page (J2meJS embed, jar upload/URL)
+│   ├── topalm.js          # Palm OS page (CloudpilotEmu embed, bring-your-own ROM)
+│   ├── towipi.js          # WIPI page (WIE embed, bring-your-own files)
 │   ├── tojsbeeb.js        # BBC Micro page (official jsbeeb embed)
 │   ├── toapple2js.js      # Apple II page (official apple2js embed)
 │   ├── tv.js              # TV channels page (tabs & search)
@@ -357,6 +362,8 @@ Easy-Web-TV-M3u8/
 │   ├── pico8.html         # PICO-8 web games (featured builds, no runtime)
 │   ├── msx.html           # MSX (WebMSX embed, homebrew presets)
 │   ├── j2me.html          # J2ME (J2meJS embed, jar loading)
+│   ├── palm.html          # Palm OS (CloudpilotEmu embed, bring-your-own ROM)
+│   ├── wipi.html          # WIPI (WIE embed, bring-your-own files)
 │   ├── jsbeeb.html        # BBC Micro (embedded jsbeeb)
 │   ├── apple2.html        # Apple II (embedded apple2js)
 │   └── ...                # Other pages
@@ -398,6 +405,8 @@ This project uses the following open source projects:
 - [Radiobrowser](https://github.com/segler-alex/radiobrowser-api-rust) - Radio stations API
 - [Video.js](https://github.com/videojs/video.js) - Video player
 - [EmulatorJS](https://github.com/EmulatorJS/EmulatorJS) - RetroArch-based emulator
+- [CloudpilotEmu](https://github.com/cloudpilot-emu/cloudpilot-emu) - Palm OS emulator (GPL-3.0, hot-linked embed)
+- [WIE](https://github.com/dlunch/wie) - WIPI/SKVM/J2ME emulator (MIT, hot-linked embed)
 - [Font Awesome](https://fontawesome.com/) - Icons
 - [Tamaweb](https://github.com/autosam/Tamaweb) - Virtual pet game (vendored under `gamebox/tamaweb/`, CC BY-NC-SA 4.0)
 - [js-dos](https://js-dos.com/), [Ruffle](https://ruffle.rs/), [WASM-4](https://wasm4.org/), [v86](https://github.com/copy/v86) - Vendored game runtimes

@@ -390,6 +390,24 @@ var games = [
         image: '../images/j2me.svg',
         url: '../routes/j2me.html'
     },
+    // Palm OS emulator (CloudpilotEmu hot-link, GPL-3.0) - mobile category
+    {
+        id: 101,
+        name: 'Palm OS Emulator',
+        platform: 'Palm OS',
+        category: 'mobile',
+        image: '../images/palm.svg',
+        url: '../routes/palm.html'
+    },
+    // WIPI emulator (WIE hot-link, MIT) - mobile category
+    {
+        id: 102,
+        name: 'WIPI Emulator',
+        platform: 'WIPI',
+        category: 'mobile',
+        image: '../images/wipi.svg',
+        url: '../routes/wipi.html'
+    },
     {
         id: 1,
         name: 'Square Obstacles',
