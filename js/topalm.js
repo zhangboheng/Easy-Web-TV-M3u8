@@ -17,6 +17,7 @@ var i18n = {
         loading: 'CloudpilotEmu 启动中，请稍候...',
         loadingTip: '模拟器从其服务器下载，首次加载可能较慢',
         loadingSlow: '加载较慢，请耐心等待；也可以在新标签页打开模拟器',
+        openInNewTab: '在新标签页打开模拟器 ↗',
         instructions: '使用说明',
         controlsTitle: '操作方式',
         controlsHint1: '用鼠标/触摸点击机身按钮，或待模拟器获得焦点后使用键盘',
@@ -36,6 +37,7 @@ var i18n = {
         loading: 'Starting CloudpilotEmu, please wait...',
         loadingTip: 'The emulator downloads from its host; first load can take a while',
         loadingSlow: 'Still loading - please wait a bit longer, or open the emulator in a new tab',
+        openInNewTab: 'Open the emulator in a new tab ↗',
         instructions: 'Instructions',
         controlsTitle: 'Controls',
         controlsHint1: 'Use the on-screen device buttons with mouse/touch, or the keyboard once the emulator has focus',
@@ -55,6 +57,7 @@ var i18n = {
         loading: 'CloudpilotEmu を起動中...',
         loadingTip: 'エミュレータはホストからダウンロードされます。初回は時間がかかることがあります',
         loadingSlow: '読み込みが遅い場合はそのままお待ちいただくか、新しいタブでエミュレータを開いてください',
+        openInNewTab: '新しいタブでエミュレータを開く ↗',
         instructions: '使い方',
         controlsTitle: '操作方法',
         controlsHint1: '画面上のデバイスボタンをマウス/タッチで操作、またはエミュレータにフォーカスを合わせてキーボードを使用',
@@ -74,6 +77,7 @@ var i18n = {
         loading: 'CloudpilotEmu 시작 중...',
         loadingTip: '에뮬레이터는 호스트에서 다운로드됩니다. 첫 로드는 시간이 걸릴 수 있습니다',
         loadingSlow: '로딩이 느리면 조금 더 기다리거나 새 탭에서 에뮬레이터를 여세요',
+        openInNewTab: '새 탭에서 에뮬레이터 열기 ↗',
         instructions: '사용 방법',
         controlsTitle: '조작 방법',
         controlsHint1: '화면의 기기 버튼을 마우스/터치로 누르거나, 에뮬레이터에 포커스를 맞춘 후 키보드를 사용하세요',
@@ -93,6 +97,7 @@ var i18n = {
         loading: "Démarrage de CloudpilotEmu, veuillez patienter...",
         loadingTip: "L'émulateur est téléchargé depuis son hôte ; le premier chargement peut prendre du temps",
         loadingSlow: "Chargement lent - patientez encore un peu, ou ouvrez l'émulateur dans un nouvel onglet",
+        openInNewTab: "Ouvrir l'émulateur dans un nouvel onglet ↗",
         instructions: 'Instructions',
         controlsTitle: 'Commandes',
         controlsHint1: "Utilisez les boutons de l'appareil à l'écran avec la souris/le tactile, ou le clavier une fois l'émulateur focalisé",
@@ -112,6 +117,7 @@ var i18n = {
         loading: 'CloudpilotEmu wird gestartet, bitte warten...',
         loadingTip: 'Der Emulator wird von seinem Host heruntergeladen; das erste Laden kann dauern',
         loadingSlow: 'Lädt langsam - warten Sie noch etwas oder öffnen Sie den Emulator in einem neuen Tab',
+        openInNewTab: 'Emulator in einem neuen Tab öffnen ↗',
         instructions: 'Anleitung',
         controlsTitle: 'Steuerung',
         controlsHint1: 'Benutzen Sie die Geräte-Tasten auf dem Bildschirm mit Maus/Touch oder die Tastatur, sobald der Emulator den Fokus hat',
@@ -132,6 +138,7 @@ var i18n = {
         loading: 'Iniciando CloudpilotEmu, espera...',
         loadingTip: 'El emulador se descarga desde su host; la primera carga puede tardar',
         loadingSlow: 'Carga lenta - espera un poco más o abre el emulador en una pestaña nueva',
+        openInNewTab: 'Abrir el emulador en una pestaña nueva ↗',
         instructions: 'Instrucciones',
         controlsTitle: 'Controles',
         controlsHint1: 'Usa los botones del dispositivo en pantalla con ratón/táctil, o el teclado una vez que el emulador tenga el foco',
@@ -151,6 +158,7 @@ var i18n = {
         loading: 'CloudpilotEmu запускается, подождите...',
         loadingTip: 'Эмулятор скачивается с сервера; первая загрузка может занять время',
         loadingSlow: 'Загрузка идёт медленно - подождите ещё немного или откройте эмулятор в новой вкладке',
+        openInNewTab: 'Открыть эмулятор в новой вкладке ↗',
         instructions: 'Инструкция',
         controlsTitle: 'Управление',
         controlsHint1: 'Используйте экранные кнопки устройства мышью/касанием или клавиатуру, когда эмулятор в фокусе',
@@ -198,8 +206,27 @@ document.querySelectorAll('.upload-tab').forEach(function (el) {
 var slowTimer = null;
 function hideOverlay() {
     var overlay = document.getElementById('loadingOverlay');
-    if (overlay) overlay.classList.add('hidden');
+    if (overlay) {
+        overlay.classList.add('hidden');
+        var link = document.getElementById('slowOpenLink');
+        if (link && link.parentNode) link.parentNode.removeChild(link);
+    }
     if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; }
+}
+
+// After 15s of pending load, surface a real way out: a direct link to the
+// upstream app in a new tab (matches the loadingSlow copy).
+function showSlowLink() {
+    var overlay = document.getElementById('loadingOverlay');
+    if (!overlay || document.getElementById('slowOpenLink')) return;
+    var link = document.createElement('a');
+    link.id = 'slowOpenLink';
+    link.href = PALM_BASE;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = t('openInNewTab');
+    link.style.cssText = 'display:inline-block;margin-top:14px;color:#33ff66;text-decoration:underline;font-size:14px;';
+    overlay.appendChild(link);
 }
 
 function showPlayer(title) {
@@ -218,7 +245,10 @@ function playPalm() {
     // itself; nothing can be passed from this host page.
     frame.addEventListener('load', hideOverlay, { once: true });
     frame.src = PALM_BASE;
-    slowTimer = setTimeout(function () { showToast(t('loadingSlow')); }, 15000);
+    slowTimer = setTimeout(function () {
+        showToast(t('loadingSlow'));
+        showSlowLink();
+    }, 15000);
 }
 
 function stopPlayback() {

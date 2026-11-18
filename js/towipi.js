@@ -17,6 +17,7 @@ var i18n = {
         loading: 'WIE 启动中，请稍候...',
         loadingTip: '模拟器从其服务器下载，首次加载可能较慢',
         loadingSlow: '加载较慢，请耐心等待；也可以在新标签页打开模拟器',
+        openInNewTab: '在新标签页打开模拟器 ↗',
         instructions: '使用说明',
         controlsTitle: '操作方式',
         controlsHint1: '数字键 / 方向键映射为手机键盘，也可用鼠标/触摸点击屏幕按键',
@@ -36,6 +37,7 @@ var i18n = {
         loading: 'Starting WIE, please wait...',
         loadingTip: 'The emulator downloads from its host; first load can take a while',
         loadingSlow: 'Still loading - please wait a bit longer, or open the emulator in a new tab',
+        openInNewTab: 'Open the emulator in a new tab ↗',
         instructions: 'Instructions',
         controlsTitle: 'Controls',
         controlsHint1: 'Number keys / arrows map to the phone keypad; use the on-screen buttons with mouse/touch',
@@ -55,6 +57,7 @@ var i18n = {
         loading: 'WIE を起動中...',
         loadingTip: 'エミュレータはホストからダウンロードされます。初回は時間がかかることがあります',
         loadingSlow: '読み込みが遅い場合はそのままお待ちいただくか、新しいタブでエミュレータを開いてください',
+        openInNewTab: '新しいタブでエミュレータを開く ↗',
         instructions: '使い方',
         controlsTitle: '操作方法',
         controlsHint1: '数字キー/矢印キーがフィーチャーフォンのキーパッドに対応、画面のボタンはマウス/タッチで操作',
@@ -74,6 +77,7 @@ var i18n = {
         loading: 'WIE 시작 중...',
         loadingTip: '에뮬레이터는 호스트에서 다운로드됩니다. 첫 로드는 시간이 걸릴 수 있습니다',
         loadingSlow: '로딩이 느리면 조금 더 기다리거나 새 탭에서 에뮬레이터를 여세요',
+        openInNewTab: '새 탭에서 에뮬레이터 열기 ↗',
         instructions: '사용 방법',
         controlsTitle: '조작 방법',
         controlsHint1: '숫자 키/방향키가 피처폰 키패드에 대응하고, 화면의 버튼은 마우스/터치로 조작할 수 있습니다',
@@ -93,6 +97,7 @@ var i18n = {
         loading: 'Démarrage de WIE, veuillez patienter...',
         loadingTip: "L'émulateur est téléchargé depuis son hôte ; le premier chargement peut prendre du temps",
         loadingSlow: "Chargement lent - patientez encore un peu, ou ouvrez l'émulateur dans un nouvel onglet",
+        openInNewTab: "Ouvrir l'émulateur dans un nouvel onglet ↗",
         instructions: 'Instructions',
         controlsTitle: 'Commandes',
         controlsHint1: 'Les touches numériques / flèches correspondent au clavier du téléphone ; les boutons à l\'écran se pilotent à la souris/au tactile',
@@ -112,6 +117,7 @@ var i18n = {
         loading: 'WIE wird gestartet, bitte warten...',
         loadingTip: 'Der Emulator wird von seinem Host heruntergeladen; das erste Laden kann dauern',
         loadingSlow: 'Lädt langsam - warten Sie noch etwas oder öffnen Sie den Emulator in einem neuen Tab',
+        openInNewTab: 'Emulator in einem neuen Tab öffnen ↗',
         instructions: 'Anleitung',
         controlsTitle: 'Steuerung',
         controlsHint1: 'Zifferntasten / Pfeiltasten entsprechen der Handy-Tastatur; die Bildschirm-Tasten per Maus/Touch bedienen',
@@ -132,6 +138,7 @@ var i18n = {
         loading: 'Iniciando WIE, espera...',
         loadingTip: 'El emulador se descarga desde su host; la primera carga puede tardar',
         loadingSlow: 'Carga lenta - espera un poco más o abre el emulador en una pestaña nueva',
+        openInNewTab: 'Abrir el emulador en una pestaña nueva ↗',
         instructions: 'Instrucciones',
         controlsTitle: 'Controles',
         controlsHint1: 'Las teclas numéricas / flechas corresponden al teclado del teléfono; los botones en pantalla se usan con ratón/táctil',
@@ -151,6 +158,7 @@ var i18n = {
         loading: 'WIE запускается, подождите...',
         loadingTip: 'Эмулятор скачивается с сервера; первая загрузка может занять время',
         loadingSlow: 'Загрузка идёт медленно - подождите ещё немного или откройте эмулятор в новой вкладке',
+        openInNewTab: 'Открыть эмулятор в новой вкладке ↗',
         instructions: 'Инструкция',
         controlsTitle: 'Управление',
         controlsHint1: 'Цифровые клавиши / стрелки соответствуют клавиатуре телефона; экранные кнопки работают мышью/касанием',
@@ -199,8 +207,27 @@ document.querySelectorAll('.upload-tab').forEach(function (el) {
 var slowTimer = null;
 function hideOverlay() {
     var overlay = document.getElementById('loadingOverlay');
-    if (overlay) overlay.classList.add('hidden');
+    if (overlay) {
+        overlay.classList.add('hidden');
+        var link = document.getElementById('slowOpenLink');
+        if (link && link.parentNode) link.parentNode.removeChild(link);
+    }
     if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; }
+}
+
+// After 15s of pending load, surface a real way out: a direct link to the
+// upstream app in a new tab (matches the loadingSlow copy).
+function showSlowLink() {
+    var overlay = document.getElementById('loadingOverlay');
+    if (!overlay || document.getElementById('slowOpenLink')) return;
+    var link = document.createElement('a');
+    link.id = 'slowOpenLink';
+    link.href = WIPI_BASE;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = t('openInNewTab');
+    link.style.cssText = 'display:inline-block;margin-top:14px;color:#33ff66;text-decoration:underline;font-size:14px;';
+    overlay.appendChild(link);
 }
 
 function showPlayer(title) {
@@ -219,7 +246,10 @@ function playWipi() {
     // loading exists in the upstream web app (verified in wie-web sources).
     frame.addEventListener('load', hideOverlay, { once: true });
     frame.src = WIPI_BASE;
-    slowTimer = setTimeout(function () { showToast(t('loadingSlow')); }, 15000);
+    slowTimer = setTimeout(function () {
+        showToast(t('loadingSlow'));
+        showSlowLink();
+    }, 15000);
 }
 
 function stopPlayback() {
