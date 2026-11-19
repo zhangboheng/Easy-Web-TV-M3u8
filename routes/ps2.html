@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>PS2 Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .ps2-wrapper {
+            position: relative;
+            max-width: 1024px;
+            margin: 0 auto;
+            background: #000;
+        }
+        .ps2-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: min(78vh, 600px);
+            border: 2px solid rgba(51,102,255,0.4);
+            border-radius: 10px;
+            background: #111;
+        }
+
+.ps2-wrapper iframe:fullscreen {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            border-radius: 0;
+            background: #000;
+        }    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="header-title">
+                <i class="fas fa-gamepad"></i>
+                <span id="pageTitle" data-i18n="pageTitle">PS2</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="fullscreenBtn" style="display: none;">
+                <i class="fas fa-expand"></i>
+                <span data-i18n="fullscreen">Fullscreen</span>
+            </div>
+            <div class="header-action-btn" id="resetBtn" style="display: none;">
+                <i class="fas fa-redo"></i>
+                <span data-i18n="reset">Reset</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Upload Section -->
+        <section class="upload-section" id="uploadSection">
+            <!-- Tab Switch -->
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabDemo" data-tab="demo">
+                    <i class="fas fa-globe"></i>
+                    <span data-i18n="tabDemo">Emulator</span>
+                </div>
+            </div>
+
+            <!-- Demo Box -->
+            <div class="search-box" id="demoBox">
+                <div class="upload-icon"><i class="fas fa-gamepad"></i></div>
+                <h2 class="upload-title" data-i18n="demoTitle">PS2 Emulator</h2>
+                <p class="upload-desc" data-i18n="demoDesc">Run PlayStation 2 games in your browser with TabStationToo (PCSX2 compiled to WebAssembly, GPL-3.0, embedded by hotlink to the official web app). The Emotion Engine and GS are emulated with threads and hardware rendering via WebGPU.</p>
+                <button class="upload-btn" id="demoOpenBtn" style="margin: 10px auto;">
+                    <i class="fas fa-play"></i>
+                    <span data-i18n="demoOpen">Launch Emulator</span>
+                </button>
+                <p class="upload-desc" style="margin-top:14px;">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="demoHint">No BIOS and no games are bundled - on first launch pick a BIOS dumped from your own console (.bin, usually 4 MB) and disc images of games you own (.iso); everything stays in your browser and nothing is uploaded. Many games run at or near full speed.</span>
+                </p>
+            </div>
+
+            <!-- Instructions Panel -->
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title">
+                        <i class="fas fa-info-circle"></i>
+                        <span data-i18n="instructions">Instructions</span>
+                    </h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">Games are controlled with keyboard or gamepad; keys are shown on-screen while the PS2 runs, and Escape releases the keyboard</span></li>
+                            <li><i class="fas fa-gamepad"></i> <span data-i18n="controlsHint2">On first launch open the Disc library to choose your BIOS and a folder with your disc images; BIOS, games, memory cards and save states persist in your browser</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-bolt"></i> <span data-i18n="aboutTitle">About</span></h4>
+                        <ul>
+                            <li><i class="fas fa-info-circle"></i> <span data-i18n="aboutHint">PS2: Sony's console (2000-2013). Emulation via TabStationToo (PCSX2, GPL-3.0), embedded by hotlink. Requires WebAssembly threads, SharedArrayBuffer and WebGPU - i.e. a recent desktop Chrome/Edge.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="emulator-section" id="playerSection">
+            <div class="ps2-wrapper" id="ps2Wrapper">
+                <iframe id="ps2Frame" title="PS2 emulator" allow="fullscreen; autoplay; cross-origin-isolated" allowfullscreen credentialless></iframe>
+                <!-- Loading Overlay -->
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Starting TabStationToo, please wait...</span>
+                        <small data-i18n="loadingTip">The emulator downloads from its host; first load can take a while</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast hidden" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- PS2 page logic -->
+    <script src="../js/tops2.js"></script>
+</body>
+
+</html>

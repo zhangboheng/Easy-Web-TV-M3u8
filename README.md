@@ -6,14 +6,14 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.5.2-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.5.3-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
 ## 📋 Table of Contents
 
 - [Demo](#-demo)
-- [What's New](#-whats-new-v852)
+- [What's New](#-whats-new-v853)
 - [Features](#-features)
 - [Screenshots](#-screenshots)
 - [Tech Stack](#-tech-stack)
@@ -28,7 +28,11 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 **[Live Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)**
 
-## 🆕 What's New (v8.5.2)
+## 🆕 What's New (v8.5.3)
+
+- **PS Vita emulator embedded in-app**: the PS Vita emulator card now opens an in-app player page (`routes/vita.html`) that embeds [vitaslop](https://github.com/cretz/vitaslop) (MIT, hot-linked to the official web app) instead of pointing elsewhere - bring your own legally dumped packages (.pkg + work.bin, a dumped folder, or a zip); they stay in your browser and nothing is uploaded
+- **PS2 emulator embedded in-app**: the PS2 card now opens an in-app player page (`routes/ps2.html`) embedding [TabStationToo](https://tabstationtoo.github.io/TabStationToo/) (PCSX2 compiled to WebAssembly, GPL-3.0, hot-linked) - replacing the external-link card. Bring your own BIOS dump (.bin) and disc images (.iso); BIOS, games, memory cards and save states stay in your browser and nothing is uploaded
+- **Cross-origin isolation without breaking anything else**: a targeted service-worker enhancement injects `COOP: same-origin` + `COEP: require-corp` on top-level navigations to the two player routes only, so the embedded emulators get SharedArrayBuffer inside credentialless iframes (with the `cross-origin-isolated` permission delegation) while every other page keeps its exact previous hot-linking behavior; first-visit reload bootstrap included
 
 - **10 new Web Games via a generic hot-link player**: the Web Games category grows from 5 to 15 titles. A single player page (`routes/webgame.html`) driven by a `?game=<key>` registry serves them all - each game hot-links its author's official demo build, nothing is bundled:
   - [2048](https://devrsi0n.github.io/React-2048-game/) via [devrsi0n/React-2048-game](https://github.com/devrsi0n/React-2048-game) (MIT)
@@ -97,7 +101,8 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **Amstrad**: CPC (464/6128)
   - **Sinclair**: ZX Spectrum
   - **Doom engine**: DOOM Shareware, Freedoom/Freedm, HacX (prboom)
-  - **Sony PlayStation 2**: external [TabStationToo](https://tabstationtoo.github.io/TabStationToo/) (PCSX2 compiled to WebAssembly; opens in a new tab, bring your own BIOS and disc images; desktop Chrome/Edge only)
+  - **Sony PlayStation 2**: [TabStationToo](https://tabstationtoo.github.io/TabStationToo/) (PCSX2 compiled to WebAssembly, GPL-3.0, hot-linked embed with cross-origin isolation delegation; bring your own BIOS dump and disc images - nothing is bundled or uploaded; needs WebAssembly threads + SharedArrayBuffer + WebGPU, i.e. recent desktop Chrome/Edge)
+  - **Sony PlayStation Vita**: [vitaslop](https://github.com/cretz/vitaslop) (MIT, hot-linked embed of the official web app with a runtime ARM-to-WebAssembly translator and WebGPU rendering; bring your own games or homebrew - nothing is bundled or uploaded; needs WebGPU + JSPI + SharedArrayBuffer + OPFS, i.e. recent desktop Chrome/Edge; early days - many commercial games boot and play, many do not)
   - **NEC**: PC Engine / TurboGrafx-16, PC-FX (bring your own disc image + BIOS)
   - **Coleco**: ColecoVision
   - **3DO**: 3DO (bring your own firmware: panafz1/panafz10/goldstar/sanyotry .bin)
@@ -434,6 +439,8 @@ This project uses the following open source projects:
 - [EmulatorJS](https://github.com/EmulatorJS/EmulatorJS) - RetroArch-based emulator
 - [CloudpilotEmu](https://github.com/cloudpilot-emu/cloudpilot-emu) - Palm OS emulator (GPL-3.0, hot-linked embed)
 - [WIE](https://github.com/dlunch/wie) - WIPI/SKVM/J2ME emulator (MIT, hot-linked embed)
+- [vitaslop](https://github.com/cretz/vitaslop) - PlayStation Vita emulator (MIT, hot-linked embed)
+- [TabStationToo](https://github.com/TabStationToo/TabStationToo) - PlayStation 2 emulator built on PCSX2 compiled to WebAssembly (GPL-3.0, hot-linked embed)
 - [RA2 VM](https://github.com/ra2-games/ra2) - Red Alert 2 in the browser via v86 (GPL-3.0, hot-linked embed)
 - [diabloweb](https://github.com/d07RiV/diabloweb) - Diablo in the browser via WebAssembly (built on the source-released [Devilution](https://github.com/diasurgical/devilution) engine; hot-linked embed)
 - [z2rs](https://github.com/troyedwardsjr/z2rs) - Zelda II clean-room reconstruction in Rust/WebAssembly (MIT, hot-linked embed)

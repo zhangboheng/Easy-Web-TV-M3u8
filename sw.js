@@ -1,5 +1,5 @@
 // Easy Web TV Service Worker
-const CACHE_NAME = 'easy-web-tv-v8.5.2';
+const CACHE_NAME = 'easy-web-tv-v8.5.3';
 
 // Assets to cache on install - only local assets that exist
 // v8.5.0: slimmed down to the index shell only; route pages, engines and
@@ -85,6 +85,44 @@ self.addEventListener('fetch', (event) => {
 
   // Skip non-http(s) requests (chrome-extension, etc.)
   if (!event.request.url.startsWith('http://') && !event.request.url.startsWith('https://')) {
+    return;
+  }
+
+  // Cross-origin isolation for the PS Vita / PS2 player pages ONLY (v8.5.3).
+  // Injecting COOP/COEP on these top-level navigations lets the embedded
+  // vitaslop / TabStationToo apps (which set COEP on their own responses) use
+  // SharedArrayBuffer inside their iframes - without touching any other
+  // page's hot-linked frames.
+  const isoUrl = new URL(event.request.url);
+  const ISO_PATHS = ['/routes/vita.html', '/routes/ps2.html'];
+  if (
+    event.request.mode === 'navigate' &&
+    isoUrl.origin === self.location.origin &&
+    ISO_PATHS.includes(isoUrl.pathname)
+  ) {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          const headers = new Headers(response.headers);
+          headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+          headers.set('Cross-Origin-Embedder-Policy', 'require-corp');
+          if (response.ok && response.status === 200) {
+            // cache the ORIGINAL response (headers don't matter offline)
+            const cacheClone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, cacheClone));
+          }
+          return new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: headers
+          });
+        })
+        .catch(async () => {
+          const cached = await caches.match(event.request);
+          if (cached) return cached;
+          return new Response('', { status: 504, statusText: 'Offline' });
+        })
+    );
     return;
   }
 

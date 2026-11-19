@@ -244,14 +244,29 @@ var games = [
         image: '../images/doom.svg',
         url: '../routes/emulatorjs.html?core=prboom'
     },
+    // PS2 emulator (TabStationToo, PCSX2 compiled to WebAssembly, GPL-3.0):
+    // embedded by hotlink to the official hosted web app (verified frameable
+    // with cross-origin isolation delegation). Bring your own BIOS dump and
+    // disc images - picked inside the emulator's Disc library; needs desktop
+    // Chrome/Edge.
     {
         id: 43,
-        name: 'PS2 Emulator (External)',
+        name: 'PS2 Emulator',
         platform: 'PS2',
         category: 'emulator',
         image: '../images/ps2.svg',
-        url: 'https://tabstationtoo.github.io/TabStationToo/',
-        external: true
+        url: '../routes/ps2.html'
+    },
+    // PS Vita emulator (vitaslop, MIT): embedded by hotlink to the official
+    // hosted web app (verified frameable). Bring your own games - imported
+    // inside the emulator's own library UI; needs desktop Chrome/Edge.
+    {
+        id: 123,
+        name: 'PS Vita Emulator',
+        platform: 'PS Vita',
+        category: 'emulator',
+        image: '../images/psvita.svg',
+        url: '../routes/vita.html'
     },
     {
         id: 44,
