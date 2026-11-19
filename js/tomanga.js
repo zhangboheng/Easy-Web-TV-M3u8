@@ -393,7 +393,7 @@ var LOCAL_I18N = {
         tabOnline: 'Online',
         tabLocal: 'Local',
         localTitle: 'Local Manga',
-        localDesc: 'Choose image files (JPG/PNG/WEBP/GIF/AVIF) or a whole folder from your device. Files stay in this browser and are never uploaded.',
+        localDesc: 'Choose image or PDF files (JPG/PNG/WEBP/GIF/AVIF/PDF) or a whole folder from your device. Files stay in this browser and are never uploaded.',
         chooseFolder: 'Choose folder',
         chooseFiles: 'Choose files',
         pickFiles: 'Choose files',
@@ -406,13 +406,13 @@ var LOCAL_I18N = {
         permDenied: 'Permission was not granted. Choose the folder again.',
         pickIntro: 'Local files stay in this browser. Choose a folder to begin.',
         pickIntroNoDir: 'Local files stay in this browser. Choose files or a folder to begin.',
-        noImageFiles: 'No supported image files found.'
+        noImageFiles: 'No supported image or PDF files found.'
     },
     zh: {
         tabOnline: '在线',
         tabLocal: '本地',
         localTitle: '本地漫画',
-        localDesc: '从设备选择图片文件（JPG/PNG/WEBP/GIF/AVIF）或整个文件夹。文件仅保存在本浏览器中，不会被上传。',
+        localDesc: '从设备选择图片或 PDF 文件（JPG/PNG/WEBP/GIF/AVIF/PDF）或整个文件夹。文件仅保存在本浏览器中，不会被上传。',
         chooseFolder: '选择文件夹',
         chooseFiles: '选择文件',
         pickFiles: '选择文件',
@@ -425,7 +425,7 @@ var LOCAL_I18N = {
         permDenied: '未获得权限，请重新选择文件夹。',
         pickIntro: '本地文件仅保存在本浏览器中。选择一个文件夹开始。',
         pickIntroNoDir: '本地文件仅保存在本浏览器中。选择文件或文件夹开始。',
-        noImageFiles: '未找到受支持的图片文件。'
+        noImageFiles: '未找到受支持的图片或 PDF 文件。'
     },
     // Module-specific labels for the remaining UI languages. Shared panel
     // texts (pick/choose/notLoaded/no*Files) come from js/local-media-i18n.js.
@@ -433,42 +433,42 @@ var LOCAL_I18N = {
         tabOnline: 'オンライン',
         tabLocal: 'ローカル',
         localTitle: 'ローカル漫画',
-        localDesc: 'デバイスから画像ファイル（JPG/PNG/WEBP/GIF/AVIF）またはフォルダー全体を選択します。ファイルはこのブラウザー内にのみ保存され、アップロードされることはありません。',
-        noImageFiles: 'サポートされている画像ファイルが見つかりませんでした。'
+        localDesc: 'デバイスから画像または PDF ファイル（JPG/PNG/WEBP/GIF/AVIF/PDF）またはフォルダー全体を選択します。ファイルはこのブラウザー内にのみ保存され、アップロードされることはありません。',
+        noImageFiles: 'サポートされている画像または PDF ファイルが見つかりませんでした。'
     },
     ko: {
         tabOnline: '온라인',
         tabLocal: '로컬',
         localTitle: '로컬 만화',
-        localDesc: '기기에서 이미지 파일(JPG/PNG/WEBP/GIF/AVIF)이나 폴더 전체를 선택하세요. 파일은 이 브라우저에만 저장되며 업로드되지 않습니다.',
-        noImageFiles: '지원되는 이미지 파일을 찾을 수 없습니다.'
+        localDesc: '기기에서 이미지 또는 PDF 파일(JPG/PNG/WEBP/GIF/AVIF/PDF)이나 폴더 전체를 선택하세요. 파일은 이 브라우저에만 저장되며 업로드되지 않습니다.',
+        noImageFiles: '지원되는 이미지 또는 PDF 파일을 찾을 수 없습니다.'
     },
     fr: {
         tabOnline: 'En ligne',
         tabLocal: 'Local',
         localTitle: 'Mangas locaux',
-        localDesc: "Choisissez des images (JPG/PNG/WEBP/GIF/AVIF) ou un dossier entier depuis votre appareil. Les fichiers restent dans ce navigateur et ne sont jamais téléversés.",
-        noImageFiles: "Aucun fichier image pris en charge n'a été trouvé."
+        localDesc: "Choisissez des images ou PDF (JPG/PNG/WEBP/GIF/AVIF/PDF) ou un dossier entier depuis votre appareil. Les fichiers restent dans ce navigateur et ne sont jamais téléversés.",
+        noImageFiles: "Aucun fichier image ou PDF pris en charge n'a été trouvé."
     },
     de: {
         tabOnline: 'Online',
         tabLocal: 'Lokal',
         localTitle: 'Lokale Mangas',
-        localDesc: 'Wählen Sie Bilddateien (JPG/PNG/WEBP/GIF/AVIF) oder einen ganzen Ordner von Ihrem Gerät. Die Dateien bleiben in diesem Browser und werden nie hochgeladen.',
-        noImageFiles: 'Keine unterstützten Bilddateien gefunden.'
+        localDesc: 'Wählen Sie Bild- oder PDF-Dateien (JPG/PNG/WEBP/GIF/AVIF/PDF) oder einen ganzen Ordner von Ihrem Gerät. Die Dateien bleiben in diesem Browser und werden nie hochgeladen.',
+        noImageFiles: 'Keine unterstützten Bild- oder PDF-Dateien gefunden.'
     },
     es: {
         tabOnline: 'En línea',
         tabLocal: 'Local',
         localTitle: 'Mangas locales',
-        localDesc: 'Elige archivos de imagen (JPG/PNG/WEBP/GIF/AVIF) o una carpeta completa de tu dispositivo. Los archivos permanecen en este navegador y nunca se suben.',
-        noImageFiles: 'No se encontraron archivos de imagen compatibles.'
+        localDesc: 'Elige archivos de imagen o PDF (JPG/PNG/WEBP/GIF/AVIF/PDF) o una carpeta completa de tu dispositivo. Los archivos permanecen en este navegador y nunca se suben.',
+        noImageFiles: 'No se encontraron archivos de imagen o PDF compatibles.'
     },
     ru: {
         tabOnline: 'Онлайн',
         tabLocal: 'Локально',
         localTitle: 'Локальная манга',
-        localDesc: 'Выберите файлы изображений (JPG/PNG/WEBP/GIF/AVIF) или целую папку с устройства. Файлы остаются в этом браузере и никогда не загружаются.',
+        localDesc: 'Выберите файлы изображений или PDF (JPG/PNG/WEBP/GIF/AVIF/PDF) или целую папку с устройства. Файлы остаются в этом браузере и никогда не загружаются.',
         noImageFiles: 'Поддерживаемые файлы изображений не найдены.'
     }
 };
@@ -503,12 +503,27 @@ function localLang() {
 
 function localT(key) {
     var lang = localLang();
+    // Shared keys are merged into LOCAL_I18N at load time (see the fill-in block
+    // above), so this lookup already covers js/local-media-i18n.js.
     return (LOCAL_I18N[lang] && LOCAL_I18N[lang][key]) || LOCAL_I18N.en[key] || key;
+}
+
+// Map a stage failure reason to its localized message key.
+function stageStatusKey(stage) {
+    var reason = stage && stage.reason;
+    if (reason === 'noStorage') return 'stageNoStorage';
+    if (reason === 'writeFailed') return 'stageWriteFailed';
+    return 'stageFailed';
 }
 
 function applyLocalI18n() {
     document.querySelectorAll('[data-i18n-tab]').forEach(function (el) {
         el.textContent = localT(el.getAttribute('data-i18n-tab'));
+        // Keep an accessible name on the tab when the text label is hidden on mobile.
+        if (el.parentElement) {
+            el.parentElement.setAttribute('aria-label', el.textContent);
+            el.parentElement.setAttribute('title', el.textContent);
+        }
     });
     document.querySelectorAll('[data-i18n-text]').forEach(function (el) {
         el.textContent = localT(el.getAttribute('data-i18n-text'));
@@ -578,7 +593,11 @@ document.addEventListener('DOMContentLoaded', function() {
         window.LocalMediaAdapters.manga.open({
             mode: mode,
             onProgress: function (text) { setLocalMangaStatus(text); },
-            onEmpty: function () { setLocalMangaStatus(localT('noImageFiles')); }
+            onEmpty: function () { setLocalMangaStatus(localT('noImageFiles')); },
+            onStageFailed: function (stage) {
+                // Prefer the localized copy; the core only supplies English text.
+                setLocalMangaStatus(localT(stageStatusKey(stage)));
+            }
         });
     }
     // Re-open the previously granted folder without showing a picker.
