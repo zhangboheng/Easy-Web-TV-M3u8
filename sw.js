@@ -1,11 +1,13 @@
 // Easy Web TV Service Worker
-const CACHE_NAME = 'easy-web-tv-v8.5.4';
+const CACHE_NAME = 'easy-web-tv-v8.5.5';
 
 // Assets to cache on install - only local assets that exist
 // v8.5.0: slimmed down to the index shell only; route pages, engines and
 // platform assets are cached at runtime by the fetch handler on first visit.
 // v8.5.4: browser-local media library (novel/manga/music/video) with 8-language
 // panel i18n, single-scan folder resolution and throttled progress writes.
+// v8.5.5: local manga PDF support (vendored pdf.js), storage/resolution/decoding
+// hardening, and unified route headers.
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',

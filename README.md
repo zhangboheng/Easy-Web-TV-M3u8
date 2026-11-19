@@ -6,14 +6,14 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.5.4-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.5.5-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
 ## 📋 Table of Contents
 
 - [Demo](#-demo)
-- [What's New](#-whats-new-v854)
+- [What's New](#-whats-new-v855)
 - [Features](#-features)
 - [Screenshots](#-screenshots)
 - [Tech Stack](#-tech-stack)
@@ -28,12 +28,14 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 **[Live Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)**
 
-## 🆕 What's New (v8.5.4)
+## 🆕 What's New (v8.5.5)
 
-- **A browser-local media library on every media page**: Novel, Manga, Music and Video each gained a **Local** tab where you pick your own files or an entire folder and read/play them straight in the browser - nothing is uploaded and no file body is ever stored. Folders are read through the File System Access API, with an `<input webkitdirectory>` fallback for other browsers
-- **Resume, cheaply**: the picked folder grant is remembered in IndexedDB, so a reload can reopen the same folder after a permission re-grant; reading positions (chapter + scroll offset, page index, playback time) resume, and files picked individually tell you plainly that a reload needs a new pick
-- **Built for large folders**: one folder scan serves a whole chapter or playlist (10,000 entries / 12 nesting levels cap) instead of one full rescan per file, and playback progress is throttled to at most one write every 5 seconds instead of one per `timeupdate` tick
-- **Localized like the rest of the app**: every local panel label, empty-state message and status line is translated in 8 UI languages (zh, en, ja, ko, fr, de, es, ru), sharing one dictionary so the four pages cannot drift apart
+- **PDF support in the local manga reader**: a folder of scanned books now works - `.pdf` files are accepted next to images and each PDF becomes one chapter, rendered page by page with a vendored copy of pdf.js (a CDN is only used as a fallback), so it keeps working offline
+- **Big books stay usable**: a single open is capped at 400 pages and rendering yields to the browser every 4 pages, so the reader paints progress instead of freezing; switching chapters cancels the running render and frees its page images, and a truncated book says so rather than quietly ending early
+- **Storage hardening**: a quota-aborted write is no longer reported as success, IndexedDB reads distinguish "no row" from "read failed", and one cached connection replaces a per-file open; files whose names contain the id separator no longer collide, so reading positions and staged files can't cross-wire between books
+- **Missing files are surfaced**: a chapter that resolves only partially now tells you to re-pick the folder instead of silently rendering fewer pages, and a folder scan that hits its entry/depth limit warns you that part of it was skipped
+- **Text decoding fixes**: large local novels no longer overflow the stack while decoding, GB18030 fallback is strict (binary junk reports an error instead of rendering as mojibake), and chapter load failures show the real reason
+- **Consistent headers**: every route now uses the same solid black header bar with the 2px accent underline, and on phones the tab row gets its own centered line with a 16px search input that stops iOS Safari from zooming on focus
 
 ## ✨ Features
 
