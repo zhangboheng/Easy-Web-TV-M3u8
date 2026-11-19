@@ -485,9 +485,22 @@ function localT(key) {
     return (LOCAL_I18N[lang] && LOCAL_I18N[lang][key]) || LOCAL_I18N.en[key] || key;
 }
 
+// Map a stage failure reason to its localized message key.
+function stageStatusKey(stage) {
+    var reason = stage && stage.reason;
+    if (reason === 'noStorage') return 'stageNoStorage';
+    if (reason === 'writeFailed') return 'stageWriteFailed';
+    return 'stageFailed';
+}
+
 function applyLocalI18n() {
     document.querySelectorAll('[data-i18n-tab]').forEach(function (el) {
         el.textContent = localT(el.getAttribute('data-i18n-tab'));
+        // Keep an accessible name on the tab when the text label is hidden on mobile.
+        if (el.parentElement) {
+            el.parentElement.setAttribute('aria-label', el.textContent);
+            el.parentElement.setAttribute('title', el.textContent);
+        }
     });
     document.querySelectorAll('[data-i18n-text]').forEach(function (el) {
         el.textContent = localT(el.getAttribute('data-i18n-text'));
@@ -557,7 +570,11 @@ document.addEventListener('DOMContentLoaded', function() {
         window.LocalMediaAdapters.novel.open({
             mode: mode,
             onProgress: function (text) { setLocalNovelStatus(text); },
-            onEmpty: function () { setLocalNovelStatus(localT('noTextFiles')); }
+            onEmpty: function () { setLocalNovelStatus(localT('noTextFiles')); },
+            onStageFailed: function (stage) {
+                // Prefer the localized copy; the core only supplies English text.
+                setLocalNovelStatus(localT(stageStatusKey(stage)));
+            }
         });
     }
     // Re-open the previously granted folder without showing a picker.

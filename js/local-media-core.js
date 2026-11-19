@@ -5,14 +5,13 @@
 
     var FORMATS = {
         novel: ['.txt', '.md', '.markdown'],
-        manga: ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif'],
+        manga: ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif', '.pdf'],
         audio: ['.mp3', '.m4a', '.aac', '.ogg', '.oga', '.wav', '.flac'],
         video: ['.mp4', '.webm', '.ogv', '.m4v', '.mov']
     };
 
     var UNSUPPORTED_REASONS = {
         '.epub': 'EPUB needs an ebook parser (deferred)',
-        '.pdf': 'PDF is not a browser-native novel format',
         '.docx': 'DOCX needs a document parser (deferred)',
         '.mobi': 'MOBI needs an ebook parser (deferred)',
         '.azw': 'AZW needs an ebook parser (deferred)',
@@ -31,9 +30,19 @@
     };
 
     var LIMITS = { MAX_ENTRIES: 10000, MAX_DEPTH: 12, YIELD_EVERY: 500 };
+    // Files picked through <input type="file"> have no directory handle, so the
+    // File objects die when the page navigates away. Staging them in IndexedDB
+    // keeps "choose files" mode working (and replayable after a reload) without
+    // copying huge media into browser storage.
+    var STAGE_LIMITS = {
+        MAX_FILE_BYTES: 256 * 1024 * 1024,
+        MAX_TOTAL_BYTES: 512 * 1024 * 1024
+    };
     var DB_NAME = 'easy-web-tv-local-media';
+    var DB_VERSION = 2;
     var STORE_HANDLES = 'handles';
     var STORE_PROGRESS = 'progress';
+    var STORE_FILES = 'files';
     var objectUrls = {};
     var scanTokens = {};
     var pagehideBound = false;
@@ -117,15 +126,34 @@
         return list;
     }
 
+    // Ids must be stable across reloads AND unambiguous. Joining fields with a
+    // separator is unsafe: a file name may contain any character, so two different
+    // paths can serialise identically and collide (which would cross-wire reading
+    // progress and staged bodies between files). Fields are length-prefixed instead.
+    // The plain form is still produced for ordinary names so existing saved progress
+    // keeps resolving; only ambiguous names switch to the escaped form.
+    function encodeIdField(value) {
+        var text = String(value === undefined || value === null ? '' : value);
+        return text.length + ':' + text;
+    }
+
     function createStableFileId(entry) {
         var e = entry || {};
-        return 'local:' + [
+        var fields = [
             e.rootName || '',
             e.path || e.name || '',
             e.name || '',
             e.size || 0,
             e.lastModified || 0
-        ].join('|');
+        ];
+        // A '|' anywhere means the plain join is ambiguous, so escape every field.
+        var ambiguous = fields.some(function (value) {
+            return String(value).indexOf('|') !== -1;
+        });
+        if (ambiguous) {
+            return 'local:' + fields.map(encodeIdField).join('|');
+        }
+        return 'local:' + fields.join('|');
     }
 
     function yieldToBrowser() {
@@ -311,35 +339,117 @@
         return objectUrls[id];
     }
 
+    // One shared connection: readStagedEntries opens a transaction per entry, so
+// without caching a 200-page chapter would open 200 connections.
+    var dbPromise = null;
+
     function openDb() {
         if (!hasIndexedDB()) return Promise.resolve(null);
-        return new Promise(function (resolve) {
-            var request = global.indexedDB.open(DB_NAME, 1);
+        // Reuse the pending/settled handshake so concurrent callers share one
+        // connection instead of racing to open the same database.
+        if (dbPromise) return dbPromise;
+        dbPromise = new Promise(function (resolve) {
+            var request = global.indexedDB.open(DB_NAME, DB_VERSION);
             request.onupgradeneeded = function () {
                 var db = request.result;
                 if (!db.objectStoreNames.contains(STORE_HANDLES)) db.createObjectStore(STORE_HANDLES);
                 if (!db.objectStoreNames.contains(STORE_PROGRESS)) db.createObjectStore(STORE_PROGRESS);
+                if (!db.objectStoreNames.contains(STORE_FILES)) db.createObjectStore(STORE_FILES);
             };
-            request.onsuccess = function () { resolve(request.result); };
-            request.onerror = function () { resolve(null); };
+            request.onsuccess = function () {
+                var db = request.result;
+                // Another tab upgrading the schema must not be blocked by us.
+                db.onversionchange = function () {
+                    try { db.close(); } catch (e) { /* already closed */ }
+                    dbPromise = null;
+                };
+                db.onclose = function () { dbPromise = null; };
+                resolve(db);
+            };
+            request.onerror = function () { dbPromise = null; resolve(null); };
+            request.onblocked = function () {
+                // Do not hang forever on a stuck upgrade; fall back to no storage.
+                dbPromise = null;
+                resolve(null);
+            };
         });
+        return dbPromise;
     }
 
     function withStore(storeName, mode, callback) {
         return openDb().then(function (db) {
             if (!db) return undefined;
             return new Promise(function (resolve) {
-                var tx = db.transaction(storeName, mode);
+                var tx;
+                try {
+                    tx = db.transaction(storeName, mode);
+                } catch (error) {
+                    // Brand-new schema, closed connection, or blocked upgrade.
+                    resolve(null);
+                    return;
+                }
                 var store = tx.objectStore(storeName);
-                var result = callback(store);
+                var result;
+                try {
+                    result = callback(store);
+                } catch (error) {
+                    // e.g. a synchronous DataError/QuotaExceededError from put().
+                    resolve(null);
+                    return;
+                }
                 tx.oncomplete = function () { resolve(result && result.result !== undefined ? result.result : result); };
+                // A quota failure aborts the transaction, and an abort may arrive
+                // without an 'error' event, so both must resolve to "no result".
                 tx.onerror = function () { resolve(null); };
+                tx.onabort = function () { resolve(null); };
+            });
+        });
+    }
+
+    // Like withStore, but tells a real "no row" apart from a failed read/write so
+    // callers can report storage failures instead of pretending they succeeded.
+    function withStoreResult(storeName, mode, callback) {
+        return openDb().then(function (db) {
+            if (!db) return { value: undefined, failed: true };
+            return new Promise(function (resolve) {
+                var tx;
+                try {
+                    tx = db.transaction(storeName, mode);
+                } catch (error) {
+                    resolve({ value: undefined, failed: true });
+                    return;
+                }
+                var result;
+                try {
+                    result = callback(tx.objectStore(storeName));
+                } catch (error) {
+                    resolve({ value: undefined, failed: true });
+                    return;
+                }
+                tx.oncomplete = function () {
+                    var value;
+                    if (result && typeof result === 'object' && 'result' in result) {
+                        // IndexedDBRequest: the row lives on .result once complete.
+                        value = result.result;
+                    } else {
+                        value = result;
+                    }
+                    resolve({ value: value, failed: false });
+                };
+                tx.onerror = function () { resolve({ value: undefined, failed: true }); };
+                tx.onabort = function () { resolve({ value: undefined, failed: true }); };
             });
         });
     }
 
     function getProgress(id) {
-        return withStore(STORE_PROGRESS, 'readonly', function (store) { return store.get(String(id)); });
+        // Use withStoreResult so an empty store yields undefined (not the
+        // IDBRequest object) and a failed read is reported as no progress.
+        return withStoreResult(STORE_PROGRESS, 'readonly', function (store) {
+            return store.get(String(id));
+        }).then(function (read) {
+            return read.failed ? undefined : read.value;
+        });
     }
 
     function saveProgress(id, value) {
@@ -353,7 +463,191 @@
     }
 
     function getHandle(category) {
-        return withStore(STORE_HANDLES, 'readonly', function (store) { return store.get(String(category)); });
+        // Same pitfall as getProgress: a bare store.get() must not leak the
+        // IDBRequest to callers (they check `saved.handle`).
+        return withStoreResult(STORE_HANDLES, 'readonly', function (store) {
+            return store.get(String(category));
+        }).then(function (read) {
+            return read.failed || read.value === undefined ? null : read.value;
+        });
+    }
+
+    // ---- Staged files (files mode) ------------------------------------------
+    // A staged record keeps the original File Blob plus the metadata needed to
+    // rebuild the entry id, so the reader page can reopen the same selection.
+
+    function stageKey(category, id) {
+        return String(category || '') + ':' + String(id || '');
+    }
+
+    // Store every entry's File in IndexedDB. Returns the ids that were staged;
+    // entries left out (oversized, or no storage) fall back to handle scanning.
+    // `reason` is a stable code so pages can translate the message; `error` is
+    // the untranslated English fallback kept for logs and legacy callers.
+    function stageEntries(category, entries) {
+        if (!hasIndexedDB()) {
+            return Promise.resolve({ staged: [], skipped: [], reason: 'noStorage', error: 'IndexedDB is unavailable' });
+        }
+        var list = Array.prototype.slice.call(entries || []);
+        if (!list.length) return Promise.resolve({ staged: [], skipped: [], reason: '', error: null });
+        var totalBytes = 0;
+        var staged = [];
+        var skipped = [];
+        list.forEach(function (entry) {
+            var size = (entry.file && entry.file.size) || entry.size || 0;
+            if (!entry.file) {
+                skipped.push({ id: entry.id, reason: 'file body is not available' });
+                return;
+            }
+            if (size > STAGE_LIMITS.MAX_FILE_BYTES || totalBytes + size > STAGE_LIMITS.MAX_TOTAL_BYTES) {
+                skipped.push({ id: entry.id, reason: 'file is too large to stage' });
+                return;
+            }
+            totalBytes += size;
+            staged.push(entry);
+        });
+        if (!staged.length) {
+            return Promise.resolve({
+                staged: [],
+                skipped: skipped,
+                reason: 'tooLarge',
+                error: 'Selected files are too large to keep in this browser'
+            });
+        }
+        // A partial stage is still a failure: readers require every entry of a
+        // chapter to resolve, so leaving some behind only shows a broken chapter.
+        if (skipped.length) {
+            return Promise.resolve({
+                staged: [],
+                skipped: skipped,
+                reason: 'partialTooLarge',
+                error: 'Some selected files are too large to keep in this browser'
+            });
+        }
+        return withStoreResult(STORE_FILES, 'readwrite', function (store) {
+            staged.forEach(function (entry) {
+                store.put({
+                    blob: entry.file,
+                    name: entry.name,
+                    path: entry.path,
+                    rootName: entry.rootName,
+                    category: entry.category,
+                    size: entry.size,
+                    lastModified: entry.lastModified,
+                    stagedAt: Date.now()
+                }, stageKey(category, entry.id));
+            });
+        }).then(function (write) {
+            // A quota abort swallows the whole batch: report it instead of letting
+            // the caller navigate to a reader with no files behind it.
+            if (!write || write.failed) {
+                return {
+                    staged: [], skipped: skipped, reason: 'writeFailed',
+                    error: 'Local files could not be saved in this browser'
+                };
+            }
+            // Drop records from an earlier pick so storage does not grow forever.
+            return pruneStaged(category, staged.map(function (e) { return stageKey(category, e.id); }))
+                .then(function () {
+                    return { staged: staged.map(function (e) { return e.id; }), skipped: skipped, reason: '', error: null };
+                });
+        });
+    }
+
+    // Delete staged records of `category` whose key is not in `keepKeys`.
+    function pruneStaged(category, keepKeys) {
+        var prefix = String(category || '') + ':';
+        var keep = {};
+        (keepKeys || []).forEach(function (key) { keep[key] = true; });
+        return withStore(STORE_FILES, 'readwrite', function (store) {
+            var request = store.openKeyCursor ? store.openKeyCursor() : null;
+            if (!request) return;
+            request.onsuccess = function () {
+                var cursor = request.result;
+                if (!cursor) return;
+                var key = String(cursor.key);
+                if (key.indexOf(prefix) === 0 && !keep[key]) store.delete(key);
+                cursor.continue();
+            };
+        });
+    }
+
+    // Rebuild File objects for previously staged entries (in the original order).
+    function readStagedEntries(category, metas) {
+        var list = Array.prototype.slice.call(metas || []);
+        if (!list.length) return Promise.resolve({ entries: [], missing: [], error: null });
+        if (!hasIndexedDB()) return Promise.resolve({ entries: [], missing: list, error: null });
+        return Promise.all(list.map(function (meta) {
+            return withStoreResult(STORE_FILES, 'readonly', function (store) {
+                return store.get(stageKey(category, meta.id));
+            }).then(function (read) {
+                // A failed read is not the same as a missing record: surface it so
+                // callers can show a storage error instead of "choose files again".
+                return { meta: meta, record: read.failed ? null : read.value, failed: !!read.failed };
+            });
+        })).then(function (rows) {
+            var entries = [];
+            var missing = [];
+            var failed = false;
+            rows.forEach(function (row) {
+                if (row.failed) failed = true;
+                var record = row.record;
+                if (!record || !record.blob) {
+                    missing.push(row.meta);
+                    return;
+                }
+                var file = record.blob;
+                // Some browsers hand back a Blob; wrap it so .name/.size/.lastModified exist.
+                if (typeof file.name !== 'string' && typeof global.File === 'function') {
+                    try {
+                        file = new global.File([file], record.name || row.meta.name,
+                            { type: file.type || '', lastModified: record.lastModified || Date.now() });
+                    } catch (e) { /* keep the raw blob */ }
+                }
+                entries.push({
+                    id: row.meta.id,
+                    file: file,
+                    name: record.name || row.meta.name,
+                    path: record.path || row.meta.path,
+                    rootName: record.rootName || row.meta.rootName || '',
+                    category: record.category || row.meta.category || category,
+                    size: record.size || row.meta.size || 0,
+                    lastModified: record.lastModified || row.meta.lastModified || 0
+                });
+            });
+            return {
+                entries: entries,
+                missing: missing,
+                error: failed && !entries.length ? 'Local file storage could not be read' : null
+            };
+        });
+    }
+
+    function clearStagedEntries(category, ids) {
+        if (!hasIndexedDB()) return Promise.resolve();
+        var prefix = String(category || '') + ':';
+        var list = ids ? Array.prototype.slice.call(ids) : null;
+        return withStore(STORE_FILES, 'readwrite', function (store) {
+            if (!list) {
+                // Only clear this category; a bare store.clear() would also wipe
+                // the music/novel/video stages.
+                if (!category) {
+                    store.clear();
+                    return;
+                }
+                var request = store.openKeyCursor ? store.openKeyCursor() : null;
+                if (!request) return;
+                request.onsuccess = function () {
+                    var cursor = request.result;
+                    if (!cursor) return;
+                    var key = String(cursor.key);
+                    if (key.indexOf(prefix) === 0) store.delete(key);
+                    cursor.continue();
+                };
+                return;
+            }
+            list.forEach(function (id) { store.delete(stageKey(category, id)); });
+        });
     }
 
     function requestHandlePermission(handle) {
@@ -585,14 +879,55 @@
         };
     }
 
-    // Resolve every requested entry from the saved directory handle with a
-    // SINGLE scan. Returns { entries, error } and never throws.
+    // Resolve every requested entry, preferring files staged in IndexedDB (the
+    // "choose files" mode has no directory handle) and falling back to a single
+    // scan of the saved directory handle. Returns { entries, error } and never
+    // throws.
     function resolveEntries(metas, options, deps) {
         var opts = options || {};
         var list = Array.prototype.slice.call(metas || []);
         var handleKey = opts.handleKey || opts.category || '';
         var api = deps || api_deps();
         if (!list.length) return Promise.resolve({ entries: [], error: null });
+        return resolveFromStage(opts.category, list, api)
+            .then(function (staged) {
+                if (staged.error) return staged;
+                if (staged.entries.length) return { entries: staged.entries, error: null };
+                // Nothing (or only part of the list) was staged: fall back to the
+                // saved directory handle, which covers folder mode as well.
+                return resolveFromHandle(list, opts, handleKey, api);
+            })
+            .catch(function (error) {
+                return { entries: [], error: (error && error.message) || 'Unable to read the local files' };
+            });
+    }
+
+    // Staged files: only usable when EVERY requested entry is present, so a
+    // partial stage can never silently drop pages from a chapter.
+    function resolveFromStage(category, list, api) {
+        if (!category || typeof api.readStagedEntries !== 'function') {
+            return Promise.resolve({ entries: [], error: null });
+        }
+        return Promise.resolve(api.readStagedEntries(category, list)).then(function (result) {
+            var entries = (result && result.entries) || [];
+            // A storage read failure is actionable; a plain miss just falls back.
+            if (result && result.error) return { entries: [], error: result.error };
+            if (entries.length !== list.length) return { entries: [], error: null };
+            // Re-order to the caller's list so page order never depends on IDB.
+            var byId = {};
+            entries.forEach(function (entry) { byId[entry.id] = entry; });
+            var ordered = [];
+            for (var i = 0; i < list.length; i++) {
+                if (!byId[list[i].id]) return { entries: [], error: null };
+                ordered.push(byId[list[i].id]);
+            }
+            return { entries: ordered, error: null };
+        }).catch(function () {
+            return { entries: [], error: null };
+        });
+    }
+
+    function resolveFromHandle(list, opts, handleKey, api) {
         return Promise.resolve()
             .then(function () { return api.getHandle(handleKey); })
             .then(function (saved) {
@@ -615,12 +950,19 @@
                         if (!entries.length) {
                             return { entries: [], error: 'Local files not found; please choose the folder again' };
                         }
+                        // Same invariant as the staged path: every requested entry must
+                        // resolve, otherwise a renamed or deleted file would silently
+                        // shorten a chapter instead of telling the user to re-pick.
+                        if (entries.length !== list.length) {
+                            var missing = list.length - entries.length;
+                            return {
+                                entries: [],
+                                error: missing + ' local file(s) are missing from the folder; please choose it again'
+                            };
+                        }
                         return { entries: entries, error: null };
                     });
                 });
-            })
-            .catch(function (error) {
-                return { entries: [], error: (error && error.message) || 'Unable to read the local folder' };
             });
     }
 
@@ -628,7 +970,8 @@
         return {
             getHandle: getHandle,
             requestHandlePermission: requestHandlePermission,
-            scanHandle: scanHandle
+            scanHandle: scanHandle,
+            readStagedEntries: readStagedEntries
         };
     }
 
@@ -748,6 +1091,10 @@
         isResumableOnReload: isResumableOnReload,
         createProgressThrottler: createProgressThrottler,
         resolveEntries: resolveEntries,
+        stageEntries: stageEntries,
+        readStagedEntries: readStagedEntries,
+        clearStagedEntries: clearStagedEntries,
+        STAGE_LIMITS: STAGE_LIMITS,
         mountPicker: mountPicker
     };
 

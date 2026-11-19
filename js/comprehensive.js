@@ -61,9 +61,13 @@ function loadLocalVideo() {
     episodes = session.entries.map(function (entry) { return entry.path || entry.name; });
     links = session.entries.map(function (entry) { return entry.id; });
     videoName = session.rootName || 'Local Videos';
-    videoDes = session.resumable
-        ? 'Local files stay in this browser.'
-        : 'Files were picked directly, so reloading this page requires choosing them again.';
+    videoDes = session.truncated
+        // The scan stopped at its limit, so the playlist is incomplete.
+        ? 'Only part of the folder was read (too many files or too deeply nested). '
+            + 'Move the missing files into a smaller folder and choose again.'
+        : (session.resumable
+            ? 'Local files stay in this browser.'
+            : 'Files were picked directly, so reloading this page requires choosing them again.');
     renderEpisodeList();
     var detail = document.getElementById('detailContent');
     if (detail) detail.textContent = videoDes;

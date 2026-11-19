@@ -182,6 +182,11 @@ function localT(key) {
 function applyLocalI18n() {
     document.querySelectorAll('[data-i18n-tab]').forEach(function (el) {
         el.textContent = localT(el.getAttribute('data-i18n-tab'));
+        // Keep an accessible name on the tab when the text label is hidden on mobile.
+        if (el.parentElement) {
+            el.parentElement.setAttribute('aria-label', el.textContent);
+            el.parentElement.setAttribute('title', el.textContent);
+        }
     });
     document.querySelectorAll('[data-i18n-text]').forEach(function (el) {
         el.textContent = localT(el.getAttribute('data-i18n-text'));

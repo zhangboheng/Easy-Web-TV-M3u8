@@ -20,6 +20,15 @@ let mangaInfo = null;
 let isScrollMode = true;
 let localMangaSession = null;
 let localMangaFiles = {};
+// Object URLs created for rendered PDF pages. They are not part of the core
+// objectUrls registry, so they must be revoked here when a chapter is replaced.
+let pdfObjectUrls = [];
+// Message shown under the reader when a PDF was cut off at PDF_LIMITS.MAX_PAGES.
+let pendingPdfNotice = '';
+// Message shown when the folder scan stopped at its entry/depth limit.
+const TRUNCATED_NOTICE = 'Only part of the folder was read (too many files or too deeply '
+    + 'nested). Move the missing chapters into a smaller folder and choose again.';
+let localTruncatedNotice = '';
 
 function getLocalMangaSession() {
     if (localMangaSession) return localMangaSession;
@@ -47,24 +56,37 @@ function loadLocalManga() {
         return;
     }
     chapters = session.groups.map(function (group) {
+        var isPdf = group.entries.length === 1 && /\.pdf$/i.test(group.entries[0].name || '');
         return {
             id: group.id,
             name: group.name,
-            attributes: { chapter: group.name, title: group.entries.length + ' images' },
+            attributes: {
+                chapter: group.name,
+                title: isPdf ? 'PDF' : group.entries.length + ' image(s)'
+            },
             pageUrl: '',
             localEntries: group.entries
         };
     });
     document.getElementById('mangaTitle').textContent = session.rootName || 'Local manga';
-    document.getElementById('currentChapter').textContent = session.resumable
+    var mangaHint = session.resumable
         ? 'Local images stay in this browser.'
         : 'Files were picked directly, so reloading this page requires choosing them again.';
+    if (session.truncated) {
+        // The folder scan hit its entry/depth limit, so some files are missing.
+        // Keep the notice so loadChapter() can restore it instead of overwriting
+        // it with the chapter name.
+        mangaHint = TRUNCATED_NOTICE;
+    }
+    localTruncatedNotice = session.truncated ? TRUNCATED_NOTICE : '';
+    document.getElementById('currentChapter').textContent = mangaHint;
     displayChapters();
     if (chapters.length) loadChapter(chapters[0].id);
 }
 
 async function resolveLocalMangaEntryList(entries) {
-    // One folder scan for the whole chapter; entries already resolved are reused.
+    // One folder scan (or one staged-file read) for the whole chapter; entries
+    // already resolved are reused.
     var pending = entries.filter(function (entry) { return !localMangaFiles[entry.id]; });
     if (!pending.length) {
         return entries.map(function (entry) { return localMangaFiles[entry.id]; });
@@ -74,9 +96,159 @@ async function resolveLocalMangaEntryList(entries) {
     if (resolved.error) throw new Error(resolved.error);
     resolved.entries.forEach(function (entry) { localMangaFiles[entry.id] = entry; });
     var missing = pending.filter(function (entry) { return !localMangaFiles[entry.id]; });
-    if (missing.length) throw new Error('Some local images could not be found; choose the folder again');
+    if (missing.length) throw new Error('Some local files could not be found; choose them again');
     return entries.map(function (entry) { return localMangaFiles[entry.id]; });
 }
+
+// ---- PDF support: each PDF file is rendered to per-page images with pdf.js ----
+
+var PDFJS_SOURCES = [
+    // Prefer the vendored copy (offline); fall back to a public CDN.
+    '../vendor/pdfjs/pdf.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js',
+    'https://unpkg.com/pdfjs-dist@3.11.174/legacy/build/pdf.min.js'
+];
+var PDFJS_WORKER = [
+    '../vendor/pdfjs/pdf.worker.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js',
+    'https://unpkg.com/pdfjs-dist@3.11.174/legacy/build/pdf.worker.min.js'
+];
+var pdfjsLibPromise = null;
+
+function isPdfEntry(entry) {
+    return entry && entry.file && /\.pdf$/i.test(entry.name || entry.path || '');
+}
+
+function loadScript(src) {
+    return new Promise(function (resolve, reject) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = function () { reject(new Error('Failed to load ' + src)); };
+        document.head.appendChild(script);
+    });
+}
+
+async function ensurePdfJs() {
+    if (window.pdfjsLib) return window.pdfjsLib;
+    if (!pdfjsLibPromise) {
+        pdfjsLibPromise = (async function () {
+            var lastError = null;
+            for (var i = 0; i < PDFJS_SOURCES.length; i++) {
+                try {
+                    await loadScript(PDFJS_SOURCES[i]);
+                    if (window.pdfjsLib) {
+                        // Worker source mirrors the library source so versions always match.
+                        window.pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS_WORKER[i];
+                        return window.pdfjsLib;
+                    }
+                } catch (error) {
+                    lastError = error;
+                }
+            }
+            throw new Error('PDF renderer (pdf.js) could not be loaded' +
+                (lastError ? ': ' + lastError.message : ''));
+        })();
+        pdfjsLibPromise.catch(function () { pdfjsLibPromise = null; });
+    }
+    return pdfjsLibPromise;
+}
+
+// ---- PDF rendering -------------------------------------------------------
+// PDFs can hold thousands of pages. Cap how many we rasterise per open so a
+// single huge book cannot freeze the tab or exhaust memory on a phone; the
+// reader is told when a file was cut short. Every produced URL is tracked in
+// pdfObjectUrls so switching chapters can release it.
+var PDF_LIMITS = {
+    MAX_PAGES: 400,   // pages rasterised per PDF per open
+    BATCH: 4          // pages rendered between yields to the browser
+};
+
+// Progress callback: ({done, total, truncated}) => void.
+var pdfProgressReporter = null;
+
+// Cancellation token of the running render; bumping it stops older work.
+var pdfRenderToken = null;
+
+function pdfYield() {
+    return new Promise(function (resolve) { setTimeout(resolve, 0); });
+}
+
+// Render one PDF into page images, yielding between small batches so the reader
+// stays responsive and can show progress on long documents.
+async function renderPdfEntry(entry, onProgress) {
+    const file = entry.file;
+    if (!file) throw new Error('PDF file not available; choose the folder again');
+    const pdfjsLib = await ensurePdfJs();
+    const buffer = await file.arrayBuffer();
+    const doc = await pdfjsLib.getDocument({ data: buffer }).promise;
+    const token = {};
+    pdfRenderToken = token;
+    const urls = [];
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    const total = Math.min(doc.numPages, PDF_LIMITS.MAX_PAGES);
+    const report = onProgress || pdfProgressReporter;
+
+    async function renderPage(num) {
+        const page = await doc.getPage(num);
+        // Render at ~1600px on the long edge: crisp on desktop, memory-safe on phones.
+        const base = page.getViewport({ scale: 1 });
+        const scale = Math.min(3, Math.max(1, 1600 / Math.max(base.width, base.height)));
+        const viewport = page.getViewport({ scale: scale });
+        canvas.width = Math.floor(viewport.width);
+        canvas.height = Math.floor(viewport.height);
+        await page.render({ canvasContext: context, viewport: viewport }).promise;
+        const blob = await new Promise(function (resolve) {
+            canvas.toBlob(resolve, 'image/jpeg', 0.85);
+        });
+        page.cleanup();
+        return blob;
+    }
+
+    try {
+        for (let num = 1; num <= total; num++) {
+            // A new chapter must stop this render instead of piling on memory.
+            if (token.cancelled) break;
+            const blob = await renderPage(num);
+            if (blob) {
+                const url = URL.createObjectURL(blob);
+                pdfObjectUrls.push(url);
+                urls.push(url);
+            }
+            if (report && (num % PDF_LIMITS.BATCH === 0 || num === total)) {
+                report({ done: num, total: total, truncated: doc.numPages > total });
+            }
+            // Hand the main thread back so the UI can paint progress.
+            if (num % PDF_LIMITS.BATCH === 0) await pdfYield();
+        }
+    } finally {
+        canvas.width = canvas.height = 0; // release canvas memory
+        // Free the parsed document + its worker buffers as soon as we are done.
+        if (doc && typeof doc.destroy === 'function') {
+            try { await doc.destroy(); } catch (e) { /* nothing left to free */ }
+        }
+        if (pdfRenderToken === token) pdfRenderToken = null;
+    }
+    if (!urls.length) throw new Error('PDF has no readable pages');
+    return { urls: urls, total: total, truncated: doc.numPages > total, cancelled: !!token.cancelled };
+}
+
+// Stop the PDF render that is currently running (if any).
+function cancelPdfRender() {
+    if (pdfRenderToken) pdfRenderToken.cancelled = true;
+}
+
+// Release every page image produced by previous PDF renders.
+function releasePdfObjectUrls() {
+    while (pdfObjectUrls.length) {
+        const url = pdfObjectUrls.pop();
+        try { URL.revokeObjectURL(url); } catch (e) { /* already gone */ }
+    }
+}
+
+// Revoke the remaining PDF page images when the page goes away.
+window.addEventListener('pagehide', releasePdfObjectUrls);
 
 
 // Get all reader params from URL
@@ -406,21 +578,57 @@ async function loadChapter(chapterId) {
         document.querySelectorAll('.chapter-item').forEach(function(item) {
             item.classList.remove('active');
         });
-        const activeItem = document.querySelector(`.chapter-item[data-id="${chapterId}"]`);
+        // Never interpolate an id into a CSS selector: a file name containing a
+        // quote or backslash would throw a SyntaxError (or silently not match).
+        let activeItem = null;
+        document.querySelectorAll('.chapter-item').forEach(function(item) {
+            if (item.dataset.id === chapterId) activeItem = item;
+        });
         if (activeItem) activeItem.classList.add('active');
 
         showLoading('Loading chapter pages...');
         const src = getReaderParams().src;
 
+        // Drop page images rendered for the previous chapter before building new
+        // ones, otherwise every PDF chapter switch leaks its JPEG blobs.
+        // Also stop any in-flight PDF render so two books never render at once.
+        cancelPdfRender();
+        releasePdfObjectUrls();
+        pendingPdfNotice = '';
+
         if (getReaderParams().src === 'local') {
             const chapter = chapters.find(c => c.id === chapterId);
             if (!chapter) throw new Error('Chapter not found');
             const files = await resolveLocalMangaEntryList(chapter.localEntries);
-            currentPages = files.map(function (entry) {
-                return window.LocalMediaCore.getObjectUrl(entry.id, entry.file);
-            });
+            const imageUrls = [];
+            let pdfTruncated = false;
+            let pdfTotal = 0;
+            for (const entry of files) {
+                if (isPdfEntry(entry)) {
+                    // One PDF file contributes one or more rendered pages. Long
+                    // documents report progress and stop at PDF_LIMITS.MAX_PAGES.
+                    const rendered = await renderPdfEntry(entry, function (state) {
+                        if (state.total > 1) {
+                            showLoading('Rendering PDF ' + state.done + ' / ' + state.total + ' pages...');
+                        }
+                    });
+                    imageUrls.push(...rendered.urls);
+                    if (rendered.truncated) {
+                        pdfTruncated = true;
+                        pdfTotal = rendered.total;
+                    }
+                } else {
+                    imageUrls.push(window.LocalMediaCore.getObjectUrl(entry.id, entry.file));
+                }
+            }
+            currentPages = imageUrls;
             currentPageIndex = 0;
-            document.getElementById('currentChapter').textContent = 'Local: ' + (chapter.name || chapterId);
+            document.getElementById('currentChapter').textContent = localTruncatedNotice
+                ? localTruncatedNotice
+                : 'Local: ' + (chapter.name || chapterId);
+            pendingPdfNotice = pdfTruncated
+                ? 'Showing the first ' + pdfTotal + ' pages of a longer PDF.'
+                : '';
             const progress = await window.LocalMediaCore.getProgress(chapterId);
             if (progress && !isNaN(progress.pageIndex) && progress.pageIndex >= 0 && progress.pageIndex < currentPages.length) {
                 currentPageIndex = parseInt(progress.pageIndex, 10);
@@ -477,7 +685,9 @@ function displayPages() {
             html += `<img src="${page}" class="manga-page" alt="Page ${index + 1}" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML='<div style=&quot;padding:40px 20px;text-align:center;color:rgba(255,255,255,0.5);border:1px dashed rgba(255,255,255,0.15);border-radius:8px;margin:8px 0;font-size:14px;&quot;>⚠ Page ${index + 1}: image blocked by CDN hotlink protection</div>'">`;
         });
         document.getElementById('readerWrapper').innerHTML = html;
-        document.getElementById('pageText').textContent = `Total: ${currentPages.length} pages`;
+        document.getElementById('pageText').textContent = pendingPdfNotice
+            ? pendingPdfNotice
+            : `Total: ${currentPages.length} pages`;
     } else {
         // Single page mode
         displayCurrentPage();
@@ -494,7 +704,9 @@ function displayCurrentPage() {
         <img src="${pageUrl}" class="manga-page" alt="Page ${idx + 1}" referrerpolicy="no-referrer" onerror="this.outerHTML='<div style=&quot;padding:40px 20px;text-align:center;color:rgba(255,255,255,0.5);border:1px dashed rgba(255,255,255,0.15);border-radius:8px;margin:8px 0;font-size:14px;&quot;>⚠ Page ${idx + 1}: image blocked by CDN hotlink protection</div>'">
     `;
     
-    document.getElementById('pageText').textContent = `Page ${idx + 1} / ${currentPages.length}`;
+    document.getElementById('pageText').textContent = pendingPdfNotice
+        ? pendingPdfNotice + ' (page ' + (idx + 1) + ' / ' + currentPages.length + ')'
+        : `Page ${idx + 1} / ${currentPages.length}`;
     updateNavigation();
 }
 

@@ -26,7 +26,10 @@
             noTextFiles: 'No supported TXT / Markdown files found.',
             noImageFiles: 'No supported image files found.',
             noVideoFiles: 'No supported video files found.',
-            songsReady: '{n} local song(s) ready.'
+            songsReady: '{n} local song(s) ready.',
+            stageFailed: 'These files are too large to keep in this browser. Choose a folder instead.',
+            stageNoStorage: 'This browser cannot keep local files. Choose a folder instead.',
+            stageWriteFailed: 'Local files could not be saved (storage is full). Choose a folder instead.'
         },
         zh: {
             tabOnline: '在线',
@@ -48,7 +51,10 @@
             noTextFiles: '未找到受支持的 TXT / Markdown 文件。',
             noImageFiles: '未找到受支持的图片文件。',
             noVideoFiles: '未找到受支持的视频文件。',
-            songsReady: '已就绪 {n} 首本地歌曲。'
+            songsReady: '已就绪 {n} 首本地歌曲。',
+            stageFailed: '文件太大，无法保存在浏览器中，请改用选择文件夹。',
+            stageNoStorage: '此浏览器无法保存本地文件，请改用选择文件夹。',
+            stageWriteFailed: '无法保存本地文件（存储空间不足），请改用选择文件夹。'
         },
         ja: {
             tabOnline: 'オンライン',
@@ -70,7 +76,10 @@
             noTextFiles: 'サポートされている TXT / Markdown ファイルが見つかりませんでした。',
             noImageFiles: 'サポートされている画像ファイルが見つかりませんでした。',
             noVideoFiles: 'サポートされている動画ファイルが見つかりませんでした。',
-            songsReady: 'ローカル曲を {n} 曲読み込みました。'
+            songsReady: 'ローカル曲を {n} 曲読み込みました。',
+            stageFailed: 'ファイルが大きすぎるためブラウザーに保存できません。フォルダーを選択してください。',
+            stageNoStorage: 'このブラウザーはローカルファイルを保存できません。フォルダーを選択してください。',
+            stageWriteFailed: 'ローカルファイルを保存できませんでした（ストレージが不足）。フォルダーを選択してください。'
         },
         ko: {
             tabOnline: '온라인',
@@ -92,7 +101,10 @@
             noTextFiles: '지원되는 TXT / Markdown 파일을 찾을 수 없습니다.',
             noImageFiles: '지원되는 이미지 파일을 찾을 수 없습니다.',
             noVideoFiles: '지원되는 비디오 파일을 찾을 수 없습니다.',
-            songsReady: '로컬 곡 {n}개가 준비되었습니다.'
+            songsReady: '로컬 곡 {n}개가 준비되었습니다.',
+            stageFailed: '파일이 너무 커서 브라우저에 저장할 수 없습니다. 폴더를 선택하세요.',
+            stageNoStorage: '이 브라우저는 로컬 파일을 저장할 수 없습니다. 폴더를 선택하세요.',
+            stageWriteFailed: '로컬 파일을 저장하지 못했습니다(저장 공간 부족). 폴더를 선택하세요.'
         },
         fr: {
             tabOnline: 'En ligne',
@@ -114,7 +126,10 @@
             noTextFiles: "Aucun fichier TXT / Markdown pris en charge n'a été trouvé.",
             noImageFiles: "Aucun fichier image pris en charge n'a été trouvé.",
             noVideoFiles: "Aucun fichier vidéo pris en charge n'a été trouvé.",
-            songsReady: '{n} morceau(x) local(aux) prêt(s).'
+            songsReady: '{n} morceau(x) local(aux) prêt(s).',
+            stageFailed: 'Fichiers trop volumineux pour ce navigateur. Choisissez un dossier.',
+            stageNoStorage: 'Ce navigateur ne peut pas conserver de fichiers locaux. Choisissez un dossier.',
+            stageWriteFailed: 'Impossible d’enregistrer les fichiers locaux (stockage plein). Choisissez un dossier.'
         },
         de: {
             tabOnline: 'Online',
@@ -136,7 +151,10 @@
             noTextFiles: 'Keine unterstützten TXT-/Markdown-Dateien gefunden.',
             noImageFiles: 'Keine unterstützten Bilddateien gefunden.',
             noVideoFiles: 'Keine unterstützten Videodateien gefunden.',
-            songsReady: '{n} lokale(r) Titel bereit.'
+            songsReady: '{n} lokale(r) Titel bereit.',
+            stageFailed: 'Dateien sind zu groß für diesen Browser. Wählen Sie einen Ordner.',
+            stageNoStorage: 'Dieser Browser kann keine lokalen Dateien speichern. Wählen Sie einen Ordner.',
+            stageWriteFailed: 'Lokale Dateien konnten nicht gespeichert werden (Speicher voll). Wählen Sie einen Ordner.'
         },
         es: {
             tabOnline: 'En línea',
@@ -158,7 +176,10 @@
             noTextFiles: 'No se encontraron archivos TXT / Markdown compatibles.',
             noImageFiles: 'No se encontraron archivos de imagen compatibles.',
             noVideoFiles: 'No se encontraron archivos de vídeo compatibles.',
-            songsReady: '{n} canción(es) local(es) lista(s).'
+            songsReady: '{n} canción(es) local(es) lista(s).',
+            stageFailed: 'Archivos demasiado grandes para este navegador. Elija una carpeta.',
+            stageNoStorage: 'Este navegador no puede guardar archivos locales. Elija una carpeta.',
+            stageWriteFailed: 'No se pudieron guardar los archivos locales (almacenamiento lleno). Elija una carpeta.'
         },
         ru: {
             tabOnline: 'Онлайн',
@@ -180,7 +201,10 @@
             noTextFiles: 'Поддерживаемые файлы TXT / Markdown не найдены.',
             noImageFiles: 'Поддерживаемые файлы изображений не найдены.',
             noVideoFiles: 'Поддерживаемые видеофайлы не найдены.',
-            songsReady: 'Готово локальных треков: {n}.'
+            songsReady: 'Готово локальных треков: {n}.',
+            stageFailed: 'Файлы слишком велики для этого браузера. Выберите папку.',
+            stageNoStorage: 'Этот браузер не может хранить локальные файлы. Выберите папку.',
+            stageWriteFailed: 'Не удалось сохранить локальные файлы (хранилище заполнено). Выберите папку.'
         }
     };
 }(typeof window !== 'undefined' ? window : this));

@@ -314,7 +314,15 @@ function decodeLocalText(buffer) {
     if (typeof TextDecoder === 'function') {
         return new TextDecoder('utf-8', { fatal: true }).decode(buffer);
     }
-    return String.fromCharCode.apply(null, new Uint8Array(buffer));
+    // String.fromCharCode.apply() overflows the stack on large files, so decode
+    // in chunks and join instead.
+    var bytes = new Uint8Array(buffer);
+    var CHUNK = 0x8000;
+    var parts = [];
+    for (var i = 0; i < bytes.length; i += CHUNK) {
+        parts.push(String.fromCharCode.apply(null, bytes.subarray(i, i + CHUNK)));
+    }
+    return parts.join('');
 }
 
 function getLocalNovelSession() {
@@ -340,9 +348,13 @@ function loadLocalNovel(session) {
         return { url: entry.id, name: entry.path || entry.name, file: null, size: entry.size, lastModified: entry.lastModified };
     });
     currentNovelTitle = session.rootName || 'Local Novels';
-    setNovelHeader(currentNovelTitle, session.resumable
-        ? 'Local files are read only in this browser.'
-        : 'Files were picked directly, so reloading this page requires choosing them again.');
+    setNovelHeader(currentNovelTitle, session.truncated
+        // The scan stopped at its limit, so the book list is incomplete.
+        ? 'Only part of the folder was read (too many files or too deeply nested). '
+            + 'Move the missing files into a smaller folder and choose again.'
+        : (session.resumable
+            ? 'Local files are read only in this browser.'
+            : 'Files were picked directly, so reloading this page requires choosing them again.'));
     renderChapters(chapters);
     document.getElementById('chapterCount').textContent = chapters.length;
     // Resolve every chapter with one folder scan, then open the book.
@@ -424,7 +436,14 @@ function readLocalText(entry, id) {
         try {
             text = decodeLocalText(buffer);
         } catch (error) {
-            text = new TextDecoder('gb18030').decode(buffer);
+            // Not valid UTF-8: try GB18030 (common for Chinese ebooks). Both
+            // decoders must run with fatal:true, otherwise binary junk becomes
+            // mojibake instead of an error the reader can act on.
+            try {
+                text = new TextDecoder('gb18030', { fatal: true }).decode(buffer);
+            } catch (fallbackError) {
+                throw new Error('This file is not valid UTF-8 or GB18030 text');
+            }
         }
         return { html: textToHtml(text), title: entry.name, id: id };
     });
@@ -543,8 +562,12 @@ function loadChapter(url, chapterName) {
     })
     .catch(function(error) {
         console.error('Failed to load chapter:', error);
-        showToast('Failed to load chapter content. Please try again.', 'error');
-        document.getElementById('readerContent').innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.5);">Unable to load chapter content. Please try another chapter.</p>';
+        // Surface the actionable reason (e.g. "not valid UTF-8 or GB18030")
+        // instead of a generic message that hides it.
+        var reason = (error && error.message) ? error.message : '';
+        showToast(reason || 'Failed to load chapter content. Please try again.', 'error');
+        document.getElementById('readerContent').innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.5);">' +
+            escapeText(reason || 'Unable to load chapter content. Please try another chapter.') + '</p>';
     })
     .finally(function() {
         showLoading(false);
