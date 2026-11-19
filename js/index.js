@@ -51,6 +51,123 @@ const AdultTranslations = {
     }
 };
 
+const ConfirmDialog = {
+    hasModal: function() {
+        return false;
+    },
+
+    show: function(title, message, onConfirm, confirmLabel, cancelLabel, danger) {
+        // The themed ConfirmModal is attached to window by the app shell.
+        if (typeof window.ConfirmModal !== 'undefined' && typeof window.ConfirmModal.show === 'function') {
+            window.ConfirmModal.show(title, message, onConfirm, confirmLabel, cancelLabel, danger);
+        } else if (onConfirm) {
+            onConfirm();
+        }
+    }
+};
+
+// Themed confirmation modal - replaces browser-native confirm/alert dialogs.
+const ConfirmModal = {
+    onConfirm: null,
+
+    init: function() {
+        DOM.on('#confirm-modal-ok', 'click', function() {
+            var callback = ConfirmModal.onConfirm;
+            ConfirmModal.hide();
+            if (callback) callback();
+        });
+        DOM.on('#confirm-modal-cancel', 'click', function() {
+            ConfirmModal.hide();
+        });
+        DOM.on('#confirm-modal-overlay', 'click', function() {
+            ConfirmModal.hide();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key !== 'Escape' || !DOM.hasClass('#confirm-modal', 'show')) return;
+            e.preventDefault();
+            ConfirmModal.hide();
+        });
+    },
+
+    show: function(title, message, onConfirm, confirmLabel, cancelLabel, danger) {
+        var modal = DOM.$('#confirm-modal');
+        var overlay = DOM.$('#confirm-modal-overlay');
+        if (!modal || !overlay) {
+            // Should never happen in the app shell, but keep behavior sane.
+            if (onConfirm) onConfirm();
+            return;
+        }
+        this.onConfirm = onConfirm || null;
+        var titleEl = DOM.$('#confirm-modal-title');
+        var messageEl = DOM.$('#confirm-modal-message');
+        var okBtn = DOM.$('#confirm-modal-ok');
+        var cancelBtn = DOM.$('#confirm-modal-cancel');
+        if (titleEl) titleEl.textContent = title || 'Confirm';
+        if (messageEl) messageEl.textContent = message || '';
+        if (okBtn) okBtn.textContent = confirmLabel || 'Confirm';
+        if (cancelBtn) cancelBtn.textContent = cancelLabel || 'Cancel';
+        DOM.toggleClass(okBtn, 'danger', Boolean(danger));
+        DOM.toggleClass(modal, 'danger', Boolean(danger));
+        DOM.addClass(overlay, 'show');
+        DOM.addClass(modal, 'show');
+        modal.setAttribute('aria-hidden', 'false');
+        overlay.setAttribute('aria-hidden', 'false');
+        if (okBtn) okBtn.focus();
+    },
+
+    hide: function() {
+        var modal = DOM.$('#confirm-modal');
+        var overlay = DOM.$('#confirm-modal-overlay');
+        this.onConfirm = null;
+        DOM.removeClass(modal, 'show');
+        DOM.removeClass(overlay, 'show');
+        if (modal) modal.setAttribute('aria-hidden', 'true');
+        if (overlay) overlay.setAttribute('aria-hidden', 'true');
+    }
+};
+
+// Expose for catalogues (novel/music) that do not load the app shell.
+window.ConfirmModal = ConfirmModal;
+
+// Catalogues include this file without style.css; keep the shared modal themed.
+if (!DOM.$('#confirm-modal-styles')) {
+    var modalStyle = document.createElement('style');
+    modalStyle.id = 'confirm-modal-styles';
+    modalStyle.textContent = [
+        '.confirm-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:11000;display:none}',
+        '.confirm-modal-overlay.show{display:block}',
+        '.confirm-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);width:calc(100% - 40px);max-width:420px;padding:28px 24px 24px;border-radius:20px;background:linear-gradient(180deg,#1f1f1f,#1a1a1a);border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 0 1px rgba(163,0,27,.25);color:#fff;text-align:center;z-index:11001;display:none;opacity:0;transition:opacity .2s ease,transform .2s ease}',
+        '.confirm-modal.show{display:block;opacity:1;transform:translate(-50%,-50%) scale(1)}',
+        '.confirm-modal-icon{display:flex;align-items:center;justify-content:center;width:56px;height:56px;margin:0 auto 16px;border-radius:50%;background:rgba(163,0,27,.16);color:#ff4d5e}',
+        '.confirm-modal h3{margin:0 0 12px;font-size:20px}',
+        '.confirm-modal p{margin:0 0 24px;color:rgba(255,255,255,.7);font-size:14px;line-height:1.6}',
+        '.confirm-modal-actions{display:flex;gap:12px;justify-content:center}',
+        '.confirm-modal-btn{min-width:110px;padding:10px 18px;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:rgba(255,255,255,.06);color:#fff;font-size:14px;cursor:pointer}',
+        '.confirm-modal-btn:hover{background:rgba(255,255,255,.12)}',
+        '.confirm-modal-btn.primary{background:#a3001b;border-color:#a3001b}',
+        '.confirm-modal-btn.primary:hover{background:#c40022}',
+        '[data-theme="dark"] .confirm-modal{background:linear-gradient(180deg,#2a2a2a,#202020)}'
+    ].join('');
+    (document.head || document.documentElement).appendChild(modalStyle);
+}
+if (!DOM.$('#confirm-modal')) {
+    var modalOverlay = document.createElement('div');
+    modalOverlay.id = 'confirm-modal-overlay';
+    modalOverlay.className = 'confirm-modal-overlay';
+    modalOverlay.setAttribute('aria-hidden', 'true');
+    var modal = document.createElement('div');
+    modal.id = 'confirm-modal';
+    modal.className = 'confirm-modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-hidden', 'true');
+    modal.setAttribute('aria-labelledby', 'confirm-modal-title');
+    modal.innerHTML = '<div class="confirm-modal-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div><h3 id="confirm-modal-title">Confirm</h3><p id="confirm-modal-message"></p><div class="confirm-modal-actions"><button id="confirm-modal-cancel" class="confirm-modal-btn">Cancel</button><button id="confirm-modal-ok" class="confirm-modal-btn primary">Confirm</button></div>';
+    if (document.body) {
+        document.body.appendChild(modalOverlay);
+        document.body.appendChild(modal);
+    }
+}
 // Loading and Error handling utilities
 const LoadingManager = {
     show: function() {
@@ -901,13 +1018,17 @@ const SettingsModal = {
     },
     
     clearCache: function() {
-        if (confirm("Are you sure you want to clear all cache?")) {
-            localStorage.clear();
-            ErrorToast.show('Cache cleared successfully!', 2000);
-            // Reset theme and other settings
-            ThemeManager.setTheme('light');
-            this.syncThemeToggle();
-        }
+        ConfirmDialog.show(
+            'Clear cache',
+            'Are you sure you want to clear all cache?',
+            function() {
+                localStorage.clear();
+                ErrorToast.show('Cache cleared successfully!', 2000);
+                // Reset theme and other settings
+                ThemeManager.setTheme('light');
+                this.syncThemeToggle();
+            }.bind(this)
+        );
     },
     
     // v8.5.0: export a full localStorage snapshot as a JSON backup file
@@ -959,14 +1080,17 @@ const SettingsModal = {
                     ErrorToast.show('Backup file is empty', 3000);
                     return;
                 }
-                if (!confirm('Import ' + keys.length + ' entries? Existing entries with the same name will be overwritten.')) {
-                    return;
-                }
-                keys.forEach(function(k) {
-                    localStorage.setItem(k, payload.data[k]);
-                });
-                ErrorToast.show('Data imported successfully!', 2000);
-                setTimeout(function() { window.location.reload(); }, 1200);
+                ConfirmDialog.show(
+                    'Import data',
+                    'Import ' + keys.length + ' entries? Existing entries with the same name will be overwritten.',
+                    function() {
+                        keys.forEach(function(k) {
+                            localStorage.setItem(k, payload.data[k]);
+                        });
+                        ErrorToast.show('Data imported successfully!', 2000);
+                        setTimeout(function() { window.location.reload(); }, 1200);
+                    }
+                );
             } catch (e) {
                 console.error('Import failed:', e);
                 ErrorToast.show('Import failed: invalid JSON', 3000);
@@ -987,6 +1111,7 @@ DOM.ready(function() {
     // Initialize keyboard navigation (will use SettingsModal for menu toggle)
     KeyboardManager.init();
     
+    ConfirmModal.init();
     // Initialize scroll animations
     ScrollAnimationManager.init();
     
@@ -1204,18 +1329,6 @@ DOM.ready(function() {
                     if (adultItem) adultItem.remove();
                 }
                 localStorage.removeItem('adult');
-            }
-        });
-    }
-    
-    // Clear cache
-    var cachebtn = DOM.$('.cachebtn');
-    if (cachebtn) {
-        cachebtn.addEventListener('click', function() {
-            if (confirm("Are you sure clear the cache?")) {
-                localStorage.clear();
-            } else {
-                console.log("Not do nothing...");
             }
         });
     }
@@ -1468,7 +1581,7 @@ function returnSource() {
     });
     
     if (arr.length == 0) {
-        alert("Please select at least one source...");
+        ErrorToast.show('Please select at least one source...', 3000);
     } else {
         if (arr[0] == "movie") {
             window.localStorage.setItem('movie', arr.slice(1).join(","));

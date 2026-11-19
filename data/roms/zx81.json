@@ -1,0 +1,66 @@
+{
+ "platform": "zx81",
+ "core": "81",
+ "games": [
+  {
+   "name": "Chase Race (homebrew) - Kurt-Arne Johnsen",
+   "url": "https://raw.githubusercontent.com/Retronissen/Sinclair-ZX81-Software-in-hounor-for-Sir-Clive/main/ChaseRace.p",
+   "filename": "ChaseRace.p"
+  },
+  {
+   "name": "Dollar Race (homebrew) - Kurt-Arne Johnsen",
+   "url": "https://raw.githubusercontent.com/Retronissen/Sinclair-ZX81-Software-in-hounor-for-Sir-Clive/main/DollarRace.p",
+   "filename": "DollarRace.p"
+  },
+  {
+   "name": "Draw 81 (homebrew) - Kurt-Arne Johnsen",
+   "url": "https://raw.githubusercontent.com/Retronissen/Sinclair-ZX81-Software-in-hounor-for-Sir-Clive/main/Draw81.p",
+   "filename": "Draw81.p"
+  },
+  {
+   "name": "Battle 81 (homebrew) - Kurt-Arne Johnsen",
+   "url": "https://raw.githubusercontent.com/Retronissen/Sinclair-ZX81-Software-in-hounor-for-Sir-Clive/main/battle81.p",
+   "filename": "battle81.p"
+  },
+  {
+   "name": "Code Master (homebrew) - Kurt-Arne Johnsen",
+   "url": "https://raw.githubusercontent.com/Retronissen/Sinclair-ZX81-Software-in-hounor-for-Sir-Clive/main/codemaster.p",
+   "filename": "codemaster.p"
+  },
+  {
+   "name": "Gunman (homebrew) - Kurt-Arne Johnsen",
+   "url": "https://raw.githubusercontent.com/Retronissen/Sinclair-ZX81-Software-in-hounor-for-Sir-Clive/main/gunman.p",
+   "filename": "gunman.p"
+  },
+  {
+   "name": "Laser 2 (homebrew) - Kurt-Arne Johnsen",
+   "url": "https://raw.githubusercontent.com/Retronissen/Sinclair-ZX81-Software-in-hounor-for-Sir-Clive/main/lazr2-22.p",
+   "filename": "lazr2-22.p"
+  },
+  {
+   "name": "Mine Hunt (homebrew) - Kurt-Arne Johnsen",
+   "url": "https://raw.githubusercontent.com/Retronissen/Sinclair-ZX81-Software-in-hounor-for-Sir-Clive/main/minehunt.p",
+   "filename": "minehunt.p"
+  },
+  {
+   "name": "Orbit Belt (homebrew) - Kurt-Arne Johnsen",
+   "url": "https://raw.githubusercontent.com/Retronissen/Sinclair-ZX81-Software-in-hounor-for-Sir-Clive/main/oriobelt.p",
+   "filename": "oriobelt.p"
+  },
+  {
+   "name": "Santa (homebrew) - Kurt-Arne Johnsen",
+   "url": "https://raw.githubusercontent.com/Retronissen/Sinclair-ZX81-Software-in-hounor-for-Sir-Clive/main/santa.p",
+   "filename": "santa.p"
+  },
+  {
+   "name": "Seek Help (homebrew) - Kurt-Arne Johnsen",
+   "url": "https://raw.githubusercontent.com/Retronissen/Sinclair-ZX81-Software-in-hounor-for-Sir-Clive/main/seekhelp.p",
+   "filename": "seekhelp.p"
+  },
+  {
+   "name": "Worm Hole (homebrew) - Kurt-Arne Johnsen",
+   "url": "https://raw.githubusercontent.com/Retronissen/Sinclair-ZX81-Software-in-hounor-for-Sir-Clive/main/wormhole.p",
+   "filename": "wormhole.p"
+  }
+ ]
+}

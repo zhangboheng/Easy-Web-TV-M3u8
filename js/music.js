@@ -318,11 +318,28 @@ function playSong(songId, songName) {
             player.play();
             $('#musicVisualizer').classList.remove('paused');
         } else {
-            alert('Sorry, this song is not available...');
+            showMusicError('Sorry, this song is not available...');
         }
     }, function () {
-        alert('Sorry, no rights to play...');
+        showMusicError('Sorry, no rights to play...');
     });
+}
+
+// Surface playback errors with the app's themed toast when available.
+function showMusicError(message) {
+    if (typeof ErrorToast !== 'undefined' && ErrorToast.show) {
+        ErrorToast.show(message, 3000);
+        return;
+    }
+    var toast = document.getElementById('toast');
+    var msgEl = document.getElementById('toastMessage');
+    if (!toast || !msgEl) return;
+    msgEl.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(showMusicError.timer);
+    showMusicError.timer = setTimeout(function() {
+        toast.classList.remove('show');
+    }, 3000);
 }
 
 // Load favorites from localStorage

@@ -201,7 +201,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Supported Platforms
 
-All 40 EmulatorJS-based emulators + 10 standalone/hot-linked engines and their cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **20682** games across 31 JSON files. Sega CD and PC-FX have no bundled games and require a BIOS file (uploaded on the emulator page) dumped from your own console. ³ v86 bootsector games (BootRogue/BootBASIC/bootOS, BSD-2) boot instantly via GitHub; OS images come from the official v86 demo CDN (copy.sh) and are downloaded, then booted via the Disk Image tab; WASM-4 has no bundled carts.
+All 43 EmulatorJS-based emulators + 10 standalone/hot-linked engines and their cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **20694** games across 34 JSON files. Sega CD and PC-FX have no bundled games and require a BIOS file (uploaded on the emulator page) dumped from your own console. ³ v86 bootsector games (BootRogue/BootBASIC/bootOS, BSD-2) boot instantly via GitHub; OS images come from the official v86 demo CDN (copy.sh) and are downloaded, then booted via the Disk Image tab; WASM-4 has no bundled carts.
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -232,8 +232,11 @@ All 40 EmulatorJS-based emulators + 10 standalone/hot-linked engines and their c
 | Commodore | Plus/4 | vice_xplus4 | 5 | plus4.json |
 | Commodore | Amiga | puae | 1455 | amiga.json |
 | Amstrad | Amstrad CPC | cap32 | 6719 | cpc.json |
+| Thomson | Thomson MO/TO | crocods | – | thomson.json |
 | Sinclair | ZX Spectrum | fuse | 67 | zx.json |
+| Sinclair | ZX81 / ZX80 | 81 | 12 ⁵ | zx81.json |
 | NEC | PC Engine / TurboGrafx-16 | mednafen_pce | 280 | pce.json |
+| Philips | CD-i | same_cdi | – | cdi.json |
 | NEC | PC-FX | mednafen_pcfx | – ² | – |
 | SNK | Neo Geo Pocket / Color | mednafen_ngp | 82 | ngp.json |
 | Bandai | WonderSwan / Color | mednafen_wswan | 208 | wonderswan.json |
@@ -254,11 +257,13 @@ All 40 EmulatorJS-based emulators + 10 standalone/hot-linked engines and their c
 | Mobile | J2ME (J2meJS embed) | j2mejs (hot-linked embed) | – | – |
 | Mobile | Palm OS (CloudpilotEmu embed) | cloudpilot-emu (hot-linked embed) | – | – |
 | Mobile | WIPI (WIE embed) | wie (hot-linked embed) | – | – |
-| **Total** | **50 platforms** | – | **20682** | **31 files** |
+| **Total** | **53 platforms** | – | **20694** | **34 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 ² No bundled games: load your own disc image via upload/URL, plus a BIOS file dumped from your own console (Sega CD: `bios_CD_U/J/E.bin`; PC-FX: `pcfx.rom`) using the BIOS upload box on the emulator page.
+³ No bundled games: v86 bootsector demos boot from their authors' GitHub releases (BootRogue/BootBASIC/bootOS, BSD-2), OS images come from the official v86 demo CDN (copy.sh) and are downloaded to the Disk Image tab, and WASM-4 carts are loaded from the official cart library or your own file.
 ⁴ MSX presets are free/open homebrew ROMs hot-linked from their authors' official GitHub releases (nohzdyve GPL-3.0, Go Penguin!, Zeros Houkou R MIT); J2ME has no presets - open the official demo or load your own jars. Neither engine is bundled: WebMSX and J2meJS are embedded by hotlink per their authors' intended web-embedding use.
+⁵ ZX81 presets are 12 freeware homebrew programs by Kurt-Arne Johnsen, hot-linked from the author's repository whose license says "Totally free" and requests author credit; Thomson and CD-i ship empty preset JSON files and are intentionally user-supplied-media only.
 
 ### Core Features
 - **Automatic core detection**: Upload any ROM file and the system automatically detects the platform

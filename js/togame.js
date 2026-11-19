@@ -309,6 +309,30 @@ var games = [
         url: '../routes/dos.html'
     },
     {
+        id: 50,
+        name: 'ZX81/ZX80 Emulator',
+        platform: 'ZX81/ZX80',
+        category: 'emulator',
+        image: '../images/zx81.svg',
+        url: '../routes/emulatorjs.html?core=81'
+    },
+    {
+        id: 51,
+        name: 'Thomson MO/TO Emulator',
+        platform: 'Thomson MO/TO',
+        category: 'emulator',
+        image: '../images/thomson.svg',
+        url: '../routes/emulatorjs.html?core=crocods'
+    },
+    {
+        id: 52,
+        name: 'Philips CD-i Emulator',
+        platform: 'Philips CD-i',
+        category: 'emulator',
+        image: '../images/cdi.svg',
+        url: '../routes/emulatorjs.html?core=same_cdi'
+    },
+    {
         id: 9,
         name: 'N64 Emulator',
         platform: 'N64',
@@ -569,6 +593,11 @@ var games = [
 var currentCategory = 'all';
 var searchQuery = '';
 
+// Incremental rendering state (Theater-style infinite scroll over local data).
+var GAMES_PER_PAGE = 24;
+var visibleGames = [];
+var renderedGameCount = 0;
+
 // ---------- Favorites & Recent (v8.5.0) ----------
 var FAV_KEY = 'ewtv_game_favs';
 var RECENT_KEY = 'ewtv_game_recent';
@@ -811,10 +840,39 @@ function recentGamesHtml() {
     return cards;
 }
 
+// Load the next batch of filtered games into the grid.
+function loadMoreGames() {
+    if (renderedGameCount >= visibleGames.length) return;
+    var grid = $('#gameGrid');
+    var next = visibleGames.slice(renderedGameCount, renderedGameCount + GAMES_PER_PAGE);
+    var html = '';
+    next.forEach(function(game) { html += gameCardHtml(game); });
+    grid.insertAdjacentHTML('beforeend', html);
+    renderedGameCount += next.length;
+    var indicator = $('#loadMoreIndicator');
+    if (indicator) {
+        indicator.style.display = renderedGameCount < visibleGames.length ? '' : 'none';
+    }
+}
+
+// Theater-style fallback: if the first batch does not fill the viewport on a
+// wide screen, keep appending batches until scrolling is actually possible.
+function checkAutoLoadGames() {
+    if (renderedGameCount >= visibleGames.length) return;
+    var main = $('#mainContent');
+    if (!main || main.scrollHeight > main.clientHeight + 100) return;
+    loadMoreGames();
+    checkAutoLoadGames();
+}
+
 // Render games
 function renderGames() {
     var grid = $('#gameGrid');
     grid.innerHTML = '';
+    visibleGames = [];
+    renderedGameCount = 0;
+    var indicator = $('#loadMoreIndicator');
+    if (indicator) indicator.style.display = 'none';
 
     // Recently played is its own sidebar view rather than a shelf on All Games.
     if (currentCategory === 'recent') {
@@ -842,13 +900,10 @@ function renderGames() {
         grid.innerHTML = '<div class="no-results"><i class="fas fa-gamepad"></i><p>No games found</p></div>';
         return;
     }
-    
-    var html = '';
-    filteredGames.forEach(function(game) {
-        html += gameCardHtml(game);
-    });
-    
-    grid.innerHTML = html;
+
+    visibleGames = filteredGames;
+    loadMoreGames();
+    checkAutoLoadGames();
 }
 
 // Toggle sidebar
@@ -912,14 +967,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // Render initial games
     renderGames();
     
+    // Incremental loading: reveal the next batch near the bottom, like Theater.
+    $('#mainContent').addEventListener('scroll', function() {
+        if (!$('#loadMoreIndicator') || $('#loadMoreIndicator').style.display === 'none') return;
+        var main = $('#mainContent');
+        if (main.scrollTop + main.clientHeight >= main.scrollHeight - 100) {
+            loadMoreGames();
+        }
+    });
     // Favorites & recent: event delegation on the grid (v8.5.0)
     $('#gameGrid').addEventListener('click', function(e) {
         var favBtn = e.target.closest ? e.target.closest('.game-fav-btn') : null;
         if (favBtn) {
             e.preventDefault();
             e.stopPropagation();
-            toggleFav(favBtn.dataset.favId);
-            renderGames();
+            var added = toggleFav(favBtn.dataset.favId);
+            // Update only this star so infinite-scroll position is preserved.
+            favBtn.classList.toggle('active', added);
+            favBtn.innerHTML = '<i class="fa' + (added ? 's' : 'r') + ' fa-star"></i>';
             return;
         }
         var card = e.target.closest ? e.target.closest('.game-card[data-game-id]') : null;
@@ -991,9 +1056,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Handle window resize
+    var gameResizeTimer = null;
     window.addEventListener('resize', function() {
         if (window.innerWidth > 768) {
             $('#sidebar').classList.remove('show-mobile');
         }
+        clearTimeout(gameResizeTimer);
+        gameResizeTimer = setTimeout(checkAutoLoadGames, 200);
     });
 });

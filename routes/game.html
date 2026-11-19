@@ -504,6 +504,22 @@
             grid-column: 1 / -1;
         }
 
+        /* Incremental game loading indicator */
+        .load-more-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 24px 0 8px;
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+        .load-more-indicator i {
+            color: #a3001b;
+            font-size: 20px;
+            animation: spin 1s linear infinite;
+        }
+
         /* Responsive */
         @media screen and (max-width: 1024px) {
             .sidebar {
@@ -676,6 +692,10 @@
         <main class="main-content" id="mainContent">
             <div class="game-grid" id="gameGrid">
                 <!-- Games will be loaded here -->
+            </div>
+            <div class="load-more-indicator" id="loadMoreIndicator" style="display: none;">
+                <i class="fas fa-spinner"></i>
+                <span>Loading more games...</span>
             </div>
         </main>
         

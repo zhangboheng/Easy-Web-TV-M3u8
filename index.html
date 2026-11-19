@@ -529,6 +529,24 @@
         <span class="error-message"></span>
     </div>
 
+    <!-- Themed Confirm Modal -->
+    <div id="confirm-modal-overlay" class="confirm-modal-overlay" aria-hidden="true"></div>
+    <div id="confirm-modal" class="confirm-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="confirm-modal-title">
+        <div class="confirm-modal-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+        </div>
+        <h3 id="confirm-modal-title">Confirm</h3>
+        <p id="confirm-modal-message"></p>
+        <div class="confirm-modal-actions">
+            <button id="confirm-modal-cancel" class="confirm-modal-btn">Cancel</button>
+            <button id="confirm-modal-ok" class="confirm-modal-btn primary">Confirm</button>
+        </div>
+    </div>
+
     <!-- Age Confirmation Modal -->
     <div id="age-confirm-overlay" class="modal-overlay" aria-hidden="true"></div>
     <div id="age-confirm-modal" class="age-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="age-confirm-title">
