@@ -385,9 +385,156 @@ function searchMangas(keyword) {
     loadMangas(currentCategory, false);
 }
 
+// Lightweight i18n for header tab labels (Online/Local) and local panel texts.
+// Mirrors tocomprehensive.js's TC_I18N: reads the same localStorage keys the
+// main page stores (preferredLanguage / languages); unknown -> English.
+var LOCAL_I18N = {
+    en: {
+        tabOnline: 'Online',
+        tabLocal: 'Local',
+        localTitle: 'Local Manga',
+        localDesc: 'Choose image files (JPG/PNG/WEBP/GIF/AVIF) or a whole folder from your device. Files stay in this browser and are never uploaded.',
+        chooseFolder: 'Choose folder',
+        chooseFiles: 'Choose files',
+        pickFiles: 'Choose files',
+        pickFolder: 'Choose folder',
+        restoreFolder: 'Restore folder',
+        choosingFiles: 'Choosing files...',
+        choosingFolder: 'Choosing folder...',
+        restoringFolder: 'Restoring folder...',
+        noSavedFolder: 'No saved folder for this browser.',
+        permDenied: 'Permission was not granted. Choose the folder again.',
+        pickIntro: 'Local files stay in this browser. Choose a folder to begin.',
+        pickIntroNoDir: 'Local files stay in this browser. Choose files or a folder to begin.',
+        noImageFiles: 'No supported image files found.'
+    },
+    zh: {
+        tabOnline: '在线',
+        tabLocal: '本地',
+        localTitle: '本地漫画',
+        localDesc: '从设备选择图片文件（JPG/PNG/WEBP/GIF/AVIF）或整个文件夹。文件仅保存在本浏览器中，不会被上传。',
+        chooseFolder: '选择文件夹',
+        chooseFiles: '选择文件',
+        pickFiles: '选择文件',
+        pickFolder: '选择文件夹',
+        restoreFolder: '恢复文件夹',
+        choosingFiles: '正在选择文件...',
+        choosingFolder: '正在选择文件夹...',
+        restoringFolder: '正在恢复文件夹...',
+        noSavedFolder: '此浏览器没有已保存的文件夹。',
+        permDenied: '未获得权限，请重新选择文件夹。',
+        pickIntro: '本地文件仅保存在本浏览器中。选择一个文件夹开始。',
+        pickIntroNoDir: '本地文件仅保存在本浏览器中。选择文件或文件夹开始。',
+        noImageFiles: '未找到受支持的图片文件。'
+    },
+    // Module-specific labels for the remaining UI languages. Shared panel
+    // texts (pick/choose/notLoaded/no*Files) come from js/local-media-i18n.js.
+    ja: {
+        tabOnline: 'オンライン',
+        tabLocal: 'ローカル',
+        localTitle: 'ローカル漫画',
+        localDesc: 'デバイスから画像ファイル（JPG/PNG/WEBP/GIF/AVIF）またはフォルダー全体を選択します。ファイルはこのブラウザー内にのみ保存され、アップロードされることはありません。',
+        noImageFiles: 'サポートされている画像ファイルが見つかりませんでした。'
+    },
+    ko: {
+        tabOnline: '온라인',
+        tabLocal: '로컬',
+        localTitle: '로컬 만화',
+        localDesc: '기기에서 이미지 파일(JPG/PNG/WEBP/GIF/AVIF)이나 폴더 전체를 선택하세요. 파일은 이 브라우저에만 저장되며 업로드되지 않습니다.',
+        noImageFiles: '지원되는 이미지 파일을 찾을 수 없습니다.'
+    },
+    fr: {
+        tabOnline: 'En ligne',
+        tabLocal: 'Local',
+        localTitle: 'Mangas locaux',
+        localDesc: "Choisissez des images (JPG/PNG/WEBP/GIF/AVIF) ou un dossier entier depuis votre appareil. Les fichiers restent dans ce navigateur et ne sont jamais téléversés.",
+        noImageFiles: "Aucun fichier image pris en charge n'a été trouvé."
+    },
+    de: {
+        tabOnline: 'Online',
+        tabLocal: 'Lokal',
+        localTitle: 'Lokale Mangas',
+        localDesc: 'Wählen Sie Bilddateien (JPG/PNG/WEBP/GIF/AVIF) oder einen ganzen Ordner von Ihrem Gerät. Die Dateien bleiben in diesem Browser und werden nie hochgeladen.',
+        noImageFiles: 'Keine unterstützten Bilddateien gefunden.'
+    },
+    es: {
+        tabOnline: 'En línea',
+        tabLocal: 'Local',
+        localTitle: 'Mangas locales',
+        localDesc: 'Elige archivos de imagen (JPG/PNG/WEBP/GIF/AVIF) o una carpeta completa de tu dispositivo. Los archivos permanecen en este navegador y nunca se suben.',
+        noImageFiles: 'No se encontraron archivos de imagen compatibles.'
+    },
+    ru: {
+        tabOnline: 'Онлайн',
+        tabLocal: 'Локально',
+        localTitle: 'Локальная манга',
+        localDesc: 'Выберите файлы изображений (JPG/PNG/WEBP/GIF/AVIF) или целую папку с устройства. Файлы остаются в этом браузере и никогда не загружаются.',
+        noImageFiles: 'Поддерживаемые файлы изображений не найдены.'
+    }
+};
+
+// Fill missing labels (including the shared notLoaded / choose* keys) from
+// js/local-media-i18n.js so every UI language gets the full panel text.
+(function (dict) {
+    var shared = (typeof window !== 'undefined' && window.LocalMediaI18N) || {};
+    Object.keys(shared).forEach(function (lang) {
+        if (!dict[lang]) dict[lang] = {};
+        Object.keys(shared[lang]).forEach(function (key) {
+            if (dict[lang][key] === undefined) dict[lang][key] = shared[lang][key];
+        });
+    });
+}(LOCAL_I18N));
+
+// Normalize the stored/navigator language to the UI languages used by the
+// route pages (zh, en, ja, ko, fr, de, es, ru); unknown -> English.
+function localLang() {
+    try {
+        var lang = String(localStorage.getItem('preferredLanguage') || localStorage.getItem('languages')
+            || (navigator.language || 'en') || '').toLowerCase();
+        if (lang.indexOf('zh') === 0) return 'zh';
+        if (lang.indexOf('en') === 0) return 'en';
+        var uiLangs = ['ja', 'ko', 'fr', 'de', 'es', 'ru'];
+        for (var i = 0; i < uiLangs.length; i++) {
+            if (lang.indexOf(uiLangs[i]) === 0) return uiLangs[i];
+        }
+    } catch (e) { /* storage unavailable */ }
+    return 'en';
+}
+
+function localT(key) {
+    var lang = localLang();
+    return (LOCAL_I18N[lang] && LOCAL_I18N[lang][key]) || LOCAL_I18N.en[key] || key;
+}
+
+function applyLocalI18n() {
+    document.querySelectorAll('[data-i18n-tab]').forEach(function (el) {
+        el.textContent = localT(el.getAttribute('data-i18n-tab'));
+    });
+    document.querySelectorAll('[data-i18n-text]').forEach(function (el) {
+        el.textContent = localT(el.getAttribute('data-i18n-text'));
+    });
+}
+
+// Local / Online tab switching (header tab-nav)
+function switchLocalTab(tab) {
+    var onlineBtn = document.querySelector('.tab-nav .tab-btn[data-tab="online"]');
+    var localBtn = document.querySelector('.tab-nav .tab-btn[data-tab="local"]');
+    if (onlineBtn) onlineBtn.classList.toggle('active', tab === 'online');
+    if (localBtn) localBtn.classList.toggle('active', tab === 'local');
+    var mainContent = document.querySelector('.main-content:not(#localPanel)');
+    var localPanel = document.getElementById('localPanel');
+    var sidebar = document.getElementById('sidebar');
+    var headerRight = document.querySelector('.header-right');
+    if (mainContent) mainContent.style.display = tab === 'local' ? 'none' : '';
+    if (localPanel) localPanel.style.display = tab === 'local' ? '' : 'none';
+    if (sidebar) sidebar.style.display = tab === 'local' ? 'none' : '';
+    if (headerRight) headerRight.style.visibility = tab === 'local' ? 'hidden' : '';
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
     console.log('=== Manga List Page Loaded (public-apis sources) ===');
+    applyLocalI18n();
 
     var sourceSelect = document.getElementById('sourceSelect');
     if (sourceSelect) {
@@ -411,6 +558,54 @@ document.addEventListener('DOMContentLoaded', function() {
             hasMoreManga = true;
             loadTags();
         });
+    }
+
+    // Local / Online tab switching
+    document.querySelectorAll('.tab-nav .tab-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () { switchLocalTab(this.getAttribute('data-tab')); });
+    });
+
+    var localMangaStatus = document.getElementById('localMangaStatus');
+    function setLocalMangaStatus(text) {
+        if (localMangaStatus) localMangaStatus.textContent = String(text || '');
+    }
+    function openLocalManga(mode) {
+        if (!window.LocalMediaAdapters || !window.LocalMediaAdapters.manga) {
+            setLocalMangaStatus(localT('notLoaded'));
+            return;
+        }
+        setLocalMangaStatus(localT(mode === 'files' ? 'choosingFiles' : 'choosingFolder'));
+        window.LocalMediaAdapters.manga.open({
+            mode: mode,
+            onProgress: function (text) { setLocalMangaStatus(text); },
+            onEmpty: function () { setLocalMangaStatus(localT('noImageFiles')); }
+        });
+    }
+    // Re-open the previously granted folder without showing a picker.
+    function restoreLocalManga() {
+        if (!window.LocalMediaAdapters || !window.LocalMediaAdapters.manga
+            || !window.LocalMediaAdapters.manga.restore) {
+            setLocalMangaStatus(localT('notLoaded'));
+            return;
+        }
+        setLocalMangaStatus(localT('restoringFolder'));
+        window.LocalMediaAdapters.manga.restore({
+            onProgress: function (text) { setLocalMangaStatus(text); },
+            onEmpty: function () { setLocalMangaStatus(localT('noSavedFolder')); },
+            onDenied: function () { setLocalMangaStatus(localT('permDenied')); }
+        });
+    }
+    var localMangaFolderBtn = document.getElementById('localMangaFolderBtn');
+    if (localMangaFolderBtn) {
+        localMangaFolderBtn.addEventListener('click', function () { openLocalManga('directory'); });
+    }
+    var localMangaFilesBtn = document.getElementById('localMangaFilesBtn');
+    if (localMangaFilesBtn) {
+        localMangaFilesBtn.addEventListener('click', function () { openLocalManga('files'); });
+    }
+    var localRestoreBtn = document.getElementById('localRestoreBtn');
+    if (localRestoreBtn) {
+        localRestoreBtn.addEventListener('click', restoreLocalManga);
     }
 
     // Back button

@@ -364,9 +364,156 @@ function searchNovels(keyword) {
     loadNovels('', false);
 }
 
+// Lightweight i18n for header tab labels (Online/Local) and local panel texts.
+// Mirrors tocomprehensive.js's TC_I18N: reads the same localStorage keys the
+// main page stores (preferredLanguage / languages); unknown -> English.
+var LOCAL_I18N = {
+    en: {
+        tabOnline: 'Online',
+        tabLocal: 'Local',
+        localTitle: 'Local Novels',
+        localDesc: 'Choose TXT / Markdown files or a whole folder from your device. Files stay in this browser and are never uploaded.',
+        chooseFolder: 'Choose folder',
+        chooseFiles: 'Choose files',
+        pickFiles: 'Choose files',
+        pickFolder: 'Choose folder',
+        restoreFolder: 'Restore folder',
+        choosingFiles: 'Choosing files...',
+        choosingFolder: 'Choosing folder...',
+        restoringFolder: 'Restoring folder...',
+        noSavedFolder: 'No saved folder for this browser.',
+        permDenied: 'Permission was not granted. Choose the folder again.',
+        pickIntro: 'Local files stay in this browser. Choose a folder to begin.',
+        pickIntroNoDir: 'Local files stay in this browser. Choose files or a folder to begin.',
+        noTextFiles: 'No supported TXT / Markdown files found.'
+    },
+    zh: {
+        tabOnline: '在线',
+        tabLocal: '本地',
+        localTitle: '本地小说',
+        localDesc: '从设备选择 TXT / Markdown 文件或整个文件夹。文件仅保存在本浏览器中，不会被上传。',
+        chooseFolder: '选择文件夹',
+        chooseFiles: '选择文件',
+        pickFiles: '选择文件',
+        pickFolder: '选择文件夹',
+        restoreFolder: '恢复文件夹',
+        choosingFiles: '正在选择文件...',
+        choosingFolder: '正在选择文件夹...',
+        restoringFolder: '正在恢复文件夹...',
+        noSavedFolder: '此浏览器没有已保存的文件夹。',
+        permDenied: '未获得权限，请重新选择文件夹。',
+        pickIntro: '本地文件仅保存在本浏览器中。选择一个文件夹开始。',
+        pickIntroNoDir: '本地文件仅保存在本浏览器中。选择文件或文件夹开始。',
+        noTextFiles: '未找到受支持的 TXT / Markdown 文件。'
+    },
+    // Module-specific labels for the remaining UI languages. Shared panel
+    // texts (pick/choose/notLoaded/no*Files) come from js/local-media-i18n.js.
+    ja: {
+        tabOnline: 'オンライン',
+        tabLocal: 'ローカル',
+        localTitle: 'ローカル小説',
+        localDesc: 'デバイスから TXT / Markdown ファイルまたはフォルダー全体を選択します。ファイルはこのブラウザー内にのみ保存され、アップロードされることはありません。',
+        noTextFiles: 'サポートされている TXT / Markdown ファイルが見つかりませんでした。'
+    },
+    ko: {
+        tabOnline: '온라인',
+        tabLocal: '로컬',
+        localTitle: '로컬 소설',
+        localDesc: '기기에서 TXT / Markdown 파일이나 폴더 전체를 선택하세요. 파일은 이 브라우저에만 저장되며 업로드되지 않습니다.',
+        noTextFiles: '지원되는 TXT / Markdown 파일을 찾을 수 없습니다.'
+    },
+    fr: {
+        tabOnline: 'En ligne',
+        tabLocal: 'Local',
+        localTitle: 'Romans locaux',
+        localDesc: 'Choisissez des fichiers TXT / Markdown ou un dossier entier depuis votre appareil. Les fichiers restent dans ce navigateur et ne sont jamais téléversés.',
+        noTextFiles: "Aucun fichier TXT / Markdown pris en charge n'a été trouvé."
+    },
+    de: {
+        tabOnline: 'Online',
+        tabLocal: 'Lokal',
+        localTitle: 'Lokale Romane',
+        localDesc: 'Wählen Sie TXT-/Markdown-Dateien oder einen ganzen Ordner von Ihrem Gerät. Die Dateien bleiben in diesem Browser und werden nie hochgeladen.',
+        noTextFiles: 'Keine unterstützten TXT-/Markdown-Dateien gefunden.'
+    },
+    es: {
+        tabOnline: 'En línea',
+        tabLocal: 'Local',
+        localTitle: 'Novelas locales',
+        localDesc: 'Elige archivos TXT / Markdown o una carpeta completa de tu dispositivo. Los archivos permanecen en este navegador y nunca se suben.',
+        noTextFiles: 'No se encontraron archivos TXT / Markdown compatibles.'
+    },
+    ru: {
+        tabOnline: 'Онлайн',
+        tabLocal: 'Локально',
+        localTitle: 'Локальные романы',
+        localDesc: 'Выберите файлы TXT / Markdown или целую папку с устройства. Файлы остаются в этом браузере и никогда не загружаются.',
+        noTextFiles: 'Поддерживаемые файлы TXT / Markdown не найдены.'
+    }
+};
+
+// Fill missing labels (including the shared notLoaded / choose* keys) from
+// js/local-media-i18n.js so every UI language gets the full panel text.
+(function (dict) {
+    var shared = (typeof window !== 'undefined' && window.LocalMediaI18N) || {};
+    Object.keys(shared).forEach(function (lang) {
+        if (!dict[lang]) dict[lang] = {};
+        Object.keys(shared[lang]).forEach(function (key) {
+            if (dict[lang][key] === undefined) dict[lang][key] = shared[lang][key];
+        });
+    });
+}(LOCAL_I18N));
+
+// Normalize the stored/navigator language to the UI languages used by the
+// route pages (zh, en, ja, ko, fr, de, es, ru); unknown -> English.
+function localLang() {
+    try {
+        var lang = String(localStorage.getItem('preferredLanguage') || localStorage.getItem('languages')
+            || (navigator.language || 'en') || '').toLowerCase();
+        if (lang.indexOf('zh') === 0) return 'zh';
+        if (lang.indexOf('en') === 0) return 'en';
+        var uiLangs = ['ja', 'ko', 'fr', 'de', 'es', 'ru'];
+        for (var i = 0; i < uiLangs.length; i++) {
+            if (lang.indexOf(uiLangs[i]) === 0) return uiLangs[i];
+        }
+    } catch (e) { /* storage unavailable */ }
+    return 'en';
+}
+
+function localT(key) {
+    var lang = localLang();
+    return (LOCAL_I18N[lang] && LOCAL_I18N[lang][key]) || LOCAL_I18N.en[key] || key;
+}
+
+function applyLocalI18n() {
+    document.querySelectorAll('[data-i18n-tab]').forEach(function (el) {
+        el.textContent = localT(el.getAttribute('data-i18n-tab'));
+    });
+    document.querySelectorAll('[data-i18n-text]').forEach(function (el) {
+        el.textContent = localT(el.getAttribute('data-i18n-text'));
+    });
+}
+
+// Local / Online tab switching (header tab-nav)
+function switchLocalTab(tab) {
+    var onlineBtn = document.querySelector('.tab-nav .tab-btn[data-tab="online"]');
+    var localBtn = document.querySelector('.tab-nav .tab-btn[data-tab="local"]');
+    if (onlineBtn) onlineBtn.classList.toggle('active', tab === 'online');
+    if (localBtn) localBtn.classList.toggle('active', tab === 'local');
+    var mainContent = document.querySelector('.main-content:not(#localPanel)');
+    var localPanel = document.getElementById('localPanel');
+    var sidebar = document.getElementById('sidebar');
+    var headerRight = document.querySelector('.header-right');
+    if (mainContent) mainContent.style.display = tab === 'local' ? 'none' : '';
+    if (localPanel) localPanel.style.display = tab === 'local' ? '' : 'none';
+    if (sidebar) sidebar.style.display = tab === 'local' ? 'none' : '';
+    if (headerRight) headerRight.style.visibility = tab === 'local' ? 'hidden' : '';
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
     console.log('=== Novel List Page Loaded ===');
+    applyLocalI18n();
     
     // Load source options
     var sourceSelect = document.getElementById('sourceSelect');
@@ -392,6 +539,54 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Local / Online tab switching
+    document.querySelectorAll('.tab-nav .tab-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () { switchLocalTab(this.getAttribute('data-tab')); });
+    });
+
+    var localNovelStatus = document.getElementById('localNovelStatus');
+    function setLocalNovelStatus(text) {
+        if (localNovelStatus) localNovelStatus.textContent = String(text || '');
+    }
+    function openLocalNovel(mode) {
+        if (!window.LocalMediaAdapters || !window.LocalMediaAdapters.novel) {
+            setLocalNovelStatus(localT('notLoaded'));
+            return;
+        }
+        setLocalNovelStatus(localT(mode === 'files' ? 'choosingFiles' : 'choosingFolder'));
+        window.LocalMediaAdapters.novel.open({
+            mode: mode,
+            onProgress: function (text) { setLocalNovelStatus(text); },
+            onEmpty: function () { setLocalNovelStatus(localT('noTextFiles')); }
+        });
+    }
+    // Re-open the previously granted folder without showing a picker.
+    function restoreLocalNovel() {
+        if (!window.LocalMediaAdapters || !window.LocalMediaAdapters.novel
+            || !window.LocalMediaAdapters.novel.restore) {
+            setLocalNovelStatus(localT('notLoaded'));
+            return;
+        }
+        setLocalNovelStatus(localT('restoringFolder'));
+        window.LocalMediaAdapters.novel.restore({
+            onProgress: function (text) { setLocalNovelStatus(text); },
+            onEmpty: function () { setLocalNovelStatus(localT('noSavedFolder')); },
+            onDenied: function () { setLocalNovelStatus(localT('permDenied')); }
+        });
+    }
+    var localNovelFolderBtn = document.getElementById('localNovelFolderBtn');
+    if (localNovelFolderBtn) {
+        localNovelFolderBtn.addEventListener('click', function () { openLocalNovel('directory'); });
+    }
+    var localNovelFilesBtn = document.getElementById('localNovelFilesBtn');
+    if (localNovelFilesBtn) {
+        localNovelFilesBtn.addEventListener('click', function () { openLocalNovel('files'); });
+    }
+    var localRestoreBtn = document.getElementById('localRestoreBtn');
+    if (localRestoreBtn) {
+        localRestoreBtn.addEventListener('click', restoreLocalNovel);
+    }
+
     // Back button
     var backBtn = document.getElementById('backBtn');
     if (backBtn) {

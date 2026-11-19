@@ -13,6 +13,87 @@ var currentEpisodeIndex = -1;  // Track current playing episode
 
 // Favorite prefix for localStorage - ensures only this app's favorites are shown
 var FAV_PREFIX = 'fav_comprehensive_';
+var localVideoSession = null;
+var localVideoFiles = {};
+
+function hasLocalMediaCore() {
+    return !!(window.LocalMediaCore && typeof window.LocalMediaCore.getHandle === 'function');
+}
+
+// Source selection is URL-based on purpose: a leftover sessionStorage entry
+// must never hijack an online playback page.
+function isLocalPlayback() {
+    return !!window.LocalMediaCore && window.LocalMediaCore.isLocalSource(window.location.search);
+}
+
+var localProgress = (window.LocalMediaCore && window.LocalMediaCore.createProgressThrottler)
+    ? window.LocalMediaCore.createProgressThrottler({
+        minIntervalMs: 5000,
+        save: function (id, value) { window.LocalMediaCore.saveProgress(id, value); }
+    })
+    : null;
+
+function getLocalVideoSession() {
+    if (localVideoSession) return localVideoSession;
+    try {
+        localVideoSession = JSON.parse(window.sessionStorage.getItem('localMediaVideo') || 'null');
+    } catch (error) {
+        localVideoSession = null;
+    }
+    if (!localVideoSession || !Array.isArray(localVideoSession.entries)) localVideoSession = null;
+    return localVideoSession;
+}
+
+// Resolve every selected video with a single folder scan (shared core helper).
+function resolveLocalVideos(metas) {
+    if (!hasLocalMediaCore()) {
+        return Promise.resolve({ entries: [], error: 'Local media library is not loaded' });
+    }
+    return window.LocalMediaCore.resolveEntries(metas, { category: 'video', handleKey: 'video' });
+}
+
+function loadLocalVideo() {
+    var session = getLocalVideoSession();
+    if (!session) {
+        showError('No local video session found');
+        return;
+    }
+    episodes = session.entries.map(function (entry) { return entry.path || entry.name; });
+    links = session.entries.map(function (entry) { return entry.id; });
+    videoName = session.rootName || 'Local Videos';
+    videoDes = session.resumable
+        ? 'Local files stay in this browser.'
+        : 'Files were picked directly, so reloading this page requires choosing them again.';
+    renderEpisodeList();
+    var detail = document.getElementById('detailContent');
+    if (detail) detail.textContent = videoDes;
+    // Resolve the whole playlist with one scan before the first play.
+    primeLocalVideos().then(function () {
+        if (links.length) playEpisode(0);
+    });
+}
+
+async function resolveLocalVideo(id) {
+    if (localVideoFiles[id]) return localVideoFiles[id];
+    var session = getLocalVideoSession();
+    var meta = session && session.entries.find(function (entry) { return entry.id === id; });
+    if (!meta) throw new Error('Local video not found');
+    var resolved = await resolveLocalVideos([meta]);
+    if (resolved.error) throw new Error(resolved.error);
+    localVideoFiles[id] = resolved.entries[0];
+    return resolved.entries[0];
+}
+
+// Pre-resolve the whole playlist once so switching episodes does not rescan.
+async function primeLocalVideos() {
+    var session = getLocalVideoSession();
+    if (!session || !session.entries.length) return;
+    var resolved = await resolveLocalVideos(session.entries);
+    if (resolved.error) return;
+    resolved.entries.forEach(function (entry) { localVideoFiles[entry.id] = entry; });
+}
+
+
 
 // DOM Ready
 document.addEventListener('DOMContentLoaded', function() {
@@ -42,8 +123,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Auto-play next episode when current episode ends
+    player.on('timeupdate', function () {
+        if (!localProgress || !isLocalPlayback()) return;
+        if (currentEpisodeIndex < 0) return;
+        var id = links[currentEpisodeIndex];
+        if (!id) return;
+        localProgress.push(id, { time: player.currentTime(), updatedAt: Date.now() });
+    });
     player.on('ended', function() {
         console.log('Video ended, checking for next episode...');
+        if (localProgress) localProgress.flush();
         if (currentEpisodeIndex >= 0 && currentEpisodeIndex < links.length - 1) {
             var nextIndex = currentEpisodeIndex + 1;
             console.log('Auto-playing next episode:', nextIndex + 1);
@@ -57,9 +146,12 @@ document.addEventListener('DOMContentLoaded', function() {
     var urlParams = new URLSearchParams(window.location.search);
     var initlink = urlParams.get('web') || '';
     var id = urlParams.get('tab') || '';
+    var srcParam = urlParams.get('src') || '';
     
     // Load video data
-    if (initlink === 'https://archive.org') {
+    if (srcParam === 'local') {
+        loadLocalVideo();
+    } else if (initlink === 'https://archive.org') {
         loadArchiveVideo(id);
     } else {
         loadVideoData(initlink, id);
@@ -272,6 +364,31 @@ function playEpisode(index) {
     var url = links[index];
     var name = episodes[index];
     
+    if (isLocalPlayback()) {
+        if (!hasLocalMediaCore()) {
+            showError('Local media library is not loaded');
+            return;
+        }
+        resolveLocalVideo(url).then(function (entry) {
+            var core = window.LocalMediaCore;
+            var localUrl = core.getObjectUrl(entry.id, entry.file);
+            return core.getProgress(entry.id).then(function (progress) {
+                // Match the MIME type to the real file so webm/ogv/mov play.
+                player.src({ src: localUrl, type: core.mimeForVideoFile(entry.name || name) });
+                player.one('loadedmetadata', function () {
+                    if (progress && progress.time && progress.time < player.duration()) player.currentTime(progress.time);
+                });
+                player.play();
+            });
+        }).catch(function (error) {
+            showError(error.message || 'Unable to open local video');
+        });
+        document.getElementById('currentEpisode').textContent = videoName + ' - ' + name;
+        document.querySelectorAll('.episode-item').forEach(function (item) { item.classList.remove('active'); });
+        var localActive = document.querySelector('.episode-item[data-index="' + index + '"]');
+        if (localActive) localActive.classList.add('active');
+        return;
+    }
     // HLS (.m3u8) needs video.js's VHS engine; plain files (mp4/ogg from
     // archive.org classics) play natively with the matching MIME type.
     var type = url.toLowerCase().indexOf('.m3u8') > -1 ? 'application/x-mpegURL' : 'video/mp4';

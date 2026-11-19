@@ -668,6 +668,18 @@
                 </h1>
             </div>
             
+            <!-- Tab Navigation in Header -->
+            <nav class="tab-nav" aria-label="Manga source">
+                <div class="tab-btn active" data-tab="online">
+                    <i class="fas fa-globe"></i>
+                    <span data-i18n-tab="tabOnline">Online</span>
+                </div>
+                <div class="tab-btn" data-tab="local">
+                    <i class="fas fa-folder-open"></i>
+                    <span data-i18n-tab="tabLocal">Local</span>
+                </div>
+            </nav>
+
             <div class="header-right">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
@@ -711,6 +723,22 @@
                 </div>
             </div>
         </div>
+
+        <!-- Local Tab Panel -->
+        <div class="main-content" id="localPanel" style="display: none;">
+            <div class="local-tab-inner">
+                <section class="local-media-panel">
+                    <h2><i class="fas fa-folder-open"></i> <span data-i18n-text="localTitle">Local Manga</span></h2>
+                    <p data-i18n-text="localDesc">Choose image files (JPG/PNG/WEBP/GIF/AVIF) or a whole folder from your device. Files stay in this browser and are never uploaded.</p>
+                    <div class="local-media-actions">
+                        <button class="local-media-btn" id="localMangaFolderBtn" type="button" data-i18n-text="chooseFolder">Choose folder</button>
+                        <button class="local-media-btn" id="localMangaFilesBtn" type="button" data-i18n-text="chooseFiles">Choose files</button>
+                        <button class="local-media-btn" id="localRestoreBtn" type="button" data-i18n-text="restoreFolder">Restore folder</button>
+                    </div>
+                    <div class="local-media-status" id="localMangaStatus" role="status"></div>
+                </section>
+            </div>
+        </div>
     </div>
     
     <!-- Hidden elements for data -->
@@ -718,6 +746,9 @@
     
     <script src="../js/core/header-height.js"></script>
     <script src="../js/apiproxy.js"></script>
+    <script src="../js/local-media-core.js"></script>
+    <script src="../js/local-media-i18n.js"></script>
+    <script src="../js/local-manga.js"></script>
     <script src="../js/tomanga.js"></script>
 </body>
 

@@ -306,6 +306,143 @@ function renderChapters(chapterData) {
     });
 }
 
+// Local source helpers: scan metadata is in sessionStorage; File bodies stay in memory-backed object URLs.
+var localNovelSession = null;
+var localNovelFiles = {};
+
+function decodeLocalText(buffer) {
+    if (typeof TextDecoder === 'function') {
+        return new TextDecoder('utf-8', { fatal: true }).decode(buffer);
+    }
+    return String.fromCharCode.apply(null, new Uint8Array(buffer));
+}
+
+function getLocalNovelSession() {
+    if (localNovelSession) return localNovelSession;
+    try {
+        localNovelSession = JSON.parse(window.sessionStorage.getItem('localMediaNovel') || 'null');
+    } catch (error) {
+        localNovelSession = null;
+    }
+    if (!localNovelSession || !Array.isArray(localNovelSession.entries)) localNovelSession = null;
+    return localNovelSession;
+}
+
+function loadLocalNovel(session) {
+    var core = window.LocalMediaCore;
+    session = session || getLocalNovelSession();
+    if (!session || !core) {
+        showToast('No local novel session found.', 'error');
+        showLoading(false);
+        return;
+    }
+    chapters = session.entries.map(function (entry) {
+        return { url: entry.id, name: entry.path || entry.name, file: null, size: entry.size, lastModified: entry.lastModified };
+    });
+    currentNovelTitle = session.rootName || 'Local Novels';
+    setNovelHeader(currentNovelTitle, session.resumable
+        ? 'Local files are read only in this browser.'
+        : 'Files were picked directly, so reloading this page requires choosing them again.');
+    renderChapters(chapters);
+    document.getElementById('chapterCount').textContent = chapters.length;
+    // Resolve every chapter with one folder scan, then open the book.
+    primeLocalNovel().then(function () {
+        restoreLocalNovelPosition();
+    });
+}
+
+// Open the chapter the reader last visited (once), then let normal navigation run.
+function restoreLocalNovelPosition() {
+    if (!chapters.length) return;
+    if (!window.LocalMediaCore) {
+        turnPage(chapters[0].url);
+        return;
+    }
+    window.LocalMediaCore.getProgress('localNovel:last').then(function (progress) {
+        var index = progress ? parseInt(progress.chapterIndex, 10) : NaN;
+        if (!isNaN(index) && index >= 0 && index < chapters.length
+            && chapters[index].url === progress.chapterUrl) {
+            turnPage(chapters[index].url);
+            return;
+        }
+        turnPage(chapters[0].url);
+    });
+}
+
+// Last position in this book, so reopening resumes where the reader left off.
+function saveLocalNovelProgress() {
+    if (!readerSource || readerSource !== 'local' || currentChapterIndex < 0) return;
+    if (!window.LocalMediaCore) return;
+    var entry = chapters[currentChapterIndex];
+    if (!entry) return;
+    var readerArea = document.getElementById('readerArea');
+    window.LocalMediaCore.saveProgress('localNovel:last', {
+        chapterIndex: currentChapterIndex,
+        chapterUrl: entry.url,
+        scrollTop: readerArea ? readerArea.scrollTop : 0,
+        updatedAt: Date.now()
+    });
+}
+
+function findLocalNovelFile(id) {
+    var session = getLocalNovelSession();
+    if (!session) return Promise.reject(new Error('Local session expired'));
+    var meta = session.entries.find(function (entry) { return entry.id === id; });
+    if (!meta) return Promise.reject(new Error('Local file not found'));
+
+    return Promise.resolve(localNovelFiles[id] || readLocalEntry(meta)).then(function (entry) {
+        if (!entry) throw new Error('Please re-authorize the local folder');
+        localNovelFiles[id] = entry;
+        return readLocalText(entry, id);
+    });
+}
+
+// Read one entry from the saved folder through the shared bulk resolver.
+function readLocalEntry(meta) {
+    if (!window.LocalMediaCore) return Promise.resolve(null);
+    return window.LocalMediaCore.resolveEntries([meta], { category: 'novel', handleKey: 'novel' })
+        .then(function (resolved) {
+            if (resolved.error) throw new Error(resolved.error);
+            return resolved.entries[0] || null;
+        });
+}
+
+// Cache every selected entry with a single folder scan.
+function primeLocalNovel() {
+    var session = getLocalNovelSession();
+    if (!session || !session.entries.length || !window.LocalMediaCore) return Promise.resolve();
+    return window.LocalMediaCore.resolveEntries(session.entries, { category: 'novel', handleKey: 'novel' })
+        .then(function (resolved) {
+            if (resolved.error) return;
+            resolved.entries.forEach(function (entry) { localNovelFiles[entry.id] = entry; });
+        });
+}
+
+function readLocalText(entry, id) {
+    return entry.file.arrayBuffer().then(function (buffer) {
+        var text;
+        try {
+            text = decodeLocalText(buffer);
+        } catch (error) {
+            text = new TextDecoder('gb18030').decode(buffer);
+        }
+        return { html: textToHtml(text), title: entry.name, id: id };
+    });
+}
+
+function saveLocalNovelProgress() {
+    if (!readerSource || readerSource !== 'local' || currentChapterIndex < 0) return;
+    var entry = chapters[currentChapterIndex];
+    if (!entry) return;
+    var readerArea = document.getElementById('readerArea');
+    window.LocalMediaCore.saveProgress(entry.url, {
+        chapterIndex: currentChapterIndex,
+        scrollTop: readerArea ? readerArea.scrollTop : 0,
+        updatedAt: Date.now()
+    });
+}
+
+
 // In-memory cache for large Gutenberg texts. Chapter URLs are virtual keys;
 // loadChapter reads the cached chunk instead of refetching the whole book.
 var chapterCache = { data: {} };
@@ -319,7 +456,9 @@ function loadChapter(url, chapterName) {
     var source = readerSource;
     var request;
 
-    if (source === 'gutendex') {
+    if (source === 'local') {
+        request = findLocalNovelFile(url);
+    } else if (source === 'gutendex') {
         var m = String(url).match(/^gutendex::(.+)::(\d+)$/);
         if (!m) {
             request = Promise.reject(new Error('Invalid chapter key'));
@@ -384,7 +523,19 @@ function loadChapter(url, chapterName) {
         prevChapterUrl = currentChapterIndex > 0 ? chapters[currentChapterIndex - 1].url : '';
         nextChapterUrl = currentChapterIndex < chapters.length - 1 ? chapters[currentChapterIndex + 1].url : '';
         document.getElementById('readerNav').style.display = 'flex';
-        document.getElementById('readerArea').scrollTop = 0;
+        var readerArea = document.getElementById('readerArea');
+        readerArea.scrollTop = 0;
+        if (source === 'local' && window.LocalMediaCore) {
+            // Restore only the scroll offset of this chapter; chapter switching
+            // is handled once, when the book is opened (see restoreLocalNovelPosition).
+            window.LocalMediaCore.getProgress('localNovel:last').then(function (progress) {
+                if (!progress) return;
+                if (progress.chapterUrl && progress.chapterUrl === url) {
+                    readerArea.scrollTop = progress.scrollTop || 0;
+                }
+            });
+            saveLocalNovelProgress();
+        }
         if (window.innerWidth <= 768) {
             document.getElementById('sidebar').classList.remove('show-mobile');
         }
@@ -579,7 +730,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (initlink && srcParam) {
         showLoading(true);
-        if (srcParam === 'gutendex') {
+        if (srcParam === 'local') {
+            loadLocalNovel();
+        } else if (srcParam === 'gutendex') {
             parseGutendex(initlink);
         } else if (srcParam === 'openlibrary') {
             parseOpenLibrary(initlink);
@@ -591,11 +744,25 @@ document.addEventListener('DOMContentLoaded', function() {
             showToast('Unsupported novel source.', 'error');
             showLoading(false);
         }
+    } else if (srcParam === 'local') {
+        showLoading(true);
+        loadLocalNovel();
     } else {
         showToast('No novel URL provided', 'warning');
         showLoading(false);
     }
     
+    var localScrollTimer = null;
+    var localReaderArea = document.getElementById('readerArea');
+    if (localReaderArea) {
+        localReaderArea.addEventListener('scroll', function () {
+            if (readerSource !== 'local') return;
+            if (localScrollTimer) clearTimeout(localScrollTimer);
+            localScrollTimer = setTimeout(saveLocalNovelProgress, 250);
+        });
+    }
+
+
     // UI Event handlers
     // Toggle Sidebar button
     var toggleSidebarBtn = document.getElementById('toggleSidebar');

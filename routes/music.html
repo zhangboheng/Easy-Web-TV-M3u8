@@ -156,6 +156,9 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            /* Reserve the search-box width so the tab-nav stays centered when
+               the Local tab hides both search boxes */
+            min-width: 250px;
         }
         
         /* Search Box */
@@ -1754,11 +1757,15 @@
             <nav class="tab-nav">
                 <div class="tab-btn active" data-tab="podcast">
                     <i class="fas fa-podcast"></i>
-                    Podcast
+                    <span data-i18n-tab="tabPodcast">Podcast</span>
                 </div>
                 <div class="tab-btn" data-tab="music">
                     <i class="fas fa-music"></i>
-                    Music
+                    <span data-i18n-tab="tabMusic">Music</span>
+                </div>
+                <div class="tab-btn" data-tab="local" id="localMusicTab">
+                    <i class="fas fa-folder-open"></i>
+                    <span data-i18n-tab="tabLocal">Local</span>
                 </div>
             </nav>
             <div class="header-right">
@@ -1822,6 +1829,23 @@
                 </div>
             </div>
             
+            <!-- Local Tab -->
+            <div class="tab-content" id="local">
+                <div class="local-tab-inner">
+                    <section class="local-media-panel">
+                        <h2><i class="fas fa-folder-open"></i> <span data-i18n-text="localTitle">Local Music</span></h2>
+                        <p data-i18n-text="localDesc">Choose local audio files or a folder. Files stay on this device and are never uploaded.</p>
+                        <div class="local-media-actions">
+                            <button class="local-media-btn" id="localMusicFolderBtn" type="button" data-i18n-text="pickFolder">Choose folder</button>
+                            <button class="local-media-btn" id="localMusicFilesBtn" type="button" data-i18n-text="pickFiles">Choose files</button>
+                            <button class="local-media-btn" id="localRestoreBtn" type="button" data-i18n-text="restoreFolder">Restore folder</button>
+                        </div>
+                        <div class="local-media-status" id="localMusicStatus" role="status"></div>
+                        <div class="local-media-list" id="localSongList"></div>
+                    </section>
+                </div>
+            </div>
+
             <!-- Music Tab -->
             <div class="tab-content" id="music">
                 <!-- Sidebar -->
@@ -2004,6 +2028,9 @@
     
     <script src="../js/core/header-height.js"></script>
     <script src="../js/apiproxy.js"></script>
+    <script src="../js/local-media-core.js"></script>
+    <script src="../js/local-media-i18n.js"></script>
+    <script src="../js/local-music.js"></script>
     <script src="../js/tomusic.js"></script>
 </body>
 

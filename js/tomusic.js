@@ -15,6 +15,14 @@ var isSearchMode = false;
 var currentPlaylist = [];
 var currentSongIndex = -1;
 var audioPlayer = null;
+// Throttled progress writer: timeupdate fires many times per second, so writes
+// are collapsed to one every few seconds instead of one per event.
+var audioProgress = (window.LocalMediaCore && window.LocalMediaCore.createProgressThrottler)
+    ? window.LocalMediaCore.createProgressThrottler({
+        minIntervalMs: 5000,
+        save: function (id, value) { window.LocalMediaCore.saveProgress(id, value); }
+    })
+    : null;
 var isPlaying = false;
 
 // Podcast state
@@ -30,9 +38,160 @@ function $$(selector) {
     return document.querySelectorAll(selector);
 }
 
+// Lightweight i18n for header tab labels (Online/Local) and local panel texts.
+// Reads the same localStorage keys the main page stores (preferredLanguage /
+// languages); unknown -> English.
+var LOCAL_I18N = {
+    en: {
+        tabPodcast: 'Podcast',
+        tabMusic: 'Music',
+        tabOnline: 'Online',
+        tabLocal: 'Local',
+        localTitle: 'Local Music',
+        localDesc: 'Choose local audio files or a folder. Files stay on this device and are never uploaded.',
+        noAudioFiles: 'No supported audio files found.',
+        songsReady: '{n} local song(s) ready.',
+        pickFiles: 'Choose files',
+        pickFolder: 'Choose folder',
+        restoreFolder: 'Restore folder',
+        choosingFiles: 'Choosing files...',
+        choosingFolder: 'Choosing folder...',
+        restoringFolder: 'Restoring folder...',
+        noSavedFolder: 'No saved folder for this browser.',
+        permDenied: 'Permission was not granted. Choose the folder again.',
+        pickIntro: 'Local files stay in this browser. Choose a folder to begin.',
+        pickIntroNoDir: 'Local files stay in this browser. Choose files or a folder to begin.'
+    },
+    zh: {
+        tabPodcast: '播客',
+        tabMusic: '音乐',
+        tabOnline: '在线',
+        tabLocal: '本地',
+        localTitle: '本地音乐',
+        localDesc: '选择本地音频文件或文件夹。文件仅保存在本设备中，不会被上传。',
+        noAudioFiles: '未找到支持的音频文件。',
+        songsReady: '已就绪 {n} 首本地歌曲。',
+        pickFiles: '选择文件',
+        pickFolder: '选择文件夹',
+        restoreFolder: '恢复文件夹',
+        choosingFiles: '正在选择文件...',
+        choosingFolder: '正在选择文件夹...',
+        restoringFolder: '正在恢复文件夹...',
+        noSavedFolder: '此浏览器没有已保存的文件夹。',
+        permDenied: '未获得权限，请重新选择文件夹。',
+        pickIntro: '本地文件仅保存在本浏览器中。选择一个文件夹开始。',
+        pickIntroNoDir: '本地文件仅保存在本浏览器中。选择文件或文件夹开始。'
+    },
+    // Module-specific labels for the remaining UI languages. Shared panel
+    // texts (pick/choose/notLoaded/no*Files) come from js/local-media-i18n.js.
+    ja: {
+        tabPodcast: 'ポッドキャスト',
+        tabMusic: '音楽',
+        tabOnline: 'オンライン',
+        tabLocal: 'ローカル',
+        localTitle: 'ローカル音楽',
+        localDesc: 'デバイスからローカル音声ファイルまたはフォルダーを選択します。ファイルはこのデバイス内にのみ保存され、アップロードされることはありません。',
+        noAudioFiles: 'サポートされているオーディオファイルが見つかりませんでした。',
+        songsReady: 'ローカル曲を {n} 曲読み込みました。'
+    },
+    ko: {
+        tabPodcast: '팟캐스트',
+        tabMusic: '음악',
+        tabOnline: '온라인',
+        tabLocal: '로컬',
+        localTitle: '로컬 음악',
+        localDesc: '기기에서 로컬 오디오 파일이나 폴더를 선택하세요. 파일은 이 기기에만 저장되며 업로드되지 않습니다.',
+        noAudioFiles: '지원되는 오디오 파일을 찾을 수 없습니다.',
+        songsReady: '로컬 곡 {n}개가 준비되었습니다.'
+    },
+    fr: {
+        tabPodcast: 'Podcast',
+        tabMusic: 'Musique',
+        tabOnline: 'En ligne',
+        tabLocal: 'Local',
+        localTitle: 'Musique locale',
+        localDesc: "Choisissez des fichiers audio locaux ou un dossier. Les fichiers restent sur cet appareil et ne sont jamais téléversés.",
+        noAudioFiles: "Aucun fichier audio pris en charge n'a été trouvé.",
+        songsReady: '{n} morceau(x) local(aux) prêt(s).'
+    },
+    de: {
+        tabPodcast: 'Podcast',
+        tabMusic: 'Musik',
+        tabOnline: 'Online',
+        tabLocal: 'Lokal',
+        localTitle: 'Lokale Musik',
+        localDesc: 'Wählen Sie lokale Audiodateien oder einen Ordner. Die Dateien bleiben auf diesem Gerät und werden nie hochgeladen.',
+        noAudioFiles: 'Keine unterstützten Audiodateien gefunden.',
+        songsReady: '{n} lokale(r) Titel bereit.'
+    },
+    es: {
+        tabPodcast: 'Pódcast',
+        tabMusic: 'Música',
+        tabOnline: 'En línea',
+        tabLocal: 'Local',
+        localTitle: 'Música local',
+        localDesc: 'Elige archivos de audio locales o una carpeta. Los archivos permanecen en este dispositivo y nunca se suben.',
+        noAudioFiles: 'No se encontraron archivos de audio compatibles.',
+        songsReady: '{n} canción(es) local(es) lista(s).'
+    },
+    ru: {
+        tabPodcast: 'Подкасты',
+        tabMusic: 'Музыка',
+        tabOnline: 'Онлайн',
+        tabLocal: 'Локально',
+        localTitle: 'Локальная музыка',
+        localDesc: 'Выберите локальные аудиофайлы или папку. Файлы остаются на этом устройстве и никогда не загружаются.',
+        noAudioFiles: 'Поддерживаемые аудиофайлы не найдены.',
+        songsReady: 'Готово локальных треков: {n}.'
+    }
+};
+
+// Fill missing labels (including the shared notLoaded / choose* keys) from
+// js/local-media-i18n.js so every UI language gets the full panel text.
+(function (dict) {
+    var shared = (typeof window !== 'undefined' && window.LocalMediaI18N) || {};
+    Object.keys(shared).forEach(function (lang) {
+        if (!dict[lang]) dict[lang] = {};
+        Object.keys(shared[lang]).forEach(function (key) {
+            if (dict[lang][key] === undefined) dict[lang][key] = shared[lang][key];
+        });
+    });
+}(LOCAL_I18N));
+
+// Normalize the stored/navigator language to the UI languages used by the
+// route pages (zh, en, ja, ko, fr, de, es, ru); unknown -> English.
+function localLang() {
+    try {
+        var lang = String(localStorage.getItem('preferredLanguage') || localStorage.getItem('languages')
+            || (navigator.language || 'en') || '').toLowerCase();
+        if (lang.indexOf('zh') === 0) return 'zh';
+        if (lang.indexOf('en') === 0) return 'en';
+        var uiLangs = ['ja', 'ko', 'fr', 'de', 'es', 'ru'];
+        for (var i = 0; i < uiLangs.length; i++) {
+            if (lang.indexOf(uiLangs[i]) === 0) return uiLangs[i];
+        }
+    } catch (e) { /* storage unavailable */ }
+    return 'en';
+}
+
+function localT(key) {
+    var lang = localLang();
+    return (LOCAL_I18N[lang] && LOCAL_I18N[lang][key]) || LOCAL_I18N.en[key] || key;
+}
+
+function applyLocalI18n() {
+    document.querySelectorAll('[data-i18n-tab]').forEach(function (el) {
+        el.textContent = localT(el.getAttribute('data-i18n-tab'));
+    });
+    document.querySelectorAll('[data-i18n-text]').forEach(function (el) {
+        el.textContent = localT(el.getAttribute('data-i18n-text'));
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize audio player
     audioPlayer = document.getElementById('audioPlayer');
+    applyLocalI18n();
     
     // Back button
     $('#backBtn').addEventListener('click', function () {
@@ -56,6 +215,9 @@ document.addEventListener('DOMContentLoaded', function () {
             if (tabId === 'podcast') {
                 $('#musicSearchBox').style.display = 'none';
                 $('#podcastSearchBox').style.display = '';
+            } else if (tabId === 'local') {
+                $('#musicSearchBox').style.display = 'none';
+                $('#podcastSearchBox').style.display = 'none';
             } else {
                 $('#musicSearchBox').style.display = '';
                 $('#podcastSearchBox').style.display = 'none';
@@ -71,6 +233,52 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
     
+    // Local music picker bindings (shared panel pattern)
+    var localMusicStatus = document.getElementById('localMusicStatus');
+    function setLocalMusicStatus(text) {
+        if (localMusicStatus) localMusicStatus.textContent = String(text || '');
+    }
+    function openLocalMusic(mode) {
+        if (!window.LocalMediaAdapters || !window.LocalMediaAdapters.music) {
+            setLocalMusicStatus(localT('notLoaded'));
+            return;
+        }
+        setLocalMusicStatus(localT(mode === 'files' ? 'choosingFiles' : 'choosingFolder'));
+        window.LocalMediaAdapters.music.open({
+            mode: mode,
+            onProgress: function (text) { setLocalMusicStatus(text); },
+            onEmpty: function () { setLocalMusicStatus(localT('noAudioFiles')); },
+            onReady: function (count) { setLocalMusicStatus(localT('songsReady').replace('{n}', String(count))); }
+        });
+    }
+    // Re-open the previously granted folder without showing a picker.
+    function restoreLocalMusic() {
+        if (!window.LocalMediaAdapters || !window.LocalMediaAdapters.music
+            || !window.LocalMediaAdapters.music.restore) {
+            setLocalMusicStatus(localT('notLoaded'));
+            return;
+        }
+        setLocalMusicStatus(localT('restoringFolder'));
+        window.LocalMediaAdapters.music.restore({
+            onProgress: function (text) { setLocalMusicStatus(text); },
+            onEmpty: function () { setLocalMusicStatus(localT('noSavedFolder')); },
+            onDenied: function () { setLocalMusicStatus(localT('permDenied')); },
+            onReady: function (count) { setLocalMusicStatus(localT('songsReady').replace('{n}', String(count))); }
+        });
+    }
+    var localMusicFolderBtn = document.getElementById('localMusicFolderBtn');
+    if (localMusicFolderBtn) {
+        localMusicFolderBtn.addEventListener('click', function () { openLocalMusic('directory'); });
+    }
+    var localMusicFilesBtn = document.getElementById('localMusicFilesBtn');
+    if (localMusicFilesBtn) {
+        localMusicFilesBtn.addEventListener('click', function () { openLocalMusic('files'); });
+    }
+    var localRestoreBtn = document.getElementById('localRestoreBtn');
+    if (localRestoreBtn) {
+        localRestoreBtn.addEventListener('click', restoreLocalMusic);
+    }
+
     // ============ PODCAST EVENT HANDLERS ============
     
     // OPML import button (file picker - works on desktop/mobile)
@@ -891,7 +1099,9 @@ function initPlayerControls() {
     });
     
     audioPlayer.addEventListener('ended', function () {
-        if (currentSongIndex < currentPlaylist.length - 1) {
+        if (window.LocalMusic && window.LocalMusic.selectedIndex >= 0 && currentSongIndex < window.LocalMusic.playlist.length - 1) {
+            playSong(currentSongIndex + 1);
+        } else if (currentSongIndex < currentPlaylist.length - 1) {
             playSong(currentSongIndex + 1);
         } else {
             isPlaying = false;
@@ -900,6 +1110,12 @@ function initPlayerControls() {
         }
     });
     
+    audioPlayer.addEventListener('timeupdate', function () {
+        var song = currentPlaylist[currentSongIndex];
+        if (song && song.file && window.LocalMediaCore && audioProgress) {
+            audioProgress.push(song.id, { time: audioPlayer.currentTime, updatedAt: Date.now() });
+        }
+    });
     audioPlayer.addEventListener('play', function () {
         isPlaying = true;
         $('#playIcon').classList.remove('fa-play');
@@ -933,10 +1149,14 @@ function formatTime(seconds) {
 }
 
 function playSong(index) {
-    if (index < 0 || index >= currentPlaylist.length) return;
+    var list = window.LocalMusic && window.LocalMusic.selectedIndex >= 0 ? window.LocalMusic.playlist : currentPlaylist;
+    if (index < 0 || index >= list.length) return;
     
+    currentPlaylist = list;
     currentSongIndex = index;
-    var song = currentPlaylist[index];
+    var song = list[index];
+    if (window.LocalMusic && list === window.LocalMusic.playlist) window.LocalMusic.selectedIndex = index;
+    else if (window.LocalMusic) window.LocalMusic.selectedIndex = -1;
     
     // Update player UI
     $('#playerSongName').textContent = song.name || 'Unknown';
@@ -949,6 +1169,18 @@ function playSong(index) {
     $('#bottomPlayer').classList.add('show');
     $('#mainContent').classList.add('with-player');
     
+    if (song.file || song.localUrl) {
+        var localUrl = song.localUrl || window.LocalMediaCore.getObjectUrl(song.id, song.file);
+        audioPlayer.src = localUrl;
+        if (window.LocalMediaCore) {
+            window.LocalMediaCore.getProgress(song.id).then(function (progress) {
+                if (progress && progress.time && audioPlayer.src === localUrl) audioPlayer.currentTime = progress.time;
+            });
+        }
+        audioPlayer.play();
+        return;
+    }
+
     // Get song URL and play
     getSongUrl(song.id, function (url) {
         if (url) {

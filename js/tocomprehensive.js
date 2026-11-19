@@ -682,9 +682,152 @@ function initSourceSelect() {
     sourceSelect.appendChild(editOpt);
 }
 
+// Lightweight i18n for header tab labels (Online/Local) and local panel texts.
+// Mirrors TC_I18N above: reads the same localStorage keys the main page stores
+// (preferredLanguage / languages); unknown -> English.
+var LOCAL_I18N = {
+    en: {
+        tabOnline: 'Movies',
+        tabLocal: 'Local',
+        localTitle: 'Local Videos',
+        localDesc: 'Choose video files (MP4/WebM/OGV/M4V/MOV) or a whole folder from your device. Files stay in this browser and are never uploaded.',
+        pickFiles: 'Choose files',
+        pickFolder: 'Choose folder',
+        restoreFolder: 'Restore folder',
+        choosingFiles: 'Choosing files...',
+        choosingFolder: 'Choosing folder...',
+        restoringFolder: 'Restoring folder...',
+        noSavedFolder: 'No saved folder for this browser.',
+        permDenied: 'Permission was not granted. Choose the folder again.',
+        pickIntro: 'Local files stay in this browser. Choose a folder to begin.',
+        pickIntroNoDir: 'Local files stay in this browser. Choose files or a folder to begin.',
+        noVideoFiles: 'No supported video files found.'
+    },
+    zh: {
+        tabOnline: '在线',
+        tabLocal: '本地',
+        localTitle: '本地视频',
+        localDesc: '从设备选择视频文件（MP4/WebM/OGV/M4V/MOV）或整个文件夹。文件仅保存在本浏览器中，不会被上传。',
+        pickFiles: '选择文件',
+        pickFolder: '选择文件夹',
+        restoreFolder: '恢复文件夹',
+        choosingFiles: '正在选择文件...',
+        choosingFolder: '正在选择文件夹...',
+        restoringFolder: '正在恢复文件夹...',
+        noSavedFolder: '此浏览器没有已保存的文件夹。',
+        permDenied: '未获得权限，请重新选择文件夹。',
+        pickIntro: '本地文件仅保存在本浏览器中。选择一个文件夹开始。',
+        pickIntroNoDir: '本地文件仅保存在本浏览器中。选择文件或文件夹开始。',
+        noVideoFiles: '未找到受支持的视频文件。'
+    },
+    // Module-specific labels for the remaining UI languages. Shared panel
+    // texts (pick/choose/notLoaded/no*Files) come from js/local-media-i18n.js.
+    ja: {
+        tabOnline: 'オンライン',
+        tabLocal: 'ローカル',
+        localTitle: 'ローカル動画',
+        localDesc: 'デバイスから動画ファイル（MP4/WebM/OGV/M4V/MOV）またはフォルダー全体を選択します。ファイルはこのブラウザー内にのみ保存され、アップロードされることはありません。',
+        noVideoFiles: 'サポートされている動画ファイルが見つかりませんでした。'
+    },
+    ko: {
+        tabOnline: '온라인',
+        tabLocal: '로컬',
+        localTitle: '로컬 비디오',
+        localDesc: '기기에서 비디오 파일(MP4/WebM/OGV/M4V/MOV)이나 폴더 전체를 선택하세요. 파일은 이 브라우저에만 저장되며 업로드되지 않습니다.',
+        noVideoFiles: '지원되는 비디오 파일을 찾을 수 없습니다.'
+    },
+    fr: {
+        tabOnline: 'En ligne',
+        tabLocal: 'Local',
+        localTitle: 'Vidéos locales',
+        localDesc: "Choisissez des fichiers vidéo (MP4/WebM/OGV/M4V/MOV) ou un dossier entier depuis votre appareil. Les fichiers restent dans ce navigateur et ne sont jamais téléversés.",
+        noVideoFiles: "Aucun fichier vidéo pris en charge n'a été trouvé."
+    },
+    de: {
+        tabOnline: 'Online',
+        tabLocal: 'Lokal',
+        localTitle: 'Lokale Videos',
+        localDesc: 'Wählen Sie Videodateien (MP4/WebM/OGV/M4V/MOV) oder einen ganzen Ordner von Ihrem Gerät. Die Dateien bleiben in diesem Browser und werden nie hochgeladen.',
+        noVideoFiles: 'Keine unterstützten Videodateien gefunden.'
+    },
+    es: {
+        tabOnline: 'En línea',
+        tabLocal: 'Local',
+        localTitle: 'Vídeos locales',
+        localDesc: 'Elige archivos de vídeo (MP4/WebM/OGV/M4V/MOV) o una carpeta completa de tu dispositivo. Los archivos permanecen en este navegador y nunca se suben.',
+        noVideoFiles: 'No se encontraron archivos de vídeo compatibles.'
+    },
+    ru: {
+        tabOnline: 'Онлайн',
+        tabLocal: 'Локально',
+        localTitle: 'Локальные видео',
+        localDesc: 'Выберите видеофайлы (MP4/WebM/OGV/M4V/MOV) или целую папку с устройства. Файлы остаются в этом браузере и никогда не загружаются.',
+        noVideoFiles: 'Поддерживаемые видеофайлы не найдены.'
+    }
+};
+
+// Fill missing labels (including the shared notLoaded / choose* keys) from
+// js/local-media-i18n.js so every UI language gets the full panel text.
+(function (dict) {
+    var shared = (typeof window !== 'undefined' && window.LocalMediaI18N) || {};
+    Object.keys(shared).forEach(function (lang) {
+        if (!dict[lang]) dict[lang] = {};
+        Object.keys(shared[lang]).forEach(function (key) {
+            if (dict[lang][key] === undefined) dict[lang][key] = shared[lang][key];
+        });
+    });
+}(LOCAL_I18N));
+
+// Normalize the stored/navigator language to the UI languages used by the
+// route pages (zh, en, ja, ko, fr, de, es, ru); unknown -> English.
+function localLang() {
+    try {
+        var lang = String(localStorage.getItem('preferredLanguage') || localStorage.getItem('languages')
+            || (navigator.language || 'en') || '').toLowerCase();
+        if (lang.indexOf('zh') === 0) return 'zh';
+        if (lang.indexOf('en') === 0) return 'en';
+        var uiLangs = ['ja', 'ko', 'fr', 'de', 'es', 'ru'];
+        for (var i = 0; i < uiLangs.length; i++) {
+            if (lang.indexOf(uiLangs[i]) === 0) return uiLangs[i];
+        }
+    } catch (e) { /* storage unavailable */ }
+    return 'en';
+}
+
+function localT(key) {
+    var lang = localLang();
+    return (LOCAL_I18N[lang] && LOCAL_I18N[lang][key]) || LOCAL_I18N.en[key] || key;
+}
+
+function applyLocalI18n() {
+    document.querySelectorAll('[data-i18n-tab]').forEach(function (el) {
+        el.textContent = localT(el.getAttribute('data-i18n-tab'));
+    });
+    document.querySelectorAll('[data-i18n-text]').forEach(function (el) {
+        el.textContent = localT(el.getAttribute('data-i18n-text'));
+    });
+}
+
+// Local / Online tab switching (header tab-nav)
+function switchLocalTab(tab) {
+    var onlineBtn = document.querySelector('.tab-nav .tab-btn[data-tab="online"]');
+    var localBtn = document.querySelector('.tab-nav .tab-btn[data-tab="local"]');
+    if (onlineBtn) onlineBtn.classList.toggle('active', tab === 'online');
+    if (localBtn) localBtn.classList.toggle('active', tab === 'local');
+    var mainContent = document.querySelector('.main-content:not(#localPanel)');
+    var localPanel = document.getElementById('localPanel');
+    var sidebar = document.getElementById('sidebar');
+    var headerRight = document.querySelector('.header-right');
+    if (mainContent) mainContent.style.display = tab === 'local' ? 'none' : '';
+    if (localPanel) localPanel.style.display = tab === 'local' ? '' : 'none';
+    if (sidebar) sidebar.style.display = tab === 'local' ? 'none' : '';
+    if (headerRight) headerRight.style.visibility = tab === 'local' ? 'hidden' : '';
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
     console.log('=== Theater (Comprehensive) Page Loaded ===');
+    applyLocalI18n();
     
     // Localize static texts that don't go through the dialog
     document.getElementById('searchInput').placeholder = tcT('searchPh');
@@ -692,6 +835,54 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize source select from localStorage
     initSourceSelect();
     
+    // Local / Online tab switching
+    document.querySelectorAll('.tab-nav .tab-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () { switchLocalTab(this.getAttribute('data-tab')); });
+    });
+
+    var localVideoStatus = document.getElementById('localVideoStatus');
+    function setLocalVideoStatus(text) {
+        if (localVideoStatus) localVideoStatus.textContent = String(text || '');
+    }
+    function openLocalVideo(mode) {
+        if (!window.LocalMediaAdapters || !window.LocalMediaAdapters.video) {
+            setLocalVideoStatus(localT('notLoaded'));
+            return;
+        }
+        setLocalVideoStatus(localT(mode === 'files' ? 'choosingFiles' : 'choosingFolder'));
+        window.LocalMediaAdapters.video.open({
+            mode: mode,
+            onProgress: function (text) { setLocalVideoStatus(text); },
+            onEmpty: function () { setLocalVideoStatus(localT('noVideoFiles')); }
+        });
+    }
+    // Re-open the previously granted folder without showing a picker.
+    function restoreLocalVideo() {
+        if (!window.LocalMediaAdapters || !window.LocalMediaAdapters.video
+            || !window.LocalMediaAdapters.video.restore) {
+            setLocalVideoStatus(localT('notLoaded'));
+            return;
+        }
+        setLocalVideoStatus(localT('restoringFolder'));
+        window.LocalMediaAdapters.video.restore({
+            onProgress: function (text) { setLocalVideoStatus(text); },
+            onEmpty: function () { setLocalVideoStatus(localT('noSavedFolder')); },
+            onDenied: function () { setLocalVideoStatus(localT('permDenied')); }
+        });
+    }
+    var localVideoFolderBtn = document.getElementById('localVideoFolderBtn');
+    if (localVideoFolderBtn) {
+        localVideoFolderBtn.addEventListener('click', function () { openLocalVideo('directory'); });
+    }
+    var localVideoFilesBtn = document.getElementById('localVideoFilesBtn');
+    if (localVideoFilesBtn) {
+        localVideoFilesBtn.addEventListener('click', function () { openLocalVideo('files'); });
+    }
+    var localRestoreBtn = document.getElementById('localRestoreBtn');
+    if (localRestoreBtn) {
+        localRestoreBtn.addEventListener('click', restoreLocalVideo);
+    }
+
     // Set initial source
     currentLink = document.getElementById('sourceSelect').value;
     

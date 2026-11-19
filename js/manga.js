@@ -18,6 +18,66 @@ let currentPageIndex = 0;
 let currentPages = [];
 let mangaInfo = null;
 let isScrollMode = true;
+let localMangaSession = null;
+let localMangaFiles = {};
+
+function getLocalMangaSession() {
+    if (localMangaSession) return localMangaSession;
+    try {
+        localMangaSession = JSON.parse(window.sessionStorage.getItem('localMediaManga') || 'null');
+    } catch (error) {
+        localMangaSession = null;
+    }
+    if (!localMangaSession || !Array.isArray(localMangaSession.groups)) localMangaSession = null;
+    return localMangaSession;
+}
+
+function saveLocalMangaProgress() {
+    if (!currentChapter) return;
+    window.LocalMediaCore.saveProgress(currentChapter, {
+        pageIndex: currentPageIndex,
+        updatedAt: Date.now()
+    });
+}
+
+function loadLocalManga() {
+    const session = getLocalMangaSession();
+    if (!session) {
+        showError('No local manga session found');
+        return;
+    }
+    chapters = session.groups.map(function (group) {
+        return {
+            id: group.id,
+            name: group.name,
+            attributes: { chapter: group.name, title: group.entries.length + ' images' },
+            pageUrl: '',
+            localEntries: group.entries
+        };
+    });
+    document.getElementById('mangaTitle').textContent = session.rootName || 'Local manga';
+    document.getElementById('currentChapter').textContent = session.resumable
+        ? 'Local images stay in this browser.'
+        : 'Files were picked directly, so reloading this page requires choosing them again.';
+    displayChapters();
+    if (chapters.length) loadChapter(chapters[0].id);
+}
+
+async function resolveLocalMangaEntryList(entries) {
+    // One folder scan for the whole chapter; entries already resolved are reused.
+    var pending = entries.filter(function (entry) { return !localMangaFiles[entry.id]; });
+    if (!pending.length) {
+        return entries.map(function (entry) { return localMangaFiles[entry.id]; });
+    }
+    var resolved = await window.LocalMediaCore.resolveEntries(
+        pending, { category: 'manga', handleKey: 'manga' });
+    if (resolved.error) throw new Error(resolved.error);
+    resolved.entries.forEach(function (entry) { localMangaFiles[entry.id] = entry; });
+    var missing = pending.filter(function (entry) { return !localMangaFiles[entry.id]; });
+    if (missing.length) throw new Error('Some local images could not be found; choose the folder again');
+    return entries.map(function (entry) { return localMangaFiles[entry.id]; });
+}
+
 
 // Get all reader params from URL
 function getReaderParams() {
@@ -33,7 +93,9 @@ function getReaderParams() {
 document.addEventListener('DOMContentLoaded', function() {
     const p = getReaderParams();
 
-    if (p.src === 'xkcd' && p.id) {
+    if (p.src === 'local') {
+        loadLocalManga();
+    } else if (p.src === 'xkcd' && p.id) {
         loadXkcd(p.id, p.chapterId);
     } else if (p.id) {
         loadJikan(p.id, p.chapterId);
@@ -350,7 +412,20 @@ async function loadChapter(chapterId) {
         showLoading('Loading chapter pages...');
         const src = getReaderParams().src;
 
-        if (src === 'xkcd') {
+        if (getReaderParams().src === 'local') {
+            const chapter = chapters.find(c => c.id === chapterId);
+            if (!chapter) throw new Error('Chapter not found');
+            const files = await resolveLocalMangaEntryList(chapter.localEntries);
+            currentPages = files.map(function (entry) {
+                return window.LocalMediaCore.getObjectUrl(entry.id, entry.file);
+            });
+            currentPageIndex = 0;
+            document.getElementById('currentChapter').textContent = 'Local: ' + (chapter.name || chapterId);
+            const progress = await window.LocalMediaCore.getProgress(chapterId);
+            if (progress && !isNaN(progress.pageIndex) && progress.pageIndex >= 0 && progress.pageIndex < currentPages.length) {
+                currentPageIndex = parseInt(progress.pageIndex, 10);
+            }
+        } else if (src === 'xkcd') {
             const num = parseInt(chapterId, 10);
             const comic = await fetchJSONWithProxy(`${XKCD_API}/${num}/info.0.json`);
             if (!comic || !comic.img) throw new Error('Comic not found');
@@ -428,6 +503,7 @@ function updateNavigation() {
     // Page navigation
     document.getElementById('prevPageBtn').disabled = currentPageIndex === 0;
     document.getElementById('nextPageBtn').disabled = currentPageIndex >= currentPages.length - 1;
+    if (getReaderParams().src === 'local') saveLocalMangaProgress();
     
     // Chapter navigation
     const currentIndex = chapters.findIndex(c => c.id === currentChapter);
