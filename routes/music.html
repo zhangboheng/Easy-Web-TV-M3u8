@@ -46,9 +46,8 @@
             left: 0;
             right: 0;
             height: 70px;
+            /* Solid black, matching the sidebar */
             background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
             border-bottom: 2px solid rgba(163,0,27,0.5);
             display: flex;
             align-items: center;
@@ -851,9 +850,11 @@
             }
             
             .top-header {
-                flex-wrap: wrap;
+                flex-direction: column;
+                align-items: stretch;
+                flex-wrap: nowrap;
                 height: auto;
-                padding: 10px 15px;
+                padding: 12px 15px;
                 gap: 10px;
             }
             
@@ -861,15 +862,17 @@
                 order: 1;
             }
             
-            .tab-nav {
+            /* Row order matches tv.html / radio.html: title, search, tabs. */
+            .header-right {
                 order: 2;
                 width: 100%;
-                justify-content: center;
             }
             
-            .header-right {
+            .tab-nav {
                 order: 3;
                 width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
             }
             
             .search-box {

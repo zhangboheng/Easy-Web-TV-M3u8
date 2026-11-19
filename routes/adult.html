@@ -42,6 +42,7 @@
         
         /* Header */
         .header {
+            /* Solid black, matching the sidebar */
             background: rgba(0,0,0,0.85);
             border-bottom: 2px solid rgba(163,0,27,0.5);
             padding: 15px 20px;
@@ -585,9 +586,14 @@
         }
         
         @media screen and (max-width: 480px) {
+            /* Column flow + gap (same as tv.html / radio.html): every header row
+               keeps a consistent 10px gutter. */
             .header {
-                padding: 10px 15px;
-                flex-wrap: wrap;
+                padding: 12px 15px;
+                flex-direction: column;
+                align-items: stretch;
+                flex-wrap: nowrap;
+                gap: 10px;
                 height: auto;
             }
             
@@ -604,7 +610,7 @@
                 order: 2;
                 width: 100%;
                 gap: 10px;
-                margin-top: 10px;
+                margin-top: 0;
             }
             
             .search-box {
@@ -613,6 +619,8 @@
             
             .search-input {
                 width: 100%;
+                /* 16px prevents iOS Safari from force-zooming on focus. */
+                font-size: 16px;
             }
             
             .search-input:focus {

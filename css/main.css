@@ -604,6 +604,10 @@ input[type="button"] {
     font-size: 15px;
 }
 
+.tab-btn span {
+    white-space: nowrap;
+}
+
 .tab-btn:hover:not(.active) {
     background: rgba(163,0,27,0.1);
     border-color: rgba(163,0,27,0.3);
@@ -632,9 +636,11 @@ input[type="button"] {
 
 @media (max-width: 768px) {
     .tab-btn {
-        padding: 6px 10px;
+        padding: 8px 12px;
         font-size: 12px;
     }
+    /* Tabs get a dedicated centered row on mobile (see page media queries);
+       labels stay visible and may wrap instead of shrinking the header row. */
     .local-media-panel {
         margin: 10px;
         padding: 12px;
