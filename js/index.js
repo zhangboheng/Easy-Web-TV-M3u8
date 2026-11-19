@@ -1,7 +1,7 @@
 /**
  * Easy Web TV - Main Application
  * Native JavaScript (No jQuery)
- * @version 8.5.3
+ * @version 8.5.4
  */
 
 // Adult content translations for all supported languages
@@ -1041,7 +1041,7 @@ const SettingsModal = {
             }
             var payload = {
                 app: 'easy-web-tv',
-                version: '8.5.3',
+                version: '8.5.4',
                 exportedAt: new Date().toISOString(),
                 data: data
             };
@@ -1338,6 +1338,7 @@ DOM.ready(function() {
     if (scrollidbar) {
         scrollidbar.innerHTML = '';
         DOM.append(scrollidbar, `
+            <p>[2026-11-19] V8.5.4 release Add a browser-local media library to the Novel, Manga, Music and Video pages: pick your own files or a whole folder (TXT/Markdown, images, audio, video) and read or play them locally without uploading anything; folder grants and reading positions persist in IndexedDB, a whole folder is scanned once per chapter/playlist instead of once per file, playback progress is written at most once every 5 seconds, and every local panel is localized in 8 UI languages (zh, en, ja, ko, fr, de, es, ru)</p>
             <p>[2026-11-19] V8.5.3 release Embed the PS Vita emulator (vitaslop, MIT) and the PS2 emulator (TabStationToo, PCSX2 compiled to WebAssembly, GPL-3.0) in-app, replacing the PS2 external link - both hot-link their official hosted web apps inside the player page and run entirely client-side with your own files (nothing is bundled or uploaded); cross-origin isolation is granted per-page via a service-worker COOP/COEP injection on the two player routes with credentialless iframes and the cross-origin-isolated permission delegation, so SharedArrayBuffer works inside the embedded frames</p>
             <p>[2026-11-18] V8.5.2 release Add 10 open-source web games to Web Games via a generic ?game= hot-link player page (2048, Pac-Man, T-Rex Runner, Space Invaders, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun); the Others category was renamed to Web Games</p>
             <p>[2026-11-18] V8.5.2 release Add Diablo (diabloweb WebAssembly port, shareware episode included, bring-your-own DIABDAT.MPQ for the full game) and Zelda II: The Adventure of Link (z2rs Rust/WebAssembly clean-room reconstruction, bring-your-own ROM) to the Recomp game category</p>

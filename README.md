@@ -6,14 +6,14 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.5.3-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.5.4-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
 ## 📋 Table of Contents
 
 - [Demo](#-demo)
-- [What's New](#-whats-new-v853)
+- [What's New](#-whats-new-v854)
 - [Features](#-features)
 - [Screenshots](#-screenshots)
 - [Tech Stack](#-tech-stack)
@@ -28,27 +28,12 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 **[Live Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)**
 
-## 🆕 What's New (v8.5.3)
+## 🆕 What's New (v8.5.4)
 
-- **PS Vita emulator embedded in-app, with a persistent new-tab option**: the PS Vita emulator card now opens an in-app player page (`routes/vita.html`) that embeds [vitaslop](https://github.com/cretz/vitaslop) (MIT, hot-linked to the official web app) - bring your own legally dumped packages (.pkg + work.bin, a dumped folder, or a zip); the embedded credentialless iframe uses temporary storage, so use the new-tab link for long-term games and saves
-- **PS2 emulator embedded in-app, with a persistent new-tab option**: the PS2 card now opens an in-app player page (`routes/ps2.html`) embedding [TabStationToo](https://tabstationtoo.github.io/TabStationToo/) (PCSX2 compiled to WebAssembly, GPL-3.0, hot-linked) - replacing the external-link card. Bring your own BIOS dump (.bin) and disc images (.iso); the embedded credentialless iframe uses temporary storage, so use the new-tab link for long-term BIOS, memory cards, saves and save states
-- **Cross-origin isolation without breaking anything else**: a targeted service-worker enhancement injects `COOP: same-origin` + `COEP: require-corp` on top-level navigations to the two player routes only, so the embedded emulators get SharedArrayBuffer inside credentialless iframes (with the `cross-origin-isolated` permission delegation) while every other page keeps its exact previous hot-linking behavior; first-visit reload bootstrap included; storage in inline credentialless frames is temporary, with a new-tab escape hatch for persistent saves
-
-- **10 new Web Games via a generic hot-link player**: the Web Games category grows from 5 to 15 titles. A single player page (`routes/webgame.html`) driven by a `?game=<key>` registry serves them all - each game hot-links its author's official demo build, nothing is bundled:
-  - [2048](https://devrsi0n.github.io/React-2048-game/) via [devrsi0n/React-2048-game](https://github.com/devrsi0n/React-2048-game) (MIT)
-  - [Pac-Man](https://masonicgit.github.io/pacman/) via [masonicGIT/pacman](https://github.com/masonicGIT/pacman) (GPL-3.0)
-  - [T-Rex Runner](https://wayou.github.io/t-rex-runner/) via [wayou/t-rex-runner](https://github.com/wayou/t-rex-runner) (BSD-3-Clause)
-  - [Space Invaders](https://dwmkerr.github.io/spaceinvaders/) via [dwmkerr/spaceinvaders](https://github.com/dwmkerr/spaceinvaders) (MIT)
-  - [SkiFree](https://basicallydan.github.io/skifree.js/) via [basicallydan/skifree.js](https://github.com/basicallydan/skifree.js) (MIT)
-  - [Flappy Bird](https://nebez.github.io/floppybird/) via [nebez/floppybird](https://github.com/nebez/floppybird) (Apache-2.0)
-  - [HexGL](https://hexgl.bkcore.com/play/) via [BKcore/HexGL](https://github.com/BKcore/HexGL) (MIT)
-  - [Astray](https://wwwtyro.github.io/Astray/) via [wwwtyro/Astray](https://github.com/wwwtyro/Astray) (Unlicense)
-  - [Q1K3](https://phoboslab.org/q1k3/) via [phoboslab/q1k3](https://github.com/phoboslab/q1k3) (MIT)
-  - [Underrun](https://phoboslab.org/underrun/) via [phoboslab/underrun](https://github.com/phoboslab/underrun) (MIT)
-
-- **Two more Recomp-class games**: the Recomp category grows from one title to three, both hot-linked WebAssembly ports that need no native install
-  - **[Diablo](https://d07riv.github.io/diabloweb/)** via [diabloweb](https://github.com/d07RiV/diabloweb) (WebAssembly build of the source-released [Devilution](https://github.com/diasurgical/devilution) engine) - the **shareware episode is included upstream and plays instantly**; the full game needs your own `DIABDAT.MPQ`
-  - **[Zelda II: The Adventure of Link](https://z2rs.com/)** via [z2rs](https://github.com/troyedwardsjr/z2rs) (MIT-licensed clean-room Rust reconstruction compiled to WebAssembly, verified frame by frame against the original ROM) - adds widescreen, save states and optional online co-op; bring your own ROM (No-Intro USA dump, CRC32 `BA322865`), read in place and never uploaded
+- **A browser-local media library on every media page**: Novel, Manga, Music and Video each gained a **Local** tab where you pick your own files or an entire folder and read/play them straight in the browser - nothing is uploaded and no file body is ever stored. Folders are read through the File System Access API, with an `<input webkitdirectory>` fallback for other browsers
+- **Resume, cheaply**: the picked folder grant is remembered in IndexedDB, so a reload can reopen the same folder after a permission re-grant; reading positions (chapter + scroll offset, page index, playback time) resume, and files picked individually tell you plainly that a reload needs a new pick
+- **Built for large folders**: one folder scan serves a whole chapter or playlist (10,000 entries / 12 nesting levels cap) instead of one full rescan per file, and playback progress is throttled to at most one write every 5 seconds instead of one per `timeupdate` tick
+- **Localized like the rest of the app**: every local panel label, empty-state message and status line is translated in 8 UI languages (zh, en, ja, ko, fr, de, es, ru), sharing one dictionary so the four pages cannot drift apart
 
 ## ✨ Features
 
