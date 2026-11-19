@@ -128,7 +128,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 - **Fast ROM fetching**: direct download for CORS-enabled sources (e.g. GitHub-hosted ROMs), public CORS proxies only as fallback
 - **ROM caching**: downloaded ROMs and SWFs are stored in Cache Storage, so replaying the same game is instant and works even when proxies are down
 - **Manual download fallback**: if a preset or URL fails to load, an inline button lets you download the ROM file directly, then load it via upload
-- **Favorites & Continue Playing**: star any game to pin it to the top of the launcher, and the last 12 played games appear in a Continue Playing row
+- **Favorites & Recently Played**: star any game to pin it to the top of the launcher, and revisit the last 12 played games from the dedicated Recently Played category in the sidebar
 - **Gamepad navigation on the game hub**: browse categories and game cards with a gamepad D-pad/stick or keyboard arrow keys (TV friendly)
 - Gamepad support
 - Save/load states and fullscreen via the in-emulator controls

@@ -793,29 +793,35 @@ function gameCardHtml(game) {
     return html;
 }
 
-// Render the "Continue Playing" row (only on unfiltered All view)
-function recentSectionHtml() {
-    if (currentCategory !== 'all' || searchQuery) return '';
+// Render recently played games as a dedicated sidebar view.
+function recentGamesHtml() {
     var recent = getRecent();
-    if (!recent.length) return '';
     var cards = '';
     var shown = 0;
-    for (var i = 0; i < recent.length && shown < 8; i++) {
+    for (var i = 0; i < recent.length && shown < 12; i++) {
         var game = findGameById(recent[i].id);
         if (game) {
             cards += gameCardHtml(game);
             shown++;
         }
     }
-    if (!shown) return '';
-    return '<div class="recent-section">' +
-        '<h3 class="recent-title"><i class="fas fa-clock-rotate-left"></i> Continue Playing</h3>' +
-        '<div class="recent-row">' + cards + '</div>' +
-        '</div>';
+    if (!shown) {
+        return '<div class="no-results"><i class="fas fa-clock-rotate-left"></i><p>No recently played games</p></div>';
+    }
+    return cards;
 }
 
 // Render games
 function renderGames() {
+    var grid = $('#gameGrid');
+    grid.innerHTML = '';
+
+    // Recently played is its own sidebar view rather than a shelf on All Games.
+    if (currentCategory === 'recent') {
+        grid.innerHTML = recentGamesHtml();
+        return;
+    }
+
     var filteredGames = games;
     
     // Filter by category
@@ -832,19 +838,8 @@ function renderGames() {
         });
     }
     
-    var grid = $('#gameGrid');
-    grid.innerHTML = '';
-    
-    var recentHtml = recentSectionHtml();
-    if (recentHtml) {
-        grid.innerHTML = recentHtml;
-    }
-    
-    if (filteredGames.length === 0 && !recentHtml) {
-        grid.innerHTML = '<div class="no-results"><i class="fas fa-gamepad"></i><p>No games found</p></div>';
-        return;
-    }
     if (filteredGames.length === 0) {
+        grid.innerHTML = '<div class="no-results"><i class="fas fa-gamepad"></i><p>No games found</p></div>';
         return;
     }
     
@@ -853,7 +848,7 @@ function renderGames() {
         html += gameCardHtml(game);
     });
     
-    grid.innerHTML += html;
+    grid.innerHTML = html;
 }
 
 // Toggle sidebar

@@ -65,6 +65,15 @@ check(!/18 catalogue files/.test(readme), 'README still says 18 catalogue files'
 check(!/across 29 JSON files/.test(readme), 'README still says 29 JSON files');
 check(!/All 38 EmulatorJS-based/.test(readme), 'README still says 38 EmulatorJS emulators');
 
+// 6. Recently played is a dedicated sidebar view, not an All-page shelf.
+const gameHtml = read('routes/game.html');
+check(/data-category="recent"/.test(gameHtml), 'game sidebar has no recently-played entry');
+check(/fa-clock-rotate-left/.test(gameHtml), 'recently-played sidebar entry lacks a clock icon');
+check(!/recent-section/.test(togame), 'togame.js still renders the recent shelf');
+check(!/recent-row/.test(gameHtml), 'game.html still styles the recent shelf');
+check(/currentCategory === 'recent'/.test(togame), 'togame.js has no dedicated recent view');
+check(/No recently played games/.test(togame), 'recent view has no empty state message');
+
 if (failures.length) {
     failures.forEach((f) => console.log('FAIL: ' + f));
     process.exit(1);
