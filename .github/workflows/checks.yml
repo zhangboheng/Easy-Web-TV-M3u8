@@ -1,0 +1,40 @@
+name: checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  game-and-i18n-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Game catalogue
+        run: node docs/superpowers/check-games.js js/togame.js
+      - name: i18n pairs
+        shell: bash
+        run: |
+          set -e
+          for pair in \
+            "js/topalm.js routes/palm.html" \
+            "js/towipi.js routes/wipi.html" \
+            "js/tora2.js routes/ra2.html" \
+            "js/todiablo.js routes/diablo.html" \
+            "js/toz2rs.js routes/z2rs.html" \
+            "js/towebgame.js routes/webgame.html" \
+            "js/tops2.js routes/ps2.html" \
+            "js/tovita.js routes/vita.html"; do
+            node docs/superpowers/check-i18n.js $pair
+          done
+      - name: Game regressions
+        run: node docs/superpowers/check-game-regressions.js
+      - name: JavaScript syntax
+        shell: bash
+        run: |
+          set -e
+          for file in js/togame.js js/tovita.js js/tops2.js js/towebgame.js; do
+            node --check "$file"
+          done

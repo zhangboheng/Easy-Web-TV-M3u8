@@ -26,6 +26,7 @@ var i18n = {
         demoDesc: '在浏览器里游玩经典开源网页游戏，热链嵌入各项目官方演示站点。本应用不内置任何游戏——每款游戏都直接从作者的托管构建加载。',
         demoOpen: '启动游戏',
         demoHint: '所有游戏均为开源项目（MIT / GPL / BSD / Apache）。游戏清单与许可见应用 README。与任何游戏作者无隶属关系。',
+        invalidGame: '找不到这个游戏，请从游戏列表中重新选择。',
         loading: '游戏启动中，请稍候...',
         loadingTip: '游戏从其托管站点加载，首次启动可能较慢',
         loadingSlow: '加载较慢，请耐心等待；也可以在新标签页打开',
@@ -47,6 +48,7 @@ var i18n = {
         demoDesc: "Play classic open-source web games in your browser, embedded by hotlink from each project's official demo site. Nothing is bundled - every game runs directly from its author's hosted build.",
         demoOpen: 'Launch Game',
         demoHint: 'All games are open source (MIT / GPL / BSD / Apache). The list of games and their licenses is in the app README. Not affiliated with any game author.',
+        invalidGame: 'That game was not found. Please choose one from the game list.',
         loading: 'Starting the game, please wait...',
         loadingTip: 'The game loads from its host site; first launch can take a while',
         loadingSlow: 'Still loading - please wait a bit longer, or open it in a new tab',
@@ -67,6 +69,7 @@ var i18n = {
         demoDesc: 'オープンソースの定番 Web ゲームをブラウザで直接プレイ。各プロジェクトの公式デモサイトへのホットリンク埋め込みで、アプリ本体には何も同梱されていません。',
         demoOpen: 'ゲームを起動',
         demoHint: 'すべてのゲームはオープンソース（MIT / GPL / BSD / Apache）です。ゲーム一覧とライセンスはアプリの README を参照してください。各ゲーム作者とは無関係です。',
+        invalidGame: 'そのゲームは見つかりません。ゲーム一覧から選び直してください。',
         loading: 'ゲームを起動中...',
         loadingTip: 'ゲームはホストサイトから読み込まれます。初回は時間がかかることがあります',
         loadingSlow: '読み込みが遅い場合はそのままお待ちいただくか、新しいタブで開いてください',
@@ -88,6 +91,7 @@ var i18n = {
         demoDesc: '오픈소스 클래식 웹 게임을 브라우저에서 바로 즐기세요. 각 프로젝트의 공식 데모 사이트를 핫링크로 임베드하며, 앱에는 어떤 게임도 포함되어 있지 않습니다.',
         demoOpen: '게임 실행',
         demoHint: '모든 게임은 오픈소스(MIT / GPL / BSD / Apache)입니다. 게임 목록과 라이선스는 앱 README를 참고하세요. 각 게임 작성자와는 무관합니다.',
+        invalidGame: '해당 게임을 찾을 수 없습니다. 게임 목록에서 다시 선택하세요.',
         loading: '게임 시작 중...',
         loadingTip: '게임은 호스트 사이트에서 로드되며 첫 실행은 느릴 수 있습니다',
         loadingSlow: '로딩이 느립니다. 조금 더 기다리시거나 새 탭에서 여세요',
@@ -108,6 +112,7 @@ var i18n = {
         demoDesc: "Jouez aux grands classiques du jeu web open source directement dans votre navigateur, intégrés par lien direct depuis le site de démonstration officiel de chaque projet. Rien n'est embarqué - chaque jeu s'exécute depuis le build hébergé par son auteur.",
         demoOpen: 'Lancer le jeu',
         demoHint: "Tous les jeux sont open source (MIT / GPL / BSD / Apache). La liste des jeux et leurs licences figure dans le README de l'application. Sans affiliation avec les auteurs des jeux.",
+        invalidGame: "Jeu introuvable. Choisissez-en un dans la liste des jeux.",
         loading: 'Démarrage du jeu, veuillez patienter...',
         loadingTip: "Le jeu se charge depuis son site hôte ; le premier lancement peut être long",
         loadingSlow: 'Chargement toujours en cours - patientez encore un peu, ou ouvrez-le dans un nouvel onglet',
@@ -129,6 +134,7 @@ var i18n = {
         demoDesc: 'Spiele klassische Open-Source-Webgames direkt im Browser, per Hotlink von der offiziellen Demo-Seite jedes Projekts eingebettet. Nichts ist mitgeliefert - jedes Spiel läuft direkt aus dem vom Autor gehosteten Build.',
         demoOpen: 'Spiel starten',
         demoHint: 'Alle Spiele sind Open Source (MIT / GPL / BSD / Apache). Die Liste der Spiele und ihrer Lizenzen steht in der README der App. Keine Verbindung zu den Spiele-Autoren.',
+        invalidGame: 'Spiel nicht gefunden. Bitte wähle ein Spiel aus der Liste.',
         loading: 'Spiel wird gestartet, bitte warten...',
         loadingTip: 'Das Spiel lädt von seiner Host-Seite; der erste Start kann dauern',
         loadingSlow: 'Lädt noch - bitte etwas länger warten oder in einem neuen Tab öffnen',
@@ -149,6 +155,7 @@ var i18n = {
         demoDesc: 'Juega a los clásicos del juego web de código abierto directamente en tu navegador, incrustados por enlace directo desde el sitio de demostración oficial de cada proyecto. Nada está incluido: cada juego se ejecuta desde el build alojado por su autor.',
         demoOpen: 'Iniciar juego',
         demoHint: 'Todos los juegos son de código abierto (MIT / GPL / BSD / Apache). La lista de juegos y sus licencias está en el README de la app. Sin afiliación con los autores.',
+        invalidGame: 'No se encontró ese juego. Elige uno de la lista de juegos.',
         loading: 'Iniciando el juego, espera por favor...',
         loadingTip: 'El juego se carga desde su sitio anfitrión; el primer arranque puede tardar',
         loadingSlow: 'Sigue cargando - espera un poco más o ábrelo en una pestaña nueva',
@@ -170,6 +177,7 @@ var i18n = {
         demoDesc: 'Играйте в классические веб-игры с открытым кодом прямо в браузере - встраивание горячей ссылкой с официального демо-сайта каждого проекта. Ничего не поставляется в комплекте: каждая игра загружается прямо из сборки автора.',
         demoOpen: 'Запустить игру',
         demoHint: 'Все игры с открытым кодом (MIT / GPL / BSD / Apache). Список игр и их лицензий есть в README приложения. Проект не связан с авторами игр.',
+        invalidGame: 'Игра не найдена. Выберите игру из списка.',
         loading: 'Запуск игры, подождите...',
         loadingTip: 'Игра загружается с сайта-хоста; первый запуск может быть долгим',
         loadingSlow: 'Всё ещё загружается - подождите немного или откройте в новой вкладке',
@@ -208,13 +216,11 @@ function showToast(msg) {
 }
 
 // ---- game resolution ----------------------------------------------------
-// Resolve ?game=<key> from the URL; unknown or missing keys fall back to 2048
-// so the page always has something valid to launch.
-var currentGame = (function () {
-    var key = new URLSearchParams(window.location.search).get('game');
-    if (key && WEBGAME_REGISTRY[key]) return WEBGAME_REGISTRY[key];
-    return WEBGAME_REGISTRY['2048'];
-})();
+// Resolve ?game=<key> from the URL. A missing/unknown key is an explicit
+// invalid state: never silently launch a different game such as 2048.
+var currentGameKey = new URLSearchParams(window.location.search).get('game');
+var isCurrentGameValid = Boolean(currentGameKey && WEBGAME_REGISTRY[currentGameKey]);
+var currentGame = isCurrentGameValid ? WEBGAME_REGISTRY[currentGameKey] : { name: t('invalidGame'), url: '' };
 var WEBGAME_BASE = currentGame.url;
 
 // ---- tab switching (single tab, kept for structural parity) -----------
@@ -265,6 +271,10 @@ function showPlayer(title) {
 function playWebgame() {
     var frame = document.getElementById('webgameFrame');
     if (!frame) return;
+    if (!isCurrentGameValid) {
+        showToast(t('invalidGame'));
+        return;
+    }
     showPlayer(currentGame.name);
     frame.addEventListener('load', hideOverlay, { once: true });
     frame.src = WEBGAME_BASE;
@@ -283,7 +293,9 @@ function stopPlayback() {
     document.getElementById('pageTitle').textContent = t('pageTitle');
     document.getElementById('resetBtn').style.display = 'none';
     document.getElementById('fullscreenBtn').style.display = 'none';
-}// ---- fullscreen --------------------------------------------------------
+}
+
+// ---- fullscreen --------------------------------------------------------
 // Most of these games do not ship their own fullscreen control, so the host
 // page requests fullscreen on the iframe itself (allowed via allowfullscreen).
 document.getElementById('fullscreenBtn').addEventListener('click', function () {
@@ -299,7 +311,14 @@ document.getElementById('fullscreenBtn').addEventListener('click', function () {
 });
 
 // ---- demo tab ----------------------------------------------------------
-document.getElementById('demoOpenBtn').addEventListener('click', playWebgame);
+var demoOpenBtn = document.getElementById('demoOpenBtn');
+if (isCurrentGameValid) {
+    demoOpenBtn.addEventListener('click', playWebgame);
+} else {
+    demoOpenBtn.disabled = true;
+    demoOpenBtn.title = t('invalidGame');
+    showToast(t('invalidGame'));
+}
 
 // ---- back / reset ------------------------------------------------------
 document.getElementById('backBtn').addEventListener('click', function () {
@@ -320,10 +339,11 @@ document.getElementById('instructionsHeader').addEventListener('click', function
 
 // ---- init --------------------------------------------------------------
 // Show the resolved game name on the start screen and document.title.
-document.title = currentGame.name + ' - Easy Web TV';
+var pageTitle = isCurrentGameValid ? currentGame.name + ' - Easy Web TV' : t('pageTitle') + ' - Easy Web TV';
+document.title = pageTitle;
 (function () {
     var title = document.querySelector('.upload-title');
-    if (title) title.textContent = currentGame.name;
+    if (title) title.textContent = isCurrentGameValid ? currentGame.name : t('pageTitle');
     var icon = document.querySelector('.upload-icon i');
     if (icon) icon.className = 'fas fa-gamepad';
 })();

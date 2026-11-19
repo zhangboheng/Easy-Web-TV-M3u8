@@ -154,7 +154,7 @@ var games = [
         platform: 'Sega CD',
         category: 'emulator',
         image: '../images/segacd.svg',
-        url: '../routes/emulatorjs.html?core=picodrive'
+        url: '../routes/emulatorjs.html?core=picodrive&platform=segacd'
     },
     {
         id: 25,
@@ -283,14 +283,6 @@ var games = [
         category: 'emulator',
         image: '../images/psp.svg',
         url: '../routes/emulatorjs.html?core=ppsspp'
-    },
-    {
-        id: 46,
-        name: 'Sega CD Emulator',
-        platform: 'Sega CD',
-        category: 'emulator',
-        image: '../images/segacd.svg',
-        url: '../routes/emulatorjs.html?core=picodrive&platform=segacd'
     },
     {
         id: 47,
@@ -645,6 +637,10 @@ function findGameById(id) {
     }
     return null;
 }
+
+// Each game ID is an identity key for favorites and Continue Playing, so no
+// normalization is performed at runtime; duplicate cards must be removed in
+// the source array below.
 
 // ---------- Keyboard / Gamepad focus navigation (v8.5.0) ----------
 var GamepadNav = {

@@ -14,7 +14,7 @@ var i18n = {
         demoTitle: 'PS2 模拟器',
         demoDesc: '通过 TabStationToo（PCSX2 编译为 WebAssembly，GPL-3.0，热链嵌入官方 Web App）在浏览器里运行 PlayStation 2 游戏。情感引擎与 GS 以多线程模拟，图形经 WebGPU 硬件渲染。',
         demoOpen: '启动模拟器',
-        demoHint: '不内置 BIOS 与游戏——首次启动时选择你自己主机的 BIOS 转储（.bin，通常 4 MB）和你拥有游戏的镜像文件（.iso）；所有内容只保存在你的浏览器中，绝不上传。许多游戏可满速或接近满速运行。',
+        demoHint: '不内置 BIOS 与游戏——首次启动时选择你自己主机的 BIOS 转储（.bin，通常 4 MB）和你拥有游戏的镜像文件（.iso）；绝不上传。内嵌模式使用临时隔离存储，关闭或刷新后不会保留；需要长期保存 BIOS、记忆卡和存档，请用“在新标签页打开”链接。许多游戏可满速或接近满速运行。',
         loading: 'TabStationToo 启动中，请稍候...',
         loadingTip: '模拟器从其托管站点加载，首次启动可能较慢',
         loadingSlow: '加载较慢，请耐心等待；也可以在新标签页打开模拟器',
@@ -35,7 +35,7 @@ var i18n = {
         demoTitle: 'PS2 Emulator',
         demoDesc: 'Run PlayStation 2 games in your browser with TabStationToo (PCSX2 compiled to WebAssembly, GPL-3.0, embedded by hotlink to the official web app). The Emotion Engine and GS are emulated with threads and hardware rendering via WebGPU.',
         demoOpen: 'Launch Emulator',
-        demoHint: 'No BIOS and no games are bundled - on first launch pick a BIOS dumped from your own console (.bin, usually 4 MB) and disc images of games you own (.iso); everything stays in your browser and nothing is uploaded. Many games run at or near full speed.',
+        demoHint: 'No BIOS and no games are bundled - on first launch pick a BIOS dumped from your own console (.bin, usually 4 MB) and disc images of games you own (.iso); nothing is uploaded. The embedded player uses temporary isolated storage, so BIOS, memory cards and saves do not survive closing or reloading; use the “Open in a new tab” link for persistent local storage. Many games run at or near full speed.',
         loading: 'Starting TabStationToo, please wait...',
         loadingTip: 'The emulator loads from its host site; first launch can take a while',
         loadingSlow: 'Still loading - please wait a bit longer, or open the emulator in a new tab',
@@ -56,7 +56,7 @@ var i18n = {
         demoTitle: 'PS2 エミュレータ',
         demoDesc: 'TabStationToo（PCSX2 を WebAssembly にコンパイル、GPL-3.0、公式Webアプリへのホットリンク埋め込み）でブラウザ上でPlayStation 2のゲームを実行します。Emotion EngineとGSはマルチスレッドでエミュレートされ、グラフィックスはWebGPUでハードウェアレンダリングされます。',
         demoOpen: 'エミュレータを起動',
-        demoHint: 'BIOSもゲームも同梱されていません。初回起動時に、自分の本体からダンプしたBIOS（.bin、通常4 MB）と所有ゲームのディスクイメージ（.iso）を選んでください。すべてブラウザ内に保持され、アップロードは一切行われません。多くのゲームがフル速度またはそれに近い速度で動作します。',
+        demoHint: 'BIOSもゲームも同梱されていません。初回起動時に、自分の本体からダンプしたBIOS（.bin、通常4 MB）と所有ゲームのディスクイメージ（.iso）を選んでください。アップロードは一切行われません。埋め込みプレイヤーは一時的な分離ストレージを使うため、閉じるか再読み込みするとBIOS・メモリーカード・セーブは保持されません。永続保存は「新しいタブで開く」リンクを使ってください。多くのゲームがフル速度またはそれに近い速度で動作します。',
         loading: 'TabStationToo を起動中...',
         loadingTip: 'エミュレータはホストサイトから読み込まれます。初回は時間がかかることがあります',
         loadingSlow: '読み込みが遅い場合はそのままお待ちいただくか、新しいタブでエミュレータを開いてください',
@@ -77,7 +77,7 @@ var i18n = {
         demoTitle: 'PS2 에뮬레이터',
         demoDesc: 'TabStationToo(PCSX2를 WebAssembly로 컴파일, GPL-3.0, 공식 웹 앱 핫링크 임베드)으로 브라우저에서 PlayStation 2 게임을 실행하세요. Emotion Engine과 GS는 멀티스레드로 에뮬레이션되고, 그래픽은 WebGPU로 하드웨어 렌더링됩니다.',
         demoOpen: '에뮬레이터 실행',
-        demoHint: 'BIOS와 게임은 포함되어 있지 않습니다. 첫 실행 시 자신의 콘솔에서 덤프한 BIOS(.bin, 보통 4 MB)와 소유한 게임의 디스크 이미지(.iso)를 선택하세요. 모든 것은 브라우저에만 저장되며 업로드되지 않습니다. 많은 게임이 최대 속도 또는 그에 근접한 속도로 실행됩니다.',
+        demoHint: 'BIOS와 게임은 포함되어 있지 않습니다. 첫 실행 시 자신의 콘솔에서 덤프한 BIOS(.bin, 보통 4 MB)와 소유한 게임의 디스크 이미지(.iso)를 선택하세요. 업로드되지 않습니다. 내장 플레이어는 임시 격리 저장소를 사용하므로 닫거나 새로고침하면 BIOS, 메모리 카드, 세이브가 유지되지 않습니다. 영구 저장은 “새 탭에서 열기” 링크를 사용하세요. 많은 게임이 최대 속도 또는 그에 근접한 속도로 실행됩니다.',
         loading: 'TabStationToo 시작 중...',
         loadingTip: '에뮬레이터는 호스트 사이트에서 로드됩니다. 첫 실행은 시간이 걸릴 수 있습니다',
         loadingSlow: '로딩이 느리면 조금 더 기다리거나 새 탭에서 에뮬레이터를 여세요',
@@ -98,7 +98,7 @@ var i18n = {
         demoTitle: 'Émulateur PS2',
         demoDesc: "Exécutez des jeux PlayStation 2 dans votre navigateur avec TabStationToo (PCSX2 compilé en WebAssembly, GPL-3.0, intégré par lien direct vers l'application web officielle). L'Emotion Engine et le GS sont émulés avec des threads et le rendu matériel passe par WebGPU.",
         demoOpen: "Lancer l'émulateur",
-        demoHint: "Aucun BIOS ni jeu n'est fourni - au premier lancement, choisissez un BIOS dumpé de votre propre console (.bin, généralement 4 Mo) et des images disque de jeux que vous possédez (.iso) ; tout reste dans votre navigateur et rien n'est envoyé. Beaucoup de jeux tournent à pleine vitesse ou presque.",
+        demoHint: "Aucun BIOS ni jeu n'est fourni - au premier lancement, choisissez un BIOS dumpé de votre propre console (.bin, généralement 4 Mo) et des images disque de jeux que vous possédez (.iso) ; rien n'est envoyé. Le lecteur intégré utilise un stockage isolé temporaire : BIOS, cartes mémoire et sauvegardes ne survivent pas à la fermeture ou au rechargement. Utilisez le lien « Ouvrir dans un nouvel onglet » pour un stockage local persistant. Beaucoup de jeux tournent à pleine vitesse ou presque.",
         loading: "Démarrage de TabStationToo, veuillez patienter...",
         loadingTip: "L'émulateur se charge depuis son site hôte ; le premier lancement peut être long",
         loadingSlow: "Chargement lent - patientez encore un peu, ou ouvrez l'émulateur dans un nouvel onglet",
@@ -119,7 +119,7 @@ var i18n = {
         demoTitle: 'PS2-Emulator',
         demoDesc: 'Spielen Sie PlayStation-2-Spiele in Ihrem Browser - mit TabStationToo (PCSX2 nach WebAssembly kompiliert, GPL-3.0, per Hotlink zur offiziellen Web-App eingebettet). Der Emotion Engine und die GS werden mit Threads emuliert, die Grafik per WebGPU hardwaregerendert.',
         demoOpen: 'Emulator starten',
-        demoHint: 'Es sind kein BIOS und keine Spiele enthalten - wählen Sie beim ersten Start ein von Ihrer eigenen Konsole gedumptes BIOS (.bin, meist 4 MB) und Disc-Images von Spielen, die Sie besitzen (.iso); alles bleibt in Ihrem Browser, nichts wird hochgeladen. Viele Spiele laufen mit voller oder nahezu voller Geschwindigkeit.',
+        demoHint: 'Es sind kein BIOS und keine Spiele enthalten - wählen Sie beim ersten Start ein von Ihrer eigenen Konsole gedumptes BIOS (.bin, meist 4 MB) und Disc-Images von Spielen, die Sie besitzen (.iso); nichts wird hochgeladen. Der eingebettete Player nutzt temporären isolierten Speicher: BIOS, Speicherkarten und Spielstände bleiben nach Schließen oder Neuladen nicht erhalten. Für dauerhaften lokalen Speicher nutzen Sie den Link „Im neuen Tab öffnen“. Viele Spiele laufen mit voller oder nahezu voller Geschwindigkeit.',
         loading: 'TabStationToo wird gestartet, bitte warten...',
         loadingTip: 'Der Emulator lädt von seiner Host-Seite; der erste Start kann dauern',
         loadingSlow: 'Lädt langsam - warten Sie noch etwas oder öffnen Sie den Emulator in einem neuen Tab',
@@ -140,7 +140,7 @@ var i18n = {
         demoTitle: 'Emulador de PS2',
         demoDesc: 'Ejecuta juegos de PlayStation 2 en tu navegador con TabStationToo (PCSX2 compilado a WebAssembly, GPL-3.0, incrustado por enlace directo a la aplicación web oficial). El Emotion Engine y el GS se emulan con hilos y el renderizado por hardware pasa por WebGPU.',
         demoOpen: 'Iniciar emulador',
-        demoHint: 'No se incluye BIOS ni juegos - al primer arranque elige un BIOS volcado de tu propia consola (.bin, normalmente 4 MB) e imágenes de disco de juegos que poseas (.iso); todo se queda en tu navegador y nada se sube. Muchos juegos funcionan a velocidad completa o casi.',
+        demoHint: 'No se incluye BIOS ni juegos - al primer arranque elige un BIOS volcado de tu propia consola (.bin, normalmente 4 MB) e imágenes de disco de juegos que poseas (.iso); nada se sube. El reproductor incrustado usa almacenamiento aislado temporal: el BIOS, las tarjetas de memoria y las partidas no sobreviven al cierre o la recarga. Usa el enlace «Abrir en una pestaña nueva» para almacenamiento local persistente. Muchos juegos funcionan a velocidad completa o casi.',
         loading: 'Iniciando TabStationToo, espera...',
         loadingTip: 'El emulador se carga desde su sitio anfitrión; el primer arranque puede tardar',
         loadingSlow: 'Carga lenta - espera un poco más o abre el emulador en una pestaña nueva',
@@ -161,7 +161,7 @@ var i18n = {
         demoTitle: 'Эмулятор PS2',
         demoDesc: 'Запускайте игры PlayStation 2 в браузере с помощью TabStationToo (PCSX2, скомпилированный в WebAssembly, GPL-3.0, встраивание горячей ссылкой на официальное веб-приложение). Emotion Engine и GS эмулируются с потоками, графика рендерится через WebGPU.',
         demoOpen: 'Запустить эмулятор',
-        demoHint: 'BIOS и игры не включены - при первом запуске выберите BIOS, снятый с вашей собственной консоли (.bin, обычно 4 МБ), и образы дисков игр, которые вам принадлежат (.iso); всё остаётся в вашем браузере, ничего не загружается на сервер. Многие игры идут на полной или почти полной скорости.',
+        demoHint: 'BIOS и игры не включены - при первом запуске выберите BIOS, снятый с вашей собственной консоли (.bin, обычно 4 МБ), и образы дисков игр, которые вам принадлежат (.iso); ничего не загружается на сервер. Встроенный плеер использует временное изолированное хранилище: BIOS, карты памяти и сохранения не сохраняются после закрытия или перезагрузки. Для постоянного локального хранения используйте ссылку «Открыть в новой вкладке». Многие игры идут на полной или почти полной скорости.',
         loading: 'TabStationToo запускается, подождите...',
         loadingTip: 'Эмулятор загружается с сайта-хоста; первый запуск может быть долгим',
         loadingSlow: 'Загрузка идёт медленно - подождите ещё немного или откройте эмулятор в новой вкладке',
@@ -272,6 +272,10 @@ function stopPlayback() {
 
 // ---- demo tab ----------------------------------------------------------
 document.getElementById('demoOpenBtn').addEventListener('click', playPs2);
+(function () {
+    var link = document.getElementById('demoOpenNewTab');
+    if (link) link.href = PS2_BASE;
+})();
 
 // ---- back / reset ------------------------------------------------------
 document.getElementById('backBtn').addEventListener('click', function () {

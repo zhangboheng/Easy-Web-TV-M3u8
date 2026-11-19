@@ -17,7 +17,7 @@ var i18n = {
         demoTitle: 'PS Vita 模拟器',
         demoDesc: '通过 vitaslop（MIT，热链嵌入官方 Web App）在浏览器里运行 PlayStation Vita 游戏。Vita 的 ARM 代码在运行时翻译为 WebAssembly，图形命令流以 WebGPU 重放。',
         demoOpen: '启动模拟器',
-        demoHint: '不内置任何游戏——在模拟器的 Add games 页导入你自己的合法转储包（.pkg + work.bin、转储文件夹或 zip）；游戏与存档只保存在你的浏览器中，绝不上传。早期阶段：部分商业游戏可启动游玩，部分不能；自制软件可用。',
+        demoHint: '不内置任何游戏——在模拟器的 Add games 页导入你自己的合法转储包（.pkg + work.bin、转储文件夹或 zip）；绝不上传。内嵌模式使用临时隔离存储，关闭或刷新后游戏与存档不会保留；需要长期保存请用“在新标签页打开”链接。早期阶段：部分商业游戏可启动游玩，部分不能；自制软件可用。',
         loading: 'vitaslop 启动中，请稍候...',
         loadingTip: '模拟器从其托管站点加载，首次启动可能较慢',
         loadingSlow: '加载较慢，请耐心等待；也可以在新标签页打开模拟器',
@@ -38,7 +38,7 @@ var i18n = {
         demoTitle: 'PS Vita Emulator',
         demoDesc: "Run PlayStation Vita games in your browser with vitaslop (MIT, embedded by hotlink to the official web app). The Vita's ARM code is translated to WebAssembly at runtime and the GPU command stream is replayed as WebGPU.",
         demoOpen: 'Launch Emulator',
-        demoHint: 'No games are bundled - add your own legally dumped packages (.pkg + work.bin, a dumped folder, or a zip) inside the emulator library; they stay in your browser and nothing is uploaded. Early days: many commercial games boot and play, many do not; homebrew works.',
+        demoHint: 'No games are bundled - add your own legally dumped packages (.pkg + work.bin, a dumped folder, or a zip) inside the emulator library; nothing is uploaded. The embedded player uses temporary isolated storage, so games and saves do not survive closing or reloading; use the “Open in a new tab” link for persistent local storage. Early days: many commercial games boot and play, many do not; homebrew works.',
         loading: 'Starting vitaslop, please wait...',
         loadingTip: 'The emulator loads from its host site; first launch can take a while',
         loadingSlow: 'Still loading - please wait a bit longer, or open the emulator in a new tab',
@@ -59,7 +59,7 @@ var i18n = {
         demoTitle: 'PS Vita エミュレータ',
         demoDesc: 'vitaslop（MIT、公式Webアプリへのホットリンク埋め込み）でブラウザ上でPlayStation Vitaのゲームを実行します。VitaのARMコードは実行時にWebAssemblyへ翻訳され、GPUコマンドストリームはWebGPUで再生されます。',
         demoOpen: 'エミュレータを起動',
-        demoHint: 'ゲームは同梱されていません。エミュレータのAdd gamesページで、自分が合法的にダンプしたパッケージ（.pkg + work.bin、ダンプしたフォルダ、またはそのzip）を追加してください。ゲームとセーブはブラウザ内に保持され、アップロードは一切行われません。まだ開発途上：動く商用ゲームも多くあれば、動かないものも多くあります。ホームブリューは動作します。',
+        demoHint: 'ゲームは同梱されていません。エミュレータのAdd gamesページで、自分が合法的にダンプしたパッケージ（.pkg + work.bin、ダンプしたフォルダ、またはそのzip）を追加してください。アップロードは一切行われません。埋め込みプレイヤーは一時的な分離ストレージを使うため、閉じるか再読み込みするとゲームとセーブは保持されません。永続保存は「新しいタブで開く」リンクを使ってください。まだ開発途上：動く商用ゲームも多くあれば、動かないものも多くあります。ホームブリューは動作します。',
         loading: 'vitaslop を起動中...',
         loadingTip: 'エミュレータはホストサイトから読み込まれます。初回は時間がかかることがあります',
         loadingSlow: '読み込みが遅い場合はそのままお待ちいただくか、新しいタブでエミュレータを開いてください',
@@ -80,7 +80,7 @@ var i18n = {
         demoTitle: 'PS Vita 에뮬레이터',
         demoDesc: 'vitaslop(MIT, 공식 웹 앱 핫링크 임베드)으로 브라우저에서 PlayStation Vita 게임을 실행하세요. Vita의 ARM 코드는 런타임에 WebAssembly로 번역되고, GPU 명령 스트림은 WebGPU로 재생됩니다.',
         demoOpen: '에뮬레이터 실행',
-        demoHint: '게임은 포함되어 있지 않습니다. 에뮬레이터의 Add games 페이지에서 자신이 합법적으로 덤프한 패키지(.pkg + work.bin, 덤프한 폴더 또는 그 zip)를 추가하세요. 게임과 세이브는 브라우저에만 저장되며 업로드되지 않습니다. 초기 단계: 실행되는 상용 게임도 많지만 안 되는 것도 많습니다. 홈브루는 동작합니다.',
+        demoHint: '게임은 포함되어 있지 않습니다. 에뮬레이터의 Add games 페이지에서 자신이 합법적으로 덤프한 패키지(.pkg + work.bin, 덤프한 폴더 또는 그 zip)를 추가하세요. 업로드되지 않습니다. 내장 플레이어는 임시 격리 저장소를 사용하므로 닫거나 새로고침하면 게임과 세이브가 유지되지 않습니다. 영구 저장은 “새 탭에서 열기” 링크를 사용하세요. 초기 단계: 실행되는 상용 게임도 많지만 안 되는 것도 많습니다. 홈브루는 동작합니다.',
         loading: 'vitaslop 시작 중...',
         loadingTip: '에뮬레이터는 호스트 사이트에서 로드됩니다. 첫 실행은 시간이 걸릴 수 있습니다',
         loadingSlow: '로딩이 느리면 조금 더 기다리거나 새 탭에서 에뮬레이터를 여세요',
@@ -101,7 +101,7 @@ var i18n = {
         demoTitle: 'Émulateur PS Vita',
         demoDesc: "Exécutez des jeux PlayStation Vita dans votre navigateur avec vitaslop (MIT, intégré par lien direct vers l'application web officielle). Le code ARM de la Vita est traduit en WebAssembly à l'exécution et le flux de commandes GPU est rejoué en WebGPU.",
         demoOpen: "Lancer l'émulateur",
-        demoHint: "Aucun jeu n'est fourni - ajoutez vos propres paquets dumpés légalement (.pkg + work.bin, un dossier dumpé ou un zip) dans la bibliothèque de l'émulateur ; ils restent dans votre navigateur et rien n'est envoyé. Stade précoce : beaucoup de jeux commerciaux démarrent, beaucoup non ; les homebrews fonctionnent.",
+        demoHint: "Aucun jeu n'est fourni - ajoutez vos propres paquets dumpés légalement (.pkg + work.bin, un dossier dumpé ou un zip) dans la bibliothèque de l'émulateur ; rien n'est envoyé. Le lecteur intégré utilise un stockage isolé temporaire : les jeux et sauvegardes ne survivent pas à la fermeture ou au rechargement. Utilisez le lien « Ouvrir dans un nouvel onglet » pour un stockage local persistant. Stade précoce : beaucoup de jeux commerciaux démarrent, beaucoup non ; les homebrews fonctionnent.",
         loading: "Démarrage de vitaslop, veuillez patienter...",
         loadingTip: "L'émulateur se charge depuis son site hôte ; le premier lancement peut être long",
         loadingSlow: "Chargement lent - patientez encore un peu, ou ouvrez l'émulateur dans un nouvel onglet",
@@ -122,7 +122,7 @@ var i18n = {
         demoTitle: 'PS-Vita-Emulator',
         demoDesc: 'Spielen Sie PlayStation-Vita-Spiele in Ihrem Browser - mit vitaslop (MIT, per Hotlink zur offiziellen Web-App eingebettet). Der ARM-Code der Vita wird zur Laufzeit nach WebAssembly übersetzt, der GPU-Befehlsstrom als WebGPU wiedergegeben.',
         demoOpen: 'Emulator starten',
-        demoHint: 'Es sind keine Spiele enthalten - fügen Sie Ihre eigenen legal gedumpten Pakete (.pkg + work.bin, einen gedumpten Ordner oder ein Zip) in der Emulator-Bibliothek hinzu; sie bleiben in Ihrem Browser, nichts wird hochgeladen. Frühphase: viele kommerzielle Spiele starten und laufen, viele nicht; Homebrew funktioniert.',
+        demoHint: 'Es sind keine Spiele enthalten - fügen Sie Ihre eigenen legal gedumpten Pakete (.pkg + work.bin, einen gedumpten Ordner oder ein Zip) in der Emulator-Bibliothek hinzu; nichts wird hochgeladen. Der eingebettete Player nutzt temporären isolierten Speicher: Spiele und Spielstände bleiben nach Schließen oder Neuladen nicht erhalten. Für dauerhaften lokalen Speicher nutzen Sie den Link „Im neuen Tab öffnen“. Frühphase: viele kommerzielle Spiele starten und laufen, viele nicht; Homebrew funktioniert.',
         loading: 'vitaslop wird gestartet, bitte warten...',
         loadingTip: 'Der Emulator lädt von seiner Host-Seite; der erste Start kann dauern',
         loadingSlow: 'Lädt langsam - warten Sie noch etwas oder öffnen Sie den Emulator in einem neuen Tab',
@@ -144,7 +144,7 @@ var i18n = {
         demoTitle: 'Emulador de PS Vita',
         demoDesc: 'Ejecuta juegos de PlayStation Vita en tu navegador con vitaslop (MIT, incrustado por enlace directo a la aplicación web oficial). El código ARM de la Vita se traduce a WebAssembly en tiempo de ejecución y el flujo de comandos GPU se reproduce como WebGPU.',
         demoOpen: 'Iniciar emulador',
-        demoHint: 'No se incluyen juegos - añade tus propios paquetes volcados legalmente (.pkg + work.bin, una carpeta volcada o un zip) en la biblioteca del emulador; se quedan en tu navegador y nada se sube. Etapa temprana: muchos juegos comerciales arrancan y funcionan, muchos no; el homebrew funciona.',
+        demoHint: 'No se incluyen juegos - añade tus propios paquetes volcados legalmente (.pkg + work.bin, una carpeta volcada o un zip) en la biblioteca del emulador; nada se sube. El reproductor incrustado usa almacenamiento aislado temporal: los juegos y las partidas no sobreviven al cierre o la recarga. Usa el enlace «Abrir en una pestaña nueva» para almacenamiento local persistente. Etapa temprana: muchos juegos comerciales arrancan y funcionan, muchos no; el homebrew funciona.',
         loading: 'Iniciando vitaslop, espera...',
         loadingTip: 'El emulador se carga desde su sitio anfitrión; el primer arranque puede tardar',
         loadingSlow: 'Carga lenta - espera un poco más o abre el emulador en una pestaña nueva',
@@ -165,7 +165,7 @@ var i18n = {
         demoTitle: 'Эмулятор PS Vita',
         demoDesc: 'Запускайте игры PlayStation Vita в браузере с помощью vitaslop (MIT, встраивание горячей ссылкой на официальное веб-приложение). ARM-код Vita транслируется в WebAssembly во время выполнения, а поток команд GPU воспроизводится как WebGPU.',
         demoOpen: 'Запустить эмулятор',
-        demoHint: 'Игры не включены - добавьте свои легально снятые дампы (.pkg + work.bin, папку дампа или zip) в библиотеку эмулятора; они остаются в вашем браузере, ничего не загружается на сервер. Ранняя стадия: многие коммерческие игры запускаются и работают, многие нет; homebrew работает.',
+        demoHint: 'Игры не включены - добавьте свои легально снятые дампы (.pkg + work.bin, папку дампа или zip) в библиотеку эмулятора; ничего не загружается на сервер. Встроенный плеер использует временное изолированное хранилище: игры и сохранения не сохраняются после закрытия или перезагрузки. Для постоянного локального хранения используйте ссылку «Открыть в новой вкладке». Ранняя стадия: многие коммерческие игры запускаются и работают, многие нет; homebrew работает.',
         loading: 'vitaslop запускается, подождите...',
         loadingTip: 'Эмулятор загружается с сайта-хоста; первый запуск может быть долгим',
         loadingSlow: 'Загрузка идёт медленно - подождите ещё немного или откройте эмулятор в новой вкладке',
@@ -277,12 +277,16 @@ function stopPlayback() {
 
 // ---- demo tab ----------------------------------------------------------
 document.getElementById('demoOpenBtn').addEventListener('click', playVita);
+(function () {
+    var link = document.getElementById('demoOpenNewTab');
+    if (link) link.href = VITA_BASE;
+})();
 
 // ---- back / reset ------------------------------------------------------
 document.getElementById('backBtn').addEventListener('click', function () {
     var playerSection = document.getElementById('playerSection');
     if (playerSection.classList.contains('active')) { stopPlayback(); return; }
-    window.location.href = '../routes/game.html?category=mobile';
+    window.location.href = '../routes/game.html?category=emulator';
 });
 document.getElementById('resetBtn').addEventListener('click', stopPlayback);
 

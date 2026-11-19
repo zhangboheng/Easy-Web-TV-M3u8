@@ -30,9 +30,9 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ## 🆕 What's New (v8.5.3)
 
-- **PS Vita emulator embedded in-app**: the PS Vita emulator card now opens an in-app player page (`routes/vita.html`) that embeds [vitaslop](https://github.com/cretz/vitaslop) (MIT, hot-linked to the official web app) instead of pointing elsewhere - bring your own legally dumped packages (.pkg + work.bin, a dumped folder, or a zip); they stay in your browser and nothing is uploaded
-- **PS2 emulator embedded in-app**: the PS2 card now opens an in-app player page (`routes/ps2.html`) embedding [TabStationToo](https://tabstationtoo.github.io/TabStationToo/) (PCSX2 compiled to WebAssembly, GPL-3.0, hot-linked) - replacing the external-link card. Bring your own BIOS dump (.bin) and disc images (.iso); BIOS, games, memory cards and save states stay in your browser and nothing is uploaded
-- **Cross-origin isolation without breaking anything else**: a targeted service-worker enhancement injects `COOP: same-origin` + `COEP: require-corp` on top-level navigations to the two player routes only, so the embedded emulators get SharedArrayBuffer inside credentialless iframes (with the `cross-origin-isolated` permission delegation) while every other page keeps its exact previous hot-linking behavior; first-visit reload bootstrap included
+- **PS Vita emulator embedded in-app, with a persistent new-tab option**: the PS Vita emulator card now opens an in-app player page (`routes/vita.html`) that embeds [vitaslop](https://github.com/cretz/vitaslop) (MIT, hot-linked to the official web app) - bring your own legally dumped packages (.pkg + work.bin, a dumped folder, or a zip); the embedded credentialless iframe uses temporary storage, so use the new-tab link for long-term games and saves
+- **PS2 emulator embedded in-app, with a persistent new-tab option**: the PS2 card now opens an in-app player page (`routes/ps2.html`) embedding [TabStationToo](https://tabstationtoo.github.io/TabStationToo/) (PCSX2 compiled to WebAssembly, GPL-3.0, hot-linked) - replacing the external-link card. Bring your own BIOS dump (.bin) and disc images (.iso); the embedded credentialless iframe uses temporary storage, so use the new-tab link for long-term BIOS, memory cards, saves and save states
+- **Cross-origin isolation without breaking anything else**: a targeted service-worker enhancement injects `COOP: same-origin` + `COEP: require-corp` on top-level navigations to the two player routes only, so the embedded emulators get SharedArrayBuffer inside credentialless iframes (with the `cross-origin-isolated` permission delegation) while every other page keeps its exact previous hot-linking behavior; first-visit reload bootstrap included; storage in inline credentialless frames is temporary, with a new-tab escape hatch for persistent saves
 
 - **10 new Web Games via a generic hot-link player**: the Web Games category grows from 5 to 15 titles. A single player page (`routes/webgame.html`) driven by a `?game=<key>` registry serves them all - each game hot-links its author's official demo build, nothing is bundled:
   - [2048](https://devrsi0n.github.io/React-2048-game/) via [devrsi0n/React-2048-game](https://github.com/devrsi0n/React-2048-game) (MIT)
@@ -49,14 +49,6 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 - **Two more Recomp-class games**: the Recomp category grows from one title to three, both hot-linked WebAssembly ports that need no native install
   - **[Diablo](https://d07riv.github.io/diabloweb/)** via [diabloweb](https://github.com/d07RiV/diabloweb) (WebAssembly build of the source-released [Devilution](https://github.com/diasurgical/devilution) engine) - the **shareware episode is included upstream and plays instantly**; the full game needs your own `DIABDAT.MPQ`
   - **[Zelda II: The Adventure of Link](https://z2rs.com/)** via [z2rs](https://github.com/troyedwardsjr/z2rs) (MIT-licensed clean-room Rust reconstruction compiled to WebAssembly, verified frame by frame against the original ROM) - adds widescreen, save states and optional online co-op; bring your own ROM (No-Intro USA dump, CRC32 `BA322865`), read in place and never uploaded
-
-## 🆕 What's New (v8.5.1)
-
-- **Palm OS & WIPI mobile emulators**: two new hot-linked embeds in the Mobile game category - [CloudpilotEmu](https://github.com/cloudpilot-emu/cloudpilot-emu) (Palm OS, GPL-3.0) and [WIE](https://github.com/dlunch/wie) (Korean WIPI/SKVM/J2ME, MIT). Both run the official web app in an iframe and take your own ROM/files; nothing is bundled
-- **New Recomp game category with Red Alert 2**: [Red Alert 2 / Yuri's Revenge](https://ra2.games) via [RA2 VM](https://github.com/ra2-games/ra2) (v86 + Win32/DirectX compatibility layer, GPL-3.0, **Alpha**) - hot-linked official web app, bring your own RA2/YR game files
-- **Host-side fullscreen buttons** on every iframe hot-link emulator page (Palm, WIPI, MSX, PICO-8, J2ME, RA2), since those upstream apps ship no fullscreen control of their own
-- **Stalled-embed fallback**: Palm and WIPI pages now surface an "open in new tab" link when the embedded app fails to finish loading within 15 seconds
-- **Fixed duplicate game card IDs**: the Retro PC / BBC Micro / Apple II / WASM-4 / PICO-8 / MSX / J2ME entries were shadowed by emulator entries, which broke their favorites and Continue Playing tracking. IDs reassigned to 101-110, and `check-games.js` now enforces global ID uniqueness
 
 ## ✨ Features
 
@@ -101,8 +93,8 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
   - **Amstrad**: CPC (464/6128)
   - **Sinclair**: ZX Spectrum
   - **Doom engine**: DOOM Shareware, Freedoom/Freedm, HacX (prboom)
-  - **Sony PlayStation 2**: [TabStationToo](https://tabstationtoo.github.io/TabStationToo/) (PCSX2 compiled to WebAssembly, GPL-3.0, hot-linked embed with cross-origin isolation delegation; bring your own BIOS dump and disc images - nothing is bundled or uploaded; needs WebAssembly threads + SharedArrayBuffer + WebGPU, i.e. recent desktop Chrome/Edge)
-  - **Sony PlayStation Vita**: [vitaslop](https://github.com/cretz/vitaslop) (MIT, hot-linked embed of the official web app with a runtime ARM-to-WebAssembly translator and WebGPU rendering; bring your own games or homebrew - nothing is bundled or uploaded; needs WebGPU + JSPI + SharedArrayBuffer + OPFS, i.e. recent desktop Chrome/Edge; early days - many commercial games boot and play, many do not)
+  - **Sony PlayStation 2**: [TabStationToo](https://tabstationtoo.github.io/TabStationToo/) (PCSX2 compiled to WebAssembly, GPL-3.0, hot-linked embed with cross-origin isolation delegation; the inline credentialless player uses temporary storage, with a new-tab link for persistent BIOS, games, memory cards and saves - nothing is bundled or uploaded; needs WebAssembly threads + SharedArrayBuffer + WebGPU, i.e. recent desktop Chrome/Edge)
+  - **Sony PlayStation Vita**: [vitaslop](https://github.com/cretz/vitaslop) (MIT, hot-linked embed of the official web app with a runtime ARM-to-WebAssembly translator and WebGPU rendering; the inline credentialless player uses temporary storage, with a new-tab link for persistent games and saves - nothing is bundled or uploaded; needs WebGPU + JSPI + SharedArrayBuffer + OPFS, i.e. recent desktop Chrome/Edge; early days - many commercial games boot and play, many do not)
   - **NEC**: PC Engine / TurboGrafx-16, PC-FX (bring your own disc image + BIOS)
   - **Coleco**: ColecoVision
   - **3DO**: 3DO (bring your own firmware: panafz1/panafz10/goldstar/sanyotry .bin)
@@ -203,13 +195,13 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Dynamic ROM Loading
 - **JSON-based ROM catalogue**: ROM lists are stored in separate JSON files for easy maintenance
-- **Platform-specific loading**: Each platform has its own JSON file under `data/roms/` (18 catalogue files)
+- **Platform-specific loading**: Each platform has its own JSON file under `data/roms/` (31 catalogue files)
 - **Caching system**: Loaded ROM lists are cached for faster switching
 - **Search filter**: Filter ROMs by name in real-time
 
 ### Supported Platforms
 
-All 38 EmulatorJS-based emulators + 4 standalone engines (v86, jsbeeb, apple2js, WASM-4) and their cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **20482** games across 29 JSON files. Sega CD and PC-FX have no bundled games and require a BIOS file (uploaded on the emulator page) dumped from your own console. ³ v86 bootsector games (BootRogue/BootBASIC/bootOS, BSD-2) boot instantly via GitHub; OS images come from the official v86 demo CDN (copy.sh) and are downloaded, then booted via the Disk Image tab; WASM-4 has no bundled carts.
+All 40 EmulatorJS-based emulators + 10 standalone/hot-linked engines and their cores. **Preset ROMs** = bundled games (`–` = none bundled; load your own via upload or URL). Preset total: **20682** games across 31 JSON files. Sega CD and PC-FX have no bundled games and require a BIOS file (uploaded on the emulator page) dumped from your own console. ³ v86 bootsector games (BootRogue/BootBASIC/bootOS, BSD-2) boot instantly via GitHub; OS images come from the official v86 demo CDN (copy.sh) and are downloaded, then booted via the Disk Image tab; WASM-4 has no bundled carts.
 
 | Family | Platform | Core | Preset ROMs | JSON File |
 |--------|----------|------|-------------|-----------|
@@ -262,7 +254,7 @@ All 38 EmulatorJS-based emulators + 4 standalone engines (v86, jsbeeb, apple2js,
 | Mobile | J2ME (J2meJS embed) | j2mejs (hot-linked embed) | – | – |
 | Mobile | Palm OS (CloudpilotEmu embed) | cloudpilot-emu (hot-linked embed) | – | – |
 | Mobile | WIPI (WIE embed) | wie (hot-linked embed) | – | – |
-| **Total** | **47 platforms** | – | **20682** | **31 files** |
+| **Total** | **50 platforms** | – | **20682** | **31 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 ² No bundled games: load your own disc image via upload/URL, plus a BIOS file dumped from your own console (Sega CD: `bios_CD_U/J/E.bin`; PC-FX: `pcfx.rom`) using the BIOS upload box on the emulator page.

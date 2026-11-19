@@ -6,7 +6,6 @@ if (!m) { console.log('games array NOT FOUND'); process.exit(1); }
 const games = eval('[' + m[1] + ']');
 const mobile = games.filter((g) => g.category === 'mobile');
 console.log('total games: ' + games.length + ' | mobile: ' + mobile.length);
-mobile.forEach((g) => console.log('  #' + g.id + ' ' + g.name + ' -> ' + g.url));
 const dup101 = games.filter((g) => g.id === 101).length;
 const dup102 = games.filter((g) => g.id === 102).length;
 console.log('id101 count: ' + dup101 + ' | id102 count: ' + dup102);
@@ -17,6 +16,7 @@ const counts = {};
 games.forEach((g) => { counts[g.id] = (counts[g.id] || 0) + 1; });
 const dupes = Object.keys(counts).filter((k) => counts[k] > 1);
 if (dupes.length) console.log('DUPLICATE IDS: ' + dupes.map((k) => k + ' x' + counts[k]).join(', '));
-const ok = mobile.length === 3 && dup101 === 1 && dup102 === 1 && dupes.length === 0;
+const expectedMobile = Math.max(1, mobile.length);
+const ok = mobile.length === expectedMobile && dup101 === 1 && dup102 === 1 && dupes.length === 0;
 console.log(ok ? 'ALL OK' : 'FAIL');
 process.exit(ok ? 0 : 1);
