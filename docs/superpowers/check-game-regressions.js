@@ -73,6 +73,8 @@ check(!/recent-section/.test(togame), 'togame.js still renders the recent shelf'
 check(!/recent-row/.test(gameHtml), 'game.html still styles the recent shelf');
 check(/currentCategory === 'recent'/.test(togame), 'togame.js has no dedicated recent view');
 check(/No recently played games/.test(togame), 'recent view has no empty state message');
+check(/recent-empty/.test(gameHtml), 'recent empty state has no centering rule');
+check(/\.recent-empty[\s\S]*?min-height:\s*60vh/.test(gameHtml), 'recent empty state is not vertically centered');
 
 if (failures.length) {
     failures.forEach((f) => console.log('FAIL: ' + f));

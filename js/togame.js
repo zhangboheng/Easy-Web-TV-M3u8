@@ -806,7 +806,7 @@ function recentGamesHtml() {
         }
     }
     if (!shown) {
-        return '<div class="no-results"><i class="fas fa-clock-rotate-left"></i><p>No recently played games</p></div>';
+        return '<div class="no-results recent-empty"><i class="fas fa-clock-rotate-left"></i><p>No recently played games</p></div>';
     }
     return cards;
 }

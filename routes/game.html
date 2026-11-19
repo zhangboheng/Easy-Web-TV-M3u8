@@ -493,7 +493,17 @@
         .no-results p {
             font-size: 16px;
         }
-        
+
+        /* Empty recent view should sit in the middle of the main panel. */
+        .recent-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            grid-column: 1 / -1;
+        }
+
         /* Responsive */
         @media screen and (max-width: 1024px) {
             .sidebar {
