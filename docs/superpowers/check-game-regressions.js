@@ -373,8 +373,8 @@ n64RecompGames.forEach((game) => {
         game.name + ' image is missing');
     check(n64Registry[game.key] && n64Registry[game.key].url === 'https://n64hub.com/' + game.slug + '/',
         'ton64recomp.js has no correct ' + game.name + ' registry entry');
-    check(/n64FallbackList/.test(n64Html) && /N64HUB_GAMES\.forEach/.test(n64Js),
-        'n64recomp.html must generate game page links from the registry');
+    check(!/n64FallbackList/.test(n64Html) && !/n64FallbackList/.test(n64Js),
+        'n64recomp must not render the long n64hub game page link list');
 });
 check(/N64HUB_HOME\s*=\s*'https:\/\/n64hub\.com\/'/.test(n64Js), 'ton64recomp.js has no N64HUB_HOME');
 check(/credentialless/.test(n64Html), 'n64recomp.html iframe lacks credentialless isolation');

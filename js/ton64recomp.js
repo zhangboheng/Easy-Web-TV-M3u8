@@ -380,20 +380,6 @@ $('instructionsHeader').addEventListener('click', function () {
         link.href = currentGame.url || N64HUB_HOME;
         link.textContent = t('openInNewTab');
     }
-    if (isCurrentGameValid) {
-        var fallbackList = document.getElementById('n64FallbackList');
-        if (fallbackList) {
-            N64HUB_GAMES.forEach(function (game, index) {
-                if (index) fallbackList.appendChild(document.createTextNode(' · '));
-                var link = document.createElement('a');
-                link.href = game.url;
-                link.target = '_blank';
-                link.rel = 'noopener';
-                link.textContent = game.name;
-                fallbackList.appendChild(link);
-            });
-        }
-    }
 })();
 applyI18n();
 
