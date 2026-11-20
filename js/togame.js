@@ -980,6 +980,14 @@ var games = [
         category: 'recomp',
         image: '../images/n64excitebike64.svg',
         url: '../routes/n64recomp.html?game=excitebike64'
+    },
+    {
+        id: 175,
+        name: 'LEGO Island (Browser Port)',
+        platform: 'PC / Web',
+        category: 'recomp',
+        image: '../images/legoisland.svg',
+        url: '../routes/browserport.html?game=legoisland'
     }
 ];
 

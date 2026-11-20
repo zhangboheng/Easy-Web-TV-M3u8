@@ -321,7 +321,7 @@ check(/Papertrails \(hot-linked embed, MIT\)/.test(readme), 'README has no Paper
 
 // Recomp cards must label a real platform, not repeat the game title.
 const recompCards = games.filter((g) => g.category === 'recomp');
-check(recompCards.length === 44, 'expected 44 recomp cards, found ' + recompCards.length);
+check(recompCards.length === 45, 'expected 45 recomp cards, found ' + recompCards.length);
 check(recompCards.every((g) => g.name !== g.platform),
     'recomp cards must not use the game name as the platform label');
 check(recompCards.every((g) => g.url.indexOf('n64recomp.html') === -1 || g.platform === 'Nintendo 64'),
