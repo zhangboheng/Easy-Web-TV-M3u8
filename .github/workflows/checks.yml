@@ -35,15 +35,23 @@ jobs:
             "js/tonova.js routes/nova.html" \
             "js/tocasa.js routes/casa.html" \
             "js/totamaweb.js routes/tamaweb.html" \
-            "js/ton64recomp.js routes/n64recomp.html"; do
+            "js/ton64recomp.js routes/n64recomp.html" \
+            "js/tobrowserport.js routes/browserport.html"; do
             node docs/superpowers/check-i18n.js $pair
           done
       - name: Game regressions
         run: node docs/superpowers/check-game-regressions.js
+      - name: Local media and PDF regressions
+        shell: bash
+        run: |
+          set -e
+          node docs/superpowers/check-local-media.js
+          node docs/superpowers/check-local-media-behavior.js
+          node docs/superpowers/check-pdf-grouping.js
       - name: JavaScript syntax
         shell: bash
         run: |
           set -e
-          for file in js/togame.js js/tovita.js js/tops2.js js/tomac.js js/tork86.js js/toesty.js js/toandroid.js js/tofelt.js js/tonova.js js/tocasa.js js/totamaweb.js js/towebgame.js js/ton64recomp.js; do
+          for file in js/togame.js js/tovita.js js/tops2.js js/tomac.js js/tork86.js js/toesty.js js/toandroid.js js/tofelt.js js/tonova.js js/tocasa.js js/totamaweb.js js/towebgame.js js/ton64recomp.js js/tobrowserport.js; do
             node --check "$file"
           done

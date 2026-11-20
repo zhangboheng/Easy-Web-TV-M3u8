@@ -1,7 +1,7 @@
 // Verify PDF grouping + staged-file resolution without a browser.
 const fs = require('fs');
 const path = require('path');
-const ROOT = '/Users/bohengzhang/Documents/GitHub/Easy-Web-TV-M3u8';
+const ROOT = path.resolve(__dirname, '..', '..');
 let pass = 0, fail = 0;
 function eq(actual, expected, label) {
     if (JSON.stringify(actual) === JSON.stringify(expected)) { pass++; }
