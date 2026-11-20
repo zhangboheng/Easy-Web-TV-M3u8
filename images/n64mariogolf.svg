@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" data-theme="fairway-green" data-art="golf-swing">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#65a30d"/>
+  <path d="M110 36 L70 76" stroke="#f5f5f4" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="124" cy="70" r="8" fill="#fff"/>
+  <path d="M52 84 H148" stroke="#fff" stroke-width="3"/>
+  <path d="M124 62 V78" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="52" y="90" width="96" height="12" rx="4" fill="#111827" opacity=".85"/>
+  <text x="100" y="99" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#fff">GOLF</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#102444"/>
+  <path d="M48 78 L72 48 L92 72 L116 38 L152 78 Z" fill="#243b6b"/>
+  <g fill="#ff4b3e">
+    <polygon points="70,46 82,56 70,66"/>
+    <polygon points="114,36 126,48 114,60"/>
+  </g>
+  <g fill="#ffd34d">
+    <rect x="54" y="72" width="88" height="6" rx="2"/>
+    <circle cx="78" cy="42" r="4"/><circle cx="124" cy="32" r="4"/>
+  </g>
+  <text x="100" y="98" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#ff6b5e">F-ZERO X</text>
+</svg>

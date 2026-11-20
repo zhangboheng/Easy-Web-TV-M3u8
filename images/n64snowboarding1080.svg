@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" data-theme="winter-cyan" data-art="snowboard-spin">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#d9f3ff"/>
+  <path d="M42 80 Q70 68 100 80 Q130 92 158 78 V88 H42 Z" fill="#fff"/>
+  <path d="M84 68 L112 40 L124 52 L96 80 Z" fill="#1976d2" transform="rotate(18 100 60)"/>
+  <circle cx="88" cy="44" r="7" fill="#ffd166"/>
+  <g stroke="#4fc3f7" stroke-width="2" opacity=".8"><path d="M56 36 l6 6"/><path d="M140 40 l6 6"/><path d="M134 30 l6 -4"/></g>
+  <rect x="52" y="90" width="96" height="12" rx="4" fill="#111827" opacity=".85"/>
+  <text x="100" y="99" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#fff">1080°</text>
+</svg>

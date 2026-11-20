@@ -377,7 +377,7 @@ var games = [
     {
         id: 110,
         name: 'Red Alert 2',
-        platform: 'Red Alert 2',
+        platform: 'PC',
         category: 'recomp',
         image: '../images/ra2.svg',
         url: '../routes/ra2.html'
@@ -386,7 +386,7 @@ var games = [
     {
         id: 111,
         name: 'Diablo',
-        platform: 'Diablo',
+        platform: 'PC',
         category: 'recomp',
         image: '../images/diablo.svg',
         url: '../routes/diablo.html'
@@ -395,7 +395,7 @@ var games = [
     {
         id: 112,
         name: 'Zelda II',
-        platform: 'Zelda II',
+        platform: 'NES',
         category: 'recomp',
         image: '../images/z2rs.svg',
         url: '../routes/z2rs.html'
@@ -652,6 +652,335 @@ var games = [
         image: '../images/papertrails.svg',
         url: '../routes/webgame.html?game=papertrails'
     },
+    {
+        id: 134,
+        name: 'Super Mario 64',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64sm64.svg',
+        url: '../routes/n64recomp.html?game=sm64'
+    },
+    {
+        id: 135,
+        name: 'F-Zero X',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64fzerox.svg',
+        url: '../routes/n64recomp.html?game=fzerox'
+    },
+    {
+        id: 136,
+        name: 'Mario Party',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64marioparty.svg',
+        url: '../routes/n64recomp.html?game=marioparty'
+    },
+    {
+        id: 137,
+        name: 'San Francisco Rush 2049',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64rush2049.svg',
+        url: '../routes/n64recomp.html?game=rush2049'
+    },
+    {
+        id: 138,
+        name: 'GoldenEye 007',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64goldeneye.svg',
+        url: '../routes/n64recomp.html?game=goldeneye'
+    },
+    {
+        id: 139,
+        name: "The Legend of Zelda: Majora's Mask",
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64majorasmask.svg',
+        url: '../routes/n64recomp.html?game=majorasmask'
+    },
+    {
+        id: 140,
+        name: 'Banjo-Kazooie',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64banjokazooie.svg',
+        url: '../routes/n64recomp.html?game=banjokazooie'
+    },
+    {
+        id: 141,
+        name: "Conker's Bad Fur Day",
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64conker.svg',
+        url: '../routes/n64recomp.html?game=conker'
+    },
+    {
+        id: 142,
+        name: 'Donkey Kong 64',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64dk64.svg',
+        url: '../routes/n64recomp.html?game=dk64'
+    },
+    {
+        id: 143,
+        name: 'Wave Race 64',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64waverace64.svg',
+        url: '../routes/n64recomp.html?game=waverace64'
+    },
+    {
+        id: 144,
+        name: 'Pilotwings 64',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64pilotwings64.svg',
+        url: '../routes/n64recomp.html?game=pilotwings64'
+    },
+    {
+        id: 145,
+        name: 'Banjo-Tooie',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64banjotooie.svg',
+        url: '../routes/n64recomp.html?game=banjotooie'
+    },
+    {
+        id: 146,
+        name: 'Mario Kart 64',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64mariokart64.svg',
+        url: '../routes/n64recomp.html?game=mariokart64'
+    },
+    {
+        id: 147,
+        name: 'Star Fox 64',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64starfox64.svg',
+        url: '../routes/n64recomp.html?game=starfox64'
+    },
+    {
+        id: 148,
+        name: 'The Legend of Zelda: Ocarina of Time',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64oot.svg',
+        url: '../routes/n64recomp.html?game=oot'
+    },
+    {
+        id: 149,
+        name: 'Diddy Kong Racing',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64diddykongracing.svg',
+        url: '../routes/n64recomp.html?game=diddykongracing'
+    },
+    {
+        id: 150,
+        name: 'Jet Force Gemini',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64jetforcegemini.svg',
+        url: '../routes/n64recomp.html?game=jetforcegemini'
+    },
+    {
+        id: 151,
+        name: 'Star Wars Episode I: Racer',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64racer.svg',
+        url: '../routes/n64recomp.html?game=racer'
+    },
+    {
+        id: 152,
+        name: 'Pokémon Snap',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64pokemonsnap.svg',
+        url: '../routes/n64recomp.html?game=pokemonsnap'
+    },
+    {
+        id: 153,
+        name: 'Rush 2: Extreme Racing USA',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64rush2.svg',
+        url: '../routes/n64recomp.html?game=rush2'
+    },
+    {
+        id: 154,
+        name: '1080° Snowboarding',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64snowboarding1080.svg',
+        url: '../routes/n64recomp.html?game=snowboarding1080'
+    },
+    {
+        id: 155,
+        name: 'Space Station Silicon Valley',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64sssv.svg',
+        url: '../routes/n64recomp.html?game=sssv'
+    },
+
+    {
+        id: 156,
+        name: "Tony Hawk's Pro Skater 2",
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64thps2.svg',
+        url: '../routes/n64recomp.html?game=thps2'
+    },
+    {
+        id: 157,
+        name: 'Star Wars: Rogue Squadron',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64roguesquadron.svg',
+        url: '../routes/n64recomp.html?game=roguesquadron'
+    },
+    {
+        id: 158,
+        name: 'Beetle Adventure Racing!',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64beetle.svg',
+        url: '../routes/n64recomp.html?game=beetle'
+    },
+    {
+        id: 159,
+        name: 'Turok: Rage Wars',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64turokragewars.svg',
+        url: '../routes/n64recomp.html?game=turokragewars'
+    },
+    {
+        id: 160,
+        name: 'WWF No Mercy',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64wwfmercy.svg',
+        url: '../routes/n64recomp.html?game=wwfmercy'
+    },
+    {
+        id: 161,
+        name: 'Mario Tennis',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64mariotennis.svg',
+        url: '../routes/n64recomp.html?game=mariotennis'
+    },
+    {
+        id: 162,
+        name: 'Perfect Dark',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64perfectdark.svg',
+        url: '../routes/n64recomp.html?game=perfectdark'
+    },
+    {
+        id: 163,
+        name: 'Mario Party 2',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64marioparty2.svg',
+        url: '../routes/n64recomp.html?game=marioparty2'
+    },
+    {
+        id: 164,
+        name: 'Mario Party 3',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64marioparty3.svg',
+        url: '../routes/n64recomp.html?game=marioparty3'
+    },
+    {
+        id: 165,
+        name: 'Super Smash Bros.',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64smashbros.svg',
+        url: '../routes/n64recomp.html?game=smashbros'
+    },
+    {
+        id: 166,
+        name: 'Paper Mario',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64papermario.svg',
+        url: '../routes/n64recomp.html?game=papermario'
+    },
+    {
+        id: 167,
+        name: 'Mario Golf',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64mariogolf.svg',
+        url: '../routes/n64recomp.html?game=mariogolf'
+    },
+    {
+        id: 168,
+        name: 'Rayman 2',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64rayman2.svg',
+        url: '../routes/n64recomp.html?game=rayman2'
+    },
+    {
+        id: 169,
+        name: "Donald Duck: Goin' Quackers",
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64goinquackers.svg',
+        url: '../routes/n64recomp.html?game=goinquackers'
+    },
+    {
+        id: 170,
+        name: 'Dinosaur Planet',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64dinosaurplanet.svg',
+        url: '../routes/n64recomp.html?game=dinosaurplanet'
+    },
+    {
+        id: 171,
+        name: 'Turok: Dinosaur Hunter',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64turok.svg',
+        url: '../routes/n64recomp.html?game=turok'
+    },
+    {
+        id: 172,
+        name: 'Turok 2: Seeds of Evil',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64turok2.svg',
+        url: '../routes/n64recomp.html?game=turok2'
+    },
+    {
+        id: 173,
+        name: 'Turok 3: Shadow of Oblivion',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64turok3.svg',
+        url: '../routes/n64recomp.html?game=turok3'
+    },
+    {
+        id: 174,
+        name: 'Excitebike 64',
+        platform: 'Nintendo 64',
+        category: 'recomp',
+        image: '../images/n64excitebike64.svg',
+        url: '../routes/n64recomp.html?game=excitebike64'
+    }
 ];
 
 var currentCategory = 'all';

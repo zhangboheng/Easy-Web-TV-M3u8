@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" data-theme="mischief-red" data-art="conker-squirrel">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#7a1f1f"/>
+  <circle cx="100" cy="55" r="18" fill="#8b4a2b"/>
+  <circle cx="92" cy="50" r="3" fill="#fff"/><circle cx="108" cy="50" r="3" fill="#fff"/>
+  <circle cx="93" cy="50" r="1.6" fill="#111"/><circle cx="109" cy="50" r="1.6" fill="#111"/>
+  <path d="M92 62 Q100 68 108 62" fill="none" stroke="#24110b" stroke-width="3"/>
+  <path d="M80 40 Q100 24 120 40 Q112 34 100 34 Q88 34 80 40 Z" fill="#c46b3a"/>
+  <rect x="52" y="90" width="96" height="12" rx="4" fill="#111827" opacity=".85"/>
+  <text x="100" y="99" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#fff">CONKER</text>
+</svg>

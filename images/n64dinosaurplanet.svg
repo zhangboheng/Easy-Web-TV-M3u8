@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" data-theme="primitive-jungle" data-art="dinosaur-planet">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#14532d"/>
+  <circle cx="132" cy="38" r="10" fill="#f97316"/>
+  <path d="M56 78 Q64 48 88 56 Q104 40 118 58 Q132 54 142 78 Z" fill="#22c55e"/>
+  <path d="M72 78 L76 66 L84 76 L94 62 L102 78 Z" fill="#166534"/>
+  <circle cx="88" cy="56" r="2.5" fill="#111"/>
+  <rect x="52" y="90" width="96" height="12" rx="4" fill="#111827" opacity=".85"/>
+  <text x="100" y="99" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#fff">DINOSAUR</text>
+</svg>

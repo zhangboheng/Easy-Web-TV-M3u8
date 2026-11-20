@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" data-theme="evil-forest" data-art="turok-seeds">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#3f1d5e"/>
+  <path d="M100 32 C82 44 82 70 100 82 C118 70 118 44 100 32 Z" fill="#84cc16"/>
+  <path d="M100 42 L108 56 L100 72 L92 56 Z" fill="#dc2626"/>
+  <path d="M64 78 Q76 54 88 72 M136 78 Q124 54 112 72" fill="none" stroke="#22c55e" stroke-width="5"/>
+  <rect x="52" y="90" width="96" height="12" rx="4" fill="#111827" opacity=".85"/>
+  <text x="100" y="99" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#fff">TUROK 2</text>
+</svg>

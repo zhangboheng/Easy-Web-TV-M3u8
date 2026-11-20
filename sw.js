@@ -97,7 +97,7 @@ self.addEventListener('fetch', (event) => {
   // vitaslop / TabStationToo / Infinite Mac apps use SharedArrayBuffer inside
   // their iframes - without touching any other page's hot-linked frames.
   const isoUrl = new URL(event.request.url);
-  const ISO_PATHS = ['/routes/vita.html', '/routes/ps2.html', '/routes/mac.html'];
+  const ISO_PATHS = ['/routes/vita.html', '/routes/ps2.html', '/routes/mac.html', '/routes/n64recomp.html'];
   if (
     event.request.mode === 'navigate' &&
     isoUrl.origin === self.location.origin &&

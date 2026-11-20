@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" data-theme="comet-red" data-art="jet-force-hero">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#2b0f16"/>
+  <circle cx="100" cy="55" r="20" fill="none" stroke="#e63946" stroke-width="4"/>
+  <path d="M100 35 L112 55 L100 75 L88 55 Z" fill="#f5d06f"/>
+  <path d="M55 74 L88 55 M145 74 L112 55" stroke="#ff7b54" stroke-width="3"/>
+  <rect x="52" y="90" width="96" height="12" rx="4" fill="#111827" opacity=".85"/>
+  <text x="100" y="99" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#fff">JET FORCE</text>
+</svg>

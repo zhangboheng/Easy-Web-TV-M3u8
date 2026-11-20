@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#efe5cf"/>
+  <circle cx="100" cy="53" r="18" fill="#fff" stroke="#d33b33" stroke-width="3"/>
+  <g fill="#333">
+    <circle cx="94" cy="48" r="2"/><circle cx="106" cy="48" r="2"/>
+  </g>
+  <path d="M92 59 Q100 65 108 59" fill="none" stroke="#333" stroke-width="2"/>
+  <rect x="55" y="78" width="90" height="8" rx="3" fill="#d33b33"/>
+  <g fill="#3fbf5f">
+    <rect x="58" y="30" width="8" height="8" rx="2"/><rect x="134" y="30" width="8" height="8" rx="2"/>
+  </g>
+  <text x="100" y="101" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#ffd34d">MARIO PARTY</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" data-theme="skate-orange" data-art="skateboard-ramp">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#f57c00"/>
+  <path d="M48 84 Q92 84 152 46" fill="none" stroke="#263238" stroke-width="8"/>
+  <path d="M74 70 L120 58 L126 66 L80 78 Z" fill="#ffd166"/>
+  <circle cx="86" cy="76" r="5" fill="#222"/><circle cx="116" cy="70" r="5" fill="#222"/>
+  <path d="M96 46 l8 -8 l8 8 l-8 8 Z" fill="#e53946"/>
+  <rect x="52" y="90" width="96" height="12" rx="4" fill="#111827" opacity=".85"/>
+  <text x="100" y="99" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#fff">THPS2</text>
+</svg>

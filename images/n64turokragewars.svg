@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" data-theme="arena-blood" data-art="turok-arena">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#3b0d0d"/>
+  <path d="M70 80 L82 46 L100 62 L118 42 L132 80 Z" fill="#7f1d1d"/>
+  <circle cx="100" cy="55" r="16" fill="none" stroke="#dc2626" stroke-width="4"/>
+  <path d="M94 49 L106 61 M106 49 L94 61" stroke="#fca5a5" stroke-width="3"/>
+  <rect x="52" y="90" width="96" height="12" rx="4" fill="#111827" opacity=".85"/>
+  <text x="100" y="99" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#fff">RAGE WARS</text>
+</svg>

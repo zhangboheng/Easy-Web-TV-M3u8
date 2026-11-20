@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" data-theme="shadow-oblivion" data-art="turok-oblivion">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#0f172a"/>
+  <circle cx="100" cy="55" r="24" fill="none" stroke="#7c3aed" stroke-width="4"/>
+  <path d="M82 70 Q100 34 118 70" fill="none" stroke="#22d3ee" stroke-width="4"/>
+  <path d="M86 46 L100 34 L114 46 L100 58 Z" fill="#f43f5e"/>
+  <g fill="#e2e8f0"><circle cx="62" cy="36" r="2"/><circle cx="138" cy="74" r="2"/></g>
+  <rect x="52" y="90" width="96" height="12" rx="4" fill="#111827" opacity=".85"/>
+  <text x="100" y="99" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#fff">TUROK 3</text>
+</svg>

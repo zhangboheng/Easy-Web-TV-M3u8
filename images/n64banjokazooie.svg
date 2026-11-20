@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" data-theme="sunny-forest" data-art="banjo-bird">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#78c850"/>
+  <circle cx="100" cy="56" r="22" fill="#f6c945"/>
+  <circle cx="92" cy="50" r="4" fill="#fff"/><circle cx="108" cy="50" r="4" fill="#fff"/>
+  <circle cx="93" cy="50" r="2" fill="#222"/><circle cx="109" cy="50" r="2" fill="#222"/>
+  <path d="M88 60 L112 60 L100 72 Z" fill="#ff7f32"/>
+  <path d="M78 39 Q100 24 122 39" fill="none" stroke="#2f7d32" stroke-width="5" stroke-linecap="round"/>
+  <rect x="52" y="90" width="96" height="12" rx="4" fill="#111827" opacity=".85"/>
+  <text x="100" y="99" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#fff">BANJO</text>
+</svg>

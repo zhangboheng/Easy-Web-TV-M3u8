@@ -32,6 +32,8 @@ const styleCss = read('css/style.css');
 const checksYml = read('.github/workflows/checks.yml');
 const emulatorJs = read('js/emulatorjs.js');
 const emulatorJsHtml = read('routes/emulatorjs.html');
+const sw = read('sw.js');
+
 
 // 1. Vita back navigation must return to the emulator category.
 check(/game\.html\?category=emulator/.test(vita), 'Vita back link does not use category=emulator');
@@ -295,6 +297,132 @@ check(fs.existsSync(path.join(root, 'images/papertrails.svg')), 'papertrails.svg
 check(/'papertrails':\s*\{\s*name:\s*'Papertrails',\s*url:\s*'https:\/\/xikhar\.github\.io\/papertrails\/',\s*repo:\s*'xikhar\/papertrails',\s*license:\s*'MIT'\s*\}/.test(webgame),
     'towebgame.js has no correct Papertrails registry entry');
 check(/Papertrails \(hot-linked embed, MIT\)/.test(readme), 'README has no Papertrails credit');
+
+// Recomp cards must label a real platform, not repeat the game title.
+const recompCards = games.filter((g) => g.category === 'recomp');
+check(recompCards.length === 44, 'expected 44 recomp cards, found ' + recompCards.length);
+check(recompCards.every((g) => g.name !== g.platform),
+    'recomp cards must not use the game name as the platform label');
+check(recompCards.every((g) => g.url.indexOf('n64recomp.html') === -1 || g.platform === 'Nintendo 64'),
+    'N64 recomp cards must use Nintendo 64 as the platform label');
+check(recompCards.every((g) => g.name !== 'Zelda II' || g.platform === 'NES'),
+    'Zelda II recomp card must use NES as the platform label');
+check(recompCards.every((g) => !['Red Alert 2', 'Diablo'].includes(g.name) || g.platform === 'PC'),
+    'Red Alert 2 and Diablo recomp cards must use PC as the platform label');
+
+// N64 static recompilations: one generic player covering all 41 n64hub games.
+const n64RecompGames = [
+    { key: 'sm64', id: 134, name: 'Super Mario 64', slug: 'super-mario-64' },
+    { key: 'fzerox', id: 135, name: 'F-Zero X', slug: 'f-zero-x' },
+    { key: 'marioparty', id: 136, name: 'Mario Party', slug: 'mario-party' },
+    { key: 'rush2049', id: 137, name: 'San Francisco Rush 2049', slug: 'rush-2049' },
+    { key: 'goldeneye', id: 138, name: 'GoldenEye 007', slug: 'goldeneye' },
+    { key: 'majorasmask', id: 139, name: "The Legend of Zelda: Majora's Mask", slug: 'majoras-mask' },
+    { key: 'banjokazooie', id: 140, name: 'Banjo-Kazooie', slug: 'banjo-kazooie' },
+    { key: 'conker', id: 141, name: "Conker's Bad Fur Day", slug: 'conker' },
+    { key: 'dk64', id: 142, name: 'Donkey Kong 64', slug: 'donkey-kong-64' },
+    { key: 'waverace64', id: 143, name: 'Wave Race 64', slug: 'wave-race-64' },
+    { key: 'pilotwings64', id: 144, name: 'Pilotwings 64', slug: 'pilotwings-64' },
+    { key: 'banjotooie', id: 145, name: 'Banjo-Tooie', slug: 'banjo-tooie' },
+    { key: 'mariokart64', id: 146, name: 'Mario Kart 64', slug: 'mario-kart-64' },
+    { key: 'starfox64', id: 147, name: 'Star Fox 64', slug: 'star-fox-64' },
+    { key: 'oot', id: 148, name: 'The Legend of Zelda: Ocarina of Time', slug: 'ocarina-of-time' },
+    { key: 'diddykongracing', id: 149, name: 'Diddy Kong Racing', slug: 'diddy-kong-racing' },
+    { key: 'jetforcegemini', id: 150, name: 'Jet Force Gemini', slug: 'jet-force-gemini' },
+    { key: 'racer', id: 151, name: 'Star Wars Episode I: Racer', slug: 'star-wars-episode-1-racer' },
+    { key: 'pokemonsnap', id: 152, name: 'Pokémon Snap', slug: 'pokemon-snap' },
+    { key: 'rush2', id: 153, name: 'Rush 2: Extreme Racing USA', slug: 'rush-2' },
+    { key: 'snowboarding1080', id: 154, name: '1080° Snowboarding', slug: '1080-snowboarding' },
+    { key: 'sssv', id: 155, name: 'Space Station Silicon Valley', slug: 'space-station-silicon-valley' },
+    { key: 'thps2', id: 156, name: "Tony Hawk's Pro Skater 2", slug: 'tony-hawks-pro-skater-2' },
+    { key: 'roguesquadron', id: 157, name: 'Star Wars: Rogue Squadron', slug: 'star-wars-rogue-squadron' },
+    { key: 'beetle', id: 158, name: 'Beetle Adventure Racing!', slug: 'beetle-adventure-racing' },
+    { key: 'turokragewars', id: 159, name: 'Turok: Rage Wars', slug: 'turok-rage-wars' },
+    { key: 'wwfmercy', id: 160, name: 'WWF No Mercy', slug: 'wwf-no-mercy' },
+    { key: 'mariotennis', id: 161, name: 'Mario Tennis', slug: 'mario-tennis' },
+    { key: 'perfectdark', id: 162, name: 'Perfect Dark', slug: 'perfect-dark' },
+    { key: 'marioparty2', id: 163, name: 'Mario Party 2', slug: 'mario-party-2' },
+    { key: 'marioparty3', id: 164, name: 'Mario Party 3', slug: 'mario-party-3' },
+    { key: 'smashbros', id: 165, name: 'Super Smash Bros.', slug: 'super-smash-bros' },
+    { key: 'papermario', id: 166, name: 'Paper Mario', slug: 'paper-mario' },
+    { key: 'mariogolf', id: 167, name: 'Mario Golf', slug: 'mario-golf' },
+    { key: 'rayman2', id: 168, name: 'Rayman 2', slug: 'rayman-2' },
+    { key: 'goinquackers', id: 169, name: "Donald Duck: Goin' Quackers", slug: 'goin-quackers' },
+    { key: 'dinosaurplanet', id: 170, name: 'Dinosaur Planet', slug: 'dinosaur-planet' },
+    { key: 'turok', id: 171, name: 'Turok: Dinosaur Hunter', slug: 'turok-dinosaur-hunter' },
+    { key: 'turok2', id: 172, name: 'Turok 2: Seeds of Evil', slug: 'turok-2' },
+    { key: 'turok3', id: 173, name: 'Turok 3: Shadow of Oblivion', slug: 'turok-3' },
+    { key: 'excitebike64', id: 174, name: 'Excitebike 64', slug: 'excitebike-64' }
+];
+check(n64RecompGames.length === 41, 'expected all 41 n64hub games, found ' + n64RecompGames.length);
+const n64Js = maybeRead('js/ton64recomp.js');
+const n64Html = maybeRead('routes/n64recomp.html');
+const n64JsHead = n64Js.split('// ---- helpers')[0];
+const n64Sandbox = { localStorage: { getItem: () => null } };
+const n64Registry = new Function('localStorage', n64JsHead + '; return N64_REGISTRY;')(n64Sandbox.localStorage);
+n64RecompGames.forEach((game) => {
+    const card = games.filter((g) => g.name === game.name);
+    check(card.length === 1, 'expected exactly one ' + game.name + ' card, found ' + card.length);
+    check(card.length === 1 && card[0].id === game.id, game.name + ' card should use id ' + game.id);
+    check(card.length === 1 && card[0].category === 'recomp', game.name + ' is not in recomp');
+    check(card.length === 1 && card[0].url === '../routes/n64recomp.html?game=' + game.key,
+        game.name + ' route is wrong');
+    check(card.length === 1 && card[0].image === '../images/n64' + game.key + '.svg',
+        game.name + ' image is wrong');
+    check(fs.existsSync(path.join(root, 'images/n64' + game.key + '.svg')),
+        game.name + ' image is missing');
+    check(n64Registry[game.key] && n64Registry[game.key].url === 'https://n64hub.com/' + game.slug + '/',
+        'ton64recomp.js has no correct ' + game.name + ' registry entry');
+    check(/n64FallbackList/.test(n64Html) && /N64HUB_GAMES\.forEach/.test(n64Js),
+        'n64recomp.html must generate game page links from the registry');
+});
+check(/N64HUB_HOME\s*=\s*'https:\/\/n64hub\.com\/'/.test(n64Js), 'ton64recomp.js has no N64HUB_HOME');
+check(/credentialless/.test(n64Html), 'n64recomp.html iframe lacks credentialless isolation');
+check(/cross-origin-isolated/.test(n64Html), 'n64recomp.html iframe lacks cross-origin-isolated permission');
+check(/WebGPU/.test(n64Js), 'ton64recomp.js does not explain WebGPU requirements');
+check(/bring[- ]your[- ]own|Bring your own/i.test(n64Js), 'ton64recomp.js does not explain BYO ROM requirement');
+check(/Nintendo/.test(n64Js), 'ton64recomp.js has no Nintendo-unsupported notice');
+check(/Object\.prototype\.hasOwnProperty\.call\(N64_REGISTRY,\s*currentGameKey\)/.test(n64Js),
+    'N64 game key validation must use an own-property check');
+const n64I18n = new Function('localStorage', n64JsHead + '; return i18n;')(n64Sandbox.localStorage);
+check(Object.keys(n64I18n).every((lang) => typeof n64I18n[lang].invalidGame === 'string' && n64I18n[lang].invalidGame.length > 0),
+    'every N64 recomp language must have an invalidGame message');
+check(!/Super Mario 64 \/ F-Zero X \/ Mario Party/.test(n64Js) && !/Super Mario 64 \/ F-Zero X \/ Mario Party/.test(n64Html),
+    'N64 recomp ROM guidance must not mention only three supported games');
+const n64DivOpens = (n64Html.match(/<div\b/g) || []).length;
+const n64DivCloses = (n64Html.match(/<\/div>/g) || []).length;
+check(n64DivOpens === n64DivCloses, 'n64recomp.html has unbalanced div tags (' + n64DivOpens + ' open / ' + n64DivCloses + ' close)');
+check(/game\.html\?category=recomp/.test(n64Js), 'N64 recomp back link does not use category=recomp');
+check(/js\/ton64recomp\.js routes\/n64recomp\.html/.test(checksYml), 'checks.yml misses N64 recomp i18n pair');
+check(/js\/ton64recomp\.js/.test(checksYml.split('JavaScript syntax')[1] || ''),
+    'checks.yml misses N64 recomp syntax check');
+check(/\/routes\/n64recomp\.html/.test(sw), 'sw.js does not isolate the N64 recomp route');
+check(/N64Recomp/i.test(readme) && /n64hub/i.test(readme), 'README has no N64Recomp / n64hub credit');
+check(/bring[- ]your[- ]own|BYO/i.test(readme), 'README has no BYO ROM notice for N64 recompilations');
+
+// The 38 later N64 recomp icons must be individually illustrated local SVGs.
+const redrawnN64Icons = n64RecompGames.filter((g) => g.id >= 137);
+check(redrawnN64Icons.length === 38, 'expected 38 redrawn N64 icons, found ' + redrawnN64Icons.length);
+const n64IconMarkup = {};
+redrawnN64Icons.forEach((game) => {
+    const rel = 'images/n64' + game.key + '.svg';
+    const svg = fs.existsSync(path.join(root, rel)) ? read(rel) : '';
+    n64IconMarkup[game.key] = svg;
+    check(/^<svg\b/.test(svg) && /<\/svg>\s*$/.test(svg), game.name + ' icon is not a standalone SVG');
+    check(/viewBox="0 0 200 120"/.test(svg), game.name + ' icon lost the shared 200x120 viewBox');
+    check(!/hsl\(/.test(svg), game.name + ' icon still uses the interchangeable hsl() template');
+    check(/data-theme="[^"]+"/.test(svg), game.name + ' icon has no dedicated data-theme');
+    check(/data-art="[^"]+"/.test(svg), game.name + ' icon has no dedicated data-art');
+});
+const iconSignatures = redrawnN64Icons.map((game) => {
+    const svg = n64IconMarkup[game.key];
+    const theme = (svg.match(/data-theme="([^"]+)"/) || [])[1] || '';
+    const art = (svg.match(/data-art="([^"]+)"/) || [])[1] || '';
+    return theme + '|' + art;
+});
+check(new Set(iconSignatures).size === redrawnN64Icons.length,
+    'redrawn N64 icons must use unique theme/art signatures');
+
 
 if (failures.length) {
     failures.forEach((f) => console.log('FAIL: ' + f));

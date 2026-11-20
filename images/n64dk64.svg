@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" data-theme="jungle-gold" data-art="dk-barrel">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#1f7a3d"/>
+  <ellipse cx="100" cy="37" rx="30" ry="9" fill="#a85d2e"/>
+  <path d="M70 37 V66 Q70 76 100 76 Q130 76 130 66 V37" fill="#8b4722"/>
+  <ellipse cx="100" cy="66" rx="30" ry="9" fill="#a85d2e"/>
+  <text x="100" y="61" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#f5d06f">DK</text>
+  <rect x="52" y="90" width="96" height="12" rx="4" fill="#111827" opacity=".85"/>
+  <text x="100" y="99" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#fff">DK64</text>
+</svg>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>N64 Recomp Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .n64-wrapper { position: relative; max-width: 1024px; margin: 0 auto; background: #000; }
+        .n64-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: min(78vh, 640px);
+            border: 2px solid rgba(51,255,102,0.4);
+            border-radius: 10px;
+            background: #111;
+        }
+        .n64-wrapper iframe:fullscreen {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            border-radius: 0;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back"><i class="fas fa-arrow-left"></i></div>
+            <div class="header-title">
+                <i class="fas fa-gamepad"></i>
+                <span id="pageTitle" data-i18n="pageTitle">N64 Recomp</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="fullscreenBtn" style="display: none;">
+                <i class="fas fa-expand"></i><span data-i18n="fullscreen">Fullscreen</span>
+            </div>
+            <div class="header-action-btn" id="resetBtn" style="display: none;">
+                <i class="fas fa-redo"></i><span data-i18n="reset">Reset</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="upload-section" id="uploadSection">
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabDemo" data-tab="demo">
+                    <i class="fas fa-globe"></i><span data-i18n="tabDemo">Game</span>
+                </div>
+            </div>
+            <div class="search-box" id="demoBox">
+                <div class="upload-icon"><i class="fas fa-gamepad"></i></div>
+                <h2 class="upload-title" data-i18n="demoTitle">N64 Static Recomp</h2>
+                <p class="upload-desc" data-i18n="demoDesc">Run n64hub static recompilations of Nintendo 64 games in your browser. Game code is recompiled by N64Recomp with RT64 graphics and runs via WASM/WebGPU, embedded by hotlink from each project official page. Nothing is bundled here.</p>
+                <button class="upload-btn" id="demoOpenBtn" style="margin: 10px auto;">
+                    <i class="fas fa-play"></i><span data-i18n="demoOpen">Launch Game</span>
+                </button>
+                <p class="upload-desc" style="margin-top:14px;">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="demoHint">Bring your own lawfully obtained ROM and select the matching game version inside n64hub. Pick the ROM inside the n64hub page on first launch; nothing is uploaded to this app. Requires a recent desktop Chrome/Edge with WebGPU and cross-origin isolation. Independent, unofficial projects not endorsed by Nintendo.</span>
+                </p>
+                <a class="upload-desc" id="demoOpenNewTab" href="https://n64hub.com/" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;color:#33ff66;text-decoration:underline;">Open the game in a new tab ↗</a>
+                <p class="upload-desc" style="margin-top:10px;font-size:12px;opacity:0.75;">
+                    n64hub game pages: <span id="n64FallbackList"></span>
+                </p>
+            </div>
+
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title">
+                        <i class="fas fa-info-circle"></i>
+                        <span data-i18n="instructions">Instructions</span>
+                    </h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">Use a keyboard or gamepad; click inside the game area first so it receives input, and press Esc to release the keyboard</span></li>
+                            <li><i class="fas fa-gamepad"></i> <span data-i18n="controlsHint2">On first launch choose your own USA ROM inside the n64hub page; ROMs, settings and saves may not survive closing or reloading the embedded page</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-bolt"></i> <span data-i18n="aboutTitle">About</span></h4>
+                        <ul>
+                            <li><i class="fas fa-info-circle"></i> <span data-i18n="aboutHint">N64Recomp (GPL-3.0) statically recompiles N64 game code; RT64 provides rendering and the browser build uses Emscripten/WASM with WebGPU. This page hot-links n64hub builds, is not affiliated with Nintendo and ships no ROMs.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="emulator-section" id="playerSection">
+            <div class="n64-wrapper" id="n64Wrapper">
+                <iframe id="n64Frame" title="N64 static recompilation" allow="fullscreen; autoplay; cross-origin-isolated" credentialless></iframe>
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Starting the game, please wait...</span>
+                        <small data-i18n="loadingTip">The game loads from n64hub; first launch can take a while</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast hidden" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="../js/ton64recomp.js"></script>
+</body>
+
+</html>
