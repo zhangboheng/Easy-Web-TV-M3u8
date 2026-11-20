@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <rect x="70" y="18" width="60" height="78" rx="8" fill="#c8c8ce" stroke="#8a8a92" stroke-width="2"/>
+  <rect x="76" y="26" width="48" height="36" rx="4" fill="#f4f4f0" stroke="#9a9aa2" stroke-width="1.5"/>
+  <rect x="80" y="30" width="40" height="28" fill="#e8e8e0"/>
+  <rect x="88" y="68" width="24" height="18" rx="3" fill="#d8d8dc" stroke="#9a9aa2" stroke-width="1"/>
+  <circle cx="100" cy="77" r="5" fill="#b0b0b8"/>
+  <rect x="62" y="96" width="76" height="6" rx="3" fill="#8a8a92"/>
+  <text x="100" y="114" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#c8c8ce" text-anchor="middle">MAC</text>
+</svg>

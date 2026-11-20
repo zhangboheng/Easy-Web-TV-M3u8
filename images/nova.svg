@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="NOVA LANCER">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#050a24"/>
+      <stop offset="0.55" stop-color="#123a72"/>
+      <stop offset="1" stop-color="#f08a4b"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d68a8"/>
+      <stop offset="1" stop-color="#051331"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="180" fill="url(#sky)"/>
+  <circle cx="247" cy="52" r="22" fill="#ffd166" opacity="0.9"/>
+  <path d="M0 108 L46 94 L86 104 L126 88 L168 99 L208 84 L252 97 L320 86 L320 180 L0 180 Z" fill="url(#sea)"/>
+  <g fill="none" stroke="#79e7ff" stroke-width="1" opacity="0.7">
+    <path d="M0 126 Q80 116 160 126 T320 124"/>
+    <path d="M0 146 Q90 136 180 146 T320 142"/>
+    <path d="M0 166 Q100 156 200 166 T320 162"/>
+  </g>
+  <g transform="translate(148 92) rotate(-8)">
+    <path d="M0 0 L-34 18 L-8 12 L0 36 L8 12 L34 18 Z" fill="#dce8ff" stroke="#66a6ff" stroke-width="2"/>
+    <path d="M0 -12 L9 8 L0 4 L-9 8 Z" fill="#ff4d6d"/>
+    <circle cx="0" cy="6" r="5" fill="#35f2c8"/>
+  </g>
+  <g fill="#ff4d6d" opacity="0.95">
+    <circle cx="75" cy="48" r="4"/><circle cx="88" cy="40" r="4"/><circle cx="101" cy="48" r="4"/>
+    <circle cx="220" cy="29" r="3"/><circle cx="232" cy="22" r="3"/><circle cx="244" cy="29" r="3"/>
+  </g>
+  <rect x="1" y="1" width="318" height="178" rx="12" fill="none" stroke="#66a6ff" stroke-width="2"/>
+</svg>

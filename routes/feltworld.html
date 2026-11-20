@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Felt World - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .felt-wrapper { position: relative; max-width: 1280px; margin: 0 auto; background: #000; }
+        .felt-wrapper iframe { display: block; width: 100%; height: min(78vh, 720px); border: 2px solid rgba(51,102,255,0.4); border-radius: 10px; background: #111; }
+        .felt-wrapper iframe:fullscreen { width: 100vw; height: 100vh; border: none; border-radius: 0; background: #000; }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back"><i class="fas fa-arrow-left"></i></div>
+            <div class="header-title">
+                <i class="fas fa-cube"></i>
+                <span id="pageTitle" data-i18n="pageTitle">Felt World</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="fullscreenBtn" style="display: none;"><i class="fas fa-expand"></i><span data-i18n="fullscreen">Fullscreen</span></div>
+            <div class="header-action-btn" id="resetBtn" style="display: none;"><i class="fas fa-redo"></i><span data-i18n="reset">Reset</span></div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="upload-section" id="uploadSection">
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabDemo" data-tab="demo"><i class="fas fa-globe"></i><span data-i18n="tabDemo">Game</span></div>
+            </div>
+
+            <div class="search-box" id="demoBox">
+                <div class="upload-icon"><i class="fas fa-cube"></i></div>
+                <h2 class="upload-title" data-i18n="demoTitle">Felt World Open World</h2>
+                <p class="upload-desc" data-i18n="demoDesc">Explore a procedural 3D open world in your browser: drive, walk, fly, dive and explore beneath the sea. The game is embedded by hotlink from the official Felt World static build.</p>
+                <button class="upload-btn" id="demoOpenBtn" style="margin: 10px auto;"><i class="fas fa-play"></i><span data-i18n="demoOpen">Launch Game</span></button>
+                <p class="upload-desc" style="margin-top:14px;"><i class="fas fa-info-circle"></i><span data-i18n="demoHint">This host bundles no game code, textures or audio - Felt World and its three.js dependencies are loaded from the official site. Use the “Open in a new tab” link for the full standalone experience.</span></p>
+                <a class="upload-desc" id="demoOpenNewTab" href="https://az9713.github.io/opus-5.5-open-world-game/feltworld/" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;color:#33ff66;text-decoration:underline;">Open in a new tab ↗</a>
+            </div>
+
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title"><i class="fas fa-info-circle"></i><span data-i18n="instructions">Instructions</span></h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">Click inside the game area first so it receives keyboard input. Follow the in-game prompts to switch between driving, walking, flying, diving and submarine modes; touch controls are also supported.</span></li>
+                            <li><i class="fas fa-gamepad"></i> <span data-i18n="controlsHint2">Use the game own UI for pause, reset and fullscreen; press Esc or use the Reset button above to come back here.</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-bolt"></i> <span data-i18n="aboutTitle">About</span></h4>
+                        <ul>
+                            <li><i class="fas fa-info-circle"></i> <span data-i18n="aboutHint">Felt World is a single-file 3D open-world experiment built with three.js. Textures are generated with canvas and sound is synthesized with Web Audio. By az9713, MIT licensed.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="emulator-section" id="playerSection">
+            <div class="felt-wrapper" id="feltWrapper">
+                <iframe id="feltFrame" title="Felt World game" allow="fullscreen; autoplay"></iframe>
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Starting Felt World, please wait...</span>
+                        <small data-i18n="loadingTip">The game loads from az9713.github.io; an internet connection is required on first launch</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast hidden" id="toast"><i class="fas fa-info-circle"></i><span id="toastMessage"></span></div>
+
+    <script src="../js/tofelt.js"></script>
+</body>
+
+</html>

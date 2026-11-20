@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Android robot">
+  <path fill="#3DDC84" d="M15 27h34v24a5 5 0 0 1-5 5H20a5 5 0 0 1-5-5V27Z"/>
+  <path fill="#3DDC84" d="M19 9.5 23 15h18l4-5.5 3.4 2.3L42.8 20H21.2l-5.6-8.2L19 9.5Z"/>
+  <rect x="11" y="27" width="6" height="22" rx="3" fill="#3DDC84"/>
+  <rect x="47" y="27" width="6" height="22" rx="3" fill="#3DDC84"/>
+  <circle cx="24" cy="38" r="3" fill="#fff"/>
+  <circle cx="40" cy="38" r="3" fill="#fff"/>
+</svg>

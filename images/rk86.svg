@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 160" role="img" aria-label="Radio-86RK">
+  <rect width="256" height="160" rx="12" fill="#101820"/>
+  <rect x="28" y="24" width="200" height="112" rx="6" fill="#d8d3c2" stroke="#f2ede0" stroke-width="3"/>
+  <rect x="42" y="38" width="172" height="70" rx="3" fill="#0b3d2e"/>
+  <g fill="#55e6a5" font-family="monospace" font-size="17">
+    <text x="52" y="61">RADIO 86RK</text><text x="52" y="84">&gt; READY</text>
+  </g>
+  <g fill="#b8b2a0">
+    <rect x="42" y="117" width="11" height="7" rx="1"/><rect x="57" y="117" width="11" height="7" rx="1"/>
+    <rect x="72" y="117" width="11" height="7" rx="1"/><rect x="87" y="117" width="11" height="7" rx="1"/>
+    <rect x="102" y="117" width="11" height="7" rx="1"/><rect x="117" y="117" width="11" height="7" rx="1"/>
+    <rect x="132" y="117" width="11" height="7" rx="1"/><rect x="147" y="117" width="11" height="7" rx="1"/>
+    <rect x="162" y="117" width="11" height="7" rx="1"/><rect x="177" y="117" width="11" height="7" rx="1"/>
+    <rect x="192" y="117" width="11" height="7" rx="1"/>
+  </g>
+  <rect x="52" y="132" width="152" height="5" rx="2" fill="#8e8878"/>
+</svg>

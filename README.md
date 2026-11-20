@@ -67,63 +67,13 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 - Chapter navigation
 
 ### 🎮 Games
-- Built-in mini games (Square Obstacles, Pong, Breakout, Tic Tac Toe)
-- **Tamaweb virtual pet** - raise a pixel pet in real time (feeding, cleaning, adventures, growth); vendored from [Tamaweb](https://github.com/autosam/Tamaweb) by autosam under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-- **Emulator support** - Play retro console games, powered by [EmulatorJS](https://emulatorjs.org/)
-  - **Nintendo**: NES, SNES, N64, GB/GBC, GBA, NDS, Virtual Boy
-  - **PlayStation**: PS1/PSX, PSP (bring your own disc image; desktop recommended)
-  - **Sega**: Genesis/Mega Drive, Master System, Game Gear, Sega CD, Sega 32X, Saturn
-  - **Atari**: 2600, 5200, 7800, Jaguar, Lynx
-  - **Commodore**: C64, C128, VIC-20, PET, Plus/4, Amiga
-  - **SNK**: Neo Geo Pocket / Color
-  - **Bandai**: WonderSwan / Color
-  - **Amstrad**: CPC (464/6128)
-  - **Sinclair**: ZX Spectrum
-  - **Doom engine**: DOOM Shareware, Freedoom/Freedm, HacX (prboom)
-  - **Sony PlayStation 2**: [TabStationToo](https://tabstationtoo.github.io/TabStationToo/) (PCSX2 compiled to WebAssembly, GPL-3.0, hot-linked embed with cross-origin isolation delegation; the inline credentialless player uses temporary storage, with a new-tab link for persistent BIOS, games, memory cards and saves - nothing is bundled or uploaded; needs WebAssembly threads + SharedArrayBuffer + WebGPU, i.e. recent desktop Chrome/Edge)
-  - **Sony PlayStation Vita**: [vitaslop](https://github.com/cretz/vitaslop) (MIT, hot-linked embed of the official web app with a runtime ARM-to-WebAssembly translator and WebGPU rendering; the inline credentialless player uses temporary storage, with a new-tab link for persistent games and saves - nothing is bundled or uploaded; needs WebGPU + JSPI + SharedArrayBuffer + OPFS, i.e. recent desktop Chrome/Edge; early days - many commercial games boot and play, many do not)
-  - **NEC**: PC Engine / TurboGrafx-16, PC-FX (bring your own disc image + BIOS)
-  - **Coleco**: ColecoVision
-  - **3DO**: 3DO (bring your own firmware: panafz1/panafz10/goldstar/sanyotry .bin)
-  - **Flash**: Flash Player powered by [Ruffle](https://ruffle.rs/) (100 preset games, or load your own .swf via upload/URL/archive.org search; keyboard & mouse recommended)
-  - **DOS**: MS-DOS games powered by [js-dos](https://js-dos.com/) (100 preset classics, or load your own .zip/.jsdos via upload/URL/archive.org search; built-in DOS environment, no BIOS needed)
-  - **Retro PC**: full x86 PC emulation powered by [v86](https://github.com/copy/v86) (boot your own floppy/hard disk/CD image or Linux kernel; instant-play open-source bootsector games fetched live from GitHub, plus downloadable OS images from the official demo CDN), plus [jsbeeb](https://bbc.godbolt.org/) (BBC Micro) and [apple2js](https://www.scullinsteel.com/apple2/) (Apple II) embedded from their official deployments
-  - **Web Games**: classic open-source web games - the 5 built-in titles (Square Obstacles, Pong, Breakout, Tic Tac Toe, Tamaweb) plus 10 hot-linked classics (2048, Pac-Man, T-Rex Runner, Space Invaders, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun) served through one generic `?game=` hot-link player page
-  - **Recomp**: native-class ports recompiled or rebuilt for the browser, all hot-linked official web apps:
-    - [Red Alert 2 / Yuri's Revenge](https://ra2.games) via [RA2 VM](https://github.com/ra2-games/ra2) (v86 + Win32/DirectX compatibility layer, GPL-3.0, Alpha; bring your own RA2/YR files)
-    - [Diablo](https://d07riv.github.io/diabloweb/) via [diabloweb](https://github.com/d07RiV/diabloweb) (WebAssembly port of the source-released Devilution engine; the shareware episode is included, the full game needs your own `DIABDAT.MPQ`)
-    - [Zelda II: The Adventure of Link](https://z2rs.com/) via [z2rs](https://github.com/troyedwardsjr/z2rs) (MIT, clean-room Rust reconstruction compiled to WebAssembly; bring your own ROM)
-  - **Fantasy Console**: [WASM-4](https://wasm4.org/) (load any .wasm cart via upload or URL; self-contained vendored runtime)
-  - **Arcade**: FBNeo (incl. Neo Geo / CPS1 / CPS3), MAME 2003
-  - **Mobile platforms**: Palm OS via [CloudpilotEmu](https://github.com/cloudpilot-emu/cloudpilot-emu) (GPL-3.0) and Korean WIPI/SKVM/J2ME via [WIE](https://github.com/dlunch/wie) (MIT) - both hot-linked official web apps, bring your own ROM/files
-- **20000+ preset games** across 40 platforms, with search on the game launcher
-  - Nintendo: NES (805), SNES (772), GB/GBC (800), GBA (992), N64 (116), Virtual Boy (28)
-  - Sega: Genesis/Mega Drive (1841), Master System + Game Gear (1283)
-  - Coleco: ColecoVision (94)
-  - SNK: Neo Geo Pocket/Color (82)
-  - Bandai: WonderSwan/Color (208)
-  - Atari: 2600 (4145), 5200 (72), 7800 (27), Jaguar (49), Lynx (77)
-  - Commodore: Commodore 64 (49)
-  - Amstrad: CPC (6719)
-  - Sinclair: ZX Spectrum (67)
-  - Flash: 100 classic games (.swf, Ruffle)
-  - DOS: 100 classics like Oregon Trail, Prince of Persia, Wolfenstein 3D, Pac-Man and SimCity (.zip, js-dos)
-  - Doom engine: DOOM Shareware (4), Freedoom, Freedm, HacX
-  - Arcade (FBNeo): 149 games incl. the full Neo Geo MVS lineup (Metal Slug 1–5/X, King of Fighters '94–2003, Samurai Shodown I–V, The Last Blade 1/2, Garou, Real Bout Fatal Fury series, World Heroes series, Puzzle Bobble...), CPS1 classics (Cadillacs and Dinosaurs, Knights of the Round, King of Dragons, Magic Sword, Warriors of Fate, Ghouls 'n Ghosts), CPS3 (Marvel vs. Capcom 2) and 14 MAME-era classics (from the marlon-santana/roms-retro-arcade, roms-retro-neogeo, roms-retro-cps1 and roms-retro-cps3 sets on GitHub)
-- **Three ways to load a ROM**: pick from the preset list, upload a file (core auto-detected by extension), or paste a ROM URL
-- **BIOS upload support**: platforms needing a BIOS/firmware (Sega CD, 3DO, PC-FX) show a dedicated upload box on the emulator page; PSP needs none
-- **Fast ROM fetching**: direct download for CORS-enabled sources (e.g. GitHub-hosted ROMs), public CORS proxies only as fallback
-- **ROM caching**: downloaded ROMs and SWFs are stored in Cache Storage, so replaying the same game is instant and works even when proxies are down
-- **Manual download fallback**: if a preset or URL fails to load, an inline button lets you download the ROM file directly, then load it via upload
-- **Favorites & Recently Played**: star any game to pin it to the top of the launcher, and revisit the last 12 played games from the dedicated Recently Played category in the sidebar
-- **Gamepad navigation on the game hub**: browse categories and game cards with a gamepad D-pad/stick or keyboard arrow keys (TV friendly)
-- Gamepad support
-- Save/load states and fullscreen via the in-emulator controls
-- Reset button to return to the ROM selection screen
-- 🎮 **How to play with a gamepad on TV:**
-  1. Access the app through the browser on your TV
-  2. Select an emulator to enter
-  3. Plug in the gamepad before the game starts
+- Built-in mini games and a real-time virtual pet
+- **Emulator support** for retro consoles, handhelds, arcade, DOS, Flash, and classic computers via EmulatorJS and hot-linked engines
+- **Hot-linked browser games** including open-source classics, AI-generated web games, recompiled native-class ports, and standalone emulator apps
+- **20000+ preset games** across 40 platforms, with search and favorites on the game launcher
+- Flexible ROM loading from preset lists, local uploads, or URLs, with BIOS upload where required
+- Fast fetching, caching, and manual download fallback for unreliable sources
+- Gamepad navigation, save/load states, fullscreen, recently played, and TV-friendly controls
 
 ### 🔧 Other Features
 - 🌐 Multi-language support
@@ -241,15 +191,24 @@ All 43 EmulatorJS-based emulators + 10 standalone/hot-linked engines and their c
 | Fantasy | WASM-4 | wasm4 (vendored runtime) | – ³ | – |
 | Fantasy | PICO-8 (hot-linked web builds) | pico8 (no runtime bundled) | 5 | – |
 | Computer | MSX (WebMSX embed) | webmsx (hot-linked embed) | 3 ⁴ | – |
+| Computer | Radio-86RK (rk86-js embed) | rk86-js (hot-linked embed) | – | – |
+| Computer | Atari ST (EstyJS embed) | EstyJS (hot-linked embed) | – | – |
 | Mobile | J2ME (J2meJS embed) | j2mejs (hot-linked embed) | – | – |
+| Mobile | Android-x86 (v86, BYO Android-x86 image) | v86 (vendored engine) | – ⁵ | – |
 | Mobile | Palm OS (CloudpilotEmu embed) | cloudpilot-emu (hot-linked embed) | – | – |
 | Mobile | WIPI (WIE embed) | wie (hot-linked embed) | – | – |
-| **Total** | **53 platforms** | – | **20694** | **34 files** |
+| Web Games | Felt World (hot-linked embed, MIT) | three.js (hot-linked CDN) | – | – |
+| Web Games | NOVA LANCER (hot-linked embed, MIT) | three.js (hot-linked single-file build) | – | – |
+| Web Games | Casa de Gemas (hot-linked embed, MIT) | Canvas / Web Audio (hot-linked build) | – | – |
+| Web Games | Papertrails (hot-linked embed, MIT) | Canvas (hot-linked build) | – | – |
+| **Total** | **59 platforms** | – | **20694** | **34 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 ² No bundled games: load your own disc image via upload/URL, plus a BIOS file dumped from your own console (Sega CD: `bios_CD_U/J/E.bin`; PC-FX: `pcfx.rom`) using the BIOS upload box on the emulator page.
 ³ No bundled games: v86 bootsector demos boot from their authors' GitHub releases (BootRogue/BootBASIC/bootOS, BSD-2), OS images come from the official v86 demo CDN (copy.sh) and are downloaded to the Disk Image tab, and WASM-4 carts are loaded from the official cart library or your own file.
 ⁴ MSX presets are free/open homebrew ROMs hot-linked from their authors' official GitHub releases (nohzdyve GPL-3.0, Go Penguin!, Zeros Houkou R MIT); J2ME has no presets - open the official demo or load your own jars. Neither engine is bundled: WebMSX and J2meJS are embedded by hotlink per their authors' intended web-embedding use.
+⁵ Android-x86 boots a user-provided image with the vendored v86 engine (BSD-2-Clause). No Android system image, GApps, or proprietary apps are bundled: bring a lawful Android-x86 ISO/IMG, preferably a compact x86 6/7 build, and allow time for the browser VM to boot.
+
 ⁵ ZX81 presets are 12 freeware homebrew programs by Kurt-Arne Johnsen, hot-linked from the author's repository whose license says "Totally free" and requests author credit; Thomson and CD-i ship empty preset JSON files and are intentionally user-supplied-media only.
 
 ### Core Features
@@ -293,108 +252,9 @@ All 43 EmulatorJS-based emulators + 10 standalone/hot-linked engines and their c
 
 ## 📁 Project Structure
 
-```
-Easy-Web-TV-M3u8/
-├── index.html              # Main entry point
-├── manifest.json           # PWA manifest
-├── sw.js                   # Service worker (v8.5.0: index-shell precache + runtime caching)
-├── css/
-│   ├── main.css           # Main styles
-│   ├── style.css          # Additional styles
-│   └── emulatorjs.css     # Emulator-specific styles
-├── js/
-│   ├── index.js           # Main JavaScript (incl. Backup & Restore, changelog)
-│   ├── apiproxy.js        # Shared CORS-proxy failover helpers
-│   ├── core/
-│   │   ├── dom.js             # DOM helper ($ / DOM utilities)
-│   │   └── header-height.js  # Header height measurement (--header-height CSS var)
-│   ├── locales/
-│   │   └── translations.js  # 90+ language translations + i18n applier
-│   ├── translator.js      # Language detection & switching
-│   ├── emulatorjs.js      # Emulator logic & ROM loading
-│   ├── togame.js          # Game launcher & emulator picker
-│   ├── todos.js           # DOS games page (js-dos)
-│   ├── tov86.js           # Retro PC page (v86, presets & URL loading)
-│   ├── towasm4.js         # WASM-4 fantasy console page
-│   ├── topico8.js         # PICO-8 web games page (featured itch.io builds)
-│   ├── tomsx.js           # MSX page (WebMSX embed, homebrew presets)
-│   ├── toj2me.js          # J2ME page (J2meJS embed, jar upload/URL)
-│   ├── topalm.js          # Palm OS page (CloudpilotEmu embed, bring-your-own ROM)
-│   ├── towipi.js          # WIPI page (WIE embed, bring-your-own files)
-│   ├── tora2.js           # Red Alert 2 page (RA2 VM embed, bring-your-own game files)
-│   ├── tojsbeeb.js        # BBC Micro page (official jsbeeb embed)
-│   ├── toapple2js.js      # Apple II page (official apple2js embed)
-│   ├── tv.js              # TV channels page (tabs & search)
-│   ├── music.js           # Music player logic
-│   ├── podcast.js         # Podcast player with favorites
-│   ├── tomusic.js         # Music page navigation & podcast browsing
-│   └── ...                # Other modules
-├── data/
-│   └── roms/              # ROM catalogue files
-│       ├── nes.json          # 805 NES games
-│       ├── snes.json         # 772 SNES games
-│       ├── gb.json           # 800 GB/GBC games
-│       ├── gba.json          # 992 GBA games
-│       ├── n64.json          # 116 N64 games
-│       ├── genesis.json      # 1841 Genesis games
-│       ├── atari2600.json    # 4145 Atari 2600 games
-│       ├── atari5200.json    # 72 Atari 5200 games
-│       ├── sms.json          # 1283 Master System + Game Gear games
-│       ├── atari7800.json    # 27 Atari 7800 games
-│       ├── atarijaguar.json  # 49 Atari Jaguar games
-│       ├── atarilynx.json    # 77 Atari Lynx games
-│       ├── coleco.json       # 94 ColecoVision games
-│       ├── vb.json           # 28 Virtual Boy games
-│       ├── wonderswan.json   # 208 WonderSwan / WonderSwan Color games (No-Intro sets on archive.org)
-│       ├── ngp.json          # 82 Neo Geo Pocket / Color games (No-Intro 1G1R sets on archive.org)
-│       ├── cpc.json          # 6719 Amstrad CPC disk games (No-Intro set on archive.org)
-│       ├── doom.json         # 4 Doom-engine IWADs: DOOM Shareware, Freedoom, Freedm, HacX
-│       ├── c64.json          # 51 Commodore 64 games
-│       ├── c128.json         # 5 Commodore 128 games
-│       ├── vic20.json        # 156 VIC-20 games
-│       ├── arcade.json       # 149 Arcade (FBNeo) games: Neo Geo MVS + CPS1 + CPS3 + classics (marlon-santana/roms-retro-* on GitHub)
-│       ├── mame.json         # 153 Arcade (MAME 2003+) games, CRC-verified against the MAME 0.78 DAT
-│       ├── pet.json          # 14 Commodore PET games (milasoft64 on GitHub + archive.org)
-│       ├── plus4.json        # 5 Commodore Plus/4 games (No-Intro set on archive.org)
-│       ├── sega32x.json      # 33 Sega 32X games (No-Intro-style set on archive.org)
-│       ├── amiga.json        # 1455 Commodore Amiga games, single-disk ADF (TOSEC sets on archive.org)
-│       ├── pce.json          # 280 PC Engine / TurboGrafx-16 HuCard games (GoodPCE set on archive.org)
-│       ├── zx.json           # 67 ZX Spectrum games (snapshots .z80 / tapes .tzx / disks .dsk from single-game items on archive.org)
-│       ├── flash.json        # 100 Flash games (.swf from the archive.org softwarelibrary_flash_games collection, served by Ruffle)
-│       └── dos.json          # 100 MS-DOS games (.zip from the archive.org softwarelibrary_msdos_games collection, served by js-dos)
-├── routes/
-│   ├── tv.html            # TV page
-│   ├── movie.html         # Movie page
-│   ├── music.html         # Music page
-│   ├── radio.html         # Radio page
-│   ├── novel.html         # Novel page
-│   ├── manga.html         # Manga page
-│   ├── game.html          # Game page
-│   ├── emulatorjs.html    # Emulator pages
-│   ├── dos.html           # MS-DOS games (js-dos)
-│   ├── v86.html           # Retro PC / x86 emulation (v86)
-│   ├── wasm4.html         # WASM-4 fantasy console
-│   ├── pico8.html         # PICO-8 web games (featured builds, no runtime)
-│   ├── msx.html           # MSX (WebMSX embed, homebrew presets)
-│   ├── j2me.html          # J2ME (J2meJS embed, jar loading)
-│   ├── palm.html          # Palm OS (CloudpilotEmu embed, bring-your-own ROM)
-│   ├── wipi.html          # WIPI (WIE embed, bring-your-own files)
-│   ├── ra2.html           # Red Alert 2 (RA2 VM embed, bring-your-own game files)
-│   ├── jsbeeb.html        # BBC Micro (embedded jsbeeb)
-│   ├── apple2.html        # Apple II (embedded apple2js)
-│   └── ...                # Other pages
-├── vendor/
-│   ├── v86/               # v86 runtime: libv86.js + v86.wasm + SeaBIOS (BSD-2 / LGPL)
-│   ├── wasm4/             # WASM-4 slim runtime (MIT)
-│   └── js-dos/            # js-dos runtime (GPL-2.0)
-├── catalogues/
-│   └── *play.html         # Player pages
-├── gamebox/
-│   ├── ball/ bong/ breakout/ tic-tac-toe/  # Built-in mini games
-│   └── tamaweb/             # Tamaweb virtual pet (vendored, trackers stripped)
-└── images/
-    └── ...                # Image assets
-```
+The app is a static site. `index.html`, `manifest.json`, and `sw.js` are the main entry files; `routes/`, `js/`, and `css/` contain pages, modules, and styles.
+
+Supporting directories include `data/roms/` (preset catalogues), `vendor/` (local runtimes), `catalogues/` and `gamebox/` (extra players and built-in games), and `images/` (assets).
 
 ## 🤝 Contributing
 
@@ -428,6 +288,8 @@ This project uses the following open source projects:
 - [RA2 VM](https://github.com/ra2-games/ra2) - Red Alert 2 in the browser via v86 (GPL-3.0, hot-linked embed)
 - [diabloweb](https://github.com/d07RiV/diabloweb) - Diablo in the browser via WebAssembly (built on the source-released [Devilution](https://github.com/diasurgical/devilution) engine; hot-linked embed)
 - [z2rs](https://github.com/troyedwardsjr/z2rs) - Zelda II clean-room reconstruction in Rust/WebAssembly (MIT, hot-linked embed)
+- [rk86-js](https://github.com/begoon/rk86-js) - Radio-86RK emulator (MIT, hot-linked embed)
+- [EstyJS](https://github.com/kaiec/EstyJS) - Atari ST 520/1040 emulator (GPL-2.0-or-later, hot-linked embed)
 - [2048](https://github.com/devrsi0n/React-2048-game) (React-2048-game), [pacman](https://github.com/masonicGIT/pacman), [t-rex-runner](https://github.com/wayou/t-rex-runner), [spaceinvaders](https://github.com/dwmkerr/spaceinvaders), [skifree.js](https://github.com/basicallydan/skifree.js), [floppybird](https://github.com/nebez/floppybird), [HexGL](https://github.com/BKcore/HexGL), [Astray](https://github.com/wwwtyro/Astray), [q1k3](https://github.com/phoboslab/q1k3), [underrun](https://github.com/phoboslab/underrun) - open-source web games (MIT / GPL-3.0 / BSD-3-Clause / Apache-2.0 / Unlicense, hot-linked embeds)
 - [Font Awesome](https://fontawesome.com/) - Icons
 - [Tamaweb](https://github.com/autosam/Tamaweb) - Virtual pet game (vendored under `gamebox/tamaweb/`, CC BY-NC-SA 4.0)

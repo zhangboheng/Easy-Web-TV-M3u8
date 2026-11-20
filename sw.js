@@ -92,13 +92,12 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Cross-origin isolation for the PS Vita / PS2 player pages ONLY (v8.5.3).
+  // Cross-origin isolation for the PS Vita / PS2 / Classic Mac player pages ONLY (v8.5.3+).
   // Injecting COOP/COEP on these top-level navigations lets the embedded
-  // vitaslop / TabStationToo apps (which set COEP on their own responses) use
-  // SharedArrayBuffer inside their iframes - without touching any other
-  // page's hot-linked frames.
+  // vitaslop / TabStationToo / Infinite Mac apps use SharedArrayBuffer inside
+  // their iframes - without touching any other page's hot-linked frames.
   const isoUrl = new URL(event.request.url);
-  const ISO_PATHS = ['/routes/vita.html', '/routes/ps2.html'];
+  const ISO_PATHS = ['/routes/vita.html', '/routes/ps2.html', '/routes/mac.html'];
   if (
     event.request.mode === 'navigate' &&
     isoUrl.origin === self.location.origin &&

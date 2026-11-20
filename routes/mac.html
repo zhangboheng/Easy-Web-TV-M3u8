@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Mac Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .mac-wrapper { position: relative; max-width: 1024px; margin: 0 auto; background: #000; }
+        .mac-wrapper iframe { display: block; width: 100%; height: min(78vh, 600px); border: 2px solid rgba(51,102,255,0.4); border-radius: 10px; background: #111; }
+        .mac-wrapper iframe:fullscreen { width: 100vw; height: 100vh; border: none; border-radius: 0; background: #000; }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back"><i class="fas fa-arrow-left"></i></div>
+            <div class="header-title">
+                <i class="fas fa-gamepad"></i>
+                <span id="pageTitle" data-i18n="pageTitle">Classic Mac</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="fullscreenBtn" style="display: none;"><i class="fas fa-expand"></i><span data-i18n="fullscreen">Fullscreen</span></div>
+            <div class="header-action-btn" id="resetBtn" style="display: none;"><i class="fas fa-redo"></i><span data-i18n="reset">Reset</span></div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="upload-section" id="uploadSection">
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabDemo" data-tab="demo"><i class="fas fa-globe"></i><span data-i18n="tabDemo">Emulator</span></div>
+            </div>
+
+            <div class="search-box" id="demoBox">
+                <div class="upload-icon"><i class="fas fa-desktop"></i></div>
+                <h2 class="upload-title" data-i18n="demoTitle">Classic Macintosh Emulator</h2>
+                <p class="upload-desc" data-i18n="demoDesc">Run a classic Macintosh in your browser with Infinite Mac (embedded by hotlink to the official web app). System 7.1 boots by default, with the Infinite HD bonus software disk mounted.</p>
+                <button class="upload-btn" id="demoOpenBtn" style="margin: 10px auto;"><i class="fas fa-play"></i><span data-i18n="demoOpen">Launch Emulator</span></button>
+                <p class="upload-desc" style="margin-top:14px;"><i class="fas fa-info-circle"></i><span data-i18n="demoHint">No ROMs and no software are bundled - the emulator runs System 7.1 from the Infinite Mac project inside your browser; nothing is uploaded. Your disks and preferences persist in your browser&apos;s storage, and you can switch to other classic Mac OS versions from the emulator&apos;s own menu; the &ldquo;Open in a new tab&rdquo; link gives you the full standalone experience.</span></p>
+                <a class="upload-desc" id="demoOpenNewTab" href="https://infinitemac.org/" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;color:#33ff66;text-decoration:underline;">Open in a new tab ↗</a>
+            </div>
+
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title"><i class="fas fa-info-circle"></i><span data-i18n="instructions">Instructions</span></h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">The Mac desktop is controlled with your mouse and keyboard inside the embedded screen; use the emulator&apos;s own menu to pause, reset or change the emulated machine</span></li>
+                            <li><i class="fas fa-floppy-disk"></i> <span data-i18n="controlsHint2">System 7.1 boots by default with the Infinite HD software disk mounted; open the emulator&apos;s disk menu to mount your own disk images or switch to another classic Mac OS release</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-bolt"></i> <span data-i18n="aboutTitle">About</span></h4>
+                        <ul>
+                            <li><i class="fas fa-info-circle"></i> <span data-i18n="aboutHint">Classic Macintosh: Apple&apos;s 1984-2001 personal computers. Emulated by Infinite Mac (Apache 2.0), embedded by hotlink to the official web app. This host page runs cross-origin isolated, so SharedArrayBuffer stays available for full-speed emulation.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="emulator-section" id="playerSection">
+            <div class="mac-wrapper" id="macWrapper">
+                <iframe id="macFrame" title="Classic Macintosh emulator" allow="fullscreen; autoplay; cross-origin-isolated"></iframe>
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Starting Infinite Mac, please wait...</span>
+                        <small data-i18n="loadingTip">The emulator loads from its host site; the first boot can take a while</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast hidden" id="toast"><i class="fas fa-info-circle"></i><span id="toastMessage"></span></div>
+
+    <script src="../js/tomac.js"></script>
+</body>
+
+</html>

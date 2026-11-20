@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Atari ST Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .esty-wrapper { position: relative; max-width: 1024px; margin: 0 auto; background: #000; }
+        .esty-wrapper iframe { display: block; width: 100%; height: min(78vh, 600px); border: 2px solid rgba(51,102,255,0.4); border-radius: 10px; background: #111; }
+        .esty-wrapper iframe:fullscreen { width: 100vw; height: 100vh; border: none; border-radius: 0; background: #000; }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back"><i class="fas fa-arrow-left"></i></div>
+            <div class="header-title">
+                <i class="fas fa-desktop"></i>
+                <span id="pageTitle" data-i18n="pageTitle">Atari ST</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="fullscreenBtn" style="display: none;"><i class="fas fa-expand"></i><span data-i18n="fullscreen">Fullscreen</span></div>
+            <div class="header-action-btn" id="resetBtn" style="display: none;"><i class="fas fa-redo"></i><span data-i18n="reset">Reset</span></div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="upload-section" id="uploadSection">
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabDemo" data-tab="demo"><i class="fas fa-globe"></i><span data-i18n="tabDemo">Emulator</span></div>
+            </div>
+
+            <div class="search-box" id="demoBox">
+                <div class="upload-icon"><i class="fas fa-desktop"></i></div>
+                <h2 class="upload-title" data-i18n="demoTitle">Atari ST Emulator</h2>
+                <p class="upload-desc" data-i18n="demoDesc">Run the 68000-era Atari ST 520/1040 in your browser, embedded by hotlink to the official EstyJS web app. EstyJS 2.0 uses open-source EmuTOS and provides floppy loading, mouse synchronisation and fullscreen mode.</p>
+                <button class="upload-btn" id="demoOpenBtn" style="margin: 10px auto;"><i class="fas fa-play"></i><span data-i18n="demoOpen">Launch Emulator</span></button>
+                <p class="upload-desc" style="margin-top:14px;"><i class="fas fa-info-circle"></i><span data-i18n="demoHint">This host bundles no ROMs or software - EstyJS and EmuTOS are served by the official site, and .st/.sts floppy images are loaded in the emulator own UI. Use the ‘Open in a new tab’ link for the full standalone experience.</span></p>
+                <a class="upload-desc" id="demoOpenNewTab" href="https://kaiec.github.io/EstyJS/" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;color:#33ff66;text-decoration:underline;">Open in a new tab ↗</a>
+            </div>
+
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title"><i class="fas fa-info-circle"></i><span data-i18n="instructions">Instructions</span></h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">Click floppy drive A or B to load a .st/.sts image; click the embedded screen for keyboard focus, and use the middle mouse button to realign the pointer if needed.</span></li>
+                            <li><i class="fas fa-floppy-disk"></i> <span data-i18n="controlsHint2">Cursor keys and Ctrl emulate joystick 1, and real USB gamepads are supported; use the EstyJS toolbar for pause, sound, reset and fullscreen.</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-bolt"></i> <span data-i18n="aboutTitle">About</span></h4>
+                        <ul>
+                            <li><i class="fas fa-info-circle"></i> <span data-i18n="aboutHint">The Atari ST is a 16-bit home/professional computer launched in 1985 with a Motorola 68000 and built-in MIDI. Emulation by kaiec/EstyJS (GPL-2.0-or-later), using open-source EmuTOS by default.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="emulator-section" id="playerSection">
+            <div class="esty-wrapper" id="estyWrapper">
+                <iframe id="estyFrame" title="Atari ST emulator" allow="fullscreen; autoplay"></iframe>
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Starting Atari ST, please wait...</span>
+                        <small data-i18n="loadingTip">The emulator loads from kaiec.github.io; the first start can take a while</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast hidden" id="toast"><i class="fas fa-info-circle"></i><span id="toastMessage"></span></div>
+
+    <script src="../js/toesty.js"></script>
+</body>
+
+</html>

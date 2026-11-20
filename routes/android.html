@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Android-x86 Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .android-screen-wrapper { position: relative; max-width: 1024px; margin: 0 auto; background: #000; }
+        #screen_container { width: 100%; min-height: 360px; overflow: hidden; background: #000; }
+        #screen_container canvas { display: block; max-width: 100%; margin: 0 auto; }
+        .android-screen-wrapper:fullscreen { width: 100vw; height: 100vh; display: flex; align-items: center; }
+        .android-screen-wrapper:fullscreen #screen_container { width: 100%; height: 100%; }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back"><i class="fas fa-arrow-left"></i></div>
+            <div class="header-title">
+                <i class="fas fa-mobile-alt"></i>
+                <span id="pageTitle" data-i18n="pageTitle">Android-x86 Emulator</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="resetBtn" style="display: none;"><i class="fas fa-redo"></i><span data-i18n="reset">Reset</span></div>
+        </div>
+    </header>
+    <main class="main-container">
+        <section class="upload-section" id="uploadSection">
+            <div class="upload-tabs">
+                <div class="upload-tab active"><i class="fas fa-upload"></i><span data-i18n="uploadTitle">Boot an Android-x86 Image</span></div>
+            </div>
+            <div class="search-box">
+                <div class="upload-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h2 class="upload-title" data-i18n="uploadTitle">Boot an Android-x86 Image</h2>
+                <p class="upload-desc" data-i18n="uploadDesc">Select an Android-x86 .iso or .img and boot Android in a local browser x86 VM. Bring your own lawful image; this project bundles no Android system, GApps, or apps.</p>
+                <input type="file" id="diskInput" accept=".iso,.img,.ima,.dsk,.vfd" hidden>
+                <button class="upload-btn" id="uploadBtn"><i class="fas fa-upload"></i><span data-i18n="uploadSelect">Select Image</span></button>
+                <p class="upload-desc" style="margin-top:14px;"><i class="fas fa-info-circle"></i> <span data-i18n="uploadHint">The image stays on your device and is never uploaded. Images are large: desktop Chrome/Edge is recommended and the first boot can take a while.</span></p>
+            </div>
+
+            <div class="search-box" style="margin-top:18px;">
+                <h3 class="upload-title" data-i18n="urlTitle">Load an Image from URL</h3>
+                <p class="upload-desc" data-i18n="urlDesc">Enter a direct URL to an Android-x86 .iso / .img (the host must allow cross-origin access)</p>
+                <input type="url" id="diskUrlInput" class="url-input" data-i18n-placeholder="urlPlaceholder" placeholder="https://example.com/android-x86.iso" style="width:100%;margin:10px 0;">
+                <button class="upload-btn" id="urlLoadBtn"><i class="fas fa-link"></i><span data-i18n="loadImage">Load Image</span></button>
+            </div>
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title"><i class="fas fa-info-circle"></i><span data-i18n="instructions">Instructions</span></h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">Click the screen for keyboard focus; after Android-x86 boots, use the mouse to tap the UI and press Esc to leave fullscreen.</span></li>
+                            <li><i class="fas fa-compact-disc"></i> <span data-i18n="controlsHint2">Android x86 6/7 or smaller images are recommended; try another image if RAM is insufficient or boot fails.</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-info-circle"></i> <span data-i18n="aboutTitle">About</span></h4>
+                        <ul>
+                            <li><i class="fas fa-github"></i> <span data-i18n="aboutHint">This page uses v86 (BSD-2-Clause) to emulate an x86 PC in the browser. It distributes no Android system image, GApps, or proprietary software; obtain images from the Android-x86 project or another lawful source.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="emulator-section" id="playerSection">
+            <div class="v86-toolbar">
+                <button class="v86-tool-btn" id="pauseBtn"><i class="fas fa-pause"></i><span data-i18n="pause">Pause</span></button>
+                <button class="v86-tool-btn" id="restartBtn"><i class="fas fa-redo"></i><span data-i18n="restart">Restart</span></button>
+                <button class="v86-tool-btn" id="fullscreenBtn"><i class="fas fa-expand"></i><span data-i18n="fullscreen">Fullscreen</span></button>
+            </div>
+            <div class="android-screen-wrapper" id="screenWrapper">
+                <div id="screen_container">
+                    <div style="white-space: pre; font: 14px monospace; line-height: 14px"></div>
+                    <canvas style="display: none"></canvas>
+                </div>
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Loading Android-x86 image, please wait...</span>
+                        <small data-i18n="loadingTip">The x86 machine starts after the image is decoded; large images can take several minutes</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast hidden" id="toast"><i class="fas fa-info-circle"></i><span id="toastMessage"></span></div>
+
+    <script src="../vendor/v86/libv86.js"></script>
+    <script src="../js/toandroid.js"></script>

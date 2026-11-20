@@ -417,6 +417,14 @@ var games = [
         url: '../routes/apple2.html'
     },
     {
+        id: 124,
+        name: 'Classic Macintosh Emulator',
+        platform: 'Classic Mac',
+        category: 'retropc',
+        image: '../images/mac.svg',
+        url: '../routes/mac.html'
+    },
+    {
         id: 106,
         name: 'WASM-4 Fantasy Console',
         platform: 'WASM-4',
@@ -439,6 +447,30 @@ var games = [
         category: 'computer',
         image: '../images/msx.svg',
         url: '../routes/msx.html'
+    },
+    {
+        id: 125,
+        name: 'Radio-86RK Emulator',
+        platform: 'Radio-86RK',
+        category: 'computer',
+        image: '../images/rk86.svg',
+        url: '../routes/rk86.html'
+    },
+    {
+        id: 126,
+        name: 'Atari ST Emulator',
+        platform: 'Atari ST',
+        category: 'computer',
+        image: '../images/atarist.svg',
+        url: '../routes/esty.html'
+    },
+    {
+        id: 127,
+        name: 'Android-x86 Emulator',
+        platform: 'Android',
+        category: 'mobile',
+        image: '../images/android.svg',
+        url: '../routes/android.html'
     },
     {
         id: 109,
@@ -587,6 +619,38 @@ var games = [
         category: 'webgames',
         image: '../images/underrun.svg',
         url: '../routes/webgame.html?game=underrun'
+    },
+    {
+        id: 128,
+        name: 'Felt World',
+        platform: 'PC',
+        category: 'webgames',
+        image: '../images/feltworld.svg',
+        url: '../routes/feltworld.html'
+    },
+    {
+        id: 131,
+        name: 'NOVA LANCER',
+        platform: 'PC',
+        category: 'webgames',
+        image: '../images/nova.svg',
+        url: '../routes/nova.html'
+    },
+    {
+        id: 132,
+        name: 'Casa de Gemas',
+        platform: 'PC',
+        category: 'webgames',
+        image: '../images/casa.svg',
+        url: '../routes/casa.html'
+    },
+    {
+        id: 133,
+        name: 'Papertrails',
+        platform: 'PC',
+        category: 'webgames',
+        image: '../images/papertrails.svg',
+        url: '../routes/webgame.html?game=papertrails'
     },
 ];
 

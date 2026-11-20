@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Casa de Gemas - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .casa-wrapper { position: relative; max-width: 1280px; margin: 0 auto; background: #000; }
+        .casa-wrapper iframe { display: block; width: 100%; height: min(78vh, 720px); border: 2px solid rgba(51,102,255,0.4); border-radius: 10px; background: #111; }
+        .casa-wrapper iframe:fullscreen { width: 100vw; height: 100vh; border: none; border-radius: 0; background: #000; }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back"><i class="fas fa-arrow-left"></i></div>
+            <div class="header-title">
+                <i class="fas fa-gem"></i>
+                <span id="pageTitle" data-i18n="pageTitle">Casa de Gemas</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="fullscreenBtn" style="display: none;"><i class="fas fa-expand"></i><span data-i18n="fullscreen">Fullscreen</span></div>
+            <div class="header-action-btn" id="resetBtn" style="display: none;"><i class="fas fa-redo"></i><span data-i18n="reset">Reset</span></div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="upload-section" id="uploadSection">
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabDemo" data-tab="demo"><i class="fas fa-globe"></i><span data-i18n="tabDemo">Game</span></div>
+            </div>
+
+            <div class="search-box" id="demoBox">
+                <div class="upload-icon"><i class="fas fa-gem"></i></div>
+                <h2 class="upload-title" data-i18n="demoTitle">Casa de Gemas Hidden Gems</h2>
+                <p class="upload-desc" data-i18n="demoDesc">Find seasonal hidden gems in a watercolor Spanish house: shake branches, water the garden, rake leaves and listen to Oli the owl tell the story from spring to winter. The game is hot-linked from its official static build.</p>
+                <button class="upload-btn" id="demoOpenBtn" style="margin: 10px auto;"><i class="fas fa-play"></i><span data-i18n="demoOpen">Launch Game</span></button>
+                <p class="upload-desc" style="margin-top:14px;"><i class="fas fa-info-circle"></i><span data-i18n="demoHint">This host bundles no game code or assets - visuals are drawn with Canvas and music/sound are generated with Web Audio. Use “Open in a new tab” to use name and season URL parameters.</span></p>
+                <a class="upload-desc" id="demoOpenNewTab" href="https://deepujain.github.io/casadegema/" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;color:#33ff66;text-decoration:underline;">Open in a new tab ↗</a>
+            </div>
+
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title"><i class="fas fa-info-circle"></i><span data-i18n="instructions">Instructions</span></h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">Drag with the mouse to look around the courtyard, then click or drag objects to shake trees, pour water and rake leaves. Find every gem in the current season to reveal the final snowy-day surprise.</span></li>
+                            <li><i class="fas fa-mouse-pointer"></i> <span data-i18n="controlsHint2">The desktop version is designed for mouse input; the author also provides a mobile touch version. Sound starts muted - click the speaker icon in the page to enable it.</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-bolt"></i> <span data-i18n="aboutTitle">About</span></h4>
+                        <ul>
+                            <li><i class="fas fa-info-circle"></i> <span data-i18n="aboutHint">Casa de Gemas is an interactive watercolor garden built entirely through conversation with Claude Opus 5.5, using Canvas 2D and Web Audio with no external image or audio files. By deepujain, MIT licensed.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="emulator-section" id="playerSection">
+            <div class="casa-wrapper" id="casaWrapper">
+                <iframe id="casaFrame" title="Casa de Gemas game" allow="fullscreen; autoplay"></iframe>
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Starting, please wait...</span>
+                        <small data-i18n="loadingTip">Generated by the official page</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast hidden" id="toast"><i class="fas fa-info-circle"></i><span id="toastMessage"></span></div>
+
+    <script src="../js/tocasa.js"></script>
+</body>
+
+</html>

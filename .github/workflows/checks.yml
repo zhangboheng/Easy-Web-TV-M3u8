@@ -26,7 +26,14 @@ jobs:
             "js/toz2rs.js routes/z2rs.html" \
             "js/towebgame.js routes/webgame.html" \
             "js/tops2.js routes/ps2.html" \
-            "js/tovita.js routes/vita.html"; do
+            "js/tovita.js routes/vita.html" \
+            "js/tomac.js routes/mac.html" \
+            "js/tork86.js routes/rk86.html" \
+            "js/toesty.js routes/esty.html" \
+            "js/toandroid.js routes/android.html" \
+            "js/tofelt.js routes/feltworld.html" \
+            "js/tonova.js routes/nova.html" \
+            "js/tocasa.js routes/casa.html"; do
             node docs/superpowers/check-i18n.js $pair
           done
       - name: Game regressions
@@ -35,6 +42,6 @@ jobs:
         shell: bash
         run: |
           set -e
-          for file in js/togame.js js/tovita.js js/tops2.js js/towebgame.js; do
+          for file in js/togame.js js/tovita.js js/tops2.js js/tomac.js js/tork86.js js/toesty.js js/toandroid.js js/tofelt.js js/tonova.js js/tocasa.js js/towebgame.js; do
             node --check "$file"
           done
