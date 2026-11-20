@@ -293,7 +293,7 @@ This project uses the following open source projects:
 - [2048](https://github.com/devrsi0n/React-2048-game) (React-2048-game), [pacman](https://github.com/masonicGIT/pacman), [t-rex-runner](https://github.com/wayou/t-rex-runner), [spaceinvaders](https://github.com/dwmkerr/spaceinvaders), [skifree.js](https://github.com/basicallydan/skifree.js), [floppybird](https://github.com/nebez/floppybird), [HexGL](https://github.com/BKcore/HexGL), [Astray](https://github.com/wwwtyro/Astray), [q1k3](https://github.com/phoboslab/q1k3), [underrun](https://github.com/phoboslab/underrun) - open-source web games (MIT / GPL-3.0 / BSD-3-Clause / Apache-2.0 / Unlicense, hot-linked embeds)
 - [N64Recomp](https://github.com/N64Recomp/N64Recomp) and [n64hub](https://n64hub.com/) - Nintendo 64 static recompilations (all 41 games currently listed by n64hub; both n64hub's own recomps and third-party web ports, each credited to its upstream author/repository; browser builds via RT64/Emscripten/WASM/WebGPU, hot-linked embeds; bring your own lawfully obtained ROM; independent projects not endorsed by Nintendo)
 - [Font Awesome](https://fontawesome.com/) - Icons
-- [Tamaweb](https://github.com/autosam/Tamaweb) - Virtual pet game (vendored under `gamebox/tamaweb/`, CC BY-NC-SA 4.0)
+- [Tamaweb](https://github.com/autosam/Tamaweb) - Virtual pet game (official static build hot-linked from autosam.github.io, CC BY-NC-SA 4.0)
 - [js-dos](https://js-dos.com/), [Ruffle](https://ruffle.rs/), [WASM-4](https://wasm4.org/), [v86](https://github.com/copy/v86) - Vendored game runtimes
 - [iptv-org/iptv](https://github.com/iptv-org/iptv), archive.org collections - Preset ROM/SWF sources
 
@@ -313,7 +313,7 @@ This project is licensed under the GNU Affero General Public License v3.0 - see 
 
 Permissions of this weak copyleft license are conditioned on making available source code of licensed files and modifications of those files under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.
 
-**Third-party components** keep their own licenses: the vendored Tamaweb virtual pet (`gamebox/tamaweb/`) is CC BY-NC-SA 4.0 (non-commercial - do not monetize this component separately), and the vendored runtimes carry their own licenses (js-dos GPL-2.0, WASM-4 MIT, v86 BSD-2/LGPL, Ruffle Apache-2.0/MIT dual).
+**Third-party components** keep their own licenses: the Tamaweb virtual pet is loaded from the author's official static build (CC BY-NC-SA 4.0, non-commercial - do not monetize this component separately; name/branding/assets have separate terms), and the vendored runtimes carry their own licenses (js-dos GPL-2.0, WASM-4 MIT, v86 BSD-2/LGPL, Ruffle Apache-2.0/MIT dual).
 
 ---
 

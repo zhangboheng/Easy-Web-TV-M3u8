@@ -22,11 +22,6 @@ var games = {
         name: 'Tic Tac Toe',
         category: 'puzzle',
         url: '../gamebox/tic-tac-toe/tic-tac-toe-game.html'
-    },
-    'tamaweb': {
-        name: 'Tamaweb',
-        category: 'virtual pet',
-        url: '../gamebox/tamaweb/index.html'
     }
 };
 

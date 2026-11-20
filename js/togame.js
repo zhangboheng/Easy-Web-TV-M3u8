@@ -530,14 +530,14 @@ var games = [
         image: '../gamebox/tic-tac-toe/tictactoe.png',
         url: '../catalogues/gameplay.html?game=tic-tac-toe'
     },
-    // Tamaweb virtual pet (vendored from https://github.com/autosam/Tamaweb, CC BY-NC-SA 4.0)
+    // Tamaweb virtual pet (hot-linked official static build, CC BY-NC-SA 4.0)
     {
         id: 100,
         name: 'Tamaweb',
         platform: 'PC',
         category: 'webgames',
-        image: '../gamebox/tamaweb/resources/img/character/chara_100b.png',
-        url: '../catalogues/gameplay.html?game=tamaweb'
+        image: '../images/pet.svg',
+        url: '../routes/tamaweb.html'
     },
     // Open-source web games (hot-link via the generic player routes/webgame.html?game=<key>)
     {

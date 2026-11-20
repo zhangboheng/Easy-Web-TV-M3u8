@@ -268,6 +268,27 @@ check(/js\/tonova\.js routes\/nova\.html/.test(checksYml), 'checks.yml misses NO
 check(/js\/tonova\.js/.test(checksYml), 'checks.yml misses NOVA LANCER syntax check');
 const casaJs = maybeRead('js/tocasa.js');
 const casaHtml = maybeRead('routes/casa.html');
+const tamaJs = maybeRead('js/totamaweb.js');
+const tamaHtml = maybeRead('routes/tamaweb.html');
+const tamaCard = games.filter((g) => g.name === 'Tamaweb');
+check(tamaCard.length === 1, 'expected exactly one Tamaweb card, found ' + tamaCard.length);
+check(tamaCard.length === 1 && tamaCard[0].url === '../routes/tamaweb.html',
+    'Tamaweb card must use the dedicated hotlink route');
+check(tamaCard.length === 1 && !/gamebox\/tamaweb/.test(tamaCard[0].image),
+    'Tamaweb card must not use a vendored gamebox image');
+check(fs.existsSync(path.join(root, 'images/pet.svg')), 'Tamaweb image is missing: images/pet.svg');
+check(/https:\/\/autosam\.github\.io\/Tamaweb\//.test(tamaJs),
+    'totamaweb.js must point at the official Tamaweb static build');
+const tamaOpenTabHints = tamaJs.match(/openInNewTab:\s*(['"])(.*?)\1/g) || [];
+check(tamaOpenTabHints.length === 8, 'totamaweb.js should have 8 translated openInNewTab strings, found ' + tamaOpenTabHints.length);
+check(tamaOpenTabHints.every((hint) => (hint.match(/↗/g) || []).length === 1),
+    'totamaweb.js openInNewTab strings must contain exactly one arrow');
+check(/id="tamaFrame"/.test(tamaHtml), 'tamaweb.html iframe is missing');
+check(/js\/totamaweb\.js routes\/tamaweb\.html/.test(checksYml),
+    'checks.yml does not run i18n pairs for the Tamaweb page');
+check(/js\/totamaweb\.js/.test(checksYml), 'checks.yml does not syntax-check js/totamaweb.js');
+check(!fs.existsSync(path.join(root, 'gamebox/tamaweb')), 'vendored gamebox/tamaweb still exists');
+check(!/vendored under `gamebox\/tamaweb\/`/.test(readme), 'README still describes Tamaweb as vendored');
 const casaCard = games.filter((g) => g.name === 'Casa de Gemas');
 check(casaCard.length === 1, 'expected exactly one Casa de Gemas card, found ' + casaCard.length);
 check(casaCard.length === 1 && casaCard[0].id === 132, 'Casa de Gemas card should use id 132');

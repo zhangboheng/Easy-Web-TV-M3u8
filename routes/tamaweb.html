@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Tamaweb - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .tama-wrapper { position: relative; max-width: 1280px; margin: 0 auto; background: #000; }
+        .tama-wrapper iframe { display: block; width: 100%; height: min(78vh, 720px); border: 2px solid rgba(51,102,255,0.4); border-radius: 10px; background: #111; }
+        .tama-wrapper iframe:fullscreen { width: 100vw; height: 100vh; border: none; border-radius: 0; background: #000; }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back"><i class="fas fa-arrow-left"></i></div>
+            <div class="header-title">
+                <i class="fas fa-paw"></i>
+                <span id="pageTitle" data-i18n="pageTitle">Tamaweb</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="fullscreenBtn" style="display: none;"><i class="fas fa-expand"></i><span data-i18n="fullscreen">Fullscreen</span></div>
+            <div class="header-action-btn" id="resetBtn" style="display: none;"><i class="fas fa-redo"></i><span data-i18n="reset">Reset</span></div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="upload-section" id="uploadSection">
+            <div class="upload-tabs">
+                <div class="upload-tab active" id="tabDemo" data-tab="demo"><i class="fas fa-globe"></i><span data-i18n="tabDemo">Game</span></div>
+            </div>
+
+            <div class="search-box" id="demoBox">
+                <div class="upload-icon"><i class="fas fa-paw"></i></div>
+                <h2 class="upload-title" data-i18n="demoTitle">Tamaweb Virtual Pet</h2>
+                <p class="upload-desc" data-i18n="demoDesc">Raise a virtual pet in the browser: feed, clean, play, decorate rooms and watch it grow through day/night and seasons. The game is hot-linked from its official static build.</p>
+                <button class="upload-btn" id="demoOpenBtn" style="margin: 10px auto;"><i class="fas fa-play"></i><span data-i18n="demoOpen">Launch Game</span></button>
+                <p class="upload-desc" style="margin-top:14px;"><i class="fas fa-info-circle"></i><span data-i18n="demoHint">This host bundles no game code or assets. The official page may load its own analytics/error reporting; saves live on the official domain. Use “Open in a new tab” for the full experience.</span></p>
+                <a class="upload-desc" id="demoOpenNewTab" href="https://autosam.github.io/Tamaweb/" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;color:#33ff66;text-decoration:underline;">Open the game in a new tab ↗</a>
+            </div>
+
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader">
+                    <h3 class="instructions-title"><i class="fas fa-info-circle"></i><span data-i18n="instructions">Instructions</span></h3>
+                    <i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i>
+                </div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">Click the game screen to open menus, then use mouse or touch to feed, bathe, play, go on adventures and customize the room.</span></li>
+                            <li><i class="fas fa-mouse-pointer"></i> <span data-i18n="controlsHint2">Mouse and touch input are supported. Settings, save management and view size live in the official game menu; export your save in settings before relying on browser storage.</span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-card">
+                        <h4><i class="fas fa-bolt"></i> <span data-i18n="aboutTitle">About</span></h4>
+                        <ul>
+                            <li><i class="fas fa-info-circle"></i> <span data-i18n="aboutHint">Tamaweb is a virtual pet game by autosam; the browser build is hot-linked from the official GitHub Pages site. Credit the author and keep CC BY-NC-SA 4.0/non-commercial terms; name, branding and assets have separate terms.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="emulator-section" id="playerSection">
+            <div class="tama-wrapper" id="tamaWrapper">
+                <iframe id="tamaFrame" title="Tamaweb game" allow="fullscreen; autoplay"></iframe>
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">
+                        <span data-i18n="loading">Starting, please wait...</span>
+                        <small data-i18n="loadingTip">Provided by the official page</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast hidden" id="toast"><i class="fas fa-info-circle"></i><span id="toastMessage"></span></div>
+
+    <script src="../js/totamaweb.js"></script>
+</body>
+
+</html>
