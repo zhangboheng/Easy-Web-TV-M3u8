@@ -6,14 +6,14 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.5.7-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.5.8-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
 ## 📋 Table of Contents
 
 - [Demo](#-demo)
-- [What's New](#-whats-new-v856)
+- [What's New](#-whats-new-v858)
 - [Features](#-features)
 - [Screenshots](#-screenshots)
 - [Tech Stack](#-tech-stack)
@@ -28,13 +28,13 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 **[Live Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)**
 
-## 🆕 What's New (v8.5.7)
+## 🆕 What's New (v8.5.8)
 
-- **Full-screen Settings**: the settings modal is now a spacious two-column panel with persistent navigation, live source-category visibility and responsive layouts down to small phones
-- **Refreshed sources**: dead Theatre and Adult APIs were removed and replaced with working ones; a curated YouTube source was added to Theatre
-- **Sensitive Content sync**: the Porn source tab follows the Sensitive Content toggle and the Basic settings badge stays accurate
-- **Translated source tabs**: the source-type tabs localize into every UI language with a safe English fallback
-- **Keyboard hardening**: global shortcuts no longer break when a key event targets a non-element
+- **One proxy pool, with memory**: every CORS-proxied request now shares a single pool (`js/proxy-config.js`) that remembers which proxies failed - a bad proxy is demoted for 1-30 minutes instead of stalling the next request, demotions and proxies added in Settings take effect without a page reload, and each failover attempt has its own timeout so a hung proxy cannot freeze the page
+- **Binary-safe downloads**: proxies that transcode responses as text (corrupting ROMs, disk images and WASM-4 carts with U+FFFD) are detected, given a long cooldown and skipped by every downloader
+- **96 languages**: the interface is translated into 96 languages, and 20 languages that already existed in the translation table are selectable again
+- **Player fixes**: the WASM-4 loading overlay is mounted at body level and waits for the runtime before hiding (with fail-fast cart loading), the TV grid spinner is properly centred, and podcasts keep their overlay across the XML parse retry
+- **Dead code removed**: the obsolete `GO!` category flow (its targets were deleted in V8.2.1), the duplicate `#selectform` id, the positional button labelling that erased icon buttons, and the unused NeoGeo BIOS duplicate under `routes/bios/`
 
 ## ✨ Features
 
@@ -75,7 +75,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 - Gamepad navigation, save/load states, fullscreen, recently played, and TV-friendly controls
 
 ### 🔧 Other Features
-- 🌐 Multi-language support
+- 🌐 Support for 96 interface languages
 - ⭐ Favorites system for all content types
 - 🔍 Powerful search functionality
 - 📱 Responsive design for mobile devices
@@ -216,7 +216,7 @@ All 43 EmulatorJS-based emulators + 10 standalone/hot-linked engines and their c
 - **URL parameter support**: Direct link to specific platform (e.g., `?core=snes9x`)
 - **No core selection UI**: Simplified interface with automatic detection
 - **Error handling**: Comprehensive error handling with user-friendly messages
-- **Smart CORS strategy**: Direct fetch first for CORS-enabled hosts (GitHub raw, archive.org APIs); resilient proxy failover with 30s timeout for free-tier proxies, detection of proxy error pages returned as HTTP 200, and detection of binary-corrupting proxies that transcode responses as text (U+FFFD mangling)
+- **Smart CORS strategy**: direct fetch first for CORS-enabled hosts (GitHub raw, archive.org APIs), then failover through one shared proxy pool with a persistent health cache - a proxy that just failed is demoted for 1-30 minutes, text-transcoding proxies that mangle binary bodies (U+FFFD) get a long cooldown and are skipped by the downloaders, the pool is re-read on every request, and each attempt has its own timeout so a hung proxy cannot freeze the page
 
 ## 🚀 Getting Started
 
