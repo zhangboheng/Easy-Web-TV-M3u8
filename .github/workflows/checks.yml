@@ -36,11 +36,11 @@ jobs:
             "js/tocasa.js routes/casa.html" \
             "js/totamaweb.js routes/tamaweb.html" \
             "js/ton64recomp.js routes/n64recomp.html" \
-            "js/tobrowserport.js routes/browserport.html" \\
-            "js/todos.js routes/dos.html" \\
-            "js/toflash.js routes/flash.html" \\
-            "js/tov86.js routes/v86.html" \\
-            "js/towasm4.js routes/wasm4.html" \\
+            "js/tobrowserport.js routes/browserport.html" \
+            "js/todos.js routes/dos.html" \
+            "js/toflash.js routes/flash.html" \
+            "js/tov86.js routes/v86.html" \
+            "js/towasm4.js routes/wasm4.html" \
             "js/emulatorjs.js routes/emulatorjs.html"; do
             node docs/superpowers/check-i18n.js $pair
           done
