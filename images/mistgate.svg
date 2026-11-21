@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <rect x="30" y="10" width="140" height="100" rx="12" fill="#161616" stroke="#3a3a3a" stroke-width="2"/>
+  <!-- screen: misty mountain gate -->
+  <rect x="42" y="22" width="116" height="66" rx="6" fill="#1b2436"/>
+  <g opacity="0.55" fill="#6f7f95">
+    <path d="M42 74 Q58 58 74 70 Q88 56 104 68 Q120 56 136 68 Q148 62 158 72 L158 88 L42 88 Z"/>
+  </g>
+  <!-- mountain gate pillars and lintel -->
+  <g fill="#0e1626" stroke="#7fa8d8" stroke-width="2">
+    <rect x="62" y="46" width="9" height="32" rx="2"/>
+    <rect x="129" y="46" width="9" height="32" rx="2"/>
+    <rect x="58" y="40" width="82" height="8" rx="3"/>
+  </g>
+  <!-- mist drifting through the gate -->
+  <g fill="#8fa7c4" opacity="0.6">
+    <path d="M66 58 Q86 52 106 58 Q124 53 134 58 L134 62 Q116 57 96 62 Q76 57 66 62 Z"/>
+  </g>
+  <!-- moon glow above the gate -->
+  <circle cx="140" cy="36" r="7" fill="#d8e4ff" opacity="0.85"/>
+  <circle cx="160" cy="97" r="4" fill="#33ff66"/>
+</svg>

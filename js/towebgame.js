@@ -14,7 +14,8 @@ var WEBGAME_REGISTRY = {
     'astray':        { name: 'Astray',         url: 'https://wwwtyro.github.io/Astray/',                  repo: 'wwwtyro/Astray',            license: 'Unlicense' },
     'q1k3':          { name: 'Q1K3',           url: 'https://phoboslab.org/q1k3/',                        repo: 'phoboslab/q1k3',            license: 'MIT' },
     'underrun':      { name: 'Underrun',       url: 'https://phoboslab.org/underrun/',                    repo: 'phoboslab/underrun',            license: 'MIT' },
-    'papertrails':   { name: 'Papertrails',    url: 'https://xikhar.github.io/papertrails/',              repo: 'xikhar/papertrails',            license: 'MIT' }
+    'papertrails':   { name: 'Papertrails',    url: 'https://xikhar.github.io/papertrails/',              repo: 'xikhar/papertrails',            license: 'MIT' },
+    'wusuomon':      { name: '雾锁山门',        url: 'https://op7418.github.io/guizang-game-skill/',       repo: 'op7418/guizang-game-skill',   license: 'AGPL-3.0 (demo content © 2026 歸藏)' }
 };
 
 // Internationalization (8 languages, same key set as topalm.js)
@@ -37,7 +38,7 @@ var i18n = {
         controlsHint1: '大多数游戏使用方向键加空格/回车，部分游戏支持触摸',
         controlsHint2: '先点击游戏区域让游戏获得键盘输入；按 Esc 或使用重置按钮返回本页',
         aboutTitle: '关于',
-        aboutHint: '开源网页游戏与互动作品合集：2048、吃豆人、T-Rex Runner、太空侵略者、SkiFree、Flappy Bird、HexGL、Astray、Q1K3、Underrun、Papertrails——全部热链自官方演示站点。',
+        aboutHint: '开源网页游戏与互动作品合集：2048、吃豆人、T-Rex Runner、太空侵略者、SkiFree、Flappy Bird、HexGL、Astray、Q1K3、Underrun、Papertrails、雾锁山门——全部热链自官方演示站点。',
         playing: '正在运行：',
         fullscreen: '全屏'
     },
@@ -59,7 +60,7 @@ var i18n = {
         controlsHint1: 'Most games use the arrow keys plus Space/Enter; some also support touch',
         controlsHint2: 'Click inside the game area first so it receives keyboard input; press Esc or use the Reset button to come back here',
         aboutTitle: 'About',
-        aboutHint: 'A collection of open-source web games and interactive works: 2048, Pac-Man, T-Rex Runner, Space Invaders, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun and Papertrails - all hot-linked from their official demo sites.',
+        aboutHint: 'A collection of open-source web games and interactive works: 2048, Pac-Man, T-Rex Runner, Space Invaders, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun, Papertrails and Mist Gate (雾锁山门) - all hot-linked from their official demo sites.',
         playing: 'Now running: ',
         fullscreen: 'Fullscreen'
     },ja: {
@@ -80,7 +81,7 @@ var i18n = {
         controlsHint1: '多くのゲームは矢印キーと Space/Enter で操作します。タッチ対応のものもあります',
         controlsHint2: '先にゲーム領域をクリックしてキーボード入力を渡してください。Esc またはリセットボタンでこの画面に戻ります',
         aboutTitle: 'について',
-        aboutHint: 'オープンソースの Web ゲームとインタラクティブ作品集：2048、パックマン、T-Rex Runner、スペースインベーダー、SkiFree、Flappy Bird、HexGL、Astray、Q1K3、Underrun、Papertrails - すべて公式デモサイトへのホットリンク。',
+        aboutHint: 'オープンソースの Web ゲームとインタラクティブ作品集：2048、パックマン、T-Rex Runner、スペースインベーダー、SkiFree、Flappy Bird、HexGL、Astray、Q1K3、Underrun、Papertrails、雾锁山门 - すべて公式デモサイトへのホットリンク。',
         playing: '実行中：',
         fullscreen: '全画面'
     },
@@ -102,7 +103,7 @@ var i18n = {
         controlsHint1: '대부분의 게임은 방향키와 Space/Enter로 조작하며, 일부는 터치도 지원합니다',
         controlsHint2: '먼저 게임 영역을 클릭해 키보드 입력을 받게 하세요. Esc 또는 재설정 버튼으로 돌아옵니다',
         aboutTitle: '정보',
-        aboutHint: '오픈소스 웹 게임과 인터랙티브 작품 모음: 2048, 팩맨, T-Rex Runner, 스페이스 인베이더, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun, Papertrails - 모두 공식 데모 사이트 핫링크.',
+        aboutHint: '오픈소스 웹 게임과 인터랙티브 작품 모음: 2048, 팩맨, T-Rex Runner, 스페이스 인베이더, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun, Papertrails, 雾锁山门 - 모두 공식 데모 사이트 핫링크.',
         playing: '실행 중: ',
         fullscreen: '전체 화면'
     },fr: {
@@ -123,7 +124,7 @@ var i18n = {
         controlsHint1: "La plupart des jeux utilisent les flèches plus Espace/Entrée ; certains gèrent le tactile",
         controlsHint2: "Cliquez d'abord dans la zone de jeu pour qu'elle reçoive le clavier ; Échap ou le bouton Réinitialiser revient ici",
         aboutTitle: 'À propos',
-        aboutHint: 'Une collection de jeux web open source et d’œuvres interactives : 2048, Pac-Man, T-Rex Runner, Space Invaders, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun et Papertrails - tous en lien direct depuis leurs sites de démonstration officiels.',
+        aboutHint: 'Une collection de jeux web open source et d’œuvres interactives : 2048, Pac-Man, T-Rex Runner, Space Invaders, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun, Papertrails et Mist Gate (雾锁山门) - tous en lien direct depuis leurs sites de démonstration officiels.',
         playing: 'En cours : ',
         fullscreen: 'Plein écran'
     },
@@ -145,7 +146,7 @@ var i18n = {
         controlsHint1: 'Die meisten Spiele nutzen die Pfeiltasten plus Leertaste/Enter; einige unterstützen Touch',
         controlsHint2: 'Klicke zuerst in den Spielbereich, damit er Tastatureingaben erhält; Esc oder der Zurücksetzen-Knopf führt hierher zurück',
         aboutTitle: 'Über',
-        aboutHint: 'Eine Sammlung von Open-Source-Webgames und interaktiven Werken: 2048, Pac-Man, T-Rex Runner, Space Invaders, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun und Papertrails - alle per Hotlink von ihren offiziellen Demo-Seiten.',
+        aboutHint: 'Eine Sammlung von Open-Source-Webgames und interaktiven Werken: 2048, Pac-Man, T-Rex Runner, Space Invaders, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun, Papertrails und Mist Gate (雾锁山门) - alle per Hotlink von ihren offiziellen Demo-Seiten.',
         playing: 'Läuft: ',
         fullscreen: 'Vollbild'
     },es: {
@@ -166,7 +167,7 @@ var i18n = {
         controlsHint1: 'La mayoría de los juegos usan las flechas más Espacio/Enter; algunos también soportan táctil',
         controlsHint2: 'Haz clic primero en el área del juego para que reciba el teclado; Esc o el botón Reiniciar vuelve aquí',
         aboutTitle: 'Acerca de',
-        aboutHint: 'Una colección de juegos web de código abierto y obras interactivas: 2048, Pac-Man, T-Rex Runner, Space Invaders, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun y Papertrails, todos con enlace directo desde sus sitios de demostración oficiales.',
+        aboutHint: 'Una colección de juegos web de código abierto y obras interactivas: 2048, Pac-Man, T-Rex Runner, Space Invaders, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun, Papertrails y Mist Gate (雾锁山门), todos con enlace directo desde sus sitios de demostración oficiales.',
         playing: 'En ejecución: ',
         fullscreen: 'Pantalla completa'
     },
@@ -188,7 +189,7 @@ var i18n = {
         controlsHint1: 'Большинство игр используют стрелки плюс Space/Enter; некоторые поддерживают касания',
         controlsHint2: 'Сначала кликните в области игры, чтобы она получала ввод с клавиатуры; Esc или кнопка сброса вернут вас сюда',
         aboutTitle: 'О игре',
-        aboutHint: 'Коллекция веб-игр с открытым кодом и интерактивных работ: 2048, Pac-Man, T-Rex Runner, Space Invaders, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun и Papertrails - все по горячей ссылке с официальных демо-сайтов.',
+        aboutHint: 'Коллекция веб-игр с открытым кодом и интерактивных работ: 2048, Pac-Man, T-Rex Runner, Space Invaders, SkiFree, Flappy Bird, HexGL, Astray, Q1K3, Underrun, Papertrails и Mist Gate (雾锁山门) - все по горячей ссылке с официальных демо-сайтов.',
         playing: 'Запущено: ',
         fullscreen: 'Полный экран'
     }

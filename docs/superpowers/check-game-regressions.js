@@ -319,6 +319,18 @@ check(/'papertrails':\s*\{\s*name:\s*'Papertrails',\s*url:\s*'https:\/\/xikhar\.
     'towebgame.js has no correct Papertrails registry entry');
 check(/Papertrails \(hot-linked embed, MIT\)/.test(readme), 'README has no Papertrails credit');
 
+// 雾锁山门: AI-generated single-HTML 3D action game hot-linked via the generic player.
+const wusuomonCard = games.filter((g) => g.name === '雾锁山门 (AI 3D)');
+check(wusuomonCard.length === 1, 'expected exactly one 雾锁山门 (AI 3D) card, found ' + wusuomonCard.length);
+check(wusuomonCard.length === 1 && wusuomonCard[0].id === 176, '雾锁山门 (AI 3D) card should use id 176');
+check(wusuomonCard.length === 1 && wusuomonCard[0].category === 'webgames', '雾锁山门 (AI 3D) is not in webgames');
+check(wusuomonCard.length === 1 && wusuomonCard[0].url === '../routes/webgame.html?game=wusuomon', '雾锁山门 (AI 3D) route is wrong');
+check(wusuomonCard.length === 1 && wusuomonCard[0].image === '../images/mistgate.svg', '雾锁山门 (AI 3D) image is wrong');
+check(fs.existsSync(path.join(root, 'images/mistgate.svg')), 'mistgate.svg is missing');
+check(/'wusuomon':\s*\{\s*name:\s*'雾锁山门',\s*url:\s*'https:\/\/op7418\.github\.io\/guizang-game-skill\/',\s*repo:\s*'op7418\/guizang-game-skill',\s*license:\s*'AGPL-3\.0 \(demo content © 2026 歸藏\)'\s*\}/.test(webgame),
+    'towebgame.js has no correct 雾锁山门 registry entry');
+check(/雾锁山门 \(hot-linked embed, AGPL-3\.0\)/.test(readme), 'README has no 雾锁山门 credit');
+
 // Recomp cards must label a real platform, not repeat the game title.
 const recompCards = games.filter((g) => g.category === 'recomp');
 check(recompCards.length === 45, 'expected 45 recomp cards, found ' + recompCards.length);

@@ -201,6 +201,7 @@ All 43 EmulatorJS-based emulators + 10 standalone/hot-linked engines and their c
 | Web Games | NOVA LANCER (hot-linked embed, MIT) | three.js (hot-linked single-file build) | – | – |
 | Web Games | Casa de Gemas (hot-linked embed, MIT) | Canvas / Web Audio (hot-linked build) | – | – |
 | Web Games | Papertrails (hot-linked embed, MIT) | Canvas (hot-linked build) | – | – |
+| Web Games | 雾锁山门 (hot-linked embed, AGPL-3.0) | three.js (AI-generated single-HTML) | – | – |
 | **Total** | **59 platforms** | – | **20694** | **34 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
@@ -293,6 +294,7 @@ This project uses the following open source projects:
 - [2048](https://github.com/devrsi0n/React-2048-game) (React-2048-game), [pacman](https://github.com/masonicGIT/pacman), [t-rex-runner](https://github.com/wayou/t-rex-runner), [spaceinvaders](https://github.com/dwmkerr/spaceinvaders), [skifree.js](https://github.com/basicallydan/skifree.js), [floppybird](https://github.com/nebez/floppybird), [HexGL](https://github.com/BKcore/HexGL), [Astray](https://github.com/wwwtyro/Astray), [q1k3](https://github.com/phoboslab/q1k3), [underrun](https://github.com/phoboslab/underrun) - open-source web games (MIT / GPL-3.0 / BSD-3-Clause / Apache-2.0 / Unlicense, hot-linked embeds)
 - [N64Recomp](https://github.com/N64Recomp/N64Recomp) and [n64hub](https://n64hub.com/) - Nintendo 64 static recompilations (all 41 games currently listed by n64hub; both n64hub's own recomps and third-party web ports, each credited to its upstream author/repository; browser builds via RT64/Emscripten/WASM/WebGPU, hot-linked embeds; bring your own lawfully obtained ROM; independent projects not endorsed by Nintendo)
 - [isle.pizza](https://isle.pizza/) ([isledecomp](https://github.com/isledecomp/isle)) - LEGO Island rebuilt from decompiled source, runs in the browser with no game files needed (hot-linked embed)
+- [guizang-game-skill](https://github.com/op7418/guizang-game-skill) - AI-generated 3D action game demo 《雾锁山门》 (AGPL-3.0, demo content © 2026 歸藏, hot-linked embed)
 - [Font Awesome](https://fontawesome.com/) - Icons
 - [Tamaweb](https://github.com/autosam/Tamaweb) - Virtual pet game (official static build hot-linked from autosam.github.io, CC BY-NC-SA 4.0)
 - [js-dos](https://js-dos.com/), [Ruffle](https://ruffle.rs/), [WASM-4](https://wasm4.org/), [v86](https://github.com/copy/v86) - Vendored game runtimes

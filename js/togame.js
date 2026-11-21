@@ -652,6 +652,15 @@ var games = [
         image: '../images/papertrails.svg',
         url: '../routes/webgame.html?game=papertrails'
     },
+    // 雾锁山门 (AI-generated 3D action game, hot-link via the generic player, AGPL-3.0 + demo content © 2026 歸藏)
+    {
+        id: 176,
+        name: '雾锁山门 (AI 3D)',
+        platform: 'PC',
+        category: 'webgames',
+        image: '../images/mistgate.svg',
+        url: '../routes/webgame.html?game=wusuomon'
+    },
     {
         id: 134,
         name: 'Super Mario 64',
