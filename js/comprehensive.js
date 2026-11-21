@@ -157,6 +157,8 @@ document.addEventListener('DOMContentLoaded', function() {
         loadLocalVideo();
     } else if (initlink === 'https://archive.org') {
         loadArchiveVideo(id);
+    } else if (initlink === 'https://youtube-nocookie.com') {
+        loadCuratedYouTubeVideo(id);
     } else {
         loadVideoData(initlink, id);
     }
@@ -169,6 +171,74 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Load video data from API
+// ============================== curated YouTube open movies ==============================
+// Load a curated Blender open movie from data/videos/youtube.json and play it
+// through YouTube's official iframe player. No direct video URL is fetched,
+// proxied or stored; the embedded player keeps its own controls, branding and ads.
+function loadCuratedYouTubeVideo(videoId) {
+    if (!videoId) {
+        showError('No video id provided');
+        return;
+    }
+    fetch('../data/videos/youtube.json').then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+    }).then(function (data) {
+        var videos = (data && data.videos) || [];
+        if (!Array.isArray(videos)) throw new Error('Invalid catalogue');
+        var found = null;
+        for (var i = 0; i < videos.length; i++) {
+            if (videos[i].id === videoId) { found = videos[i]; break; }
+        }
+        if (!found) {
+            showError('This video is not in the curated Blender open movies list.');
+            return;
+        }
+
+        var zh = false;
+        try {
+            var lang = String(localStorage.getItem('preferredLanguage') ||
+                localStorage.getItem('languages') || (navigator.language || '') || '').toLowerCase();
+            zh = lang.indexOf('zh') === 0;
+        } catch (e) { /* storage unavailable: keep English title */ }
+        videoName = (zh && found.titleZh) ? found.titleZh : found.title;
+        videoDes = (found.channel || 'Blender') + ' · ' + (found.license || 'CC-BY') +
+            ' · ' + (found.year || '') + '. Played via YouTube official embedded player.';
+
+        var wrapper = document.querySelector('.video-wrapper');
+        var frame = document.getElementById('youtubeFrame');
+        if (!wrapper || !frame) {
+            showError('YouTube player container is missing.');
+            return;
+        }
+        wrapper.classList.add('youtube-mode');
+        if (player) { player.pause(); }
+
+        document.getElementById('videoTitle').textContent = videoName;
+        document.getElementById('detailContent').innerHTML = '<p>' + escapeHtml(videoDes) + '</p>';
+        document.getElementById('episodeCount').textContent = '1';
+
+        // rel=0 limits recommendations to the same channel; the official
+        // controls, logo and ads are intentionally left untouched.
+        frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(videoId) + '?rel=0';
+        document.getElementById('currentEpisode').textContent = videoName;
+
+        var sidebar = document.getElementById('sidebar');
+        if (sidebar) sidebar.classList.add('collapsed');
+        var toolbar = document.getElementById('top-toolbar');
+        if (toolbar) toolbar.classList.add('hidden');
+
+        episodes = [videoName];
+        links = [];
+        renderEpisodeList();
+        var ep = document.querySelector('.episode-item[data-index="0"]');
+        if (ep) ep.classList.add('active');
+        })
+        .catch(function () {
+            showError('Failed to load the curated movie list. Please check your connection.');
+        });
+}
+
 // ============================== archive.org classic movies ==============================
 // Load a public-domain movie from archive.org: fetch its metadata, pick the
 // first playable mp4/ogv file, and feed it through the normal episode player.
@@ -319,20 +389,28 @@ function renderEpisodeList() {
     var episodeList = document.getElementById('episodeList');
     episodeList.innerHTML = '';
     
+    var youtubeMode = (function () {
+        var wrapper = document.querySelector('.video-wrapper');
+        return !!(wrapper && wrapper.classList.contains('youtube-mode'));
+    })();
     for (var i = 0; i < episodes.length; i++) {
         var displayName = videoName + ' - ' + episodes[i];
-        var favKey = FAV_PREFIX + links[i];
+        var favKey = FAV_PREFIX + (links[i] || '');
         var isFavorited = window.localStorage.getItem(favKey) === displayName;
         
         var div = document.createElement('div');
         div.className = 'episode-item';
         div.setAttribute('data-index', i);
+        // YouTube items have no direct stream URL to favourite; hiding the
+        // heart avoids storing a meaningless empty-key favourite entry.
+        var favHtml = youtubeMode ? '' :
+            '<i class="fas fa-heart favorite-btn ' + (isFavorited ? 'active' : '') + '" data-link="' + escapeHtml(links[i] || '') + '" data-name="' + escapeHtml(displayName) + '"></i>';
         div.innerHTML = 
             '<div class="episode-icon">' +
                 '<i class="fas fa-play"></i>' +
             '</div>' +
             '<span class="episode-name">' + escapeHtml(episodes[i]) + '</span>' +
-            '<i class="fas fa-heart favorite-btn ' + (isFavorited ? 'active' : '') + '" data-link="' + escapeHtml(links[i]) + '" data-name="' + escapeHtml(displayName) + '"></i>';
+            favHtml;
         
         episodeList.appendChild(div);
     }
@@ -342,6 +420,10 @@ function renderEpisodeList() {
     items.forEach(function(item) {
         item.addEventListener('click', function(e) {
             if (!e.target.classList.contains('favorite-btn')) {
+                // YouTube embedded mode keeps its own player controls; the
+                // episode row is display-only in that mode.
+                var wrapper = document.querySelector('.video-wrapper');
+                if (wrapper && wrapper.classList.contains('youtube-mode')) return;
                 var index = parseInt(this.getAttribute('data-index'));
                 playEpisode(index);
             }

@@ -308,6 +308,10 @@
             gap: 20px;
             min-height: 100%;
             position: relative;
+            /* Keep cards at their natural height when only one row exists:
+               without this, min-height:100% + the default stretch alignment
+               expands the single row into tall "strips". */
+            align-content: start;
         }
         
         .content-grid.has-results {

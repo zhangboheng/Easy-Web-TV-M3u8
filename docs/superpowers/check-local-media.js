@@ -171,6 +171,11 @@ const localEmptyKeys = {
 };
 Object.keys(localEmptyKeys).forEach(function (rel) {
     const src = exists(rel) ? read(rel) : '';
+    // Route pages may carry more than one dictionary (e.g. TC_I18N and
+    // LOCAL_I18N in tocomprehensive.js). langBlockHas picks the first match,
+    // so restrict only that lookup to the local-media dictionary's block.
+    const marker = src.indexOf('LOCAL_I18N');
+    const dictSrc = marker >= 0 ? src.slice(marker) : src;
     const key = localEmptyKeys[rel];
     check(src.indexOf(key) >= 0, rel + ' lacks ' + key + ' empty-state message');
     check(new RegExp("onEmpty\\s*:[\\s\\S]{0,160}localT\\('" + key + "'\\)").test(src),
@@ -180,7 +185,7 @@ Object.keys(localEmptyKeys).forEach(function (rel) {
     check(/'ja', 'ko', 'fr', 'de', 'es', 'ru'/.test(src),
         rel + ' localLang does not normalize the route-page UI languages');
     ['ja', 'ko', 'fr', 'de', 'es', 'ru'].forEach(function (lang) {
-        check(langBlockHas(src, lang, key), rel + ' lacks ' + lang + ' translation for ' + key);
+        check(langBlockHas(dictSrc, lang, key), rel + ' lacks ' + lang + ' translation for ' + key);
     });
     check(/window\.LocalMediaI18N/.test(src), rel + ' does not merge the shared i18n dictionary');
 });

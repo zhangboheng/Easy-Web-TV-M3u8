@@ -6,14 +6,14 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.5.5-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.5.6-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
 ## 📋 Table of Contents
 
 - [Demo](#-demo)
-- [What's New](#-whats-new-v855)
+- [What's New](#-whats-new-v856)
 - [Features](#-features)
 - [Screenshots](#-screenshots)
 - [Tech Stack](#-tech-stack)
@@ -28,14 +28,13 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 **[Live Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)**
 
-## 🆕 What's New (v8.5.5)
+## 🆕 What's New (v8.5.6)
 
-- **PDF support in the local manga reader**: a folder of scanned books now works - `.pdf` files are accepted next to images and each PDF becomes one chapter, rendered page by page with a vendored copy of pdf.js (a CDN is only used as a fallback), so it keeps working offline
-- **Big books stay usable**: a single open is capped at 400 pages and rendering yields to the browser every 4 pages, so the reader paints progress instead of freezing; switching chapters cancels the running render and frees its page images, and a truncated book says so rather than quietly ending early
-- **Storage hardening**: a quota-aborted write is no longer reported as success, IndexedDB reads distinguish "no row" from "read failed", and one cached connection replaces a per-file open; files whose names contain the id separator no longer collide, so reading positions and staged files can't cross-wire between books
-- **Missing files are surfaced**: a chapter that resolves only partially now tells you to re-pick the folder instead of silently rendering fewer pages, and a folder scan that hits its entry/depth limit warns you that part of it was skipped
-- **Text decoding fixes**: large local novels no longer overflow the stack while decoding, GB18030 fallback is strict (binary junk reports an error instead of rendering as mojibake), and chapter load failures show the real reason
-- **Consistent headers**: every route now uses the same solid black header bar with the 2px accent underline, and on phones the tab row gets its own centered line with a 16px search input that stops iOS Safari from zooming on focus
+- **Curated YouTube movies in Theatre**: a new YouTube source plays 7 Blender Foundation / Blender Studio open movies (Big Buck Bunny, Sintel, Tears of Steel, Elephants Dream, Cosmos Laundromat, Agent 327 and Spring) through YouTube's official privacy-enhanced iframe - player controls, branding and channel links stay intact
+- **Compliant by design**: a small hand-picked white list needs no API key, never fetches, proxies or stores a direct video URL, and avoids ads-blocking or UI tampering; category filters and local search work over the curated list
+- **Translated everywhere**: the source picker description and labels are localized in all 8 UI languages (zh, en, ja, ko, fr, de, es, ru)
+- **Mist Gate game**: the AI-generated 3D game 《雾锁山门》 is hot-linked in Web Games
+- **Layout fix**: Theatre cards no longer stretch into tall strips when only a few results are shown
 
 ## ✨ Features
 
@@ -48,7 +47,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 ### 🎬 Movies & Series
 - Search and watch movies, series, animes, and shows
 - Multiple source options
-- **Source selection dialog** with language badges (EN/CN) and an archive.org classic-movies source (public-domain films); reopen it anytime from the source dropdown
+- **Source selection dialog** with language badges (EN/CN), an archive.org classic-movies source (public-domain films), and a curated Blender open-movies source (CC-BY, embedded via YouTube's official player); reopen it anytime from the source dropdown
 - Favorites and watch history
 - 🎮 **Player controls**: playback speed (0.5x–2x), ±10s skip buttons around the progress bar, keyboard shortcuts (Space = play/pause, ←/→ = seek ±10s), plus Video.js built-ins (F fullscreen, M mute); mobile-friendly control bar
 
@@ -299,6 +298,7 @@ This project uses the following open source projects:
 - [Tamaweb](https://github.com/autosam/Tamaweb) - Virtual pet game (official static build hot-linked from autosam.github.io, CC BY-NC-SA 4.0)
 - [js-dos](https://js-dos.com/), [Ruffle](https://ruffle.rs/), [WASM-4](https://wasm4.org/), [v86](https://github.com/copy/v86) - Vendored game runtimes
 - [iptv-org/iptv](https://github.com/iptv-org/iptv), archive.org collections - Preset ROM/SWF sources
+- [Blender Foundation Open Movies](https://www.blender.org/about/projects/) - Big Buck Bunny, Sintel, Tears of Steel, Elephants Dream, Cosmos Laundromat, Agent 327 and Spring (CC-BY), played via YouTube's official embedded player from the official Blender / Blender Studio channels; no video is downloaded, proxied or stored by this app
 
 ## Star History
 

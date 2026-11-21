@@ -331,6 +331,54 @@ check(/'wusuomon':\s*\{\s*name:\s*'雾锁山门',\s*url:\s*'https:\/\/op7418\.gi
     'towebgame.js has no correct 雾锁山门 registry entry');
 check(/雾锁山门 \(hot-linked embed, AGPL-3\.0\)/.test(readme), 'README has no 雾锁山门 credit');
 
+// Curated Blender open movies from YouTube: official embedded player only.
+const ytJson = JSON.parse(read('data/videos/youtube.json'));
+check(ytJson.videos.length === 7, 'expected 7 curated Blender open movies, found ' + ytJson.videos.length);
+check(ytJson.videos.every((v) => /^[A-Za-z0-9_-]{11}$/.test(v.id)), 'all YouTube ids must be 11-char video ids');
+const ytChannels = ['Blender', 'Blender Studio'];
+check(ytJson.videos.every((v) => ytChannels.indexOf(v.channel) > -1 && /^CC-BY/.test(v.license)),
+    'curated movies must be official Blender / Blender Studio CC-BY uploads');
+const ytIds = ytJson.videos.map((v) => v.id);
+['aqz-KE-bpKQ', 'eRsGyueVLvQ', 'R6MlUcmOul8', 'TLkA0RELQ1g', 'Y-rmzh0PI3c', 'mN0zPOpADL4', 'WhWc3b3KhnY'].forEach((id) => {
+    check(ytIds.indexOf(id) > -1, 'curated list must contain official Blender movie ' + id);
+});
+const toComp = read('js/tocomprehensive.js');
+const comp = read('js/comprehensive.js');
+const compHtml = read('catalogues/complay.html');
+check(/'youtube_blender':\s*\{\s*url:\s*'https:\/\/youtube-nocookie\.com'/.test(toComp), 'Theater has no curated YouTube source');
+check(/fetch\('\.\.\/data\/videos\/youtube\.json'\)/.test(toComp) && /fetch\('\.\.\/data\/videos\/youtube\.json'\)/.test(comp),
+    'local YouTube catalogue must be loaded with native fetch (not the CORS proxy)');
+check(/function loadCuratedYouTubeVideos/.test(toComp) && /function loadCuratedYouTubeSearch/.test(toComp),
+    'tocomprehensive.js has no curated YouTube loader/search');
+check(/function loadCuratedYouTubeVideo/.test(comp), 'comprehensive.js has no curated YouTube playback branch');
+check(/youtube-nocookie\.com\/embed\//.test(comp), 'comprehensive.js does not use the official YouTube embed endpoint');
+check(/id="youtubeFrame"/.test(compHtml), 'complay.html has no YouTube iframe container');
+check(/youtube-mode/.test(comp) && /favorite-btn/.test(comp),
+    'comprehensive.js has no YouTube-mode favourite suppression');
+check(!/tcT\(noResults\)/.test(toComp), 'tocomprehensive.js still has unquoted tcT(noResults) bug');
+check(/Blender Foundation Open Movies/.test(readme), 'README has no Blender open movies credit');
+// Theater source-picker copy must be translated into the same 8 UI languages.
+const tcHead = toComp.split('function tcLang')[0];
+const tcI18n = new Function('localStorage', 'navigator', tcHead + '; return TC_I18N;')(
+    { getItem: () => null }, { language: 'en' });
+const tcLangs = ['en', 'zh', 'ja', 'ko', 'fr', 'de', 'es', 'ru'];
+const tcKeys = Object.keys(tcI18n.en);
+check(tcLangs.every((l) => tcI18n[l]), 'Theater i18n is missing one of the 8 UI languages');
+tcLangs.forEach((l) => {
+    check(Object.keys(tcI18n[l] || {}).length === tcKeys.length,
+        'Theater i18n ' + l + ' has a different key count than en');
+    tcKeys.forEach((k) => check(typeof (tcI18n[l] || {})[k] === 'string' && (tcI18n[l] || {})[k].length > 0,
+        'Theater i18n ' + l + '.' + k + ' is missing'));
+});
+check(/var uiLangs = \['ja', 'ko', 'fr', 'de', 'es', 'ru'\]/.test(toComp),
+    'tcLang() does not recognise all 8 UI languages');
+// Every language's source-picker description must mention the YouTube source,
+// not just the old CMS + archive.org copy.
+tcLangs.forEach((l) => {
+    check(/YouTube/i.test(tcI18n[l].dlgDesc),
+        'Theater i18n ' + l + '.dlgDesc does not mention the YouTube source');
+});
+
 // Recomp cards must label a real platform, not repeat the game title.
 const recompCards = games.filter((g) => g.category === 'recomp');
 check(recompCards.length === 45, 'expected 45 recomp cards, found ' + recompCards.length);

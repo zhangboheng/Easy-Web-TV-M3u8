@@ -6,6 +6,7 @@
 // archive: uses the archive.org data loader instead of the Chinese CMS API
 var movieSources = {
     'archive_classic': { url: 'https://archive.org', name: 'Classic Movies (Public Domain)', lang: 'en', archive: true },
+    'youtube_blender': { url: 'https://youtube-nocookie.com', name: 'YouTube', lang: 'en', youtube: true },
     'hyzy': { url: 'https://www.huyaapi.com/api.php/provide/vod/at/json', name: '虎牙资源', lang: 'zh' },
     'xlzy': { url: 'https://api.xinlangapi.com/xinlangapi.php/provide/vod/json', name: '新浪资源', lang: 'zh' },
     'gszy': { url: 'https://api.guangsuapi.com/api.php/provide/vod/json', name: '光速资源', lang: 'zh' },
@@ -21,7 +22,7 @@ var movieSources = {
 var TC_I18N = {
     en: {
         dlgTitle: 'Choose Movie Sources',
-        dlgDesc: 'Movie feeds come from community CMS APIs (Chinese) plus public-domain classics from archive.org (English). Pick the sources you want — you can change this later from the source dropdown at the top.',
+        dlgDesc: 'Movie feeds come from community CMS APIs (Chinese), public-domain classics from archive.org (English), and curated CC-BY open movies from YouTube. Pick the sources you want — you can change this later from the source dropdown at the top.',
         dlgConfirm: 'Confirm',
         dlgSkip: 'Use all sources',
         langZh: 'Chinese',
@@ -42,7 +43,7 @@ var TC_I18N = {
     },
     zh: {
         dlgTitle: '选择影片内容源',
-        dlgDesc: '影片源来自社区 CMS 资源站（中文）以及 archive.org 的公共领域经典电影（英文）。选择你想看的源——之后可随时在顶部下拉框里修改。',
+        dlgDesc: '影片源来自社区 CMS 资源站（中文）、archive.org 的公共领域经典电影（英文），以及 YouTube 上精选的 CC-BY 开源电影（官方嵌入播放）。选择你想看的源——之后可随时在顶部下拉框里修改。',
         dlgConfirm: '确认',
         dlgSkip: '使用全部源',
         langZh: '中文',
@@ -60,15 +61,145 @@ var TC_I18N = {
         editSources: '⚙ 编辑内容源...',
         searchPh: '搜索影片...',
         unknown: '未知'
+    },
+    ja: {
+        dlgTitle: '動画ソースを選択',
+        dlgDesc: '動画ソースはコミュニティ CMS（中国語）、archive.org のパブリックドメイン映画（英語）、および YouTube の厳選された CC-BY オープン映画です。使用するソースを選択してください。上部のドロップダウンからいつでも変更できます。',
+        dlgConfirm: '確認',
+        dlgSkip: 'すべてのソースを使用',
+        langZh: '中国語',
+        langEn: '英語',
+        latest: '最新更新',
+        loadingCats: 'カテゴリを読み込み中...',
+        loadingVids: '動画を読み込み中...',
+        noVideos: '動画が見つかりません',
+        failCats: 'カテゴリの読み込みに失敗',
+        failVids: '動画の読み込みに失敗',
+        searchFail: '検索に失敗しました',
+        searching: '検索中...',
+        noResults: '結果が見つかりません',
+        needSource: '少なくとも 1 つのソースを選択してください',
+        editSources: '⚙ ソースを編集...',
+        searchPh: '動画を検索...',
+        unknown: '不明'
+    },
+    ko: {
+        dlgTitle: '영화 소스 선택',
+        dlgDesc: '영화 소스는 커뮤니티 CMS(중국어), archive.org 퍼블릭 도메인 영화(영어), YouTube의 엄선된 CC-BY 오픈 영화입니다. 사용할 소스를 선택하세요. 상단 드롭다운에서 언제든 변경할 수 있습니다.',
+        dlgConfirm: '확인',
+        dlgSkip: '모든 소스 사용',
+        langZh: '중국어',
+        langEn: '영어',
+        latest: '최신 업데이트',
+        loadingCats: '카테고리 로딩 중...',
+        loadingVids: '영화 로딩 중...',
+        noVideos: '영화를 찾을 수 없습니다',
+        failCats: '카테고리 로드 실패',
+        failVids: '영화 로드 실패',
+        searchFail: '검색 실패',
+        searching: '검색 중...',
+        noResults: '결과가 없습니다',
+        needSource: '소스를 하나 이상 선택하세요',
+        editSources: '⚙ 소스 편집...',
+        searchPh: '영화 검색...',
+        unknown: '알 수 없음'
+    },
+    fr: {
+        dlgTitle: 'Choisir les sources de films',
+        dlgDesc: 'Les sources proviennent de CMS communautaires (chinois), de films du domaine public sur archive.org (anglais) et de films ouverts CC-BY sélectionnés sur YouTube. Choisissez les sources à utiliser — modifiables à tout moment depuis le menu déroulant en haut.',
+        dlgConfirm: 'Confirmer',
+        dlgSkip: 'Utiliser toutes les sources',
+        langZh: 'Chinois',
+        langEn: 'Anglais',
+        latest: 'Dernières mises à jour',
+        loadingCats: 'Chargement des catégories...',
+        loadingVids: 'Chargement des films...',
+        noVideos: 'Aucun film trouvé',
+        failCats: 'Échec du chargement des catégories',
+        failVids: 'Échec du chargement des films',
+        searchFail: 'Échec de la recherche',
+        searching: 'Recherche...',
+        noResults: 'Aucun résultat',
+        needSource: 'Veuillez sélectionner au moins une source',
+        editSources: '⚙ Modifier les sources...',
+        searchPh: 'Rechercher des films...',
+        unknown: 'Inconnu'
+    },
+    de: {
+        dlgTitle: 'Filmquellen auswählen',
+        dlgDesc: 'Die Quellen stammen aus Community-CMS (Chinesisch), Public-Domain-Filmen von archive.org (Englisch) und ausgewählten CC-BY-Open-Movies auf YouTube. Wähle die gewünschten Quellen — jederzeit änderbar über das Dropdown oben.',
+        dlgConfirm: 'Bestätigen',
+        dlgSkip: 'Alle Quellen verwenden',
+        langZh: 'Chinesisch',
+        langEn: 'Englisch',
+        latest: 'Neueste Updates',
+        loadingCats: 'Kategorien werden geladen...',
+        loadingVids: 'Filme werden geladen...',
+        noVideos: 'Keine Filme gefunden',
+        failCats: 'Kategorien konnten nicht geladen werden',
+        failVids: 'Filme konnten nicht geladen werden',
+        searchFail: 'Suche fehlgeschlagen',
+        searching: 'Suche...',
+        noResults: 'Keine Ergebnisse',
+        needSource: 'Bitte mindestens eine Quelle auswählen',
+        editSources: '⚙ Quellen bearbeiten...',
+        searchPh: 'Filme suchen...',
+        unknown: 'Unbekannt'
+    },
+    es: {
+        dlgTitle: 'Elegir fuentes de películas',
+        dlgDesc: 'Las fuentes provienen de CMS comunitarios (chino), películas de dominio público en archive.org (inglés) y películas abiertas CC-BY seleccionadas en YouTube. Elige las fuentes que quieras: puedes cambiarlas cuando quieras desde el menú desplegable superior.',
+        dlgConfirm: 'Confirmar',
+        dlgSkip: 'Usar todas las fuentes',
+        langZh: 'Chino',
+        langEn: 'Inglés',
+        latest: 'Últimas actualizaciones',
+        loadingCats: 'Cargando categorías...',
+        loadingVids: 'Cargando películas...',
+        noVideos: 'No se encontraron películas',
+        failCats: 'Error al cargar categorías',
+        failVids: 'Error al cargar películas',
+        searchFail: 'Error en la búsqueda',
+        searching: 'Buscando...',
+        noResults: 'No hay resultados',
+        needSource: 'Selecciona al menos una fuente',
+        editSources: '⚙ Editar fuentes...',
+        searchPh: 'Buscar películas...',
+        unknown: 'Desconocido'
+    },
+    ru: {
+        dlgTitle: 'Выбрать источники фильмов',
+        dlgDesc: 'Источники: сообщества CMS (китайский), общедоступные фильмы archive.org (английский) и отобранные фильмы CC-BY на YouTube. Выберите нужные источники — их можно изменить в любой момент через меню вверху.',
+        dlgConfirm: 'Подтвердить',
+        dlgSkip: 'Использовать все источники',
+        langZh: 'Китайский',
+        langEn: 'Английский',
+        latest: 'Последние обновления',
+        loadingCats: 'Загрузка категорий...',
+        loadingVids: 'Загрузка фильмов...',
+        noVideos: 'Фильмы не найдены',
+        failCats: 'Не удалось загрузить категории',
+        failVids: 'Не удалось загрузить фильмы',
+        searchFail: 'Ошибка поиска',
+        searching: 'Поиск...',
+        noResults: 'Ничего не найдено',
+        needSource: 'Выберите хотя бы один источник',
+        editSources: '⚙ Изменить источники...',
+        searchPh: 'Поиск фильмов...',
+        unknown: 'Неизвестно'
     }
 };
 
 function tcLang() {
     try {
-        var lang = localStorage.getItem('preferredLanguage') || localStorage.getItem('languages')
-            || (navigator.language || 'en');
-        if (lang && lang.toLowerCase().indexOf('zh') === 0) return 'zh';
-        if (lang && lang.toLowerCase().indexOf('en') === 0) return 'en';
+        var lang = String(localStorage.getItem('preferredLanguage') || localStorage.getItem('languages')
+            || (navigator.language || 'en') || '').toLowerCase();
+        if (lang.indexOf('zh') === 0) return 'zh';
+        if (lang.indexOf('en') === 0) return 'en';
+        var uiLangs = ['ja', 'ko', 'fr', 'de', 'es', 'ru'];
+        for (var i = 0; i < uiLangs.length; i++) {
+            if (lang.indexOf(uiLangs[i]) === 0) return uiLangs[i];
+        }
     } catch (e) { /* storage unavailable */ }
     return 'en';
 }
@@ -201,6 +332,11 @@ function loadCategories(link) {
         renderArchiveCategories();
         return;
     }
+    // curated Blender open movies have a small fixed category set
+    if (link === YOUTUBE_SOURCE) {
+        renderYouTubeCategories();
+        return;
+    }
     var baseUrl = link.endsWith('/') ? link : link + '/';
     var apiUrl = baseUrl + '?ac=&pg=1';
     
@@ -278,6 +414,11 @@ function loadVideos(link, category, page, force) {
         loadArchiveVideos(category, page, seq);
         return;
     }
+    // curated Blender open movies: finite local catalogue
+    if (link === YOUTUBE_SOURCE) {
+        loadCuratedYouTubeVideos(category, seq);
+        return;
+    }
     
     var baseUrl = link.endsWith('/') ? link : link + '/';
     var apiUrl = category
@@ -337,6 +478,122 @@ function appendVideoCard(link, videoId, videoName, videoPic, videoType) {
         '<h4 class="card-title">' + escapeHtml(videoName) + '</h4>' +
         '</div></a>';
     document.getElementById('contentGrid').insertAdjacentHTML('beforeend', cardHtml);
+}
+
+// ============================== curated Blender open movies (YouTube embed) ==============================
+// Small hand-picked catalogue of Blender Foundation open movies (CC-BY).
+// Playback uses YouTube's official iframe player only - no direct URLs are
+// fetched, stored or proxied by this app.
+var YOUTUBE_SOURCE = 'https://youtube-nocookie.com';
+var youtubeCatalogue = null; // lazy-loaded from data/videos/youtube.json
+
+function fetchYouTubeCatalogue() {
+    if (youtubeCatalogue) return Promise.resolve(youtubeCatalogue);
+    return fetch('../data/videos/youtube.json').then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+    }).then(function (data) {
+        var videos = (data && data.videos) || [];
+        if (!Array.isArray(videos)) throw new Error('Invalid catalogue');
+        youtubeCatalogue = videos;
+        return youtubeCatalogue;
+    });
+}
+
+function renderYouTubeCategories() {
+    var categoryList = document.getElementById('categoryList');
+    categoryList.innerHTML = '';
+    var zh = tcLang() === 'zh';
+    var cats = [
+        { id: '', icon: 'fa-fire', name: zh ? '全部' : 'All' },
+        { id: 'animation', icon: 'fa-film', name: zh ? '动画短片' : 'Animation' },
+        { id: 'liveaction', icon: 'fa-users', name: zh ? '真人 VFX' : 'Live Action VFX' }
+    ];
+    cats.forEach(function (cat, idx) {
+        var item = document.createElement('div');
+        item.className = 'category-item' + (idx === 0 ? ' active' : '');
+        item.dataset.id = cat.id;
+        item.innerHTML = '<i class="fas ' + cat.icon + '"></i><span>' + escapeHtml(cat.name) + '</span>';
+        item.addEventListener('click', function () {
+            document.querySelectorAll('.category-item').forEach(function (el) {
+                el.classList.remove('active');
+            });
+            this.classList.add('active');
+            currentCategory = cat.id;
+            pageNum = 1;
+            document.getElementById('searchInput').value = '';
+            loadVideos(currentLink, currentCategory, 1);
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('show-mobile');
+            }
+        });
+        categoryList.appendChild(item);
+    });
+}
+
+function renderYouTubeCards(videos) {
+    var zh = tcLang() === 'zh';
+    videos.forEach(function (v) {
+        appendVideoCard(YOUTUBE_SOURCE, v.id,
+            (zh && v.titleZh) ? v.titleZh : v.title,
+            'https://i.ytimg.com/vi/' + encodeURIComponent(v.id) + '/hqdefault.jpg',
+            v.year ? (v.year + ' · ' + (v.license || 'CC-BY')) : (v.license || 'CC-BY'));
+    });
+}
+
+function loadCuratedYouTubeVideos(category, seq) {
+    fetchYouTubeCatalogue().then(function (videos) {
+        if (seq !== videoRequestSeq) return; // stale: a newer request took over
+        var contentGrid = document.getElementById('contentGrid');
+        contentGrid.innerHTML = '';
+        contentGrid.classList.remove('has-results');
+        var filtered = category ? videos.filter(function (v) { return v.category === category; }) : videos;
+        if (filtered.length === 0) {
+            contentGrid.innerHTML = '<div class="empty-state"><i class="fas fa-video-slash"></i><p>' + tcT('noVideos') + '</p></div>';
+        } else {
+            contentGrid.classList.add('has-results');
+            renderYouTubeCards(filtered);
+        }
+        noMoreData = true; // finite curated list: no infinite scroll
+        showLoading(false);
+        isLoading = false;
+    }).catch(function () {
+        if (seq !== videoRequestSeq) return;
+        document.getElementById('contentGrid').innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-triangle"></i><p>' + tcT('failVids') + '</p></div>';
+        showLoading(false);
+        isLoading = false;
+        showToast(tcT('failVids'), 'error');
+    });
+}
+
+function loadCuratedYouTubeSearch(term, seq) {
+    fetchYouTubeCatalogue().then(function (videos) {
+        if (seq !== videoRequestSeq) return;
+        var clean = (term || '').toLowerCase().trim();
+        var contentGrid = document.getElementById('contentGrid');
+        contentGrid.innerHTML = '';
+        contentGrid.classList.remove('has-results');
+        var matched = videos.filter(function (v) {
+            return (v.title || '').toLowerCase().indexOf(clean) > -1 ||
+                (v.titleZh || '').indexOf(clean) > -1 ||
+                (v.channel || '').toLowerCase().indexOf(clean) > -1;
+        });
+        if (matched.length === 0) {
+            contentGrid.innerHTML = '<div class="empty-state"><i class="fas fa-search"></i><p>' + tcT('noResults') + ' "' + escapeHtml(term) + '"</p></div>';
+        } else {
+            contentGrid.classList.add('has-results');
+            renderYouTubeCards(matched);
+        }
+        noMoreData = true;
+        showLoading(false);
+        isLoading = false;
+    }).catch(function () {
+        if (seq !== videoRequestSeq) return;
+        document.getElementById('contentGrid').innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-triangle"></i><p>' + tcT('searchFail') + '</p></div>';
+        showLoading(false);
+        isLoading = false;
+        showToast(tcT('searchFail'), 'error');
+    });
 }
 
 // ============================== archive.org classic movies ==============================
@@ -493,6 +750,11 @@ function searchVideos(link, term, page, force) {
         loadArchiveSearch(term, page, seq);
         return;
     }
+    // curated Blender open movies: search the small local catalogue
+    if (link === YOUTUBE_SOURCE) {
+        loadCuratedYouTubeSearch(term, seq);
+        return;
+    }
     
     var baseUrl = link.endsWith('/') ? link : link + '/';
     var apiUrl = baseUrl + '?ac=videolist&wd=' + encodeURIComponent(term) + '&pg=' + (page || 1);
@@ -515,7 +777,7 @@ function searchVideos(link, term, page, force) {
             }
             
             if (videos.length === 0 && page === 1) {
-                document.getElementById('contentGrid').innerHTML = '<div class="empty-state"><i class="fas fa-search"></i><p>' + tcT(noResults) + '</p></div>';
+                document.getElementById('contentGrid').innerHTML = '<div class="empty-state"><i class="fas fa-search"></i><p>' + tcT('noResults') + '</p></div>';
             } else if (videos.length > 0) {
                 document.getElementById('contentGrid').classList.add('has-results');
                 
