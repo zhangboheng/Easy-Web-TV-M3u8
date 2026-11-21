@@ -6,7 +6,7 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.5.6-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.5.7-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
@@ -28,13 +28,13 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 **[Live Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)**
 
-## 🆕 What's New (v8.5.6)
+## 🆕 What's New (v8.5.7)
 
-- **Curated YouTube movies in Theatre**: a new YouTube source plays 7 Blender Foundation / Blender Studio open movies (Big Buck Bunny, Sintel, Tears of Steel, Elephants Dream, Cosmos Laundromat, Agent 327 and Spring) through YouTube's official privacy-enhanced iframe - player controls, branding and channel links stay intact
-- **Compliant by design**: a small hand-picked white list needs no API key, never fetches, proxies or stores a direct video URL, and avoids ads-blocking or UI tampering; category filters and local search work over the curated list
-- **Translated everywhere**: the source picker description and labels are localized in all 8 UI languages (zh, en, ja, ko, fr, de, es, ru)
-- **Mist Gate game**: the AI-generated 3D game 《雾锁山门》 is hot-linked in Web Games
-- **Layout fix**: Theatre cards no longer stretch into tall strips when only a few results are shown
+- **Full-screen Settings**: the settings modal is now a spacious two-column panel with persistent navigation, live source-category visibility and responsive layouts down to small phones
+- **Refreshed sources**: dead Theatre and Adult APIs were removed and replaced with working ones; a curated YouTube source was added to Theatre
+- **Sensitive Content sync**: the Porn source tab follows the Sensitive Content toggle and the Basic settings badge stays accurate
+- **Translated source tabs**: the source-type tabs localize into every UI language with a safe English fallback
+- **Keyboard hardening**: global shortcuts no longer break when a key event targets a non-element
 
 ## ✨ Features
 

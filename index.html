@@ -55,8 +55,8 @@
     <!-- Settings Modal -->
     <div id="settings-modal" class="settings-modal" role="dialog" aria-modal="true" aria-labelledby="settings-title">
         <div class="settings-modal-container">
-            <!-- Main Page -->
-            <div class="settings-page active" data-page="main">
+            <!-- Sidebar (navigation) -->
+            <aside class="settings-sidebar">
                 <header class="settings-header">
                     <button class="close-btn" aria-label="Close settings">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -121,16 +121,12 @@
                         <span class="nav-arrow">›</span>
                     </div>
                 </nav>
-            </div>
-            
+            </aside>
+            <!-- Content area -->
+            <div class="settings-content-area">
             <!-- Basic Settings Page -->
-            <div class="settings-page" data-page="basic">
+            <div class="settings-page active" data-page="basic">
                 <header class="settings-header">
-                    <button class="back-btn" aria-label="Go back">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
                     <h2 data-i18n="settings_basic">Basic Settings</h2>
                 </header>
                 <div class="settings-content">
@@ -162,11 +158,6 @@
             <!-- Advanced Page -->
             <div class="settings-page" data-page="advanced">
                 <header class="settings-header">
-                    <button class="back-btn" aria-label="Go back">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
                     <h2 data-i18n="settings_advanced">Advanced</h2>
                 </header>
                 <div class="settings-content">
@@ -196,11 +187,6 @@
             <!-- Appearance Page -->
             <div class="settings-page" data-page="appearance">
                 <header class="settings-header">
-                    <button class="back-btn" aria-label="Go back">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
                     <h2 data-i18n="settings_appearance">Appearance</h2>
                 </header>
                 <div class="settings-content">
@@ -222,33 +208,27 @@
             <!-- Source Control Page -->
             <div class="settings-page" data-page="source">
                 <header class="settings-header">
-                    <button class="back-btn" aria-label="Go back">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
                     <h2 data-i18n="settings_source">Source Control</h2>
                 </header>
                 <div class="settings-content">
                     <div class="source-control-section">
                         <h4 class="source-section-title" data-i18n="settings_source_title">Select Content Type</h4>
                         <div class="source-type-selector">
-                            <button class="source-type-btn active" data-source-type="movie">🎬 Movie</button>
-                            <button class="source-type-btn" data-source-type="novel">📖 Novel</button>
-                            <button class="source-type-btn" data-source-type="manga">📚 Manga</button>
-                            <button class="source-type-btn" data-source-type="music">🎵 Music</button>
-                            <button class="source-type-btn" data-source-type="porn">🔞 Porn</button>
+                            <button class="source-type-btn active" data-source-type="movie" data-i18n="source_type_movie">🎬 Movie</button>
+                            <button class="source-type-btn" data-source-type="novel" data-i18n="source_type_novel">📖 Novel</button>
+                            <button class="source-type-btn" data-source-type="manga" data-i18n="source_type_manga">📚 Manga</button>
+                            <button class="source-type-btn" data-source-type="music" data-i18n="source_type_music">🎵 Music</button>
+                            <button class="source-type-btn" data-source-type="porn" id="porn-source-btn" data-i18n="source_type_porn">🔞 Porn</button>
                         </div>
                         <div class="source-options-container">
                             <!-- Movie Sources -->
                             <div class="source-options" data-source-type="movie">
                                 <label class="source-checkbox"><input type="checkbox" name="settings-movie" value="archive_classic" checked> Classic Movies (EN)</label>
-                                <label class="source-checkbox"><input type="checkbox" name="settings-movie" value="hyzy" checked> 虎牙资源</label>
-                                <label class="source-checkbox"><input type="checkbox" name="settings-movie" value="xlzy" checked> 新浪资源</label>
-                                <label class="source-checkbox"><input type="checkbox" name="settings-movie" value="gszy" checked> 光速资源</label>
+                                <label class="source-checkbox"><input type="checkbox" name="settings-movie" value="youtube_blender" checked> YouTube</label>
                                 <label class="source-checkbox"><input type="checkbox" name="settings-movie" value="hnzy" checked> 红牛资源</label>
-                                <label class="source-checkbox"><input type="checkbox" name="settings-movie" value="tky" checked> 茅台资源</label>
                                 <label class="source-checkbox"><input type="checkbox" name="settings-movie" value="bjy" checked> 如意资源</label>
+                                <label class="source-checkbox"><input type="checkbox" name="settings-movie" value="ikun" checked> 爱坤资源</label>
+                                <label class="source-checkbox"><input type="checkbox" name="settings-movie" value="c621" checked> 360资源</label>
                             </div>
                             <!-- Novel Sources -->
                             <div class="source-options hidden" data-source-type="novel">
@@ -266,15 +246,14 @@
                             </div>
                             <!-- Porn Sources -->
                             <div class="source-options hidden" data-source-type="porn">
-                                <label class="source-checkbox"><input type="checkbox" name="settings-porn" value="msnii" checked> 美少女资源站</label>
-                                <label class="source-checkbox"><input type="checkbox" name="settings-porn" value="xrbsp" checked> 淫水机资源站</label>
                                 <label class="source-checkbox"><input type="checkbox" name="settings-porn" value="slapibf" checked> 森林资源站</label>
                                 <label class="source-checkbox"><input type="checkbox" name="settings-porn" value="lbapi9" checked> 乐播资源站</label>
-                                <label class="source-checkbox"><input type="checkbox" name="settings-porn" value="dadiapi" checked> 大地资源网</label>
                                 <label class="source-checkbox"><input type="checkbox" name="settings-porn" value="155api" checked> 155资源站</label>
                                 <label class="source-checkbox"><input type="checkbox" name="settings-porn" value="apilsbzy2" checked> 老色逼</label>
-                                <label class="source-checkbox"><input type="checkbox" name="settings-porn" value="thzy1" checked> 桃花资源</label>
-                                <label class="source-checkbox"><input type="checkbox" name="settings-porn" value="xiangjiaozyw" checked> 香蕉资源网</label>
+                                <label class="source-checkbox"><input type="checkbox" name="settings-porn" value="nxx" checked> 奶昔资源站</label>
+                                <label class="source-checkbox"><input type="checkbox" name="settings-porn" value="sk" checked> 艾欧资源站</label>
+                                <label class="source-checkbox"><input type="checkbox" name="settings-porn" value="ck" checked> CK资源站</label>
+                                <label class="source-checkbox"><input type="checkbox" name="settings-porn" value="cj" checked> 初见资源站</label>
                             </div>
                         </div>
                         <button class="settings-btn source-save-btn" id="save-source-btn" data-i18n="settings_source_save">Save Sources</button>
@@ -285,11 +264,6 @@
             <!-- About Page -->
             <div class="settings-page" data-page="about">
                 <header class="settings-header">
-                    <button class="back-btn" aria-label="Go back">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
                     <h2 data-i18n="settings_about">About</h2>
                 </header>
                 <div class="settings-content">
@@ -299,7 +273,7 @@
                             <div class="item-description" data-i18n="settings_version_desc">Current application version</div>
                         </div>
                         <div class="item-control">
-                            <span class="settings-version">8.5.6</span>
+                            <span class="settings-version">8.5.7</span>
                         </div>
                     </div>
                     <div class="settings-item">
@@ -335,6 +309,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>

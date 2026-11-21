@@ -1,7 +1,7 @@
 /**
  * Easy Web TV - Main Application
  * Native JavaScript (No jQuery)
- * @version 8.5.6
+ * @version 8.5.7
  */
 
 // Adult content translations for all supported languages
@@ -219,8 +219,11 @@ const KeyboardManager = {
     bindEvents: function() {
         // Keyboard shortcuts
         document.addEventListener('keydown', function(e) {
-            // Ignore shortcuts when typing in input fields
-            if (e.target.matches('input, textarea, select')) {
+            // Ignore shortcuts when typing in input fields.
+            // e.target may be a Document/Window when the event is dispatched
+            // programmatically, and those do not implement matches().
+            var target = e.target;
+            if (target instanceof Element && target.matches('input, textarea, select')) {
                 return;
             }
             
@@ -695,6 +698,7 @@ const AgeConfirmModal = {
                 DOM.append(mobile, `<li data-adult="true"><img src="images/sex.svg" /><dd><a href="routes/adult.html"><button class="stylebtn">${buttonText}</button></a></dd><p>${descText}</p></li>`);
             }
             window.localStorage.setItem('adult', 'open');
+            SettingsModal.syncPornVisibility();
         }
         this.hide();
     },
@@ -749,17 +753,7 @@ const SettingsModal = {
         DOM.on('#settings-modal .close-btn', 'click', function() {
             SettingsModal.hide();
         });
-        
-        // Back buttons - use direct event binding for reliability
-        var backBtns = DOM.$$('#settings-modal .back-btn');
-        backBtns.forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                SettingsModal.showPage('main');
-            });
-        });
-        
+
         // Navigation items
         DOM.$$('.settings-nav-item').forEach(function(item) {
             item.addEventListener('click', function() {
@@ -841,6 +835,7 @@ const SettingsModal = {
                         if (adultItem) adultItem.remove();
                     }
                     localStorage.removeItem('adult');
+                    SettingsModal.syncPornVisibility();
                 }
             });
         }
@@ -863,8 +858,9 @@ const SettingsModal = {
             DOM.addClass(modal, 'show');
             
             this.isOpen = true;
-            this.showPage('main');
-            
+            this.syncPornVisibility();
+            this.showPage('basic');
+
             // Update button aria-expanded
             var btn = DOM.$('#menu-toggle-btn');
             if (btn) {
@@ -873,7 +869,28 @@ const SettingsModal = {
             }
         }
     },
-    
+
+    // Hide/show the Porn source category based on Sensitive Content toggle state
+    syncPornVisibility: function() {
+        var adultEnabled = window.localStorage.getItem('adult') === 'open';
+        var pornBtn = DOM.$('#porn-source-btn');
+        var pornPanel = DOM.$('.source-options[data-source-type="porn"]');
+        if (pornBtn) {
+            pornBtn.style.display = adultEnabled ? '' : 'none';
+        }
+        if (pornPanel) {
+            pornPanel.style.display = adultEnabled ? '' : 'none';
+            // If adult is disabled and porn panel was active, switch back to movie
+            if (!adultEnabled && pornPanel.classList.contains('hidden') === false) {
+                DOM.addClass(pornPanel, 'hidden');
+                var movieBtn = DOM.$('.source-type-btn[data-source-type="movie"]');
+                var moviePanel = DOM.$('.source-options[data-source-type="movie"]');
+                if (movieBtn) { DOM.$$('.source-type-btn').forEach(function(b) { DOM.removeClass(b, 'active'); }); DOM.addClass(movieBtn, 'active'); }
+                if (moviePanel) DOM.removeClass(moviePanel, 'hidden');
+            }
+        }
+    },
+
     hide: function() {
         var overlay = DOM.$('#settings-modal-overlay');
         var modal = DOM.$('#settings-modal');
@@ -903,23 +920,33 @@ const SettingsModal = {
             if (targetPage) {
                 DOM.addClass(targetPage, 'active');
                 this.currentPage = pageName;
+                this.highlightNav(pageName);
             }
             return;
         }
         
         if (targetPage && currentPageEl !== targetPage) {
             DOM.removeClass(currentPageEl, 'active');
-            DOM.addClass(currentPageEl, 'exiting');
-            
-            setTimeout(function() {
-                DOM.removeClass(currentPageEl, 'exiting');
-            }, 300);
-            
             DOM.addClass(targetPage, 'active');
+        }
+        // Keep the navigation highlight in sync even when the target page is
+        // already active in the DOM (e.g. the default page on first open).
+        if (targetPage) {
             this.currentPage = pageName;
+            this.highlightNav(pageName);
         }
     },
-    
+
+    highlightNav: function(pageName) {
+        DOM.$$('.settings-nav-item').forEach(function(item) {
+            DOM.removeClass(item, 'active');
+        });
+        var target = DOM.$('.settings-nav-item[data-target="' + pageName + '"]');
+        if (target) {
+            DOM.addClass(target, 'active');
+        }
+    },
+
     syncLanguageSelect: function() {
         var settingsLang = DOM.$('#settings-languages');
         var mainLang = DOM.$('#languages');
@@ -949,6 +976,11 @@ const SettingsModal = {
         // Source type button click handler
         DOM.$$('.source-type-btn').forEach(function(btn) {
             btn.addEventListener('click', function() {
+                var sourceType = this.getAttribute('data-source-type');
+                // Guard: do not allow Porn category when Sensitive Content is off
+                if (sourceType === 'porn' && window.localStorage.getItem('adult') !== 'open') {
+                    return;
+                }
                 // Remove active class from all buttons
                 DOM.$$('.source-type-btn').forEach(function(b) {
                     DOM.removeClass(b, 'active');
@@ -962,7 +994,6 @@ const SettingsModal = {
                 });
                 
                 // Show selected source options
-                var sourceType = this.getAttribute('data-source-type');
                 var targetOptions = DOM.$('.source-options[data-source-type="' + sourceType + '"]');
                 if (targetOptions) {
                     DOM.removeClass(targetOptions, 'hidden');
@@ -1041,7 +1072,7 @@ const SettingsModal = {
             }
             var payload = {
                 app: 'easy-web-tv',
-                version: '8.5.6',
+                version: '8.5.7',
                 exportedAt: new Date().toISOString(),
                 data: data
             };
@@ -1338,6 +1369,7 @@ DOM.ready(function() {
     if (scrollidbar) {
         scrollidbar.innerHTML = '';
         DOM.append(scrollidbar, `
+            <p>[2026-11-21] V8.5.7 release Refresh the Theatre and Adult source line-ups (drop dead APIs, add working ones and a YouTube source), rebuild the Settings modal as a full-screen two-column panel with persistent navigation, keep the Porn source category in sync with the Sensitive Content toggle and the Basic settings badge, localize the source-type tabs in every UI language with a safe fallback, and harden the global keyboard handler against non-element event targets</p>
             <p>[2026-11-21] V8.5.6 release Add a curated YouTube source to Theatre: 7 Blender Foundation / Blender Studio open movies (Big Buck Bunny, Sintel, Tears of Steel, Elephants Dream, Cosmos Laundromat, Agent 327 and Spring) play through YouTube's official privacy-enhanced iframe with controls, branding and channel links intact; the small hand-picked white list needs no API key, never fetches or stores a direct video URL, supports category filters and local search, and its source picker is fully translated into all 8 UI languages; also hot-link the AI-generated 3D game Mist Gate in Web Games and fix Theatre cards stretching into tall strips when only a few results are shown</p>
             <p>[2026-11-20] V8.5.5 release Add PDF support to the local manga reader: .pdf files are accepted alongside images and each PDF becomes one chapter, rendered page by page with a vendored pdf.js copy (CDN fallback only) so it works offline; a single open is capped at 400 pages and yields to the browser every 4 pages with progress shown, switching chapters cancels the running render and frees its page images, and a truncated book says so; also harden local storage (quota-aborted writes no longer report success, one cached IndexedDB connection, unambiguous file ids), surface partially-resolved chapters and scan truncation instead of silently dropping files, fix large-file text decoding (stack overflow, strict GB18030 fallback, real error messages), and unify every route header</p>
             <p>[2026-11-19] V8.5.4 release Add a browser-local media library to the Novel, Manga, Music and Video pages: pick your own files or a whole folder (TXT/Markdown, images, audio, video) and read or play them locally without uploading anything; folder grants and reading positions persist in IndexedDB, a whole folder is scanned once per chapter/playlist instead of once per file, playback progress is written at most once every 5 seconds, and every local panel is localized in 8 UI languages (zh, en, ja, ko, fr, de, es, ru)</p>
@@ -1410,25 +1442,23 @@ function goToSource() {
             <div id="selectform" style="display:flex;">
                 <input type="checkbox" name="movie" value="archive_classic" checked />
                 <label for="movie"> Classic Movies (EN)</label><br />
-                <input type="checkbox" name="movie" value="hyzy" checked />
-                <label for="movie"> 虎牙资源</label><br />
-                <input type="checkbox" name="movie" value="gszy" checked />
-                <label for="movie"> 光速资源</label><br />
-            </div>
-            <div id="selectform" style="display:flex;">
+                <input type="checkbox" name="movie" value="youtube_blender" checked />
+                <label for="movie"> YouTube</label><br />
                 <input type="checkbox" name="movie" value="hnzy" checked />
                 <label for="movie"> 红牛资源</label><br />
-                <input type="checkbox" name="movie" value="tky" checked />
-                <label for="movie"> 茅台资源</label><br />
                 <input type="checkbox" name="movie" value="bjy" checked />
                 <label for="movie"> 如意资源</label><br />
+                <input type="checkbox" name="movie" value="ikun" checked />
+                <label for="movie"> 爱坤资源</label><br />
+                <input type="checkbox" name="movie" value="c621" checked />
+                <label for="movie"> 360资源</label><br />
             </div>
             <button class="stylebtn" onclick="returnSource()"><img src="./images/return.svg" style="width:30px;"></button>
         `;
         var ms = window.localStorage.getItem('movie');
         if (ms) {
             ms = ms.split(",");
-            var arr = ["archive_classic", "hyzy", "gszy", "hnzy", "tky", "bjy"];
+            var arr = ["archive_classic", "youtube_blender", "hnzy", "bjy", "ikun", "c621"];
             var lst = arr.filter(function(x) { return ms.includes(x); }).map(function(x) { return arr.indexOf(x); });
             var cat = arr.filter(function(x) { return !ms.includes(x); }).map(function(x) { return arr.indexOf(x); });
             var checkboxes = document.querySelectorAll('input[name="movie"]');
@@ -1618,6 +1648,23 @@ function returnSource() {
 function hideSensitiveContent() {
     var sensitiveSetting = DOM.$('#sensitive-setting');
     if (sensitiveSetting) sensitiveSetting.style.display = 'none';
+    // Keep the Basic Settings badge in sync with the number of visible items.
+    var basicPage = DOM.$('.settings-page[data-page="basic"]');
+    var basicNav = DOM.$('.settings-nav-item[data-target="basic"]');
+    if (basicPage && basicNav) {
+        var badge = basicNav.querySelector('.nav-badge');
+        var visibleItems = Array.prototype.filter.call(
+            basicPage.querySelectorAll('.settings-item'),
+            function (item) { return item.style.display !== 'none'; }
+        ).length;
+        if (badge) badge.textContent = String(visibleItems);
+    }
+    // Sensitive Content is unavailable here, so do not leave Porn sources
+    // reachable from a previously saved "adult=open" state.
+    window.localStorage.removeItem('adult');
+    if (typeof SettingsModal !== 'undefined' && SettingsModal.syncPornVisibility) {
+        SettingsModal.syncPornVisibility();
+    }
 }
 
 // Get User IP

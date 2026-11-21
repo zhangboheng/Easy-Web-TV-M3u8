@@ -46,6 +46,11 @@ const translations = {
         settings_theme_label: "Dark Theme",
         settings_theme_desc: "Toggle dark/light mode",
         settings_source_title: "Select Content Type",
+        source_type_movie: "🎬 Movie",
+        source_type_novel: "📖 Novel",
+        source_type_manga: "📚 Manga",
+        source_type_music: "🎵 Music",
+        source_type_porn: "🔞 Porn",
         settings_source_save: "Save Sources",
         settings_version_label: "Version",
         settings_version_desc: "Current application version",
@@ -96,6 +101,11 @@ const translations = {
         settings_theme_label: "深色主题",
         settings_theme_desc: "切换深色/浅色模式",
         settings_source_title: "选择内容类型",
+        source_type_movie: "🎬 电影",
+        source_type_novel: "📖 小说",
+        source_type_manga: "📚 漫画",
+        source_type_music: "🎵 音乐",
+        source_type_porn: "🔞 成人",
         settings_source_save: "保存来源",
         settings_version_label: "版本",
         settings_version_desc: "当前应用程序版本",
@@ -146,6 +156,11 @@ const translations = {
         settings_theme_label: "深色主題",
         settings_theme_desc: "切換深色/淺色模式",
         settings_source_title: "選擇內容類型",
+        source_type_movie: "🎬 電影",
+        source_type_novel: "📖 小說",
+        source_type_manga: "📚 漫畫",
+        source_type_music: "🎵 音樂",
+        source_type_porn: "🔞 成人",
         settings_source_save: "儲存來源",
         settings_version_label: "版本",
         settings_version_desc: "目前應用程式版本",
@@ -196,6 +211,11 @@ const translations = {
         settings_theme_label: "ダークテーマ",
         settings_theme_desc: "ダーク/ライトモードを切り替え",
         settings_source_title: "コンテンツタイプを選択",
+        source_type_movie: "🎬 映画",
+        source_type_novel: "📖 小説",
+        source_type_manga: "📚 漫画",
+        source_type_music: "🎵 音楽",
+        source_type_porn: "🔞 アダルト",
         settings_source_save: "ソースを保存",
         settings_version_label: "バージョン",
         settings_version_desc: "現在のアプリバージョン",
@@ -246,6 +266,11 @@ const translations = {
         settings_theme_label: "다크 테마",
         settings_theme_desc: "다크/라이트 모드 전환",
         settings_source_title: "콘텐츠 유형 선택",
+        source_type_movie: "🎬 영화",
+        source_type_novel: "📖 소설",
+        source_type_manga: "📚 만화",
+        source_type_music: "🎵 음악",
+        source_type_porn: "🔞 성인",
         settings_source_save: "소스 저장",
         settings_version_label: "버전",
         settings_version_desc: "현재 앱 버전",
@@ -296,6 +321,11 @@ const translations = {
         settings_theme_label: "Thème sombre",
         settings_theme_desc: "Basculer entre mode sombre/clair",
         settings_source_title: "Sélectionner le type de contenu",
+        source_type_movie: "🎬 Film",
+        source_type_novel: "📖 Roman",
+        source_type_manga: "📚 Manga",
+        source_type_music: "🎵 Musique",
+        source_type_porn: "🔞 Adulte",
         settings_source_save: "Enregistrer les sources",
         settings_version_label: "Version",
         settings_version_desc: "Version actuelle de l'application",
@@ -346,6 +376,11 @@ const translations = {
         settings_theme_label: "Dunkles Thema",
         settings_theme_desc: "Dunkel-/Hellmodus umschalten",
         settings_source_title: "Inhaltstyp auswählen",
+        source_type_movie: "🎬 Film",
+        source_type_novel: "📖 Roman",
+        source_type_manga: "📚 Manga",
+        source_type_music: "🎵 Musik",
+        source_type_porn: "🔞 Erwachsene",
         settings_source_save: "Quellen speichern",
         settings_version_label: "Version",
         settings_version_desc: "Aktuelle Anwendungsversion",
@@ -396,6 +431,11 @@ const translations = {
         settings_theme_label: "Tema oscuro",
         settings_theme_desc: "Alternar modo oscuro/claro",
         settings_source_title: "Seleccionar tipo de contenido",
+        source_type_movie: "🎬 Película",
+        source_type_novel: "📖 Novela",
+        source_type_manga: "📚 Manga",
+        source_type_music: "🎵 Música",
+        source_type_porn: "🔞 Adulto",
         settings_source_save: "Guardar fuentes",
         settings_version_label: "Versión",
         settings_version_desc: "Versión actual de la aplicación",
@@ -446,6 +486,11 @@ const translations = {
         settings_theme_label: "Тёмная тема",
         settings_theme_desc: "Переключить тёмный/светлый режим",
         settings_source_title: "Выбрать тип контента",
+        source_type_movie: "🎬 Фильм",
+        source_type_novel: "📖 Роман",
+        source_type_manga: "📚 Манга",
+        source_type_music: "🎵 Музыка",
+        source_type_porn: "🔞 Порно",
         settings_source_save: "Сохранить источники",
         settings_version_label: "Версия",
         settings_version_desc: "Текущая версия приложения",
@@ -2472,9 +2517,13 @@ function applyTranslation(lang) {
     // Settings Modal - translate all elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (t[key]) {
-            el.textContent = t[key];
+        // Cache the author-provided text once so it can serve as a final fallback.
+        if (el.dataset.i18nFallback === undefined) {
+            el.dataset.i18nFallback = el.textContent;
         }
+        // Fall back to English when the active language lacks the key, so a
+        // switch never leaves text from the previously selected language.
+        el.textContent = t[key] || translations['en'][key] || el.dataset.i18nFallback;
     });
     
     // Update Adult Content Item text when language changes

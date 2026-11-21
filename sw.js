@@ -1,5 +1,5 @@
 // Easy Web TV Service Worker
-const CACHE_NAME = 'easy-web-tv-v8.5.6';
+const CACHE_NAME = 'easy-web-tv-v8.5.7';
 
 // Assets to cache on install - only local assets that exist
 // v8.5.0: slimmed down to the index shell only; route pages, engines and
@@ -10,6 +10,9 @@ const CACHE_NAME = 'easy-web-tv-v8.5.6';
 // hardening, and unified route headers.
 // v8.5.6: curated YouTube embeds (7 Blender open movies, official iframe only,
 // 8-language source picker), Mist Gate hot-linked game, and Theatre card layout fix.
+// v8.5.7: refreshed Theatre/Adult sources, full-screen two-column Settings panel,
+// Porn-category and badge sync with Sensitive Content, source-tab i18n fallback,
+// and a hardened global keydown handler.
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',

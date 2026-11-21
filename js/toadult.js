@@ -2,15 +2,14 @@
 // Native JavaScript (No jQuery)
 
 var pornSources = {
-    'msnii': { url: 'https://www.msnii.com/api.php/provide/vod/at/json', name: '美少女资源站' },
-    'xrbsp': { url: 'https://www.xrbsp.com/api.php/provide/vod/at/json', name: '淫水机资源站' },
     'slapibf': { url: 'https://slapibf.com/api.php/provide/vod/at/json', name: '森林资源站' },
     'lbapi9': { url: 'https://lbapi9.com/api.php/provide/vod/at/json', name: '乐播资源站' },
-    'dadiapi': { url: 'https://dadiapi.net/api.php/provide/vod/at/json', name: '大地资源网' },
     '155api': { url: 'https://155api.com/api.php/provide/vod/at/json', name: '155资源站' },
     'apilsbzy2': { url: 'https://apilsbzy2.com/api.php/provide/vod/at/json', name: '老色逼' },
-    'thzy1': { url: 'https://thzy1.com/api.php/provide/vod/at/json', name: '桃花资源' },
-    'xiangjiaozyw': { url: 'https://xiangjiaozyw.com/api.php/provide/vod/at/json', name: '香蕉资源网' }
+    'nxx': { url: 'https://naixxzy.com/api.php/provide/vod/at/json', name: '奶昔资源站' },
+    'sk': { url: 'https://aosikazy.com/api.php/provide/vod/at/json', name: '艾欧资源站' },
+    'ck': { url: 'https://ckzy.me/api.php/provide/vod/at/json', name: 'CK资源站' },
+    'cj': { url: 'http://chujia.cc/api.php/provide/vod/at/json', name: '初见资源站' }
 };
 
 // CORS proxy + failover now live in ../js/apiproxy.js (fetchWithProxy)

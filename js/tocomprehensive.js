@@ -7,12 +7,10 @@
 var movieSources = {
     'archive_classic': { url: 'https://archive.org', name: 'Classic Movies (Public Domain)', lang: 'en', archive: true },
     'youtube_blender': { url: 'https://youtube-nocookie.com', name: 'YouTube', lang: 'en', youtube: true },
-    'hyzy': { url: 'https://www.huyaapi.com/api.php/provide/vod/at/json', name: '虎牙资源', lang: 'zh' },
-    'xlzy': { url: 'https://api.xinlangapi.com/xinlangapi.php/provide/vod/json', name: '新浪资源', lang: 'zh' },
-    'gszy': { url: 'https://api.guangsuapi.com/api.php/provide/vod/json', name: '光速资源', lang: 'zh' },
     'hnzy': { url: 'https://www.hongniuzy2.com/api.php/provide/vod/at/json/', name: '红牛资源', lang: 'zh' },
-    'tky': { url: 'https://caiji.maotaizy.cc/api.php/provide/vod/at/json/', name: '茅台资源', lang: 'zh' },
-    'bjy': { url: 'https://cj.rycjapi.com/api.php/provide/vod/at/json/', name: '如意资源', lang: 'zh' }
+    'bjy': { url: 'https://cj.rycjapi.com/api.php/provide/vod/at/json/', name: '如意资源', lang: 'zh' },
+    'ikun': { url: 'https://ikunzyapi.com/api.php/provide/vod/at/json', name: '爱坤资源', lang: 'zh' },
+    'c621': { url: 'https://360zy.com/api.php/provide/vod/', name: '360资源', lang: 'zh' }
 };
 
 // ============================== Lightweight i18n ==============================
