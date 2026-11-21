@@ -20,6 +20,21 @@
             width: 100%;
             min-height: 480px;
         }
+
+        /* The shared .loading-overlay in css/emulatorjs.css is absolutely
+           positioned inside a player wrapper. Here it sits at page level instead,
+           because the download and the async runtime boot happen before
+           #playerSection gets its .active class, so an overlay inside the
+           section would never be painted. */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 0;
+            z-index: 400;
+        }
     </style>
 </head>
 <body>
@@ -128,17 +143,20 @@
                 <!-- wasm4-app and the cart-json payload are created by towasm4.js
                      when a cart is loaded; a bare element would try to fetch
                      cart.wasm and error out. -->
-                <!-- Loading Overlay -->
-                <div class="loading-overlay hidden" id="loadingOverlay">
-                    <div class="loading-spinner"></div>
-                    <div class="loading-text">
-                        <span data-i18n="loading">Loading WASM-4 runtime, please wait...</span>
-                        <small data-i18n="loadingTip">The fantasy console boots in a second or two</small>
-                    </div>
-                </div>
             </div>
         </section>
     </main>
+
+    <!-- Loading Overlay - page level on purpose: it has to stay visible while
+         the cart downloads and the WASM-4 runtime boots, which both happen
+         BEFORE #playerSection is revealed. -->
+    <div class="loading-overlay hidden" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">
+            <span data-i18n="loading">Loading WASM-4 runtime, please wait...</span>
+            <small data-i18n="loadingTip">The fantasy console boots in a second or two</small>
+        </div>
+    </div>
 
     <!-- Toast -->
     <div class="toast hidden" id="toast">
@@ -147,6 +165,7 @@
     </div>
 
     <!-- WASM-4 web runtime (vendored, ISC - see vendor/wasm4/README.md) -->
+    <script src="../js/proxy-config.js"></script>
     <script src="../vendor/wasm4/wasm4.js"></script>
     <!-- WASM-4 page logic -->
     <script src="../js/towasm4.js"></script>

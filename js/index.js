@@ -1,7 +1,7 @@
 /**
  * Easy Web TV - Main Application
  * Native JavaScript (No jQuery)
- * @version 8.5.7
+ * @version 8.5.8
  */
 
 // Adult content translations for all supported languages
@@ -330,14 +330,10 @@ const KeyboardManager = {
         }
         
         // Close any open dialogs
-        var popupbox = DOM.$('#popupbox');
         var sourcebox = DOM.$('#sourcebox');
         var logbox = DOM.$('#logbox');
         var infobox = DOM.$('#infobox');
         
-        if (popupbox && DOM.isVisible(popupbox)) {
-            window.location.href = '#';
-        }
         if (sourcebox && DOM.isVisible(sourcebox)) {
             window.location.href = '#';
         }
@@ -709,6 +705,7 @@ const AgeConfirmModal = {
         }
         // Remove the adult content item by its unique identifier
         var mobile = DOM.$('.mobile');
+
         if (mobile) {
             var adultItem = mobile.querySelector('li[data-adult="true"]');
             if (adultItem) adultItem.remove();
@@ -717,6 +714,236 @@ const AgeConfirmModal = {
         this.hide();
     }
 };
+
+// Version history modal: shows the update log when the version badge in
+// Settings > About is clicked. The log entries live in .scrollidbar and are
+// filled on DOMContentLoaded, so this module only handles presentation.
+const VersionHistoryModal = {
+    isOpen: false,
+
+    show: function() {
+        var modal = DOM.$('#version-history-modal');
+        var overlay = DOM.$('#version-history-overlay');
+        var content = DOM.$('#version-history-content');
+        var source = DOM.$('#logbox .scrollidbar') || DOM.$('.scrollidbar');
+        if (!modal || !overlay || !content) return;
+
+        if (source && !content.innerHTML.trim()) {
+            content.innerHTML = source.innerHTML;
+        }
+        // Localize the close button's accessible label using the active language.
+        var closeBtn = modal.querySelector('.version-history-close');
+        if (closeBtn && typeof translations !== 'undefined') {
+            var lang = window.localStorage.getItem('preferredLanguage') ||
+                       window.localStorage.getItem('languages') || 'en';
+            var dict = translations[lang] || translations['en'];
+            if (dict && dict.version_history_close) {
+                closeBtn.setAttribute('aria-label', dict.version_history_close);
+            }
+        }
+        DOM.addClass(overlay, 'show');
+        DOM.addClass(modal, 'show');
+        this.isOpen = true;
+
+        if (closeBtn) closeBtn.focus();
+    },
+
+    hide: function() {
+        var modal = DOM.$('#version-history-modal');
+        var overlay = DOM.$('#version-history-overlay');
+        if (!modal || !overlay) return;
+        DOM.removeClass(overlay, 'show');
+        DOM.removeClass(modal, 'show');
+        this.isOpen = false;
+    },
+
+    bindEvents: function() {
+        var btn = DOM.$('#version-history-btn');
+        if (btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                VersionHistoryModal.show();
+            });
+        }
+        DOM.on('#version-history-overlay', 'click', function() {
+            VersionHistoryModal.hide();
+        });
+        DOM.on('#version-history-modal .version-history-close', 'click', function() {
+            VersionHistoryModal.hide();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && VersionHistoryModal.isOpen) {
+                e.preventDefault();
+                e.stopPropagation();
+                VersionHistoryModal.hide();
+            }
+        }, true);
+    }
+};
+
+// Proxy settings UI: manage user-defined CORS proxies in localStorage.
+// Built-in proxies are shown read-only from ProxyConfig.getBuiltins().
+const ProxySettings = {
+    t: function(key, fallback) {
+        try {
+            if (typeof translations !== 'undefined') {
+                var lang = window.localStorage.getItem('preferredLanguage') ||
+                           window.localStorage.getItem('languages') || 'en';
+                var dict = translations[lang] || translations['en'];
+                if (dict && dict[key]) return dict[key];
+            }
+        } catch (e) { /* ignore */ }
+        return fallback;
+    },
+
+    escapeHtml: function(text) {
+        return String(text == null ? '' : text)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    },
+
+    showError: function(key, fallback) {
+        var el = DOM.$('#proxy-error');
+        if (el) el.textContent = this.t(key, fallback);
+    },
+
+    clearError: function() {
+        var el = DOM.$('#proxy-error');
+        if (el) el.textContent = '';
+    },
+
+    render: function() {
+        var self = this;
+        var builtinEl = DOM.$('#proxy-builtin-list');
+        var customEl = DOM.$('#proxy-custom-list');
+        if (!builtinEl || !customEl || typeof ProxyConfig === 'undefined') return;
+
+        // Read the health cache once per render (not once per row): getHealth()
+        // parses localStorage, and the list can hold several built-ins.
+        var health = (typeof ProxyConfig.getHealth === 'function') ? ProxyConfig.getHealth() : [];
+
+        builtinEl.innerHTML = ProxyConfig.getBuiltins().map(function(item) {
+            // Show the cooldown state so the user can tell why a proxy is being
+            // skipped (see ProxyConfig.getHealth()).
+            var rec = null;
+            for (var i = 0; i < health.length; i++) {
+                if (health[i].url === item.url) { rec = health[i]; break; }
+            }
+            var badge = '';
+            if (rec && rec.coolingDown) {
+                var mins = Math.max(1, Math.ceil(rec.remainingMs / 60000));
+                badge = '<span class="proxy-badge proxy-badge-cooldown" title="' +
+                    self.escapeHtml(self.t('settings_proxy_cooldown', 'Temporarily skipped after a failure')) +
+                    '">⏳ ' + mins + ' min</span>';
+            }
+            return '<div class="proxy-item proxy-item-builtin">' +
+                '<span class="proxy-lock" title="' + self.escapeHtml(self.t('settings_proxy_builtin', 'Built-in (read-only)')) + '">🔒</span>' +
+                '<div class="proxy-item-body">' +
+                    '<div class="proxy-item-name">' + self.escapeHtml(item.name) + badge + '</div>' +
+                    '<div class="proxy-item-url">' + self.escapeHtml(item.url) + '</div>' +
+                '</div>' +
+            '</div>';
+        }).join('');
+
+        var custom = ProxyConfig.getCustom();
+        customEl.innerHTML = custom.map(function(item) {
+            var toggleLabel = item.enabled ? self.t('settings_proxy_disable', 'Disable') : self.t('settings_proxy_enable', 'Enable');
+            return '<div class="proxy-item" data-id="' + self.escapeHtml(item.id) + '">' +
+                '<div class="proxy-item-body">' +
+                    '<div class="proxy-item-name">' + self.escapeHtml(item.name) + '</div>' +
+                    '<div class="proxy-item-url">' + self.escapeHtml(item.url) + '</div>' +
+                '</div>' +
+                '<div class="proxy-item-actions">' +
+                    '<button type="button" class="proxy-mini-btn" data-act="toggle" title="' + self.escapeHtml(toggleLabel) + '">' + (item.enabled ? '⏸' : '▶') + '</button>' +
+                    '<button type="button" class="proxy-mini-btn" data-act="edit" title="' + self.escapeHtml(self.t('settings_proxy_edit', 'Edit')) + '">✎</button>' +
+                    '<button type="button" class="proxy-mini-btn danger" data-act="delete" title="' + self.escapeHtml(self.t('settings_proxy_delete', 'Delete')) + '">✕</button>' +
+                '</div>' +
+            '</div>';
+        }).join('');
+        if (!custom.length) {
+            customEl.innerHTML = '<div class="proxy-empty">' + self.escapeHtml(self.t('settings_proxy_empty', 'No custom proxies yet.')) + '</div>';
+        }
+    },
+
+
+    applyPlaceholders: function() {
+        DOM.$$('[data-i18n-placeholder]').forEach(function(el) {
+            var key = el.getAttribute('data-i18n-placeholder');
+            var val = ProxySettings.t(key, el.getAttribute('placeholder') || '');
+            el.setAttribute('placeholder', val);
+        });
+    },
+
+    bindEvents: function() {
+        var self = this;
+        this.applyPlaceholders();
+        this.render();
+
+        var addBtn = DOM.$('#proxy-add-btn');
+        function commit(mode) {
+            var nameEl = DOM.$('#proxy-name-input');
+            var urlEl = DOM.$('#proxy-url-input');
+            var url = (urlEl && urlEl.value || '').trim();
+            if (!ProxyConfig.isValidUrl(url)) {
+                self.showError('settings_proxy_invalid', 'Please enter a valid http(s) proxy URL.');
+                return;
+            }
+            if (mode === 'edit') {
+                ProxyConfig.update(addBtn.getAttribute('data-id'), {
+                    name: (nameEl && nameEl.value || '').trim(), url: url
+                });
+                addBtn.removeAttribute('data-mode');
+                addBtn.removeAttribute('data-id');
+                addBtn.textContent = self.t('settings_proxy_add', 'Add proxy');
+            } else {
+                ProxyConfig.add((nameEl && nameEl.value || '').trim(), url);
+            }
+            if (nameEl) nameEl.value = '';
+            if (urlEl) urlEl.value = '';
+            self.clearError();
+            self.render();
+        }
+
+        if (addBtn) {
+            addBtn.addEventListener('click', function() {
+                commit(addBtn.getAttribute('data-mode') === 'edit' ? 'edit' : 'add');
+            });
+        }
+
+        DOM.on('#proxy-custom-list', 'click', function(e) {
+            var btn = e.target.closest('.proxy-mini-btn');
+            if (!btn) return;
+            var itemEl = btn.closest('.proxy-item');
+            var id = itemEl && itemEl.getAttribute('data-id');
+            var act = btn.getAttribute('data-act');
+            if (!id || !act) return;
+            if (act === 'delete') {
+                ProxyConfig.remove(id);
+                self.render();
+            } else if (act === 'toggle') {
+                var item = ProxyConfig.getCustom().filter(function(x) { return x.id === id; })[0];
+                if (item) { ProxyConfig.update(id, { enabled: !item.enabled }); self.render(); }
+            } else if (act === 'edit') {
+                var current = ProxyConfig.getCustom().filter(function(x) { return x.id === id; })[0];
+                if (!current) return;
+                var nameEl = DOM.$('#proxy-name-input');
+                var urlEl = DOM.$('#proxy-url-input');
+                if (nameEl) nameEl.value = current.name;
+                if (urlEl) urlEl.value = current.url;
+                if (addBtn) {
+                    addBtn.textContent = self.t('settings_proxy_save', 'Save changes');
+                    addBtn.setAttribute('data-mode', 'edit');
+                    addBtn.setAttribute('data-id', id);
+                }
+                // The edit form lives on this same Advanced page - scroll to it.
+                var form = DOM.$('.proxy-form');
+                if (form && form.scrollIntoView) form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        });
+    }
+};
+
 
 // Settings Modal Manager - Paginated Settings
 const SettingsModal = {
@@ -901,6 +1128,9 @@ const SettingsModal = {
             DOM.removeClass(modal, 'show');
             
             this.isOpen = false;
+            if (typeof VersionHistoryModal !== 'undefined' && VersionHistoryModal.isOpen) {
+                VersionHistoryModal.hide();
+            }
             
             // Update button aria-expanded
             var btn = DOM.$('#menu-toggle-btn');
@@ -1072,7 +1302,7 @@ const SettingsModal = {
             }
             var payload = {
                 app: 'easy-web-tv',
-                version: '8.5.7',
+                version: '8.5.8',
                 exportedAt: new Date().toISOString(),
                 data: data
             };
@@ -1138,6 +1368,8 @@ const SettingsModal = {
 DOM.ready(function() {
     // Initialize Settings Modal FIRST (to properly bind menu button)
     SettingsModal.init();
+    VersionHistoryModal.bindEvents();
+    if (typeof ProxySettings !== 'undefined') ProxySettings.bindEvents();
     
     // Initialize keyboard navigation (will use SettingsModal for menu toggle)
     KeyboardManager.init();
@@ -1197,17 +1429,21 @@ DOM.ready(function() {
                 <option value="bs">Bosnian - bosanski</option>
                 <option value="bg">Bulgarian - български</option>
                 <option value="ca">Catalan - català</option>
+                <option value="co">Corsican - corsu</option>
                 <option value="hr">Croatian - hrvatski</option>
                 <option value="cs">Czech - čeština</option>
                 <option value="da">Danish - dansk</option>
                 <option value="nl">Dutch - Nederlands</option>
                 <option value="et">Estonian - eesti</option>
                 <option value="fi">Finnish - suomi</option>
+                <option value="fy">Frisian - Frysk</option>
+                <option value="gl">Galician - galego</option>
                 <option value="el">Greek - Ελληνικά</option>
                 <option value="hu">Hungarian - magyar</option>
                 <option value="is">Icelandic - íslenska</option>
                 <option value="ga">Irish - Gaeilge</option>
                 <option value="it">Italian - italiano</option>
+                <option value="la">Latin - Latina</option>
                 <option value="lv">Latvian - latviešu</option>
                 <option value="lt">Lithuanian - lietuvių</option>
                 <option value="mk">Macedonian - македонски</option>
@@ -1215,6 +1451,7 @@ DOM.ready(function() {
                 <option value="no">Norwegian - norsk</option>
                 <option value="pl">Polish - polski</option>
                 <option value="ro">Romanian - română</option>
+                <option value="gd">Scottish Gaelic - Gàidhlig</option>
                 <option value="sr">Serbian - српски</option>
                 <option value="sk">Slovak - slovenčina</option>
                 <option value="sl">Slovenian - slovenščina</option>
@@ -1225,23 +1462,31 @@ DOM.ready(function() {
             </optgroup>
             <optgroup label="🌏 Asian">
                 <option value="bn">Bangla - বাংলা</option>
+                <option value="ka">Georgian - ქართული</option>
                 <option value="gu">Gujarati - ગુજરાતી</option>
                 <option value="he">Hebrew - עברית</option>
-                <option value="id">Indonesian - Indonesia</option>
+                <option value="id">Indonesian - Bahasa Indonesia</option>
                 <option value="kk">Kazakh - қазақ тілі</option>
                 <option value="km">Khmer - ខ្មែរ</option>
+                <option value="ku">Kurdish - kurdî</option>
                 <option value="ky">Kyrgyz - кыргызча</option>
                 <option value="lo">Lao - ລາວ</option>
                 <option value="ms">Malay - Bahasa Melayu</option>
                 <option value="mr">Marathi - मराठी</option>
                 <option value="mn">Mongolian - монгол</option>
                 <option value="ne">Nepali - नेपाली</option>
+                <option value="ps">Pashto - پښتو</option>
                 <option value="pa">Punjabi - ਪੰਜਾਬੀ</option>
+                <option value="sd">Sindhi - سنڌي</option>
                 <option value="si">Sinhala - සිංහල</option>
+                <option value="tg">Tajik - тоҷикӣ</option>
                 <option value="ta">Tamil - தமிழ்</option>
+                <option value="tt">Tatar - татарча</option>
                 <option value="te">Telugu - తెలుగు</option>
                 <option value="th">Thai - ไทย</option>
+                <option value="tk">Turkmen - türkmençe</option>
                 <option value="ur">Urdu - اردو</option>
+                <option value="ug">Uyghur - ئۇيغۇرچە</option>
                 <option value="uz">Uzbek - o'zbek</option>
                 <option value="vi">Vietnamese - Tiếng Việt</option>
             </optgroup>
@@ -1254,8 +1499,15 @@ DOM.ready(function() {
                 <option value="haw">Hawaiian - ʻŌlelo Hawaiʻi</option>
                 <option value="kn">Kannada - ಕನ್ನಡ</option>
                 <option value="ml">Malayalam - മലയാളം</option>
+                <option value="od">Odia - ଓଡ଼ିଆ</option>
                 <option value="fa">Persian - فارسی</option>
+                <option value="sn">Shona - chiShona</option>
+                <option value="so">Somali - Soomaali</option>
+                <option value="st">Sotho - Sesotho</option>
+                <option value="su">Sundanese - Basa Sunda</option>
                 <option value="sw">Swahili - Kiswahili</option>
+                <option value="xh">Xhosa - isiXhosa</option>
+                <option value="yi">Yiddish - ייִדיש</option>
                 <option value="yo">Yoruba - Èdè Yorùbá</option>
                 <option value="zu">Zulu - isiZulu</option>
             </optgroup>
@@ -1273,61 +1525,6 @@ DOM.ready(function() {
     }
     
     // Note: Menu toggle event is handled by SettingsModal.bindEvents()
-    
-    // If user back refresh page
-    var link = window.location.href;
-    if (link.indexOf('popupbox') > -1) {
-        window.location.replace('https://zhangboheng.github.io/Easy-Web-TV-M3u8/');
-    }
-    
-    // Set attributes to button
-    var stylebtns = DOM.$$('.stylebtn');
-    if (stylebtns.length > 2) {
-        stylebtns[2].addEventListener('click', function() {
-            this.setAttribute('title', 'selected');
-            if (stylebtns.length > 4) {
-                stylebtns[4].removeAttribute('title');
-            }
-        });
-    }
-    if (stylebtns.length > 4) {
-        stylebtns[4].addEventListener('click', function() {
-            this.setAttribute('title', 'selected');
-            if (stylebtns.length > 2) {
-                stylebtns[2].removeAttribute('title');
-            }
-        });
-    }
-    
-    // Select TV Options
-    if (stylebtns.length > 0) {
-        stylebtns[0].addEventListener('click', function() {
-            var selectform = DOM.$('#selectform');
-            if (!selectform) return;
-            
-            var radioName = selectform.querySelector('input[name="radioName"]:checked');
-            var btn2 = stylebtns.length > 2 ? stylebtns[2] : null;
-            var btn4 = stylebtns.length > 4 ? stylebtns[4] : null;
-            
-            var radioValue = radioName ? radioName.value : null;
-            var isBtn2Selected = btn2 ? btn2.getAttribute('title') === 'selected' : false;
-            var isBtn4Selected = btn4 ? btn4.getAttribute('title') === 'selected' : false;
-            
-            if (radioValue == 1 && isBtn2Selected) {
-                window.location.href = "routes/countries.html";
-            } else if (radioValue == 2 && isBtn2Selected) {
-                window.location.href = "routes/language.html";
-            } else if (radioValue == 3 && isBtn2Selected) {
-                window.location.href = "routes/category.html";
-            } else if (radioValue == 1 && isBtn4Selected) {
-                window.location.href = "routes/radio.html?t=1";
-            } else if (radioValue == 2 && isBtn4Selected) {
-                window.location.href = "routes/radio.html?t=2";
-            } else if (radioValue == 3 && isBtn4Selected) {
-                window.location.href = "routes/radio.html?t=3";
-            }
-        });
-    }
     
     // Set adult content default
     if (window.localStorage.getItem('bannedcountries') != 'true' && window.localStorage.getItem('adult') == 'open') {
@@ -1369,6 +1566,7 @@ DOM.ready(function() {
     if (scrollidbar) {
         scrollidbar.innerHTML = '';
         DOM.append(scrollidbar, `
+            <p>[2026-11-21] V8.5.8 release Consolidate every CORS proxy into one unified pool with a persistent health cache: a proxy that just failed is demoted for 1-30 minutes instead of stalling the next request, binary-corrupting proxies get a long cooldown and are skipped by the downloaders, every fetch path re-reads the pool per request so demotions and proxies added in Settings take effect without a page reload, and each failover attempt now has its own timeout so a hung proxy can no longer freeze the page; also reorder the built-in proxies by measured health (corsmirror, corsfix, luckydesigner, cors.lol) and translate the whole interface into 96 languages</p>
             <p>[2026-11-21] V8.5.7 release Refresh the Theatre and Adult source line-ups (drop dead APIs, add working ones and a YouTube source), rebuild the Settings modal as a full-screen two-column panel with persistent navigation, keep the Porn source category in sync with the Sensitive Content toggle and the Basic settings badge, localize the source-type tabs in every UI language with a safe fallback, and harden the global keyboard handler against non-element event targets</p>
             <p>[2026-11-21] V8.5.6 release Add a curated YouTube source to Theatre: 7 Blender Foundation / Blender Studio open movies (Big Buck Bunny, Sintel, Tears of Steel, Elephants Dream, Cosmos Laundromat, Agent 327 and Spring) play through YouTube's official privacy-enhanced iframe with controls, branding and channel links intact; the small hand-picked white list needs no API key, never fetches or stores a direct video URL, supports category filters and local search, and its source picker is fully translated into all 8 UI languages; also hot-link the AI-generated 3D game Mist Gate in Web Games and fix Theatre cards stretching into tall strips when only a few results are shown</p>
             <p>[2026-11-20] V8.5.5 release Add PDF support to the local manga reader: .pdf files are accepted alongside images and each PDF becomes one chapter, rendered page by page with a vendored pdf.js copy (CDN fallback only) so it works offline; a single open is capped at 400 pages and yields to the browser every 4 pages with progress shown, switching chapters cancels the running render and frees its page images, and a truncated book says so; also harden local storage (quota-aborted writes no longer report success, one cached IndexedDB connection, unambiguous file ids), surface partially-resolved chapters and scan truncation instead of silently dropping files, fix large-file text decoding (stack overflow, strict GB18030 fallback, real error messages), and unify every route header</p>
@@ -1439,19 +1637,13 @@ function goToSource() {
     
     if (sourceName.value == 1) {
         sourceitem.innerHTML = `
-            <div id="selectform" style="display:flex;">
-                <input type="checkbox" name="movie" value="archive_classic" checked />
-                <label for="movie"> Classic Movies (EN)</label><br />
-                <input type="checkbox" name="movie" value="youtube_blender" checked />
-                <label for="movie"> YouTube</label><br />
-                <input type="checkbox" name="movie" value="hnzy" checked />
-                <label for="movie"> 红牛资源</label><br />
-                <input type="checkbox" name="movie" value="bjy" checked />
-                <label for="movie"> 如意资源</label><br />
-                <input type="checkbox" name="movie" value="ikun" checked />
-                <label for="movie"> 爱坤资源</label><br />
-                <input type="checkbox" name="movie" value="c621" checked />
-                <label for="movie"> 360资源</label><br />
+            <div class="selectform" style="display:flex;">
+                <label><input type="checkbox" name="movie" value="archive_classic" checked /> Classic Movies (EN)</label><br />
+                <label><input type="checkbox" name="movie" value="youtube_blender" checked /> YouTube</label><br />
+                <label><input type="checkbox" name="movie" value="hnzy" checked /> 红牛资源</label><br />
+                <label><input type="checkbox" name="movie" value="bjy" checked /> 如意资源</label><br />
+                <label><input type="checkbox" name="movie" value="ikun" checked /> 爱坤资源</label><br />
+                <label><input type="checkbox" name="movie" value="c621" checked /> 360资源</label><br />
             </div>
             <button class="stylebtn" onclick="returnSource()"><img src="./images/return.svg" style="width:30px;"></button>
         `;
@@ -1471,11 +1663,9 @@ function goToSource() {
         }
     } else if (sourceName.value == 2) {
         sourceitem.innerHTML = `
-            <div id="selectform" style="display:flex;">
-                <input type="checkbox" name="novel" value="novelonlinefull" checked />
-                <label for="novel"> novelonlinefull</label><br />
-                <input type="checkbox" name="novel" value="95sb" checked />
-                <label for="novel"> 95书包</label><br />
+            <div class="selectform" style="display:flex;">
+                <label><input type="checkbox" name="novel" value="novelonlinefull" checked /> novelonlinefull</label><br />
+                <label><input type="checkbox" name="novel" value="95sb" checked /> 95书包</label><br />
             </div>
             <button class="stylebtn" onclick="returnSource()"><img src="./images/return.svg" style="width:30px;"></button>
         `;
@@ -1495,15 +1685,12 @@ function goToSource() {
         }
     } else if (sourceName.value == 3) {
         sourceitem.innerHTML = `
-            <div id="selectform" style="display:flex;">
-                <input type="checkbox" name="manga" value="mangabuddy" checked />
-                <label for="manga"> mangabuddy</label><br />
-                <input type="checkbox" name="manga" value="mangadex" checked />
-                <label for="manga"> mangadex</label><br />
+            <div class="selectform" style="display:flex;">
+                <label><input type="checkbox" name="manga" value="mangabuddy" checked /> mangabuddy</label><br />
+                <label><input type="checkbox" name="manga" value="mangadex" checked /> mangadex</label><br />
             </div>
-            <div id="selectform" style="display:flex;">
-                <input type="checkbox" name="manga" value="dmmh" checked>
-                <label for="manga"> 耽美漫画(PC端)</label><br />
+            <div class="selectform" style="display:flex;">
+                <label><input type="checkbox" name="manga" value="dmmh" checked> 耽美漫画(PC端)</label><br />
             </div>
             <button class="stylebtn" onclick="returnSource()"><img src="./images/return.svg" style="width:30px;"></button>
         `;
@@ -1523,9 +1710,8 @@ function goToSource() {
         }
     } else if (sourceName.value == 4) {
         sourceitem.innerHTML = `
-            <div id="selectform" style="display:flex;">
-                <input type="checkbox" name="music" value="wymusic" checked>
-                <label for="music"> 网易云音乐</label><br />
+            <div class="selectform" style="display:flex;">
+                <label><input type="checkbox" name="music" value="wymusic" checked> 网易云音乐</label><br />
             </div>
             <button class="stylebtn" onclick="returnSource()"><img src="./images/return.svg" style="width:30px;"></button>
         `;
@@ -1545,29 +1731,20 @@ function goToSource() {
         }
     } else if (sourceName.value == 5) {
         sourceitem.innerHTML = `
-            <div id="selectform" style="display:flex;">
-                <input type="checkbox" name="porn" value="zmwzy" checked>
-                <label for="porn"> 字幕网</label><br />
-                <input type="checkbox" name="porn" value="fedzy" checked>
-                <label for="porn"> 富二代</label><br />
-                <input type="checkbox" name="porn" value="javmy" checked>
-                <label for="porn"> JAV名优</label><br />
+            <div class="selectform" style="display:flex;">
+                <label><input type="checkbox" name="porn" value="zmwzy" checked> 字幕网</label><br />
+                <label><input type="checkbox" name="porn" value="fedzy" checked> 富二代</label><br />
+                <label><input type="checkbox" name="porn" value="javmy" checked> JAV名优</label><br />
             </div>
-            <div id="selectform" style="display:flex;">
-                <input type="checkbox" name="porn" value="hyzy" checked>
-                <label for="porn"> 环亚</label><br />
-                <input type="checkbox" name="porn" value="sszy" checked>
-                <label for="porn"> 色色</label><br />
-                <input type="checkbox" name="porn" value="jjzy" checked>
-                <label for="porn"> 玖玖</label><br />
+            <div class="selectform" style="display:flex;">
+                <label><input type="checkbox" name="porn" value="hyzy" checked> 环亚</label><br />
+                <label><input type="checkbox" name="porn" value="sszy" checked> 色色</label><br />
+                <label><input type="checkbox" name="porn" value="jjzy" checked> 玖玖</label><br />
             </div>
-            <div id="selectform" style="display:flex;">
-                <input type="checkbox" name="porn" value="lsnzy" checked>
-                <label for="porn"> 狼少年</label><br />
-                <input type="checkbox" name="porn" value="bttzy" checked>
-                <label for="porn"> 博天堂</label><br />
-                <input type="checkbox" name="porn" value="llzy" checked>
-                <label for="porn"> 利来</label><br />
+            <div class="selectform" style="display:flex;">
+                <label><input type="checkbox" name="porn" value="lsnzy" checked> 狼少年</label><br />
+                <label><input type="checkbox" name="porn" value="bttzy" checked> 博天堂</label><br />
+                <label><input type="checkbox" name="porn" value="llzy" checked> 利来</label><br />
             </div>
             <button class="stylebtn" onclick="returnSource()"><img src="./images/return.svg" style="width:30px;"></button>
         `;
@@ -1631,12 +1808,12 @@ function returnSource() {
         var sourceitem = DOM.$('#sourceitem');
         if (sourceitem) {
             sourceitem.innerHTML = `
-                <div id="selectform">
-                    <input type="radio" name="sourceName" value="1" checked/> <span>Moive</span> <br />
-                    <input type="radio" name="sourceName" value="2" /> <span>Novel</span> <br />
-                    <input type="radio" name="sourceName" value="3" /> <span>Manga</span> <br />
-                    <input type="radio" name="sourceName" value="4" /> <span>Music</span> <br />
-                    <input type="radio" name="sourceName" value="5" /> <span>Porn</span> <br />
+                <div class="selectform">
+                    <label><input type="radio" name="sourceName" value="1" checked/> Movie</label> <br />
+                    <label><input type="radio" name="sourceName" value="2" /> Novel</label> <br />
+                    <label><input type="radio" name="sourceName" value="3" /> Manga</label> <br />
+                    <label><input type="radio" name="sourceName" value="4" /> Music</label> <br />
+                    <label><input type="radio" name="sourceName" value="5" /> Porn</label> <br />
                 </div>
                 <button class="stylebtn" onclick="goToSource()"><img src="./images/nextselect.svg" style="width:30px;"></button>
             `;

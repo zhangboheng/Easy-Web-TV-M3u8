@@ -89,7 +89,7 @@ var i18n = {
         searchManualTip: '下载失败，请点击上方链接手动下载，然后用文件上传加载 ROM。',
         searchSource: '搜索源：',
         urlPreset: '预设 ROM：',
-        biosMissing: '缺少 NeoGeo BIOS，街机游戏无法启动。请将 neogeo.zip 放入 routes/bios/ 目录后刷新重试。',
+        biosMissing: '缺少 NeoGeo BIOS，街机游戏无法启动。请将 neogeo.zip 放入 routes/ 目录后刷新重试。',
         biosTitle: '需要 BIOS',
         biosDesc: '此平台需要你自己主机的 BIOS 文件才能启动。请在加载游戏前先选择 BIOS 文件。',
         biosFileLabel: '所需的 BIOS 文件：',
@@ -185,7 +185,7 @@ var i18n = {
         searchManualTip: 'Download failed. Click the link above to download manually, then use File Upload to load the ROM.',
         searchSource: 'Search Source:',
         urlPreset: 'Preset ROMs:',
-        biosMissing: 'NeoGeo BIOS is missing. Arcade games cannot start. Please place neogeo.zip in the routes/bios/ folder and refresh.',
+        biosMissing: 'NeoGeo BIOS is missing. Arcade games cannot start. Please place neogeo.zip in the routes/ folder and refresh.',
         biosTitle: 'BIOS Required',
         biosDesc: 'This platform needs a BIOS file dumped from your own console. Select it before loading a game.',
         biosFileLabel: 'Required BIOS file:',
@@ -279,8 +279,9 @@ var i18n = {
         searchManualDownload: '手動ダウンロード',
         searchManualTip: 'ダウンロードに失敗しました。上のリンクをクリックして手動でダウンロードし、ファイルアップロードでROMを読み込んでください。',
         searchSource: '検索元：',
+        reset: 'リセット',
         urlPreset: 'ROMプリセット：',
-        biosMissing: 'NeoGeo BIOS がありません。アーケードゲームを起動できません。routes/bios/ フォルダに neogeo.zip を配置して再読み込みしてください。',
+        biosMissing: 'NeoGeo BIOS がありません。アーケードゲームを起動できません。routes/ フォルダに neogeo.zip を配置して再読み込みしてください。',
         biosTitle: 'BIOS が必要です',
         biosDesc: 'このプラットフォームは、あなたの本体から吸い出した BIOS ファイルが必要です。ゲームを読み込む前に選択してください。',
         biosFileLabel: '必要な BIOS ファイル：',
@@ -374,8 +375,9 @@ var i18n = {
         searchManualDownload: '수동 다운로드',
         searchManualTip: '다운로드 실패. 위 링크를 클릭하여 수동으로 다운로드한 후 파일 업로드로 ROM을 로드하세요.',
         searchSource: '검색 소스：',
+        reset: '초기화',
         urlPreset: 'ROM 프리셋:',
-        biosMissing: 'NeoGeo BIOS가 없어 아케이드 게임을 시작할 수 없습니다. routes/bios/ 폴더에 neogeo.zip을 넣고 새로고침하세요.',
+        biosMissing: 'NeoGeo BIOS가 없어 아케이드 게임을 시작할 수 없습니다. routes/ 폴더에 neogeo.zip을 넣고 새로고침하세요.',
         biosTitle: 'BIOS 필요',
         biosDesc: '이 플랫폼은 본인 콘솔에서 덤프한 BIOS 파일이 필요합니다. 게임을 불러오기 전에 선택하세요.',
         biosFileLabel: '필요한 BIOS 파일:',
@@ -468,8 +470,10 @@ var i18n = {
         searchManualDownload: 'Téléchargement manuel',
         searchManualTip: 'Échec du téléchargement. Cliquez sur le lien ci-dessus pour télécharger manuellement, puis utilisez le téléchargement de fichier pour charger le ROM.',
         searchSource: 'Source de recherche:',
+        reset: 'Réinitialiser',
+        tabSearch: 'Rechercher une ROM',
         urlPreset: 'ROM prédéfinis :',
-        biosMissing: 'Le BIOS NeoGeo est manquant, les jeux d\'arcade ne peuvent pas démarrer. Placez neogeo.zip dans le dossier routes/bios/ puis actualisez.',
+        biosMissing: 'Le BIOS NeoGeo est manquant, les jeux d\'arcade ne peuvent pas démarrer. Placez neogeo.zip dans le dossier routes/ puis actualisez.',
         biosTitle: 'BIOS requis',
         biosDesc: 'Cette plateforme nécessite un fichier BIOS extrait de votre propre console. Sélectionnez-le avant de charger un jeu.',
         biosFileLabel: 'Fichier BIOS requis :',
@@ -562,8 +566,10 @@ var i18n = {
         searchManualDownload: 'Manueller Download',
         searchManualTip: 'Download fehlgeschlagen. Klicken Sie auf den Link oben zum manuellen Download, dann laden Sie das ROM über Datei-Upload.',
         searchSource: 'Suchquelle:',
+        reset: 'Zurücksetzen',
+        tabSearch: 'ROM suchen',
         urlPreset: 'ROM-Vorlagen:',
-        biosMissing: 'NeoGeo-BIOS fehlt, Arcade-Spiele können nicht starten. Legen Sie neogeo.zip in den Ordner routes/bios/ und aktualisieren Sie die Seite.',
+        biosMissing: 'NeoGeo-BIOS fehlt, Arcade-Spiele können nicht starten. Legen Sie neogeo.zip in den Ordner routes/ und aktualisieren Sie die Seite.',
         biosTitle: 'BIOS erforderlich',
         biosDesc: 'Diese Plattform benötigt eine BIOS-Datei aus Ihrem eigenen Konsolen-Dump. Wählen Sie sie, bevor Sie ein Spiel laden.',
         biosFileLabel: 'Erforderliche BIOS-Datei:',
@@ -656,8 +662,10 @@ var i18n = {
         searchManualDownload: 'Descarga manual',
         searchManualTip: 'Descarga fallida. Haga clic en el enlace de arriba para descargar manualmente, luego use Carga de archivo para cargar el ROM.',
         searchSource: 'Fuente de búsqueda:',
+        reset: 'Reiniciar',
+        tabSearch: 'Buscar ROM',
         urlPreset: 'ROM predefinidos:',
-        biosMissing: 'Falta el BIOS de NeoGeo, los juegos arcade no pueden iniciar. Coloque neogeo.zip en la carpeta routes/bios/ y actualice.',
+        biosMissing: 'Falta el BIOS de NeoGeo, los juegos arcade no pueden iniciar. Coloque neogeo.zip en la carpeta routes/ y actualice.',
         biosTitle: 'BIOS requerido',
         biosDesc: 'Esta plataforma necesita un archivo BIOS volcado de tu propia consola. Selecciónalo antes de cargar un juego.',
         biosFileLabel: 'Archivo BIOS requerido:',
@@ -750,8 +758,10 @@ var i18n = {
         searchManualDownload: 'Ручная загрузка',
         searchManualTip: 'Загрузка не удалась. Нажмите на ссылку выше, чтобы загрузить вручную, затем используйте загрузку файла для загрузки ROM.',
         searchSource: 'Источник поиска:',
+        reset: 'Сбросить',
+        tabSearch: 'Поиск ROM',
         urlPreset: 'Предустановленные ROM:',
-        biosMissing: 'Отсутствует BIOS NeoGeo, аркадные игры не могут запуститься. Поместите neogeo.zip в папку routes/bios/ и обновите страницу.',
+        biosMissing: 'Отсутствует BIOS NeoGeo, аркадные игры не могут запуститься. Поместите neogeo.zip в папку routes/ и обновите страницу.',
         biosTitle: 'Требуется BIOS',
         biosDesc: 'Этой платформе нужен файл BIOS, снятый с вашей собственной консоли. Выберите его перед загрузкой игры.',
         biosFileLabel: 'Требуемый файл BIOS:',
@@ -789,17 +799,17 @@ function applyTranslations() {
     });
 }
 
-// CORS proxy list (tried in order).
-// Status verified 2026-11: luckydesigner and api.cors.lol can fetch archive.org
-// but rate-limit aggressively; codetabs is unstable. allorigins was unreachable
-// and has been removed. corsmirror (Render) was also removed: it mangles
-// binary responses (every non-ASCII byte becomes the UTF-8 replacement
-// character U+FFFD), silently corrupting ROM/BIOS downloads.
-var corsProxies = [
-    'https://cors.luckydesigner.workers.dev/?',
-    'https://api.cors.lol/?url=',
-    'https://api.codetabs.com/v1/proxy?quest='
-];
+// CORS proxy chain from the unified ProxyConfig (Settings > Proxy Settings).
+// Built-ins include corsmirror which mangles binary bodies; the
+// hasBinaryCorruption() check below skips it automatically during downloads.
+//
+// getProxyPool() is called per request instead of once at load, so a proxy the
+// health cache just demoted - or one the user just added in Settings - takes
+// effect without a page reload. Each failover chain snapshots the array it
+// started with, because the recursion indexes into it.
+function getProxyPool() {
+    return (typeof ProxyConfig !== 'undefined') ? ProxyConfig.getProxies() : [];
+}
 
 // Hosts that serve CORS headers (Access-Control-Allow-Origin: *) - ROMs from
 // these hosts can be fetched directly without any proxy
@@ -839,7 +849,7 @@ function isLikelyErrorBody(blob) {
 // transcode the response as text, replacing every non-ASCII byte with the
 // UTF-8 replacement character (EF BF BD). Count occurrences in the head of
 // the file - a handful of them in a row means the data is garbage.
-function hasBinaryCorruption(blob) {
+function hasBinaryCorruption(blob, target) {
     return new Promise(function(resolve) {
         var reader = new FileReader();
         reader.onload = function() {
@@ -848,7 +858,15 @@ function hasBinaryCorruption(blob) {
             for (var i = 0; i + 2 < bytes.length; i++) {
                 if (bytes[i] === 0xEF && bytes[i + 1] === 0xBF && bytes[i + 2] === 0xBD) {
                     hits++;
-                    if (hits >= 3) { resolve(true); return; }
+                    if (hits >= 3) {
+                        // Blame the proxy that delivered this exact body: the caller
+                        // passes the URL it fetched, so two concurrent downloads can
+                        // never accuse each other's proxy (see proxy-config.js).
+                        if (typeof ProxyConfig !== 'undefined' && ProxyConfig.reportCorruptionFor) {
+                            ProxyConfig.reportCorruptionFor(target);
+                        }
+                        resolve(true); return;
+                    }
                     i += 2;
                 }
             }
@@ -933,8 +951,9 @@ function processRomBlob(blob, filename) {
 
 // Fetch a ROM: direct first for CORS-enabled hosts (e.g. raw.githubusercontent.com),
 // then through CORS proxies, then a final direct attempt as last resort
-function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError, directTried) {
+function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError, directTried, pool) {
     var urlLoadBtn = document.getElementById('urlLoadBtn');
+    var corsProxies = pool || getProxyPool();
     var fetchUrl;
     var viaProxy;
     
@@ -1000,7 +1019,7 @@ function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError, dire
                 if (isError) {
                     throw new Error('Proxy returned an error page');
                 }
-                return hasBinaryCorruption(blob).then(function(corrupt) {
+                return hasBinaryCorruption(blob, fetchUrl).then(function(corrupt) {
                     if (corrupt) {
                         throw new Error('Proxy corrupted the binary data (U+FFFD transcoding)');
                     }
@@ -1019,10 +1038,10 @@ function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError, dire
             var nextProxy = proxyIndex < 0 ? 0 : proxyIndex + 1;
             if (nextProxy < corsProxies.length) {
                 // Try next proxy
-                tryFetchWithProxy(originalUrl, nextProxy, filename, onFinalError, directTried);
+                tryFetchWithProxy(originalUrl, nextProxy, filename, onFinalError, directTried, corsProxies);
             } else if (!directTried) {
                 // All proxies failed, try direct as a last resort
-                tryFetchWithProxy(originalUrl, nextProxy, filename, onFinalError, directTried);
+                tryFetchWithProxy(originalUrl, nextProxy, filename, onFinalError, directTried, corsProxies);
             } else {
                 // All methods failed
                 if (urlLoadBtn) urlLoadBtn.disabled = false;
@@ -1201,7 +1220,8 @@ function isJsonDirectFetchable(url) {
 // Fetch JSON through CORS proxies (similar to tryFetchWithProxy but for JSON).
 // CORS-enabled JSON APIs (archive.org metadata/advancedsearch, api.github.com)
 // are fetched directly first.
-function tryFetchJson(originalUrl, proxyIndex, options) {
+function tryFetchJson(originalUrl, proxyIndex, options, pool) {
+    var corsProxies = pool || getProxyPool();
     var fetchUrl;
     var viaProxy;
     
@@ -1242,7 +1262,7 @@ function tryFetchJson(originalUrl, proxyIndex, options) {
             clearTimeout(fetchTimer);
             var nextProxy = proxyIndex < 0 ? 0 : proxyIndex + 1;
             if (nextProxy < corsProxies.length) {
-                return tryFetchJson(originalUrl, nextProxy, options);
+                return tryFetchJson(originalUrl, nextProxy, options, corsProxies);
             }
             throw error;
         });
@@ -1384,12 +1404,14 @@ var EJS_pathtodata = 'https://cdn.emulatorjs.org/4.2.3/data/';
 // recognized ("None of those archives was found in your paths"). With
 // EJS_dontExtractBIOS=true EmulatorJS writes EJS_biosUrl as-is via FS.writeFile,
 // so the URL must be exactly "neogeo.zip" (resolved next to this page: routes/).
-// A local copy is kept at routes/neogeo.zip (duplicate of routes/bios/neogeo.zip).
+// The single local copy is routes/neogeo.zip; the byte-identical bios/ subfolder
+// copy was removed as dead weight, so keep this one file in sync with the URL
+// below - check-game-regressions.js guards both.
 var EJS_biosUrl = 'neogeo.zip';
 var EJS_dontExtractBIOS = true;
 // Enable soft load for FBNeo core
 var EJS_softLoad = true;
-// Remote NeoGeo BIOS fallback source (auto-fetched when local routes/bios/neogeo.zip is missing)
+// Remote NeoGeo BIOS fallback source (auto-fetched when routes/neogeo.zip is missing)
 var REMOTE_BIOS_URLS = [
     'https://archive.org/download/neogeo-bios/neogeo/mame_0251b/roms/neogeo.zip',
     'https://archive.org/download/neogeo-bios/neogeo/mame_0111/roms/neogeo.zip'
@@ -1606,7 +1628,9 @@ function handleRomUpload(file) {
 }
 
 // Fetch a binary file as blob through CORS proxies, then direct fetch
-function fetchBlobWithProxy(originalUrl, proxyIndex, onSuccess, onError) {
+// `pool` is threaded through the recursion so the proxy list stays stable.
+function fetchBlobWithProxy(originalUrl, proxyIndex, onSuccess, onError, pool) {
+    var corsProxies = pool || getProxyPool();
     var fetchUrl;
     var isLocalUrl = originalUrl.indexOf('localhost') !== -1 ||
                      originalUrl.indexOf('127.0.0.1') !== -1 ||
@@ -1639,7 +1663,7 @@ function fetchBlobWithProxy(originalUrl, proxyIndex, onSuccess, onError) {
             if (blob.size < 1024) {
                 throw new Error('File too small, possibly an error page');
             }
-            return hasBinaryCorruption(blob).then(function(corrupt) {
+            return hasBinaryCorruption(blob, fetchUrl).then(function(corrupt) {
                 if (corrupt) {
                     throw new Error('Proxy corrupted the binary data (U+FFFD transcoding)');
                 }
@@ -1651,7 +1675,7 @@ function fetchBlobWithProxy(originalUrl, proxyIndex, onSuccess, onError) {
             clearTimeout(fetchTimer);
             console.log('BIOS fetch attempt failed: ' + error.message);
             if (proxyIndex < corsProxies.length) {
-                fetchBlobWithProxy(originalUrl, proxyIndex + 1, onSuccess, onError);
+                fetchBlobWithProxy(originalUrl, proxyIndex + 1, onSuccess, onError, corsProxies);
             } else if (typeof onError === 'function') {
                 onError();
             }
@@ -1960,7 +1984,7 @@ function updateGamepadStatus() {
         gamepadStatusText.textContent = t('noGamepadDetected');
         gamepadList.innerHTML = '<div class="gamepad-no-devices" id="gamepadNoDevices">' +
             '<i class="fas fa-unlink"></i>' +
-            '<span data-i18n="noGamepad">No gamepad connected</span>' +
+            '<span data-i18n="noGamepadDetected">' + t('noGamepadDetected') + '</span>' +
         '</div>';
     }
 }

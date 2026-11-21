@@ -203,46 +203,6 @@
             display: block;
         }
         
-        /* Loading Overlay */
-        .loading-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.9);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 50;
-        }
-        
-        .loading-overlay.hidden {
-            display: none;
-        }
-        
-        .loading-spinner {
-            text-align: center;
-            color: #fff;
-        }
-        
-        .loading-spinner i {
-            font-size: 48px;
-            color: #a3001b;
-            animation: spin 1s linear infinite;
-        }
-        
-        .loading-spinner p {
-            margin-top: 15px;
-            font-size: 16px;
-        }
-        
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
         /* Fullscreen Mode */
         .gameplay-container.fullscreen .top-header {
             opacity: 0;

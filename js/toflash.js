@@ -490,13 +490,16 @@ async function playSwf(file) {
 // ROM-specific bits swapped for SWF handling via Ruffle)
 // ---------------------------------------------------------------------------
 
-// CORS proxy list (tried in order). Same set and caveats as emulatorjs.js:
-// codetabs is unstable; corsmirror was removed for corrupting binary bodies.
-var corsProxies = [
-    'https://cors.luckydesigner.workers.dev/?',
-    'https://api.cors.lol/?url=',
-    'https://api.codetabs.com/v1/proxy?quest='
-];
+// CORS proxy chain from the unified ProxyConfig (Settings > Proxy Settings).
+// corsmirror mangles binary bodies; hasBinaryCorruption() skips it automatically.
+//
+// getProxyPool() is called per request instead of once at load, so a proxy the
+// health cache just demoted - or one the user just added in Settings - takes
+// effect without a page reload. Each failover chain snapshots the array it
+// started with, because the recursion indexes into it.
+function getProxyPool() {
+    return (typeof ProxyConfig !== 'undefined') ? ProxyConfig.getProxies() : [];
+}
 
 // Hosts that serve CORS headers (Access-Control-Allow-Origin: *) - SWFs from
 // these hosts can be fetched directly without any proxy
@@ -535,7 +538,7 @@ function isLikelyErrorBody(blob) {
 // Detect binary corruption from text-mangling proxies: a broken proxy may
 // transcode the response as text, replacing every non-ASCII byte with the
 // UTF-8 replacement character (EF BF BD). Count occurrences in the head.
-function hasBinaryCorruption(blob) {
+function hasBinaryCorruption(blob, target) {
     return new Promise(function(resolve) {
         var reader = new FileReader();
         reader.onload = function() {
@@ -544,7 +547,15 @@ function hasBinaryCorruption(blob) {
             for (var i = 0; i + 2 < bytes.length; i++) {
                 if (bytes[i] === 0xEF && bytes[i + 1] === 0xBF && bytes[i + 2] === 0xBD) {
                     hits++;
-                    if (hits >= 3) { resolve(true); return; }
+                    if (hits >= 3) {
+                        // Blame the proxy that delivered this exact body: the caller
+                        // passes the URL it fetched, so two concurrent downloads can
+                        // never accuse each other's proxy (see proxy-config.js).
+                        if (typeof ProxyConfig !== 'undefined' && ProxyConfig.reportCorruptionFor) {
+                            ProxyConfig.reportCorruptionFor(target);
+                        }
+                        resolve(true); return;
+                    }
                     i += 2;
                 }
             }
@@ -588,8 +599,11 @@ function processSwfBlob(blob, filename) {
 
 // Fetch a SWF: direct first for CORS-enabled hosts, then through CORS
 // proxies, then a final direct attempt as last resort
-function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError, directTried) {
+// `pool` is threaded through the recursion so the proxy list stays stable for
+// the whole chain; the top-level caller omits it and gets a fresh snapshot.
+function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError, directTried, pool) {
     var urlLoadBtn = document.getElementById('urlLoadBtn');
+    var corsProxies = pool || getProxyPool();
     var fetchUrl;
     var viaProxy;
 
@@ -644,7 +658,7 @@ function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError, dire
                 if (isError) {
                     throw new Error('Proxy returned an error page');
                 }
-                return hasBinaryCorruption(blob).then(function(corrupt) {
+                return hasBinaryCorruption(blob, fetchUrl).then(function(corrupt) {
                     if (corrupt) {
                         throw new Error('Proxy corrupted the binary data (U+FFFD transcoding)');
                     }
@@ -662,9 +676,9 @@ function tryFetchWithProxy(originalUrl, proxyIndex, filename, onFinalError, dire
             console.log('Fetch attempt failed: ' + error.message);
             var nextProxy = proxyIndex < 0 ? 0 : proxyIndex + 1;
             if (nextProxy < corsProxies.length) {
-                tryFetchWithProxy(originalUrl, nextProxy, filename, onFinalError, directTried);
+                tryFetchWithProxy(originalUrl, nextProxy, filename, onFinalError, directTried, corsProxies);
             } else if (!directTried) {
-                tryFetchWithProxy(originalUrl, nextProxy, filename, onFinalError, directTried);
+                tryFetchWithProxy(originalUrl, nextProxy, filename, onFinalError, directTried, corsProxies);
             } else {
                 if (urlLoadBtn) urlLoadBtn.disabled = false;
                 console.error('All fetch methods failed for: ' + originalUrl);
@@ -778,7 +792,8 @@ function isJsonDirectFetchable(url) {
 
 // Fetch JSON through CORS proxies (archive.org metadata/advancedsearch are
 // fetched directly first - they serve CORS headers)
-function tryFetchJson(originalUrl, proxyIndex) {
+function tryFetchJson(originalUrl, proxyIndex, pool) {
+    var corsProxies = pool || getProxyPool();
     var fetchUrl;
     var viaProxy;
 
@@ -809,7 +824,7 @@ function tryFetchJson(originalUrl, proxyIndex) {
             clearTimeout(fetchTimer);
             var nextProxy = proxyIndex < 0 ? 0 : proxyIndex + 1;
             if (nextProxy < corsProxies.length) {
-                return tryFetchJson(originalUrl, nextProxy);
+                return tryFetchJson(originalUrl, nextProxy, corsProxies);
             }
             throw error;
         });

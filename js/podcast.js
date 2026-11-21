@@ -1,13 +1,17 @@
 // Podcast Player JS
 // Native JavaScript (No jQuery)
 
-var proxy = {
-    0: 'https://api.codetabs.com/v1/proxy/?quest=',
-    1: 'https://cors.luckydesigner.workers.dev/?',
-    2: 'https://corsproxy.io/?',
-    3: 'https://api.allorigins.win/raw?url=',
-};
-var rand = Math.floor(Math.random() * Object.keys(proxy).length);
+// CORS proxies from the unified ProxyConfig (Settings > Proxy Settings).
+// Tried in order; failed attempts fall through to the next proxy.
+//
+// The pool is read on every request (getProxyPool) instead of once at load:
+// a proxy the health cache just demoted, or one the user just added in
+// Settings, must take effect without a page reload.
+var PROXY_TIMEOUT_MS = 30000;
+
+function getProxyPool() {
+    return (typeof ProxyConfig !== 'undefined') ? ProxyConfig.getProxies() : [];
+}
 
 var feedUrl = '';
 var podcastInfo = {};
@@ -104,30 +108,48 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function loadPodcastFeed() {
-    document.getElementById('loadingOverlay').classList.remove('hidden');
-    fetch(proxy[rand] + encodeURIComponent(feedUrl))
-        .then(function(response) { return response.text(); })
-        .then(function(text) {
-            document.getElementById('loadingOverlay').classList.add('hidden');
-            var parser = new DOMParser();
-            var xmlData = parser.parseFromString(text, 'text/xml');
-            parsePodcastFeed(xmlData, text);
-        })
-        .catch(function() {
-            var altRand = (rand + 1) % Object.keys(proxy).length;
-            fetch(proxy[altRand] + encodeURIComponent(feedUrl))
-                .then(function(response) { return response.text(); })
-                .then(function(text) {
-                    document.getElementById('loadingOverlay').classList.add('hidden');
-                    var parser = new DOMParser();
-                    var xmlData = parser.parseFromString(text, 'text/xml');
-                    parsePodcastFeed(xmlData, text);
-                })
-                .catch(function() {
-                    document.getElementById('loadingOverlay').classList.add('hidden');
-                    showError('Failed to load podcast feed.');
-                });
-        });
+    var overlay = document.getElementById('loadingOverlay');
+    overlay.classList.remove('hidden');
+    // Snapshot the pool once per request: the failover chain indexes into this
+    // array, so re-reading it between attempts would shift the indices if the
+    // health cache reordered the pool mid-chain.
+    var proxyList = getProxyPool();
+    var i = 0;
+    function attempt() {
+        if (i >= proxyList.length) {
+            overlay.classList.add('hidden');
+            showError('Failed to load podcast feed.');
+            return;
+        }
+        var prefix = proxyList[i++];
+        // Each attempt gets its own timeout so a hung proxy cannot leave the
+        // loading overlay spinning forever.
+        var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+        var timer = controller ? setTimeout(function() { controller.abort(); }, PROXY_TIMEOUT_MS) : null;
+        fetch(prefix + encodeURIComponent(feedUrl), controller ? { signal: controller.signal } : {})
+            .then(function(response) {
+                if (timer) clearTimeout(timer);
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+                return response.text();
+            })
+            .then(function(text) {
+                var parser = new DOMParser();
+                var xmlData = parser.parseFromString(text, 'text/xml');
+                // Treat a parse error as a failed attempt (some proxies return
+                // HTML). Keep the overlay up: the next proxy is still loading.
+                if (xmlData.getElementsByTagName('parsererror').length) {
+                    attempt();
+                    return;
+                }
+                overlay.classList.add('hidden');
+                parsePodcastFeed(xmlData, text);
+            })
+            .catch(function() {
+                if (timer) clearTimeout(timer);
+                attempt();
+            });
+    }
+    attempt();
 }
 
 function extractPodcastImage(channel, xmlText) {

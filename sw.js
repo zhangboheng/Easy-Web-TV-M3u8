@@ -1,5 +1,5 @@
 // Easy Web TV Service Worker
-const CACHE_NAME = 'easy-web-tv-v8.5.7';
+const CACHE_NAME = 'easy-web-tv-v8.5.8';
 
 // Assets to cache on install - only local assets that exist
 // v8.5.0: slimmed down to the index shell only; route pages, engines and
@@ -13,6 +13,10 @@ const CACHE_NAME = 'easy-web-tv-v8.5.7';
 // v8.5.7: refreshed Theatre/Adult sources, full-screen two-column Settings panel,
 // Porn-category and badge sync with Sensitive Content, source-tab i18n fallback,
 // and a hardened global keydown handler.
+// v8.5.8: unified CORS proxy pool with a persistent health cache (a proxy that
+// just failed is demoted for 1-30min and every fetch path re-reads the pool per
+// request, so demotions and Settings changes apply without a reload), per-attempt
+// timeouts on every failover loop, and the UI translated into 96 languages.
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
@@ -20,9 +24,10 @@ const PRECACHE_ASSETS = [
   '/css/style.css',
   '/css/main.css',
   '/js/index.js',
+  '/js/proxy-config.js',
   '/js/translator.js',
-  '/js/locales/translations.js',
-  '/js/core/dom.js',
+  '/js/translations.js',
+  '/js/dom.js',
   '/images/logo.png',
   '/images/logo-192.png',
   '/images/logo-512.png',

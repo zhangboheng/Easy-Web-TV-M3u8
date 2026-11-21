@@ -6,22 +6,19 @@
 // is down / blocked / rate-limited, the next is tried automatically until one
 // returns a usable response.
 
-// Ordered CORS-proxy pool. Tried in sequence; the first that returns an
-// OK, parseable response wins. Entry forms:
+// Ordered CORS-proxy pool: now sourced from the unified ProxyConfig
+// (Settings > Proxy Settings). The built-in defaults are de-duplicated and
+// read-only; user-added proxies are tried first.
+// Entry forms:
 //   'https://host/path?url='                -> append encodeURIComponent(url)
 //   { prefix: 'https://host/', raw: true }  -> append the URL verbatim (raw)
-// Status verified 2026-09: allorigins is unreachable and removed, as is
-// redoc.ly (403 on real targets). corsmirror is live but slow to wake
-// (Render free tier cold start - hence the 30s proxy timeout); cors.lol
-// works but rate-limits aggressively; luckydesigner and codetabs are
-// intermittently down but kept as deep fallbacks. Hosts in directHosts are
-// tried first, then this pool is used as a fallback if direct fetch fails.
-var proxyList = [
-    'https://corsmirror.onrender.com/v1/cors?url=',
-    'https://api.cors.lol/?url=',
-    'https://cors.luckydesigner.workers.dev/?',
-    'https://api.codetabs.com/v1/proxy/?quest='
-];
+//
+// getProxyPool() is called per request (not once at script load) so a proxy the
+// health cache just demoted - or one the user just added in Settings - takes
+// effect immediately, without a page reload.
+function getProxyPool() {
+    return (typeof ProxyConfig !== 'undefined') ? ProxyConfig.getProxies() : [];
+}
 
 // Hosts documented as CORS=Yes in Downloads/public-apis-master/README.md.
 // These are requested directly first; if that ever fails, the proxy pool below
@@ -74,6 +71,9 @@ var PROXY_TIMEOUT_MS = 30000;
 
 function tryProxies(url, consume) {
     return new Promise(function (resolve, reject) {
+        // Snapshot the pool for this request: the sequential attempts index into
+        // the list, so it must not change while the failover chain is running.
+        var proxyList = getProxyPool();
         var attempts = proxyList.map(function (entry) {
             var prefix = (typeof entry === 'string') ? entry : entry.prefix;
             var target = (entry && entry.raw) ? url : encodeURIComponent(url);

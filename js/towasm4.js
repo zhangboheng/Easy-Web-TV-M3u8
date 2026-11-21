@@ -313,22 +313,113 @@ function z85Encode(bytes) {
 }
 
 var currentCartName = null;
+// Monotonic load id: a newer loadCart() supersedes a pending one, so the older
+// chain must not touch the overlay or toast when it finally settles.
+var cartLoadSeq = 0;
 
 function setOverlay(visible) {
     var overlay = document.getElementById('loadingOverlay');
     if (overlay) overlay.classList.toggle('hidden', !visible);
 }
 
+// A cart must be a WebAssembly module. Checking the magic number up front stops
+// the runtime from throwing inside its own async init(), which would otherwise
+// leave a blank player and no feedback at all.
+function isWasmModule(bytes) {
+    return !!bytes && bytes.length >= 8 &&
+        bytes[0] === 0x00 && bytes[1] === 0x61 && bytes[2] === 0x73 && bytes[3] === 0x6d &&
+        bytes[4] === 0x01;
+}
+
+// <wasm4-app> boots asynchronously: its init() awaits runtime.init() and
+// runtime.load(cart) before the console starts drawing, so hiding the overlay
+// right after appendChild() would hide it before anything is ready. Wait until
+// the canvas is mounted AND the cart is instantiated, with a hard cap so a
+// broken cart can never leave the overlay stuck on screen.
+var BOOT_READY_TIMEOUT_MS = 10000;
+var BOOT_POLL_INTERVAL_MS = 50;
+
+function isPlayerReady(app) {
+    var root = app.shadowRoot;
+    var canvas = root && root.querySelector('canvas');
+    if (!canvas || !canvas.width) return false;
+    var runtime = app.runtime;
+    // runtime.wasm is assigned once the cart has been instantiated. Fall back to
+    // the canvas check alone if a future runtime drops that field.
+    if (runtime && 'wasm' in runtime) return !!runtime.wasm;
+    return true;
+}
+
+function waitForPlayerReady(app) {
+    return new Promise(function(resolve) {
+        var startedAt = Date.now();
+        var settled = false;
+        function finish(ready) {
+            if (settled) return;
+            settled = true;
+            window.removeEventListener('unhandledrejection', onRejection);
+            resolve(ready);
+        }
+
+        // The vendored runtime boots inside its own async init() and does not
+        // catch its errors, so an invalid cart surfaces as an unhandled
+        // rejection. Use it to fail fast instead of waiting out the timeout.
+        // The console error is intentionally left visible: it is the only
+        // diagnostic for why the cart did not run.
+        function onRejection(event) {
+            var reason = event && event.reason;
+            var name = (reason && reason.name) || '';
+            var message = String((reason && reason.message) || reason || '');
+            if (name === 'CompileError' || name === 'LinkError' || name === 'RuntimeError' ||
+                /WebAssembly|Wasm4Error/i.test(message)) {
+                finish(false);
+            }
+        }
+        window.addEventListener('unhandledrejection', onRejection);
+
+        (function poll() {
+            if (settled) return;
+            if (isPlayerReady(app)) { finish(true); return; }
+            if (!app.isConnected || (Date.now() - startedAt) >= BOOT_READY_TIMEOUT_MS) {
+                finish(false);
+                return;
+            }
+            setTimeout(poll, BOOT_POLL_INTERVAL_MS);
+        })();
+    });
+}
+
 async function loadCart(bytes, name) {
-    if (bytes.byteLength > 65536) {
+    // Callers hand over different shapes: playFile() passes an ArrayBuffer from
+    // file.arrayBuffer(), downloadCart() returns an ArrayBuffer, while callers
+    // that already decode may pass a Uint8Array. Normalise once so the checks
+    // below (and z85Encode) always see real bytes.
+    var cart = (bytes instanceof Uint8Array) ? bytes : new Uint8Array(bytes || 0);
+    // Validate before touching the player so a bad file cannot flash a blank
+    // screen or leave the overlay stuck.
+    if (!isWasmModule(cart)) {
+        setOverlay(false);
+        showToast(t('cartFailed'));
+        return;
+    }
+    if (cart.byteLength > 65536) {
         // WASM-4 carts are limited to 64 KiB by the runtime (see runtime.load)
         setOverlay(false);
         showToast(t('cartFailed'));
         return;
     }
     setOverlay(true);
+    var seq = ++cartLoadSeq;
     try {
         var wrapper = document.getElementById('wasm4Wrapper');
+
+        // Reveal the player first: <wasm4-app> must not initialise inside a
+        // display:none section.
+        var uploadSection = document.getElementById('uploadSection');
+        if (uploadSection) uploadSection.classList.add('hidden');
+        var playerSection = document.getElementById('playerSection');
+        if (playerSection) playerSection.classList.add('active');
+
         // Tear down any previous player instance
         var oldApp = wrapper.querySelector('wasm4-app');
         if (oldApp) oldApp.remove();
@@ -340,8 +431,8 @@ async function loadCart(bytes, name) {
         script.type = 'application/json';
         script.id = 'wasm4-cart-json';
         script.textContent = JSON.stringify({
-            WASM4_CART: z85Encode(new Uint8Array(bytes)),
-            WASM4_CART_SIZE: bytes.byteLength
+            WASM4_CART: z85Encode(cart),
+            WASM4_CART_SIZE: cart.byteLength
         });
         wrapper.appendChild(script);
 
@@ -350,17 +441,26 @@ async function loadCart(bytes, name) {
         wrapper.appendChild(app);
 
         currentCartName = name;
-        var uploadSection = document.getElementById('uploadSection');
-        if (uploadSection) uploadSection.classList.add('hidden');
         var resetBtn = document.getElementById('resetBtn');
         if (resetBtn) resetBtn.style.display = 'flex';
-        var playerSection = document.getElementById('playerSection');
-        if (playerSection) playerSection.classList.add('active');
         window.scrollTo(0, 0);
+
+        // Hold the overlay until the console has actually booted (see
+        // waitForPlayerReady - the runtime's init() is asynchronous).
+        var booted = await waitForPlayerReady(app);
+        // A newer loadCart() took over meanwhile: it owns the overlay and toast.
+        if (seq !== cartLoadSeq) return;
         setOverlay(false);
+        if (!booted) {
+            // The runtime never finished booting (corrupt or unsupported cart),
+            // so do not claim the game is running.
+            showToast(t('cartFailed'));
+            return;
+        }
         showToast(t('playing') + name);
     } catch (err) {
         console.error('WASM-4 cart load failed:', err);
+        if (seq !== cartLoadSeq) return;
         setOverlay(false);
         showToast(t('cartFailed'));
     }
@@ -379,12 +479,16 @@ function playFile(file) {
     });
 }
 
-// CORS proxy chain (same set and caveats as todos.js)
-var corsProxies = [
-    'https://cors.luckydesigner.workers.dev/?',
-    'https://api.cors.lol/?url=',
-    'https://api.codetabs.com/v1/proxy?quest='
-];
+// CORS proxy chain from the unified ProxyConfig (same set as todos.js).
+// Read per request so the health cache and Settings changes apply live.
+function getProxyPool() {
+    return (typeof ProxyConfig !== 'undefined') ? ProxyConfig.getProxies() : [];
+}
+
+// Per-attempt timeouts: a hung proxy must not stall the download forever.
+// Proxied attempts get longer because free-tier proxies can cold-start slowly.
+var DIRECT_TIMEOUT_MS = 20000;
+var PROXY_TIMEOUT_MS = 30000;
 
 var directFetchHosts = [
     'raw.githubusercontent.com',
@@ -416,21 +520,65 @@ function isLikelyErrorBody(blob) {
     });
 }
 
+// Detect binary corruption from text-mangling proxies: a broken proxy may
+// transcode the response as text, replacing every non-ASCII byte with the
+// UTF-8 replacement character (EF BF BD). A .wasm cart is binary, so this is
+// the only reliable signal that a body must be discarded — the unified pool
+// leads with such a proxy (see proxy-config.js). Without this check the cart
+// arrives silently corrupted and the runtime fails to instantiate it.
+// `target` is the URL that was actually fetched (proxy-prefixed when a proxy
+// was used), so the corruption is attributed to that exact proxy - never to one
+// used by a concurrent download - and a direct URL blames nobody.
+function hasBinaryCorruption(blob, target) {
+    return new Promise(function(resolve) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var bytes = new Uint8Array(reader.result || new ArrayBuffer(0));
+            var hits = 0;
+            for (var i = 0; i + 2 < bytes.length; i++) {
+                if (bytes[i] === 0xEF && bytes[i + 1] === 0xBF && bytes[i + 2] === 0xBD) {
+                    hits++;
+                    if (hits >= 3) {
+                        if (typeof ProxyConfig !== 'undefined' && ProxyConfig.reportCorruptionFor) {
+                            ProxyConfig.reportCorruptionFor(target);
+                        }
+                        resolve(true); return;
+                    }
+                    i += 2;
+                }
+            }
+            resolve(false);
+        };
+        reader.onerror = function() { resolve(false); };
+        reader.readAsArrayBuffer(blob.slice(0, 1024));
+    });
+}
+
 function downloadCart(url) {
+    // Snapshot the pool for this request so the retry order cannot shift
+    // underneath us while the chain is running.
     var attempts = [];
     if (isDirectFetchable(url)) {
-        attempts.push(url);
+        attempts.push({ target: url, viaProxy: false });
     }
-    corsProxies.forEach(function(p) { attempts.push(p + encodeURIComponent(url)); });
+    getProxyPool().forEach(function(p) {
+        attempts.push({ target: p + encodeURIComponent(url), viaProxy: true });
+    });
 
     var idx = 0;
     function tryNext() {
         if (idx >= attempts.length) {
             return Promise.reject(new Error('all proxies failed'));
         }
-        var target = attempts[idx++];
-        return fetch(target)
+        var current = attempts[idx++];
+        var target = current.target;
+        var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+        var timer = controller ? setTimeout(function() {
+            controller.abort();
+        }, current.viaProxy ? PROXY_TIMEOUT_MS : DIRECT_TIMEOUT_MS) : null;
+        return fetch(target, controller ? { signal: controller.signal } : {})
             .then(function(res) {
+                if (timer) clearTimeout(timer);
                 if (!res.ok) throw new Error('HTTP ' + res.status);
                 return res.blob();
             })
@@ -438,10 +586,14 @@ function downloadCart(url) {
                 if (blob.size === 0) throw new Error('empty body');
                 return isLikelyErrorBody(blob).then(function(bad) {
                     if (bad) throw new Error('error page body');
-                    return blob.arrayBuffer();
+                    return hasBinaryCorruption(blob, current.target).then(function(corrupt) {
+                        if (corrupt) throw new Error('corrupted binary body');
+                        return blob.arrayBuffer();
+                    });
                 });
             })
             .catch(function(err) {
+                if (timer) clearTimeout(timer);
                 console.warn('wasm4 cart download failed via', target, err);
                 return tryNext();
             });
@@ -514,20 +666,26 @@ function bindEvents() {
 
     // URL input
     document.getElementById('urlLoadBtn').addEventListener('click', function() {
+        var btn = this;
         var input = document.getElementById('cartUrlInput');
         var url = (input.value || '').trim();
         if (!/^https?:\/\//i.test(url)) {
             showToast(t('urlFetchFailed'));
             return;
         }
+        // Blocking overlay: the download can take a while on slow free-tier
+        // proxies, and loadCart keeps it up until the runtime has booted.
+        btn.disabled = true;
         setOverlay(true);
         downloadCart(url).then(function(buf) {
             var name = url.split('/').pop().split('?')[0] || 'cart.wasm';
-            loadCart(buf, name);
+            return loadCart(buf, name);
         }).catch(function(err) {
             console.error('wasm4 URL cart failed:', err);
             setOverlay(false);
             showToast(t('urlFetchError'));
+        }).then(function() {
+            btn.disabled = false;
         });
     });
 }

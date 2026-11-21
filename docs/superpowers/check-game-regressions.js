@@ -135,6 +135,33 @@ check(/accept="[^"]*\.p[^"]*"/.test(emulatorJsHtml), 'emulator upload accept lis
 check(/accept="[^"]*\.dsk[^"]*"/.test(emulatorJsHtml), 'emulator upload accept list lacks .dsk files');
 check(/accept="[^"]*\.chd[^"]*"/.test(emulatorJsHtml), 'emulator upload accept list lacks .chd files');
 
+// 9b. NeoGeo BIOS. FBNeo arcade cores only start when a complete "neogeo.zip"
+// ARCHIVE is in their FS search paths, and EmulatorJS resolves EJS_biosUrl
+// relative to the page - so the file must sit at routes/neogeo.zip with exactly
+// that name. There used to be a byte-identical routes/bios/neogeo.zip that no
+// code ever fetched; it was removed, and these checks keep it from coming back.
+const neogeoZip = path.join(root, 'routes', 'neogeo.zip');
+check(fs.existsSync(neogeoZip), 'routes/neogeo.zip (NeoGeo BIOS) is missing - FBNeo arcade games cannot start');
+check(fs.existsSync(neogeoZip) && fs.statSync(neogeoZip).size > 1024 * 1024,
+    'routes/neogeo.zip is too small to be a complete NeoGeo BIOS archive');
+check(/var EJS_biosUrl = 'neogeo\.zip';/.test(emulatorJs),
+    'emulatorjs.js must hand EmulatorJS a biosUrl named exactly "neogeo.zip"');
+check(/var EJS_dontExtractBIOS = true;/.test(emulatorJs),
+    'emulatorjs.js must keep EJS_dontExtractBIOS = true (the core needs the .zip, not loose files)');
+check(!fs.existsSync(path.join(root, 'routes', 'bios', 'neogeo.zip')),
+    'routes/bios/neogeo.zip is an unused duplicate - keep only routes/neogeo.zip');
+check(!/routes\/bios\//.test(emulatorJs),
+    'emulatorjs.js still points users at routes/bios/, the BIOS lives in routes/');
+const biosMissingLines = emulatorJs.match(/biosMissing:[^\n]*/g) || [];
+check(biosMissingLines.length >= 8, 'expected a biosMissing string per locale, found ' + biosMissingLines.length);
+check(biosMissingLines.every((l) => /routes\//.test(l)),
+    'every biosMissing string must name the routes/ folder that actually holds the BIOS');
+
+
+// The engine pages keep their own i18n tables; check-i18n.js validates them
+// (CI runs it for todos/toflash/tov86/towasm4/emulatorjs), so this file does
+// not keep a second table parser.
+
 // 10. Preset JSON files. ZX81 has a curated freeware/homebrew set; Thomson and
 // CD-i intentionally ship with empty lists so the preset control can hide cleanly.
 const zx81Json = JSON.parse(read('data/roms/zx81.json'));
@@ -475,7 +502,10 @@ const n64DivCloses = (n64Html.match(/<\/div>/g) || []).length;
 check(n64DivOpens === n64DivCloses, 'n64recomp.html has unbalanced div tags (' + n64DivOpens + ' open / ' + n64DivCloses + ' close)');
 check(/game\.html\?category=recomp/.test(n64Js), 'N64 recomp back link does not use category=recomp');
 check(/js\/ton64recomp\.js routes\/n64recomp\.html/.test(checksYml), 'checks.yml misses N64 recomp i18n pair');
-check(/js\/ton64recomp\.js/.test(checksYml.split('JavaScript syntax')[1] || ''),
+const syntaxSection = checksYml.split('JavaScript syntax')[1] || '';
+// The syntax step may list the script explicitly or cover it with the js/*.js
+// glob, which checks every page script (including this one).
+check(/js\/ton64recomp\.js/.test(syntaxSection) || /js\/\*\.js/.test(syntaxSection),
     'checks.yml misses N64 recomp syntax check');
 check(/\/routes\/n64recomp\.html/.test(sw), 'sw.js does not isolate the N64 recomp route');
 check(/N64Recomp/i.test(readme) && /n64hub/i.test(readme), 'README has no N64Recomp / n64hub credit');

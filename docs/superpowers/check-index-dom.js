@@ -1,0 +1,86 @@
+// Home page DOM guard (run with node)
+// Usage: node check-index-dom.js [index.html] [js/index.js] [css/style.css]
+//
+// index.html is hand-maintained and has no build step, so structural mistakes
+// survive forever: the category dialog and the source dialog both carried
+// id="selectform" (duplicate id - getElementById only ever returns the first,
+// and the category GO! button silently depended on document order), and the
+// PWA prompt carried a .install-content wrapper with no CSS rule behind it.
+// This check keeps those two fixed:
+//   1) no duplicate id in index.html
+//   2) no id="selectform" anywhere; the shared hook is class="selectform"
+//   3) that class is styled, otherwise the dialogs lose their layout
+//   4) every <label for="X"> in index.html points at an element that exists
+//   5) no unstyled .install-content wrapper inside #install-prompt
+//   6) no .stylebtn positional state machine and no links to the category pages
+//      deleted in V8.2.1 (routes/countries.html, language.html, category.html):
+//      that dead flow either did nothing or navigated to a 404.
+const fs = require('fs');
+const path = require('path');
+
+const root = path.resolve(__dirname, '..', '..');
+const htmlPath = process.argv[2] || path.join(root, 'index.html');
+const jsPath = process.argv[3] || path.join(root, 'js', 'index.js');
+const cssPath = process.argv[4] || path.join(root, 'css', 'style.css');
+
+let failed = 0;
+function check(cond, msg) {
+    if (!cond) { failed++; console.log('FAIL ' + msg); }
+}
+
+const html = fs.readFileSync(htmlPath, 'utf8');
+const js = fs.existsSync(jsPath) ? fs.readFileSync(jsPath, 'utf8') : '';
+const css = fs.readFileSync(cssPath, 'utf8');
+
+// 1) Duplicate ids break getElementById and querySelector("#x") scoping.
+const ids = [];
+const idRe = /\sid="([^"]+)"/g;
+let m;
+while ((m = idRe.exec(html)) !== null) ids.push(m[1]);
+const seen = {};
+const duplicates = [];
+ids.forEach((id) => {
+    seen[id] = (seen[id] || 0) + 1;
+    if (seen[id] === 2) duplicates.push(id);
+});
+check(duplicates.length === 0, 'index.html has duplicate id(s): ' + duplicates.join(', '));
+
+// 2) The dialogs share a class hook, not an id.
+check(!/id="selectform"/.test(html), 'index.html still uses id="selectform" (must be class="selectform")');
+check(!/id="selectform"/.test(js), 'js/index.js still emits id="selectform" in a template');
+const staticForms = (html.match(/class="[^"]*\bselectform\b/g) || []).length;
+check(staticForms === 1, 'expected 1 static class="selectform" block (the source dialog), found ' + staticForms);
+
+// 3) The class must be styled; the layout rules used to hang off #selectform.
+check(/^\.selectform\s*\{/m.test(css), 'css/style.css no longer styles .selectform (dialogs lose text-align/margins)');
+
+// 4) label[for] must resolve, otherwise clicking the text does nothing.
+const forTargets = [];
+const forRe = /<label[^>]*\sfor="([^"]+)"/g;
+while ((m = forRe.exec(html)) !== null) forTargets.push(m[1]);
+const danglingFor = forTargets.filter((t) => ids.indexOf(t) === -1);
+check(danglingFor.length === 0, 'index.html <label for> points at missing id(s): ' + danglingFor.join(', '));
+
+// 5) The install prompt is a flat list; a wrapper div here has no CSS behind it.
+check(!/class="install-content"/.test(html), 'index.html reintroduced the unstyled .install-content wrapper');
+
+// 6) The GO! flow was removed: it indexed .stylebtn by position (0 = GO!, 2 =
+//    TV entry, 4 = radio entry) and pointed at pages deleted in V8.2.1, so it
+//    either did nothing or navigated to a 404.
+check(!/stylebtns\[\d\]/.test(js), 'js/index.js indexes .stylebtn by position again (state machine is dead code)');
+check(!/routes\/(countries|language|category)\.html/.test(js),
+    'js/index.js links to routes/countries|language|category.html - those pages were deleted in V8.2.1');
+check(!/id="popupbox"/.test(html), 'index.html reintroduced the dead #popupbox category dialog');
+
+// 7) translations.js must not label buttons by position either: a positional
+//    loop overwrote icon buttons with text (it turned the source dialog's
+//    Next arrow into "GO!" once the first .stylebtn moved).
+const transPath = path.join(root, 'js', 'translations.js');
+const trans = fs.existsSync(transPath) ? fs.readFileSync(transPath, 'utf8') : '';
+check(!/styleButtons\[\d\]/.test(trans), 'js/translations.js indexes .stylebtn by position again');
+check(!/buttonFirst/.test(trans), 'js/translations.js reintroduced the unused buttonFirst (GO!) label');
+check(/querySelector\('img, svg'\)|querySelector\("img, svg"\)/.test(trans),
+    'js/translations.js must skip icon buttons when writing .stylebtn text');
+
+console.log(failed === 0 ? 'index DOM check: ALL OK' : 'index DOM check: ' + failed + ' problem(s)');
+process.exit(failed === 0 ? 0 : 1);

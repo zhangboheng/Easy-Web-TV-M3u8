@@ -445,12 +445,16 @@ var PRESETS = [
     }
 ];
 
-// CORS proxy list (same set and caveats as todos.js)
-var corsProxies = [
-    'https://cors.luckydesigner.workers.dev/?',
-    'https://api.cors.lol/?url=',
-    'https://api.codetabs.com/v1/proxy?quest='
-];
+// CORS proxy chain from the unified ProxyConfig (same set as todos.js).
+// Read per request so the health cache and Settings changes apply live.
+function getProxyPool() {
+    return (typeof ProxyConfig !== 'undefined') ? ProxyConfig.getProxies() : [];
+}
+
+// Per-attempt timeouts: a hung proxy must not stall the boot forever. Proxied
+// attempts get longer because free-tier proxies can cold-start slowly.
+var DIRECT_TIMEOUT_MS = 20000;
+var PROXY_TIMEOUT_MS = 30000;
 
 // Hosts that serve CORS headers - images from these hosts fetch directly
 var directFetchHosts = [
@@ -484,22 +488,65 @@ function isLikelyErrorBody(blob) {
     });
 }
 
+// Detect binary corruption from text-mangling proxies: a broken proxy may
+// transcode the response as text, replacing every non-ASCII byte with the
+// UTF-8 replacement character (EF BF BD). A v86 disk image or ISO is binary,
+// so this is the only reliable signal that a body must be discarded — the
+// unified pool leads with such a proxy (see proxy-config.js).
+// `target` is the URL that was actually fetched (proxy-prefixed when a proxy
+// was used), so the corruption is attributed to that exact proxy - never to one
+// used by a concurrent download - and a direct URL blames nobody.
+function hasBinaryCorruption(blob, target) {
+    return new Promise(function(resolve) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var bytes = new Uint8Array(reader.result || new ArrayBuffer(0));
+            var hits = 0;
+            for (var i = 0; i + 2 < bytes.length; i++) {
+                if (bytes[i] === 0xEF && bytes[i + 1] === 0xBF && bytes[i + 2] === 0xBD) {
+                    hits++;
+                    if (hits >= 3) {
+                        if (typeof ProxyConfig !== 'undefined' && ProxyConfig.reportCorruptionFor) {
+                            ProxyConfig.reportCorruptionFor(target);
+                        }
+                        resolve(true); return;
+                    }
+                    i += 2;
+                }
+            }
+            resolve(false);
+        };
+        reader.onerror = function() { resolve(false); };
+        reader.readAsArrayBuffer(blob.slice(0, 1024));
+    });
+}
+
 // Download an image through the proxy chain; returns an ArrayBuffer
 function downloadImage(url) {
+    // Snapshot the pool for this request so the retry order cannot shift
+    // underneath us while the chain is running.
     var attempts = [];
     if (isDirectFetchable(url)) {
-        attempts.push(url);
+        attempts.push({ target: url, viaProxy: false });
     }
-    corsProxies.forEach(function(p) { attempts.push(p + encodeURIComponent(url)); });
+    getProxyPool().forEach(function(p) {
+        attempts.push({ target: p + encodeURIComponent(url), viaProxy: true });
+    });
 
     var idx = 0;
     function tryNext() {
         if (idx >= attempts.length) {
             return Promise.reject(new Error('all proxies failed'));
         }
-        var target = attempts[idx++];
-        return fetch(target)
+        var current = attempts[idx++];
+        var target = current.target;
+        var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+        var timer = controller ? setTimeout(function() {
+            controller.abort();
+        }, current.viaProxy ? PROXY_TIMEOUT_MS : DIRECT_TIMEOUT_MS) : null;
+        return fetch(target, controller ? { signal: controller.signal } : {})
             .then(function(res) {
+                if (timer) clearTimeout(timer);
                 if (!res.ok) throw new Error('HTTP ' + res.status);
                 return res.blob();
             })
@@ -507,10 +554,14 @@ function downloadImage(url) {
                 if (blob.size === 0) throw new Error('empty body');
                 return isLikelyErrorBody(blob).then(function(bad) {
                     if (bad) throw new Error('error page body');
-                    return blob.arrayBuffer();
+                    return hasBinaryCorruption(blob, current.target).then(function(corrupt) {
+                        if (corrupt) throw new Error('corrupted binary body');
+                        return blob.arrayBuffer();
+                    });
                 });
             })
             .catch(function(err) {
+                if (timer) clearTimeout(timer);
                 console.warn('v86 image download failed via', target, err);
                 return tryNext();
             });

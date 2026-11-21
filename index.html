@@ -35,7 +35,8 @@
     <link rel="manifest" href="manifest.json">
     
     <link rel="stylesheet" href="css/style.css" />
-    <script src="js/core/dom.js"></script>
+    <script src="js/proxy-config.js"></script>
+    <script src="js/dom.js"></script>
     <script src="js/index.js"></script>
 </head>
 
@@ -86,7 +87,7 @@
                             </svg>
                         </span>
                         <span class="nav-title" data-i18n="settings_advanced">Advanced</span>
-                        <span class="nav-badge">2</span>
+                        <span class="nav-badge">3</span>
                         <span class="nav-arrow">›</span>
                     </div>
                     <div class="settings-nav-item" data-target="appearance">
@@ -181,6 +182,29 @@
                             <button class="settings-btn" id="clear-cache-btn" aria-label="Clear all cache" data-i18n="settings_cache_btn">Clear</button>
                         </div>
                     </div>
+
+                    <div class="proxy-section-title" data-i18n="settings_proxy_title">Proxy Settings</div>
+                    <div class="proxy-intro" data-i18n="settings_proxy_desc">
+                        These CORS proxies are used by every online source. Built-in proxies are read-only; add your own below. Your proxies are tried first, then the built-ins as fallback.
+                    </div>
+
+                    <div class="proxy-section-title proxy-subtitle" data-i18n="settings_proxy_builtin">Built-in proxies (read-only)</div>
+                    <div id="proxy-builtin-list" class="proxy-list"></div>
+
+                    <div class="proxy-section-title proxy-subtitle" data-i18n="settings_proxy_custom">My proxies</div>
+                    <div id="proxy-custom-list" class="proxy-list"></div>
+
+                    <div class="proxy-form">
+                        <div class="proxy-form-row">
+                            <input type="text" id="proxy-name-input" class="settings-input" data-i18n-placeholder="settings_proxy_name_ph" placeholder="Name (e.g. My proxy)" maxlength="40">
+                            <input type="url" id="proxy-url-input" class="settings-input" data-i18n-placeholder="settings_proxy_url_ph" placeholder="https://example.com/?url=" spellcheck="false">
+                        </div>
+                        <div class="proxy-form-actions">
+                            <button type="button" class="settings-btn" id="proxy-add-btn" data-i18n="settings_proxy_add">Add proxy</button>
+                            <span class="proxy-form-hint" data-i18n="settings_proxy_hint">Full proxy URL prefix ending with the target parameter.</span>
+                        </div>
+                        <div id="proxy-error" class="proxy-error" role="alert"></div>
+                    </div>
                 </div>
             </div>
             
@@ -273,7 +297,10 @@
                             <div class="item-description" data-i18n="settings_version_desc">Current application version</div>
                         </div>
                         <div class="item-control">
-                            <span class="settings-version">8.5.7</span>
+                            <button type="button" id="version-history-btn" class="settings-version version-history-btn" aria-haspopup="dialog" title="View version history">
+                                <span>8.5.8</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
                         </div>
                     </div>
                     <div class="settings-item">
@@ -355,29 +382,12 @@
         </div>
     </header>
 
-    <!-- Selection Dialog -->
-    <div id="popupbox" role="dialog" aria-modal="true" aria-labelledby="popupbox-title">
-        <div id="chooseitem" class="reveal-modal">
-            <a href="#" class="close-reveal-modal" aria-label="Close dialog">×</a>
-            <h2 id="popupbox-title">Select</h2>
-            <div id="selectform" role="radiogroup" aria-label="Select category type">
-                <input type="radio" name="radioName" value="1" id="radio-countries" checked/> 
-                <label for="radio-countries">Countries</label> <br />
-                <input type="radio" name="radioName" value="2" id="radio-languages" /> 
-                <label for="radio-languages">Languages</label> <br />
-                <input type="radio" name="radioName" value="3" id="radio-category" /> 
-                <label for="radio-category">Category</label> <br />
-            </div>
-            <button class="stylebtn" aria-label="Confirm selection">GO!</button>
-        </div>
-    </div>
-
     <!-- Source Control Dialog -->
     <div id="sourcebox" role="dialog" aria-modal="true" aria-labelledby="sourcebox-title">
         <div id="sourceitem" class="source-modal">
             <a href="#" class="close-source-modal" aria-label="Close dialog">×</a>
             <h2 id="sourcebox-title">Select</h2>
-            <div id="selectform" role="radiogroup" aria-label="Select source type">
+            <div class="selectform" role="radiogroup" aria-label="Select source type">
                 <input type="radio" name="sourceName" value="1" id="source-movie" checked/> 
                 <label for="source-movie">Movie</label> <br />
                 <input type="radio" name="sourceName" value="2" id="source-novel" /> 
@@ -391,6 +401,16 @@
             </div>
             <button class="stylebtn" onclick="goToSource()" aria-label="Next step"><img src="./images/nextselect.svg" style="width:30px;" alt="Next"></button>
         </div>
+    </div>
+
+    <!-- Version History Modal (opened from Settings > About > version number) -->
+    <div id="version-history-overlay" class="version-history-overlay"></div>
+    <div id="version-history-modal" class="version-history-modal" role="dialog" aria-modal="true" aria-labelledby="version-history-title">
+        <header class="version-history-header">
+            <h2 id="version-history-title" data-i18n="version_history_title">Version History</h2>
+            <button type="button" class="version-history-close" aria-label="Close version history">&times;</button>
+        </header>
+        <div id="version-history-content" class="version-history-content"></div>
     </div>
 
     <!-- Version Log Dialog -->
@@ -584,18 +604,16 @@
 
     <!-- Install PWA Prompt -->
     <div id="install-prompt" class="install-prompt" role="dialog" aria-modal="true" aria-labelledby="install-title">
-        <div class="install-content">
-            <h4 id="install-title">Install Easy Web TV</h4>
-            <p>Add to home screen for a better experience</p>
-            <div class="install-buttons">
-                <button id="install-accept" class="install-btn accept">Install</button>
-                <button id="install-dismiss" class="install-btn dismiss">Not now</button>
-            </div>
+        <h4 id="install-title">Install Easy Web TV</h4>
+        <p>Add to home screen for a better experience</p>
+        <div class="install-buttons">
+            <button id="install-accept" class="install-btn accept">Install</button>
+            <button id="install-dismiss" class="install-btn dismiss">Not now</button>
         </div>
     </div>
 
     <script src="js/matrix-rain.js"></script>
-    <script src="js/locales/translations.js"></script>
+    <script src="js/translations.js"></script>
     <script src="js/translator.js"></script>
     <script>
         // Register Service Worker

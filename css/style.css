@@ -650,9 +650,8 @@ input:checked+.slider:before {
 /* This is switch css style end */
 
 
-/* This is popupbox css style start */
+/* This is modal dialogs css style start */
 
-#popupbox,
 #logbox,
 #sourcebox,
 #infobox {
@@ -664,7 +663,6 @@ input:checked+.slider:before {
     background-color: rgba(22, 22, 22, 0.5);
 }
 
-#popupbox:target,
 #logbox:target,
 #sourcebox:target,
 #infobox:target {
@@ -719,7 +717,6 @@ input:checked+.slider:before {
     height: 50px;
 }
 
-.reveal-modal,
 .log-modal,
 .source-modal {
     color: #fff;
@@ -738,7 +735,6 @@ input:checked+.slider:before {
     opacity: 0.9;
 }
 
-.close-reveal-modal,
 .close-log-modal,
 .close-source-modal {
     position: relative;
@@ -746,7 +742,7 @@ input:checked+.slider:before {
     color: #fff;
 }
 
-#selectform {
+.selectform {
     text-align: left;
     font-size: 16px;
     margin-top: 10px;
@@ -754,7 +750,7 @@ input:checked+.slider:before {
 }
 
 
-/* This is popupbox css style end */
+/* This is modal dialogs css style end */
 
 
 /* This is button css style start */
@@ -1744,7 +1740,6 @@ button.stylebtn:active {
     background-color: #0a0a0a;
 }
 
-[data-theme="dark"] .reveal-modal,
 [data-theme="dark"] .log-modal,
 [data-theme="dark"] .source-modal {
     background: #2a2a2a;
@@ -2261,4 +2256,312 @@ button.stylebtn:active {
     .source-options {
         grid-template-columns: 1fr;
     }
+}
+
+/* Version history: clickable version badge in Settings > About */
+.version-history-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(163, 0, 27, 0.12);
+    border: 1px solid rgba(163, 0, 27, 0.4);
+    border-radius: 8px;
+    padding: 6px 10px;
+    color: #c41f37;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.version-history-btn:hover {
+    background: rgba(163, 0, 27, 0.25);
+    border-color: #a3001b;
+}
+
+.version-history-btn:active {
+    transform: scale(0.96);
+}
+
+.version-history-btn svg {
+    opacity: 0.8;
+}
+
+[data-theme="dark"] .version-history-btn {
+    color: #ff6b81;
+    background: rgba(163, 0, 27, 0.2);
+    border-color: rgba(255, 107, 129, 0.4);
+}
+
+/* Version history modal - above the settings modal (11000/11001) */
+.version-history-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 12000;
+    display: none;
+}
+
+.version-history-overlay.show {
+    display: block;
+}
+
+.version-history-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.96);
+    width: calc(100% - 40px);
+    max-width: 720px;
+    max-height: 82vh;
+    display: none;
+    flex-direction: column;
+    background: linear-gradient(180deg, #1f1f1f 0%, #161616 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(163, 0, 27, 0.25);
+    z-index: 12001;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.version-history-modal.show {
+    display: flex;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.version-history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, #a3001b 0%, #8a0016 100%);
+}
+
+.version-history-header h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.version-history-close {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.version-history-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.version-history-content {
+    overflow-y: auto;
+    padding: 16px 20px;
+    color: #ddd;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: left;
+    scrollbar-width: thin;
+}
+
+.version-history-content p {
+    margin: 0 0 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    word-break: break-word;
+}
+
+.version-history-content p:first-child {
+    background: rgba(163, 0, 27, 0.12);
+}
+
+/* Proxy settings */
+.proxy-intro {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.proxy-section-title {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 18px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.proxy-section-title.proxy-subtitle {
+    font-size: 13px;
+    color: #bbb;
+    margin: 14px 0 8px;
+}
+
+.proxy-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.proxy-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.proxy-item-builtin {
+    opacity: 0.75;
+}
+
+.proxy-lock {
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.proxy-item-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.proxy-item-name {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.proxy-item-url {
+    color: #888;
+    font-size: 11px;
+    word-break: break-all;
+    font-family: monospace;
+}
+
+/* Cooldown badge: a proxy that recently failed is skipped for a while, so the
+   settings list shows why it is not being used (ProxyConfig.getHealth()). */
+.proxy-badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 1px 7px;
+    border-radius: 9px;
+    font-size: 10px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.proxy-badge-cooldown {
+    background: rgba(255, 176, 32, 0.16);
+    color: #ffb020;
+    border: 1px solid rgba(255, 176, 32, 0.35);
+}
+
+.proxy-item-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.proxy-mini-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.proxy-mini-btn:hover {
+    background: #a3001b;
+}
+
+.proxy-mini-btn.danger:hover {
+    background: #c41f37;
+}
+
+.proxy-empty {
+    color: #777;
+    font-size: 13px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+}
+
+.proxy-form {
+    margin-top: 18px;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+}
+
+.proxy-form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.settings-input {
+    background: #333;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.settings-input:focus {
+    border-color: #a3001b;
+    box-shadow: 0 0 0 2px rgba(163, 0, 27, 0.3);
+}
+
+.proxy-form-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.proxy-form-hint {
+    color: #777;
+    font-size: 11px;
+    flex: 1;
+    min-width: 160px;
+}
+
+.proxy-error {
+    color: #ff6b81;
+    font-size: 12px;
+    margin-top: 8px;
+    min-height: 14px;
+}
+
+[data-theme="dark"] .proxy-item,
+[data-theme="dark"] .proxy-form {
+    background: rgba(255, 255, 255, 0.06);
 }
