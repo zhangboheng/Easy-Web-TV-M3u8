@@ -1,5 +1,5 @@
 // Easy Web TV Service Worker
-const CACHE_NAME = 'easy-web-tv-v8.5.5';
+const CACHE_NAME = 'easy-web-tv-v8.5.6';
 
 // Assets to cache on install - only local assets that exist
 // v8.5.0: slimmed down to the index shell only; route pages, engines and
@@ -8,6 +8,8 @@ const CACHE_NAME = 'easy-web-tv-v8.5.5';
 // panel i18n, single-scan folder resolution and throttled progress writes.
 // v8.5.5: local manga PDF support (vendored pdf.js), storage/resolution/decoding
 // hardening, and unified route headers.
+// v8.5.6: curated YouTube embeds (7 Blender open movies, official iframe only,
+// 8-language source picker), Mist Gate hot-linked game, and Theatre card layout fix.
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
