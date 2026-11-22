@@ -73,7 +73,13 @@ const translations = {
         settings_proxy_disable: "Disable",
         settings_proxy_invalid: "Please enter a valid http(s) proxy URL."
 ,
-        settings_proxy_cooldown: "Temporarily skipped after a failure"
+        settings_proxy_cooldown: "Temporarily skipped after a failure",
+        source_custom_title: "Custom sources",
+        source_custom_add: "Add source",
+        source_custom_invalid: "Please enter a valid http(s) source URL.",
+        source_custom_empty: "No custom sources yet.",
+        source_custom_name_ph: "Name (e.g. My source)",
+        source_builtin_title: "Built-in sources (read-only)"
     },
     "zh-CN": {
         button: "进入",
@@ -145,7 +151,13 @@ const translations = {
         settings_proxy_disable: "禁用",
         settings_proxy_invalid: "请输入有效的 http(s) 代理 URL。"
 ,
-        settings_proxy_cooldown: "失败后暂时跳过"
+        settings_proxy_cooldown: "失败后暂时跳过",
+        source_custom_title: "自定义源",
+        source_custom_add: "添加源",
+        source_custom_invalid: "请输入有效的 http(s) 源网址。",
+        source_custom_empty: "暂无自定义源。",
+        source_custom_name_ph: "名称（例如：我的源）",
+        source_builtin_title: "内置源（只读）"
     },
     "zh-TW": {
         button: "進入",
@@ -217,7 +229,13 @@ const translations = {
         settings_proxy_disable: "停用",
         settings_proxy_invalid: "請輸入有效的 http(s) 代理 URL。"
 ,
-        settings_proxy_cooldown: "失敗後暫時跳過"
+        settings_proxy_cooldown: "失敗後暫時跳過",
+        source_custom_title: "自訂來源",
+        source_custom_add: "新增來源",
+        source_custom_invalid: "請輸入有效的 http(s) 來源網址。",
+        source_custom_empty: "尚無自訂來源。",
+        source_custom_name_ph: "名稱（例如：我的來源）",
+        source_builtin_title: "內建來源（唯讀）"
     },
     ja: {
         button: "入力",
@@ -289,7 +307,13 @@ const translations = {
         settings_proxy_disable: "無効化",
         settings_proxy_invalid: "有効な http(s) プロキシ URL を入力してください。"
 ,
-        settings_proxy_cooldown: "失敗後に一時的にスキップ"
+        settings_proxy_cooldown: "失敗後に一時的にスキップ",
+        source_custom_title: "カスタムソース",
+        source_custom_add: "ソースを追加",
+        source_custom_invalid: "有効な http(s) のソース URL を入力してください。",
+        source_custom_empty: "カスタムソースはまだありません。",
+        source_custom_name_ph: "名前（例：マイソース）",
+        source_builtin_title: "内蔵ソース（読み取り専用）"
     },
     ko: {
         button: "입력하다",
@@ -361,7 +385,13 @@ const translations = {
         settings_proxy_disable: "비활성화",
         settings_proxy_invalid: "유효한 http(s) 프록시 URL을 입력하세요."
 ,
-        settings_proxy_cooldown: "실패 후 일시적으로 건너뜀"
+        settings_proxy_cooldown: "실패 후 일시적으로 건너뜀",
+        source_custom_title: "사용자 지정 소스",
+        source_custom_add: "소스 추가",
+        source_custom_invalid: "유효한 http(s) 소스 URL을 입력하세요.",
+        source_custom_empty: "아직 사용자 지정 소스가 없습니다.",
+        source_custom_name_ph: "이름 (예: 내 소스)",
+        source_builtin_title: "내장 소스 (읽기 전용)"
     },
     fr: {
         button: "Entrer",
@@ -433,7 +463,13 @@ const translations = {
         settings_proxy_disable: "Désactiver",
         settings_proxy_invalid: "Veuillez saisir une URL de proxy http(s) valide."
 ,
-        settings_proxy_cooldown: "Temporairement ignoré après un échec"
+        settings_proxy_cooldown: "Temporairement ignoré après un échec",
+        source_custom_title: "Sources personnalisées",
+        source_custom_add: "Ajouter une source",
+        source_custom_invalid: "Veuillez saisir une URL de source http(s) valide.",
+        source_custom_empty: "Aucune source personnalisée pour le moment.",
+        source_custom_name_ph: "Nom (ex. Ma source)",
+        source_builtin_title: "Sources intégrées (lecture seule)"
     },
     de: {
         button: "Eintreten",
@@ -505,7 +541,13 @@ const translations = {
         settings_proxy_disable: "Deaktivieren",
         settings_proxy_invalid: "Bitte eine gültige http(s)-Proxy-URL eingeben."
 ,
-        settings_proxy_cooldown: "Nach einem Fehler vorübergehend übersprungen"
+        settings_proxy_cooldown: "Nach einem Fehler vorübergehend übersprungen",
+        source_custom_title: "Eigene Quellen",
+        source_custom_add: "Quelle hinzufügen",
+        source_custom_invalid: "Bitte eine gültige http(s)-Quell-URL eingeben.",
+        source_custom_empty: "Noch keine eigenen Quellen.",
+        source_custom_name_ph: "Name (z. B. Meine Quelle)",
+        source_builtin_title: "Integrierte Quellen (schreibgeschützt)"
     },
     es: {
         button: "Ingresar",
@@ -577,7 +619,13 @@ const translations = {
         settings_proxy_disable: "Desactivar",
         settings_proxy_invalid: "Introduce una URL de proxy http(s) válida."
 ,
-        settings_proxy_cooldown: "Omitido temporalmente tras un fallo"
+        settings_proxy_cooldown: "Omitido temporalmente tras un fallo",
+        source_custom_title: "Fuentes personalizadas",
+        source_custom_add: "Añadir fuente",
+        source_custom_invalid: "Introduce una URL de fuente http(s) válida.",
+        source_custom_empty: "Aún no hay fuentes personalizadas.",
+        source_custom_name_ph: "Nombre (p. ej. Mi fuente)",
+        source_builtin_title: "Fuentes integradas (solo lectura)"
     },
     ru: {
         button: "Входить",
@@ -649,7 +697,13 @@ const translations = {
         settings_proxy_disable: "Отключить",
         settings_proxy_invalid: "Введите корректный URL прокси http(s)."
 ,
-        settings_proxy_cooldown: "Временно пропускается после сбоя"
+        settings_proxy_cooldown: "Временно пропускается после сбоя",
+        source_custom_title: "Пользовательские источники",
+        source_custom_add: "Добавить источник",
+        source_custom_invalid: "Введите корректный http(s) URL источника.",
+        source_custom_empty: "Пользовательских источников пока нет.",
+        source_custom_name_ph: "Название (напр. Мой источник)",
+        source_builtin_title: "Встроенные источники (только чтение)"
     },
     ar: {
         button: "يدخل",
@@ -719,7 +773,13 @@ const translations = {
         settings_proxy_enable: "تمكين",
         settings_proxy_disable: "تعطيل",
         settings_proxy_invalid: "يرجى إدخال عنوان URL صالح للوكيل http(s).",
-        settings_proxy_cooldown: "تم التخطي مؤقتًا بعد فشل"
+        settings_proxy_cooldown: "تم التخطي مؤقتًا بعد فشل",
+        source_custom_title: "مصادر مخصصة",
+        source_custom_add: "إضافة مصدر",
+        source_custom_invalid: "الرجاء إدخال رابط مصدر http(s) صالح.",
+        source_custom_empty: "لا توجد مصادر مخصصة بعد.",
+        source_custom_name_ph: "الاسم (مثال: مصدري)",
+        source_builtin_title: "مصادر مدمجة (للقراءة فقط)"
     },
     pt: {
         button: "Digitar",
@@ -789,7 +849,13 @@ const translations = {
         settings_proxy_enable: "Ativar",
         settings_proxy_disable: "Desativar",
         settings_proxy_invalid: "Insira uma URL de proxy http(s) válida.",
-        settings_proxy_cooldown: "Ignorado temporariamente após uma falha"
+        settings_proxy_cooldown: "Ignorado temporariamente após uma falha",
+        source_custom_title: "Fontes personalizadas",
+        source_custom_add: "Adicionar fonte",
+        source_custom_invalid: "Introduza um URL de fonte http(s) válido.",
+        source_custom_empty: "Ainda não há fontes personalizadas.",
+        source_custom_name_ph: "Nome (ex. Minha fonte)",
+        source_builtin_title: "Fontes integradas (somente leitura)"
     },
     it: {
         button: "accedere",
@@ -859,7 +925,13 @@ const translations = {
         settings_proxy_enable: "Abilita",
         settings_proxy_disable: "Disabilita",
         settings_proxy_invalid: "Inserisci un URL proxy http(s) valido.",
-        settings_proxy_cooldown: "Saltato temporaneamente dopo un errore"
+        settings_proxy_cooldown: "Saltato temporaneamente dopo un errore",
+        source_custom_title: "Fonti personalizzate",
+        source_custom_add: "Aggiungi fonte",
+        source_custom_invalid: "Inserisci un URL fonte http(s) valido.",
+        source_custom_empty: "Ancora nessuna fonte personalizzata.",
+        source_custom_name_ph: "Nome (es. La mia fonte)",
+        source_builtin_title: "Fonti integrate (sola lettura)"
     },
     tr: {
         button: "Girmek",
@@ -929,7 +1001,13 @@ const translations = {
         settings_proxy_enable: "Etkinleştir",
         settings_proxy_disable: "Devre dışı bırak",
         settings_proxy_invalid: "Geçerli bir http(s) proxy URL'si girin.",
-        settings_proxy_cooldown: "Bir hatadan sonra geçici olarak atlandı"
+        settings_proxy_cooldown: "Bir hatadan sonra geçici olarak atlandı",
+        source_custom_title: "Özel kaynaklar",
+        source_custom_add: "Kaynak ekle",
+        source_custom_invalid: "Geçerli bir http(s) kaynak URL'si girin.",
+        source_custom_empty: "Henüz özel kaynak yok.",
+        source_custom_name_ph: "Ad (örn. Kaynağım)",
+        source_builtin_title: "Yerleşik kaynaklar (salt okunur)"
     },
     vi: {
         button: "Vào",
@@ -999,7 +1077,13 @@ const translations = {
         settings_proxy_enable: "Bật",
         settings_proxy_disable: "Tắt",
         settings_proxy_invalid: "Vui lòng nhập URL proxy http(s) hợp lệ.",
-        settings_proxy_cooldown: "Tạm thời bỏ qua sau khi gặp lỗi"
+        settings_proxy_cooldown: "Tạm thời bỏ qua sau khi gặp lỗi",
+        source_custom_title: "Nguồn tùy chỉnh",
+        source_custom_add: "Thêm nguồn",
+        source_custom_invalid: "Vui lòng nhập URL nguồn http(s) hợp lệ.",
+        source_custom_empty: "Chưa có nguồn tùy chỉnh.",
+        source_custom_name_ph: "Tên (vd. Nguồn của tôi)",
+        source_builtin_title: "Nguồn tích hợp (chỉ đọc)"
     },
     th: {
         button: "เข้า",
@@ -1069,7 +1153,13 @@ const translations = {
         settings_proxy_enable: "เปิดใช้งาน",
         settings_proxy_disable: "ปิดใช้งาน",
         settings_proxy_invalid: "กรุณาป้อน URL พร็อกซี http(s) ที่ถูกต้อง",
-        settings_proxy_cooldown: "ข้ามชั่วคราวหลังจากเกิดข้อผิดพลาด"
+        settings_proxy_cooldown: "ข้ามชั่วคราวหลังจากเกิดข้อผิดพลาด",
+        source_custom_title: "แหล่งที่มาที่กำหนดเอง",
+        source_custom_add: "เพิ่มแหล่งที่มา",
+        source_custom_invalid: "โปรดป้อน URL แหล่งที่มา http(s) ที่ถูกต้อง",
+        source_custom_empty: "ยังไม่มีแหล่งที่มาที่กำหนดเอง",
+        source_custom_name_ph: "ชื่อ (เช่น แหล่งของฉัน)",
+        source_builtin_title: "แหล่งที่มาในตัว (อ่านอย่างเดียว)"
     },
     id: {
         button: "Memasuki",
@@ -1139,7 +1229,13 @@ const translations = {
         settings_proxy_enable: "Aktifkan",
         settings_proxy_disable: "Nonaktifkan",
         settings_proxy_invalid: "Masukkan URL proxy http(s) yang valid.",
-        settings_proxy_cooldown: "Dilewati sementara setelah kegagalan"
+        settings_proxy_cooldown: "Dilewati sementara setelah kegagalan",
+        source_custom_title: "Sumber kustom",
+        source_custom_add: "Tambahkan sumber",
+        source_custom_invalid: "Masukkan URL sumber http(s) yang valid.",
+        source_custom_empty: "Belum ada sumber kustom.",
+        source_custom_name_ph: "Nama (mis. Sumber saya)",
+        source_builtin_title: "Sumber bawaan (hanya baca)"
     },
     hi: {
         button: "प्रवेश करना",
@@ -1209,7 +1305,13 @@ const translations = {
         settings_proxy_enable: "सक्षम करें",
         settings_proxy_disable: "अक्षम करें",
         settings_proxy_invalid: "कृपया एक मान्य http(s) प्रॉक्सी URL दर्ज करें।",
-        settings_proxy_cooldown: "विफलता के बाद अस्थायी रूप से छोड़ा गया"
+        settings_proxy_cooldown: "विफलता के बाद अस्थायी रूप से छोड़ा गया",
+        source_custom_title: "कस्टम स्रोत",
+        source_custom_add: "स्रोत जोड़ें",
+        source_custom_invalid: "कृपया एक मान्य http(s) स्रोत URL दर्ज करें।",
+        source_custom_empty: "अभी कोई कस्टम स्रोत नहीं है।",
+        source_custom_name_ph: "नाम (जैसे मेरा स्रोत)",
+        source_builtin_title: "इनबिल्ट स्रोत (केवल पढ़ने के लिए)"
     },
     pl: {
         button: "Wejść",
@@ -1279,7 +1381,13 @@ const translations = {
         settings_proxy_enable: "Włącz",
         settings_proxy_disable: "Wyłącz",
         settings_proxy_invalid: "Podaj prawidłowy adres URL proxy http(s).",
-        settings_proxy_cooldown: "Tymczasowo pominięto po błędzie"
+        settings_proxy_cooldown: "Tymczasowo pominięto po błędzie",
+        source_custom_title: "Niestandardowe źródła",
+        source_custom_add: "Dodaj źródło",
+        source_custom_invalid: "Wprowadź prawidłowy adres URL źródła http(s).",
+        source_custom_empty: "Brak niestandardowych źródeł.",
+        source_custom_name_ph: "Nazwa (np. Moje źródło)",
+        source_builtin_title: "Źródła wbudowane (tylko do odczytu)"
     },
     nl: {
         button: "Binnenkomen",
@@ -1349,7 +1457,13 @@ const translations = {
         settings_proxy_enable: "Inschakelen",
         settings_proxy_disable: "Uitschakelen",
         settings_proxy_invalid: "Voer een geldige http(s)-proxy-URL in.",
-        settings_proxy_cooldown: "Tijdelijk overgeslagen na een fout"
+        settings_proxy_cooldown: "Tijdelijk overgeslagen na een fout",
+        source_custom_title: "Aangepaste bronnen",
+        source_custom_add: "Bron toevoegen",
+        source_custom_invalid: "Voer een geldige http(s)-bron-URL in.",
+        source_custom_empty: "Nog geen aangepaste bronnen.",
+        source_custom_name_ph: "Naam (bv. Mijn bron)",
+        source_builtin_title: "Ingebouwde bronnen (alleen-lezen)"
     },
     sv: {
         button: "Stiga på",
@@ -1419,7 +1533,13 @@ const translations = {
         settings_proxy_enable: "Aktivera",
         settings_proxy_disable: "Inaktivera",
         settings_proxy_invalid: "Ange en giltig http(s)-proxy-URL.",
-        settings_proxy_cooldown: "Tillfälligt överhoppad efter ett fel"
+        settings_proxy_cooldown: "Tillfälligt överhoppad efter ett fel",
+        source_custom_title: "Anpassade källor",
+        source_custom_add: "Lägg till källa",
+        source_custom_invalid: "Ange en giltig http(s)-käll-URL.",
+        source_custom_empty: "Inga anpassade källor än.",
+        source_custom_name_ph: "Namn (t.ex. Min källa)",
+        source_builtin_title: "Inbyggda källor (skrivskyddade)"
     },
     uk: {
         button: "Введіть",
@@ -1489,7 +1609,13 @@ const translations = {
         settings_proxy_enable: "Увімкнути",
         settings_proxy_disable: "Вимкнути",
         settings_proxy_invalid: "Введіть коректну URL-адресу проксі http(s).",
-        settings_proxy_cooldown: "Тимчасово пропускається після збою"
+        settings_proxy_cooldown: "Тимчасово пропускається після збою",
+        source_custom_title: "Користувацькі джерела",
+        source_custom_add: "Додати джерело",
+        source_custom_invalid: "Введіть коректний http(s) URL джерела.",
+        source_custom_empty: "Користувацьких джерел ще немає.",
+        source_custom_name_ph: "Назва (напр. Моє джерело)",
+        source_builtin_title: "Вбудовані джерела (лише читання)"
     },
     // New language translations
     af: {
@@ -1560,7 +1686,13 @@ const translations = {
         settings_proxy_enable: "Aktiveer",
         settings_proxy_disable: "Deaktiveer",
         settings_proxy_invalid: "Voer 'n geldige http(s)-proxy-URL in.",
-        settings_proxy_cooldown: "Tydelik oorgeslaan ná 'n fout"
+        settings_proxy_cooldown: "Tydelik oorgeslaan ná 'n fout",
+        source_custom_title: "Gepasmaakte bronne",
+        source_custom_add: "Voeg bron by",
+        source_custom_invalid: "Voer 'n geldige http(s)-bron-URL in.",
+        source_custom_empty: "Nog geen gepasmaakte bronne nie.",
+        source_custom_name_ph: "Naam (bv. My bron)",
+        source_builtin_title: "Ingeboude bronne (lees-alleen)"
     },
     sq: {
         button: "Hyni",
@@ -1630,7 +1762,13 @@ const translations = {
         settings_proxy_enable: "Aktivizo",
         settings_proxy_disable: "Çaktivizo",
         settings_proxy_invalid: "Ju lutemi shkruani një URL të vlefshme http(s) të përfaqësuesit.",
-        settings_proxy_cooldown: "Anashkaluar përkohësisht pas një dështimi"
+        settings_proxy_cooldown: "Anashkaluar përkohësisht pas një dështimi",
+        source_custom_title: "Burimet e personalizuara",
+        source_custom_add: "Shto burim",
+        source_custom_invalid: "Fut një URL burimi http(s) të vlefshme.",
+        source_custom_empty: "Nuk ka ende burime të personalizuara.",
+        source_custom_name_ph: "Emri (p.sh. Burimi im)",
+        source_builtin_title: "Burimet e integruara (vetëm për lexim)"
     },
     am: {
         button: "ግባ",
@@ -1700,7 +1838,13 @@ const translations = {
         settings_proxy_enable: "አንቃ",
         settings_proxy_disable: "አሰናክል",
         settings_proxy_invalid: "እባክህ የሚሰራ http(ዎች) ተኪ ዩአርኤል አስገባ።",
-        settings_proxy_cooldown: "ከውድቀት በኋላ ለጊዜው ተዘሏል"
+        settings_proxy_cooldown: "ከውድቀት በኋላ ለጊዜው ተዘሏል",
+        source_custom_title: "ብጁ ምንጮች",
+        source_custom_add: "ምንጭ ጨምር",
+        source_custom_invalid: "ትክክለኛ የhttp(s) የምንጭ አገናኝ ያስገቡ።",
+        source_custom_empty: "እስካሁን ብጁ ምንጮች የሉም።",
+        source_custom_name_ph: "ስም (ለምሳሌ የእኔ ምንጭ)",
+        source_builtin_title: "የተካተቱ ምንጮች (ለማንበብ ብቻ)"
     },
     hy: {
         button: "Մուտք",
@@ -1770,7 +1914,13 @@ const translations = {
         settings_proxy_enable: "Միացնել",
         settings_proxy_disable: "Անջատել",
         settings_proxy_invalid: "Խնդրում ենք մուտքագրել վավեր http(s) վստահված անձի URL:",
-        settings_proxy_cooldown: "Ժամանակավորապես բաց թողնված ձախողումից հետո"
+        settings_proxy_cooldown: "Ժամանակավորապես բաց թողնված ձախողումից հետո",
+        source_custom_title: "Հատուկ աղբյուրներ",
+        source_custom_add: "Ավելացնել աղբյուր",
+        source_custom_invalid: "Մուտքագրեք վավեր http(s) աղբյուրի URL:",
+        source_custom_empty: "Դեռ հատուկ աղբյուրներ չկան:",
+        source_custom_name_ph: "Անվանում (օր. Իմ աղբյուրը)",
+        source_builtin_title: "Ներկառուցված աղբյուրներ (միայն կարդալու համար)"
     },
     az: {
         button: "Daxil ol",
@@ -1840,7 +1990,13 @@ const translations = {
         settings_proxy_enable: "Aktivləşdir",
         settings_proxy_disable: "Deaktivasiya et",
         settings_proxy_invalid: "Düzgün http(s) proksi URL-i daxil edin.",
-        settings_proxy_cooldown: "Xətadan sonra müvəqqəti atlanır"
+        settings_proxy_cooldown: "Xətadan sonra müvəqqəti atlanır",
+        source_custom_title: "Xüsusi mənbələr",
+        source_custom_add: "Mənbə əlavə et",
+        source_custom_invalid: "Etibarlı http(s) mənbə URL-i daxil edin.",
+        source_custom_empty: "Hələ xüsusi mənbə yoxdur.",
+        source_custom_name_ph: "Ad (məs. Mənim mənbəm)",
+        source_builtin_title: "Daxili mənbələr (yalnız oxuma)"
     },
     eu: {
         button: "Sartu",
@@ -1910,7 +2066,13 @@ const translations = {
         settings_proxy_enable: "Gaitu",
         settings_proxy_disable: "Desgaitu",
         settings_proxy_invalid: "Mesedez, sartu baliozko http(k) proxy URL bat.",
-        settings_proxy_cooldown: "Behin-behinean saltatua hutsegite baten ondoren"
+        settings_proxy_cooldown: "Behin-behinean saltatua hutsegite baten ondoren",
+        source_custom_title: "Iturri pertsonalizatuak",
+        source_custom_add: "Iturria gehitu",
+        source_custom_invalid: "Sartu baliozko http(s) iturri-URL bat.",
+        source_custom_empty: "Oraindik ez dago iturri pertsonalizaturik.",
+        source_custom_name_ph: "Izena (adib. Nire iturria)",
+        source_builtin_title: "Integratutako iturriak (irakurtzeko soilik)"
     },
     be: {
         button: "Увайсці",
@@ -1980,7 +2142,13 @@ const translations = {
         settings_proxy_enable: "Уключыць",
         settings_proxy_disable: "Адключыць",
         settings_proxy_invalid: "Увядзіце карэктны URL проксі http(s).",
-        settings_proxy_cooldown: "Часова прапускаецца пасля збою"
+        settings_proxy_cooldown: "Часова прапускаецца пасля збою",
+        source_custom_title: "Карыстальніцкія крыніцы",
+        source_custom_add: "Дадаць крыніцу",
+        source_custom_invalid: "Увядзіце карэктны http(s) URL крыніцы.",
+        source_custom_empty: "Карыстальніцкіх крыніц яшчэ няма.",
+        source_custom_name_ph: "Назва (напр. Мая крыніца)",
+        source_builtin_title: "Убудаваныя крыніцы (толькі чытанне)"
     },
     bn: {
         button: "প্রবেশ করুন",
@@ -2050,7 +2218,13 @@ const translations = {
         settings_proxy_enable: "সক্ষম করুন",
         settings_proxy_disable: "নিষ্ক্রিয় করুন",
         settings_proxy_invalid: "দয়া করে একটি বৈধ http(গুলি) প্রক্সি URL লিখুন৷",
-        settings_proxy_cooldown: "ব্যর্থতার পরে সাময়িকভাবে এড়িয়ে যাওয়া হয়েছে"
+        settings_proxy_cooldown: "ব্যর্থতার পরে সাময়িকভাবে এড়িয়ে যাওয়া হয়েছে",
+        source_custom_title: "কাস্টম উৎস",
+        source_custom_add: "উৎস যোগ করুন",
+        source_custom_invalid: "একটি বৈধ http(s) উৎস URL লিখুন।",
+        source_custom_empty: "এখনও কোনো কাস্টম উৎস নেই।",
+        source_custom_name_ph: "নাম (যেমন আমার উৎস)",
+        source_builtin_title: "বিল্ট-ইন উৎস (শুধুমাত্র পড়ার জন্য)"
     },
     bs: {
         button: "Uđi",
@@ -2120,7 +2294,13 @@ const translations = {
         settings_proxy_enable: "Omogući",
         settings_proxy_disable: "Onemogući",
         settings_proxy_invalid: "Unesite važeći http(s) proxy URL.",
-        settings_proxy_cooldown: "Privremeno preskočeno nakon greške"
+        settings_proxy_cooldown: "Privremeno preskočeno nakon greške",
+        source_custom_title: "Prilagođeni izvori",
+        source_custom_add: "Dodaj izvor",
+        source_custom_invalid: "Unesite važeći http(s) URL izvora.",
+        source_custom_empty: "Još nema prilagođenih izvora.",
+        source_custom_name_ph: "Naziv (npr. Moj izvor)",
+        source_builtin_title: "Ugrađeni izvori (samo za čitanje)"
     },
     bg: {
         button: "Влез",
@@ -2190,7 +2370,13 @@ const translations = {
         settings_proxy_enable: "Активиране",
         settings_proxy_disable: "Деактивиране",
         settings_proxy_invalid: "Моля, въведете валиден URL адрес на прокси http(s).",
-        settings_proxy_cooldown: "Временно се пропуска след грешка"
+        settings_proxy_cooldown: "Временно се пропуска след грешка",
+        source_custom_title: "Потребителски източници",
+        source_custom_add: "Добави източник",
+        source_custom_invalid: "Въведете валиден http(s) URL на източник.",
+        source_custom_empty: "Все още няма потребителски източници.",
+        source_custom_name_ph: "Име (напр. Моят източник)",
+        source_builtin_title: "Вградени източници (само за четене)"
     },
     ca: {
         button: "Entrar",
@@ -2260,7 +2446,13 @@ const translations = {
         settings_proxy_enable: "Activa",
         settings_proxy_disable: "Desactiva",
         settings_proxy_invalid: "Introduïu un URL de proxy http(s) vàlid.",
-        settings_proxy_cooldown: "Omès temporalment després d'una fallada"
+        settings_proxy_cooldown: "Omès temporalment després d'una fallada",
+        source_custom_title: "Fonts personalitzades",
+        source_custom_add: "Afegeix font",
+        source_custom_invalid: "Introdueix una URL de font http(s) vàlida.",
+        source_custom_empty: "Encara no hi ha fonts personalitzades.",
+        source_custom_name_ph: "Nom (p. ex. La meva font)",
+        source_builtin_title: "Fonts integrades (només lectura)"
     },
     co: {
         button: "Entrà",
@@ -2330,7 +2522,13 @@ const translations = {
         settings_proxy_enable: "Attivà",
         settings_proxy_disable: "Disattivà",
         settings_proxy_invalid: "Per piacè inserite un URL proxy http(s) validu.",
-        settings_proxy_cooldown: "Saltatu di manera tempuranea dopu à un sbagliu"
+        settings_proxy_cooldown: "Saltatu di manera tempuranea dopu à un sbagliu",
+        source_custom_title: "Fonti persunalizate",
+        source_custom_add: "Aghjunghje fonte",
+        source_custom_invalid: "Inserite un URL di fonte http(s) validu.",
+        source_custom_empty: "Ùn ci sò ancu fonti persunalizate.",
+        source_custom_name_ph: "Nomu (p. es. A mo fonte)",
+        source_builtin_title: "Fonti integrati (sola lettura)"
     },
     hr: {
         button: "Uđi",
@@ -2400,7 +2598,13 @@ const translations = {
         settings_proxy_enable: "Omogući",
         settings_proxy_disable: "Onemogući",
         settings_proxy_invalid: "Unesite valjanu URL adresu proxyja http(s).",
-        settings_proxy_cooldown: "Privremeno preskočeno nakon greške"
+        settings_proxy_cooldown: "Privremeno preskočeno nakon greške",
+        source_custom_title: "Prilagođeni izvori",
+        source_custom_add: "Dodaj izvor",
+        source_custom_invalid: "Unesite važeći http(s) URL izvora.",
+        source_custom_empty: "Još nema prilagođenih izvora.",
+        source_custom_name_ph: "Naziv (npr. Moj izvor)",
+        source_builtin_title: "Ugrađeni izvori (samo za čitanje)"
     },
     cs: {
         button: "Vstoupit",
@@ -2470,7 +2674,13 @@ const translations = {
         settings_proxy_enable: "Povolit",
         settings_proxy_disable: "Zakázat",
         settings_proxy_invalid: "Zadejte platnou URL proxy http(s).",
-        settings_proxy_cooldown: "Dočasně přeskočeno po selhání"
+        settings_proxy_cooldown: "Dočasně přeskočeno po selhání",
+        source_custom_title: "Vlastní zdroje",
+        source_custom_add: "Přidat zdroj",
+        source_custom_invalid: "Zadejte platnou http(s) adresu URL zdroje.",
+        source_custom_empty: "Zatím žádné vlastní zdroje.",
+        source_custom_name_ph: "Název (např. Můj zdroj)",
+        source_builtin_title: "Vestavěné zdroje (pouze ke čtení)"
     },
     da: {
         button: "Gå ind",
@@ -2540,7 +2750,13 @@ const translations = {
         settings_proxy_enable: "Aktivér",
         settings_proxy_disable: "Deaktiver",
         settings_proxy_invalid: "Angiv en gyldig http(s)-proxy-URL.",
-        settings_proxy_cooldown: "Midlertidigt sprunget over efter en fejl"
+        settings_proxy_cooldown: "Midlertidigt sprunget over efter en fejl",
+        source_custom_title: "Brugerdefinerede kilder",
+        source_custom_add: "Tilføj kilde",
+        source_custom_invalid: "Indtast en gyldig http(s)-kilde-URL.",
+        source_custom_empty: "Ingen brugerdefinerede kilder endnu.",
+        source_custom_name_ph: "Navn (f.eks. Min kilde)",
+        source_builtin_title: "Indbyggede kilder (skrivebeskyttet)"
     },
     et: {
         button: "Sisene",
@@ -2610,7 +2826,13 @@ const translations = {
         settings_proxy_enable: "Luba",
         settings_proxy_disable: "Keela",
         settings_proxy_invalid: "Sisestage kehtiv http-puhverserveri URL.",
-        settings_proxy_cooldown: "Pärast tõrget ajutiselt vahele jäetud"
+        settings_proxy_cooldown: "Pärast tõrget ajutiselt vahele jäetud",
+        source_custom_title: "Kohandatud allikad",
+        source_custom_add: "Lisa allikas",
+        source_custom_invalid: "Sisestage kehtiv http(s) allika URL.",
+        source_custom_empty: "Kohandatud allikaid pole veel.",
+        source_custom_name_ph: "Nimi (nt Minu allikas)",
+        source_builtin_title: "Sisseehitatud allikad (kirjutuskaitstud)"
     },
     fil: {
         button: "Pumasok",
@@ -2680,7 +2902,13 @@ const translations = {
         settings_proxy_enable: "I-enable",
         settings_proxy_disable: "I-disable",
         settings_proxy_invalid: "Maglagay ng wastong http(s) proxy URL.",
-        settings_proxy_cooldown: "Pansamantalang nilalaktawan pagkatapos ng pagkabigo"
+        settings_proxy_cooldown: "Pansamantalang nilalaktawan pagkatapos ng pagkabigo",
+        source_custom_title: "Mga custom na pinagkunan",
+        source_custom_add: "Magdagdag ng pinagkunan",
+        source_custom_invalid: "Maglagay ng wastong http(s) na URL ng pinagkunan.",
+        source_custom_empty: "Wala pang mga custom na pinagkunan.",
+        source_custom_name_ph: "Pangalan (hal. Ang pinagkunan ko)",
+        source_builtin_title: "Mga built-in na pinagkunan (basahin lamang)"
     },
     fi: {
         button: "Astu sisään",
@@ -2750,7 +2978,13 @@ const translations = {
         settings_proxy_enable: "Ota käyttöön",
         settings_proxy_disable: "Poista käytöstä",
         settings_proxy_invalid: "Anna kelvollinen http(s)-proxy-URL.",
-        settings_proxy_cooldown: "Ohitetaan väliaikaisesti virheen jälkeen"
+        settings_proxy_cooldown: "Ohitetaan väliaikaisesti virheen jälkeen",
+        source_custom_title: "Mukautetut lähteet",
+        source_custom_add: "Lisää lähde",
+        source_custom_invalid: "Syötä kelvollinen http(s)-lähteen URL-osoite.",
+        source_custom_empty: "Ei vielä mukautettuja lähteitä.",
+        source_custom_name_ph: "Nimi (esim. Lähteeni)",
+        source_builtin_title: "Sisäänrakennetut lähteet (vain luku)"
     },
     gl: {
         button: "Entrar",
@@ -2820,7 +3054,13 @@ const translations = {
         settings_proxy_enable: "Activar",
         settings_proxy_disable: "Desactivar",
         settings_proxy_invalid: "Introduza un URL de proxy http(s) válido.",
-        settings_proxy_cooldown: "Omitido temporalmente tras un fallo"
+        settings_proxy_cooldown: "Omitido temporalmente tras un fallo",
+        source_custom_title: "Fontes personalizadas",
+        source_custom_add: "Engadir fonte",
+        source_custom_invalid: "Introduce un URL de fonte http(s) válido.",
+        source_custom_empty: "Aínda non hai fontes personalizadas.",
+        source_custom_name_ph: "Nome (p. ex. A miña fonte)",
+        source_builtin_title: "Fontes integradas (só lectura)"
     },
     ka: {
         button: "შესვლა",
@@ -2890,7 +3130,13 @@ const translations = {
         settings_proxy_enable: "ჩართვა",
         settings_proxy_disable: "გამორთვა",
         settings_proxy_invalid: "გთხოვთ, შეიყვანოთ სწორი http(s) პროქსის URL.",
-        settings_proxy_cooldown: "დროებით გამოტოვებულია წარუმატებლობის შემდეგ"
+        settings_proxy_cooldown: "დროებით გამოტოვებულია წარუმატებლობის შემდეგ",
+        source_custom_title: "მორგებული წყაროები",
+        source_custom_add: "წყაროს დამატება",
+        source_custom_invalid: "შეიყვანეთ სწორი http(s) წყაროს URL.",
+        source_custom_empty: "მორგებული წყაროები ჯერ არ არის.",
+        source_custom_name_ph: "სახელი (მაგ. ჩემი წყარო)",
+        source_builtin_title: "ჩაშენებული წყაროები (მხოლოდ წაკითხვა)"
     },
     el: {
         button: "Είσοδος",
@@ -2960,7 +3206,13 @@ const translations = {
         settings_proxy_enable: "Ενεργοποίηση",
         settings_proxy_disable: "Απενεργοποίηση",
         settings_proxy_invalid: "Εισάγετε ένα έγκυρο URL διαμεσολαβητή http(s).",
-        settings_proxy_cooldown: "Παραλείπεται προσωρινά μετά από αποτυχία"
+        settings_proxy_cooldown: "Παραλείπεται προσωρινά μετά από αποτυχία",
+        source_custom_title: "Προσαρμοσμένες πηγές",
+        source_custom_add: "Προσθήκη πηγής",
+        source_custom_invalid: "Εισάγετε ένα έγκυρο URL πηγής http(s).",
+        source_custom_empty: "Δεν υπάρχουν ακόμη προσαρμοσμένες πηγές.",
+        source_custom_name_ph: "Όνομα (π.χ. Η πηγή μου)",
+        source_builtin_title: "Ενσωματωμένες πηγές (μόνο ανάγνωση)"
     },
     gu: {
         button: "પ્રવેશ કરો",
@@ -3030,7 +3282,13 @@ const translations = {
         settings_proxy_enable: "સક્ષમ કરો",
         settings_proxy_disable: "અક્ષમ કરો",
         settings_proxy_invalid: "કૃપા કરીને માન્ય http(s) પ્રોક્સી URL દાખલ કરો.",
-        settings_proxy_cooldown: "નિષ્ફળતા પછી કામચલાઉ રીતે છોડી દેવામાં આવ્યું"
+        settings_proxy_cooldown: "નિષ્ફળતા પછી કામચલાઉ રીતે છોડી દેવામાં આવ્યું",
+        source_custom_title: "કસ્ટમ સ્રોત",
+        source_custom_add: "સ્રોત ઉમેરો",
+        source_custom_invalid: "કૃપા કરીને માન્ય http(s) સ્રોત URL દાખલ કરો.",
+        source_custom_empty: "હજી કોઈ કસ્ટમ સ્રોત નથી.",
+        source_custom_name_ph: "નામ (દા.ત. મારો સ્રોત)",
+        source_builtin_title: "બિલ્ટ-ઇન સ્રોત (ફક્ત વાંચવા માટે)"
     },
     ha: {
         button: "Shiga",
@@ -3100,7 +3358,13 @@ const translations = {
         settings_proxy_enable: "Kunna",
         settings_proxy_disable: "A kashe",
         settings_proxy_invalid: "Da fatan za a shigar da ingantaccen URL (s) wakilin wakili.",
-        settings_proxy_cooldown: "An tsallake na ɗan lokaci bayan gazawa"
+        settings_proxy_cooldown: "An tsallake na ɗan lokaci bayan gazawa",
+        source_custom_title: "Hanyoyin al'ada",
+        source_custom_add: "Ƙara hanya",
+        source_custom_invalid: "Shigar da ingantacciyar hanyar http(s).",
+        source_custom_empty: "Ba'a da hanyoyin al'ada tukuna.",
+        source_custom_name_ph: "Sunaa (misali Hanyata)",
+        source_builtin_title: "Hanyoyin ginannu (karantawa kawai)"
     },
     haw: {
         button: "Komaku",
@@ -3170,7 +3434,13 @@ const translations = {
         settings_proxy_enable: "Hiki",
         settings_proxy_disable: "Hoʻopau",
         settings_proxy_invalid: "E ʻoluʻolu e hoʻokomo i kahi http(s) proxy URL kūpono.",
-        settings_proxy_cooldown: "Ua kāpae iki ʻia ma hope o ka hemahema"
+        settings_proxy_cooldown: "Ua kāpae iki ʻia ma hope o ka hemahema",
+        source_custom_title: "Nā kumu kūikawā",
+        source_custom_add: "Hoʻohui kumu",
+        source_custom_invalid: "E hoʻokomo i kahi URL kumu http(s) kūpono.",
+        source_custom_empty: "ʻAʻohe kumu kūikawā i kēia manawa.",
+        source_custom_name_ph: "Inoa (laʻana: Koʻu kumu)",
+        source_builtin_title: "Nā kumu kūkulu ʻia (heluhelu wale)"
     },
     he: {
         button: "היכנס",
@@ -3240,7 +3510,13 @@ const translations = {
         settings_proxy_enable: "הפעלה",
         settings_proxy_disable: "השבתה",
         settings_proxy_invalid: "נא להזין כתובת URL תקינה של פרוקסי http(s).",
-        settings_proxy_cooldown: "דולג זמנית לאחר כשל"
+        settings_proxy_cooldown: "דולג זמנית לאחר כשל",
+        source_custom_title: "מקורות מותאמים אישית",
+        source_custom_add: "הוסף מקור",
+        source_custom_invalid: "הזן כתובת URL של מקור http(s) תקינה.",
+        source_custom_empty: "אין עדיין מקורות מותאמים אישית.",
+        source_custom_name_ph: "שם (למשל המקור שלי)",
+        source_builtin_title: "מקורות מובנים (קריאה בלבד)"
     },
     hu: {
         button: "Belépés",
@@ -3310,7 +3586,13 @@ const translations = {
         settings_proxy_enable: "Engedélyezés",
         settings_proxy_disable: "Letiltás",
         settings_proxy_invalid: "Adjon meg érvényes http(s) proxy URL-t.",
-        settings_proxy_cooldown: "Hiba után ideiglenesen kihagyva"
+        settings_proxy_cooldown: "Hiba után ideiglenesen kihagyva",
+        source_custom_title: "Egyéni források",
+        source_custom_add: "Forrás hozzáadása",
+        source_custom_invalid: "Adj meg egy érvényes http(s) forrás-URL-t.",
+        source_custom_empty: "Még nincsenek egyéni források.",
+        source_custom_name_ph: "Név (pl. Saját forrás)",
+        source_builtin_title: "Beépített források (csak olvasható)"
     },
     is: {
         button: "Koma inn",
@@ -3380,7 +3662,13 @@ const translations = {
         settings_proxy_enable: "Virkja",
         settings_proxy_disable: "Óvirkja",
         settings_proxy_invalid: "Vinsamlega sláðu inn gilda http(s) proxy-vefslóð.",
-        settings_proxy_cooldown: "Sleppt tímabundið eftir bilun"
+        settings_proxy_cooldown: "Sleppt tímabundið eftir bilun",
+        source_custom_title: "Sérsníddar heimildir",
+        source_custom_add: "Bæta við heimild",
+        source_custom_invalid: "Sláðu inn gilda http(s) heimildar-URL.",
+        source_custom_empty: "Engar sérsníddar heimildir ennþá.",
+        source_custom_name_ph: "Nafn (t.d. Heimildin mín)",
+        source_builtin_title: "Innbyggðar heimildir (aðeins lesandi)"
     },
     ga: {
         button: "Iontráil",
@@ -3450,7 +3738,13 @@ const translations = {
         settings_proxy_enable: "Cumasaigh",
         settings_proxy_disable: "Díchumasaigh",
         settings_proxy_invalid: "Cuir isteach URL seachfhreastalaí http(s) bailí.",
-        settings_proxy_cooldown: "Scipeáil go sealadach tar éis teip"
+        settings_proxy_cooldown: "Scipeáil go sealadach tar éis teip",
+        source_custom_title: "Foinsí saincheaptha",
+        source_custom_add: "Cuir foinse leis",
+        source_custom_invalid: "Iontráil URL foinsí http(s) bailí.",
+        source_custom_empty: "Níl aon foinsí saincheaptha go fóill.",
+        source_custom_name_ph: "Ainm (m.sh. Mo fhoinse)",
+        source_builtin_title: "Foinsí ionsuite (léamh amháin)"
     },
     kn: {
         button: "ಪ್ರವೇಶಿಸಿ",
@@ -3520,7 +3814,13 @@ const translations = {
         settings_proxy_enable: "ಸಕ್ರಿಯಗೊಳಿಸಿ",
         settings_proxy_disable: "ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ",
         settings_proxy_invalid: "ದಯವಿಟ್ಟು ಮಾನ್ಯವಾದ http(ಗಳು) ಪ್ರಾಕ್ಸಿ URL ಅನ್ನು ನಮೂದಿಸಿ.",
-        settings_proxy_cooldown: "ವಿಫಲತೆಯ ನಂತರ ತಾತ್ಕಾಲಿಕವಾಗಿ ಬಿಟ್ಟುಬಿಡಲಾಗಿದೆ"
+        settings_proxy_cooldown: "ವಿಫಲತೆಯ ನಂತರ ತಾತ್ಕಾಲಿಕವಾಗಿ ಬಿಟ್ಟುಬಿಡಲಾಗಿದೆ",
+        source_custom_title: "ಕಸ್ಟಮ್ ಮೂಲಗಳು",
+        source_custom_add: "ಮೂಲ ಸೇರಿಸಿ",
+        source_custom_invalid: "ಮಾನ್ಯವಾದ http(s) ಮೂಲ URL ನಮೂದಿಸಿ.",
+        source_custom_empty: "ಇನ್ನೂ ಯಾವುದೇ ಕಸ್ಟಮ್ ಮೂಲಗಳಿಲ್ಲ.",
+        source_custom_name_ph: "ಹೆಸರು (ಉದಾ. ನನ್ನ ಮೂಲ)",
+        source_builtin_title: "ಒಳಗೊಂಡ ಮೂಲಗಳು (ಓದಲು ಮಾತ್ರ)"
     },
     kk: {
         button: "Кіру",
@@ -3590,7 +3890,13 @@ const translations = {
         settings_proxy_enable: "Қосу",
         settings_proxy_disable: "Өшіру",
         settings_proxy_invalid: "Жарамды http(лар) прокси URL мекенжайын енгізіңіз.",
-        settings_proxy_cooldown: "Сәтсіздіктен кейін уақытша өткізіп жіберілді"
+        settings_proxy_cooldown: "Сәтсіздіктен кейін уақытша өткізіп жіберілді",
+        source_custom_title: "Пайдаланушы көздері",
+        source_custom_add: "Көз қосу",
+        source_custom_invalid: "Жарамды http(s) көз URL-ін енгізіңіз.",
+        source_custom_empty: "Пайдаланушы көздері әлі жоқ.",
+        source_custom_name_ph: "Атауы (мыс. Менің көзім)",
+        source_builtin_title: "Кірістірілген көздер (тек оқу)"
     },
     km: {
         button: "បញ្ចូល",
@@ -3660,7 +3966,13 @@ const translations = {
         settings_proxy_enable: "បើក",
         settings_proxy_disable: "បិទ",
         settings_proxy_invalid: "សូមបញ្ចូល URL ប្រូកស៊ី http(s) ត្រឹមត្រូវ។",
-        settings_proxy_cooldown: "បានរំលងជាបណ្ដោះអាសន្នបន្ទាប់ពីបរាជ័យ"
+        settings_proxy_cooldown: "បានរំលងជាបណ្ដោះអាសន្នបន្ទាប់ពីបរាជ័យ",
+        source_custom_title: "ប្រភពផ្ទាល់ខ្លួន",
+        source_custom_add: "បន្ថែមប្រភព",
+        source_custom_invalid: "សូមបញ្ចូល URL ប្រភព http(s) ដែលត្រឹមត្រូវ។",
+        source_custom_empty: "មិនមានប្រភពផ្ទាល់ខ្លួននៅឡើយទេ។",
+        source_custom_name_ph: "ឈ្មោះ (ឧ. ប្រភពរបស់ខ្ញុំ)",
+        source_builtin_title: "ប្រភពភ្ជាប់មកជាមួយ (អានប៉ុណ្ណោះ)"
     },
     ku: {
         button: "Ketin",
@@ -3730,7 +4042,13 @@ const translations = {
         settings_proxy_enable: "Bikêrkirin",
         settings_proxy_disable: "Neçalak bike",
         settings_proxy_invalid: "Ji kerema xwe navnîşek http(s) ya proxiyê ya derbasdar binivîse.",
-        settings_proxy_cooldown: "Piştî têkçûnê demkî hate derbaskirin"
+        settings_proxy_cooldown: "Piştî têkçûnê demkî hate derbaskirin",
+        source_custom_title: "Çavkaniyên taybet",
+        source_custom_add: "Çavkanî zêde bike",
+        source_custom_invalid: "Girêdana çavkaniyê ya http(s) ya derbasdar binivîse.",
+        source_custom_empty: "Hîn çavkaniyên taybet nînî.",
+        source_custom_name_ph: "Nav (mînak Çavkaniya min)",
+        source_builtin_title: "Çavkaniyên çêkirî (tenê xwendin)"
     },
     ky: {
         button: "Кирүү",
@@ -3800,7 +4118,13 @@ const translations = {
         settings_proxy_enable: "Иштетүү",
         settings_proxy_disable: "Өчүрүү",
         settings_proxy_invalid: "Жарактуу http(лердин) прокси URL дарегин киргизиңиз.",
-        settings_proxy_cooldown: "Ийгиликсиздиктен кийин убактылуу өткөрүп жиберилди"
+        settings_proxy_cooldown: "Ийгиликсиздиктен кийин убактылуу өткөрүп жиберилди",
+        source_custom_title: "Колдонуучунун булактары",
+        source_custom_add: "Булак кошуу",
+        source_custom_invalid: "Жарактуу http(s) булак URL-ин киргизиңиз.",
+        source_custom_empty: "Колдонуучунун булактары эли жок.",
+        source_custom_name_ph: "Аты (мис. Менин булагым)",
+        source_builtin_title: "Кошулган булактар (окуу гана)"
     },
     lo: {
         button: "ເຂົ້າ",
@@ -3870,7 +4194,13 @@ const translations = {
         settings_proxy_enable: "ເປີດໃຊ້",
         settings_proxy_disable: "ປິດໃຊ້ງານ",
         settings_proxy_invalid: "ກະລຸນາໃສ່ URL ຕົວແທນຂອງ http(s) ທີ່ຖືກຕ້ອງ.",
-        settings_proxy_cooldown: "ຂ້າມໄປຊົ່ວຄາວຫຼັງຈາກຄວາມລົ້ມເຫຼວ"
+        settings_proxy_cooldown: "ຂ້າມໄປຊົ່ວຄາວຫຼັງຈາກຄວາມລົ້ມເຫຼວ",
+        source_custom_title: "ແຫຼ່ງກຳນົດເອງ",
+        source_custom_add: "ເພີ່ມແຫຼ່ງ",
+        source_custom_invalid: "ກະລຸນາປ້ອນ URL ແຫຼ່ງ http(s) ທີ່ຖືກຕ້ອງ",
+        source_custom_empty: "ຍັງບໍ່ມີແຫຼ່ງກຳນົດເອງ",
+        source_custom_name_ph: "ຊື່ (ເຊັ່ນ ແຫຼ່ງຂອງຂ້ອຍ)",
+        source_builtin_title: "ແຫຼ່ງທີ່ມາກັບ (ອ່ານຢ່າງດຽວ)"
     },
     la: {
         button: "Intrare",
@@ -3940,7 +4270,13 @@ const translations = {
         settings_proxy_enable: "Permitte",
         settings_proxy_disable: "Prohibe",
         settings_proxy_invalid: "Quaeso valorem URL proxy http(s) validum insere.",
-        settings_proxy_cooldown: "Post errorem ad tempus praetermissum"
+        settings_proxy_cooldown: "Post errorem ad tempus praetermissum",
+        source_custom_title: "Fontes consuetudinarii",
+        source_custom_add: "Fontem adde",
+        source_custom_invalid: "Intra validum http(s) fontem URL.",
+        source_custom_empty: "Nulli fontes consuetudinarii adhuc.",
+        source_custom_name_ph: "Nomen (ex. Fons meus)",
+        source_builtin_title: "Fontes insiti (tantum legendi)"
     },
     lv: {
         button: "Ienākt",
@@ -4010,7 +4346,13 @@ const translations = {
         settings_proxy_enable: "Iespējot",
         settings_proxy_disable: "Atspējot",
         settings_proxy_invalid: "Lūdzu, ievadiet derīgu http(-u) starpniekservera URL.",
-        settings_proxy_cooldown: "Īslaicīgi izlaists pēc kļūmes"
+        settings_proxy_cooldown: "Īslaicīgi izlaists pēc kļūmes",
+        source_custom_title: "Pielāgoti avoti",
+        source_custom_add: "Pievienot avotu",
+        source_custom_invalid: "Ievadiet derīgu http(s) avota URL.",
+        source_custom_empty: "Pielāgotu avotu vēl nav.",
+        source_custom_name_ph: "Nosaukums (piem. Mans avots)",
+        source_builtin_title: "Iebūvētie avoti (tikai lasāmi)"
     },
     lt: {
         button: "Įeiti",
@@ -4080,7 +4422,13 @@ const translations = {
         settings_proxy_enable: "Įgalinti",
         settings_proxy_disable: "Išjungti",
         settings_proxy_invalid: "Įveskite tinkamą http (-ių) įgaliotojo serverio URL.",
-        settings_proxy_cooldown: "Laikinai praleista po klaidos"
+        settings_proxy_cooldown: "Laikinai praleista po klaidos",
+        source_custom_title: "Pasirinktiniai šaltiniai",
+        source_custom_add: "Pridėti šaltinį",
+        source_custom_invalid: "Įveskite tinkamą http(s) šaltinio URL.",
+        source_custom_empty: "Pasirinktinių šaltinių dar nėra.",
+        source_custom_name_ph: "Pavadinimas (pvz. Mano šaltinis)",
+        source_builtin_title: "Įtaisyti šaltiniai (tik skaitymui)"
     },
     mk: {
         button: "Влези",
@@ -4150,7 +4498,13 @@ const translations = {
         settings_proxy_enable: "Овозможи",
         settings_proxy_disable: "Оневозможи",
         settings_proxy_invalid: "Внесете валидна http(s) URL-адреса на прокси.",
-        settings_proxy_cooldown: "Привремено прескокнато по грешка"
+        settings_proxy_cooldown: "Привремено прескокнато по грешка",
+        source_custom_title: "Прилагодени извори",
+        source_custom_add: "Додади извор",
+        source_custom_invalid: "Внесете валиден http(s) URL на извор.",
+        source_custom_empty: "Сè уште нема прилагодени извори.",
+        source_custom_name_ph: "Име (нпр. Мојот извор)",
+        source_builtin_title: "Вградени извори (само за читање)"
     },
     ms: {
         button: "Masuk",
@@ -4220,7 +4574,13 @@ const translations = {
         settings_proxy_enable: "Dayakan",
         settings_proxy_disable: "Nyahdayakan",
         settings_proxy_invalid: "Sila masukkan URL proksi http(s) yang sah.",
-        settings_proxy_cooldown: "Dilangkau sementara selepas kegagalan"
+        settings_proxy_cooldown: "Dilangkau sementara selepas kegagalan",
+        source_custom_title: "Sumber tersuai",
+        source_custom_add: "Tambah sumber",
+        source_custom_invalid: "Masukkan URL sumber http(s) yang sah.",
+        source_custom_empty: "Tiada sumber tersuai lagi.",
+        source_custom_name_ph: "Nama (cth. Sumber saya)",
+        source_builtin_title: "Sumber terbina dalam (baca sahaja)"
     },
     ml: {
         button: "പ്രവേശിക്കുക",
@@ -4290,7 +4650,13 @@ const translations = {
         settings_proxy_enable: "പ്രവർത്തനക്ഷമമാക്കുക",
         settings_proxy_disable: "പ്രവർത്തനരഹിതമാക്കുക",
         settings_proxy_invalid: "ദയവായി സാധുവായ ഒരു http(കൾ) പ്രോക്സി URL നൽകുക.",
-        settings_proxy_cooldown: "പരാജയത്തിന് ശേഷം താൽക്കാലികമായി ഒഴിവാക്കി"
+        settings_proxy_cooldown: "പരാജയത്തിന് ശേഷം താൽക്കാലികമായി ഒഴിവാക്കി",
+        source_custom_title: "കസ്റ്റം ഉറവിടങ്ങൾ",
+        source_custom_add: "ഉറവിടം ചേർക്കുക",
+        source_custom_invalid: "സാധുവായ http(s) ഉറവിട URL നൽകുക.",
+        source_custom_empty: "ഇതുവരെ കസ്റ്റം ഉറവിടങ്ങളില്ല.",
+        source_custom_name_ph: "പേര് (ഉദാ. എന്റെ ഉറവിടം)",
+        source_builtin_title: "ബിൽറ്റ്-ഇൻ ഉറവിടങ്ങൾ (വായനയ്ക്ക് മാത്രം)"
     },
     mt: {
         button: "Dħal",
@@ -4360,7 +4726,13 @@ const translations = {
         settings_proxy_enable: "Ippermettiet",
         settings_proxy_disable: "Itfi",
         settings_proxy_invalid: "Jekk jogħġbok daħħal URL proxy http(i) validu.",
-        settings_proxy_cooldown: "Maqbeż temporanjament wara falliment"
+        settings_proxy_cooldown: "Maqbeż temporanjament wara falliment",
+        source_custom_title: "Sorsi personalizzati",
+        source_custom_add: "Żid sors",
+        source_custom_invalid: "Daħħal URL ta' sors http(s) validu.",
+        source_custom_empty: "Għad m'hemmx sorsi personalizzati.",
+        source_custom_name_ph: "Isem (eż. Is-sorsi tiegħi)",
+        source_builtin_title: "Sorsi integrati (qari biss)"
     },
     mr: {
         button: "प्रवेश करा",
@@ -4430,7 +4802,13 @@ const translations = {
         settings_proxy_enable: "सक्षम करा",
         settings_proxy_disable: "अक्षम करा",
         settings_proxy_invalid: "कृपया एक वैध http(s) प्रॉक्सी URL प्रविष्ट करा.",
-        settings_proxy_cooldown: "अयशस्वी झाल्यानंतर तात्पुरते वगळले"
+        settings_proxy_cooldown: "अयशस्वी झाल्यानंतर तात्पुरते वगळले",
+        source_custom_title: "कस्टम स्रोत",
+        source_custom_add: "स्रोत जोडा",
+        source_custom_invalid: "कृपया वैध http(s) स्रोत URL प्रविष्ट करा.",
+        source_custom_empty: "अजून कोणतेही कस्टम स्रोत नाहीत.",
+        source_custom_name_ph: "नाव (उदा. माझा स्रोत)",
+        source_builtin_title: "बिल्ट-इन स्रोत (फक्त वाचनासाठी)"
     },
     mn: {
         button: "Орох",
@@ -4500,7 +4878,13 @@ const translations = {
         settings_proxy_enable: "Идэвхжүүлэх",
         settings_proxy_disable: "Идэвхгүй болгох",
         settings_proxy_invalid: "Хүчинтэй http(s) прокси URL оруулна уу.",
-        settings_proxy_cooldown: "Алдааны дараа түр хугацаанд алгассан"
+        settings_proxy_cooldown: "Алдааны дараа түр хугацаанд алгассан",
+        source_custom_title: "Тохируулсан эх үүсвэрүүд",
+        source_custom_add: "Эх үүсвэр нэмэх",
+        source_custom_invalid: "Зөв http(s) эх үүсвэрийн URL оруулна уу.",
+        source_custom_empty: "Одоогоор тохируулсан эх үүсвэр байхгүй.",
+        source_custom_name_ph: "Нэр (жишээ. Миний эх үүсвэр)",
+        source_builtin_title: "Угсарсан эх үүсвэрүүд (зөвхөн унших)"
     },
     ne: {
         button: "प्रवेश गर्नुहोस्",
@@ -4570,7 +4954,13 @@ const translations = {
         settings_proxy_enable: "सक्षम गर्नुहोस्",
         settings_proxy_disable: "असक्षम गर्नुहोस्",
         settings_proxy_invalid: "कृपया मान्य http(हरू) प्रोक्सी URL प्रविष्ट गर्नुहोस्।",
-        settings_proxy_cooldown: "असफल भएपछि अस्थायी रूपमा छोडियो"
+        settings_proxy_cooldown: "असफल भएपछि अस्थायी रूपमा छोडियो",
+        source_custom_title: "अनुकूलित स्रोत",
+        source_custom_add: "स्रोत थप्नुहोस्",
+        source_custom_invalid: "कृपया मान्य http(s) स्रोत URL प्रविष्ट गर्नुहोस्।",
+        source_custom_empty: "अझै कुनै अनुकूलित स्रोत छैन।",
+        source_custom_name_ph: "नाम (जस्तै मेरो स्रोत)",
+        source_builtin_title: "इनबिल्ट स्रोतहरू (पढ्ने मात्र)"
     },
     no: {
         button: "Gå inn",
@@ -4640,7 +5030,13 @@ const translations = {
         settings_proxy_enable: "Aktiver",
         settings_proxy_disable: "Deaktiver",
         settings_proxy_invalid: "Angi en gyldig http(s)-proxy-URL.",
-        settings_proxy_cooldown: "Midlertidig hoppet over etter en feil"
+        settings_proxy_cooldown: "Midlertidig hoppet over etter en feil",
+        source_custom_title: "Egendefinerte kilder",
+        source_custom_add: "Legg til kilde",
+        source_custom_invalid: "Skriv inn en gyldig http(s)-kilde-URL.",
+        source_custom_empty: "Ingen egendefinerte kilder ennå.",
+        source_custom_name_ph: "Navn (f.eks. Min kilde)",
+        source_builtin_title: "Innebygde kilder (skrivebeskyttet)"
     },
     od: {
         button: "ପ୍ରବେଶ କରନ୍ତୁ",
@@ -4710,7 +5106,13 @@ const translations = {
         settings_proxy_enable: "ସକ୍ରିୟ କରନ୍ତୁ",
         settings_proxy_disable: "ଅକାର୍ଯ୍ୟକାରୀ କରନ୍ତୁ",
         settings_proxy_invalid: "Please enter a valid http(s) proxy URL.",
-        settings_proxy_cooldown: "ବିଫଳତା ପରେ ସାମୟିକ ଭାବରେ ବାଦ ଦିଆଗଲା"
+        settings_proxy_cooldown: "ବିଫଳତା ପରେ ସାମୟିକ ଭାବରେ ବାଦ ଦିଆଗଲା",
+        source_custom_title: "କଷ୍ଟମ୍ ଉତ୍ସ",
+        source_custom_add: "ଉତ୍ସ ଯୋଗ କରନ୍ତୁ",
+        source_custom_invalid: "ଦୟାକରି ଏକ ବୈଧ http(s) ଉତ୍ସ URL ଭରିଦିଅନ୍ତୁ।",
+        source_custom_empty: "ଏବେଯାଏଁ କୌଣସି କଷ୍ଟମ୍ ଉତ୍ସ ନାହିଁ।",
+        source_custom_name_ph: "ନାମ (ଯେପରି ମୋ ଉତ୍ସ)",
+        source_builtin_title: "ବିଲ୍ଟ-ଇନ୍ ଉତ୍ସ (କେବଳ ପଢ଼ିବା ପାଇଁ)"
     },
     ps: {
         button: "ننوځي",
@@ -4780,7 +5182,13 @@ const translations = {
         settings_proxy_enable: "فعال کړئ",
         settings_proxy_disable: "غیر فعال کړئ",
         settings_proxy_invalid: "مهرباني وکړئ یو معتبر http(s) پراکسي URL داخل کړئ.",
-        settings_proxy_cooldown: "د ناکامۍ وروسته په لنډمهاله توګه پریښودل شو"
+        settings_proxy_cooldown: "د ناکامۍ وروسته په لنډمهاله توګه پریښودل شو",
+        source_custom_title: "ځانګړي سرچینې",
+        source_custom_add: "سرچینه اضافه کړه",
+        source_custom_invalid: "یوه سمه http(s) د سرچینې URL دننه کړه.",
+        source_custom_empty: "لا ترسره ځانګړي سرچینې نشته.",
+        source_custom_name_ph: "نوم (بېلګه زما سرچینه)",
+        source_builtin_title: "دننه سرچینې (یوازې لوستل)"
     },
     fa: {
         button: "وارد شوید",
@@ -4850,7 +5258,13 @@ const translations = {
         settings_proxy_enable: "فعال‌سازی",
         settings_proxy_disable: "غیرفعال‌سازی",
         settings_proxy_invalid: "لطفاً یک نشانی اینترنتی پراکسی معتبر http(s) وارد کنید.",
-        settings_proxy_cooldown: "پس از خطا موقتاً نادیده گرفته می‌شود"
+        settings_proxy_cooldown: "پس از خطا موقتاً نادیده گرفته می‌شود",
+        source_custom_title: "منابع سفارشی",
+        source_custom_add: "افزودن منبع",
+        source_custom_invalid: "لطفاً یک URL منبع http(s) معتبر وارد کنید.",
+        source_custom_empty: "هنوز منبع سفارشی وجود ندارد.",
+        source_custom_name_ph: "نام (مثلاً منبع من)",
+        source_builtin_title: "منابع داخلی (فقط خواندنی)"
     },
     pa: {
         button: "ਦਾਖਲ ਹੋਵੋ",
@@ -4920,7 +5334,13 @@ const translations = {
         settings_proxy_enable: "ਯੋਗ ਕਰੋ",
         settings_proxy_disable: "ਅਸਮਰੱਥ",
         settings_proxy_invalid: "ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਵੈਧ http(s) ਪ੍ਰੌਕਸੀ URL ਦਾਖਲ ਕਰੋ।",
-        settings_proxy_cooldown: "ਅਸਫਲਤਾ ਤੋਂ ਬਾਅਦ ਅਸਥਾਈ ਤੌਰ 'ਤੇ ਛੱਡ ਦਿੱਤਾ ਗਿਆ"
+        settings_proxy_cooldown: "ਅਸਫਲਤਾ ਤੋਂ ਬਾਅਦ ਅਸਥਾਈ ਤੌਰ 'ਤੇ ਛੱਡ ਦਿੱਤਾ ਗਿਆ",
+        source_custom_title: "ਕਸਟਮ ਸਰੋਤ",
+        source_custom_add: "ਸਰੋਤ ਸ਼ਾਮਲ ਕਰੋ",
+        source_custom_invalid: "ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਵੈਧ http(s) ਸਰੋਤ URL ਦਾਖਲ ਕਰੋ।",
+        source_custom_empty: "ਹਾਲੇ ਕੋਈ ਕਸਟਮ ਸਰੋਤ ਨਹੀਂ ਹਨ।",
+        source_custom_name_ph: "ਨਾਮ (ਜਿਵੇਂ ਮੇਰਾ ਸਰੋਤ)",
+        source_builtin_title: "ਬਿਲਟ-ਇਨ ਸਰੋਤ (ਸਿਰਫ਼ ਪੜ੍ਹਨ ਲਈ)"
     },
     gd: {
         button: "Fàg an-steach",
@@ -4990,7 +5410,13 @@ const translations = {
         settings_proxy_enable: "Dèan comas",
         settings_proxy_disable: "Cuir à comas",
         settings_proxy_invalid: "Feuch an cuir thu a-steach URL progsaidh http(s) dligheach.",
-        settings_proxy_cooldown: "Air a sgioblachadh gu sealach an dèidh fàilligeadh"
+        settings_proxy_cooldown: "Air a sgioblachadh gu sealach an dèidh fàilligeadh",
+        source_custom_title: "Tuismeanachdan gnàthaichte",
+        source_custom_add: "Cuir tuismeanach ris",
+        source_custom_invalid: "Cuir a-steach URL tuismeanach http(s) dligheach.",
+        source_custom_empty: "Chan eil tuismeanachdan gnàthaichte fhathast.",
+        source_custom_name_ph: "Ainm (m.e. Mo thuismeanach)",
+        source_builtin_title: "Tuismeanachdan togte (leughadh a-mhàin)"
     },
     ro: {
         button: "Intră",
@@ -5060,7 +5486,13 @@ const translations = {
         settings_proxy_enable: "Activează",
         settings_proxy_disable: "Dezactivează",
         settings_proxy_invalid: "Introdu un URL proxy http(s) valid.",
-        settings_proxy_cooldown: "Omis temporar după o eroare"
+        settings_proxy_cooldown: "Omis temporar după o eroare",
+        source_custom_title: "Surse personalizate",
+        source_custom_add: "Adaugă sursă",
+        source_custom_invalid: "Introduceți o sursă http(s) URL validă.",
+        source_custom_empty: "Încă nu există surse personalizate.",
+        source_custom_name_ph: "Nume (ex. Sursa mea)",
+        source_builtin_title: "Surse integrate (doar citire)"
     },
     sr: {
         button: "Уђи",
@@ -5130,7 +5562,13 @@ const translations = {
         settings_proxy_enable: "Омогући",
         settings_proxy_disable: "Онемогући",
         settings_proxy_invalid: "Унесите исправну http(s) адресу проксија.",
-        settings_proxy_cooldown: "Привремено прескочено након грешке"
+        settings_proxy_cooldown: "Привремено прескочено након грешке",
+        source_custom_title: "Прилагођени извори",
+        source_custom_add: "Додај извор",
+        source_custom_invalid: "Унесите важећи http(s) URL извора.",
+        source_custom_empty: "Још нема прилагођених извора.",
+        source_custom_name_ph: "Назив (нпр. Мој извор)",
+        source_builtin_title: "Уграђени извори (само за читање)"
     },
     sn: {
         button: "Pinda",
@@ -5200,7 +5638,13 @@ const translations = {
         settings_proxy_enable: "Gonesa",
         settings_proxy_disable: "Dzimisa",
         settings_proxy_invalid: "Ndapota isa URL yeproxy yehttp(s) inoshanda.",
-        settings_proxy_cooldown: "Kusiiwa kwenguva pfupi mushure mekukundikana"
+        settings_proxy_cooldown: "Kusiiwa kwenguva pfupi mushure mekukundikana",
+        source_custom_title: "Mabvunzo tsika",
+        source_custom_add: "Wedzera tsika",
+        source_custom_invalid: "Isa http(s) URL yemabvunzo inoshanda.",
+        source_custom_empty: "Hapana mabvunzo tsika zvino.",
+        source_custom_name_ph: "Zita (semuenzaniso Tsika yangu)",
+        source_builtin_title: "Mabvunzo akavakirwa (kuverenga chete)"
     },
     sd: {
         button: "داخل ٿيو",
@@ -5270,7 +5714,13 @@ const translations = {
         settings_proxy_enable: "فعال ڪريو",
         settings_proxy_disable: "نااهل",
         settings_proxy_invalid: "مھرباني ڪري ھڪ صحيح http(s) proxy URL داخل ڪريو.",
-        settings_proxy_cooldown: "ناڪامي کان پوءِ عارضي طور تي ڇڏي ڏنو ويو"
+        settings_proxy_cooldown: "ناڪامي کان پوءِ عارضي طور تي ڇڏي ڏنو ويو",
+        source_custom_title: "پنهنجون ذريعون",
+        source_custom_add: "ذريعو شامل ڪريو",
+        source_custom_invalid: "براءت ڪريو هڪ صحيح http(s) ذريعو URL داخل ڪريو.",
+        source_custom_empty: "اڃا ڪا پنهنجي ذريعو ناهي.",
+        source_custom_name_ph: "نالو (مثال جي طور تي منهنجو ذريعو)",
+        source_builtin_title: "اندازيل ذريعون (صرف پڙهڻ لاءِ)"
     },
     si: {
         button: "ඇතුළු වන්න",
@@ -5340,7 +5790,13 @@ const translations = {
         settings_proxy_enable: "සබල කරන්න",
         settings_proxy_disable: "අක්රිය කරන්න",
         settings_proxy_invalid: "කරුණාකර වලංගු http(s) proxy URL එකක් ඇතුළු කරන්න.",
-        settings_proxy_cooldown: "අසාර්ථකත්වයෙන් පසු තාවකාලිකව මඟ හරින ලදී"
+        settings_proxy_cooldown: "අසාර්ථකත්වයෙන් පසු තාවකාලිකව මඟ හරින ලදී",
+        source_custom_title: "අභිරුචි මූලාශ්‍ර",
+        source_custom_add: "මූලාශ්‍රයක් එක් කරන්න",
+        source_custom_invalid: "වලංගු http(s) මූලාශ්‍ර URL එකක් ඇතුළත් කරන්න.",
+        source_custom_empty: "තවම අභිරුචි මූලාශ්‍ර නැත.",
+        source_custom_name_ph: "නම (උදා. මගේ මූලාශ්‍රය)",
+        source_builtin_title: "විශේෂිත මූලාශ්‍ර (කියවීම සඳහා පමණි)"
     },
     sk: {
         button: "Vstúpiť",
@@ -5410,7 +5866,13 @@ const translations = {
         settings_proxy_enable: "Povoliť",
         settings_proxy_disable: "Zakázať",
         settings_proxy_invalid: "Zadajte platnú adresu URL proxy http(s).",
-        settings_proxy_cooldown: "Dočasne preskočené po zlyhaní"
+        settings_proxy_cooldown: "Dočasne preskočené po zlyhaní",
+        source_custom_title: "Vlastné zdroje",
+        source_custom_add: "Pridať zdroj",
+        source_custom_invalid: "Zadajte platnú http(s) adresu URL zdroja.",
+        source_custom_empty: "Zatiaľ žádné vlastné zdroje.",
+        source_custom_name_ph: "Názov (napr. Môj zdroj)",
+        source_builtin_title: "Vstavané zdroje (iba na čítanie)"
     },
     sl: {
         button: "Vstopi",
@@ -5480,7 +5942,13 @@ const translations = {
         settings_proxy_enable: "Omogoči",
         settings_proxy_disable: "Onemogoči",
         settings_proxy_invalid: "Vnesite veljaven URL proxyja http(s).",
-        settings_proxy_cooldown: "Začasno preskočeno po napaki"
+        settings_proxy_cooldown: "Začasno preskočeno po napaki",
+        source_custom_title: "Prilagojeni viri",
+        source_custom_add: "Dodaj vir",
+        source_custom_invalid: "Vnesite veljaven http(s) URL vira.",
+        source_custom_empty: "Še ni prilagojenih virov.",
+        source_custom_name_ph: "Ime (npr. Moj vir)",
+        source_builtin_title: "Vgrajeni viri (samo za branje)"
     },
     so: {
         button: "Geli",
@@ -5550,7 +6018,13 @@ const translations = {
         settings_proxy_enable: "Daar",
         settings_proxy_disable: "Dami",
         settings_proxy_invalid: "Fadlan geli URL wakiil http(yada) ansax ah.",
-        settings_proxy_cooldown: "Si ku meel gaar ah loo booday fashilka ka dib"
+        settings_proxy_cooldown: "Si ku meel gaar ah loo booday fashilka ka dib",
+        source_custom_title: "Ilaha caadi ah",
+        source_custom_add: "Kudar il",
+        source_custom_invalid: "Geli URL il oo http(s) ah oo sax ah.",
+        source_custom_empty: "Weli ma jiro il caadi ah.",
+        source_custom_name_ph: "Magaca (tusaale Ilaygayga)",
+        source_builtin_title: "Ilaha gudaha (akhris kaliya)"
     },
     st: {
         button: "Kena",
@@ -5620,7 +6094,13 @@ const translations = {
         settings_proxy_enable: "Thusa",
         settings_proxy_disable: "Thibela",
         settings_proxy_invalid: "Ka kopo, kenya URL e nepahetseng ea moemeli oa http.",
-        settings_proxy_cooldown: "E tlodiswa ka nakoana ka mor'a ho hlōleha"
+        settings_proxy_cooldown: "E tlodiswa ka nakoana ka mor'a ho hlōleha",
+        source_custom_title: "Mehloli ea boikhethelo",
+        source_custom_add: "Kenya mohloli",
+        source_custom_invalid: "Kenya URL ea mohloli ea http(s) e nepahetseng.",
+        source_custom_empty: "Ha ho na mehloli ea boikhethelo hajoale.",
+        source_custom_name_ph: "Lebitso (mohl. Mohloli oa ka)",
+        source_builtin_title: "Mehloli ea tsoang kantle (bala feela)"
     },
     su: {
         button: "Asup",
@@ -5690,7 +6170,13 @@ const translations = {
         settings_proxy_enable: "Aktipkeun",
         settings_proxy_disable: "Pareuman",
         settings_proxy_invalid: "Mangga lebetkeun URL proxy http(s) valid.",
-        settings_proxy_cooldown: "Samentara diliwat sanggeus gagal"
+        settings_proxy_cooldown: "Samentara diliwat sanggeus gagal",
+        source_custom_title: "Sumber husus",
+        source_custom_add: "Tambihan sumber",
+        source_custom_invalid: "Asupkeun URL sumber http(s) nu valid.",
+        source_custom_empty: "Can aya sumber husus.",
+        source_custom_name_ph: "Ngaran (misal Sumber abdi)",
+        source_builtin_title: "Sumber bawaan (baca waé)"
     },
     sw: {
         button: "Ingia",
@@ -5760,7 +6246,13 @@ const translations = {
         settings_proxy_enable: "Wezesha",
         settings_proxy_disable: "Zima",
         settings_proxy_invalid: "Tafadhali weka URL halali ya seva mbadala.",
-        settings_proxy_cooldown: "Imerukwa kwa muda baada ya kushindwa"
+        settings_proxy_cooldown: "Imerukwa kwa muda baada ya kushindwa",
+        source_custom_title: "Vyanzo vya kawaida",
+        source_custom_add: "Ongeza chanzo",
+        source_custom_invalid: "Tafadhali ingiza URL halali ya chanzo cha http(s).",
+        source_custom_empty: "Hakuna vyanzo vya kawaida bado.",
+        source_custom_name_ph: "Jina (mfano Chanzo changu)",
+        source_builtin_title: "Vyanzo vilivyomo (kusoma tu)"
     },
     tg: {
         button: "Даромадан",
@@ -5830,7 +6322,13 @@ const translations = {
         settings_proxy_enable: "Фаъол кардан",
         settings_proxy_disable: "Хомӯш кардан",
         settings_proxy_invalid: "Лутфан URL-и прокси http(s)-и дурустро ворид кунед.",
-        settings_proxy_cooldown: "Баъди нокомӣ муваққатан гузаронида шуд"
+        settings_proxy_cooldown: "Баъди нокомӣ муваққатан гузаронида шуд",
+        source_custom_title: "Манбаъҳои шахсӣ",
+        source_custom_add: "Илова кардани манбаъ",
+        source_custom_invalid: "URL-и дурусти http(s)-и манбаъ ворид кунед.",
+        source_custom_empty: "Ҳанӯз манбаъҳои шахсӣ нестанд.",
+        source_custom_name_ph: "Ном (масалан Манбаи ман)",
+        source_builtin_title: "Манбаъҳои дарунсохт (танҳо хондан)"
     },
     ta: {
         button: "நுழைய",
@@ -5900,7 +6398,13 @@ const translations = {
         settings_proxy_enable: "இயக்கு",
         settings_proxy_disable: "முடக்கு",
         settings_proxy_invalid: "சரியான http(கள்) ப்ராக்ஸி URL ஐ உள்ளிடவும்.",
-        settings_proxy_cooldown: "தோல்விக்குப் பிறகு தற்காலிகமாகத் தவிர்க்கப்பட்டது"
+        settings_proxy_cooldown: "தோல்விக்குப் பிறகு தற்காலிகமாகத் தவிர்க்கப்பட்டது",
+        source_custom_title: "தனிப்பயன் மூலங்கள்",
+        source_custom_add: "மூலத்தைச் சேர்க்கவும்",
+        source_custom_invalid: "சரியான http(s) மூல URL ஐ உள்ளிடவும்.",
+        source_custom_empty: "இன்னும் தனிப்பயன் மூலங்கள் இல்லை.",
+        source_custom_name_ph: "பெயர் (எ.கா. என் மூலம்)",
+        source_builtin_title: "உள்ளமைந்த மூலங்கள் (படிக்க மட்டும்)"
     },
     tt: {
         button: "Керү",
@@ -5970,7 +6474,13 @@ const translations = {
         settings_proxy_enable: "Килеш",
         settings_proxy_disable: "Сүндер",
         settings_proxy_invalid: "Зинһар, дөрес http (лар) прокси URL кертегез.",
-        settings_proxy_cooldown: "Уңышсызлыктан соң вакытлыча үткәрелде"
+        settings_proxy_cooldown: "Уңышсызлыктан соң вакытлыча үткәрелде",
+        source_custom_title: "Кулланылучы чыганаклар",
+        source_custom_add: "Чыганак өстәү",
+        source_custom_invalid: "Дөрес http(s) чыганак URL кертегез.",
+        source_custom_empty: "Әлегә кулланылучы чыганаклар юк.",
+        source_custom_name_ph: "Исем (мәс. Минем чыганак)",
+        source_builtin_title: "Кертелгән чыганаклар (укырга гына)"
     },
     te: {
         button: "ప్రవేశించండి",
@@ -6040,7 +6550,13 @@ const translations = {
         settings_proxy_enable: "ప్రారంభించు",
         settings_proxy_disable: "ఆపివేయి",
         settings_proxy_invalid: "దయచేసి చెల్లుబాటు అయ్యే http(లు) ప్రాక్సీ URLని నమోదు చేయండి.",
-        settings_proxy_cooldown: "వైఫల్యం తర్వాత తాత్కాలికంగా దాటవేయబడింది"
+        settings_proxy_cooldown: "వైఫల్యం తర్వాత తాత్కాలికంగా దాటవేయబడింది",
+        source_custom_title: "కస్టమ్ మూలాలు",
+        source_custom_add: "మూలాన్ని జోడించు",
+        source_custom_invalid: "దయచేసి చెల్లుబాటు అయ్యే http(s) మూల URL నమోదు చేయండి.",
+        source_custom_empty: "ఇంకా కస్టమ్ మూలాలు లేవు.",
+        source_custom_name_ph: "పేరు (ఉదా. నా మూలం)",
+        source_builtin_title: "అంతర్భాగ మూలాలు (చదవడానికి మాత్రమే)"
     },
     tk: {
         button: "Girmek",
@@ -6110,7 +6626,13 @@ const translations = {
         settings_proxy_enable: "Işlet",
         settings_proxy_disable: "Öçüriň",
         settings_proxy_invalid: "Dogry http (lar) proksi URL giriziň.",
-        settings_proxy_cooldown: "Şowsuzlykdan soň wagtlaýyn geçildi"
+        settings_proxy_cooldown: "Şowsuzlykdan soň wagtlaýyn geçildi",
+        source_custom_title: "Şahsy desgalary",
+        source_custom_add: "Desga goşuň",
+        source_custom_invalid: "Dogry http(s) desga URL giriziň.",
+        source_custom_empty: "Entek şahsy desga ýok.",
+        source_custom_name_ph: "Ady (mysal üçin Meni desgam)",
+        source_builtin_title: "Içerýän desgalar (diňe okamak)"
     },
     ug: {
         button: "كىرىش",
@@ -6180,7 +6702,13 @@ const translations = {
         settings_proxy_enable: "قوزغىتىش",
         settings_proxy_disable: "چەكلەش",
         settings_proxy_invalid: "ئىناۋەتلىك http (لار) ۋاكالەتچى URL نى كىرگۈزۈڭ.",
-        settings_proxy_cooldown: "مەغلۇبىيەتتىن كېيىن ۋاقىتلىق ئاتلاندى"
+        settings_proxy_cooldown: "مەغلۇبىيەتتىن كېيىن ۋاقىتلىق ئاتلاندى",
+        source_custom_title: "ئىختىيارى مەنبەلەر",
+        source_custom_add: "مەنبە قوشۇڭ",
+        source_custom_invalid: "ئۈنۈملۈك بىر http(s) مەنبە URL كىرگۈزۈڭ.",
+        source_custom_empty: "تېخى ئىختىيارى مەنبە يوق.",
+        source_custom_name_ph: "ئىسمى (مەسىلەن مېنىڭ مەنبەم)",
+        source_builtin_title: "ئىچكى مەنبەلەر (ئوقۇشقىلا)"
     },
     ur: {
         button: "داخل ہوں",
@@ -6250,7 +6778,13 @@ const translations = {
         settings_proxy_enable: "فعال کریں",
         settings_proxy_disable: "غیر فعال کریں",
         settings_proxy_invalid: "براہ کرم درست http(s) پراکسی URL درج کریں۔",
-        settings_proxy_cooldown: "ناکامی کے بعد عارضی طور پر چھوڑ دیا گیا"
+        settings_proxy_cooldown: "ناکامی کے بعد عارضی طور پر چھوڑ دیا گیا",
+        source_custom_title: "کسٹم ذرائع",
+        source_custom_add: "ذریعہ شامل کریں",
+        source_custom_invalid: "براہ کرم ایک درست http(s) ذریعہ URL درج کریں۔",
+        source_custom_empty: "ابھی تک کوئی کسٹم ذریعہ نہیں ہے۔",
+        source_custom_name_ph: "نام (مثلاً میرا ذریعہ)",
+        source_builtin_title: "بلٹ ان ذرائع (صرف پڑھنے کے لیے)"
     },
     uz: {
         button: "Kirish",
@@ -6320,7 +6854,13 @@ const translations = {
         settings_proxy_enable: "Yoqish",
         settings_proxy_disable: "Oʻchirib qoʻyish",
         settings_proxy_invalid: "Toʻgʻri http(s) proksi URL manzilini kiriting.",
-        settings_proxy_cooldown: "Xatolikdan keyin vaqtincha oʻtkazib yuboriladi"
+        settings_proxy_cooldown: "Xatolikdan keyin vaqtincha oʻtkazib yuboriladi",
+        source_custom_title: "Maxsus manbalar",
+        source_custom_add: "Manba qo'shish",
+        source_custom_invalid: "Iltimos, to'g'ri http(s) manba URL kiriting.",
+        source_custom_empty: "Hozircha maxsus manbalar yo'q.",
+        source_custom_name_ph: "Nomi (masalan, Mening manbam)",
+        source_builtin_title: "Ichki manbalar (faqat o'qish uchun)"
     },
     cy: {
         button: "Mewnbwn",
@@ -6390,7 +6930,13 @@ const translations = {
         settings_proxy_enable: "Galluogi",
         settings_proxy_disable: "Analluogi",
         settings_proxy_invalid: "Rhowch URL dirprwy http(s) dilys.",
-        settings_proxy_cooldown: "Wedi hepgor dros dro ar ôl methiant"
+        settings_proxy_cooldown: "Wedi hepgor dros dro ar ôl methiant",
+        source_custom_title: "Ffynonellau personol",
+        source_custom_add: "Ychwanegu ffynhonell",
+        source_custom_invalid: "Rhowch URL ffynhonell http(s) dilys.",
+        source_custom_empty: "Does dim ffynonellau personol eto.",
+        source_custom_name_ph: "Enw (e.e. Fy ffynhonell i)",
+        source_builtin_title: "Ffynonellau mewnol (darllen yn unig)"
     },
     fy: {
         button: "Yngean",
@@ -6460,7 +7006,13 @@ const translations = {
         settings_proxy_enable: "Ynskeakelje",
         settings_proxy_disable: "Utskeakelje",
         settings_proxy_invalid: "Fier in jildige http(s) proxy-URL yn.",
-        settings_proxy_cooldown: "Tyflik oerslein nei in flater"
+        settings_proxy_cooldown: "Tyflik oerslein nei in flater",
+        source_custom_title: "Oanpaste boarnen",
+        source_custom_add: "Boarne tafoegje",
+        source_custom_invalid: "Fier in jildige http(s)-boarne-URL yn.",
+        source_custom_empty: "Noch gjin oanpaste boarnen.",
+        source_custom_name_ph: "Namme (bgl. Myn boarne)",
+        source_builtin_title: "Ynboude boarnen (allinnich lêze)"
     },
     xh: {
         button: "Ngena",
@@ -6530,7 +7082,13 @@ const translations = {
         settings_proxy_enable: "Vulela",
         settings_proxy_disable: "Khubaza",
         settings_proxy_invalid: "Nceda ngenisa http(s) esebenzayo proxy URL.",
-        settings_proxy_cooldown: "Itsityiwe okwexeshana emva kokungaphumeleli"
+        settings_proxy_cooldown: "Itsityiwe okwexeshana emva kokungaphumeleli",
+        source_custom_title: "Iimthombo ezenziweyo",
+        source_custom_add: "Yongeza umthombo",
+        source_custom_invalid: "Ngenisa i-URL yomthombo we-http(s) osebenzayo.",
+        source_custom_empty: "Akukho mthombo ozenziweyo okwangoku.",
+        source_custom_name_ph: "Igama (umzekelo Umthombo wam)",
+        source_builtin_title: "Iimthombo ezakhelweyo (ukufunda kuphela)"
     },
     yi: {
         button: "אַרײַן",
@@ -6600,7 +7158,13 @@ const translations = {
         settings_proxy_enable: "געבן",
         settings_proxy_disable: "דיסייבאַל",
         settings_proxy_invalid: "ביטע אַרייַן אַ גילטיק http(s) פראקסי URL.",
-        settings_proxy_cooldown: "צײַטווײַליק איבערגעהיפּט נאָך אַ דורכפֿאַל"
+        settings_proxy_cooldown: "צײַטווײַליק איבערגעהיפּט נאָך אַ דורכפֿאַל",
+        source_custom_title: "מקורות מותאמים",
+        source_custom_add: "צולייגן אַ מקור",
+        source_custom_invalid: "אריינלייגן אַ גילטיק http(s) מקור־URL.",
+        source_custom_empty: "נאָך נישט קיין מקורות מותאמים.",
+        source_custom_name_ph: "נאָמען (למשל מיין מקור)",
+        source_builtin_title: "איינגעבויטע מקורות (בלויז ליינען)"
     },
     yo: {
         button: "Wọle",
@@ -6670,7 +7234,13 @@ const translations = {
         settings_proxy_enable: "Mu ṣiṣẹ",
         settings_proxy_disable: "Pa a",
         settings_proxy_invalid: "Jọwọ tẹ URL aṣoju http(s) ti o wulo.",
-        settings_proxy_cooldown: "Fò sílẹ̀ fún ìgbà díẹ̀ lẹ́yìn àìṣeyọri"
+        settings_proxy_cooldown: "Fò sílẹ̀ fún ìgbà díẹ̀ lẹ́yìn àìṣeyọri",
+        source_custom_title: "Orisun àdàpọ̀",
+        source_custom_add: "Fi orisun kún",
+        source_custom_invalid: "Tẹ orúkọ URL orisun http(s) to tọ́ sílẹ̀.",
+        source_custom_empty: "Kò sí orisun àdàpọ̀ títí di ìsìsẹ́.",
+        source_custom_name_ph: "Orúkọ (àpẹẹrẹ Orisun mi)",
+        source_builtin_title: "Àwọn orisun àbáwọn (kíkà níṣẹ́)"
     },
     zu: {
         button: "Ngena",
@@ -6740,7 +7310,13 @@ const translations = {
         settings_proxy_enable: "Nika amandla",
         settings_proxy_disable: "Khubaza",
         settings_proxy_invalid: "Sicela ufake i-URL yommeleli ye-http(ama) evumelekile.",
-        settings_proxy_cooldown: "Kweqiwe okwesikhashana ngemva kokwehluleka"
+        settings_proxy_cooldown: "Kweqiwe okwesikhashana ngemva kokwehluleka",
+        source_custom_title: "Izimthombo ezenziwe ngendlela oyifisayo",
+        source_custom_add: "Engeza umthombo",
+        source_custom_invalid: "Faka i-URL yomthombo we-http(s) evumelekile.",
+        source_custom_empty: "Akukho zimthombo ezenziwe ngendlela oyifisayo okwangoku.",
+        source_custom_name_ph: "Igama (isb. Umthombo wami)",
+        source_builtin_title: "Izimthombo ezakhelwe (ukufunda kuphela)"
     }
 };
 
@@ -6799,12 +7375,6 @@ function applyTranslation(lang) {
     for (let i = 0; i <= 8 && i < mobileParagraphs.length; i++) {
         mobileParagraphs[i].textContent = t[`mobile_p${i}`] || translations['en'][`mobile_p${i}`] || '';
     }
-    
-    // Headings: only the source dialog's own title. Everything else either has a
-    // data-i18n key (translator.js handles it) or is a visually-hidden title that
-    // must keep its real text for screen readers.
-    const sourceTitle = document.getElementById('sourcebox-title');
-    if (sourceTitle) sourceTitle.textContent = t.h2;
     
     // Side navigation - use safer selectors
     const sidenav = document.getElementById('mySidenav');

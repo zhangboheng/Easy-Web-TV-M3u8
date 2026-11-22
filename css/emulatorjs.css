@@ -21,9 +21,12 @@ body {
     left: 0;
     right: 0;
     height: 60px;
-    background: rgba(0,0,0,0.85);
+    /* Frosted-glass chrome, matching the player pages' .top-toolbar
+       (tvplay/radioplay/complay/adultplay/gameplay/...). This file is shared
+       by every game player route, so one change unifies them all. */
+    background: rgba(255,255,255,0.1);
     backdrop-filter: blur(15px);
-    border-bottom: 2px solid rgba(163,0,27,0.5);
+    -webkit-backdrop-filter: blur(15px);
     display: flex;
     align-items: center;
     justify-content: space-between;

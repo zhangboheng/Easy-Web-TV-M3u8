@@ -40,17 +40,19 @@
             flex-direction: column;
         }
         
-        /* Top Header */
+        /* Top Header: same frosted-glass chrome as the other player pages'
+           .top-toolbar (tvplay/radioplay/complay/adultplay/...). Position
+           stays fixed because .game-frame-container offsets below it and the
+           fullscreen hover-reveal logic targets this element. */
         .top-header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             height: 60px;
-            background: rgba(0,0,0,0.9);
+            background: rgba(255,255,255,0.1);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-bottom: 2px solid rgba(163,0,27,0.5);
             display: flex;
             align-items: center;
             justify-content: space-between;

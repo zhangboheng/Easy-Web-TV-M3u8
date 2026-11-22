@@ -1,5 +1,5 @@
 // Easy Web TV Service Worker
-const CACHE_NAME = 'easy-web-tv-v8.5.8';
+const CACHE_NAME = 'easy-web-tv-v8.5.9';
 
 // Assets to cache on install - only local assets that exist
 // v8.5.0: slimmed down to the index shell only; route pages, engines and
@@ -17,6 +17,9 @@ const CACHE_NAME = 'easy-web-tv-v8.5.8';
 // just failed is demoted for 1-30min and every fetch path re-reads the pool per
 // request, so demotions and Settings changes apply without a reload), per-attempt
 // timeouts on every failover loop, and the UI translated into 96 languages.
+// v8.5.9: redesigned Source Control (built-in rows + custom sources for Movie/Adult),
+// unified module/player headers, grid card-height fix, 96-language inline texts,
+// and a language-switch fix that preserves saved source selections.
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
@@ -25,6 +28,7 @@ const PRECACHE_ASSETS = [
   '/css/main.css',
   '/js/index.js',
   '/js/proxy-config.js',
+  '/js/source-config.js',
   '/js/translator.js',
   '/js/translations.js',
   '/js/dom.js',

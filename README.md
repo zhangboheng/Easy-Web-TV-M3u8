@@ -6,14 +6,14 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.5.8-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.5.9-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
 ## 📋 Table of Contents
 
 - [Demo](#-demo)
-- [What's New](#-whats-new-v858)
+- [What's New](#-whats-new-v859)
 - [Features](#-features)
 - [Screenshots](#-screenshots)
 - [Tech Stack](#-tech-stack)
@@ -28,9 +28,12 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 **[Live Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)**
 
-## 🆕 What's New (v8.5.8)
+## 🆕 What's New (v8.5.9)
 
-- **One proxy pool, with memory**: every CORS-proxied request now shares a single pool (`js/proxy-config.js`) that remembers which proxies failed - a bad proxy is demoted for 1-30 minutes instead of stalling the next request, demotions and proxies added in Settings take effect without a page reload, and each failover attempt has its own timeout so a hung proxy cannot freeze the page
+- **Redesigned Source Control**: built-in sources are listed per tab with their URLs and enable checkboxes; Movie and Adult now accept custom Apple CMS collection APIs that flow directly into their source dropdowns
+- **Unified top bars**: TV and Radio now share the fixed 70px header used by every module, and all player/game pages use the same frosted-glass toolbar
+- **Bug fixes**: short result sets no longer stretch cards into tall strips in Novel/Manga/Adult; language switching keeps saved source selections; inline settings texts are translated in all 96 languages
+- - **One proxy pool, with memory**: every CORS-proxied request now shares a single pool (`js/proxy-config.js`) that remembers which proxies failed - a bad proxy is demoted for 1-30 minutes instead of stalling the next request, demotions and proxies added in Settings take effect without a page reload, and each failover attempt has its own timeout so a hung proxy cannot freeze the page
 - **Binary-safe downloads**: proxies that transcode responses as text (corrupting ROMs, disk images and WASM-4 carts with U+FFFD) are detected, given a long cooldown and skipped by every downloader
 - **96 languages**: the interface is translated into 96 languages, and 20 languages that already existed in the translation table are selectable again
 - **Player fixes**: the WASM-4 loading overlay is mounted at body level and waits for the runtime before hiding (with fail-fast cart loading), the TV grid spinner is properly centred, and podcasts keep their overlay across the XML parse retry

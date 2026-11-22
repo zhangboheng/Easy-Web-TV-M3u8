@@ -56,8 +56,19 @@ function wantsCredentials(url) {
     }
 }
 
-// NetEase Cloud Music API host (music-only convenience, see fetchMusicJSON).
-var MUSIC_API_BASE = 'http://iwenwiki.com:3000';
+// NetEase Cloud Music API (music-only convenience, see fetchMusicJSON).
+// The host comes from SourceConfig's built-in catalogue (Settings > Source
+// Control shows the same URL), falling back to the constant if that module is
+// not loaded on this page.
+function getMusicApiBase() {
+    try {
+        if (typeof SourceConfig !== 'undefined') {
+            var builtins = SourceConfig.getBuiltins('music');
+            if (builtins.length && builtins[0].url) return builtins[0].url;
+        }
+    } catch (e) { /* fall through */ }
+    return 'http://iwenwiki.com:3000';
+}
 
 // Core: try a direct fetch first for CORS-enabled hosts, then each proxy in
 // order (even for direct hosts, the proxies are kept as a fallback).
@@ -143,7 +154,7 @@ function escapeHtml(text) {
 // Music convenience: fetch a NetEase API path and hand back parsed JSON.
 //   fetchMusicJSON('/song/url?id=123', function(json){...}, function(){...});
 function fetchMusicJSON(path, onDone, onFail) {
-    tryProxies(MUSIC_API_BASE + path, function (response) { return response.json(); })
+    tryProxies(getMusicApiBase() + path, function (response) { return response.json(); })
         .then(function (data) { if (onDone) onDone(data); })
         .catch(function () { if (onFail) onFail(); });
 }

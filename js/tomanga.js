@@ -553,7 +553,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var sourceSelect = document.getElementById('sourceSelect');
     if (sourceSelect) {
-        Object.keys(MANGA_SOURCES).forEach(function(id) {
+        var savedManga = null;
+        try { savedManga = window.localStorage.getItem('manga'); } catch (e) {}
+        var mangaIds = savedManga ? savedManga.split(',')
+            .filter(function(id) { return MANGA_SOURCES[id]; }) : [];
+        (mangaIds.length ? mangaIds : Object.keys(MANGA_SOURCES)).forEach(function(id) {
             var option = document.createElement('option');
             option.value = id;
             option.textContent = MANGA_SOURCES[id].name;

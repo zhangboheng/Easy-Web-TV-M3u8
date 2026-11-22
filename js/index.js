@@ -1,7 +1,7 @@
 /**
  * Easy Web TV - Main Application
  * Native JavaScript (No jQuery)
- * @version 8.5.8
+ * @version 8.5.9
  */
 
 // Adult content translations for all supported languages
@@ -330,13 +330,9 @@ const KeyboardManager = {
         }
         
         // Close any open dialogs
-        var sourcebox = DOM.$('#sourcebox');
         var logbox = DOM.$('#logbox');
         var infobox = DOM.$('#infobox');
         
-        if (sourcebox && DOM.isVisible(sourcebox)) {
-            window.location.href = '#';
-        }
         if (logbox && DOM.isVisible(logbox)) {
             window.location.href = '#';
         }
@@ -790,6 +786,12 @@ const ProxySettings = {
             if (typeof translations !== 'undefined') {
                 var lang = window.localStorage.getItem('preferredLanguage') ||
                            window.localStorage.getItem('languages') || 'en';
+                // Resolve aliases (e.g. 'zh' -> 'zh-CN') the same way
+                // applyTranslation() does, otherwise inline-rendered settings
+                // texts fall back to the English fallback under alias codes.
+                if (typeof getNormalizedLanguage === 'function') {
+                    lang = getNormalizedLanguage(lang);
+                }
                 var dict = translations[lang] || translations['en'];
                 if (dict && dict[key]) return dict[key];
             }
@@ -944,6 +946,140 @@ const ProxySettings = {
     }
 };
 
+
+// Source Control UI: renders the read-only built-in catalogue per tab
+// (SourceConfig.getBuiltins) with an enable checkbox, and manages the user's
+// custom collection-API sources for the movie and porn tabs, mirroring the
+// ProxySettings pattern.
+const SourceSettings = {
+    render: function() {
+        if (typeof SourceConfig === 'undefined') return;
+        var builtinTitle = ProxySettings.t('source_builtin_title', 'Built-in sources (read-only)');
+        var lockTitle = ProxySettings.t('source_builtin_title', 'Built-in (read-only)');
+        var customTitle = ProxySettings.t('source_custom_title', 'My custom sources');
+        var emptyText = ProxySettings.t('source_custom_empty', 'No custom sources yet.');
+        var deleteTitle = ProxySettings.t('settings_proxy_delete', 'Delete');
+        var namePh = ProxySettings.t('source_custom_name_ph', 'Name (e.g. My source)');
+
+        var self = SourceSettings;
+        ['movie', 'novel', 'manga', 'music', 'porn'].forEach(function(type) {
+            var container = DOM.$('.source-options[data-source-type="' + type + '"]');
+            if (!container) return;
+
+            var html = '<div class="proxy-section-title proxy-subtitle">' + self.escape(builtinTitle) + '</div>';
+            html += '<div class="proxy-list">';
+            SourceConfig.getBuiltins(type).forEach(function(src) {
+                var urlRow = src.url ? '<div class="proxy-item-url">' + self.escape(src.url) + '</div>' : '';
+                html += '<label class="proxy-item source-item-builtin">' +
+                    '<input type="checkbox" name="settings-' + type + '" value="' + self.escape(src.id) + '" checked>' +
+                    '<div class="proxy-item-body">' +
+                        '<div class="proxy-item-name">' + self.escape(src.name) +
+                            ' <span class="proxy-lock" title="' + self.escape(lockTitle) + '">🔒</span></div>' +
+                        urlRow +
+                    '</div>' +
+                '</label>';
+            });
+            html += '</div>';
+
+            if (SourceConfig.TYPES.indexOf(type) !== -1) {
+                var custom = SourceConfig.get(type);
+                html += '<div class="proxy-section-title proxy-subtitle">' + self.escape(customTitle) + '</div>';
+                html += '<div class="proxy-list" id="custom-source-list-' + type + '">';
+                if (custom.length) {
+                    custom.forEach(function(item) {
+                        var toggleLabel = item.enabled
+                            ? ProxySettings.t('settings_proxy_disable', 'Disable')
+                            : ProxySettings.t('settings_proxy_enable', 'Enable');
+                        html += '<div class="proxy-item" data-id="' + self.escape(item.id) + '">' +
+                            '<div class="proxy-item-body">' +
+                                '<div class="proxy-item-name">' + self.escape(item.name) + '</div>' +
+                                '<div class="proxy-item-url">' + self.escape(item.url) + '</div>' +
+                            '</div>' +
+                            '<div class="proxy-item-actions">' +
+                                '<button type="button" class="proxy-mini-btn" data-act="toggle" title="' + self.escape(toggleLabel) + '">' + (item.enabled ? '⏸' : '▶') + '</button>' +
+                                '<button type="button" class="proxy-mini-btn danger" data-act="delete" title="' + self.escape(deleteTitle) + '">✕</button>' +
+                            '</div>' +
+                        '</div>';
+                    });
+                } else {
+                    html += '<div class="proxy-empty">' + self.escape(emptyText) + '</div>';
+                }
+                html += '</div>';
+                html += '<div class="proxy-form">' +
+                    '<div class="proxy-form-row">' +
+                        '<input type="text" id="custom-source-name-' + type + '" class="settings-input" placeholder="' + self.escape(namePh) + '" maxlength="40">' +
+                        '<input type="url" id="custom-source-url-' + type + '" class="settings-input" placeholder="https://host/api.php/provide/vod/at/json" spellcheck="false">' +
+                    '</div>' +
+                    '<div class="proxy-form-actions">' +
+                        '<button type="button" class="settings-btn" id="custom-source-add-' + type + '">' + self.escape(ProxySettings.t('source_custom_add', 'Add source')) + '</button>' +
+                    '</div>' +
+                    '<div id="custom-source-error-' + type + '" class="proxy-error" role="alert"></div>' +
+                '</div>';
+            }
+            container.innerHTML = html;
+        });
+    },
+
+    escape: function(text) {
+        return ProxySettings.escapeHtml(text);
+    },
+
+    showError: function(type, key, fallback) {
+        var el = DOM.$('#custom-source-error-' + type);
+        if (el) el.textContent = ProxySettings.t(key, fallback);
+    },
+
+    clearError: function(type) {
+        var el = DOM.$('#custom-source-error-' + type);
+        if (el) el.textContent = '';
+    },
+
+    bindEvents: function() {
+        var self = this;
+        // Delegate on the static .source-options containers: render() replaces
+        // their innerHTML (and every button inside), so per-element listeners
+        // would die on the first re-render.
+        SourceConfig.TYPES.forEach(function(type) {
+            var container = DOM.$('.source-options[data-source-type="' + type + '"]');
+            if (!container) return;
+            container.addEventListener('click', function(e) {
+                var addBtn = e.target.closest('#custom-source-add-' + type);
+                if (addBtn) {
+                    var nameEl = DOM.$('#custom-source-name-' + type);
+                    var urlEl = DOM.$('#custom-source-url-' + type);
+                    var url = (urlEl && urlEl.value || '').trim();
+                    if (!SourceConfig.isValidUrl(url)) {
+                        self.showError(type, 'source_custom_invalid', 'Please enter a valid http(s) source URL.');
+                        return;
+                    }
+                    SourceConfig.add(type, nameEl && nameEl.value || '', url);
+                    if (nameEl) nameEl.value = '';
+                    if (urlEl) urlEl.value = '';
+                    self.clearError(type);
+                    self.render();
+                    SettingsModal.loadSavedSources();
+                    return;
+                }
+                var btn = e.target.closest('.proxy-mini-btn');
+                if (!btn) return;
+                var itemEl = btn.closest('.proxy-item');
+                var id = itemEl && itemEl.getAttribute('data-id');
+                var act = btn.getAttribute('data-act');
+                if (!id || !act) return;
+                if (act === 'delete') {
+                    SourceConfig.remove(type, id);
+                } else if (act === 'toggle') {
+                    var item = SourceConfig.get(type).filter(function(x) { return x.id === id; })[0];
+                    if (item) SourceConfig.update(type, id, { enabled: !item.enabled });
+                } else {
+                    return;
+                }
+                self.render();
+                SettingsModal.loadSavedSources();
+            });
+        });
+    }
+};
 
 // Settings Modal Manager - Paginated Settings
 const SettingsModal = {
@@ -1231,7 +1367,10 @@ const SettingsModal = {
             });
         });
         
-        // Load saved sources from localStorage
+        // Render the per-tab lists (built-ins + custom forms), bind the
+        // custom-source handlers, then re-apply the saved checkbox state.
+        SourceSettings.render();
+        SourceSettings.bindEvents();
         this.loadSavedSources();
         
         // Save button click handler
@@ -1302,7 +1441,7 @@ const SettingsModal = {
             }
             var payload = {
                 app: 'easy-web-tv',
-                version: '8.5.8',
+                version: '8.5.9',
                 exportedAt: new Date().toISOString(),
                 data: data
             };
@@ -1566,6 +1705,7 @@ DOM.ready(function() {
     if (scrollidbar) {
         scrollidbar.innerHTML = '';
         DOM.append(scrollidbar, `
+            <p>[2026-11-22] V8.5.9 release Redesign Source Control with a proxy-row layout: built-in sources are now listed per tab with their URLs and enable checkboxes, and Movie/Adult support adding custom Apple CMS collection APIs that feed straight into the source dropdowns; unify the top bar across every module (TV/Radio fixed 70px headers, frosted-glass player toolbars on all game and player pages), fix the few-result card-stretch grid bug in Novel/Manga/Adult, translate the new inline settings texts in all 96 languages, and fix a language-switch regression that reset saved source selections</p>
             <p>[2026-11-21] V8.5.8 release Consolidate every CORS proxy into one unified pool with a persistent health cache: a proxy that just failed is demoted for 1-30 minutes instead of stalling the next request, binary-corrupting proxies get a long cooldown and are skipped by the downloaders, every fetch path re-reads the pool per request so demotions and proxies added in Settings take effect without a page reload, and each failover attempt now has its own timeout so a hung proxy can no longer freeze the page; also reorder the built-in proxies by measured health (corsmirror, corsfix, luckydesigner, cors.lol) and translate the whole interface into 96 languages</p>
             <p>[2026-11-21] V8.5.7 release Refresh the Theatre and Adult source line-ups (drop dead APIs, add working ones and a YouTube source), rebuild the Settings modal as a full-screen two-column panel with persistent navigation, keep the Porn source category in sync with the Sensitive Content toggle and the Basic settings badge, localize the source-type tabs in every UI language with a safe fallback, and harden the global keyboard handler against non-element event targets</p>
             <p>[2026-11-21] V8.5.6 release Add a curated YouTube source to Theatre: 7 Blender Foundation / Blender Studio open movies (Big Buck Bunny, Sintel, Tears of Steel, Elephants Dream, Cosmos Laundromat, Agent 327 and Spring) play through YouTube's official privacy-enhanced iframe with controls, branding and channel links intact; the small hand-picked white list needs no API key, never fetches or stores a direct video URL, supports category filters and local search, and its source picker is fully translated into all 8 UI languages; also hot-link the AI-generated 3D game Mist Gate in Web Games and fix Theatre cards stretching into tall strips when only a few results are shown</p>
@@ -1625,202 +1765,6 @@ DOM.ready(function() {
 });
 
 // Go to source nextpage
-function goToSource() {
-    var sourceName = document.querySelector('input[name="sourceName"]:checked');
-    if (!sourceName) return;
-    
-    var sourceitem = DOM.$('#sourceitem');
-    if (!sourceitem) return;
-    
-    // Clear existing content
-    sourceitem.innerHTML = '';
-    
-    if (sourceName.value == 1) {
-        sourceitem.innerHTML = `
-            <div class="selectform" style="display:flex;">
-                <label><input type="checkbox" name="movie" value="archive_classic" checked /> Classic Movies (EN)</label><br />
-                <label><input type="checkbox" name="movie" value="youtube_blender" checked /> YouTube</label><br />
-                <label><input type="checkbox" name="movie" value="hnzy" checked /> 红牛资源</label><br />
-                <label><input type="checkbox" name="movie" value="bjy" checked /> 如意资源</label><br />
-                <label><input type="checkbox" name="movie" value="ikun" checked /> 爱坤资源</label><br />
-                <label><input type="checkbox" name="movie" value="c621" checked /> 360资源</label><br />
-            </div>
-            <button class="stylebtn" onclick="returnSource()"><img src="./images/return.svg" style="width:30px;"></button>
-        `;
-        var ms = window.localStorage.getItem('movie');
-        if (ms) {
-            ms = ms.split(",");
-            var arr = ["archive_classic", "youtube_blender", "hnzy", "bjy", "ikun", "c621"];
-            var lst = arr.filter(function(x) { return ms.includes(x); }).map(function(x) { return arr.indexOf(x); });
-            var cat = arr.filter(function(x) { return !ms.includes(x); }).map(function(x) { return arr.indexOf(x); });
-            var checkboxes = document.querySelectorAll('input[name="movie"]');
-            lst.forEach(function(i) {
-                if (checkboxes[i]) checkboxes[i].checked = true;
-            });
-            cat.forEach(function(i) {
-                if (checkboxes[i]) checkboxes[i].checked = false;
-            });
-        }
-    } else if (sourceName.value == 2) {
-        sourceitem.innerHTML = `
-            <div class="selectform" style="display:flex;">
-                <label><input type="checkbox" name="novel" value="novelonlinefull" checked /> novelonlinefull</label><br />
-                <label><input type="checkbox" name="novel" value="95sb" checked /> 95书包</label><br />
-            </div>
-            <button class="stylebtn" onclick="returnSource()"><img src="./images/return.svg" style="width:30px;"></button>
-        `;
-        var ms = window.localStorage.getItem('novel');
-        if (ms) {
-            ms = ms.split(",");
-            var arr = ["novelonlinefull", "95sb"];
-            var lst = arr.filter(function(x) { return ms.includes(x); }).map(function(x) { return arr.indexOf(x); });
-            var cat = arr.filter(function(x) { return !ms.includes(x); }).map(function(x) { return arr.indexOf(x); });
-            var checkboxes = document.querySelectorAll('input[name="novel"]');
-            lst.forEach(function(i) {
-                if (checkboxes[i]) checkboxes[i].checked = true;
-            });
-            cat.forEach(function(i) {
-                if (checkboxes[i]) checkboxes[i].checked = false;
-            });
-        }
-    } else if (sourceName.value == 3) {
-        sourceitem.innerHTML = `
-            <div class="selectform" style="display:flex;">
-                <label><input type="checkbox" name="manga" value="mangabuddy" checked /> mangabuddy</label><br />
-                <label><input type="checkbox" name="manga" value="mangadex" checked /> mangadex</label><br />
-            </div>
-            <div class="selectform" style="display:flex;">
-                <label><input type="checkbox" name="manga" value="dmmh" checked> 耽美漫画(PC端)</label><br />
-            </div>
-            <button class="stylebtn" onclick="returnSource()"><img src="./images/return.svg" style="width:30px;"></button>
-        `;
-        var ms = window.localStorage.getItem('manga');
-        if (ms) {
-            ms = ms.split(",");
-            var arr = ["mangabuddy", "mangadex", "dmmh"];
-            var lst = arr.filter(function(x) { return ms.includes(x); }).map(function(x) { return arr.indexOf(x); });
-            var cat = arr.filter(function(x) { return !ms.includes(x); }).map(function(x) { return arr.indexOf(x); });
-            var checkboxes = document.querySelectorAll('input[name="manga"]');
-            lst.forEach(function(i) {
-                if (checkboxes[i]) checkboxes[i].checked = true;
-            });
-            cat.forEach(function(i) {
-                if (checkboxes[i]) checkboxes[i].checked = false;
-            });
-        }
-    } else if (sourceName.value == 4) {
-        sourceitem.innerHTML = `
-            <div class="selectform" style="display:flex;">
-                <label><input type="checkbox" name="music" value="wymusic" checked> 网易云音乐</label><br />
-            </div>
-            <button class="stylebtn" onclick="returnSource()"><img src="./images/return.svg" style="width:30px;"></button>
-        `;
-        var ms = window.localStorage.getItem('music');
-        if (ms) {
-            ms = ms.split(",");
-            var arr = ["wymusic"];
-            var lst = arr.filter(function(x) { return ms.includes(x); }).map(function(x) { return arr.indexOf(x); });
-            var cat = arr.filter(function(x) { return !ms.includes(x); }).map(function(x) { return arr.indexOf(x); });
-            var checkboxes = document.querySelectorAll('input[name="music"]');
-            lst.forEach(function(i) {
-                if (checkboxes[i]) checkboxes[i].checked = true;
-            });
-            cat.forEach(function(i) {
-                if (checkboxes[i]) checkboxes[i].checked = false;
-            });
-        }
-    } else if (sourceName.value == 5) {
-        sourceitem.innerHTML = `
-            <div class="selectform" style="display:flex;">
-                <label><input type="checkbox" name="porn" value="zmwzy" checked> 字幕网</label><br />
-                <label><input type="checkbox" name="porn" value="fedzy" checked> 富二代</label><br />
-                <label><input type="checkbox" name="porn" value="javmy" checked> JAV名优</label><br />
-            </div>
-            <div class="selectform" style="display:flex;">
-                <label><input type="checkbox" name="porn" value="hyzy" checked> 环亚</label><br />
-                <label><input type="checkbox" name="porn" value="sszy" checked> 色色</label><br />
-                <label><input type="checkbox" name="porn" value="jjzy" checked> 玖玖</label><br />
-            </div>
-            <div class="selectform" style="display:flex;">
-                <label><input type="checkbox" name="porn" value="lsnzy" checked> 狼少年</label><br />
-                <label><input type="checkbox" name="porn" value="bttzy" checked> 博天堂</label><br />
-                <label><input type="checkbox" name="porn" value="llzy" checked> 利来</label><br />
-            </div>
-            <button class="stylebtn" onclick="returnSource()"><img src="./images/return.svg" style="width:30px;"></button>
-        `;
-        var ms = window.localStorage.getItem('porn');
-        if (ms) {
-            ms = ms.split(",");
-            var arr = ["zmwzy", "fedzy", "javmy", "hyzy", "sszy", "jjzy", "lsnzy", "bttzy", "llzy"];
-            var lst = arr.filter(function(x) { return ms.includes(x); }).map(function(x) { return arr.indexOf(x); });
-            var cat = arr.filter(function(x) { return !ms.includes(x); }).map(function(x) { return arr.indexOf(x); });
-            var checkboxes = document.querySelectorAll('input[name="porn"]');
-            lst.forEach(function(i) {
-                if (checkboxes[i]) checkboxes[i].checked = true;
-            });
-            cat.forEach(function(i) {
-                if (checkboxes[i]) checkboxes[i].checked = false;
-            });
-        }
-    }
-}
-
-// Return source homepage
-function returnSource() {
-    var arr = [];
-    
-    document.querySelectorAll('input[name="movie"]:checked').forEach(function(el) {
-        arr[0] = "movie";
-        arr.push(el.value);
-    });
-    document.querySelectorAll('input[name="novel"]:checked').forEach(function(el) {
-        arr[0] = "novel";
-        arr.push(el.value);
-    });
-    document.querySelectorAll('input[name="manga"]:checked').forEach(function(el) {
-        arr[0] = "manga";
-        arr.push(el.value);
-    });
-    document.querySelectorAll('input[name="music"]:checked').forEach(function(el) {
-        arr[0] = "music";
-        arr.push(el.value);
-    });
-    document.querySelectorAll('input[name="porn"]:checked').forEach(function(el) {
-        arr[0] = "porn";
-        arr.push(el.value);
-    });
-    
-    if (arr.length == 0) {
-        ErrorToast.show('Please select at least one source...', 3000);
-    } else {
-        if (arr[0] == "movie") {
-            window.localStorage.setItem('movie', arr.slice(1).join(","));
-        } else if (arr[0] == "novel") {
-            window.localStorage.setItem('novel', arr.slice(1).join(","));
-        } else if (arr[0] == "manga") {
-            window.localStorage.setItem('manga', arr.slice(1).join(","));
-        } else if (arr[0] == "music") {
-            window.localStorage.setItem('music', arr.slice(1).join(","));
-        } else if (arr[0] == "porn") {
-            window.localStorage.setItem('porn', arr.slice(1).join(","));
-        }
-        
-        var sourceitem = DOM.$('#sourceitem');
-        if (sourceitem) {
-            sourceitem.innerHTML = `
-                <div class="selectform">
-                    <label><input type="radio" name="sourceName" value="1" checked/> Movie</label> <br />
-                    <label><input type="radio" name="sourceName" value="2" /> Novel</label> <br />
-                    <label><input type="radio" name="sourceName" value="3" /> Manga</label> <br />
-                    <label><input type="radio" name="sourceName" value="4" /> Music</label> <br />
-                    <label><input type="radio" name="sourceName" value="5" /> Porn</label> <br />
-                </div>
-                <button class="stylebtn" onclick="goToSource()"><img src="./images/nextselect.svg" style="width:30px;"></button>
-            `;
-        }
-    }
-}
-
 // Hide the Sensitive Content toggle in settings for banned countries
 function hideSensitiveContent() {
     var sensitiveSetting = DOM.$('#sensitive-setting');

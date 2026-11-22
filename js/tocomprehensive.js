@@ -935,6 +935,16 @@ function initSourceSelect() {
         });
     }
     
+    // Custom sources added in Settings > Source Control (Apple CMS vod APIs).
+    if (typeof SourceConfig !== 'undefined' && SourceConfig.getEnabled) {
+        SourceConfig.getEnabled('movie').forEach(function(src) {
+            var option = document.createElement('option');
+            option.value = src.url;
+            option.textContent = src.name || 'Custom source';
+            sourceSelect.appendChild(option);
+        });
+    }
+    
     // Entry point to reopen the source picker dialog
     var editOpt = document.createElement('option');
     editOpt.value = '__edit__';

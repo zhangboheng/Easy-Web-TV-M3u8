@@ -528,10 +528,15 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('=== Novel List Page Loaded ===');
     applyLocalI18n();
     
-    // Load source options
+    // Load source options, honouring the ids saved in Settings > Source Control
+    // (localStorage 'novel'); unknown/absent ids fall back to the full list.
     var sourceSelect = document.getElementById('sourceSelect');
     if (sourceSelect) {
-        Object.keys(NOVEL_SOURCES).forEach(function(id) {
+        var savedNovel = null;
+        try { savedNovel = window.localStorage.getItem('novel'); } catch (e) {}
+        var novelIds = savedNovel ? savedNovel.split(',')
+            .filter(function(id) { return NOVEL_SOURCES[id]; }) : [];
+        (novelIds.length ? novelIds : Object.keys(NOVEL_SOURCES)).forEach(function(id) {
             var option = document.createElement('option');
             option.value = id;
             option.textContent = NOVEL_SOURCES[id].name;

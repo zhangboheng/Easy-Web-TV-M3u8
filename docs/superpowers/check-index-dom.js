@@ -45,14 +45,13 @@ ids.forEach((id) => {
 });
 check(duplicates.length === 0, 'index.html has duplicate id(s): ' + duplicates.join(', '));
 
-// 2) The dialogs share a class hook, not an id.
-check(!/id="selectform"/.test(html), 'index.html still uses id="selectform" (must be class="selectform")');
+// 2) The old #selectform hook (category/source dialogs) is fully gone.
+check(!/id="selectform"/.test(html), 'index.html still uses id="selectform"');
 check(!/id="selectform"/.test(js), 'js/index.js still emits id="selectform" in a template');
-const staticForms = (html.match(/class="[^"]*\bselectform\b/g) || []).length;
-check(staticForms === 1, 'expected 1 static class="selectform" block (the source dialog), found ' + staticForms);
-
-// 3) The class must be styled; the layout rules used to hang off #selectform.
-check(/^\.selectform\s*\{/m.test(css), 'css/style.css no longer styles .selectform (dialogs lose text-align/margins)');
+check(!/class="[^"]*\bselectform\b/.test(html), 'index.html still uses the removed class="selectform"');
+check(!/\.selectform\s*\{/m.test(css), 'css/style.css still carries the orphaned .selectform rule');
+check((html.match(/<div class="source-options" data-source-type="movie">/g) || []).length === 1,
+    'index.html must declare exactly one movie source-options container');
 
 // 4) label[for] must resolve, otherwise clicking the text does nothing.
 const forTargets = [];
@@ -81,6 +80,31 @@ check(!/styleButtons\[\d\]/.test(trans), 'js/translations.js indexes .stylebtn b
 check(!/buttonFirst/.test(trans), 'js/translations.js reintroduced the unused buttonFirst (GO!) label');
 check(/querySelector\('img, svg'\)|querySelector\("img, svg"\)/.test(trans),
     'js/translations.js must skip icon buttons when writing .stylebtn text');
+
+// 8) Source Control: the old #sourcebox dialog flow is gone, the settings
+//    panel renders the source lists from SourceConfig, and the per-tab custom
+//    sources exist only for movie and porn (the only consumers that accept an
+//    arbitrary Apple CMS vod endpoint).
+check(!/goToSource|returnSource/.test(js), 'js/index.js resurrected the deleted goToSource/returnSource flow');
+check(!/id="sourcebox"/.test(html), 'index.html reintroduced the #sourcebox dialog');
+check((html.match(/<div class="source-options(?: hidden)?" data-source-type="movie">/g) || []).length === 1,
+    'index.html must declare exactly one movie source-options container');
+const deadSourceIds = ['royalroad', 'hetushu', 'mangadex', 'mangapill', 'wymusic'];
+const stillListed = deadSourceIds.filter((id) => html.indexOf('value="' + id + '"') !== -1 || trans.indexOf('"' + id + '":') !== -1);
+check(stillListed.length === 0,
+    'dead source ids with no consumer came back in index.html/translations.js: ' + stillListed.join(', '));
+const srcConf = fs.existsSync(path.join(root, 'js', 'source-config.js'))
+    ? fs.readFileSync(path.join(root, 'js', 'source-config.js'), 'utf8') : '';
+check(!!srcConf, 'js/source-config.js is missing');
+check(/getBuiltins: function/.test(srcConf) && /getEnabled: function/.test(srcConf) && /isValidUrl: function/.test(srcConf),
+    'js/source-config.js lost its getBuiltins/getEnabled/isValidUrl API');
+check(/getEnabled\('movie'\)/.test(fs.readFileSync(path.join(root, 'js', 'tocomprehensive.js'), 'utf8')) &&
+      /getEnabled\('porn'\)/.test(fs.readFileSync(path.join(root, 'js', 'toadult.js'), 'utf8')),
+    'tocomprehensive.js/toadult.js no longer merge enabled custom sources');
+check(/getMusicApiBase/.test(fs.readFileSync(path.join(root, 'js', 'apiproxy.js'), 'utf8')),
+    'js/apiproxy.js must source the music API base via getMusicApiBase()');
+check(/SourceSettings\.render\(\)/.test(js) && /SourceSettings\.bindEvents\(\)/.test(js),
+    'js/index.js must render and bind SourceSettings in initSourceControl');
 
 console.log(failed === 0 ? 'index DOM check: ALL OK' : 'index DOM check: ' + failed + ' problem(s)');
 process.exit(failed === 0 ? 0 : 1);

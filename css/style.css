@@ -653,7 +653,6 @@ input:checked+.slider:before {
 /* This is modal dialogs css style start */
 
 #logbox,
-#sourcebox,
 #infobox {
     width: 100%;
     height: 100%;
@@ -664,7 +663,6 @@ input:checked+.slider:before {
 }
 
 #logbox:target,
-#sourcebox:target,
 #infobox:target {
     visibility: visible;
     display: block;
@@ -717,8 +715,7 @@ input:checked+.slider:before {
     height: 50px;
 }
 
-.log-modal,
-.source-modal {
+.log-modal {
     color: #fff;
     background: #a3001b;
     margin: 0 auto;
@@ -735,18 +732,10 @@ input:checked+.slider:before {
     opacity: 0.9;
 }
 
-.close-log-modal,
-.close-source-modal {
+.close-log-modal {
     position: relative;
     float: right;
     color: #fff;
-}
-
-.selectform {
-    text-align: left;
-    font-size: 16px;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 
@@ -1461,22 +1450,6 @@ button.stylebtn:active {
         max-height: none;
     }
     
-    .source-options {
-        grid-template-columns: 1fr;
-        overflow: visible;
-        max-height: none;
-    }
-    
-    .source-checkbox {
-        font-size: 13px;
-        padding: 8px 0;
-    }
-    
-    .source-checkbox input[type="checkbox"] {
-        width: 18px;
-        height: 18px;
-    }
-    
     .source-save-btn {
         margin-top: 12px;
         padding: 10px 16px;
@@ -1740,8 +1713,7 @@ button.stylebtn:active {
     background-color: #0a0a0a;
 }
 
-[data-theme="dark"] .log-modal,
-[data-theme="dark"] .source-modal {
+[data-theme="dark"] .log-modal {
     background: #2a2a2a;
 }
 
@@ -2162,10 +2134,12 @@ button.stylebtn:active {
 }
 
 .source-section-title {
-    color: #fff;
-    font-size: 14px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #999;
     margin: 0 0 12px 0;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .source-type-selector {
@@ -2176,37 +2150,42 @@ button.stylebtn:active {
 }
 
 .source-type-btn {
-    background: #333;
-    border: 1px solid #555;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 6px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: #ddd;
+    padding: 8px 14px;
+    border-radius: 8px;
     font-size: 13px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     width: auto;
 }
 
 .source-type-btn:hover {
-    background: #444;
-    border-color: #666;
+    background: #3a3a3a;
+    border-color: #5a5a5a;
+    color: #fff;
 }
 
 .source-type-btn.active {
     background: #a3001b;
-    border-color: #a3001b;
+    border-color: #c41f37;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(163, 0, 27, 0.35);
 }
 
 .source-options-container {
-    background: #222;
-    border-radius: 8px;
-    padding: 12px;
+    background: #1d1d1d;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    padding: 14px;
     margin-bottom: 16px;
 }
 
 .source-options {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 8px;
 }
 
@@ -2214,48 +2193,86 @@ button.stylebtn:active {
     display: none;
 }
 
-.source-checkbox {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
-    padding: 6px 0;
-}
-
-.source-checkbox input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-    accent-color: #a3001b;
-}
-
 .source-save-btn {
     width: 100%;
     margin-top: 8px;
+    background: #a3001b;
+    border-color: #a3001b;
+    color: #fff;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.source-save-btn:hover {
+    background: #c41f37;
+    border-color: #c41f37;
+    box-shadow: 0 2px 10px rgba(163, 0, 27, 0.4);
+}
+
+/* Source Control rows: cards that echo the proxy list but with their own
+   hover feedback and a themed enable checkbox. */
+.source-options .proxy-item {
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.source-options .proxy-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+.source-options .proxy-item-builtin:hover {
+    opacity: 1;
+}
+
+/* Themed checkbox: the browser default blue clashes with the red theme. */
+.source-item-builtin input[type="checkbox"] {
+    accent-color: #a3001b;
+    width: 17px;
+    height: 17px;
+}
+
+/* Custom-source add form: compact, primary-colored action button. */
+.source-options .proxy-form {
+    margin-top: 14px;
+    padding: 12px;
+}
+
+.source-options .proxy-form .settings-btn {
+    background: #a3001b;
+    border-color: #a3001b;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.source-options .proxy-form .settings-btn:hover {
+    background: #c41f37;
+    border-color: #c41f37;
+}
+
+.source-options .proxy-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px dashed rgba(255, 255, 255, 0.14);
+    background: transparent;
 }
 
 /* Dark theme for source control */
 [data-theme="dark"] .source-options-container {
-    background: #333;
+    background: #2a2a2a;
 }
 
 [data-theme="dark"] .source-type-btn {
-    background: #444;
-    border-color: #666;
+    background: #3a3a3a;
+    border-color: #555;
 }
 
 [data-theme="dark"] .source-type-btn:hover {
-    background: #555;
-}
-
-/* Ensure single-column source grid on small screens.
-   Placed after the base .source-options rule so it is not overridden. */
-@media screen and (max-width: 576px) {
-    .source-options {
-        grid-template-columns: 1fr;
-    }
+    background: #4a4a4a;
 }
 
 /* Version history: clickable version badge in Settings > About */
@@ -2430,6 +2447,16 @@ button.stylebtn:active {
 
 .proxy-item-builtin {
     opacity: 0.75;
+}
+
+/* Source Control rows reuse the proxy-item layout; the enable checkbox sits
+   at the row start and must not shrink. */
+.source-item-builtin input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
 }
 
 .proxy-lock {

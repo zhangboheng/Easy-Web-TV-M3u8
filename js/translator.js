@@ -124,6 +124,23 @@
             applyTranslation(lang);
         }
         
+        // Re-render the settings lists whose texts are built inline via
+        // ProxySettings.t() (proxy + source control pages): applyTranslation
+        // only covers static [data-i18n] elements, so a language switch would
+        // otherwise leave these rendered texts in the previous language.
+        if (typeof ProxySettings !== 'undefined' && ProxySettings.render) {
+            ProxySettings.render();
+        }
+        if (typeof SourceSettings !== 'undefined' && SourceSettings.render) {
+            SourceSettings.render();
+            // render() rebuilds the checkbox DOM with all boxes checked. Restore
+            // the user's saved source selection so a language switch never
+            // silently changes which sources are enabled.
+            if (typeof SettingsModal !== 'undefined' && SettingsModal.loadSavedSources) {
+                SettingsModal.loadSavedSources();
+            }
+        }
+        
         // Update both selectors display
         const mainSelector = document.getElementById('languages');
         const settingsSelector = document.getElementById('settings-languages');

@@ -42,24 +42,35 @@
             display: flex;
             flex-direction: column;
             padding: 0;
+            /* Header is fixed (matching the other modules): keep content below it. */
+            padding-top: var(--header-height, 72px);
+            box-sizing: border-box;
         }
         
         /* Header Section */
         .radio-header {
-            /* Solid black, matching the sidebar */
+            /* Solid black, matching the sidebar; fixed like the other modules'
+               headers (novel/manga/theater/music/game/adult) so switching pages
+               keeps the same 70px top bar, button sizes and title scale. */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
             background: rgba(0,0,0,0.85);
-            padding: 15px 30px;
+            padding: 0 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 20px;
             border-bottom: 2px solid rgba(163,0,27,0.5);
             flex-wrap: wrap;
+            z-index: 100;
         }
         
         .radio-header h1 {
             color: #fff;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 600;
             margin: 0;
             display: flex;
@@ -218,7 +229,7 @@
             gap: 15px;
             overflow-y: auto;
             padding: 15px;
-            height: calc(100vh - 120px);
+            height: calc(100vh - var(--header-height, 72px) - 50px);
             position: relative;
         }
         
@@ -333,25 +344,28 @@
         
         /* Back Button - in header */
         .back-btn {
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            width: 36px !important;
-            height: 36px !important;
-            background: rgba(255,255,255,0.15) !important;
-            border: 2px solid rgba(163,0,27,0.6) !important;
-            border-radius: 8px !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            flex-shrink: 0 !important;
-            visibility: visible !important;
-            opacity: 1 !important;
+            /* Same 40px / 10px-radius chrome as .back-btn/.header-btn on the
+               other module pages; the !important wall predates the shared
+               header layout and made this page look different. */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(163,0,27,0.5);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            visibility: visible;
+            opacity: 1;
         }
         
         .back-btn:hover {
-            background: linear-gradient(135deg, #a3001b 0%, #8a0016 100%) !important;
-            border-color: #a3001b !important;
-            transform: scale(1.05) !important;
+            background: linear-gradient(135deg, #a3001b 0%, #8a0016 100%);
+            border-color: #a3001b;
+            transform: scale(1.05);
         }
         
         .back-btn i {
@@ -387,7 +401,9 @@
         
         @media screen and (max-width: 768px) {
             .radio-header {
-                padding: 12px 15px;
+                height: auto;
+                min-height: 70px;
+                padding: 10px 15px;
                 flex-direction: column;
                 gap: 10px;
             }
@@ -422,7 +438,7 @@
             .items-grid {
                 grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
                 gap: 8px;
-                height: calc(100vh - 200px);
+                height: calc(100vh - var(--header-height, 72px) - 120px);
             }
             
             .item-card {
@@ -564,6 +580,7 @@
     </div>
     
     <script src="../js/proxy-config.js"></script>
+    <script src="../js/header-height.js"></script>
     <script src="../js/apiproxy.js"></script>
     <script src="../js/toradio.js"></script>
 </body>
