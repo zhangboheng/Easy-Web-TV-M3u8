@@ -14,41 +14,18 @@ jobs:
           node-version: '20'
       - name: Game catalogue
         run: node docs/superpowers/check-games.js js/togame.js
+      - name: Remote game images
+        run: node docs/superpowers/check-remote-images.js
       - name: i18n pairs
-        shell: bash
-        run: |
-          set -e
-          for pair in \
-            "js/topalm.js routes/palm.html" \
-            "js/towipi.js routes/wipi.html" \
-            "js/tora2.js routes/ra2.html" \
-            "js/todiablo.js routes/diablo.html" \
-            "js/toz2rs.js routes/z2rs.html" \
-            "js/towebgame.js routes/webgame.html" \
-            "js/tops2.js routes/ps2.html" \
-            "js/tovita.js routes/vita.html" \
-            "js/tomac.js routes/mac.html" \
-            "js/tork86.js routes/rk86.html" \
-            "js/toesty.js routes/esty.html" \
-            "js/toandroid.js routes/android.html" \
-            "js/tofelt.js routes/feltworld.html" \
-            "js/tonova.js routes/nova.html" \
-            "js/tocasa.js routes/casa.html" \
-            "js/totamaweb.js routes/tamaweb.html" \
-            "js/ton64recomp.js routes/n64recomp.html" \
-            "js/torustpal.js routes/rustpal.html" \
-            "js/tobrowserport.js routes/browserport.html" \
-            "js/todos.js routes/dos.html" \
-            "js/toflash.js routes/flash.html" \
-            "js/tov86.js routes/v86.html" \
-            "js/towasm4.js routes/wasm4.html" \
-            "js/emulatorjs.js routes/emulatorjs.html"; do
-            node docs/superpowers/check-i18n.js $pair
-          done
+        run: node docs/superpowers/check-i18n-all.js
       - name: Index DOM structure
         run: node docs/superpowers/check-index-dom.js
       - name: Game regressions
         run: node docs/superpowers/check-game-regressions.js
+      - name: Hot-link player helper
+        run: node docs/superpowers/check-hotlink-player.js
+      - name: Version consistency
+        run: node docs/superpowers/check-version.js
       - name: Proxy config
         run: node docs/superpowers/check-proxy-config.js
       - name: Proxy health cache

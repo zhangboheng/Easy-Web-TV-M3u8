@@ -316,18 +316,4 @@ applyI18n();
 // was not yet registered because the user landed here without passing
 // index.html), adopt the controller and reload once - guarded so we never
 // loop. On an isolated load we clear the guard.
-(function ensureIsolation() {
-    if (!('serviceWorker' in navigator)) return;
-    navigator.serviceWorker.register('/sw.js').catch(function (e) {
-        console.log('[mac] SW registration unavailable:', e && e.message);
-    });
-    if (window.crossOriginIsolated) {
-        sessionStorage.removeItem('macIsoReload');
-        return;
-    }
-    if (sessionStorage.getItem('macIsoReload')) return; // already retried once
-    navigator.serviceWorker.ready.then(function () {
-        sessionStorage.setItem('macIsoReload', '1');
-        location.reload();
-    }).catch(function () { /* SW unavailable - stay non-isolated */ });
-})();
+HotlinkPlayer.ensureIsolated('macIsoReload', '[mac]', '/sw.js');

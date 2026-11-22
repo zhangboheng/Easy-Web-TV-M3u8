@@ -7,18 +7,7 @@ var RUSTPAL_UPSTREAM = 'https://madeye.github.io/Legend-of-Sword-and-Fairy/web/'
 // sw.js injects COOP/COEP for /routes/rustpal.html, which gives the hot-linked
 // iframe the SharedArrayBuffer it needs. Reload once on first visit if the SW
 // was not controlling the initial navigation.
-(function ensureIsolation() {
-    if (!('serviceWorker' in navigator)) return;
-    navigator.serviceWorker.register('/sw.js').catch(function (e) {
-        console.log('[rustpal] SW registration unavailable:', e && e.message);
-    });
-    if (window.crossOriginIsolated) { sessionStorage.removeItem('rustpalIsoReload'); return; }
-    if (sessionStorage.getItem('rustpalIsoReload')) return;
-    navigator.serviceWorker.ready.then(function () {
-        sessionStorage.setItem('rustpalIsoReload', '1');
-        location.reload();
-    }).catch(function () {});
-})();
+HotlinkPlayer.ensureIsolated('rustpalIsoReload', '[rustpal]', '/sw.js');
 
 var i18n = {
     zh: { pageTitle: '仙剑奇侠传 DOS', reset: '重置', tabDemo: '游戏', demoTitle: '仙剑奇侠传 DOS 版', demoDesc: '通过完整的 Rust/WASM 引擎移植版在浏览器中运行原版游戏数据，热链嵌入官方演示站。无需 DOSBox 或本地文件。', demoOpen: '启动游戏', demoHint: '游戏数据由项目作者托管在上游。《仙剑奇侠传》版权归大宇资讯所有，本页面仅供技术研究与怀旧交流，不用于商业用途。首次点击或按键后才会开始播放声音。', loading: '游戏启动中，请稍候...', loadingTip: '游戏从官方站点加载，首次启动可能较慢', loadingSlow: '加载较慢，请耐心等待；也可以在新标签页打开', openInNewTab: '在新标签页打开 ↗', instructions: '使用说明', controlsTitle: '操作方式', controlsHint1: '方向键移动，空格/回车确认，Esc 菜单；战斗中 R 连击、A 自动、D 防御、E 物品、W 投掷、Q 逃跑、F 仙术、S 状态', controlsHint2: '触屏设备显示虚拟方向键与确认/取消/连击按钮。先点击画面让 iframe 获得键盘焦点并开始音频。', aboutTitle: '关于', aboutHint: '引擎：madeye 从 SDLPAL 移植的 Rust 版（GPL-3.0）。原版游戏数据 © 大宇资讯，由上游项目仅供非商业研究使用。需要支持 WebAssembly 与 SharedArrayBuffer 的现代浏览器。', playing: '正在运行：', fullscreen: '全屏' },

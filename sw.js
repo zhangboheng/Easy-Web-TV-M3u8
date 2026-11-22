@@ -1,5 +1,8 @@
 // Easy Web TV Service Worker
-const CACHE_NAME = 'easy-web-tv-v8.5.9';
+// v8.6.0: cache hot-linked game card images (opaque no-cors responses included)
+// so a flaky upstream or going offline does not blank the cards; cache name
+// bumps to v8.6.0, driven by js/version.js.
+const CACHE_NAME = 'easy-web-tv-v8.6.0';
 
 // Assets to cache on install - only local assets that exist
 // v8.5.0: slimmed down to the index shell only; route pages, engines and
@@ -64,6 +67,12 @@ const SKIP_CACHE_DOMAINS = [
   'ipdata.co',
   'locationiq.com'
 ];
+
+// Game card images are hot-linked from public hosts (v8.6.0). Cache them on
+// first load so a flaky upstream or going offline does not blank the cards;
+// the cards still fall back to the local Games icon via their onerror handler.
+const GAME_IMAGE_CACHE = 'ewtv-game-images-v1';
+const GAME_IMAGE_HOSTS = ['raw.githubusercontent.com', 'cdn.simpleicons.org'];
 
 // Install event - cache core assets
 self.addEventListener('install', (event) => {
@@ -164,6 +173,32 @@ self.addEventListener('fetch', (event) => {
           if (cached) return cached;
           return new Response('', { status: 504, statusText: 'Offline' });
         })
+    );
+    return;
+  }
+
+  // Cache game card images separately so an upstream hiccup or going offline
+  // does not leave blank cards (the DOM onerror still shows the Games icon).
+  const imageUrl = new URL(event.request.url);
+  if (event.request.destination === 'image' && GAME_IMAGE_HOSTS.includes(imageUrl.hostname)) {
+    event.respondWith(
+      caches.open(GAME_IMAGE_CACHE).then(async (cache) => {
+        const cached = await cache.match(event.request);
+        if (cached) return cached;
+        try {
+          const response = await fetch(event.request);
+          // Cross-origin <img> requests are no-cors, so their response is
+          // opaque (status 0, ok=false). Cache both normal and opaque replies.
+          if (response && (response.ok || response.type === 'opaque')) {
+            cache.put(event.request, response.clone());
+          }
+          return response;
+        } catch (e) {
+          const fallback = await caches.match(event.request);
+          if (fallback) return fallback;
+          return new Response('', { status: 504, statusText: 'Image unavailable' });
+        }
+      })
     );
     return;
   }

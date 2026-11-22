@@ -1,4 +1,4 @@
-![Easy-Web-TV](images/banner.jpg)
+![Easy-Web-TV](images/banner.webp)
 
 # Easy-Web-TV-M3u8
 
@@ -6,7 +6,7 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.5.9-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.6.0-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
@@ -27,6 +27,14 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 ## 🎬 Demo
 
 **[Live Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)**
+
+## 🆕 What's New (v8.6.0)
+
+- **Resilient game art**: hot-linked card images are cached by the service worker and fall back to the built-in Games icon if an upstream disappears; a CI check verifies every remote image URL
+- **Shared hot-link player helper**: the cross-origin-isolation reload dance is centralised in `js/hotlink-player.js` and used by all five isolated player pages
+- **Single source of truth for the version**: `js/version.js` drives the settings badge, backup export and service-worker cache name, guarded by a consistency check
+- **Lighter assets**: nine oversized README/social screenshots were converted to right-sized WebP images, cutting ~3MB from the repo
+- **Scalable checks**: the 24 i18n page pairs now live in one JSON manifest, so adding a page no longer means editing the CI workflow
 
 ## 🆕 What's New (v8.5.9)
 
@@ -93,35 +101,35 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ### Homepage
 
-![Homepage](images/example.jpg)
+![Homepage](images/example.webp)
 
 ### TV
 
-![TV](images/tvscreen.jpg)
+![TV](images/tvscreen.webp)
 
 ### Movie
 
-![Movie](images/moviescreen.jpg)
+![Movie](images/moviescreen.webp)
 
 ### Radio
 
-![Radio](images/radioscreen.jpg)
+![Radio](images/radioscreen.webp)
 
 ### Novel
 
-![Novel](images/novelscreen.jpg)
+![Novel](images/novelscreen.webp)
 
 ### Manga
 
-![Manga](images/mangascreen.jpg)
+![Manga](images/mangascreen.webp)
 
 ### Music & Podcast
 
-![Music & Podcast](images/musicscreen.jpg)
+![Music & Podcast](images/musicscreen.webp)
 
 ### Game
 
-![Game](images/gamescreen.jpg)
+![Game](images/gamescreen.webp)
 
 ## 🛠️ Tech Stack
 

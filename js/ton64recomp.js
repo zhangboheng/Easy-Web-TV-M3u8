@@ -387,18 +387,4 @@ applyI18n();
 // The SW injects COOP/COEP for /routes/n64recomp.html top-level navigations.
 // Adopt the controller and reload once if the first load was not isolated;
 // the session guard prevents a reload loop.
-(function ensureIsolation() {
-    if (!('serviceWorker' in navigator)) return;
-    navigator.serviceWorker.register('/sw.js').catch(function (e) {
-        console.log('[n64recomp] SW registration unavailable:', e && e.message);
-    });
-    if (window.crossOriginIsolated) {
-        sessionStorage.removeItem('n64IsoReload');
-        return;
-    }
-    if (sessionStorage.getItem('n64IsoReload')) return;
-    navigator.serviceWorker.ready.then(function () {
-        sessionStorage.setItem('n64IsoReload', '1');
-        location.reload();
-    }).catch(function () { /* SW unavailable - stay non-isolated */ });
-})();
+HotlinkPlayer.ensureIsolated('n64IsoReload', '[n64recomp]', '/sw.js');

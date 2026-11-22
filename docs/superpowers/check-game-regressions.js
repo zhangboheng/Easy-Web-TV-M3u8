@@ -30,6 +30,9 @@ const novelHtml = read('catalogues/novelplay.html');
 const musicJs = read('js/music.js');
 const styleCss = read('css/style.css');
 const checksYml = read('.github/workflows/checks.yml');
+// i18n pairs moved to JSON in v8.6.0; syntax checks use the js/*.js glob.
+const i18nPairsRaw = read('docs/superpowers/i18n-pairs.json');
+const syntaxGlobOk = /js\/\*\.js/.test(checksYml);
 const emulatorJs = read('js/emulatorjs.js');
 const emulatorJsHtml = read('routes/emulatorjs.html');
 const sw = read('sw.js');
@@ -194,8 +197,8 @@ check(/SystemJS|System\.import|load/.test(macJs), 'tomac.js does not load the In
 check(/allow=\"[^\"]*fullscreen/.test(macHtml), 'mac.html iframe does not allow fullscreen');
 
 check(/open in a new tab/i.test(macHtml), 'mac.html static HTML fallback lacks new-tab guidance');
-check(/js\/tomac\.js routes\/mac\.html/.test(checksYml), 'checks.yml does not run i18n pairs for the Classic Mac page');
-check(/js\/tomac\.js/.test(checksYml), 'checks.yml does not syntax-check js/tomac.js');
+check(i18nPairsRaw.indexOf('js/tomac.js') !== -1 && i18nPairsRaw.indexOf('routes/mac.html') !== -1, 'checks.yml does not run i18n pairs for the Classic Mac page');
+check(syntaxGlobOk, 'checks.yml does not syntax-check js/tomac.js');
 check(!/allowfullscreen/.test(macHtml), 'mac.html iframe has redundant allowfullscreen attribute');
 check(/\(v86, BYO Android-x86 image\)/.test(readme), 'README platform table has no Android / v86 row');
 const rkJs = maybeRead('js/tork86.js');
@@ -212,8 +215,8 @@ check(/game\.html\?category=computer/.test(rkJs), 'Radio-86RK back link does not
 check(/allow=\"[^\"]*fullscreen/.test(rkHtml), 'rk86.html iframe does not allow fullscreen');
 
 check(/open in a new tab/i.test(rkHtml), 'rk86.html static HTML fallback lacks new-tab guidance');
-check(/js\/tork86\.js routes\/rk86\.html/.test(checksYml), 'checks.yml does not run i18n pairs for the Radio-86RK page');
-check(/js\/tork86\.js/.test(checksYml), 'checks.yml does not syntax-check js/tork86.js');
+check(i18nPairsRaw.indexOf('js/tork86.js') !== -1 && i18nPairsRaw.indexOf('routes/rk86.html') !== -1, 'checks.yml does not run i18n pairs for the Radio-86RK page');
+check(syntaxGlobOk, 'checks.yml does not syntax-check js/tork86.js');
 check(!/allowfullscreen/.test(rkHtml), 'rk86.html iframe has redundant allowfullscreen attribute');
 const rkHints = rkJs.match(/demoHint:\s*(['\"])(.*?)\1/g) || [];
 check(rkHints.length === 8, 'tork86.js should have 8 translated demoHint strings, found ' + rkHints.length);
@@ -232,8 +235,8 @@ check(/href=\"https:\/\/kaiec\.github\.io\/EstyJS\/\"/.test(estyHtml), 'esty.htm
 check(/game\.html\?category=computer/.test(estyJs), 'Atari ST back link does not use category=computer');
 check(/allow=\"[^\"]*fullscreen/.test(estyHtml), 'esty.html iframe does not allow fullscreen');
 check(/open in a new tab/i.test(estyHtml), 'esty.html static HTML fallback lacks new-tab guidance');
-check(/js\/toesty\.js routes\/esty\.html/.test(checksYml), 'checks.yml does not run i18n pairs for the Atari ST page');
-check(/js\/toesty\.js/.test(checksYml), 'checks.yml does not syntax-check js/toesty.js');
+check(i18nPairsRaw.indexOf('js/toesty.js') !== -1 && i18nPairsRaw.indexOf('routes/esty.html') !== -1, 'checks.yml does not run i18n pairs for the Atari ST page');
+check(syntaxGlobOk, 'checks.yml does not syntax-check js/toesty.js');
 check(!/allowfullscreen/.test(estyHtml), 'esty.html iframe has redundant allowfullscreen attribute');
 check(/Atari ST \(EstyJS embed\)/.test(readme), 'README platform table has no Atari ST / EstyJS row');
 const androidJs = maybeRead('js/toandroid.js');
@@ -250,8 +253,8 @@ check(/bios:\s*\{\s*url:\s*'..\/vendor\/v86\/seabios\.bin'/.test(androidJs), 'to
 check(/vga_bios:\s*\{\s*url:\s*'..\/vendor\/v86\/vgabios\.bin'/.test(androidJs), 'toandroid.js does not load the vendored VGA BIOS');
 check(/BYO|Bring your own|own Android/i.test(androidJs), 'toandroid.js does not explain BYO image support');
 check(/game\.html\?category=mobile/.test(androidJs), 'Android back link does not use category=mobile');
-check(/js\/toandroid\.js routes\/android\.html/.test(checksYml), 'checks.yml does not run i18n pairs for the Android page');
-check(/js\/toandroid\.js/.test(checksYml), 'checks.yml does not syntax-check js/toandroid.js');
+check(i18nPairsRaw.indexOf('js/toandroid.js') !== -1 && i18nPairsRaw.indexOf('routes/android.html') !== -1, 'checks.yml does not run i18n pairs for the Android page');
+check(syntaxGlobOk, 'checks.yml does not syntax-check js/toandroid.js');
 check(/\(v86, BYO Android-x86 image\)/.test(readme), 'README platform table has no Android / v86 row');
 const feltJs = maybeRead('js/tofelt.js');
 const feltHtml = maybeRead('routes/feltworld.html');
@@ -270,8 +273,8 @@ check(/game\.html\?category=webgames/.test(feltJs), 'Felt World back link does n
 check(/allow=\"[^\"]*fullscreen/.test(feltHtml), 'feltworld.html iframe does not allow fullscreen');
 check(!/allowfullscreen/.test(feltHtml), 'feltworld.html iframe has redundant allowfullscreen attribute');
 check(/open in a new tab/i.test(feltHtml), 'feltworld.html static HTML fallback lacks new-tab guidance');
-check(/js\/tofelt\.js routes\/feltworld\.html/.test(checksYml), 'checks.yml does not run i18n pairs for the Felt World page');
-check(/js\/tofelt\.js/.test(checksYml), 'checks.yml does not syntax-check js/tofelt.js');
+check(i18nPairsRaw.indexOf('js/tofelt.js') !== -1 && i18nPairsRaw.indexOf('routes/feltworld.html') !== -1, 'checks.yml does not run i18n pairs for the Felt World page');
+check(syntaxGlobOk, 'checks.yml does not syntax-check js/tofelt.js');
 check(!/allowfullscreen/.test(feltHtml), 'feltworld.html iframe has redundant allowfullscreen attribute');
 check(/Felt World \(hot-linked embed, MIT\)/.test(readme), 'README platform table has no Felt World / MIT row');
 // NOVA LANCER + Casa de Gemas.
@@ -291,8 +294,8 @@ check(/href=\"https:\/\/tanuu5\.github\.io\/nova-lancer\/\"/.test(novaHtml), 'no
 check(/allow=\"[^\"]*fullscreen/.test(novaHtml), 'nova.html iframe lacks fullscreen permission');
 check(!/allowfullscreen/.test(novaHtml), 'nova.html has redundant allowfullscreen');
 check(/open in a new tab/i.test(novaHtml), 'nova.html lacks new-tab guidance');
-check(/js\/tonova\.js routes\/nova\.html/.test(checksYml), 'checks.yml misses NOVA LANCER i18n pair');
-check(/js\/tonova\.js/.test(checksYml), 'checks.yml misses NOVA LANCER syntax check');
+check(i18nPairsRaw.indexOf('js/tonova.js') !== -1 && i18nPairsRaw.indexOf('routes/nova.html') !== -1, 'checks.yml misses NOVA LANCER i18n pair');
+check(syntaxGlobOk, 'checks.yml misses NOVA LANCER syntax check');
 const casaJs = maybeRead('js/tocasa.js');
 const casaHtml = maybeRead('routes/casa.html');
 const tamaJs = maybeRead('js/totamaweb.js');
@@ -311,9 +314,9 @@ check(tamaOpenTabHints.length === 8, 'totamaweb.js should have 8 translated open
 check(tamaOpenTabHints.every((hint) => (hint.match(/↗/g) || []).length === 1),
     'totamaweb.js openInNewTab strings must contain exactly one arrow');
 check(/id="tamaFrame"/.test(tamaHtml), 'tamaweb.html iframe is missing');
-check(/js\/totamaweb\.js routes\/tamaweb\.html/.test(checksYml),
+check(i18nPairsRaw.indexOf('js/totamaweb.js') !== -1 && i18nPairsRaw.indexOf('routes/tamaweb.html') !== -1,
     'checks.yml does not run i18n pairs for the Tamaweb page');
-check(/js\/totamaweb\.js/.test(checksYml), 'checks.yml does not syntax-check js/totamaweb.js');
+check(syntaxGlobOk, 'checks.yml does not syntax-check js/totamaweb.js');
 check(!fs.existsSync(path.join(root, 'gamebox/tamaweb')), 'vendored gamebox/tamaweb still exists');
 check(!/vendored under `gamebox\/tamaweb\/`/.test(readme), 'README still describes Tamaweb as vendored');
 const casaCard = games.filter((g) => g.name === 'Casa de Gemas');
@@ -330,8 +333,8 @@ check(/href=\"https:\/\/deepujain\.github\.io\/casadegema\/\"/.test(casaHtml), '
 check(/allow=\"[^\"]*fullscreen/.test(casaHtml), 'casa.html iframe lacks fullscreen permission');
 check(!/allowfullscreen/.test(casaHtml), 'casa.html has redundant allowfullscreen');
 check(/open in a new tab/i.test(casaHtml), 'casa.html lacks new-tab guidance');
-check(/js\/tocasa\.js routes\/casa\.html/.test(checksYml), 'checks.yml misses Casa de Gemas i18n pair');
-check(/js\/tocasa\.js/.test(checksYml), 'checks.yml misses Casa de Gemas syntax check');
+check(i18nPairsRaw.indexOf('js/tocasa.js') !== -1 && i18nPairsRaw.indexOf('routes/casa.html') !== -1, 'checks.yml misses Casa de Gemas i18n pair');
+check(syntaxGlobOk, 'checks.yml misses Casa de Gemas syntax check');
 check(/NOVA LANCER \(hot-linked embed, MIT\)/.test(readme), 'README has no NOVA LANCER credit');
 check(/Casa de Gemas \(hot-linked embed, MIT\)/.test(readme), 'README has no Casa de Gemas credit');
 // Papertrails: curated Fable List candidate, generic webgame hot-link player.
@@ -513,7 +516,7 @@ const n64DivOpens = (n64Html.match(/<div\b/g) || []).length;
 const n64DivCloses = (n64Html.match(/<\/div>/g) || []).length;
 check(n64DivOpens === n64DivCloses, 'n64recomp.html has unbalanced div tags (' + n64DivOpens + ' open / ' + n64DivCloses + ' close)');
 check(/game\.html\?category=recomp/.test(n64Js), 'N64 recomp back link does not use category=recomp');
-check(/js\/ton64recomp\.js routes\/n64recomp\.html/.test(checksYml), 'checks.yml misses N64 recomp i18n pair');
+check(i18nPairsRaw.indexOf('js/ton64recomp.js') !== -1 && i18nPairsRaw.indexOf('routes/n64recomp.html') !== -1, 'checks.yml misses N64 recomp i18n pair');
 const syntaxSection = checksYml.split('JavaScript syntax')[1] || '';
 // The syntax step may list the script explicitly or cover it with the js/*.js
 // glob, which checks every page script (including this one).
@@ -523,6 +526,15 @@ check(/\/routes\/n64recomp\.html/.test(sw), 'sw.js does not isolate the N64 reco
 check(/N64Recomp/i.test(readme) && /n64hub/i.test(readme), 'README has no N64Recomp / n64hub credit');
 check(/bring[- ]your[- ]own|BYO/i.test(readme), 'README has no BYO ROM notice for N64 recompilations');
 
+
+// v8.6.0: remote game images must keep the Games-icon fallback and be cached
+// by the service worker so a hot-link outage does not blank the cards.
+check(/onerror="this\.src=\\'..\/images\/game\.svg\\'"/.test(togame),
+    'game cards must fall back to ../images/game.svg when a remote image fails');
+check(/GAME_IMAGE_CACHE/.test(sw) && /GAME_IMAGE_HOSTS/.test(sw),
+    'sw.js must cache hot-linked game card images');
+check(/check-remote-images\.js/.test(checksYml),
+    'checks.yml must verify remote game image URLs');
 
 if (failures.length) {
     failures.forEach((f) => console.log('FAIL: ' + f));
