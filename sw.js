@@ -1,7 +1,8 @@
 // Easy Web TV Service Worker
-// v8.6.0: cache hot-linked game card images (opaque no-cors responses included)
-// so a flaky upstream or going offline does not blank the cards; cache name
-// bumps to v8.6.0, driven by js/version.js.
+// v8.6.0: cache hot-linked game card images across version bumps, but only
+// after a CORS re-fetch confirms a real 2xx (an opaque no-cors 404 looks like
+// status 0 and would suppress the card's Games-icon onerror fallback).
+// Cache name is kept in sync with js/version.js by check-version.js.
 const CACHE_NAME = 'easy-web-tv-v8.6.0';
 
 // Assets to cache on install - only local assets that exist
@@ -94,7 +95,9 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
+          // Keep the game-image cache across version bumps - it is content
+          // addressed by URL and only ever holds successful responses.
+          if (cacheName !== CACHE_NAME && cacheName !== GAME_IMAGE_CACHE) {
             console.log('[ServiceWorker] Removing old cache:', cacheName);
             return caches.delete(cacheName);
           }
@@ -179,6 +182,9 @@ self.addEventListener('fetch', (event) => {
 
   // Cache game card images separately so an upstream hiccup or going offline
   // does not leave blank cards (the DOM onerror still shows the Games icon).
+  // Both hosts send CORS headers, so re-fetch in cors mode to see the real
+  // status: an opaque no-cors response masks a 404 as status 0, which would
+  // get cached and permanently suppress the card's onerror fallback.
   const imageUrl = new URL(event.request.url);
   if (event.request.destination === 'image' && GAME_IMAGE_HOSTS.includes(imageUrl.hostname)) {
     event.respondWith(
@@ -186,16 +192,15 @@ self.addEventListener('fetch', (event) => {
         const cached = await cache.match(event.request);
         if (cached) return cached;
         try {
-          const response = await fetch(event.request);
-          // Cross-origin <img> requests are no-cors, so their response is
-          // opaque (status 0, ok=false). Cache both normal and opaque replies.
-          if (response && (response.ok || response.type === 'opaque')) {
+          const response = await fetch(new Request(event.request.url, { mode: 'cors', credentials: 'omit' }));
+          if (response.ok) {
             cache.put(event.request, response.clone());
+            return response;
           }
-          return response;
+          // Upstream returned 404/5xx: do NOT cache it, and return a real
+          // error so the <img> onerror handler swaps in the Games icon.
+          return new Response('', { status: response.status, statusText: 'Image unavailable' });
         } catch (e) {
-          const fallback = await caches.match(event.request);
-          if (fallback) return fallback;
           return new Response('', { status: 504, statusText: 'Image unavailable' });
         }
       })

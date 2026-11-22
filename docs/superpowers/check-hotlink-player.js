@@ -10,7 +10,6 @@ function check(cond, msg) { if (!cond) failures.push(msg); }
 
 const helper = read('js/hotlink-player.js');
 check(/ensureIsolated/.test(helper), 'hotlink-player.js must define ensureIsolated');
-check(/makeNotifier/.test(helper), 'hotlink-player.js must define makeNotifier');
 check(/window\.HotlinkPlayer/.test(helper), 'hotlink-player.js must expose window.HotlinkPlayer');
 
 // Pages that need cross-origin isolation must use the shared helper.

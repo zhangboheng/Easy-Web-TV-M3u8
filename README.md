@@ -1,4 +1,4 @@
-![Easy-Web-TV](images/banner.webp)
+![Easy-Web-TV](images/banner.jpg)
 
 # Easy-Web-TV-M3u8
 
@@ -32,7 +32,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 - **Resilient game art**: hot-linked card images are cached by the service worker and fall back to the built-in Games icon if an upstream disappears; a CI check verifies every remote image URL
 - **Shared hot-link player helper**: the cross-origin-isolation reload dance is centralised in `js/hotlink-player.js` and used by all five isolated player pages
-- **Single source of truth for the version**: `js/version.js` drives the settings badge, backup export and service-worker cache name, guarded by a consistency check
+- **Single source of truth for the version**: `js/version.js` drives the settings badge and backup export; a consistency check keeps the manifest, service-worker cache name and changelog in sync with it
 - **Lighter assets**: nine oversized README/social screenshots were converted to right-sized WebP images, cutting ~3MB from the repo
 - **Scalable checks**: the 24 i18n page pairs now live in one JSON manifest, so adding a page no longer means editing the CI workflow
 

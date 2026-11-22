@@ -29,39 +29,7 @@ window.HotlinkPlayer = (function () {
         }).catch(function () { /* SW unavailable - stay non-isolated */ });
     }
 
-    // Shared slow-load toast helper. Pages keep their own translated strings
-    // and DOM ids; this only replaces the repeated notice/slow-link plumbing.
-    function makeNotifier(opts) {
-        var toastEl = document.getElementById(opts.toastId || 'toast');
-        var messageEl = document.getElementById(opts.toastMessageId || 'toastMessage');
-        var overlayEl = document.getElementById(opts.overlayId || 'loadingOverlay');
-        var linkId = opts.linkId || 'slowOpenLink';
-        var timer = null;
-        return {
-            show: function (msg) {
-                if (!toastEl || !messageEl) return;
-                messageEl.textContent = msg;
-                toastEl.classList.remove('hidden');
-                clearTimeout(timer);
-                timer = setTimeout(function () { toastEl.classList.add('hidden'); }, 3000);
-            },
-            slowLink: function (url, text) {
-                if (!overlayEl || document.getElementById(linkId)) return;
-                var link = document.createElement('a');
-                link.id = linkId;
-                link.href = url;
-                link.target = '_blank';
-                link.rel = 'noopener';
-                link.textContent = text;
-                link.style.cssText = 'display:inline-block;margin-top:14px;color:#33ff66;text-decoration:underline;font-size:14px;';
-                overlayEl.appendChild(link);
-            },
-            clearTimer: function () { if (timer) { clearTimeout(timer); timer = null; } }
-        };
-    }
-
     return {
-        ensureIsolated: ensureIsolated,
-        makeNotifier: makeNotifier
+        ensureIsolated: ensureIsolated
     };
 })();

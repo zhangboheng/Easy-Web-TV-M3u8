@@ -33,9 +33,9 @@
   ],
   "screenshots": [
     {
-      "src": "images/banner.webp",
-      "sizes": "1280x720",
-      "type": "image/webp",
+      "src": "images/banner.jpg",
+      "sizes": "1024x500",
+      "type": "image/jpeg",
       "label": "Easy Web TV Homepage"
     }
   ],

@@ -19,7 +19,7 @@ const urls = Array.from(new Set(
 const TIMEOUT_MS = 20000;
 const CONCURRENCY = 8;
 
-async function checkUrl(url) {
+async function checkUrlOnce(url) {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
     try {
@@ -37,6 +37,16 @@ async function checkUrl(url) {
     } finally {
         clearTimeout(timer);
     }
+}
+
+// Retry once so a single transient network hiccup does not fail CI.
+async function checkUrl(url) {
+    let result = await checkUrlOnce(url);
+    if (result) {
+        await new Promise((r) => setTimeout(r, 500));
+        result = await checkUrlOnce(url);
+    }
+    return result;
 }
 
 (async () => {

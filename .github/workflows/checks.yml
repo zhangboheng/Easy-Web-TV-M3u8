@@ -43,8 +43,8 @@ jobs:
         shell: bash
         run: |
           set -e
-          # Every page script, not just the game modules: these files are not
+          # Every page script plus the service worker: these files are not
           # bundled, so a syntax error only shows up in the browser.
-          for file in js/*.js docs/superpowers/*.js; do
+          for file in js/*.js docs/superpowers/*.js sw.js; do
             node --check "$file"
           done
