@@ -112,9 +112,9 @@ check(/function showMusicError/.test(musicJs), 'music.js has no themed fallback 
 
 // 9. EmulatorJS stable additions: first low-risk batch.
 const newEmulatorCards = [
-    { platform: 'ZX81/ZX80', core: '81', image: '../images/zx81.svg' },
-    { platform: 'Thomson MO/TO', core: 'crocods', image: '../images/thomson.svg' },
-    { platform: 'Philips CD-i', core: 'same_cdi', image: '../images/cdi.svg' }
+    { platform: 'ZX81/ZX80', core: '81', image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/81_banner.png' },
+    { platform: 'Thomson MO/TO', core: 'crocods', image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/ThomsonMOTO_banner.png' },
+    { platform: 'Philips CD-i', core: 'same_cdi', image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/scummvm_banner.png' }
 ];
 newEmulatorCards.forEach(({ platform, core, image }) => {
     const card = games.filter((g) => g.platform === platform);
@@ -122,8 +122,8 @@ newEmulatorCards.forEach(({ platform, core, image }) => {
     check(card.length === 1 && card[0].category === 'emulator', platform + ' is not in the emulator category');
     check(card.length === 1 && card[0].url === '../routes/emulatorjs.html?core=' + core,
         platform + ' does not point at the EmulatorJS ' + core + ' core');
-    check(card.length === 1 && card[0].image === image, platform + ' does not use its dedicated image');
-    check(fs.existsSync(path.join(root, image.replace(/^\.\.\//, ''))), platform + ' image is missing: ' + image);
+    check(card.length === 1 && card[0].image === image, platform + ' does not use its dedicated GitHub-hosted image');
+    check(/^https:\/\/raw\.githubusercontent\.com\//.test(card.length === 1 ? card[0].image : ''), platform + ' image must be GitHub-hosted');
     check(new RegExp("'" + core + "':").test(emulatorJs), 'emulatorjs.js has no ' + core + ' core-to-platform mapping');
 });
 check(/^\s*'p': '81',/m.test(emulatorJs), 'emulatorjs.js does not detect .p files as ZX81 core');
@@ -185,8 +185,8 @@ const macCard = games.filter((g) => g.platform === 'Classic Mac');
 check(macCard.length === 1, 'expected exactly one Classic Mac card, found ' + macCard.length);
 check(macCard.length === 1 && macCard[0].category === 'retropc', 'Classic Mac is not in the retropc category');
 check(macCard.length === 1 && macCard[0].url === '../routes/mac.html', 'Classic Mac does not point at routes/mac.html');
-check(macCard.length === 1 && macCard[0].image === '../images/mac.svg', 'Classic Mac does not use its dedicated image');
-check(fs.existsSync(path.join(root, 'images/mac.svg')), 'Classic Mac image is missing: ../images/mac.svg');
+check(macCard.length === 1 && macCard[0].image === 'https://cdn.simpleicons.org/apple/ffffff', 'Classic Mac does not use the light Apple icon');
+check(/^https:\/\/cdn\.simpleicons\.org\//.test(macCard.length === 1 ? macCard[0].image : ''), 'Classic Mac image must be a colored Simple Icons CDN URL');
 check(/MAC_HOME\s*=\s*'https:\/\/infinitemac\.org\/'/.test(macJs), 'tomac.js has no dedicated MAC_HOME');
 check(/link\.href = MAC_HOME/.test(macJs), 'tomac.js new-tab link should point at MAC_HOME');
 check(/game\.html\?category=retropc/.test(macJs), 'Classic Mac back link does not use category=retropc');
@@ -223,8 +223,8 @@ const estyCard = games.filter((g) => g.platform === 'Atari ST');
 check(estyCard.length === 1, 'expected exactly one Atari ST card, found ' + estyCard.length);
 check(estyCard.length === 1 && estyCard[0].category === 'computer', 'Atari ST is not in the computer category');
 check(estyCard.length === 1 && estyCard[0].url === '../routes/esty.html', 'Atari ST does not point at routes/esty.html');
-check(estyCard.length === 1 && estyCard[0].image === '../images/atarist.svg', 'Atari ST does not use its dedicated image');
-check(fs.existsSync(path.join(root, 'images/atarist.svg')), 'Atari ST image is missing: ../images/atarist.svg');
+check(estyCard.length === 1 && estyCard[0].image === 'https://cdn.simpleicons.org/atari/ffffff', 'Atari ST does not use the light Atari icon');
+check(/^https:\/\/cdn\.simpleicons\.org\//.test(estyCard.length === 1 ? estyCard[0].image : ''), 'Atari ST image must be a colored Simple Icons CDN URL');
 check(/ESTY_HOME\s*=\s*'https:\/\/kaiec\.github\.io\/EstyJS\/'/.test(estyJs), 'toesty.js has no dedicated ESTY_HOME');
 check(/link\.href = ESTY_HOME/.test(estyJs), 'toesty.js new-tab link should point at ESTY_HOME');
 check(/link\.href = ESTY_HOME/.test(estyJs.split('function showSlowLink')[1] || ''), 'toesty.js slow-load fallback link should point at ESTY_HOME');
@@ -242,8 +242,8 @@ const androidCard = games.filter((g) => g.platform === 'Android');
 check(androidCard.length === 1, 'expected exactly one Android card, found ' + androidCard.length);
 check(androidCard.length === 1 && androidCard[0].category === 'mobile', 'Android is not in the mobile category');
 check(androidCard.length === 1 && androidCard[0].url === '../routes/android.html', 'Android does not point at routes/android.html');
-check(androidCard.length === 1 && androidCard[0].image === '../images/android.svg', 'Android does not use its dedicated image');
-check(fs.existsSync(path.join(root, 'images/android.svg')), 'Android image is missing: ../images/android.svg');
+check(androidCard.length === 1 && androidCard[0].image === 'https://cdn.simpleicons.org/android/3DDC84', 'Android does not use the brand-green Android icon');
+check(/^https:\/\/cdn\.simpleicons\.org\//.test(androidCard.length === 1 ? androidCard[0].image : ''), 'Android image must be a colored Simple Icons CDN URL');
 check(/V86_RUNTIME\s*=\s*'..\/vendor\/v86\/libv86\.js'/.test(androidJs), 'toandroid.js does not load the vendored v86 engine');
 check(/V86_WASM\s*=\s*'..\/vendor\/v86\/v86\.wasm'/.test(androidJs), 'toandroid.js does not load the vendored v86 WASM binary');
 check(/bios:\s*\{\s*url:\s*'..\/vendor\/v86\/seabios\.bin'/.test(androidJs), 'toandroid.js does not load the vendored SeaBIOS');
@@ -260,8 +260,8 @@ check(feltCard.length === 1, 'expected exactly one Felt World card, found ' + fe
 check(feltCard.length === 1 && feltCard[0].id === 128, 'Felt World card should use id 128');
 check(feltCard.length === 1 && feltCard[0].category === 'webgames', 'Felt World is not in the webgames category');
 check(feltCard.length === 1 && feltCard[0].url === '../routes/feltworld.html', 'Felt World does not point at routes/feltworld.html');
-check(feltCard.length === 1 && feltCard[0].image === '../images/feltworld.svg', 'Felt World does not use its dedicated image');
-check(fs.existsSync(path.join(root, 'images/feltworld.svg')), 'Felt World image is missing: ../images/feltworld.svg');
+check(feltCard.length === 1 && feltCard[0].image === 'https://raw.githubusercontent.com/az9713/opus-5.5-open-world-game/master/screenshots/air.jpg', 'Felt World does not use its GitHub-hosted image');
+check(/^https:\/\/raw\.githubusercontent\.com\//.test(feltCard.length === 1 ? feltCard[0].image : ''), 'Felt World image must be GitHub-hosted');
 check(/FELT_HOME\s*=\s*'https:\/\/az9713\.github\.io\/opus-5\.5-open-world-game\/feltworld\/'/.test(feltJs), 'tofelt.js has no dedicated FELT_HOME');
 check(/link\.href = FELT_HOME/.test(feltJs), 'tofelt.js new-tab link should point at FELT_HOME');
 check(/link\.href = FELT_HOME/.test(feltJs.split('function showSlowLink')[1] || ''), 'tofelt.js slow-load fallback link should point at FELT_HOME');
@@ -282,8 +282,8 @@ check(novaCard.length === 1, 'expected exactly one NOVA LANCER card, found ' + n
 check(novaCard.length === 1 && novaCard[0].id === 131, 'NOVA LANCER card should use id 131');
 check(novaCard.length === 1 && novaCard[0].category === 'webgames', 'NOVA LANCER is not in webgames');
 check(novaCard.length === 1 && novaCard[0].url === '../routes/nova.html', 'NOVA LANCER route is wrong');
-check(novaCard.length === 1 && novaCard[0].image === '../images/nova.svg', 'NOVA LANCER image is wrong');
-check(fs.existsSync(path.join(root, 'images/nova.svg')), 'nova.svg is missing');
+check(novaCard.length === 1 && novaCard[0].image === 'https://raw.githubusercontent.com/tanuu5/nova-lancer/main/docs/screenshots/hero.jpg', 'NOVA LANCER image is wrong');
+check(/^https:\/\/raw\.githubusercontent\.com\//.test(novaCard.length === 1 ? novaCard[0].image : ''), 'NOVA LANCER image must be GitHub-hosted');
 check(/NOVA_HOME\s*=\s*'https:\/\/tanuu5\.github\.io\/nova-lancer\/'/.test(novaJs), 'tonova.js has no NOVA_HOME');
 check(/link\.href = NOVA_HOME/.test(novaJs), 'tonova.js new-tab link is wrong');
 check(/game\.html\?category=webgames/.test(novaJs), 'NOVA LANCER back link is wrong');
@@ -321,8 +321,8 @@ check(casaCard.length === 1, 'expected exactly one Casa de Gemas card, found ' +
 check(casaCard.length === 1 && casaCard[0].id === 132, 'Casa de Gemas card should use id 132');
 check(casaCard.length === 1 && casaCard[0].category === 'webgames', 'Casa de Gemas is not in webgames');
 check(casaCard.length === 1 && casaCard[0].url === '../routes/casa.html', 'Casa de Gemas route is wrong');
-check(casaCard.length === 1 && casaCard[0].image === '../images/casa.svg', 'Casa de Gemas image is wrong');
-check(fs.existsSync(path.join(root, 'images/casa.svg')), 'casa.svg is missing');
+check(casaCard.length === 1 && casaCard[0].image === 'https://raw.githubusercontent.com/deepujain/casadegema/main/preview.png', 'Casa de Gemas image is wrong');
+check(/^https:\/\/raw\.githubusercontent\.com\//.test(casaCard.length === 1 ? casaCard[0].image : ''), 'Casa de Gemas image must be GitHub-hosted');
 check(/CASA_HOME\s*=\s*'https:\/\/deepujain\.github\.io\/casadegema\/'/.test(casaJs), 'tocasa.js has no CASA_HOME');
 check(/link\.href = CASA_HOME/.test(casaJs), 'tocasa.js new-tab link is wrong');
 check(/game\.html\?category=webgames/.test(casaJs), 'Casa de Gemas back link is wrong');
@@ -340,8 +340,8 @@ check(papertrailsCard.length === 1, 'expected exactly one Papertrails card, foun
 check(papertrailsCard.length === 1 && papertrailsCard[0].id === 133, 'Papertrails card should use id 133');
 check(papertrailsCard.length === 1 && papertrailsCard[0].category === 'webgames', 'Papertrails is not in webgames');
 check(papertrailsCard.length === 1 && papertrailsCard[0].url === '../routes/webgame.html?game=papertrails', 'Papertrails route is wrong');
-check(papertrailsCard.length === 1 && papertrailsCard[0].image === '../images/papertrails.svg', 'Papertrails image is wrong');
-check(fs.existsSync(path.join(root, 'images/papertrails.svg')), 'papertrails.svg is missing');
+check(papertrailsCard.length === 1 && papertrailsCard[0].image === 'https://raw.githubusercontent.com/xikhar/papertrails/master/screenshots/hero.png', 'Papertrails image is wrong');
+check(/^https:\/\/raw\.githubusercontent\.com\//.test(papertrailsCard.length === 1 ? papertrailsCard[0].image : ''), 'Papertrails image must be GitHub-hosted');
 check(/'papertrails':\s*\{\s*name:\s*'Papertrails',\s*url:\s*'https:\/\/xikhar\.github\.io\/papertrails\/',\s*repo:\s*'xikhar\/papertrails',\s*license:\s*'MIT'\s*\}/.test(webgame),
     'towebgame.js has no correct Papertrails registry entry');
 check(/Papertrails \(hot-linked embed, MIT\)/.test(readme), 'README has no Papertrails credit');
@@ -352,8 +352,8 @@ check(wusuomonCard.length === 1, 'expected exactly one 雾锁山门 (AI 3D) card
 check(wusuomonCard.length === 1 && wusuomonCard[0].id === 176, '雾锁山门 (AI 3D) card should use id 176');
 check(wusuomonCard.length === 1 && wusuomonCard[0].category === 'webgames', '雾锁山门 (AI 3D) is not in webgames');
 check(wusuomonCard.length === 1 && wusuomonCard[0].url === '../routes/webgame.html?game=wusuomon', '雾锁山门 (AI 3D) route is wrong');
-check(wusuomonCard.length === 1 && wusuomonCard[0].image === '../images/mistgate.svg', '雾锁山门 (AI 3D) image is wrong');
-check(fs.existsSync(path.join(root, 'images/mistgate.svg')), 'mistgate.svg is missing');
+check(wusuomonCard.length === 1 && wusuomonCard[0].image === 'https://raw.githubusercontent.com/op7418/guizang-game-skill/main/media/cover.jpg', '雾锁山门 (AI 3D) image is wrong');
+check(/^https:\/\/raw\.githubusercontent\.com\//.test(wusuomonCard.length === 1 ? wusuomonCard[0].image : ''), '雾锁山门 (AI 3D) image must be GitHub-hosted');
 check(/'wusuomon':\s*\{\s*name:\s*'雾锁山门',\s*url:\s*'https:\/\/op7418\.github\.io\/guizang-game-skill\/',\s*repo:\s*'op7418\/guizang-game-skill',\s*license:\s*'AGPL-3\.0 \(demo content © 2026 歸藏\)'\s*\}/.test(webgame),
     'towebgame.js has no correct 雾锁山门 registry entry');
 check(/雾锁山门 \(hot-linked embed, AGPL-3\.0\)/.test(readme), 'README has no 雾锁山门 credit');
@@ -408,7 +408,7 @@ tcLangs.forEach((l) => {
 
 // Recomp cards must label a real platform, not repeat the game title.
 const recompCards = games.filter((g) => g.category === 'recomp');
-check(recompCards.length === 45, 'expected 45 recomp cards, found ' + recompCards.length);
+check(recompCards.length === 46, 'expected 46 recomp cards, found ' + recompCards.length);
 check(recompCards.every((g) => g.name !== g.platform),
     'recomp cards must not use the game name as the platform label');
 check(recompCards.every((g) => g.url.indexOf('n64recomp.html') === -1 || g.platform === 'Nintendo 64'),
@@ -417,6 +417,19 @@ check(recompCards.every((g) => g.name !== 'Zelda II' || g.platform === 'NES'),
     'Zelda II recomp card must use NES as the platform label');
 check(recompCards.every((g) => !['Red Alert 2', 'Diablo'].includes(g.name) || g.platform === 'PC'),
     'Red Alert 2 and Diablo recomp cards must use PC as the platform label');
+const supplementalRemoteCovers = [
+    { name: 'Red Alert 2', image: 'https://raw.githubusercontent.com/ra2-games/ra2/main/docs/assets/ra2vm-poster.jpg' },
+    { name: 'Diablo', image: 'https://raw.githubusercontent.com/d07RiV/diabloweb/master/public/icon-192.png' },
+    { name: 'Zelda II', image: 'https://raw.githubusercontent.com/troyedwardsjr/z2rs/main/crates/z2-web/site/assets/hero.webp' },
+    { name: 'LEGO Island (Browser Port)', image: 'https://raw.githubusercontent.com/isledecomp/isle.pizza/master/public/images/install.webp' }
+];
+supplementalRemoteCovers.forEach(({ name, image }) => {
+    const card = games.filter((g) => g.name === name);
+    check(card.length === 1 && card[0].image === image,
+        name + ' does not use its GitHub-hosted cover image');
+});
+
+
 
 // N64 static recompilations: one generic player covering all 41 n64hub games.
 const n64RecompGames = [
@@ -475,10 +488,9 @@ n64RecompGames.forEach((game) => {
     check(card.length === 1 && card[0].category === 'recomp', game.name + ' is not in recomp');
     check(card.length === 1 && card[0].url === '../routes/n64recomp.html?game=' + game.key,
         game.name + ' route is wrong');
-    check(card.length === 1 && card[0].image === '../images/n64' + game.key + '.svg',
+    const expectedRemoteImage = 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/';
+    check(card.length === 1 && card[0].image.startsWith(expectedRemoteImage) || card.length === 1 && game.key === 'dinosaurplanet' && card[0].image === 'https://raw.githubusercontent.com/n64hub/dinosaur-planet-recomp/main/icons/512.png',
         game.name + ' image is wrong');
-    check(fs.existsSync(path.join(root, 'images/n64' + game.key + '.svg')),
-        game.name + ' image is missing');
     check(n64Registry[game.key] && n64Registry[game.key].url === 'https://n64hub.com/' + game.slug + '/',
         'ton64recomp.js has no correct ' + game.name + ' registry entry');
     check(!/n64FallbackList/.test(n64Html) && !/n64FallbackList/.test(n64Js),
@@ -510,29 +522,6 @@ check(/js\/ton64recomp\.js/.test(syntaxSection) || /js\/\*\.js/.test(syntaxSecti
 check(/\/routes\/n64recomp\.html/.test(sw), 'sw.js does not isolate the N64 recomp route');
 check(/N64Recomp/i.test(readme) && /n64hub/i.test(readme), 'README has no N64Recomp / n64hub credit');
 check(/bring[- ]your[- ]own|BYO/i.test(readme), 'README has no BYO ROM notice for N64 recompilations');
-
-// The 38 later N64 recomp icons must be individually illustrated local SVGs.
-const redrawnN64Icons = n64RecompGames.filter((g) => g.id >= 137);
-check(redrawnN64Icons.length === 38, 'expected 38 redrawn N64 icons, found ' + redrawnN64Icons.length);
-const n64IconMarkup = {};
-redrawnN64Icons.forEach((game) => {
-    const rel = 'images/n64' + game.key + '.svg';
-    const svg = fs.existsSync(path.join(root, rel)) ? read(rel) : '';
-    n64IconMarkup[game.key] = svg;
-    check(/^<svg\b/.test(svg) && /<\/svg>\s*$/.test(svg), game.name + ' icon is not a standalone SVG');
-    check(/viewBox="0 0 200 120"/.test(svg), game.name + ' icon lost the shared 200x120 viewBox');
-    check(!/hsl\(/.test(svg), game.name + ' icon still uses the interchangeable hsl() template');
-    check(/data-theme="[^"]+"/.test(svg), game.name + ' icon has no dedicated data-theme');
-    check(/data-art="[^"]+"/.test(svg), game.name + ' icon has no dedicated data-art');
-});
-const iconSignatures = redrawnN64Icons.map((game) => {
-    const svg = n64IconMarkup[game.key];
-    const theme = (svg.match(/data-theme="([^"]+)"/) || [])[1] || '';
-    const art = (svg.match(/data-art="([^"]+)"/) || [])[1] || '';
-    return theme + '|' + art;
-});
-check(new Set(iconSignatures).size === redrawnN64Icons.length,
-    'redrawn N64 icons must use unique theme/art signatures');
 
 
 if (failures.length) {

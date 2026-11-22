@@ -36,6 +36,7 @@ jobs:
             "js/tocasa.js routes/casa.html" \
             "js/totamaweb.js routes/tamaweb.html" \
             "js/ton64recomp.js routes/n64recomp.html" \
+            "js/torustpal.js routes/rustpal.html" \
             "js/tobrowserport.js routes/browserport.html" \
             "js/todos.js routes/dos.html" \
             "js/toflash.js routes/flash.html" \

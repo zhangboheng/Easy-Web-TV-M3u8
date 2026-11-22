@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
-  <rect x="20" y="20" width="160" height="80" rx="6" fill="#2b0f0f" stroke="#a3001b" stroke-width="2"/>
-  <circle cx="100" cy="60" r="30" fill="#a3001b"/>
-  <circle cx="100" cy="60" r="22" fill="#1b0808"/>
-  <circle cx="100" cy="60" r="12" fill="#e04f3f"/>
-  <circle cx="100" cy="60" r="5" fill="#1b0808"/>
-  <text x="100" y="100" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#e04f3f" text-anchor="middle">PRBOOM</text>
-</svg>

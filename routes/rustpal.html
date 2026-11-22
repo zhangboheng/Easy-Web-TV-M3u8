@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Legend of Sword and Fairy Player - Easy Web TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Zhang Boheng">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/emulatorjs.css">
+    <style>
+        .rustpal-wrapper { position: relative; max-width: 1024px; margin: 0 auto; background: #000; }
+        .rustpal-wrapper iframe { display: block; width: 100%; height: min(82vh, 760px); border: 2px solid rgba(201,164,92,0.45); border-radius: 10px; background: #111; }
+        .rustpal-wrapper iframe:fullscreen { width: 100vw; height: 100vh; border: none; border-radius: 0; background: #000; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="header-btn" id="backBtn" title="Back"><i class="fas fa-arrow-left"></i></div>
+            <div class="header-title"><i class="fas fa-gamepad"></i><span id="pageTitle" data-i18n="pageTitle">Legend of Sword and Fairy</span></div>
+        </div>
+        <div class="header-right">
+            <div class="header-action-btn" id="fullscreenBtn" style="display: none;"><i class="fas fa-expand"></i><span data-i18n="fullscreen">Fullscreen</span></div>
+            <div class="header-action-btn" id="resetBtn" style="display: none;"><i class="fas fa-redo"></i><span data-i18n="reset">Reset</span></div>
+        </div>
+    </header>
+    <main class="main-container">
+        <section class="upload-section" id="uploadSection">
+            <div class="upload-tabs"><div class="upload-tab active" id="tabDemo" data-tab="demo"><i class="fas fa-globe"></i><span data-i18n="tabDemo">Game</span></div></div>
+            <div class="search-box" id="demoBox">
+                <div class="upload-icon"><i class="fas fa-gamepad"></i></div>
+                <h2 class="upload-title" data-i18n="demoTitle">Legend of Sword and Fairy (DOS)</h2>
+                <p class="upload-desc" data-i18n="demoDesc">Play the classic 1995 DOS RPG in your browser with a complete Rust/WASM engine port running the original game data, embedded by hotlink to the official demo site. No DOSBox or local files are required.</p>
+                <button class="upload-btn" id="demoOpenBtn" style="margin: 10px auto;"><i class="fas fa-play"></i><span data-i18n="demoOpen">Launch Game</span></button>
+                <p class="upload-desc" style="margin-top:14px;"><i class="fas fa-info-circle"></i><span data-i18n="demoHint">The game data is hosted upstream by the project author. 《仙剑奇侠传》 is copyright of Softstar Entertainment; this page is for technical study and nostalgic research only, not commercial use. Sound starts after the first click or key press.</span></p>
+                <a class="upload-desc" id="demoOpenNewTab" href="https://madeye.github.io/Legend-of-Sword-and-Fairy/web/" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;color:#c9a45c;text-decoration:underline;">Open in a new tab ↗</a>
+            </div>
+            <div class="instructions-panel" id="instructionsPanel">
+                <div class="instructions-header" id="instructionsHeader"><h3 class="instructions-title"><i class="fas fa-info-circle"></i><span data-i18n="instructions">Instructions</span></h3><i class="fas fa-chevron-down instructions-toggle" id="instructionsToggle"></i></div>
+                <div class="instructions-content" id="instructionsContent">
+                    <div class="instruction-card"><h4><i class="fas fa-keyboard"></i> <span data-i18n="controlsTitle">Controls</span></h4><ul><li><i class="fas fa-check"></i> <span data-i18n="controlsHint1">Arrow keys move, Space/Enter confirms, Esc opens the menu. In battle: R repeat attack, A auto, D defend, E item, W throw, Q flee, F magic, S status</span></li><li><i class="fas fa-gamepad"></i> <span data-i18n="controlsHint2">Touch devices show an on-screen D-pad and 确认/取消/连击 buttons. Click the canvas first so the iframe receives keyboard focus and audio starts.</span></li></ul></div>
+                    <div class="instruction-card"><h4><i class="fas fa-bolt"></i> <span data-i18n="aboutTitle">About</span></h4><ul><li><i class="fas fa-info-circle"></i> <span data-i18n="aboutHint">Engine: GPL-3.0 Rust port from SDLPAL by madeye. Original game data © Softstar Entertainment; supplied by the upstream project for non-commercial study only. Requires modern browsers with WebAssembly and SharedArrayBuffer support.</span></li></ul></div>
+                </div>
+            </div>
+        </section>
+        <section class="emulator-section" id="playerSection">
+            <div class="rustpal-wrapper" id="rustpalWrapper">
+                <iframe id="rustpalFrame" title="Legend of Sword and Fairy player" allow="fullscreen; autoplay" allowfullscreen></iframe>
+                <div class="loading-overlay hidden" id="loadingOverlay"><div class="loading-spinner"></div><div class="loading-text"><span data-i18n="loading">Starting the game, please wait...</span><small data-i18n="loadingTip">The game loads from its official host; first launch can take a while</small></div></div>
+            </div>
+        </section>
+    </main>
+    <div class="toast hidden" id="toast"><i class="fas fa-info-circle"></i><span id="toastMessage"></span></div>
+    <script src="../js/torustpal.js"></script>
+</body>
+</html>

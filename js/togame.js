@@ -9,7 +9,7 @@ var games = [
         name: 'Arcade Emulator',
         platform: 'Arcade',
         category: 'emulator',
-        image: '../images/arcade.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/FBNEO_banner.png',
         url: '../routes/emulatorjs.html?core=fbneo'
     },
     {
@@ -17,7 +17,7 @@ var games = [
         name: 'Atari 2600 Emulator',
         platform: 'Atari 2600',
         category: 'emulator',
-        image: '../images/atari2600.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/stella_banner.png',
         url: '../routes/emulatorjs.html?core=stella2014'
     },
     {
@@ -25,7 +25,7 @@ var games = [
         name: 'Commodore PET Emulator',
         platform: 'PET',
         category: 'emulator',
-        image: '../images/pet.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/vice_banner.png',
         url: '../routes/emulatorjs.html?core=vice_xpet'
     },
     {
@@ -33,7 +33,7 @@ var games = [
         name: 'Commodore VIC-20 Emulator',
         platform: 'VIC-20',
         category: 'emulator',
-        image: '../images/vic20.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/vice_banner.png',
         url: '../routes/emulatorjs.html?core=vice_xvic'
     },
     {
@@ -41,7 +41,7 @@ var games = [
         name: 'ColecoVision Emulator',
         platform: 'ColecoVision',
         category: 'emulator',
-        image: '../images/colecovision.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Coleco%20-%20ColecoVision/Named_Titles/2010%20-%20The%20Graphic%20Action%20Game%20%28USA%2C%20Europe%29.png',
         url: '../routes/emulatorjs.html?core=gearcoleco'
     },
     {
@@ -49,7 +49,7 @@ var games = [
         name: 'Commodore 64 Emulator',
         platform: 'C64',
         category: 'emulator',
-        image: '../images/c64.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/vice_banner.png',
         url: '../routes/emulatorjs.html?core=vice_x64'
     },
     {
@@ -57,7 +57,7 @@ var games = [
         name: 'Atari 5200 Emulator',
         platform: 'Atari 5200',
         category: 'emulator',
-        image: '../images/atari5200.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/a5200_banner.png',
         url: '../routes/emulatorjs.html?core=a5200'
     },
     {
@@ -65,7 +65,7 @@ var games = [
         name: 'NES Emulator',
         platform: 'NES',
         category: 'emulator',
-        image: '../images/nes.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/fceumm_banner.png',
         url: '../routes/emulatorjs.html?core=fceumm'
     },
     {
@@ -73,7 +73,7 @@ var games = [
         name: 'Commodore Plus/4 Emulator',
         platform: 'Plus/4',
         category: 'emulator',
-        image: '../images/plus4.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/vice_banner.png',
         url: '../routes/emulatorjs.html?core=vice_xplus4'
     },
     {
@@ -81,7 +81,7 @@ var games = [
         name: 'Master System Emulator',
         platform: 'Master System',
         category: 'emulator',
-        image: '../images/mastersystem.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/smsplus_banner.png',
         url: '../routes/emulatorjs.html?core=smsplus'
     },
     {
@@ -89,7 +89,7 @@ var games = [
         name: 'Amiga Emulator',
         platform: 'Amiga',
         category: 'emulator',
-        image: '../images/amiga.svg',
+        image: 'https://cdn.simpleicons.org/commodore/ffffff',
         url: '../routes/emulatorjs.html?core=puae'
     },
     {
@@ -97,7 +97,7 @@ var games = [
         name: 'Commodore 128 Emulator',
         platform: 'C128',
         category: 'emulator',
-        image: '../images/c128.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/vice_banner.png',
         url: '../routes/emulatorjs.html?core=vice_x128'
     },
     {
@@ -105,7 +105,7 @@ var games = [
         name: 'Atari 7800 Emulator',
         platform: 'Atari 7800',
         category: 'emulator',
-        image: '../images/atari7800.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/prosystem_banner.png',
         url: '../routes/emulatorjs.html?core=prosystem'
     },
     {
@@ -113,7 +113,7 @@ var games = [
         name: 'Genesis Emulator',
         platform: 'Genesis',
         category: 'emulator',
-        image: '../images/genesis.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/genesis_plus_gx_banner.png',
         url: '../routes/emulatorjs.html?core=genesis_plus_gx'
     },
     {
@@ -121,7 +121,7 @@ var games = [
         name: 'Atari Lynx Emulator',
         platform: 'Atari Lynx',
         category: 'emulator',
-        image: '../images/atarilynx.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/handy_banner.png',
         url: '../routes/emulatorjs.html?core=handy'
     },
     {
@@ -129,7 +129,7 @@ var games = [
         name: 'Game Boy Emulator',
         platform: 'GB/GBC',
         category: 'emulator',
-        image: '../images/gb.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/gambatte_banner.png',
         url: '../routes/emulatorjs.html?core=gambatte'
     },
     {
@@ -137,7 +137,7 @@ var games = [
         name: 'Sega Game Gear Emulator',
         platform: 'Game Gear',
         category: 'emulator',
-        image: '../images/gamegear.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/smsplus_banner.png',
         url: '../routes/emulatorjs.html?core=smsplus'
     },
     {
@@ -145,7 +145,7 @@ var games = [
         name: 'SNES Emulator',
         platform: 'SNES',
         category: 'emulator',
-        image: '../images/snes.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/snes9x_banner.png',
         url: '../routes/emulatorjs.html?core=snes9x'
     },
     {
@@ -153,7 +153,7 @@ var games = [
         name: 'Sega CD Emulator',
         platform: 'Sega CD',
         category: 'emulator',
-        image: '../images/segacd.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/picodrive_banner.png',
         url: '../routes/emulatorjs.html?core=picodrive&platform=segacd'
     },
     {
@@ -161,7 +161,7 @@ var games = [
         name: '3DO Emulator',
         platform: '3DO',
         category: 'emulator',
-        image: '../images/3do.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/4do_banner.png',
         url: '../routes/emulatorjs.html?core=opera'
     },
     {
@@ -169,7 +169,7 @@ var games = [
         name: 'Atari Jaguar Emulator',
         platform: 'Atari Jaguar',
         category: 'emulator',
-        image: '../images/atarijaguar.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/virtualjaguar_banner.png',
         url: '../routes/emulatorjs.html?core=virtualjaguar'
     },
     {
@@ -177,7 +177,7 @@ var games = [
         name: 'Sega 32X Emulator',
         platform: 'Sega 32X',
         category: 'emulator',
-        image: '../images/sega32x.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/picodrive_banner.png',
         url: '../routes/emulatorjs.html?core=picodrive'
     },
     {
@@ -185,7 +185,7 @@ var games = [
         name: 'PS1 Emulator',
         platform: 'PS1',
         category: 'emulator',
-        image: '../images/ps1.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/pcsx_rearmed_banner.png',
         url: '../routes/emulatorjs.html?core=pcsx_rearmed'
     },
     {
@@ -193,7 +193,7 @@ var games = [
         name: 'Saturn Emulator',
         platform: 'Saturn',
         category: 'emulator',
-        image: '../images/saturn.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/yabause_banner.png',
         url: '../routes/emulatorjs.html?core=yabause'
     },
     {
@@ -201,7 +201,7 @@ var games = [
         name: 'Virtual Boy Emulator',
         platform: 'Virtual Boy',
         category: 'emulator',
-        image: '../images/virtualboy.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/mednafen_vb_banner.png',
         url: '../routes/emulatorjs.html?core=beetle_vb'
     },
     {
@@ -209,7 +209,7 @@ var games = [
         name: 'PC Engine Emulator',
         platform: 'PCE',
         category: 'emulator',
-        image: '../images/pcengine.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/mednafen_pce_fast_banner.png',
         url: '../routes/emulatorjs.html?core=mednafen_pce'
     },
     {
@@ -217,7 +217,7 @@ var games = [
         name: 'WonderSwan Emulator',
         platform: 'WS',
         category: 'emulator',
-        image: '../images/wonderswan.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/mednafen_wswan_banner.png',
         url: '../routes/emulatorjs.html?core=mednafen_wswan'
     },
     {
@@ -225,7 +225,7 @@ var games = [
         name: 'Neo Geo Pocket Emulator',
         platform: 'NGP',
         category: 'emulator',
-        image: '../images/ngp.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/mednafen_ngp_banner.png',
         url: '../routes/emulatorjs.html?core=mednafen_ngp'
     },
     {
@@ -233,7 +233,7 @@ var games = [
         name: 'Amstrad CPC Emulator',
         platform: 'CPC',
         category: 'emulator',
-        image: '../images/amstrad.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/Caprice32_banner.png',
         url: '../routes/emulatorjs.html?core=cap32'
     },
     {
@@ -241,7 +241,7 @@ var games = [
         name: 'Doom Engine (prboom)',
         platform: 'DOOM',
         category: 'emulator',
-        image: '../images/doom.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/prboom_banner.png',
         url: '../routes/emulatorjs.html?core=prboom'
     },
     // PS2 emulator (TabStationToo, PCSX2 compiled to WebAssembly, GPL-3.0):
@@ -254,7 +254,7 @@ var games = [
         name: 'PS2 Emulator',
         platform: 'PS2',
         category: 'emulator',
-        image: '../images/ps2.svg',
+        image: 'https://raw.githubusercontent.com/tabstationtoo/TabStationToo/wasm/bin/resources/icons/AppBanner.svg',
         url: '../routes/ps2.html'
     },
     // PS Vita emulator (vitaslop, MIT): embedded by hotlink to the official
@@ -265,7 +265,7 @@ var games = [
         name: 'PS Vita Emulator',
         platform: 'PS Vita',
         category: 'emulator',
-        image: '../images/psvita.svg',
+        image: 'https://raw.githubusercontent.com/cretz/vitaslop/main/projects/vitaslop-web/web/icon.svg',
         url: '../routes/vita.html'
     },
     {
@@ -273,7 +273,7 @@ var games = [
         name: 'ZX Spectrum Emulator',
         platform: 'ZX',
         category: 'emulator',
-        image: '../images/zx.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/fuse_banner.png',
         url: '../routes/emulatorjs.html?core=fuse'
     },
     {
@@ -281,7 +281,7 @@ var games = [
         name: 'PSP Emulator',
         platform: 'PSP',
         category: 'emulator',
-        image: '../images/psp.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Sony%20-%20PlayStation%20Portable/Named_Titles/Ace%20Combat%20X%20-%20Skies%20of%20Deception%20%28Europe%29%20%28En%2CJa%2CFr%2CDe%2CEs%2CIt%2CKo%29.png',
         url: '../routes/emulatorjs.html?core=ppsspp'
     },
     {
@@ -289,7 +289,7 @@ var games = [
         name: 'PC-FX Emulator',
         platform: 'PC-FX',
         category: 'emulator',
-        image: '../images/pcfx.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/NEC%20-%20PC-FX/Named_Titles/Battle%20Heat%20%28Japan%29.png',
         url: '../routes/emulatorjs.html?core=mednafen_pcfx'
     },
     {
@@ -297,7 +297,7 @@ var games = [
         name: 'Flash Player (Ruffle)',
         platform: 'Flash',
         category: 'emulator',
-        image: '../images/flash.svg',
+        image: 'https://raw.githubusercontent.com/ruffle-rs/ruffle/master/web/packages/demo/public/logo.svg',
         url: '../routes/flash.html'
     },
     {
@@ -305,7 +305,7 @@ var games = [
         name: 'DOS Emulator (js-dos)',
         platform: 'DOS',
         category: 'emulator',
-        image: '../images/dos.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/dosbox_banner.png',
         url: '../routes/dos.html'
     },
     {
@@ -313,7 +313,7 @@ var games = [
         name: 'ZX81/ZX80 Emulator',
         platform: 'ZX81/ZX80',
         category: 'emulator',
-        image: '../images/zx81.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/81_banner.png',
         url: '../routes/emulatorjs.html?core=81'
     },
     {
@@ -321,7 +321,7 @@ var games = [
         name: 'Thomson MO/TO Emulator',
         platform: 'Thomson MO/TO',
         category: 'emulator',
-        image: '../images/thomson.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/ThomsonMOTO_banner.png',
         url: '../routes/emulatorjs.html?core=crocods'
     },
     {
@@ -329,7 +329,7 @@ var games = [
         name: 'Philips CD-i Emulator',
         platform: 'Philips CD-i',
         category: 'emulator',
-        image: '../images/cdi.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/scummvm_banner.png',
         url: '../routes/emulatorjs.html?core=same_cdi'
     },
     {
@@ -337,7 +337,7 @@ var games = [
         name: 'N64 Emulator',
         platform: 'N64',
         category: 'emulator',
-        image: '../images/n64.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Super%20Mario%2064%20%28USA%29.png',
         url: '../routes/emulatorjs.html?core=mupen64plus_next'
     },
     {
@@ -345,7 +345,7 @@ var games = [
         name: 'MAME 2003+ Emulator',
         platform: 'MAME',
         category: 'emulator',
-        image: '../images/mame.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/mame2003_plus_banner.png',
         url: '../routes/emulatorjs.html?core=mame2003_plus'
     },
     {
@@ -353,7 +353,7 @@ var games = [
         name: 'GBA Emulator',
         platform: 'GBA',
         category: 'emulator',
-        image: '../images/gba.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/mgba_banner.png',
         url: '../routes/emulatorjs.html?core=mgba'
     },
     {
@@ -361,7 +361,7 @@ var games = [
         name: 'NDS Emulator',
         platform: 'NDS',
         category: 'emulator',
-        image: '../images/nds.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%20DS/Named_Titles/Chrono%20Trigger%20%28USA%29%20%28En%2CFr%29.png',
         url: '../routes/emulatorjs.html?core=melonds'
     },
 
@@ -379,7 +379,7 @@ var games = [
         name: 'Red Alert 2',
         platform: 'PC',
         category: 'recomp',
-        image: '../images/ra2.svg',
+        image: 'https://raw.githubusercontent.com/ra2-games/ra2/main/docs/assets/ra2vm-poster.jpg',
         url: '../routes/ra2.html'
     },
     // Diablo (diabloweb: WASM port of the open-source Devilution engine, hot-link) - recomp category
@@ -388,7 +388,7 @@ var games = [
         name: 'Diablo',
         platform: 'PC',
         category: 'recomp',
-        image: '../images/diablo.svg',
+        image: 'https://raw.githubusercontent.com/d07RiV/diabloweb/master/public/icon-192.png',
         url: '../routes/diablo.html'
     },
     // Zelda II (z2rs: Rust clean-room reconstruction compiled to WASM, hot-link, BYO ROM) - recomp category
@@ -397,7 +397,7 @@ var games = [
         name: 'Zelda II',
         platform: 'NES',
         category: 'recomp',
-        image: '../images/z2rs.svg',
+        image: 'https://raw.githubusercontent.com/troyedwardsjr/z2rs/main/crates/z2-web/site/assets/hero.webp',
         url: '../routes/z2rs.html'
     },
     {
@@ -405,7 +405,7 @@ var games = [
         name: 'BBC Micro Emulator',
         platform: 'BBC Micro',
         category: 'retropc',
-        image: '../images/jsbeeb.svg',
+        image: 'https://raw.githubusercontent.com/mattgodbolt/jsbeeb/master/public/images/jsbeeb-example.png',
         url: '../routes/jsbeeb.html'
     },
     {
@@ -413,7 +413,7 @@ var games = [
         name: 'Apple II Emulator',
         platform: 'Apple II',
         category: 'retropc',
-        image: '../images/apple2.svg',
+        image: 'https://cdn.simpleicons.org/apple/ffffff',
         url: '../routes/apple2.html'
     },
     {
@@ -421,7 +421,7 @@ var games = [
         name: 'Classic Macintosh Emulator',
         platform: 'Classic Mac',
         category: 'retropc',
-        image: '../images/mac.svg',
+        image: 'https://cdn.simpleicons.org/apple/ffffff',
         url: '../routes/mac.html'
     },
     {
@@ -429,7 +429,7 @@ var games = [
         name: 'WASM-4 Fantasy Console',
         platform: 'WASM-4',
         category: 'fantasy',
-        image: '../images/wasm4.svg',
+        image: 'https://cdn.simpleicons.org/webassembly/ffffff',
         url: '../routes/wasm4.html'
     },
     {
@@ -445,7 +445,7 @@ var games = [
         name: 'MSX Homebrew',
         platform: 'MSX',
         category: 'computer',
-        image: '../images/msx.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Microsoft%20-%20MSX/Named_Titles/10-Yard%20Fight%20%28Japan%29.png',
         url: '../routes/msx.html'
     },
     {
@@ -461,7 +461,7 @@ var games = [
         name: 'Atari ST Emulator',
         platform: 'Atari ST',
         category: 'computer',
-        image: '../images/atarist.svg',
+        image: 'https://cdn.simpleicons.org/atari/ffffff',
         url: '../routes/esty.html'
     },
     {
@@ -469,7 +469,7 @@ var games = [
         name: 'Android-x86 Emulator',
         platform: 'Android',
         category: 'mobile',
-        image: '../images/android.svg',
+        image: 'https://cdn.simpleicons.org/android/3DDC84',
         url: '../routes/android.html'
     },
     {
@@ -477,7 +477,7 @@ var games = [
         name: 'J2ME Mobile Games',
         platform: 'J2ME',
         category: 'mobile',
-        image: '../images/j2me.svg',
+        image: 'https://raw.githubusercontent.com/rosabis/J2meJS/main/java/img/icon-512.png',
         url: '../routes/j2me.html'
     },
     // Palm OS emulator (CloudpilotEmu hot-link, GPL-3.0) - mobile category
@@ -486,7 +486,7 @@ var games = [
         name: 'Palm OS Emulator',
         platform: 'Palm OS',
         category: 'mobile',
-        image: '../images/palm.svg',
+        image: 'https://raw.githubusercontent.com/cloudpilot-emu/cloudpilot-emu/master/doc/images/m515.jpeg',
         url: '../routes/palm.html'
     },
     // WIPI emulator (WIE hot-link, MIT) - mobile category
@@ -495,7 +495,7 @@ var games = [
         name: 'WIPI Emulator',
         platform: 'WIPI',
         category: 'mobile',
-        image: '../images/wipi.svg',
+        image: 'https://raw.githubusercontent.com/dlunch/WIE/main/wie-app/icons/icon.png',
         url: '../routes/wipi.html'
     },
     {
@@ -536,7 +536,7 @@ var games = [
         name: 'Tamaweb',
         platform: 'PC',
         category: 'webgames',
-        image: '../images/pet.svg',
+        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/vice_banner.png',
         url: '../routes/tamaweb.html'
     },
     // Open-source web games (hot-link via the generic player routes/webgame.html?game=<key>)
@@ -545,7 +545,7 @@ var games = [
         name: '2048',
         platform: 'PC',
         category: 'webgames',
-        image: '../images/web2048.svg',
+        image: 'https://raw.githubusercontent.com/devrsi0n/React-2048-game/master/public/favicon.ico',
         url: '../routes/webgame.html?game=2048'
     },
     {
@@ -553,7 +553,7 @@ var games = [
         name: 'Pac-Man',
         platform: 'PC',
         category: 'webgames',
-        image: '../images/pacman.svg',
+        image: 'https://raw.githubusercontent.com/masonicGIT/pacman/master/shots/montage2.png',
         url: '../routes/webgame.html?game=pacman'
     },
     {
@@ -561,7 +561,7 @@ var games = [
         name: 'T-Rex Runner',
         platform: 'PC',
         category: 'webgames',
-        image: '../images/trex.svg',
+        image: 'https://raw.githubusercontent.com/wayou/t-rex-runner/master/img/chrome_offline_game.gif',
         url: '../routes/webgame.html?game=trex'
     },
     {
@@ -569,7 +569,7 @@ var games = [
         name: 'Space Invaders',
         platform: 'PC',
         category: 'webgames',
-        image: '../images/spaceinvaders.svg',
+        image: 'https://raw.githubusercontent.com/dwmkerr/spaceinvaders/master/jev-invaders/docs/reflexive.gif',
         url: '../routes/webgame.html?game=spaceinvaders'
     },
     {
@@ -585,7 +585,7 @@ var games = [
         name: 'Flappy Bird',
         platform: 'PC',
         category: 'webgames',
-        image: '../images/floppybird.svg',
+        image: 'https://raw.githubusercontent.com/nebez/floppybird/master/screencap.png',
         url: '../routes/webgame.html?game=floppybird'
     },
     {
@@ -593,7 +593,7 @@ var games = [
         name: 'HexGL',
         platform: 'PC',
         category: 'webgames',
-        image: '../images/hexgl.svg',
+        image: 'https://raw.githubusercontent.com/BKcore/HexGL/master/icon_256.png',
         url: '../routes/webgame.html?game=hexgl'
     },
     {
@@ -625,7 +625,7 @@ var games = [
         name: 'Felt World',
         platform: 'PC',
         category: 'webgames',
-        image: '../images/feltworld.svg',
+        image: 'https://raw.githubusercontent.com/az9713/opus-5.5-open-world-game/master/screenshots/air.jpg',
         url: '../routes/feltworld.html'
     },
     {
@@ -633,7 +633,7 @@ var games = [
         name: 'NOVA LANCER',
         platform: 'PC',
         category: 'webgames',
-        image: '../images/nova.svg',
+        image: 'https://raw.githubusercontent.com/tanuu5/nova-lancer/main/docs/screenshots/hero.jpg',
         url: '../routes/nova.html'
     },
     {
@@ -641,7 +641,7 @@ var games = [
         name: 'Casa de Gemas',
         platform: 'PC',
         category: 'webgames',
-        image: '../images/casa.svg',
+        image: 'https://raw.githubusercontent.com/deepujain/casadegema/main/preview.png',
         url: '../routes/casa.html'
     },
     {
@@ -649,7 +649,7 @@ var games = [
         name: 'Papertrails',
         platform: 'PC',
         category: 'webgames',
-        image: '../images/papertrails.svg',
+        image: 'https://raw.githubusercontent.com/xikhar/papertrails/master/screenshots/hero.png',
         url: '../routes/webgame.html?game=papertrails'
     },
     // 雾锁山门 (AI-generated 3D action game, hot-link via the generic player, AGPL-3.0 + demo content © 2026 歸藏)
@@ -658,7 +658,7 @@ var games = [
         name: '雾锁山门 (AI 3D)',
         platform: 'PC',
         category: 'webgames',
-        image: '../images/mistgate.svg',
+        image: 'https://raw.githubusercontent.com/op7418/guizang-game-skill/main/media/cover.jpg',
         url: '../routes/webgame.html?game=wusuomon'
     },
     {
@@ -666,7 +666,7 @@ var games = [
         name: 'Super Mario 64',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64sm64.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Super%20Mario%2064%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=sm64'
     },
     {
@@ -674,7 +674,7 @@ var games = [
         name: 'F-Zero X',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64fzerox.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/F-Zero%20X%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=fzerox'
     },
     {
@@ -682,7 +682,7 @@ var games = [
         name: 'Mario Party',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64marioparty.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Mario%20Party%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=marioparty'
     },
     {
@@ -690,7 +690,7 @@ var games = [
         name: 'San Francisco Rush 2049',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64rush2049.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/San%20Francisco%20Rush%202049%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=rush2049'
     },
     {
@@ -698,7 +698,7 @@ var games = [
         name: 'GoldenEye 007',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64goldeneye.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/007%20-%20GoldenEye%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=goldeneye'
     },
     {
@@ -706,7 +706,7 @@ var games = [
         name: "The Legend of Zelda: Majora's Mask",
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64majorasmask.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Legend%20of%20Zelda%2C%20The%20-%20Majora%27s%20Mask%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=majorasmask'
     },
     {
@@ -714,7 +714,7 @@ var games = [
         name: 'Banjo-Kazooie',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64banjokazooie.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Banjo-Kazooie%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=banjokazooie'
     },
     {
@@ -722,7 +722,7 @@ var games = [
         name: "Conker's Bad Fur Day",
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64conker.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Conker%27s%20Bad%20Fur%20Day%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=conker'
     },
     {
@@ -730,7 +730,7 @@ var games = [
         name: 'Donkey Kong 64',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64dk64.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Donkey%20Kong%2064%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=dk64'
     },
     {
@@ -738,7 +738,7 @@ var games = [
         name: 'Wave Race 64',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64waverace64.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Wave%20Race%2064%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=waverace64'
     },
     {
@@ -746,7 +746,7 @@ var games = [
         name: 'Pilotwings 64',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64pilotwings64.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Pilotwings%2064%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=pilotwings64'
     },
     {
@@ -754,7 +754,7 @@ var games = [
         name: 'Banjo-Tooie',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64banjotooie.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Banjo-Tooie%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=banjotooie'
     },
     {
@@ -762,7 +762,7 @@ var games = [
         name: 'Mario Kart 64',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64mariokart64.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Mario%20Kart%2064%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=mariokart64'
     },
     {
@@ -770,7 +770,7 @@ var games = [
         name: 'Star Fox 64',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64starfox64.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Star%20Fox%2064%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=starfox64'
     },
     {
@@ -778,7 +778,7 @@ var games = [
         name: 'The Legend of Zelda: Ocarina of Time',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64oot.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Legend%20of%20Zelda%2C%20The%20-%20Ocarina%20of%20Time%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=oot'
     },
     {
@@ -786,7 +786,7 @@ var games = [
         name: 'Diddy Kong Racing',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64diddykongracing.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Diddy%20Kong%20Racing%20%28USA%29%20%28En%2CFr%29.png',
         url: '../routes/n64recomp.html?game=diddykongracing'
     },
     {
@@ -794,7 +794,7 @@ var games = [
         name: 'Jet Force Gemini',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64jetforcegemini.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Jet%20Force%20Gemini%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=jetforcegemini'
     },
     {
@@ -802,7 +802,7 @@ var games = [
         name: 'Star Wars Episode I: Racer',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64racer.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Star%20Wars%20Episode%20I%20-%20Racer%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=racer'
     },
     {
@@ -810,7 +810,7 @@ var games = [
         name: 'Pokémon Snap',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64pokemonsnap.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Pokemon%20Snap%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=pokemonsnap'
     },
     {
@@ -818,7 +818,7 @@ var games = [
         name: 'Rush 2: Extreme Racing USA',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64rush2.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Rush%202%20-%20Extreme%20Racing%20USA%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=rush2'
     },
     {
@@ -826,7 +826,7 @@ var games = [
         name: '1080° Snowboarding',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64snowboarding1080.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/1080%20TenEighty%20Snowboarding%20%28Europe%29%20%28En%2CJa%2CFr%2CDe%29.png',
         url: '../routes/n64recomp.html?game=snowboarding1080'
     },
     {
@@ -834,7 +834,7 @@ var games = [
         name: 'Space Station Silicon Valley',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64sssv.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/SpaceStation%20Silicon%20Valley%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=sssv'
     },
 
@@ -843,7 +843,7 @@ var games = [
         name: "Tony Hawk's Pro Skater 2",
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64thps2.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Tony%20Hawk%27s%20Pro%20Skater%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=thps2'
     },
     {
@@ -851,7 +851,7 @@ var games = [
         name: 'Star Wars: Rogue Squadron',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64roguesquadron.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Star%20Wars%20-%20Rogue%20Squadron%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=roguesquadron'
     },
     {
@@ -859,7 +859,7 @@ var games = [
         name: 'Beetle Adventure Racing!',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64beetle.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Beetle%20Adventure%20Racing%21%20%28USA%29%20%28En%2CFr%2CDe%29.png',
         url: '../routes/n64recomp.html?game=beetle'
     },
     {
@@ -867,7 +867,7 @@ var games = [
         name: 'Turok: Rage Wars',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64turokragewars.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Turok%20-%20Rage%20Wars%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=turokragewars'
     },
     {
@@ -875,7 +875,7 @@ var games = [
         name: 'WWF No Mercy',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64wwfmercy.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/WWF%20No%20Mercy%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=wwfmercy'
     },
     {
@@ -883,7 +883,7 @@ var games = [
         name: 'Mario Tennis',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64mariotennis.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Mario%20Tennis%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=mariotennis'
     },
     {
@@ -891,7 +891,7 @@ var games = [
         name: 'Perfect Dark',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64perfectdark.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Perfect%20Dark%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=perfectdark'
     },
     {
@@ -899,7 +899,7 @@ var games = [
         name: 'Mario Party 2',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64marioparty2.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Mario%20Party%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=marioparty2'
     },
     {
@@ -907,7 +907,7 @@ var games = [
         name: 'Mario Party 3',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64marioparty3.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Mario%20Party%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=marioparty3'
     },
     {
@@ -915,7 +915,7 @@ var games = [
         name: 'Super Smash Bros.',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64smashbros.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Super%20Smash%20Bros.%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=smashbros'
     },
     {
@@ -923,7 +923,7 @@ var games = [
         name: 'Paper Mario',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64papermario.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Paper%20Mario%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=papermario'
     },
     {
@@ -931,7 +931,7 @@ var games = [
         name: 'Mario Golf',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64mariogolf.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Mario%20Golf%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=mariogolf'
     },
     {
@@ -939,7 +939,7 @@ var games = [
         name: 'Rayman 2',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64rayman2.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Rayman%202%20-%20The%20Great%20Escape%20%28USA%29%20%28En%2CFr%2CDe%2CEs%2CIt%29.png',
         url: '../routes/n64recomp.html?game=rayman2'
     },
     {
@@ -947,7 +947,7 @@ var games = [
         name: "Donald Duck: Goin' Quackers",
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64goinquackers.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Donald%20Duck%20-%20Goin%27%20Quackers%20%28USA%29%20%28En%2CFr%2CDe%2CEs%2CIt%29.png',
         url: '../routes/n64recomp.html?game=goinquackers'
     },
     {
@@ -955,7 +955,7 @@ var games = [
         name: 'Dinosaur Planet',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64dinosaurplanet.svg',
+        image: 'https://raw.githubusercontent.com/n64hub/dinosaur-planet-recomp/main/icons/512.png',
         url: '../routes/n64recomp.html?game=dinosaurplanet'
     },
     {
@@ -963,7 +963,7 @@ var games = [
         name: 'Turok: Dinosaur Hunter',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64turok.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Turok%20-%20Dinosaur%20Hunter%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=turok'
     },
     {
@@ -971,7 +971,7 @@ var games = [
         name: 'Turok 2: Seeds of Evil',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64turok2.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Turok%202%20-%20Seeds%20of%20Evil%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=turok2'
     },
     {
@@ -979,7 +979,7 @@ var games = [
         name: 'Turok 3: Shadow of Oblivion',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64turok3.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Turok%203%20-%20Shadow%20of%20Oblivion%20%28USA%29%20%28Beta%29%20%282000-05-31%29.png',
         url: '../routes/n64recomp.html?game=turok3'
     },
     {
@@ -987,7 +987,7 @@ var games = [
         name: 'Excitebike 64',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: '../images/n64excitebike64.svg',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Excitebike%2064%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=excitebike64'
     },
     {
@@ -995,8 +995,19 @@ var games = [
         name: 'LEGO Island (Browser Port)',
         platform: 'PC / Web',
         category: 'recomp',
-        image: '../images/legoisland.svg',
+        image: 'https://raw.githubusercontent.com/isledecomp/isle.pizza/master/public/images/install.webp',
         url: '../routes/browserport.html?game=legoisland'
+    },
+    // Legend of Sword and Fairy (DOS): complete Rust/WASM engine port running
+    // the original game data, hot-linked to the official demo site in an iframe.
+    // The dedicated route gets COOP/COEP from sw.js so SharedArrayBuffer works.
+    {
+        id: 177,
+        name: 'Legend of Sword and Fairy (DOS)',
+        platform: 'PC',
+        category: 'recomp',
+        image: 'https://raw.githubusercontent.com/madeye/Legend-of-Sword-and-Fairy/master/screenshots/splash.png',
+        url: '../routes/rustpal.html'
     }
 ];
 
@@ -1219,7 +1230,7 @@ function gameCardHtml(game) {
     var fav = isFav(game.id);
     var html = '<a href="' + game.url + '"' + (game.external ? ' target="_blank" rel="noopener"' : '') + ' class="game-card" data-game-id="' + game.id + '" tabindex="0">';
     html += '  <div class="game-image-wrapper">';
-    html += '    <img class="game-image" src="' + game.image + '" alt="' + game.name + '" onerror="this.src=\'../images/noimage.jpeg\'">';
+    html += '    <img class="game-image" src="' + game.image + '" alt="' + game.name + '" onerror="this.src=\'../images/game.svg\'">';
     html += '    <button class="game-fav-btn' + (fav ? ' active' : '') + '" data-fav-id="' + game.id + '" title="Favorite" aria-label="Toggle favorite"><i class="fa' + (fav ? 's' : 'r') + ' fa-star"></i></button>';
     html += '  </div>';
     html += '  <div class="game-overlay"></div>';

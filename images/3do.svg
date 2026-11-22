@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
-  <rect x="20" y="25" width="160" height="70" rx="5" fill="#1a1a2e" stroke="#333" stroke-width="2"/>
-  <rect x="30" y="35" width="140" height="50" fill="#0a0a15" rx="3"/>
-  <circle cx="100" cy="60" r="20" fill="#333" stroke="#555" stroke-width="1"/>
-  <circle cx="100" cy="60" r="12" fill="#222"/>
-  <text x="100" y="60" text-anchor="middle" font-family="Arial" font-size="8" fill="#888">3DO</text>
-  <text x="100" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333">3DO Interactive</text>
-</svg>

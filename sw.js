@@ -19,7 +19,8 @@ const CACHE_NAME = 'easy-web-tv-v8.5.9';
 // timeouts on every failover loop, and the UI translated into 96 languages.
 // v8.5.9: redesigned Source Control (built-in rows + custom sources for Movie/Adult),
 // unified module/player headers, grid card-height fix, 96-language inline texts,
-// and a language-switch fix that preserves saved source selections.
+// a language-switch fix that preserves saved source selections, the Legend of
+// Sword and Fairy (DOS) player with per-page isolation, and online game card art.
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
@@ -106,12 +107,36 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Cross-origin isolation for the PS Vita / PS2 / Classic Mac player pages ONLY (v8.5.3+).
+  // Hot-linked proxy for Legend of Sword and Fairy (DOS): serve the upstream
+  // GitHub Pages files under this origin so the iframe inherits COOP/COEP and
+  // can use SharedArrayBuffer. No game files are bundled in this repository.
+  const proxyUrl = new URL(event.request.url);
+  if (proxyUrl.origin === self.location.origin && proxyUrl.pathname.startsWith('/xianjian/')) {
+    const upstreamPath = proxyUrl.pathname.replace(/^\/xianjian\//, '') + proxyUrl.search;
+    const upstreamUrl = 'https://madeye.github.io/Legend-of-Sword-and-Fairy/' + upstreamPath;
+    event.respondWith(
+      fetch(upstreamUrl, { mode: 'cors', credentials: 'omit' }).then((response) => {
+        const headers = new Headers(response.headers);
+        headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+        headers.set('Cross-Origin-Embedder-Policy', 'require-corp');
+        headers.set('Cross-Origin-Resource-Policy', 'cross-origin');
+        headers.set('Cache-Control', 'no-store');
+        return new Response(response.body, {
+          status: response.status,
+          statusText: response.statusText,
+          headers: headers
+        });
+      }).catch(() => new Response('Upstream unavailable', { status: 502 }))
+    );
+    return;
+  }
+
+  // Cross-origin isolation for the PS Vita / PS2 / Classic Mac / rustpal player pages ONLY (v8.5.3+).
   // Injecting COOP/COEP on these top-level navigations lets the embedded
-  // vitaslop / TabStationToo / Infinite Mac apps use SharedArrayBuffer inside
-  // their iframes - without touching any other page's hot-linked frames.
+  // vitaslop / TabStationToo / Infinite Mac / rustpal apps use SharedArrayBuffer
+  // inside their iframes - without touching any other page's hot-linked frames.
   const isoUrl = new URL(event.request.url);
-  const ISO_PATHS = ['/routes/vita.html', '/routes/ps2.html', '/routes/mac.html', '/routes/n64recomp.html'];
+  const ISO_PATHS = ['/routes/vita.html', '/routes/ps2.html', '/routes/mac.html', '/routes/n64recomp.html', '/routes/rustpal.html'];
   if (
     event.request.mode === 'navigate' &&
     isoUrl.origin === self.location.origin &&

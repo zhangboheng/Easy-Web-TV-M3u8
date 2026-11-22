@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
-  <rect x="15" y="28" width="170" height="64" rx="5" fill="#3d4450" stroke="#22262e" stroke-width="2"/>
-  <rect x="24" y="36" width="88" height="30" rx="2" fill="#0f1216"/>
-  <rect x="28" y="40" width="80" height="22" rx="1" fill="#27b34a" opacity="0.85"/>
-  <text x="68" y="56" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f1216" text-anchor="middle">AMSTRAD</text>
-  <rect x="120" y="36" width="56" height="8" rx="2" fill="#5d6673"/>
-  <rect x="120" y="48" width="56" height="8" rx="2" fill="#5d6673"/>
-  <rect x="24" y="74" width="152" height="10" rx="2" fill="#2b3036"/>
-</svg>

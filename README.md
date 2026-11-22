@@ -30,10 +30,13 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 ## 🆕 What's New (v8.5.9)
 
+- **Legend of Sword and Fairy (DOS)**: added a new Recomp card running the Rust/WASM engine port (GPL-3.0) via a hot-linked iframe of the official demo; the player page gets per-page COOP/COEP through the service worker so SharedArrayBuffer works, with no game files bundled
+- **Game card images moved online**: 112 of 123 game cards now use hot-linked public images (GitHub raw, RetroArch/libretro, upstream project assets and Simple Icons); 106 unused local SVGs were deleted, and the remaining 11 cards keep working local images
+- **Bug fixes**: the missing Recomp card image was restored with a working URL and its regression test updated; dark-background icons are now forced white/brand-coloured so they stay visible; the new page was added to the CI i18n pairing check (all 24 pairs pass)
 - **Redesigned Source Control**: built-in sources are listed per tab with their URLs and enable checkboxes; Movie and Adult now accept custom Apple CMS collection APIs that flow directly into their source dropdowns
 - **Unified top bars**: TV and Radio now share the fixed 70px header used by every module, and all player/game pages use the same frosted-glass toolbar
 - **Bug fixes**: short result sets no longer stretch cards into tall strips in Novel/Manga/Adult; language switching keeps saved source selections; inline settings texts are translated in all 96 languages
-- - **One proxy pool, with memory**: every CORS-proxied request now shares a single pool (`js/proxy-config.js`) that remembers which proxies failed - a bad proxy is demoted for 1-30 minutes instead of stalling the next request, demotions and proxies added in Settings take effect without a page reload, and each failover attempt has its own timeout so a hung proxy cannot freeze the page
+- **One proxy pool, with memory**: every CORS-proxied request now shares a single pool (`js/proxy-config.js`) that remembers which proxies failed - a bad proxy is demoted for 1-30 minutes instead of stalling the next request, demotions and proxies added in Settings take effect without a page reload, and each failover attempt has its own timeout so a hung proxy cannot freeze the page
 - **Binary-safe downloads**: proxies that transcode responses as text (corrupting ROMs, disk images and WASM-4 carts with U+FFFD) are detected, given a long cooldown and skipped by every downloader
 - **96 languages**: the interface is translated into 96 languages, and 20 languages that already existed in the translation table are selectable again
 - **Player fixes**: the WASM-4 loading overlay is mounted at body level and waits for the runtime before hiding (with fail-fast cart loading), the TV grid spinner is properly centred, and podcasts keep their overlay across the XML parse retry
@@ -190,6 +193,7 @@ All 43 EmulatorJS-based emulators + 10 standalone/hot-linked engines and their c
 | Retro PC | BBC Micro (jsbeeb) | jsbeeb (embedded) | – | – |
 | Retro PC | Apple II (apple2js) | apple2js (embedded) | – | – |
 | Retro PC | Red Alert 2 / Yuri's Revenge (RA2 VM) | ra2vm (hot-linked embed, Alpha) | – | – |
+| Recomp | Legend of Sword and Fairy (DOS, hot-linked embed, GPL-3.0 engine / Softstar game data) | rustpal (WASM) | – | – |
 | Fantasy | WASM-4 | wasm4 (vendored runtime) | – ³ | – |
 | Fantasy | PICO-8 (hot-linked web builds) | pico8 (no runtime bundled) | 5 | – |
 | Computer | MSX (WebMSX embed) | webmsx (hot-linked embed) | 3 ⁴ | – |
@@ -291,6 +295,7 @@ This project uses the following open source projects:
 - [RA2 VM](https://github.com/ra2-games/ra2) - Red Alert 2 in the browser via v86 (GPL-3.0, hot-linked embed)
 - [diabloweb](https://github.com/d07RiV/diabloweb) - Diablo in the browser via WebAssembly (built on the source-released [Devilution](https://github.com/diasurgical/devilution) engine; hot-linked embed)
 - [z2rs](https://github.com/troyedwardsjr/z2rs) - Zelda II clean-room reconstruction in Rust/WebAssembly (MIT, hot-linked embed)
+- [Legend of Sword and Fairy (DOS)](https://github.com/madeye/Legend-of-Sword-and-Fairy) - complete Rust/WASM port of the DOS engine from SDLPAL (GPL-3.0 engine, hot-linked embed; original game data © Softstar Entertainment, non-commercial study only)
 - [rk86-js](https://github.com/begoon/rk86-js) - Radio-86RK emulator (MIT, hot-linked embed)
 - [EstyJS](https://github.com/kaiec/EstyJS) - Atari ST 520/1040 emulator (GPL-2.0-or-later, hot-linked embed)
 - [2048](https://github.com/devrsi0n/React-2048-game) (React-2048-game), [pacman](https://github.com/masonicGIT/pacman), [t-rex-runner](https://github.com/wayou/t-rex-runner), [spaceinvaders](https://github.com/dwmkerr/spaceinvaders), [skifree.js](https://github.com/basicallydan/skifree.js), [floppybird](https://github.com/nebez/floppybird), [HexGL](https://github.com/BKcore/HexGL), [Astray](https://github.com/wwwtyro/Astray), [q1k3](https://github.com/phoboslab/q1k3), [underrun](https://github.com/phoboslab/underrun) - open-source web games (MIT / GPL-3.0 / BSD-3-Clause / Apache-2.0 / Unlicense, hot-linked embeds)

@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
-  <rect x="25" y="20" width="150" height="80" rx="6" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
-  <rect x="35" y="30" width="130" height="50" fill="#222" rx="3"/>
-  <rect x="45" y="40" width="40" height="30" fill="#333" rx="2"/>
-  <rect x="115" y="40" width="40" height="30" fill="#333" rx="2"/>
-  <text x="100" y="12" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="#888">ATARI 5200</text>
-  <text x="100" y="95" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">5200</text>
-</svg>
