@@ -1,5 +1,5 @@
 // Regression checks for the v8.5.3 game-module bug batch.
-// Run with: node docs/superpowers/check-game-regressions.js
+// Run with: node scripts/checks/check-game-regressions.js
 const fs = require('fs');
 const path = require('path');
 
@@ -31,7 +31,7 @@ const musicJs = read('js/music.js');
 const styleCss = read('css/style.css');
 const checksYml = read('.github/workflows/checks.yml');
 // i18n pairs moved to JSON in v8.6.0; syntax checks use the js/*.js glob.
-const i18nPairsRaw = read('docs/superpowers/i18n-pairs.json');
+const i18nPairsRaw = read('scripts/checks/i18n-pairs.json');
 const syntaxGlobOk = /js\/\*\.js/.test(checksYml);
 const emulatorJs = read('js/emulatorjs.js');
 const emulatorJsHtml = read('routes/emulatorjs.html');
@@ -115,9 +115,9 @@ check(/function showMusicError/.test(musicJs), 'music.js has no themed fallback 
 
 // 9. EmulatorJS stable additions: first low-risk batch.
 const newEmulatorCards = [
-    { platform: 'ZX81/ZX80', core: '81', image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/81_banner.png' },
-    { platform: 'Thomson MO/TO', core: 'crocods', image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/ThomsonMOTO_banner.png' },
-    { platform: 'Philips CD-i', core: 'same_cdi', image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/scummvm_banner.png' }
+    { platform: 'ZX81/ZX80', core: '81', image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/ZX81.png' },
+    { platform: 'Thomson MO/TO', core: 'crocods', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Thomson_MO5-IMG_1732.jpg/330px-Thomson_MO5-IMG_1732.jpg' },
+    { platform: 'Philips CD-i', core: 'same_cdi', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Philips_CD-i_210_player_%2830179599718%29.jpg/330px-Philips_CD-i_210_player_%2830179599718%29.jpg' }
 ];
 newEmulatorCards.forEach(({ platform, core, image }) => {
     const card = games.filter((g) => g.platform === platform);
@@ -125,8 +125,8 @@ newEmulatorCards.forEach(({ platform, core, image }) => {
     check(card.length === 1 && card[0].category === 'emulator', platform + ' is not in the emulator category');
     check(card.length === 1 && card[0].url === '../routes/emulatorjs.html?core=' + core,
         platform + ' does not point at the EmulatorJS ' + core + ' core');
-    check(card.length === 1 && card[0].image === image, platform + ' does not use its dedicated GitHub-hosted image');
-    check(/^https:\/\/raw\.githubusercontent\.com\//.test(card.length === 1 ? card[0].image : ''), platform + ' image must be GitHub-hosted');
+    check(card.length === 1 && card[0].image === image, platform + ' does not use its dedicated hosted image');
+    check(/^https:\/\/(raw\.githubusercontent\.com|upload\.wikimedia\.org)\//.test(card.length === 1 ? card[0].image : ''), platform + ' image must be a hosted network image');
     check(new RegExp("'" + core + "':").test(emulatorJs), 'emulatorjs.js has no ' + core + ' core-to-platform mapping');
 });
 check(/^\s*'p': '81',/m.test(emulatorJs), 'emulatorjs.js does not detect .p files as ZX81 core');
@@ -535,6 +535,107 @@ check(/GAME_IMAGE_CACHE/.test(sw) && /GAME_IMAGE_HOSTS/.test(sw),
     'sw.js must cache hot-linked game card images');
 check(/check-remote-images\.js/.test(checksYml),
     'checks.yml must verify remote game image URLs');
+
+// v8.6.1: text-games batch - five narrative / incremental games hot-linked
+// through the generic player routes/webgame.html?game=<key>.
+const TEXT_GAMES = [
+    ['adarkroom',  'A Dark Room',           'https://adarkroom.doublespeakgames.com/',     'doublespeakgames/adarkroom',              'MPL-2.0'],
+    ['liferestart', '人生重开模拟器',        'https://liferestart.syaro.io/',               'VickScarlet/remake',                      'MIT'],
+    ['candybox2',  'Candy Box 2',           'https://candybox2.github.io/',                'candybox2/candybox2.github.io',           'GPL-3.0'],
+    ['antimatter', 'Antimatter Dimensions', 'https://ivark.github.io/AntimatterDimensions/', 'IvarK/AntimatterDimensionsSourceCode',  'MIT'],
+    ['xiuxian',    '文字修仙',               'https://xiuxian.wenzi.games/',               'setube/vue-xiuxiangame',                  'CC BY-NC 4.0']
+];
+// Parse the real objects instead of grepping the whole file: a substring test
+// on the file text is satisfied by any other entry (e.g. 'MIT' appears on the
+// 2048 line), so it cannot detect a wrong value in a specific game entry.
+const wgRegistry = eval('(' + (webgame.match(/var WEBGAME_REGISTRY = (\{[\s\S]*?\n\});/) || ['', '{}'])[1] + ')');
+const wgI18n = eval('(' + (webgame.match(/var i18n = (\{[\s\S]*?\n\});/) || ['', '{}'])[1] + ')');
+check(Object.keys(wgI18n).length === 8, 'towebgame.js must keep 8 UI languages, found ' + Object.keys(wgI18n).length);
+
+for (const [key, name, url, repo, license] of TEXT_GAMES) {
+    const card = games.filter((g) => g.url === '../routes/webgame.html?game=' + key);
+    check(card.length === 1 && card[0].category === 'webgames', name + ' is not a single card in the webgames category');
+    check(card.length === 1 && /^https:\/\/raw\.githubusercontent\.com\//.test(card[0].image),
+        name + ' card image must be a hot-linked raw.githubusercontent.com URL');
+    const entry = wgRegistry[key];
+    check(Boolean(entry), 'towebgame.js has no ' + name + ' registry entry for key ' + key);
+    if (!entry) continue;
+    check(entry.url === url, name + ' registry URL is wrong: ' + entry.url);
+    check(entry.repo === repo, name + ' registry repo is wrong: ' + entry.repo);
+    check(entry.license === license, name + ' registry license is wrong: ' + entry.license);
+}
+
+// Every language must list the new text games in aboutHint and must not claim
+// that all works are open source (Xiuxian Cultivation is CC BY-NC 4.0).
+const TEXT_GAME_MENTIONS = ['A Dark Room', 'Candy Box 2', 'Antimatter Dimensions'];
+// Keyed by language so adding or reordering a language cannot silently skip a check.
+const FREE_LICENSE_HINT = {
+    zh: /自由许可/, en: /free-licensed/, ja: /フリーライセンス/, ko: /자유 라이선스/,
+    fr: /licence libre/, de: /frei lizenziert/, es: /licencia libre/, ru: /свободную лицензию/
+};
+Object.keys(wgI18n).forEach((lang) => {
+    const about = wgI18n[lang].aboutHint || '';
+    const hint = wgI18n[lang].demoHint || '';
+    TEXT_GAME_MENTIONS.forEach((n) => check(about.indexOf(n) !== -1, lang + ' aboutHint is missing ' + n));
+    check(/人生重开|人生重開|Life Restart/.test(about), lang + ' aboutHint is missing Life Restart');
+    check(/文字修仙|Xiuxian/.test(about), lang + ' aboutHint is missing Xiuxian Cultivation');
+    check(FREE_LICENSE_HINT[lang] && FREE_LICENSE_HINT[lang].test(hint),
+        lang + ' demoHint does not say the works are open source or free-licensed');
+});
+
+check(/A Dark Room/.test(webgameHtml), 'webgame.html fallback aboutHint does not mention the text games');
+check(/free-licensed/.test(webgameHtml), 'webgame.html fallback demoHint still claims every game is open source');
+check(/Text games \(hot-linked embeds\)/.test(readme), 'README has no text-games credit entry');
+check(i18nPairsRaw.indexOf('js/towebgame.js') !== -1, 'i18n-pairs.json misses js/towebgame.js');
+
+// v8.6.1: the hot-linked game URLs themselves must be verified in CI, not only
+// the card images - a dead upstream would otherwise show a blank iframe.
+const webgameUrls = Object.keys(wgRegistry).map((k) => wgRegistry[k].url);
+check(webgameUrls.length >= 17 && webgameUrls.every((u) => /^https:\/\//.test(u)),
+    'every webgame registry entry must use an https URL');
+check(/check-webgame-urls\.js/.test(checksYml), 'checks.yml must verify the hot-linked game URLs');
+
+// v8.6.1: the catalogue check must not regress into a tautology. The old
+// `expectedMobile = Math.max(1, mobile.length)` made the mobile assertion
+// true by construction, and the id101/id102 point checks were already covered
+// by the global uniqueness scan.
+const catalogueCheckRaw = read('scripts/checks/check-games.js');
+// Strip comments first: the file documents the old tautology in prose, and a
+// grep over raw text would report that explanation as a live regression.
+const catalogueCheck = catalogueCheckRaw.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/[^\n]*/g, '');
+check(!/Math\.max\(1,\s*mobile\.length\)/.test(catalogueCheck),
+    'check-games.js reintroduces a self-referential category assertion (always true)');
+check(/CATEGORY_FLOORS/.test(catalogueCheck) && /data-category=/.test(catalogueCheck),
+    'check-games.js must keep category floors and the game.html tab cross-check');
+check(/readFileSync\(path\.join\(root,\s*'routes\/game\.html'\)/.test(catalogueCheck),
+    'check-games.js must read routes/game.html to verify card categories against its tabs');
+
+// v8.6.1: the check scripts live in scripts/checks/ (they are project CI tooling,
+// not Superpowers skill output, which owns the local-only docs/ folder). Guard
+// the directory contract so a future move cannot silently drop checks from CI:
+// every script referenced by the workflow must exist, and every check script in
+// the folder must be invoked by it.
+const checkDir = 'scripts/checks';
+const workflowRefs = Array.from(new Set(checksYml.match(/scripts\/checks\/[\w.-]+\.js/g) || []));
+check(workflowRefs.length >= 14, 'checks.yml should invoke at least 14 check scripts, found ' + workflowRefs.length);
+workflowRefs.forEach((rel) => check(fs.existsSync(path.join(root, rel)), 'checks.yml runs a missing script: ' + rel));
+const dirScripts = fs.readdirSync(path.join(root, checkDir))
+    .filter((f) => f.startsWith('check-') && f.endsWith('.js'))
+    .map((f) => checkDir + '/' + f);
+// check-i18n.js is invoked indirectly through check-i18n-all.js.
+const notRun = dirScripts.filter((rel) => !workflowRefs.includes(rel) && rel !== 'scripts/checks/check-i18n.js');
+check(notRun.length === 0, 'check scripts not invoked by checks.yml: ' + notRun.join(', '));
+check(!/docs\/superpowers/.test(checksYml), 'checks.yml still points at the old docs/superpowers location');
+
+// v8.6.1: docs/ is the local-only Superpowers skill folder, so it must stay
+// ignored at the root and no check script may read or run anything from it.
+const gitignore = maybeRead('.gitignore');
+check(/^\/docs\/$/m.test(gitignore), '.gitignore no longer ignores the root docs/ folder (skill drafts would be committed)');
+check(!/^\s*!\/?docs\//m.test(gitignore), '.gitignore re-includes docs/ after ignoring it');
+check(!/['"(]docs\//.test(checksYml), 'checks.yml runs a script out of the local-only docs/ folder');
+const otherChecks = dirScripts.filter((rel) => rel !== 'scripts/checks/check-game-regressions.js');
+otherChecks.forEach((rel) => check(!/read\(['"]docs\/|docs\/superpowers/.test(read(rel)),
+    rel + ' still reads a file out of the local-only docs/ folder'));
 
 if (failures.length) {
     failures.forEach((f) => console.log('FAIL: ' + f));

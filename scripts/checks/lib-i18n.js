@@ -1,4 +1,4 @@
-// Shared i18n helpers for docs/superpowers/check-*.js (run with node)
+// Shared i18n helpers for scripts/checks/check-*.js (run with node)
 //
 // The game pages keep their strings in a top-level `var i18n = { en: {...}, ... }`
 // object literal. Reading it must not depend on a `// ---- helpers` marker: the

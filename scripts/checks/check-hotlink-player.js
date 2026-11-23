@@ -1,5 +1,5 @@
 // Guard the shared hot-link player helper (v8.6.0).
-// Usage: node docs/superpowers/check-hotlink-player.js
+// Usage: node scripts/checks/check-hotlink-player.js
 const fs = require('fs');
 const path = require('path');
 

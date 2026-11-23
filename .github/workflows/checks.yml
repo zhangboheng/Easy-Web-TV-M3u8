@@ -13,38 +13,40 @@ jobs:
         with:
           node-version: '20'
       - name: Game catalogue
-        run: node docs/superpowers/check-games.js js/togame.js
+        run: node scripts/checks/check-games.js js/togame.js
       - name: Remote game images
-        run: node docs/superpowers/check-remote-images.js
+        run: node scripts/checks/check-remote-images.js
+      - name: Hot-linked game URLs
+        run: node scripts/checks/check-webgame-urls.js
       - name: i18n pairs
-        run: node docs/superpowers/check-i18n-all.js
+        run: node scripts/checks/check-i18n-all.js
       - name: Index DOM structure
-        run: node docs/superpowers/check-index-dom.js
+        run: node scripts/checks/check-index-dom.js
       - name: Game regressions
-        run: node docs/superpowers/check-game-regressions.js
+        run: node scripts/checks/check-game-regressions.js
       - name: Hot-link player helper
-        run: node docs/superpowers/check-hotlink-player.js
+        run: node scripts/checks/check-hotlink-player.js
       - name: Version consistency
-        run: node docs/superpowers/check-version.js
+        run: node scripts/checks/check-version.js
       - name: Proxy config
-        run: node docs/superpowers/check-proxy-config.js
+        run: node scripts/checks/check-proxy-config.js
       - name: Proxy health cache
-        run: node docs/superpowers/check-proxy-health.js
+        run: node scripts/checks/check-proxy-health.js
       - name: Language selector
-        run: node docs/superpowers/check-language-selector.js
+        run: node scripts/checks/check-language-selector.js
       - name: Local media and PDF regressions
         shell: bash
         run: |
           set -e
-          node docs/superpowers/check-local-media.js
-          node docs/superpowers/check-local-media-behavior.js
-          node docs/superpowers/check-pdf-grouping.js
+          node scripts/checks/check-local-media.js
+          node scripts/checks/check-local-media-behavior.js
+          node scripts/checks/check-pdf-grouping.js
       - name: JavaScript syntax
         shell: bash
         run: |
           set -e
           # Every page script plus the service worker: these files are not
           # bundled, so a syntax error only shows up in the browser.
-          for file in js/*.js docs/superpowers/*.js sw.js; do
+          for file in js/*.js scripts/checks/*.js sw.js; do
             node --check "$file"
           done

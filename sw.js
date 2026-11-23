@@ -3,7 +3,7 @@
 // after a CORS re-fetch confirms a real 2xx (an opaque no-cors 404 looks like
 // status 0 and would suppress the card's Games-icon onerror fallback).
 // Cache name is kept in sync with js/version.js by check-version.js.
-const CACHE_NAME = 'easy-web-tv-v8.6.0';
+const CACHE_NAME = 'easy-web-tv-v8.6.1';
 
 // Assets to cache on install - only local assets that exist
 // v8.5.0: slimmed down to the index shell only; route pages, engines and

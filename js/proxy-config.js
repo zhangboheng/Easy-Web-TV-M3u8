@@ -12,7 +12,7 @@
 // Built-in proxy pool (de-duplicated), ordered by measured health.
 //
 // Order rationale (probed with curl + a real browser, see the summary in
-// docs/superpowers/check-proxy-config.js):
+// scripts/checks/check-proxy-config.js):
 //   1. corsmirror  - responds 200 for JSON APIs. Known caveat: it transcodes
 //                    binary bodies as text (U+FFFD), which the download
 //                    scripts detect and skip.

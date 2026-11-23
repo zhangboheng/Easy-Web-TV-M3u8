@@ -1,5 +1,5 @@
 // Behavioral regression tests for the local media library fixes.
-// Run with: node docs/superpowers/check-local-media-behavior.js
+// Run with: node scripts/checks/check-local-media-behavior.js
 //
 // Behavior tests: load js/local-media-core.js into a sandbox and assert the
 // observable contract of each fixed defect. They must fail before the fix.

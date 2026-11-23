@@ -1,5 +1,5 @@
-// Verify the application version is consistent everywhere (v8.6.0).
-// Usage: node docs/superpowers/check-version.js
+// Verify the application version is consistent everywhere (v8.6.1).
+// Usage: node scripts/checks/check-version.js
 const fs = require('fs');
 const path = require('path');
 

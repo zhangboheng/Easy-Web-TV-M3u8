@@ -6,7 +6,7 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.6.0-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.6.1-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
@@ -28,6 +28,10 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 **[Live Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)**
 
+## 🆕 What's New (v8.6.1)
+
+- **Text games batch**: A Dark Room, Life Restart (人生重开模拟器), Candy Box 2, Antimatter Dimensions and Xiuxian Cultivation (文字修仙) join Web Games via the generic hot-link player - nothing bundled, every game runs from its author's official build; card art is hot-linked from the project repositories, CI now verifies every hot-linked game URL is reachable, regression checks parse the registry and all 8 UI languages instead of grepping file text, and the catalogue check enforces category floors plus cross-file consistency (route pages, category tabs, local images) instead of the old tautological assertion
+
 ## 🆕 What's New (v8.6.0)
 
 - **Resilient game art**: hot-linked card images are cached by the service worker and fall back to the built-in Games icon if an upstream disappears; a CI check verifies every remote image URL
@@ -40,6 +44,7 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 - **Legend of Sword and Fairy (DOS)**: added a new Recomp card running the Rust/WASM engine port (GPL-3.0) via a hot-linked iframe of the official demo; the player page gets per-page COOP/COEP through the service worker so SharedArrayBuffer works, with no game files bundled
 - **Game card images moved online**: 112 of 123 game cards now use hot-linked public images (GitHub raw, RetroArch/libretro, upstream project assets and Simple Icons); 106 unused local SVGs were deleted, and the remaining 11 cards keep working local images
+- **Emulator card art (v8.6.1)**: the RetroArch core banners were replaced with distinct system preview images from the MuOS-Consoles image library, so each emulator card shows its own console instead of five Commodore machines sharing the VICE banner; all images stay hot-linked, no local assets added
 - **Bug fixes**: the missing Recomp card image was restored with a working URL and its regression test updated; dark-background icons are now forced white/brand-coloured so they stay visible; the new page was added to the CI i18n pairing check (all 24 pairs pass)
 - **Redesigned Source Control**: built-in sources are listed per tab with their URLs and enable checkboxes; Movie and Adult now accept custom Apple CMS collection APIs that flow directly into their source dropdowns
 - **Unified top bars**: TV and Radio now share the fixed 70px header used by every module, and all player/game pages use the same frosted-glass toolbar
@@ -216,6 +221,11 @@ All 43 EmulatorJS-based emulators + 10 standalone/hot-linked engines and their c
 | Web Games | Casa de Gemas (hot-linked embed, MIT) | Canvas / Web Audio (hot-linked build) | – | – |
 | Web Games | Papertrails (hot-linked embed, MIT) | Canvas (hot-linked build) | – | – |
 | Web Games | 雾锁山门 (hot-linked embed, AGPL-3.0) | three.js (AI-generated single-HTML) | – | – |
+| Web Games | A Dark Room (hot-linked embed, MPL-2.0) | jQuery (hot-linked build) | – | – |
+| Web Games | 人生重开模拟器 Life Restart (hot-linked embed, MIT) | React (hot-linked build) | – | – |
+| Web Games | Candy Box 2 (hot-linked embed, GPL-3.0) | jQuery / DOM text (hot-linked build) | – | – |
+| Web Games | Antimatter Dimensions (hot-linked embed, MIT) | Vue 2 (hot-linked build) | – | – |
+| Web Games | 文字修仙 Xiuxian Cultivation (hot-linked embed, CC BY-NC 4.0) | Vue 3 (hot-linked build) | – | – |
 | **Total** | **59 platforms** | – | **20694** | **34 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
@@ -271,6 +281,10 @@ The app is a static site. `index.html`, `manifest.json`, and `sw.js` are the mai
 
 Supporting directories include `data/roms/` (preset catalogues), `vendor/` (local runtimes), `catalogues/` and `gamebox/` (extra players and built-in games), and `images/` (assets).
 
+`scripts/checks/` holds the Node check scripts that CI runs on every push (game catalogue, i18n page pairs, version consistency, remote image and hot-linked game URL reachability, and the regression suite). Run them locally with `node scripts/checks/check-games.js js/togame.js` and friends, or `node --check` every file in `js/`, `scripts/checks/` and `sw.js`.
+
+A `docs/` folder may exist in a local clone; it holds Superpowers skill plans and drafts, is ignored by git, and no app file or check script reads from it.
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
@@ -310,6 +324,7 @@ This project uses the following open source projects:
 - [N64Recomp](https://github.com/N64Recomp/N64Recomp) and [n64hub](https://n64hub.com/) - Nintendo 64 static recompilations (all 41 games currently listed by n64hub; both n64hub's own recomps and third-party web ports, each credited to its upstream author/repository; browser builds via RT64/Emscripten/WASM/WebGPU, hot-linked embeds; bring your own lawfully obtained ROM; independent projects not endorsed by Nintendo)
 - [isle.pizza](https://isle.pizza/) ([isledecomp](https://github.com/isledecomp/isle)) - LEGO Island rebuilt from decompiled source, runs in the browser with no game files needed (hot-linked embed)
 - [guizang-game-skill](https://github.com/op7418/guizang-game-skill) - AI-generated 3D action game demo 《雾锁山门》 (AGPL-3.0, demo content © 2026 歸藏, hot-linked embed)
+- Text games (hot-linked embeds): [A Dark Room](https://github.com/doublespeakgames/adarkroom) (MPL-2.0), [Life Restart 人生重开模拟器](https://github.com/VickScarlet/remake) (MIT), [Candy Box 2](https://github.com/candybox2/candybox2.github.io) (GPL-3.0), [Antimatter Dimensions](https://github.com/IvarK/AntimatterDimensionsSourceCode) (MIT), [文字修仙 Xiuxian Cultivation](https://github.com/setube/vue-xiuxiangame) (CC BY-NC 4.0)
 - [Font Awesome](https://fontawesome.com/) - Icons
 - [Tamaweb](https://github.com/autosam/Tamaweb) - Virtual pet game (official static build hot-linked from autosam.github.io, CC BY-NC-SA 4.0)
 - [js-dos](https://js-dos.com/), [Ruffle](https://ruffle.rs/), [WASM-4](https://wasm4.org/), [v86](https://github.com/copy/v86) - Vendored game runtimes

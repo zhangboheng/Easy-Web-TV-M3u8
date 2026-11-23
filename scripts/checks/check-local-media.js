@@ -1,5 +1,5 @@
 // Static regression checks for the local media library feature.
-// Run with: node docs/superpowers/check-local-media.js
+// Run with: node scripts/checks/check-local-media.js
 const fs = require('fs');
 const path = require('path');
 

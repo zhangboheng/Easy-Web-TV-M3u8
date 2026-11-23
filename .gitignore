@@ -1,0 +1,66 @@
+# ---------------------------------------------------------------------------
+# The root docs/ folder is local-only: it belongs to the Superpowers skill and
+# holds working plans and drafts that must never be committed. All project CI
+# tooling lives in scripts/checks/ instead (app tooling, not skill output), so
+# nothing under docs/ is tracked and the whole folder stays out of the repo.
+# /doc/ is covered too for the same folder under its other common spelling.
+/docs/
+/doc/
+
+# ---------------------------------------------------------------------------
+# OS junk
+# ---------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+desktop.ini
+
+# ---------------------------------------------------------------------------
+# Editors / IDEs
+# ---------------------------------------------------------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ---------------------------------------------------------------------------
+# Local tooling & scratch output (this repo has no build step)
+# ---------------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.cache/
+coverage/
+*.log
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+*.swp
+*.swo
+*~
+
+# ---------------------------------------------------------------------------
+# Local secrets / overrides - never commit credentials
+# ---------------------------------------------------------------------------
+.env
+.env.*
+*.pem
+*.key
+*.p12
+secrets.yml
+
+# ---------------------------------------------------------------------------
+# DELIBERATELY NOT ignored (they are tracked app data, do not add patterns
+# that would hide them): vendor/v86/*.bin, routes/neogeo.zip,
+# vendor/js-dos/*.woff + *.mjs, vendor/wasm4/LICENSE.txt, data/**/*.json,
+# catalogues/*.json, gamebox/**, images/**, vendor/**.
+# ---------------------------------------------------------------------------

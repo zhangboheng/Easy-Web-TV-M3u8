@@ -9,7 +9,7 @@ var games = [
         name: 'Arcade Emulator',
         platform: 'Arcade',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/FBNEO_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/FBNEO.png',
         url: '../routes/emulatorjs.html?core=fbneo'
     },
     {
@@ -17,7 +17,7 @@ var games = [
         name: 'Atari 2600 Emulator',
         platform: 'Atari 2600',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/stella_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/A2600.png',
         url: '../routes/emulatorjs.html?core=stella2014'
     },
     {
@@ -25,7 +25,7 @@ var games = [
         name: 'Commodore PET Emulator',
         platform: 'PET',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/vice_banner.png',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Commodore_2001_Series-IMG_0448b.jpg/330px-Commodore_2001_Series-IMG_0448b.jpg',
         url: '../routes/emulatorjs.html?core=vice_xpet'
     },
     {
@@ -33,7 +33,7 @@ var games = [
         name: 'Commodore VIC-20 Emulator',
         platform: 'VIC-20',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/vice_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/VIC20.png',
         url: '../routes/emulatorjs.html?core=vice_xvic'
     },
     {
@@ -49,7 +49,7 @@ var games = [
         name: 'Commodore 64 Emulator',
         platform: 'C64',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/vice_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/C64.png',
         url: '../routes/emulatorjs.html?core=vice_x64'
     },
     {
@@ -57,7 +57,7 @@ var games = [
         name: 'Atari 5200 Emulator',
         platform: 'Atari 5200',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/a5200_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/A5200.png',
         url: '../routes/emulatorjs.html?core=a5200'
     },
     {
@@ -65,7 +65,7 @@ var games = [
         name: 'NES Emulator',
         platform: 'NES',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/fceumm_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/FC.png',
         url: '../routes/emulatorjs.html?core=fceumm'
     },
     {
@@ -73,7 +73,7 @@ var games = [
         name: 'Commodore Plus/4 Emulator',
         platform: 'Plus/4',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/vice_banner.png',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Commodore_Plus_4.jpg/330px-Commodore_Plus_4.jpg',
         url: '../routes/emulatorjs.html?core=vice_xplus4'
     },
     {
@@ -81,7 +81,7 @@ var games = [
         name: 'Master System Emulator',
         platform: 'Master System',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/smsplus_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/SMS.png',
         url: '../routes/emulatorjs.html?core=smsplus'
     },
     {
@@ -97,7 +97,7 @@ var games = [
         name: 'Commodore 128 Emulator',
         platform: 'C128',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/vice_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/C128.png',
         url: '../routes/emulatorjs.html?core=vice_x128'
     },
     {
@@ -105,7 +105,7 @@ var games = [
         name: 'Atari 7800 Emulator',
         platform: 'Atari 7800',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/prosystem_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/A7800.png',
         url: '../routes/emulatorjs.html?core=prosystem'
     },
     {
@@ -113,7 +113,7 @@ var games = [
         name: 'Genesis Emulator',
         platform: 'Genesis',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/genesis_plus_gx_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/GENESIS.png',
         url: '../routes/emulatorjs.html?core=genesis_plus_gx'
     },
     {
@@ -121,7 +121,7 @@ var games = [
         name: 'Atari Lynx Emulator',
         platform: 'Atari Lynx',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/handy_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/LYNX.png',
         url: '../routes/emulatorjs.html?core=handy'
     },
     {
@@ -129,7 +129,7 @@ var games = [
         name: 'Game Boy Emulator',
         platform: 'GB/GBC',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/gambatte_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/GB.png',
         url: '../routes/emulatorjs.html?core=gambatte'
     },
     {
@@ -137,7 +137,7 @@ var games = [
         name: 'Sega Game Gear Emulator',
         platform: 'Game Gear',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/smsplus_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/GG.png',
         url: '../routes/emulatorjs.html?core=smsplus'
     },
     {
@@ -145,7 +145,7 @@ var games = [
         name: 'SNES Emulator',
         platform: 'SNES',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/snes9x_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/SNES.png',
         url: '../routes/emulatorjs.html?core=snes9x'
     },
     {
@@ -153,7 +153,7 @@ var games = [
         name: 'Sega CD Emulator',
         platform: 'Sega CD',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/picodrive_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/MD.png',
         url: '../routes/emulatorjs.html?core=picodrive&platform=segacd'
     },
     {
@@ -161,7 +161,7 @@ var games = [
         name: '3DO Emulator',
         platform: '3DO',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/4do_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/3DO.png',
         url: '../routes/emulatorjs.html?core=opera'
     },
     {
@@ -169,7 +169,7 @@ var games = [
         name: 'Atari Jaguar Emulator',
         platform: 'Atari Jaguar',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/virtualjaguar_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/JAGUAR.png',
         url: '../routes/emulatorjs.html?core=virtualjaguar'
     },
     {
@@ -177,7 +177,7 @@ var games = [
         name: 'Sega 32X Emulator',
         platform: 'Sega 32X',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/picodrive_banner.png',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Sega-Genesis-32X-01.jpg/330px-Sega-Genesis-32X-01.jpg',
         url: '../routes/emulatorjs.html?core=picodrive'
     },
     {
@@ -185,7 +185,7 @@ var games = [
         name: 'PS1 Emulator',
         platform: 'PS1',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/pcsx_rearmed_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/PSX.png',
         url: '../routes/emulatorjs.html?core=pcsx_rearmed'
     },
     {
@@ -193,7 +193,7 @@ var games = [
         name: 'Saturn Emulator',
         platform: 'Saturn',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/yabause_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/SATURN.png',
         url: '../routes/emulatorjs.html?core=yabause'
     },
     {
@@ -201,7 +201,7 @@ var games = [
         name: 'Virtual Boy Emulator',
         platform: 'Virtual Boy',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/mednafen_vb_banner.png',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Virtual-Boy-Set.png/330px-Virtual-Boy-Set.png',
         url: '../routes/emulatorjs.html?core=beetle_vb'
     },
     {
@@ -209,7 +209,7 @@ var games = [
         name: 'PC Engine Emulator',
         platform: 'PCE',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/mednafen_pce_fast_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/PCE.png',
         url: '../routes/emulatorjs.html?core=mednafen_pce'
     },
     {
@@ -217,7 +217,7 @@ var games = [
         name: 'WonderSwan Emulator',
         platform: 'WS',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/mednafen_wswan_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/WS.png',
         url: '../routes/emulatorjs.html?core=mednafen_wswan'
     },
     {
@@ -225,7 +225,7 @@ var games = [
         name: 'Neo Geo Pocket Emulator',
         platform: 'NGP',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/mednafen_ngp_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/NGP.png',
         url: '../routes/emulatorjs.html?core=mednafen_ngp'
     },
     {
@@ -233,7 +233,7 @@ var games = [
         name: 'Amstrad CPC Emulator',
         platform: 'CPC',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/Caprice32_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/CPC.png',
         url: '../routes/emulatorjs.html?core=cap32'
     },
     {
@@ -241,7 +241,7 @@ var games = [
         name: 'Doom Engine (prboom)',
         platform: 'DOOM',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/prboom_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/DOOM.png',
         url: '../routes/emulatorjs.html?core=prboom'
     },
     // PS2 emulator (TabStationToo, PCSX2 compiled to WebAssembly, GPL-3.0):
@@ -273,7 +273,7 @@ var games = [
         name: 'ZX Spectrum Emulator',
         platform: 'ZX',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/fuse_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/ZXS.png',
         url: '../routes/emulatorjs.html?core=fuse'
     },
     {
@@ -305,7 +305,7 @@ var games = [
         name: 'DOS Emulator (js-dos)',
         platform: 'DOS',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/dosbox_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/MSDOS.png',
         url: '../routes/dos.html'
     },
     {
@@ -313,7 +313,7 @@ var games = [
         name: 'ZX81/ZX80 Emulator',
         platform: 'ZX81/ZX80',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/81_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/ZX81.png',
         url: '../routes/emulatorjs.html?core=81'
     },
     {
@@ -321,7 +321,7 @@ var games = [
         name: 'Thomson MO/TO Emulator',
         platform: 'Thomson MO/TO',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/ThomsonMOTO_banner.png',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Thomson_MO5-IMG_1732.jpg/330px-Thomson_MO5-IMG_1732.jpg',
         url: '../routes/emulatorjs.html?core=crocods'
     },
     {
@@ -329,7 +329,7 @@ var games = [
         name: 'Philips CD-i Emulator',
         platform: 'Philips CD-i',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/scummvm_banner.png',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Philips_CD-i_210_player_%2830179599718%29.jpg/330px-Philips_CD-i_210_player_%2830179599718%29.jpg',
         url: '../routes/emulatorjs.html?core=same_cdi'
     },
     {
@@ -337,7 +337,7 @@ var games = [
         name: 'N64 Emulator',
         platform: 'N64',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Super%20Mario%2064%20%28USA%29.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/N64.png',
         url: '../routes/emulatorjs.html?core=mupen64plus_next'
     },
     {
@@ -345,7 +345,7 @@ var games = [
         name: 'MAME 2003+ Emulator',
         platform: 'MAME',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/mame2003_plus_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/MAME.png',
         url: '../routes/emulatorjs.html?core=mame2003_plus'
     },
     {
@@ -353,7 +353,7 @@ var games = [
         name: 'GBA Emulator',
         platform: 'GBA',
         category: 'emulator',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/mgba_banner.png',
+        image: 'https://raw.githubusercontent.com/YoMama78/MuOS-Consoles/main/preview/GBA.png',
         url: '../routes/emulatorjs.html?core=mgba'
     },
     {
@@ -536,7 +536,7 @@ var games = [
         name: 'Tamaweb',
         platform: 'PC',
         category: 'webgames',
-        image: 'https://raw.githubusercontent.com/libretro/RetroArch/master/pkg/ctr/assets/vice_banner.png',
+        image: 'https://raw.githubusercontent.com/autosam/Tamaweb/main/apple-icon.png',
         url: '../routes/tamaweb.html'
     },
     // Open-source web games (hot-link via the generic player routes/webgame.html?game=<key>)
@@ -660,6 +660,49 @@ var games = [
         category: 'webgames',
         image: 'https://raw.githubusercontent.com/op7418/guizang-game-skill/main/media/cover.jpg',
         url: '../routes/webgame.html?game=wusuomon'
+    },
+    // Text games (v8.6.1 batch): narrative / incremental games via the same
+    // generic hot-link player. Card images are hot-linked from each project's
+    // official repository (onerror falls back to ../images/game.svg).
+    {
+        id: 178,
+        name: 'A Dark Room',
+        platform: 'PC',
+        category: 'webgames',
+        image: 'https://raw.githubusercontent.com/doublespeakgames/adarkroom/master/img/adr.png',
+        url: '../routes/webgame.html?game=adarkroom'
+    },
+    {
+        id: 179,
+        name: '人生重开模拟器',
+        platform: 'PC',
+        category: 'webgames',
+        image: 'https://raw.githubusercontent.com/AliyunWorkbench/lifeRestart/master/view/images/icons/icon-512x512.png',
+        url: '../routes/webgame.html?game=liferestart'
+    },
+    {
+        id: 180,
+        name: 'Candy Box 2',
+        platform: 'PC',
+        category: 'webgames',
+        image: 'https://raw.githubusercontent.com/candybox2/candybox2.github.io/master/favicon.png',
+        url: '../routes/webgame.html?game=candybox2'
+    },
+    {
+        id: 181,
+        name: 'Antimatter Dimensions',
+        platform: 'PC',
+        category: 'webgames',
+        image: 'https://raw.githubusercontent.com/IvarK/AntimatterDimensionsSourceCode/master/public/icon.png',
+        url: '../routes/webgame.html?game=antimatter'
+    },
+    {
+        id: 182,
+        name: '文字修仙',
+        platform: 'PC',
+        category: 'webgames',
+        image: 'https://raw.githubusercontent.com/setube/vue-xiuxiangame/master/public/icons/icon-512x512.png',
+        url: '../routes/webgame.html?game=xiuxian'
     },
     {
         id: 134,
@@ -899,7 +942,7 @@ var games = [
         name: 'Mario Party 2',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Mario%20Party%20%28USA%29.png',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Mario%20Party%202%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=marioparty2'
     },
     {
@@ -907,7 +950,7 @@ var games = [
         name: 'Mario Party 3',
         platform: 'Nintendo 64',
         category: 'recomp',
-        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Mario%20Party%20%28USA%29.png',
+        image: 'https://raw.githubusercontent.com/libretro/libretro-thumbnails/master/Nintendo%20-%20Nintendo%2064/Named_Titles/Mario%20Party%203%20%28USA%29.png',
         url: '../routes/n64recomp.html?game=marioparty3'
     },
     {

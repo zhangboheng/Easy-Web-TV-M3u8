@@ -1,5 +1,5 @@
 // Verify every remote game card image is reachable (v8.6.0).
-// Usage: node docs/superpowers/check-remote-images.js
+// Usage: node scripts/checks/check-remote-images.js
 // Uses Node 20's built-in fetch; no dependencies.
 const fs = require('fs');
 const path = require('path');
@@ -39,12 +39,27 @@ async function checkUrlOnce(url) {
     }
 }
 
-// Retry once so a single transient network hiccup does not fail CI.
+// Retry transient failures (429 rate-limit, 5xx, network hiccups) with
+// exponential backoff. Wikimedia and GitHub may rate-limit under load, so a
+// single short retry is not enough for CI reliability.
 async function checkUrl(url) {
-    let result = await checkUrlOnce(url);
-    if (result) {
-        await new Promise((r) => setTimeout(r, 500));
+    // Attempt schedule: 0ms, 1s, 3s, 8s.
+    const backoffs = [0, 1000, 3000, 8000];
+    let result = null;
+    for (const delay of backoffs) {
+        if (delay > 0) {
+            await new Promise((r) => setTimeout(r, delay));
+        }
         result = await checkUrlOnce(url);
+        if (!result) {
+            return null;
+        }
+        const status = result.match(/HTTP (\d{3})/);
+        // Only retry on rate-limit or server-side transient errors.
+        const retryable = status && (status[1] === '429' || (status[1] >= '500' && status[1] < '600'));
+        if (!retryable) {
+            return result;
+        }
     }
     return result;
 }

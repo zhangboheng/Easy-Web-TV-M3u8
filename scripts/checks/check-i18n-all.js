@@ -1,5 +1,5 @@
 // Run every i18n page pair listed in i18n-pairs.json (v8.6.0).
-// Usage: node docs/superpowers/check-i18n-all.js
+// Usage: node scripts/checks/check-i18n-all.js
 const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
