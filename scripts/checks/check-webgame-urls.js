@@ -1,41 +1,124 @@
-// Verify every hot-linked web game URL is reachable (v8.6.1).
+// Verify every hot-linked game and official-page URL in the manifest is reachable.
 // Usage: node scripts/checks/check-webgame-urls.js
-// The generic player routes/webgame.html?game=<key> loads these URLs in an
-// iframe. Card images are covered by check-remote-images.js; this closes the
-// other half of the dependency: a dead upstream would otherwise show a blank
-// iframe while every static check stays green.
+// Covers the generic WEBGAME_REGISTRY plus every iframe/new-tab URL declared in
+// scripts/checks/hotlink-pages.json. Card images are covered by
+// check-remote-images.js; this closes the dependency that would otherwise show
+// a blank iframe while every static check stays green.
 // Uses Node 18+ built-in fetch; no dependencies.
 const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..', '..');
-const src = fs.readFileSync(path.join(root, 'js/towebgame.js'), 'utf8');
-const registryMatch = src.match(/var WEBGAME_REGISTRY = (\{[\s\S]*?\n\});/);
-if (!registryMatch) {
-    console.log('FAIL: WEBGAME_REGISTRY not found in js/towebgame.js');
-    process.exit(1);
-}
-const registry = eval('(' + registryMatch[1] + ')');
-const keys = Object.keys(registry);
-if (!keys.length) {
-    console.log('FAIL: WEBGAME_REGISTRY is empty');
-    process.exit(1);
+const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8');
+const manifestPages = JSON.parse(read('scripts/checks/hotlink-pages.json'));
+const scriptCache = new Map();
+function scriptSource(rel) {
+    if (!scriptCache.has(rel)) scriptCache.set(rel, read(rel));
+    return scriptCache.get(rel);
 }
 
-// Deduplicate: several entries can share one host.
+// Extract a JavaScript object/array literal assigned to a top-level var.
+// Quote-aware bracket matching is enough for these hand-written registries.
+function extractLiteral(src, name) {
+    const marker = new RegExp('\\bvar\\s+' + name + '\\s*=\\s*');
+    const match = marker.exec(src);
+    if (!match) return null;
+    const start = match.index + match[0].length;
+    const open = src[start];
+    if (open !== '{' && open !== '[') return null;
+    const close = open === '{' ? '}' : ']';
+    let depth = 0;
+    let quote = null;
+    let escaped = false;
+    for (let i = start; i < src.length; i += 1) {
+        const ch = src[i];
+        if (quote) {
+            if (escaped) escaped = false;
+            else if (ch === '\\') escaped = true;
+            else if (ch === quote) quote = null;
+            continue;
+        }
+        if (ch === "'" || ch === '"' || ch === '`') { quote = ch; continue; }
+        if (ch === open) depth += 1;
+        else if (ch === close) {
+            depth -= 1;
+            if (depth === 0) return src.slice(start, i + 1);
+        }
+    }
+    return null;
+}
+
 const targets = [];
 const seen = new Set();
-keys.forEach((key) => {
-    const url = registry[key] && registry[key].url;
+function addTarget(key, url) {
     if (typeof url !== 'string' || !/^https:\/\//.test(url)) {
         targets.push({ key, url: String(url), bad: true });
-        return;
+        return 0;
     }
     if (!seen.has(url)) {
         seen.add(url);
         targets.push({ key, url, bad: false });
     }
+    return 1;
+}
+
+const collectedResolvers = new Set();
+function collectResolver(page, role, resolver) {
+    const src = scriptSource(page.script);
+    const label = page.route + ' ' + role;
+    const name = resolver && resolver.name;
+    if (!name) return 0;
+    let count = 0;
+    if (resolver.type === 'const' || resolver.type === 'prefix') {
+        const match = src.match(new RegExp('\\bvar\\s+' + name + "\\s*=\\s*'(https:\\/\\/[^']+)'"));
+        count = match ? addTarget(label + ' ' + name, match[1]) : 0;
+    } else if (resolver.type === 'registry') {
+        const literal = extractLiteral(src, name);
+        if (!literal) return 0;
+        const value = eval('(' + literal + ')');
+        const items = Array.isArray(value) ? value : Object.keys(value).map((k) => value[k]);
+        items.forEach((item, i) => {
+            count += addTarget(label + ' ' + name + '[' + i + ']', item && item[resolver.field]);
+        });
+    }
+    if (count) collectedResolvers.add(name);
+    return count;
+}
+
+manifestPages.forEach((page) => {
+    collectResolver(page, 'frame', page.resolver);
+    collectResolver(page, 'new tab', page.newTabResolver);
 });
+
+const webgameLiteral = extractLiteral(scriptSource('js/towebgame.js'), 'WEBGAME_REGISTRY');
+const registryKeys = webgameLiteral ? Object.keys(eval('(' + webgameLiteral + ')')) : [];
+
+// Every manifest resolver must contribute at least one reachable URL.
+const preflightFailures = [];
+manifestPages.forEach((page) => {
+    [page.resolver, page.newTabResolver].forEach((resolver) => {
+        if (resolver && resolver.name && !collectedResolvers.has(resolver.name)) {
+            preflightFailures.push('URL checker could not resolve ' + resolver.name + ' from ' + page.route);
+        }
+    });
+});
+if (preflightFailures.length) {
+    preflightFailures.forEach((f) => console.log('FAIL: ' + f));
+    process.exit(1);
+}
+
+// itch.io rejects direct Node fetch connections in this environment (verified
+// reachable through a normal browser/HTTP client). Do not call those upstreams
+// dead; report them as unverifiable instead of failing the whole audit.
+const UNVERIFIABLE_HOSTS = new Set(['itch.io']);
+function isUnverifiable(url) {
+    try {
+        const host = new URL(url).hostname.toLowerCase();
+        return UNVERIFIABLE_HOSTS.has(host) || host.endsWith('.itch.io');
+    } catch (e) {
+        return false;
+    }
+}
 
 const TIMEOUT_MS = 25000;
 const CONCURRENCY = 6;
@@ -92,12 +175,17 @@ async function checkUrl(url) {
 
 (async () => {
     const failures = [];
+    const skipped = [];
     let index = 0;
     async function worker() {
         while (index < targets.length) {
             const target = targets[index++];
             if (target.bad) {
                 failures.push(target.key + ' -> not an https URL: ' + target.url);
+                continue;
+            }
+            if (isUnverifiable(target.url)) {
+                skipped.push(target.key + ' ' + target.url);
                 continue;
             }
             const result = await checkUrl(target.url);
@@ -109,5 +197,5 @@ async function checkUrl(url) {
         failures.forEach((f) => console.log('FAIL: ' + f));
         process.exit(1);
     }
-    console.log('checked ' + targets.length + ' hot-linked game URLs (' + keys.length + ' registry entries) | ALL OK');
+    console.log('checked ' + targets.length + ' hot-linked game/new-tab URLs across ' + manifestPages.length + ' pages (' + registryKeys.length + ' registry entries) | ALL OK' + (skipped.length ? ' (' + skipped.length + ' itch.io URLs unverifiable by Node fetch)' : ''));
 })();
