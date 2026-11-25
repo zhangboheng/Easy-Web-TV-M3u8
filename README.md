@@ -6,7 +6,7 @@
 [![Forks](https://img.shields.io/github/forks/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/network/members)
 [![Stars](https://img.shields.io/github/stars/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/stargazers)
 [![License](https://img.shields.io/github/license/zhangboheng/Easy-Web-TV-M3u8)](https://github.com/zhangboheng/Easy-Web-TV-M3u8/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-8.6.1-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
+[![Version](https://img.shields.io/badge/version-8.6.2-green)](https://github.com/zhangboheng/Easy-Web-TV-M3u8)
 
 An all-in-one web entertainment platform to watch TV, movies, series, anime, shows, listen to music and radio, read novels and manga, and play games - all in one place.
 
@@ -204,7 +204,7 @@ All 43 EmulatorJS-based emulators + 10 standalone/hot-linked engines and their c
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
 ² No bundled games: load your own disc image via upload/URL, plus a BIOS file dumped from your own console (Sega CD: `bios_CD_U/J/E.bin`; PC-FX: `pcfx.rom`) using the BIOS upload box on the emulator page.
 ³ No bundled games: v86 bootsector demos boot from their authors' GitHub releases (BootRogue/BootBASIC/bootOS, BSD-2), OS images come from the official v86 demo CDN (copy.sh) and are downloaded to the Disk Image tab, and WASM-4 carts are loaded from the official cart library or your own file.
-⁴ MSX presets are free/open homebrew ROMs hot-linked from their authors' official GitHub releases (nohzdyve GPL-3.0, Go Penguin!, Zeros Houkou R MIT); J2ME has no presets - open the official demo or load your own jars. Neither engine is bundled: WebMSX and J2meJS are embedded by hotlink per their authors' intended web-embedding use.
+⁴ MSX presets are free/open homebrew ROMs hot-linked from their authors' official GitHub releases (nohzdyve GPL-3.0, Go Penguin!, Zeros Houkou R MIT); J2ME has no bundled presets - launch the official demo inside the page, paste a CORS-enabled jar URL, or choose a local jar with the installer inside the official player. Neither engine is bundled: WebMSX and J2meJS are embedded by hotlink per their authors' intended web-embedding use.
 ⁵ Android-x86 boots a user-provided image with the vendored v86 engine (BSD-2-Clause). No Android system image, GApps, or proprietary apps are bundled: bring a lawful Android-x86 ISO/IMG, preferably a compact x86 6/7 build, and allow time for the browser VM to boot.
 
 ⁵ ZX81 presets are 12 freeware homebrew programs by Kurt-Arne Johnsen, hot-linked from the author's repository whose license says "Totally free" and requests author credit; Thomson and CD-i ship empty preset JSON files and are intentionally user-supplied-media only.
