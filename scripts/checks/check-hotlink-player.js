@@ -30,6 +30,23 @@ check(/hotlinkRetry/.test(helper), 'shared hotlink player must create a retry co
 check(/hotlinkNewTab/.test(helper), 'shared hotlink player must create an official-page link');
 check(/addEventListener\(['"]load['"]/.test(helper), 'shared hotlink player must listen for iframe load');
 check(/about:blank/.test(helper), 'shared hotlink player must clear stopped iframes');
+check(/removeAttribute\(['"]loading['"]\)/.test(helper),
+    'shared hotlink player must remove lazy iframe loading');
+check(helper.indexOf('pendingLoad') !== -1, 'shared hotlink player must track a pending real iframe load');
+check(helper.indexOf('!pendingLoad') !== -1, 'iframe load handler must ignore reset loads');
+check(!/frame\.src\s*===\s*['"]about:blank['"]/.test(helper),
+    'iframe load handler must not infer completion from the current frame.src');
+
+// sessionStorage throws in storage-blocked/private contexts. A throw here would
+// abort the page script before createPlayer runs, so the isolation bootstrap
+// must degrade to a non-isolated page instead of crashing.
+const ensureBlock = helper.slice(helper.indexOf('function ensureIsolated'), helper.indexOf('function resolve'));
+check(/try\s*\{[\s\S]*sessionStorage\.getItem[\s\S]*\}\s*catch/.test(ensureBlock),
+    'ensureIsolated must guard sessionStorage.getItem');
+check(/try\s*\{[\s\S]*sessionStorage\.setItem[\s\S]*\}\s*catch/.test(ensureBlock),
+    'ensureIsolated must guard sessionStorage.setItem');
+check(/try\s*\{[\s\S]*sessionStorage\.removeItem[\s\S]*\}\s*catch/.test(ensureBlock),
+    'ensureIsolated must guard sessionStorage.removeItem');
 check(!/(TAMAWEB_HOME|WEBGAME_BASE|MAC_EMBED_URL|RUSTPAL_BASE)/.test(helper),
     'shared hotlink player must not hardcode any page-specific URL');
 
@@ -41,6 +58,14 @@ const manifestRel = 'scripts/checks/hotlink-pages.json';
 const manifestPath = path.join(root, manifestRel);
 check(fs.existsSync(manifestPath), 'missing ' + manifestRel + ' hotlink page manifest');
 const pages = fs.existsSync(manifestPath) ? JSON.parse(read(manifestRel)) : [];
+const rustpalPage = pages.find((p) => p.route === 'routes/rustpal.html');
+check(rustpalPage && rustpalPage.resolver && rustpalPage.resolver.name === 'RUSTPAL_BASE',
+    'rustpal frame resolver must use the SW-proxied RUSTPAL_BASE');
+check(rustpalPage && rustpalPage.newTabResolver && rustpalPage.newTabResolver.name === 'RUSTPAL_UPSTREAM',
+    'rustpal new-tab resolver must use RUSTPAL_UPSTREAM');
+const rustpalSource = read('js/torustpal.js');
+check(/RUSTPAL_BASE\s*=\s*RUSTPAL_UPSTREAM/.test(rustpalSource),
+    'rustpal must fall back to RUSTPAL_UPSTREAM when the service worker is unavailable');
 if (Array.isArray(pages)) {
     const iframeRoutes = fs.readdirSync(path.join(root, 'routes'))
         .filter((f) => f.endsWith('.html'))
@@ -64,6 +89,9 @@ if (Array.isArray(pages)) {
         const src = read(p.script);
         check(html.indexOf('id="' + p.frameId + '"') !== -1,
             p.route + ' is missing iframe id ' + p.frameId);
+        check(!/loading\s*=\s*["']lazy["']/i.test(html),
+            p.route + ' must not lazy-load its iframe: the player reveals it from display:none, ' +
+            'and Chrome skips the later src assignment');
         check(html.indexOf('id="' + p.overlayId + '"') !== -1,
             p.route + ' is missing overlay id ' + p.overlayId);
         check(src.indexOf(p.frameId) !== -1,
@@ -77,6 +105,10 @@ if (Array.isArray(pages)) {
             if (resolver.type === 'const' || resolver.type === 'prefix') {
                 check(new RegExp('\\bvar\\s+' + resolver.name + "\\s*=\\s*'https://").test(src),
                     resolver.name + ' must be a literal https:// URL in ' + p.script);
+            }
+            if (resolver.type === 'proxy') {
+                check(new RegExp('\\bvar\\s+' + resolver.name + "\\s*=\\s*'/").test(src),
+                    resolver.name + ' must be a literal same-origin path in ' + p.script);
             }
         });
         if (p.isolated) {
@@ -121,6 +153,10 @@ Object.keys(isolated).forEach((js) => {
     const src = read(js);
     check(/HotlinkPlayer\.ensureIsolated\(/.test(src), js + ' does not call HotlinkPlayer.ensureIsolated');
     check(!/function ensureIsolation/.test(src), js + ' still has an inline isolation block');
+    const isoPos = src.indexOf('HotlinkPlayer.ensureIsolated(');
+    const playerPos = src.indexOf('HotlinkPlayer.createPlayer(');
+    check(isoPos !== -1 && playerPos !== -1 && isoPos < playerPos,
+        js + ' must call ensureIsolated before createPlayer');
     const html = read(isolated[js]);
     const helperPos = html.indexOf('js/hotlink-player.js');
     const pagePos = html.indexOf(js.replace('js/', 'js/'));

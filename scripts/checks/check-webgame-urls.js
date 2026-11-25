@@ -63,11 +63,23 @@ function addTarget(key, url) {
 }
 
 const collectedResolvers = new Set();
+// Same-origin SW-proxied playback paths are intentionally not Node-fetchable.
+// They are still declared in the manifest; the upstream origin is audited via
+// the corresponding new-tab resolver (e.g. RUSTPAL_UPSTREAM).
+const PROXIED_RESOLVERS = new Set(['RUSTPAL_BASE']);
 function collectResolver(page, role, resolver) {
     const src = scriptSource(page.script);
     const label = page.route + ' ' + role;
     const name = resolver && resolver.name;
     if (!name) return 0;
+    if (PROXIED_RESOLVERS.has(name)) {
+        const proxyMatch = src.match(new RegExp('\\bvar\\s+' + name + "\\s*=\\s*'(/[^']+)'"));
+        if (proxyMatch) {
+            collectedResolvers.add(name);
+            return 1;
+        }
+        return 0;
+    }
     let count = 0;
     if (resolver.type === 'const' || resolver.type === 'prefix') {
         const match = src.match(new RegExp('\\bvar\\s+' + name + "\\s*=\\s*'(https:\\/\\/[^']+)'"));

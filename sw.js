@@ -3,7 +3,7 @@
 // after a CORS re-fetch confirms a real 2xx (an opaque no-cors 404 looks like
 // status 0 and would suppress the card's Games-icon onerror fallback).
 // Cache name is kept in sync with js/version.js by check-version.js.
-const CACHE_NAME = 'easy-web-tv-v8.6.1';
+const CACHE_NAME = 'easy-web-tv-v8.6.2';
 
 // Assets to cache on install - only local assets that exist
 // v8.5.0: slimmed down to the index shell only; route pages, engines and
@@ -119,10 +119,31 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Same-origin documents/scripts/stylesheets keep their filenames across
+  // releases, so bypass the browser HTTP cache for them before the early
+  // proxy/isolation branches. Images, media and Range requests keep the normal
+  // cache path; a full revalidation of a video byte range is wasteful.
+  const requestUrl = new URL(event.request.url);
+  const bypassDestinations = ['', 'document', 'script', 'style', 'worker', 'manifest'];
+  const networkRequest = (function () {
+    if (requestUrl.origin !== self.location.origin ||
+        event.request.headers.get('range') !== null ||
+        bypassDestinations.indexOf(event.request.destination) === -1) {
+      return event.request;
+    }
+    try {
+      return new Request(event.request, { cache: 'reload' });
+    } catch (e) {
+      // Older engines can refuse to copy a navigation Request. Keep serving
+      // the original request instead of failing the whole fetch handler.
+      return event.request;
+    }
+  })();
+
   // Hot-linked proxy for Legend of Sword and Fairy (DOS): serve the upstream
   // GitHub Pages files under this origin so the iframe inherits COOP/COEP and
   // can use SharedArrayBuffer. No game files are bundled in this repository.
-  const proxyUrl = new URL(event.request.url);
+  const proxyUrl = requestUrl;
   if (proxyUrl.origin === self.location.origin && proxyUrl.pathname.startsWith('/xianjian/')) {
     const upstreamPath = proxyUrl.pathname.replace(/^\/xianjian\//, '') + proxyUrl.search;
     const upstreamUrl = 'https://madeye.github.io/Legend-of-Sword-and-Fairy/' + upstreamPath;
@@ -147,7 +168,7 @@ self.addEventListener('fetch', (event) => {
   // Injecting COOP/COEP on these top-level navigations lets the embedded
   // vitaslop / TabStationToo / Infinite Mac / rustpal apps use SharedArrayBuffer
   // inside their iframes - without touching any other page's hot-linked frames.
-  const isoUrl = new URL(event.request.url);
+  const isoUrl = requestUrl;
   const ISO_PATHS = ['/routes/vita.html', '/routes/ps2.html', '/routes/mac.html', '/routes/n64recomp.html', '/routes/rustpal.html'];
   if (
     event.request.mode === 'navigate' &&
@@ -155,7 +176,7 @@ self.addEventListener('fetch', (event) => {
     ISO_PATHS.includes(isoUrl.pathname)
   ) {
     event.respondWith(
-      fetch(event.request)
+      fetch(networkRequest)
         .then((response) => {
           const headers = new Headers(response.headers);
           headers.set('Cross-Origin-Opener-Policy', 'same-origin');
@@ -185,7 +206,7 @@ self.addEventListener('fetch', (event) => {
   // Both hosts send CORS headers, so re-fetch in cors mode to see the real
   // status: an opaque no-cors response masks a 404 as status 0, which would
   // get cached and permanently suppress the card's onerror fallback.
-  const imageUrl = new URL(event.request.url);
+  const imageUrl = requestUrl;
   if (event.request.destination === 'image' && GAME_IMAGE_HOSTS.includes(imageUrl.hostname)) {
     event.respondWith(
       caches.open(GAME_IMAGE_CACHE).then(async (cache) => {
@@ -209,7 +230,6 @@ self.addEventListener('fetch', (event) => {
   }
 
   // Skip external domains (CDN, cross-origin) - they should not be cached
-  const requestUrl = new URL(event.request.url);
   for (const domain of SKIP_CACHE_DOMAINS) {
     if (requestUrl.hostname.includes(domain) || event.request.url.includes(domain)) {
       // Just fetch from network, don't cache
@@ -220,8 +240,10 @@ self.addEventListener('fetch', (event) => {
 
   // Network-first: always fetch fresh HTML/JS/CSS online so they stay in sync;
   // fall back to the cached copy only when the network is unavailable (offline).
+  // The cache-busting networkRequest was built above and is shared by the
+  // isolated-route branch.
   event.respondWith(
-    fetch(event.request)
+    fetch(networkRequest)
       .then((response) => {
         const isSameOrigin = requestUrl.origin === self.location.origin;
         if (response && response.ok && response.status === 200 && isSameOrigin) {

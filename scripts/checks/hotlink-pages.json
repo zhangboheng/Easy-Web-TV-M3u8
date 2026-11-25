@@ -157,7 +157,7 @@
     "script": "js/torustpal.js",
     "frameId": "rustpalFrame",
     "overlayId": "loadingOverlay",
-    "resolver": { "type": "const", "name": "RUSTPAL_UPSTREAM" },
+    "resolver": { "type": "proxy", "name": "RUSTPAL_BASE" },
     "newTabResolver": { "type": "const", "name": "RUSTPAL_UPSTREAM" },
     "isolated": true
   },

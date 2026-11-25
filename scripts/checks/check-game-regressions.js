@@ -483,7 +483,10 @@ const n64Js = maybeRead('js/ton64recomp.js');
 const n64Html = maybeRead('routes/n64recomp.html');
 const n64JsHead = n64Js.split('// ---- helpers')[0];
 const n64Sandbox = { localStorage: { getItem: () => null } };
-const n64Registry = new Function('localStorage', n64JsHead + '; return N64_REGISTRY;')(n64Sandbox.localStorage);
+const n64Registry = new Function('localStorage', 'HotlinkPlayer', n64JsHead + '; return N64_REGISTRY;')(
+    n64Sandbox.localStorage,
+    { ensureIsolated: function () {} }
+);
 n64RecompGames.forEach((game) => {
     const card = games.filter((g) => g.name === game.name);
     check(card.length === 1, 'expected exactly one ' + game.name + ' card, found ' + card.length);
@@ -507,7 +510,10 @@ check(/bring[- ]your[- ]own|Bring your own/i.test(n64Js), 'ton64recomp.js does n
 check(/Nintendo/.test(n64Js), 'ton64recomp.js has no Nintendo-unsupported notice');
 check(/Object\.prototype\.hasOwnProperty\.call\(N64_REGISTRY,\s*currentGameKey\)/.test(n64Js),
     'N64 game key validation must use an own-property check');
-const n64I18n = new Function('localStorage', n64JsHead + '; return i18n;')(n64Sandbox.localStorage);
+const n64I18n = new Function('localStorage', 'HotlinkPlayer', n64JsHead + '; return i18n;')(
+    n64Sandbox.localStorage,
+    { ensureIsolated: function () {} }
+);
 check(Object.keys(n64I18n).every((lang) => typeof n64I18n[lang].invalidGame === 'string' && n64I18n[lang].invalidGame.length > 0),
     'every N64 recomp language must have an invalidGame message');
 check(!/Super Mario 64 \/ F-Zero X \/ Mario Party/.test(n64Js) && !/Super Mario 64 \/ F-Zero X \/ Mario Party/.test(n64Html),
@@ -636,6 +642,32 @@ check(!/['"(]docs\//.test(checksYml), 'checks.yml runs a script out of the local
 const otherChecks = dirScripts.filter((rel) => rel !== 'scripts/checks/check-game-regressions.js');
 otherChecks.forEach((rel) => check(!/read\(['"]docs\/|docs\/superpowers/.test(read(rel)),
     rel + ' still reads a file out of the local-only docs/ folder'));
+
+// v8.6.2: J2ME's official demo must launch inside the page's hotlinked iframe.
+// Opening the demo with window.open bypasses the shared player and contradicts
+// the README's "hot-linked embed" claim.
+const j2meJs = maybeRead('js/toj2me.js');
+const j2meHtml = maybeRead('routes/j2me.html');
+check(/function playDemo\s*\(/.test(j2meJs), 'toj2me.js has no playDemo() function');
+check(/demoOpenBtn'\)\.addEventListener\('click',\s*playDemo\)/.test(j2meJs),
+    'J2ME official demo button does not call playDemo()');
+check(/function playDemo\s*\([\s\S]*?currentJ2meUrl\s*=\s*J2ME_BASE;[\s\S]*?player\.start\(\);/.test(j2meJs),
+    'J2ME playDemo() must load J2ME_BASE in the embedded player');
+check(!/window\.open\(\s*J2ME_BASE/.test(j2meJs),
+    'J2ME official demo still opens a new browser tab');
+check(/<i class="fas fa-play"><\/i>[\s\S]{0,160}data-i18n="demoOpen"/.test(j2meHtml),
+    'J2ME demo button icon does not signal in-page playback');
+
+// J2meJS runs on rosabis.github.io. A blob: URL created by this page belongs to
+// the parent origin, so the iframe cannot fetch it; the old "Local Jar" input
+// therefore downloaded the URL as a relative path and always failed. Send users
+// to the official installer inside the embedded player instead.
+check(!/URL\.createObjectURL/.test(j2meJs),
+    'J2ME must not pass a parent-origin blob: URL to the cross-origin J2meJS iframe');
+check(!/id="jarInput"/.test(j2meHtml),
+    'J2ME page must not offer a host-side local jar file input');
+check(/uploadBtn'\)\.addEventListener\('click',\s*playDemo\)/.test(j2meJs),
+    'J2ME local-install button must open the embedded official installer');
 
 if (failures.length) {
     failures.forEach((f) => console.log('FAIL: ' + f));
