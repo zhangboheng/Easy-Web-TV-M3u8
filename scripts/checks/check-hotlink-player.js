@@ -12,6 +12,58 @@ const helper = read('js/hotlink-player.js');
 check(/ensureIsolated/.test(helper), 'hotlink-player.js must define ensureIsolated');
 check(/window\.HotlinkPlayer/.test(helper), 'hotlink-player.js must expose window.HotlinkPlayer');
 
+
+// Every iframe-driven game route is declared in one manifest, so adding or
+// removing a hot-linked page cannot silently escape the checks below.
+const manifestRel = 'scripts/checks/hotlink-pages.json';
+const manifestPath = path.join(root, manifestRel);
+check(fs.existsSync(manifestPath), 'missing ' + manifestRel + ' hotlink page manifest');
+const pages = fs.existsSync(manifestPath) ? JSON.parse(read(manifestRel)) : [];
+if (Array.isArray(pages)) {
+    const iframeRoutes = fs.readdirSync(path.join(root, 'routes'))
+        .filter((f) => f.endsWith('.html'))
+        .filter((f) => /<iframe\b/.test(read('routes/' + f)))
+        .map((f) => 'routes/' + f)
+        .sort();
+    const manifestRoutes = pages.map((p) => p.route).sort();
+    check(JSON.stringify(iframeRoutes) === JSON.stringify(manifestRoutes),
+        'hotlink manifest routes must equal iframe routes: ' + JSON.stringify({ iframeRoutes, manifestRoutes }));
+
+    const seen = new Set();
+    pages.forEach((p) => {
+        ['route', 'script', 'frameId', 'overlayId', 'resolver', 'newTabResolver', 'isolated'].forEach((key) => {
+            check(Object.prototype.hasOwnProperty.call(p, key),
+                (p.route || '<unknown>') + ' manifest entry is missing ' + key);
+        });
+        if (seen.has(p.route)) check(false, 'duplicate manifest route ' + p.route);
+        seen.add(p.route);
+        check(fs.existsSync(path.join(root, p.script)), p.route + ' script does not exist: ' + p.script);
+        const html = read(p.route);
+        const src = read(p.script);
+        check(html.indexOf('id="' + p.frameId + '"') !== -1,
+            p.route + ' is missing iframe id ' + p.frameId);
+        check(html.indexOf('id="' + p.overlayId + '"') !== -1,
+            p.route + ' is missing overlay id ' + p.overlayId);
+        check(src.indexOf(p.frameId) !== -1,
+            p.script + ' does not reference frame id ' + p.frameId);
+        [p.resolver, p.newTabResolver].forEach((resolver) => {
+            check(resolver && typeof resolver.name === 'string' && resolver.name.length > 0,
+                p.route + ' resolver must name a URL constant or registry');
+            if (!resolver || !resolver.name) return;
+            const declared = new RegExp('\\bvar\\s+' + resolver.name + '\\s*=');
+            check(declared.test(src), p.script + ' does not declare resolver ' + resolver.name);
+            if (resolver.type === 'const' || resolver.type === 'prefix') {
+                check(new RegExp('\\bvar\\s+' + resolver.name + "\\s*=\\s*'https://").test(src),
+                    resolver.name + ' must be a literal https:// URL in ' + p.script);
+            }
+        });
+        if (p.isolated) {
+            check(/HotlinkPlayer\.ensureIsolated\(/.test(src),
+                p.script + ' is marked isolated but does not call ensureIsolated');
+        }
+    });
+}
+
 // Pages that need cross-origin isolation must use the shared helper.
 const isolated = {
     'js/tomac.js': 'routes/mac.html',

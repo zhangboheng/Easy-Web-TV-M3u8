@@ -3,6 +3,9 @@
 // Presets are free/open homebrew ROMs loaded from their official GitHub
 // releases; commercial ROMs are NOT included.
 
+var WEBMSX_BASE = 'https://webmsx.org';
+
+
 // Featured homebrew - every URL verified reachable with CORS (GitHub
 // release assets). type: rom | disk | tape. machine: WebMSX MACHINE id.
 var PRESETS = [

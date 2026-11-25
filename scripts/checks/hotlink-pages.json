@@ -1,0 +1,209 @@
+[
+  {
+    "route": "routes/apple2.html",
+    "script": "js/toapple2js.js",
+    "frameId": "embedFrame",
+    "overlayId": "embedLoading",
+    "resolver": { "type": "const", "name": "EMBED_URL" },
+    "newTabResolver": { "type": "const", "name": "EMBED_URL" },
+    "isolated": false
+  },
+  {
+    "route": "routes/browserport.html",
+    "script": "js/tobrowserport.js",
+    "frameId": "bpFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "registry", "name": "BROWSER_PORTS", "field": "url" },
+    "newTabResolver": { "type": "registry", "name": "BROWSER_PORTS", "field": "url" },
+    "isolated": false
+  },
+  {
+    "route": "routes/casa.html",
+    "script": "js/tocasa.js",
+    "frameId": "casaFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "const", "name": "CASA_HOME" },
+    "newTabResolver": { "type": "const", "name": "CASA_HOME" },
+    "isolated": false
+  },
+  {
+    "route": "routes/diablo.html",
+    "script": "js/todiablo.js",
+    "frameId": "diabloFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "const", "name": "DIABLO_BASE" },
+    "newTabResolver": { "type": "const", "name": "DIABLO_BASE" },
+    "isolated": false
+  },
+  {
+    "route": "routes/esty.html",
+    "script": "js/toesty.js",
+    "frameId": "estyFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "const", "name": "ESTY_HOME" },
+    "newTabResolver": { "type": "const", "name": "ESTY_HOME" },
+    "isolated": false
+  },
+  {
+    "route": "routes/feltworld.html",
+    "script": "js/tofelt.js",
+    "frameId": "feltFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "const", "name": "FELT_HOME" },
+    "newTabResolver": { "type": "const", "name": "FELT_HOME" },
+    "isolated": false
+  },
+  {
+    "route": "routes/j2me.html",
+    "script": "js/toj2me.js",
+    "frameId": "j2meFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "prefix", "name": "J2ME_BASE" },
+    "newTabResolver": { "type": "prefix", "name": "J2ME_BASE" },
+    "isolated": false
+  },
+  {
+    "route": "routes/jsbeeb.html",
+    "script": "js/tojsbeeb.js",
+    "frameId": "embedFrame",
+    "overlayId": "embedLoading",
+    "resolver": { "type": "const", "name": "EMBED_URL" },
+    "newTabResolver": { "type": "const", "name": "EMBED_URL" },
+    "isolated": false
+  },
+  {
+    "route": "routes/mac.html",
+    "script": "js/tomac.js",
+    "frameId": "macFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "prefix", "name": "MAC_BASE" },
+    "newTabResolver": { "type": "const", "name": "MAC_HOME" },
+    "isolated": true
+  },
+  {
+    "route": "routes/msx.html",
+    "script": "js/tomsx.js",
+    "frameId": "msxFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "prefix", "name": "WEBMSX_BASE" },
+    "newTabResolver": { "type": "prefix", "name": "WEBMSX_BASE" },
+    "isolated": false
+  },
+  {
+    "route": "routes/n64recomp.html",
+    "script": "js/ton64recomp.js",
+    "frameId": "n64Frame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "registry", "name": "N64HUB_GAMES", "field": "url" },
+    "newTabResolver": { "type": "registry", "name": "N64HUB_GAMES", "field": "url" },
+    "isolated": true
+  },
+  {
+    "route": "routes/nova.html",
+    "script": "js/tonova.js",
+    "frameId": "novaFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "const", "name": "NOVA_HOME" },
+    "newTabResolver": { "type": "const", "name": "NOVA_HOME" },
+    "isolated": false
+  },
+  {
+    "route": "routes/palm.html",
+    "script": "js/topalm.js",
+    "frameId": "palmFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "const", "name": "PALM_BASE" },
+    "newTabResolver": { "type": "const", "name": "PALM_BASE" },
+    "isolated": false
+  },
+  {
+    "route": "routes/pico8.html",
+    "script": "js/topico8.js",
+    "frameId": "picoFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "registry", "name": "PRESETS", "field": "embed" },
+    "newTabResolver": { "type": "registry", "name": "PRESETS", "field": "page" },
+    "isolated": false
+  },
+  {
+    "route": "routes/ps2.html",
+    "script": "js/tops2.js",
+    "frameId": "ps2Frame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "const", "name": "PS2_BASE" },
+    "newTabResolver": { "type": "const", "name": "PS2_BASE" },
+    "isolated": true
+  },
+  {
+    "route": "routes/ra2.html",
+    "script": "js/tora2.js",
+    "frameId": "ra2Frame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "const", "name": "RA2_BASE" },
+    "newTabResolver": { "type": "const", "name": "RA2_BASE" },
+    "isolated": false
+  },
+  {
+    "route": "routes/rk86.html",
+    "script": "js/tork86.js",
+    "frameId": "rk86Frame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "const", "name": "RK_HOME" },
+    "newTabResolver": { "type": "const", "name": "RK_HOME" },
+    "isolated": false
+  },
+  {
+    "route": "routes/rustpal.html",
+    "script": "js/torustpal.js",
+    "frameId": "rustpalFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "const", "name": "RUSTPAL_UPSTREAM" },
+    "newTabResolver": { "type": "const", "name": "RUSTPAL_UPSTREAM" },
+    "isolated": true
+  },
+  {
+    "route": "routes/tamaweb.html",
+    "script": "js/totamaweb.js",
+    "frameId": "tamaFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "const", "name": "TAMAWEB_HOME" },
+    "newTabResolver": { "type": "const", "name": "TAMAWEB_HOME" },
+    "isolated": false
+  },
+  {
+    "route": "routes/vita.html",
+    "script": "js/tovita.js",
+    "frameId": "vitaFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "const", "name": "VITA_BASE" },
+    "newTabResolver": { "type": "const", "name": "VITA_BASE" },
+    "isolated": true
+  },
+  {
+    "route": "routes/webgame.html",
+    "script": "js/towebgame.js",
+    "frameId": "webgameFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "registry", "name": "WEBGAME_REGISTRY", "field": "url" },
+    "newTabResolver": { "type": "registry", "name": "WEBGAME_REGISTRY", "field": "url" },
+    "isolated": false
+  },
+  {
+    "route": "routes/wipi.html",
+    "script": "js/towipi.js",
+    "frameId": "wipiFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "const", "name": "WIPI_BASE" },
+    "newTabResolver": { "type": "const", "name": "WIPI_BASE" },
+    "isolated": false
+  },
+  {
+    "route": "routes/z2rs.html",
+    "script": "js/toz2rs.js",
+    "frameId": "z2rsFrame",
+    "overlayId": "loadingOverlay",
+    "resolver": { "type": "const", "name": "Z2RS_BASE" },
+    "newTabResolver": { "type": "const", "name": "Z2RS_BASE" },
+    "isolated": false
+  }
+]
