@@ -162,60 +162,31 @@ function showToast(msg) {
 }
 
 // ---- player --------------------------------------------------------------
-var slowTimer = null;
-function hideOverlay() {
-    var overlay = $('loadingOverlay');
-    if (overlay) {
-        overlay.classList.add('hidden');
-        var link = $('slowOpenLink');
-        if (link && link.parentNode) link.parentNode.removeChild(link);
-    }
-    if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; }
-}
+var player = HotlinkPlayer.createPlayer({
+    frameId: 'feltFrame', overlayId: 'loadingOverlay', url: FELT_HOME, newTabUrl: FELT_HOME
+});
 
-function showSlowLink() {
-    var overlay = $('loadingOverlay');
-    if (!overlay || $('slowOpenLink')) return;
-    var link = document.createElement('a');
-    link.id = 'slowOpenLink';
-    link.href = FELT_HOME;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.textContent = t('openInNewTab');
-    link.style.cssText = 'display:inline-block;margin-top:14px;color:#33ff66;text-decoration:underline;font-size:14px;';
-    overlay.appendChild(link);
-}
-
-function showPlayer() {
-    $('uploadSection').classList.add('hidden');
-    $('playerSection').classList.add('active');
-    $('pageTitle').textContent = t('playing') + 'Felt World';
-    $('resetBtn').style.display = '';
-    $('fullscreenBtn').style.display = '';
-    $('loadingOverlay').classList.remove('hidden');
+function showPlayer(title) {
+    document.getElementById('uploadSection').classList.add('hidden');
+    document.getElementById('playerSection').classList.add('active');
+    document.getElementById('pageTitle').textContent = t('playing') + (title || 'Felt World');
+    document.getElementById('resetBtn').style.display = '';
+    document.getElementById('fullscreenBtn').style.display = '';
 }
 
 function playFelt() {
-    var frame = $('feltFrame');
-    if (!frame) return;
-    showPlayer();
-    frame.addEventListener('load', hideOverlay, { once: true });
-    frame.src = FELT_HOME;
-    slowTimer = setTimeout(function () {
-        showToast(t('loadingSlow'));
-        showSlowLink();
-    }, 15000);
+    if (!document.getElementById('feltFrame')) return;
+    showPlayer('Felt World');
+    player.start();
 }
 
 function stopPlayback() {
-    var frame = $('feltFrame');
-    if (frame) frame.src = 'about:blank';
-    hideOverlay();
-    $('playerSection').classList.remove('active');
-    $('uploadSection').classList.remove('hidden');
-    $('pageTitle').textContent = t('pageTitle');
-    $('resetBtn').style.display = 'none';
-    $('fullscreenBtn').style.display = 'none';
+    player.stop();
+    document.getElementById('playerSection').classList.remove('active');
+    document.getElementById('uploadSection').classList.remove('hidden');
+    document.getElementById('pageTitle').textContent = t('pageTitle');
+    document.getElementById('resetBtn').style.display = 'none';
+    document.getElementById('fullscreenBtn').style.display = 'none';
 }
 
 // ---- controls ------------------------------------------------------------

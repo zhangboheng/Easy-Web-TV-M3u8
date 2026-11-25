@@ -227,12 +227,11 @@ function showToast(msg) {
     showToast._timer = setTimeout(function () { toast.classList.add('hidden'); }, 3000);
 }
 
-var slowTimer = null;
-function hideOverlay() {
-    var overlay = $('loadingOverlay');
-    if (overlay) overlay.classList.add('hidden');
-    if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; }
-}
+var player = HotlinkPlayer.createPlayer({
+    frameId: 'bpFrame',
+    url: function () { return game ? game.url : ''; },
+    newTabUrl: function () { return game ? game.url : ''; }
+});
 
 function showPlayer(title) {
     $('uploadSection').classList.add('hidden');
@@ -240,13 +239,10 @@ function showPlayer(title) {
     $('pageTitle').textContent = t('playing') + (title || '');
     $('resetBtn').style.display = '';
     $('fullscreenBtn').style.display = '';
-    $('loadingOverlay').classList.remove('hidden');
 }
 
 function stopPlayback() {
-    var frame = $('bpFrame');
-    if (frame) frame.src = 'about:blank';
-    hideOverlay();
+    player.stop();
     $('playerSection').classList.remove('active');
     $('uploadSection').classList.remove('hidden');
     $('pageTitle').textContent = t('pageTitle');
@@ -256,12 +252,9 @@ function stopPlayback() {
 
 function playGame() {
     if (!game) { showToast(t('invalidGame')); return; }
-    var frame = $('bpFrame');
-    if (!frame) return;
+    if (!$('bpFrame')) return;
     showPlayer(game.name);
-    frame.addEventListener('load', hideOverlay, { once: true });
-    frame.src = game.url;
-    slowTimer = setTimeout(function () { showToast(t('loadingSlow')); }, 15000);
+    player.start();
 }
 
 // ---- controls -----------------------------------------------------------

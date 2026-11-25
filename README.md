@@ -28,33 +28,6 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 
 **[Live Demo](https://zhangboheng.github.io/Easy-Web-TV-M3u8/)**
 
-## 🆕 What's New (v8.6.1)
-
-- **Text games batch**: A Dark Room, Life Restart (人生重开模拟器), Candy Box 2, Antimatter Dimensions and Xiuxian Cultivation (文字修仙) join Web Games via the generic hot-link player - nothing bundled, every game runs from its author's official build; card art is hot-linked from the project repositories, CI now verifies every hot-linked game URL is reachable, regression checks parse the registry and all 8 UI languages instead of grepping file text, and the catalogue check enforces category floors plus cross-file consistency (route pages, category tabs, local images) instead of the old tautological assertion
-
-## 🆕 What's New (v8.6.0)
-
-- **Resilient game art**: hot-linked card images are cached by the service worker and fall back to the built-in Games icon if an upstream disappears; a CI check verifies every remote image URL
-- **Shared hot-link player helper**: the cross-origin-isolation reload dance is centralised in `js/hotlink-player.js` and used by all five isolated player pages
-- **Single source of truth for the version**: `js/version.js` drives the settings badge and backup export; a consistency check keeps the manifest, service-worker cache name and changelog in sync with it
-- **Lighter assets**: nine oversized README/social screenshots were converted to right-sized WebP images, cutting ~3MB from the repo
-- **Scalable checks**: the 24 i18n page pairs now live in one JSON manifest, so adding a page no longer means editing the CI workflow
-
-## 🆕 What's New (v8.5.9)
-
-- **Legend of Sword and Fairy (DOS)**: added a new Recomp card running the Rust/WASM engine port (GPL-3.0) via a hot-linked iframe of the official demo; the player page gets per-page COOP/COEP through the service worker so SharedArrayBuffer works, with no game files bundled
-- **Game card images moved online**: 112 of 123 game cards now use hot-linked public images (GitHub raw, RetroArch/libretro, upstream project assets and Simple Icons); 106 unused local SVGs were deleted, and the remaining 11 cards keep working local images
-- **Emulator card art (v8.6.1)**: the RetroArch core banners were replaced with distinct system preview images from the MuOS-Consoles image library, so each emulator card shows its own console instead of five Commodore machines sharing the VICE banner; all images stay hot-linked, no local assets added
-- **Bug fixes**: the missing Recomp card image was restored with a working URL and its regression test updated; dark-background icons are now forced white/brand-coloured so they stay visible; the new page was added to the CI i18n pairing check (all 24 pairs pass)
-- **Redesigned Source Control**: built-in sources are listed per tab with their URLs and enable checkboxes; Movie and Adult now accept custom Apple CMS collection APIs that flow directly into their source dropdowns
-- **Unified top bars**: TV and Radio now share the fixed 70px header used by every module, and all player/game pages use the same frosted-glass toolbar
-- **Bug fixes**: short result sets no longer stretch cards into tall strips in Novel/Manga/Adult; language switching keeps saved source selections; inline settings texts are translated in all 96 languages
-- **One proxy pool, with memory**: every CORS-proxied request now shares a single pool (`js/proxy-config.js`) that remembers which proxies failed - a bad proxy is demoted for 1-30 minutes instead of stalling the next request, demotions and proxies added in Settings take effect without a page reload, and each failover attempt has its own timeout so a hung proxy cannot freeze the page
-- **Binary-safe downloads**: proxies that transcode responses as text (corrupting ROMs, disk images and WASM-4 carts with U+FFFD) are detected, given a long cooldown and skipped by every downloader
-- **96 languages**: the interface is translated into 96 languages, and 20 languages that already existed in the translation table are selectable again
-- **Player fixes**: the WASM-4 loading overlay is mounted at body level and waits for the runtime before hiding (with fail-fast cart loading), the TV grid spinner is properly centred, and podcasts keep their overlay across the XML parse retry
-- **Dead code removed**: the obsolete `GO!` category flow (its targets were deleted in V8.2.1), the duplicate `#selectform` id, the positional button labelling that erased icon buttons, and the unused NeoGeo BIOS duplicate under `routes/bios/`
-
 ## ✨ Features
 
 ### 📺 TV & IPTV

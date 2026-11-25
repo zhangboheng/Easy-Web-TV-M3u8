@@ -369,44 +369,39 @@ function playPreset(idx) {
 }
 
 // ---- player ------------------------------------------------------------
-var slowTimer = null;
-function hideOverlay() {
-    var overlay = document.getElementById('loadingOverlay');
-    if (overlay) overlay.classList.add('hidden');
-    if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; }
-}
+var currentMsxUrl = WEBMSX_BASE;
+var player = HotlinkPlayer.createPlayer({
+    frameId: 'msxFrame', overlayId: 'loadingOverlay',
+    url: function () { return currentMsxUrl; },
+    newTabUrl: function () { return WEBMSX_BASE; }
+});
 
 // Build a WebMSX launch URL: ROM= (cartridge short form), DISK=, TAPE=,
 // optional MACHINE= (e.g. tRJ for Japanese turbo R).
 function buildWebMsxUrl(mediaUrl, type, machine) {
     var param = type === 'disk' ? 'DISK' : type === 'tape' ? 'TAPE' : 'ROM';
-    var url = 'https://webmsx.org?' + param + '=' + encodeURIComponent(mediaUrl);
+    var url = WEBMSX_BASE + '?' + param + '=' + encodeURIComponent(mediaUrl);
     if (machine) url += '&MACHINE=' + encodeURIComponent(machine);
     return url;
 }
 
-function playMedia(mediaUrl, title, type, machine) {
-    var frame = document.getElementById('msxFrame');
-    if (!frame) return;
+function showPlayer(title) {
     document.getElementById('uploadSection').classList.add('hidden');
     document.getElementById('playerSection').classList.add('active');
     document.getElementById('pageTitle').textContent = t('playing') + (title || 'MSX');
     document.getElementById('resetBtn').style.display = '';
     document.getElementById('fullscreenBtn').style.display = '';
-    document.getElementById('loadingOverlay').classList.remove('hidden');
-    frame.src = buildWebMsxUrl(mediaUrl, type, machine);
-    setTimeout(function () {
-        if (frame.src.indexOf(encodeURIComponent(mediaUrl)) !== -1) hideOverlay();
-    }, 800);
-    slowTimer = setTimeout(function () {
-        if (frame.src.indexOf(encodeURIComponent(mediaUrl)) !== -1) showToast(t('loadingSlow'));
-    }, 15000);
+}
+
+function playMedia(mediaUrl, title, type, machine) {
+    if (!document.getElementById('msxFrame')) return;
+    showPlayer(title);
+    currentMsxUrl = buildWebMsxUrl(mediaUrl, type, machine);
+    player.start();
 }
 
 function stopPlayback() {
-    var frame = document.getElementById('msxFrame');
-    if (frame) frame.src = 'about:blank';
-    hideOverlay();
+    player.stop();
     document.getElementById('playerSection').classList.remove('active');
     document.getElementById('uploadSection').classList.remove('hidden');
     document.getElementById('pageTitle').textContent = t('pageTitle');
@@ -436,16 +431,9 @@ document.getElementById('urlLoadBtn').addEventListener('click', function () {
         return;
     }
     // Unknown extension: use WebMSX AUTODETECT param
-    var frame = document.getElementById('msxFrame');
-    document.getElementById('uploadSection').classList.add('hidden');
-    document.getElementById('playerSection').classList.add('active');
-    document.getElementById('pageTitle').textContent = t('playing') + 'MSX';
-    document.getElementById('resetBtn').style.display = '';
-    document.getElementById('fullscreenBtn').style.display = '';
-    document.getElementById('loadingOverlay').classList.remove('hidden');
-    frame.src = 'https://webmsx.org?AUTO=' + encodeURIComponent(url);
-    setTimeout(hideOverlay, 800);
-    slowTimer = setTimeout(function () { showToast(t('loadingSlow')); }, 15000);
+    showPlayer('MSX');
+    currentMsxUrl = WEBMSX_BASE + '?AUTO=' + encodeURIComponent(url);
+    player.start();
 });
 
 // ---- file tab ----------------------------------------------------------

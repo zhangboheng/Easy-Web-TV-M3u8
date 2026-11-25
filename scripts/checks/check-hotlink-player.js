@@ -86,6 +86,29 @@ if (Array.isArray(pages)) {
     });
 }
 
+// Every manifest page must delegate its iframe lifecycle to the shared player.
+pages.forEach((p) => {
+    const html = read(p.route);
+    const src = read(p.script);
+    const helperPos = html.indexOf('js/hotlink-player.js');
+    const pagePos = html.indexOf(p.script.replace('js/', '../js/'));
+    check(helperPos !== -1 && pagePos !== -1 && helperPos < pagePos,
+        p.route + ' must load hotlink-player.js before ' + p.script);
+    check(/HotlinkPlayer\.createPlayer\(/.test(src), p.script + ' does not call HotlinkPlayer.createPlayer');
+    check(new RegExp("frameId\\s*:\\s*['\"]" + p.frameId + "['\"]").test(src),
+        p.script + ' createPlayer must target iframe ' + p.frameId);
+    check(!/\bvar\s+slowTimer\b|slowTimer\s*=\s*setTimeout/.test(src),
+        p.script + ' still owns a slow-load timer');
+    check(!/function\s+showSlowLink\s*\(/.test(src), p.script + ' still owns a slow-open link');
+    check(!/addEventListener\(\s*['"]load['"]\s*,\s*hideOverlay/.test(src),
+        p.script + ' still owns an iframe load handler');
+    check(!/setTimeout\(\s*hideOverlay/.test(src), p.script + ' still uses a timed overlay hide');
+});
+const stylesheet = read('css/style.css');
+check(/\.hotlink-retry\b/.test(stylesheet), 'css/style.css is missing .hotlink-retry styles');
+check(/\.hotlink-fallback-link\b/.test(stylesheet), 'css/style.css is missing .hotlink-fallback-link styles');
+
+
 // Pages that need cross-origin isolation must use the shared helper.
 const isolated = {
     'js/tomac.js': 'routes/mac.html',

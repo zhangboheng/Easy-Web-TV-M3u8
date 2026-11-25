@@ -273,64 +273,32 @@ var isCurrentGameValid = Boolean(currentGameKey && Object.prototype.hasOwnProper
 var currentGame = isCurrentGameValid ? N64_REGISTRY[currentGameKey] : { name: t('invalidGame'), url: '' };
 
 // ---- player --------------------------------------------------------------
-var slowTimer = null;
-function hideOverlay() {
-    var overlay = $('loadingOverlay');
-    if (overlay) {
-        overlay.classList.add('hidden');
-        var link = $('slowOpenLink');
-        if (link && link.parentNode) link.parentNode.removeChild(link);
-    }
-    if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; }
-}
-
-function showSlowLink() {
-    var overlay = $('loadingOverlay');
-    if (!overlay || $('slowOpenLink')) return;
-    var link = document.createElement('a');
-    link.id = 'slowOpenLink';
-    link.href = currentGame.url || N64HUB_HOME;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.textContent = t('openInNewTab');
-    link.style.cssText = 'display:inline-block;margin-top:14px;color:#33ff66;text-decoration:underline;font-size:14px;';
-    overlay.appendChild(link);
-}
+var player = HotlinkPlayer.createPlayer({
+    frameId: 'n64Frame', overlayId: 'loadingOverlay', url: function () { return currentGame.url || N64HUB_HOME; }, newTabUrl: function () { return currentGame.url || N64HUB_HOME; }
+});
 
 function showPlayer(title) {
-    $('uploadSection').classList.add('hidden');
-    $('playerSection').classList.add('active');
-    $('pageTitle').textContent = t('playing') + (title || 'N64');
-    $('resetBtn').style.display = '';
-    $('fullscreenBtn').style.display = '';
-    $('loadingOverlay').classList.remove('hidden');
+    document.getElementById('uploadSection').classList.add('hidden');
+    document.getElementById('playerSection').classList.add('active');
+    document.getElementById('pageTitle').textContent = t('playing') + (title || 'N64');
+    document.getElementById('resetBtn').style.display = '';
+    document.getElementById('fullscreenBtn').style.display = '';
 }
 
 function playN64Recomp() {
-    var frame = $('n64Frame');
-    if (!frame) return;
-    if (!isCurrentGameValid) {
-        showToast(t('invalidGame'));
-        return;
-    }
+    if (!document.getElementById('n64Frame')) return;
+    if (!isCurrentGameValid) { showToast(t('invalidGame')); return; }
     showPlayer(currentGame.name);
-    frame.addEventListener('load', hideOverlay, { once: true });
-    frame.src = currentGame.url;
-    slowTimer = setTimeout(function () {
-        showToast(t('loadingSlow'));
-        showSlowLink();
-    }, 15000);
+    player.start();
 }
 
 function stopPlayback() {
-    var frame = $('n64Frame');
-    if (frame) frame.src = 'about:blank';
-    hideOverlay();
-    $('playerSection').classList.remove('active');
-    $('uploadSection').classList.remove('hidden');
-    $('pageTitle').textContent = t('pageTitle');
-    $('resetBtn').style.display = 'none';
-    $('fullscreenBtn').style.display = 'none';
+    player.stop();
+    document.getElementById('playerSection').classList.remove('active');
+    document.getElementById('uploadSection').classList.remove('hidden');
+    document.getElementById('pageTitle').textContent = t('pageTitle');
+    document.getElementById('resetBtn').style.display = 'none';
+    document.getElementById('fullscreenBtn').style.display = 'none';
 }
 
 // ---- navigation and controls ---------------------------------------------

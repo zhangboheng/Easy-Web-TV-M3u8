@@ -160,31 +160,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Lazy-load the official deployment only when the user asks for it.
-    // A spinner covers the iframe until it fires load; if the remote site is
-    // slow (first visit / far CDN), show a reassurance message after 15s.
+    // The shared helper owns the spinner, slow hint and stalled-upstream UI.
+    var player = HotlinkPlayer.createPlayer({
+        frameId: 'embedFrame', overlayId: 'embedLoading',
+        url: EMBED_URL, newTabUrl: EMBED_URL, hideDelay: 800
+    });
     document.getElementById('startBtn').addEventListener('click', function() {
         var introSection = document.getElementById('introSection');
         if (introSection) introSection.classList.add('hidden');
         var embedSection = document.getElementById('embedSection');
         if (embedSection) embedSection.classList.add('active');
-        var frame = document.getElementById('embedFrame');
-        var embedLoading = document.getElementById('embedLoading');
-        var slowTimer = setTimeout(function() {
-            if (embedLoading && !embedLoading.classList.contains('hidden')) {
-                var txt = embedLoading.querySelector('[data-i18n]');
-                if (txt) txt.textContent = t('embedSlow');
-            }
-        }, 15000);
-        if (frame) {
-            frame.addEventListener('load', function() {
-                clearTimeout(slowTimer);
-                // give the embedded site a beat to paint before removing the spinner
-                setTimeout(function() {
-                    if (embedLoading) embedLoading.classList.add('hidden');
-                }, 800);
-            });
-            if (!frame.src) frame.src = EMBED_URL;
-        }
+        player.start();
         window.scrollTo(0, 0);
     });
 });

@@ -230,7 +230,7 @@ check(estyCard.length === 1 && estyCard[0].image === 'https://cdn.simpleicons.or
 check(/^https:\/\/cdn\.simpleicons\.org\//.test(estyCard.length === 1 ? estyCard[0].image : ''), 'Atari ST image must be a colored Simple Icons CDN URL');
 check(/ESTY_HOME\s*=\s*'https:\/\/kaiec\.github\.io\/EstyJS\/'/.test(estyJs), 'toesty.js has no dedicated ESTY_HOME');
 check(/link\.href = ESTY_HOME/.test(estyJs), 'toesty.js new-tab link should point at ESTY_HOME');
-check(/link\.href = ESTY_HOME/.test(estyJs.split('function showSlowLink')[1] || ''), 'toesty.js slow-load fallback link should point at ESTY_HOME');
+check(/newTabUrl:\s*ESTY_HOME/.test(estyJs), 'toesty.js shared player official link should point at ESTY_HOME');
 check(/href=\"https:\/\/kaiec\.github\.io\/EstyJS\/\"/.test(estyHtml), 'esty.html static new-tab link is not the official EstyJS app');
 check(/game\.html\?category=computer/.test(estyJs), 'Atari ST back link does not use category=computer');
 check(/allow=\"[^\"]*fullscreen/.test(estyHtml), 'esty.html iframe does not allow fullscreen');
@@ -267,7 +267,7 @@ check(feltCard.length === 1 && feltCard[0].image === 'https://raw.githubusercont
 check(/^https:\/\/raw\.githubusercontent\.com\//.test(feltCard.length === 1 ? feltCard[0].image : ''), 'Felt World image must be GitHub-hosted');
 check(/FELT_HOME\s*=\s*'https:\/\/az9713\.github\.io\/opus-5\.5-open-world-game\/feltworld\/'/.test(feltJs), 'tofelt.js has no dedicated FELT_HOME');
 check(/link\.href = FELT_HOME/.test(feltJs), 'tofelt.js new-tab link should point at FELT_HOME');
-check(/link\.href = FELT_HOME/.test(feltJs.split('function showSlowLink')[1] || ''), 'tofelt.js slow-load fallback link should point at FELT_HOME');
+check(/newTabUrl:\s*FELT_HOME/.test(feltJs), 'tofelt.js shared player official link should point at FELT_HOME');
 check(/href=\"https:\/\/az9713\.github\.io\/opus-5\.5-open-world-game\/feltworld\/\"/.test(feltHtml), 'feltworld.html static new-tab link is not the official Felt World app');
 check(/game\.html\?category=webgames/.test(feltJs), 'Felt World back link does not use category=webgames');
 check(/allow=\"[^\"]*fullscreen/.test(feltHtml), 'feltworld.html iframe does not allow fullscreen');

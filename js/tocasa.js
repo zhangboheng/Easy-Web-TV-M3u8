@@ -165,12 +165,12 @@ if (!i18n[currentLang]) currentLang = 'en';
 function t(key) { return (i18n[currentLang] && i18n[currentLang][key]) || i18n.en[key] || key; }
 function applyI18n() { document.querySelectorAll('[data-i18n]').forEach(function (el) { var key = el.getAttribute('data-i18n'); if (i18n[currentLang] && i18n[currentLang][key]) el.textContent = i18n[currentLang][key]; }); document.documentElement.lang = currentLang; }
 function showToast(msg) { var toast = $('toast'); if (!toast) return; $('toastMessage').textContent = msg; toast.classList.remove('hidden'); clearTimeout(showToast._timer); showToast._timer = setTimeout(function () { toast.classList.add('hidden'); }, 3000); }
-var slowTimer = null;
-function hideOverlay() { var overlay = $('loadingOverlay'); if (overlay) { overlay.classList.add('hidden'); var link = $('slowOpenLink'); if (link && link.parentNode) link.parentNode.removeChild(link); } if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; } }
-function showSlowLink() { var overlay = $('loadingOverlay'); if (!overlay || $('slowOpenLink')) return; var link = document.createElement('a'); link.id = 'slowOpenLink'; link.href = CASA_HOME; link.target = '_blank'; link.rel = 'noopener'; link.textContent = t('openInNewTab'); link.style.cssText = 'display:inline-block;margin-top:14px;color:#33ff66;text-decoration:underline;font-size:14px;'; overlay.appendChild(link); }
-function showPlayer() { $('uploadSection').classList.add('hidden'); $('playerSection').classList.add('active'); $('pageTitle').textContent = t('playing') + "Casa de Gemas"; $('resetBtn').style.display = ''; $('fullscreenBtn').style.display = ''; $('loadingOverlay').classList.remove('hidden'); }
-function playGame() { var frame = $('casaFrame'); if (!frame) return; showPlayer(); frame.addEventListener('load', hideOverlay, { once: true }); frame.src = CASA_HOME; slowTimer = setTimeout(function () { showToast(t('loadingSlow')); showSlowLink(); }, 15000); }
-function stopPlayback() { var frame = $('casaFrame'); if (frame) frame.src = 'about:blank'; hideOverlay(); $('playerSection').classList.remove('active'); $('uploadSection').classList.remove('hidden'); $('pageTitle').textContent = t('pageTitle'); $('resetBtn').style.display = 'none'; $('fullscreenBtn').style.display = 'none'; }
+var player = HotlinkPlayer.createPlayer({
+    frameId: 'casaFrame', overlayId: 'loadingOverlay', url: CASA_HOME, newTabUrl: CASA_HOME
+});
+function showPlayer() { $('uploadSection').classList.add('hidden'); $('playerSection').classList.add('active'); $('pageTitle').textContent = t('playing') + "Casa de Gemas"; $('resetBtn').style.display = ''; $('fullscreenBtn').style.display = ''; }
+function playGame() { if (!$('casaFrame')) return; showPlayer(); player.start(); }
+function stopPlayback() { player.stop(); $('playerSection').classList.remove('active'); $('uploadSection').classList.remove('hidden'); $('pageTitle').textContent = t('pageTitle'); $('resetBtn').style.display = 'none'; $('fullscreenBtn').style.display = 'none'; }
 $('demoOpenBtn').addEventListener('click', playGame);
 (function () { var link = $('demoOpenNewTab'); if (link) link.href = CASA_HOME; })();
 $('backBtn').addEventListener('click', function () { if ($('playerSection').classList.contains('active')) { stopPlayback(); return; } window.location.href = '../routes/game.html?category=webgames'; });

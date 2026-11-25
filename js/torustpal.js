@@ -42,39 +42,24 @@ document.querySelectorAll('.upload-tab').forEach(function (el) {
         document.querySelectorAll('.upload-tab').forEach(function (tab) { tab.classList.toggle('active', tab === el); });
     });
 });
-var slowTimer = null;
-function hideOverlay() {
-    var overlay = document.getElementById('loadingOverlay');
-    if (overlay) { overlay.classList.add('hidden'); var link = document.getElementById('slowOpenLink'); if (link && link.parentNode) link.parentNode.removeChild(link); }
-    if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; }
-}
-function showSlowLink() {
-    var overlay = document.getElementById('loadingOverlay');
-    if (!overlay || document.getElementById('slowOpenLink')) return;
-    var link = document.createElement('a');
-    link.id = 'slowOpenLink'; link.href = RUSTPAL_BASE; link.target = '_blank'; link.rel = 'noopener';
-    link.textContent = t('openInNewTab');
-    link.style.cssText = 'display:inline-block;margin-top:14px;color:#c9a45c;text-decoration:underline;font-size:14px;';
-    overlay.appendChild(link);
-}
+var player = HotlinkPlayer.createPlayer({
+    frameId: 'rustpalFrame', overlayId: 'loadingOverlay',
+    url: RUSTPAL_UPSTREAM, newTabUrl: RUSTPAL_UPSTREAM
+});
 function showPlayer(title) {
     document.getElementById('uploadSection').classList.add('hidden');
     document.getElementById('playerSection').classList.add('active');
     document.getElementById('pageTitle').textContent = t('playing') + (title || 'Legend of Sword and Fairy');
     document.getElementById('resetBtn').style.display = '';
     document.getElementById('fullscreenBtn').style.display = '';
-    document.getElementById('loadingOverlay').classList.remove('hidden');
 }
 function playRustpal() {
-    var frame = document.getElementById('rustpalFrame'); if (!frame) return;
+    if (!document.getElementById('rustpalFrame')) return;
     showPlayer('Legend of Sword and Fairy');
-    frame.addEventListener('load', hideOverlay, { once: true });
-    frame.src = RUSTPAL_BASE;
-    slowTimer = setTimeout(function () { showToast(t('loadingSlow')); showSlowLink(); }, 15000);
+    player.start();
 }
 function stopPlayback() {
-    var frame = document.getElementById('rustpalFrame'); if (frame) frame.src = 'about:blank';
-    hideOverlay();
+    player.stop();
     document.getElementById('playerSection').classList.remove('active');
     document.getElementById('uploadSection').classList.remove('hidden');
     document.getElementById('pageTitle').textContent = t('pageTitle');

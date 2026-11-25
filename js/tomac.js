@@ -213,57 +213,26 @@ document.querySelectorAll('.upload-tab').forEach(function (el) {
 });
 
 // ---- player ------------------------------------------------------------
-var slowTimer = null;
-function hideOverlay() {
-    var overlay = document.getElementById('loadingOverlay');
-    if (overlay) {
-        overlay.classList.add('hidden');
-        var link = document.getElementById('slowOpenLink');
-        if (link && link.parentNode) link.parentNode.removeChild(link);
-    }
-    if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; }
-}
-
-function showSlowLink() {
-    var overlay = document.getElementById('loadingOverlay');
-    if (!overlay || document.getElementById('slowOpenLink')) return;
-    var link = document.createElement('a');
-    link.id = 'slowOpenLink';
-    link.href = MAC_HOME;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.textContent = t('openInNewTab');
-    link.style.cssText = 'display:inline-block;margin-top:14px;color:#33ff66;text-decoration:underline;font-size:14px;';
-    overlay.appendChild(link);
-}
+var player = HotlinkPlayer.createPlayer({
+    frameId: 'macFrame', overlayId: 'loadingOverlay', url: MAC_EMBED_URL, newTabUrl: MAC_HOME
+});
 
 function showPlayer(title) {
     document.getElementById('uploadSection').classList.add('hidden');
     document.getElementById('playerSection').classList.add('active');
-    document.getElementById('pageTitle').textContent = t('playing') + (title || 'Classic Mac');
+    document.getElementById('pageTitle').textContent = t('playing') + (title || '');
     document.getElementById('resetBtn').style.display = '';
     document.getElementById('fullscreenBtn').style.display = '';
-    document.getElementById('loadingOverlay').classList.remove('hidden');
 }
 
 function playMac() {
-    var frame = document.getElementById('macFrame');
-    if (!frame) return;
+    if (!document.getElementById('macFrame')) return;
     showPlayer('Classic Mac');
-    // Infinite Mac manages machine selection, disk mounting and file import
-    // inside its own UI; nothing can be passed from this host page.
-    frame.addEventListener('load', hideOverlay, { once: true });
-    frame.src = MAC_EMBED_URL;
-    slowTimer = setTimeout(function () {
-        showToast(t('loadingSlow'));
-        showSlowLink();
-    }, 15000);
+    player.start();
 }
 
 function stopPlayback() {
-    var frame = document.getElementById('macFrame');
-    if (frame) frame.src = 'about:blank';
-    hideOverlay();
+    player.stop();
     document.getElementById('playerSection').classList.remove('active');
     document.getElementById('uploadSection').classList.remove('hidden');
     document.getElementById('pageTitle').textContent = t('pageTitle');

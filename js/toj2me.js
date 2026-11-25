@@ -321,12 +321,12 @@ document.getElementById('demoOpenBtn').addEventListener('click', function () {
 });
 
 // ---- player ------------------------------------------------------------
-var slowTimer = null;
-function hideOverlay() {
-    var overlay = document.getElementById('loadingOverlay');
-    if (overlay) overlay.classList.add('hidden');
-    if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; }
-}
+var currentJ2meUrl = '';
+var player = HotlinkPlayer.createPlayer({
+    frameId: 'j2meFrame', overlayId: 'loadingOverlay',
+    url: function () { return currentJ2meUrl; },
+    newTabUrl: function () { return J2ME_BASE; }
+});
 
 function showPlayer(title) {
     document.getElementById('uploadSection').classList.add('hidden');
@@ -334,24 +334,19 @@ function showPlayer(title) {
     document.getElementById('pageTitle').textContent = t('playing') + (title || 'J2ME');
     document.getElementById('resetBtn').style.display = '';
     document.getElementById('fullscreenBtn').style.display = '';
-    document.getElementById('loadingOverlay').classList.remove('hidden');
 }
 
 function playJar(jarUrl, title) {
-    var frame = document.getElementById('j2meFrame');
-    if (!frame) return;
+    if (!document.getElementById('j2meFrame')) return;
     showPlayer(title);
     // J2meJS loads the jar via fetch, so CORS-enabled URLs and blob: object
     // URLs both work. Engine mode left at the demo default (compatibility).
-    frame.src = J2ME_BASE + 'main.html?jars=' + encodeURIComponent(jarUrl);
-    setTimeout(hideOverlay, 800);
-    slowTimer = setTimeout(function () { showToast(t('loadingSlow')); }, 15000);
+    currentJ2meUrl = J2ME_BASE + 'main.html?jars=' + encodeURIComponent(jarUrl);
+    player.start();
 }
 
 function stopPlayback() {
-    var frame = document.getElementById('j2meFrame');
-    if (frame) frame.src = 'about:blank';
-    hideOverlay();
+    player.stop();
     document.getElementById('playerSection').classList.remove('active');
     document.getElementById('uploadSection').classList.remove('hidden');
     document.getElementById('pageTitle').textContent = t('pageTitle');

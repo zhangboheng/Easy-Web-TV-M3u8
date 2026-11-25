@@ -210,31 +210,9 @@ document.querySelectorAll('.upload-tab').forEach(function (el) {
 });
 
 // ---- player ------------------------------------------------------------
-var slowTimer = null;
-function hideOverlay() {
-    var overlay = document.getElementById('loadingOverlay');
-    if (overlay) {
-        overlay.classList.add('hidden');
-        var link = document.getElementById('slowOpenLink');
-        if (link && link.parentNode) link.parentNode.removeChild(link);
-    }
-    if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; }
-}
-
-// After 15s of pending load, surface a real way out: a direct link to the
-// upstream app in a new tab (matches the loadingSlow copy).
-function showSlowLink() {
-    var overlay = document.getElementById('loadingOverlay');
-    if (!overlay || document.getElementById('slowOpenLink')) return;
-    var link = document.createElement('a');
-    link.id = 'slowOpenLink';
-    link.href = RA2_BASE;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.textContent = t('openInNewTab');
-    link.style.cssText = 'display:inline-block;margin-top:14px;color:#33ff66;text-decoration:underline;font-size:14px;';
-    overlay.appendChild(link);
-}
+var player = HotlinkPlayer.createPlayer({
+    frameId: 'ra2Frame', overlayId: 'loadingOverlay', url: RA2_BASE, newTabUrl: RA2_BASE
+});
 
 function showPlayer(title) {
     document.getElementById('uploadSection').classList.add('hidden');
@@ -242,27 +220,16 @@ function showPlayer(title) {
     document.getElementById('pageTitle').textContent = t('playing') + (title || 'Red Alert 2');
     document.getElementById('resetBtn').style.display = '';
     document.getElementById('fullscreenBtn').style.display = '';
-    document.getElementById('loadingOverlay').classList.remove('hidden');
 }
 
 function playRa2() {
-    var frame = document.getElementById('ra2Frame');
-    if (!frame) return;
+    if (!document.getElementById('ra2Frame')) return;
     showPlayer('Red Alert 2');
-    // RA2 VM detects and launches the games you imported itself; nothing can
-    // be passed from this host page.
-    frame.addEventListener('load', hideOverlay, { once: true });
-    frame.src = RA2_BASE;
-    slowTimer = setTimeout(function () {
-        showToast(t('loadingSlow'));
-        showSlowLink();
-    }, 15000);
+    player.start();
 }
 
 function stopPlayback() {
-    var frame = document.getElementById('ra2Frame');
-    if (frame) frame.src = 'about:blank';
-    hideOverlay();
+    player.stop();
     document.getElementById('playerSection').classList.remove('active');
     document.getElementById('uploadSection').classList.remove('hidden');
     document.getElementById('pageTitle').textContent = t('pageTitle');

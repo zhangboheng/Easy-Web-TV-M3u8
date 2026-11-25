@@ -212,31 +212,9 @@ document.querySelectorAll('.upload-tab').forEach(function (el) {
 });
 
 // ---- player ------------------------------------------------------------
-var slowTimer = null;
-function hideOverlay() {
-    var overlay = document.getElementById('loadingOverlay');
-    if (overlay) {
-        overlay.classList.add('hidden');
-        var link = document.getElementById('slowOpenLink');
-        if (link && link.parentNode) link.parentNode.removeChild(link);
-    }
-    if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; }
-}
-
-// After 15s of pending load, surface a real way out: a direct link to the
-// upstream app in a new tab (matches the loadingSlow copy).
-function showSlowLink() {
-    var overlay = document.getElementById('loadingOverlay');
-    if (!overlay || document.getElementById('slowOpenLink')) return;
-    var link = document.createElement('a');
-    link.id = 'slowOpenLink';
-    link.href = WIPI_BASE;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.textContent = t('openInNewTab');
-    link.style.cssText = 'display:inline-block;margin-top:14px;color:#33ff66;text-decoration:underline;font-size:14px;';
-    overlay.appendChild(link);
-}
+var player = HotlinkPlayer.createPlayer({
+    frameId: 'wipiFrame', overlayId: 'loadingOverlay', url: WIPI_BASE, newTabUrl: WIPI_BASE
+});
 
 function showPlayer(title) {
     document.getElementById('uploadSection').classList.add('hidden');
@@ -244,27 +222,16 @@ function showPlayer(title) {
     document.getElementById('pageTitle').textContent = t('playing') + (title || 'WIPI');
     document.getElementById('resetBtn').style.display = '';
     document.getElementById('fullscreenBtn').style.display = '';
-    document.getElementById('loadingOverlay').classList.remove('hidden');
 }
 
 function playWipi() {
-    var frame = document.getElementById('wipiFrame');
-    if (!frame) return;
+    if (!document.getElementById('wipiFrame')) return;
     showPlayer('WIPI');
-    // WIE loads user files through its own in-app UI; no URL-parameter
-    // loading exists in the upstream web app (verified in wie-web sources).
-    frame.addEventListener('load', hideOverlay, { once: true });
-    frame.src = WIPI_BASE;
-    slowTimer = setTimeout(function () {
-        showToast(t('loadingSlow'));
-        showSlowLink();
-    }, 15000);
+    player.start();
 }
 
 function stopPlayback() {
-    var frame = document.getElementById('wipiFrame');
-    if (frame) frame.src = 'about:blank';
-    hideOverlay();
+    player.stop();
     document.getElementById('playerSection').classList.remove('active');
     document.getElementById('uploadSection').classList.remove('hidden');
     document.getElementById('pageTitle').textContent = t('pageTitle');

@@ -211,29 +211,9 @@ document.querySelectorAll('.upload-tab').forEach(function (el) {
 });
 
 // ---- player ------------------------------------------------------------
-var slowTimer = null;
-function hideOverlay() {
-    var overlay = document.getElementById('loadingOverlay');
-    if (overlay) {
-        overlay.classList.add('hidden');
-        var link = document.getElementById('slowOpenLink');
-        if (link && link.parentNode) link.parentNode.removeChild(link);
-    }
-    if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; }
-}
-
-function showSlowLink() {
-    var overlay = document.getElementById('loadingOverlay');
-    if (!overlay || document.getElementById('slowOpenLink')) return;
-    var link = document.createElement('a');
-    link.id = 'slowOpenLink';
-    link.href = RK_HOME;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.textContent = t('openInNewTab');
-    link.style.cssText = 'display:inline-block;margin-top:14px;color:#33ff66;text-decoration:underline;font-size:14px;';
-    overlay.appendChild(link);
-}
+var player = HotlinkPlayer.createPlayer({
+    frameId: 'rk86Frame', overlayId: 'loadingOverlay', url: RK_HOME, newTabUrl: RK_HOME
+});
 
 function showPlayer(title) {
     document.getElementById('uploadSection').classList.add('hidden');
@@ -241,26 +221,16 @@ function showPlayer(title) {
     document.getElementById('pageTitle').textContent = t('playing') + (title || 'Radio-86RK');
     document.getElementById('resetBtn').style.display = '';
     document.getElementById('fullscreenBtn').style.display = '';
-    document.getElementById('loadingOverlay').classList.remove('hidden');
 }
 
 function playRk86() {
-    var frame = document.getElementById('rk86Frame');
-    if (!frame) return;
+    if (!document.getElementById('rk86Frame')) return;
     showPlayer('Radio-86RK');
-    // rk86.ru handles its own catalog and program loading inside the iframe.
-    frame.addEventListener('load', hideOverlay, { once: true });
-    frame.src = RK_HOME;
-    slowTimer = setTimeout(function () {
-        showToast(t('loadingSlow'));
-        showSlowLink();
-    }, 15000);
+    player.start();
 }
 
 function stopPlayback() {
-    var frame = document.getElementById('rk86Frame');
-    if (frame) frame.src = 'about:blank';
-    hideOverlay();
+    player.stop();
     document.getElementById('playerSection').classList.remove('active');
     document.getElementById('uploadSection').classList.remove('hidden');
     document.getElementById('pageTitle').textContent = t('pageTitle');

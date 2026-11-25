@@ -211,31 +211,9 @@ document.querySelectorAll('.upload-tab').forEach(function (el) {
 });
 
 // ---- player ------------------------------------------------------------
-var slowTimer = null;
-function hideOverlay() {
-    var overlay = document.getElementById('loadingOverlay');
-    if (overlay) {
-        overlay.classList.add('hidden');
-        var link = document.getElementById('slowOpenLink');
-        if (link && link.parentNode) link.parentNode.removeChild(link);
-    }
-    if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; }
-}
-
-// After 15s of pending load, surface a real way out: a direct link to the
-// upstream app in a new tab (matches the loadingSlow copy).
-function showSlowLink() {
-    var overlay = document.getElementById('loadingOverlay');
-    if (!overlay || document.getElementById('slowOpenLink')) return;
-    var link = document.createElement('a');
-    link.id = 'slowOpenLink';
-    link.href = PALM_BASE;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.textContent = t('openInNewTab');
-    link.style.cssText = 'display:inline-block;margin-top:14px;color:#33ff66;text-decoration:underline;font-size:14px;';
-    overlay.appendChild(link);
-}
+var player = HotlinkPlayer.createPlayer({
+    frameId: 'palmFrame', overlayId: 'loadingOverlay', url: PALM_BASE, newTabUrl: PALM_BASE
+});
 
 function showPlayer(title) {
     document.getElementById('uploadSection').classList.add('hidden');
@@ -243,27 +221,16 @@ function showPlayer(title) {
     document.getElementById('pageTitle').textContent = t('playing') + (title || 'Palm OS');
     document.getElementById('resetBtn').style.display = '';
     document.getElementById('fullscreenBtn').style.display = '';
-    document.getElementById('loadingOverlay').classList.remove('hidden');
 }
 
 function playPalm() {
-    var frame = document.getElementById('palmFrame');
-    if (!frame) return;
+    if (!document.getElementById('palmFrame')) return;
     showPlayer('Palm OS');
-    // CloudpilotEmu manages device/ROM selection and uploads inside the app
-    // itself; nothing can be passed from this host page.
-    frame.addEventListener('load', hideOverlay, { once: true });
-    frame.src = PALM_BASE;
-    slowTimer = setTimeout(function () {
-        showToast(t('loadingSlow'));
-        showSlowLink();
-    }, 15000);
+    player.start();
 }
 
 function stopPlayback() {
-    var frame = document.getElementById('palmFrame');
-    if (frame) frame.src = 'about:blank';
-    hideOverlay();
+    player.stop();
     document.getElementById('playerSection').classList.remove('active');
     document.getElementById('uploadSection').classList.remove('hidden');
     document.getElementById('pageTitle').textContent = t('pageTitle');

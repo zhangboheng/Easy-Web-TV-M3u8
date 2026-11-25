@@ -372,41 +372,32 @@ function buildPresetList() {
 function playPreset(idx) {
     var p = PRESETS[idx];
     if (!p) return;
-    playUrl(p.embed, p.name);
+    playUrl(p.embed, p.name, p.page);
 }
 
 // ---- player ------------------------------------------------------------
-var slowTimer = null;
-function hideOverlayAndTitle() {
-    var overlay = document.getElementById('loadingOverlay');
-    if (overlay) overlay.classList.add('hidden');
-    if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; }
-}
+var currentPicoUrl = '';
+var currentPicoTabUrl = '';
+var player = HotlinkPlayer.createPlayer({
+    frameId: 'picoFrame', overlayId: 'loadingOverlay',
+    url: function () { return currentPicoUrl; },
+    newTabUrl: function () { return currentPicoTabUrl || currentPicoUrl; }
+});
 
-function playUrl(url, title) {
-    var frame = document.getElementById('picoFrame');
-    if (!frame) return;
+function playUrl(url, title, tabUrl) {
+    if (!document.getElementById('picoFrame')) return;
     document.getElementById('uploadSection').classList.add('hidden');
     document.getElementById('playerSection').classList.add('active');
     document.getElementById('pageTitle').textContent = t('playing') + (title || 'PICO-8');
     document.getElementById('resetBtn').style.display = '';
     document.getElementById('fullscreenBtn').style.display = '';
-    document.getElementById('loadingOverlay').classList.remove('hidden');
-    frame.src = url;
-    // Cross-origin iframe load events can be unreliable; hide the overlay
-    // after 800ms (jsbeeb pattern) and show a slow-network hint at 15s.
-    setTimeout(function () {
-        if (frame.src.indexOf(url) !== -1) hideOverlayAndTitle();
-    }, 800);
-    slowTimer = setTimeout(function () {
-        if (frame.src.indexOf(url) !== -1) showToast(t('loadingSlow'));
-    }, 15000);
+    currentPicoUrl = url;
+    currentPicoTabUrl = tabUrl || url;
+    player.start();
 }
 
 function stopPlayback() {
-    var frame = document.getElementById('picoFrame');
-    if (frame) frame.src = 'about:blank';
-    hideOverlayAndTitle();
+    player.stop();
     document.getElementById('playerSection').classList.remove('active');
     document.getElementById('uploadSection').classList.remove('hidden');
     document.getElementById('pageTitle').textContent = t('pageTitle');
@@ -439,7 +430,7 @@ document.getElementById('urlLoadBtn').addEventListener('click', function () {
     if (/^https:\/\/[a-z0-9-]+\.itch\.io\/[a-z0-9-]+\/?$/i.test(url)) {
         showToast('itch.io ...');
         resolveItchEmbed(url, function (embedUrl, err) {
-            if (embedUrl) { playUrl(embedUrl, url.split('/').pop()); }
+            if (embedUrl) { playUrl(embedUrl, url.split('/').pop(), url); }
             else { showToast(err || t('loadFailed')); }
         });
         return;
