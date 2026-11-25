@@ -12,6 +12,28 @@ const helper = read('js/hotlink-player.js');
 check(/ensureIsolated/.test(helper), 'hotlink-player.js must define ensureIsolated');
 check(/window\.HotlinkPlayer/.test(helper), 'hotlink-player.js must expose window.HotlinkPlayer');
 
+// The shared player owns the slow-load/failure UX for every iframe route.
+check(/function createPlayer\(/.test(helper), 'hotlink-player.js must define createPlayer');
+check(/\bcreatePlayer\s*:\s*createPlayer\b/.test(helper), 'HotlinkPlayer must export createPlayer');
+check(/return\s*\{[\s\S]*\bstart\s*[\s\S]*\bstop\s*[\s\S]*\bretry\s*/.test(helper),
+    'createPlayer must return start/stop/retry controls');
+['zh', 'en', 'ja', 'ko', 'fr', 'de', 'es', 'ru'].forEach((lang) => {
+    check(new RegExp('\\b' + lang + '\\s*:\\s*\\{').test(helper),
+        'shared hotlink copy is missing language ' + lang);
+});
+['loadingSlow', 'upstreamUnavailable', 'retry', 'openInNewTab', 'upstreamHint'].forEach((key) => {
+    check(new RegExp('\\b' + key + '\\s*:').test(helper), 'shared hotlink copy is missing ' + key);
+});
+check(/15000/.test(helper), 'shared hotlink player must surface the slow-load hint at 15s');
+check(/30000/.test(helper), 'shared hotlink player must surface stalled upstream state at 30s');
+check(/hotlinkRetry/.test(helper), 'shared hotlink player must create a retry control');
+check(/hotlinkNewTab/.test(helper), 'shared hotlink player must create an official-page link');
+check(/addEventListener\(['"]load['"]/.test(helper), 'shared hotlink player must listen for iframe load');
+check(/about:blank/.test(helper), 'shared hotlink player must clear stopped iframes');
+check(!/(TAMAWEB_HOME|WEBGAME_BASE|MAC_EMBED_URL|RUSTPAL_BASE)/.test(helper),
+    'shared hotlink player must not hardcode any page-specific URL');
+
+
 
 // Every iframe-driven game route is declared in one manifest, so adding or
 // removing a hot-linked page cannot silently escape the checks below.
