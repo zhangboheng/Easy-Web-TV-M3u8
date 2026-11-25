@@ -1,6 +1,24 @@
 // Game Page JS - Modern UI Version
 // Native JavaScript (No jQuery)
 
+// Small UI dictionary for the dynamic strings that are generated from JS
+// (empty states and the Favorites sidebar label). The rest of the Games page
+// uses hard-coded English copy; these keys follow the same 8-language pattern
+// as the other route pages (towebgame.js etc.).
+var TG_I18N = {
+    zh: { favTab: '收藏', noRecent: '暂无最近游玩的游戏', noFavs: '还没有收藏的游戏 - 点击游戏卡片上的星标即可收藏', noGames: '未找到游戏' },
+    en: { favTab: 'Favorites', noRecent: 'No recently played games', noFavs: 'No favorite games yet - tap the star on any game card', noGames: 'No games found' },
+    ja: { favTab: 'お気に入り', noRecent: '最近プレイしたゲームはありません', noFavs: 'お気に入りはまだありません - ゲームカードの星をタップしてください', noGames: 'ゲームが見つかりません' },
+    ko: { favTab: '즐겨찾기', noRecent: '최근 플레이한 게임이 없습니다', noFavs: '즐겨찾는 게임이 없습니다 - 게임 카드의 별을 눌러 추가하세요', noGames: '게임을 찾을 수 없습니다' },
+    fr: { favTab: 'Favoris', noRecent: 'Aucun jeu récemment joué', noFavs: 'Aucun favori pour le moment - touchez l\'étoile sur une carte de jeu', noGames: 'Aucun jeu trouvé' },
+    de: { favTab: 'Favoriten', noRecent: 'Keine kürzlich gespielten Spiele', noFavs: 'Noch keine Favoriten - tippe auf den Stern auf einer Spielkarte', noGames: 'Keine Spiele gefunden' },
+    es: { favTab: 'Favoritos', noRecent: 'No hay juegos jugados recientemente', noFavs: 'Aún no hay favoritos - toca la estrella en una tarjeta de juego', noGames: 'No se encontraron juegos' },
+    ru: { favTab: 'Избранное', noRecent: 'Нет недавно сыгранных игр', noFavs: 'Пока нет избранного - нажмите звезду на карточке игры', noGames: 'Игры не найдены' }
+};
+var tgLang = (localStorage.getItem('ewtv-lang') || localStorage.getItem('preferredLanguage') || 'en').split('-')[0];
+if (!TG_I18N[tgLang]) tgLang = 'en';
+function tgT(key) { return (TG_I18N[tgLang] && TG_I18N[tgLang][key]) || TG_I18N.en[key] || key; }
+
 // Game data
 var games = [
     // Emulator Games
@@ -705,6 +723,38 @@ var games = [
         url: '../routes/webgame.html?game=xiuxian'
     },
     {
+        id: 183,
+        name: 'Cube Composer',
+        platform: 'PC',
+        category: 'webgames',
+        image: 'https://raw.githubusercontent.com/sharkdp/cube-composer/master/img/favicon-196.png',
+        url: '../routes/webgame.html?game=cubecomposer'
+    },
+    {
+        id: 184,
+        name: 'Hexapipes',
+        platform: 'PC',
+        category: 'webgames',
+        image: 'https://raw.githubusercontent.com/gereleth/hexapipes/main/static/og_image_v1.png',
+        url: '../routes/webgame.html?game=hexapipes'
+    },
+    {
+        id: 185,
+        name: 'Mimstris',
+        platform: 'PC',
+        category: 'webgames',
+        image: 'https://raw.githubusercontent.com/mimshwright/mimstris/master/screenshot.gif',
+        url: '../routes/webgame.html?game=mimstris'
+    },
+    {
+        id: 186,
+        name: 'Esviji',
+        platform: 'PC',
+        category: 'webgames',
+        image: 'https://raw.githubusercontent.com/esviji/esviji/master/static/img/esviji-logo-180.png',
+        url: '../routes/webgame.html?game=esviji'
+    },
+    {
         id: 134,
         name: 'Super Mario 64',
         platform: 'Nintendo 64',
@@ -1299,7 +1349,23 @@ function recentGamesHtml() {
         }
     }
     if (!shown) {
-        return '<div class="no-results recent-empty"><i class="fas fa-clock-rotate-left"></i><p>No recently played games</p></div>';
+        return '<div class="no-results recent-empty"><i class="fas fa-clock-rotate-left"></i><p>' + tgT('noRecent') + '</p></div>';
+    }
+    return cards;
+}
+
+// Render starred games as a dedicated sidebar view. Unlike Recently Played
+// (a short "continue where you left off" shelf), favorites are user-curated
+// and must all be reachable, so there is no arbitrary 12-card cap here.
+function favoriteGamesHtml() {
+    var favs = getFavs();
+    var cards = '';
+    for (var i = 0; i < favs.length; i++) {
+        var game = findGameById(favs[i]);
+        if (game) cards += gameCardHtml(game);
+    }
+    if (!cards) {
+        return '<div class="no-results recent-empty"><i class="fas fa-star"></i><p>' + tgT('noFavs') + '</p></div>';
     }
     return cards;
 }
@@ -1338,9 +1404,13 @@ function renderGames() {
     var indicator = $('#loadMoreIndicator');
     if (indicator) indicator.style.display = 'none';
 
-    // Recently played is its own sidebar view rather than a shelf on All Games.
+    // Recently played and favorites are their own sidebar views rather than shelves on All Games.
     if (currentCategory === 'recent') {
         grid.innerHTML = recentGamesHtml();
+        return;
+    }
+    if (currentCategory === 'favorites') {
+        grid.innerHTML = favoriteGamesHtml();
         return;
     }
 
@@ -1353,15 +1423,18 @@ function renderGames() {
         });
     }
     
-    // Filter by search
+    // Filter by search: match the game name or its platform (e.g. "N64" finds
+    // every N64Recomp card, not just titles that literally contain N64).
     if (searchQuery) {
+        var q = searchQuery.toLowerCase();
         filteredGames = filteredGames.filter(function(game) {
-            return game.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1;
+            return game.name.toLowerCase().indexOf(q) !== -1 ||
+                (game.platform && game.platform.toLowerCase().indexOf(q) !== -1);
         });
     }
     
     if (filteredGames.length === 0) {
-        grid.innerHTML = '<div class="no-results"><i class="fas fa-gamepad"></i><p>No games found</p></div>';
+        grid.innerHTML = '<div class="no-results"><i class="fas fa-gamepad"></i><p>' + tgT('noGames') + '</p></div>';
         return;
     }
 
@@ -1413,6 +1486,10 @@ function showToast(message, type) {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('=== Game Page Loaded ===');
 
+    // Translate the dynamic Favorites sidebar label to match the UI language.
+    var favTab = document.querySelector('.category-item[data-category="favorites"] span');
+    if (favTab) favTab.textContent = tgT('favTab');
+
     // Deep link: ?category=<id> selects the category (e.g. back links from
     // the standalone emulator pages: fantasy / computer / mobile / retropc)
     var urlCategory = new URLSearchParams(window.location.search).get('category');
@@ -1449,6 +1526,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Update only this star so infinite-scroll position is preserved.
             favBtn.classList.toggle('active', added);
             favBtn.innerHTML = '<i class="fa' + (added ? 's' : 'r') + ' fa-star"></i>';
+            // In the Favorites view an unstar removes the card from the list,
+            // so refresh the whole view to keep it in sync.
+            if (currentCategory === 'favorites' && !added) renderGames();
             return;
         }
         var card = e.target.closest ? e.target.closest('.game-card[data-game-id]') : null;

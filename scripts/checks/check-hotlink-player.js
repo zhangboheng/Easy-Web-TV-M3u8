@@ -21,13 +21,13 @@ check(/return\s*\{[\s\S]*\bstart\s*[\s\S]*\bstop\s*[\s\S]*\bretry\s*/.test(helpe
     check(new RegExp('\\b' + lang + '\\s*:\\s*\\{').test(helper),
         'shared hotlink copy is missing language ' + lang);
 });
-['loadingSlow', 'upstreamUnavailable', 'retry', 'openInNewTab', 'upstreamHint'].forEach((key) => {
+['loadingSlow', 'upstreamUnavailable', 'retry', 'upstreamHint'].forEach((key) => {
     check(new RegExp('\\b' + key + '\\s*:').test(helper), 'shared hotlink copy is missing ' + key);
 });
 check(/15000/.test(helper), 'shared hotlink player must surface the slow-load hint at 15s');
 check(/30000/.test(helper), 'shared hotlink player must surface stalled upstream state at 30s');
 check(/hotlinkRetry/.test(helper), 'shared hotlink player must create a retry control');
-check(/hotlinkNewTab/.test(helper), 'shared hotlink player must create an official-page link');
+check(!/hotlinkNewTab/.test(helper), 'shared hotlink player must not create an official-page link');
 check(/addEventListener\(['"]load['"]/.test(helper), 'shared hotlink player must listen for iframe load');
 check(/about:blank/.test(helper), 'shared hotlink player must clear stopped iframes');
 check(/removeAttribute\(['"]loading['"]\)/.test(helper),
@@ -138,7 +138,7 @@ pages.forEach((p) => {
 });
 const stylesheet = read('css/style.css');
 check(/\.hotlink-retry\b/.test(stylesheet), 'css/style.css is missing .hotlink-retry styles');
-check(/\.hotlink-fallback-link\b/.test(stylesheet), 'css/style.css is missing .hotlink-fallback-link styles');
+check(!/\.hotlink-fallback-link\b/.test(stylesheet), 'css/style.css still has unused .hotlink-fallback-link styles');
 
 
 // Pages that need cross-origin isolation must use the shared helper.

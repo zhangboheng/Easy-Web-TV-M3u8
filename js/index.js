@@ -966,9 +966,10 @@ const SourceSettings = {
         var emptyText = ProxySettings.t('source_custom_empty', 'No custom sources yet.');
         var deleteTitle = ProxySettings.t('settings_proxy_delete', 'Delete');
         var namePh = ProxySettings.t('source_custom_name_ph', 'Name (e.g. My source)');
+        var ytUrlPh = 'https://www.youtube.com/feeds/videos.xml?channel_id=UC...';
 
         var self = SourceSettings;
-        ['movie', 'novel', 'manga', 'music', 'porn'].forEach(function(type) {
+        ['movie', 'novel', 'manga', 'music', 'porn', 'youtube'].forEach(function(type) {
             var container = DOM.$('.source-options[data-source-type="' + type + '"]');
             if (!container) return;
 
@@ -1014,7 +1015,7 @@ const SourceSettings = {
                 html += '<div class="proxy-form">' +
                     '<div class="proxy-form-row">' +
                         '<input type="text" id="custom-source-name-' + type + '" class="settings-input" placeholder="' + self.escape(namePh) + '" maxlength="40">' +
-                        '<input type="url" id="custom-source-url-' + type + '" class="settings-input" placeholder="https://host/api.php/provide/vod/at/json" spellcheck="false">' +
+                        '<input type="url" id="custom-source-url-' + type + '" class="settings-input" placeholder="' + self.escape(type === 'youtube' ? ytUrlPh : 'https://host/api.php/provide/vod/at/json') + '" spellcheck="false">' +
                     '</div>' +
                     '<div class="proxy-form-actions">' +
                         '<button type="button" class="settings-btn" id="custom-source-add-' + type + '">' + self.escape(ProxySettings.t('source_custom_add', 'Add source')) + '</button>' +
@@ -1028,11 +1029,6 @@ const SourceSettings = {
 
     escape: function(text) {
         return ProxySettings.escapeHtml(text);
-    },
-
-    showError: function(type, key, fallback) {
-        var el = DOM.$('#custom-source-error-' + type);
-        if (el) el.textContent = ProxySettings.t(key, fallback);
     },
 
     clearError: function(type) {
@@ -1054,8 +1050,18 @@ const SourceSettings = {
                     var nameEl = DOM.$('#custom-source-name-' + type);
                     var urlEl = DOM.$('#custom-source-url-' + type);
                     var url = (urlEl && urlEl.value || '').trim();
-                    if (!SourceConfig.isValidUrl(url)) {
-                        self.showError(type, 'source_custom_invalid', 'Please enter a valid http(s) source URL.');
+                    var valid = type === 'youtube'
+                        ? SourceConfig.isValidYouTubeFeedUrl(url)
+                        : SourceConfig.isValidUrl(url);
+                    if (!valid) {
+                        // Reuse the translated "invalid URL" text and append the
+                        // YouTube RSS format (a URL needs no translation).
+                        var baseMsg = ProxySettings.t('source_custom_invalid', 'Please enter a valid http(s) source URL.');
+                        var msg = type === 'youtube'
+                            ? baseMsg + ': https://www.youtube.com/feeds/videos.xml?channel_id=UC...'
+                            : baseMsg;
+                        var errEl = DOM.$('#custom-source-error-' + type);
+                        if (errEl) errEl.textContent = msg;
                         return;
                     }
                     SourceConfig.add(type, nameEl && nameEl.value || '', url);
@@ -1386,7 +1392,7 @@ const SettingsModal = {
     },
     
     loadSavedSources: function() {
-        var sourceTypes = ['movie', 'novel', 'manga', 'music', 'porn'];
+        var sourceTypes = ['movie', 'novel', 'manga', 'music', 'porn', 'youtube'];
         sourceTypes.forEach(function(type) {
             var saved = window.localStorage.getItem(type);
             if (saved) {
@@ -1400,18 +1406,22 @@ const SettingsModal = {
     },
     
     saveSources: function() {
-        var sourceTypes = ['movie', 'novel', 'manga', 'music', 'porn'];
+        var sourceTypes = ['movie', 'novel', 'manga', 'music', 'porn', 'youtube'];
         var hasError = false;
         
         sourceTypes.forEach(function(type) {
+            // The YouTube tab's built-in rows are informational (Theater
+            // always exposes built-in RSS channels regardless of checkbox
+            // state), so an unchecked YouTube row is fine; only the real
+            // content-source tabs require a selection.
             var checked = [];
             document.querySelectorAll('input[name="settings-' + type + '"]:checked').forEach(function(cb) {
                 checked.push(cb.value);
             });
             
-            if (checked.length === 0) {
+            if (checked.length === 0 && type !== 'youtube') {
                 hasError = true;
-            } else {
+            } else if (checked.length > 0) {
                 window.localStorage.setItem(type, checked.join(','));
             }
         });
@@ -1711,6 +1721,7 @@ DOM.ready(function() {
     if (scrollidbar) {
         scrollidbar.innerHTML = '';
         DOM.append(scrollidbar, `
+            <p>[2026-11-25] V8.6.2 update Add a YouTube tab to Settings > Source Control with two built-in channels (Blender, Blender Studio) listed by their official RSS URLs plus user-added channel feeds; picking any YouTube channel in Theater now loads its latest videos live from that RSS feed through the configurable CORS proxy pool and plays them via YouTube's official nocookie embed</p>
             <p>[2026-11-25] V8.6.2 release Harden the hot-linked player routes: the J2ME demo now launches inside the page's embedded iframe, jar URLs run in the same player, and the broken parent-origin blob local-jar path is replaced by the official installer inside the player; BBC Micro and Apple II stop lazy-loading their iframes after the shared player reveals them from display:none, so their src assignment is no longer skipped; the Service Worker bypasses the browser HTTP cache for normal document/script/style requests and the isolated PS2/Vita/Mac/N64/rustpal route navigations while leaving images, media and Range requests on the normal cache path, rustpal falls back to the upstream site when no service worker controls the page, and the version check now guards the isolated-route cache path and the settings changelog entry</p>
             <p>[2026-11-22] V8.6.1 update Add five text games to Web Games via the generic hot-link player: A Dark Room (MPL-2.0), Life Restart 人生重开模拟器 (MIT), Candy Box 2 (GPL-3.0), Antimatter Dimensions (MIT) and 文字修仙 Xiuxian Cultivation (CC BY-NC 4.0) - each runs from its author's official hosted build in an iframe with card art hot-linked from the project repositories; regression checks now parse the game registry and the 8-language texts instead of grepping file text, a new CI check verifies every hot-linked game URL is reachable, the catalogue check replaces a tautological assertion with category floors and cross-file consistency (route pages, category tabs, local images), the player notice says works are open source or free-licensed because CC BY-NC is not open source, and the CI check scripts moved out of docs/superpowers into scripts/checks so docs/ is now local-only skill scratch space that git ignores, and a regression check guards that directory contract so a future move cannot silently drop a check from CI</p>
             <p>[2026-11-22] V8.6.0 release Harden the app before adding more content: hot-linked game card images are now cached by the service worker (including opaque cross-origin responses) and fall back to the built-in Games icon when an upstream fails, with a CI check for every remote image URL; centralise the cross-origin-isolation reload dance in a shared hot-link player helper used by all isolated player pages; make js/version.js the single source of truth for the settings badge and backup export (a consistency check keeps the manifest, service-worker cache name and changelog in sync); shrink nine oversized screenshots to right-sized WebP images (~3MB saved); and move the 24 i18n page pairs into one JSON manifest so adding a page no longer means editing the workflow</p>

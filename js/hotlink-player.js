@@ -11,60 +11,52 @@ window.HotlinkPlayer = (function () {
 
     var COPY = {
         zh: {
-            loadingSlow: '加载较慢，请再等一会儿，或在新标签页打开官方页面',
+            loadingSlow: '加载较慢，请再等一会儿',
             upstreamUnavailable: '官方页面加载超时或暂时不可用',
             retry: '重试',
-            openInNewTab: '在新标签页打开官方页面 ↗',
-            upstreamHint: '若游戏持续空白，请在新标签页打开官方页面。'
+            upstreamHint: '若游戏持续空白，请点击重试重新加载。'
         },
         en: {
-            loadingSlow: 'Still loading - please wait a little longer or open the official page in a new tab',
+            loadingSlow: 'Still loading - please wait a little longer',
             upstreamUnavailable: 'The official page is taking too long or may be unavailable',
             retry: 'Retry',
-            openInNewTab: 'Open official page ↗',
-            upstreamHint: 'If the game stays blank, open the official page in a new tab.'
+            upstreamHint: 'If the game stays blank, use the Retry button to reload it.'
         },
         ja: {
-            loadingSlow: '読み込みが遅いです。しばらく待つか、公式ページを新しいタブで開いてください',
+            loadingSlow: '読み込みが遅いです。しばらくお待ちください',
             upstreamUnavailable: '公式ページの読み込みがタイムアウトしたか、利用できないようです',
             retry: '再試行',
-            openInNewTab: '公式ページを新しいタブで開く ↗',
-            upstreamHint: 'ゲームが空白のままの場合は、公式ページを新しいタブで開いてください。'
+            upstreamHint: 'ゲームが空白のままの場合は、再試行ボタンで読み込み直してください。'
         },
         ko: {
-            loadingSlow: '로딩이 느립니다. 조금 더 기다리거나 공식 페이지를 새 탭에서 여세요',
+            loadingSlow: '로딩이 느립니다. 조금 더 기다려 주세요',
             upstreamUnavailable: '공식 페이지 응답이 지연되거나 일시적으로 사용할 수 없습니다',
             retry: '다시 시도',
-            openInNewTab: '공식 페이지 새 탭에서 열기 ↗',
-            upstreamHint: '게임이 계속 비어 있으면 공식 페이지를 새 탭에서 열어 주세요.'
+            upstreamHint: '게임이 계속 비어 있으면 다시 시도 버튼으로 다시 불러오세요.'
         },
         fr: {
-            loadingSlow: 'Chargement lent - patientez encore un peu ou ouvrez la page officielle dans un nouvel onglet',
+            loadingSlow: 'Chargement lent - patientez encore un peu',
             upstreamUnavailable: 'La page officielle met trop de temps ou est momentanément indisponible',
             retry: 'Réessayer',
-            openInNewTab: 'Ouvrir la page officielle ↗',
-            upstreamHint: 'Si le jeu reste vide, ouvrez la page officielle dans un nouvel onglet.'
+            upstreamHint: 'Si le jeu reste vide, utilisez le bouton Réessayer pour le recharger.'
         },
         de: {
-            loadingSlow: 'Laden dauert länger - bitte warten Sie noch etwas oder öffnen Sie die offizielle Seite in einem neuen Tab',
+            loadingSlow: 'Laden dauert länger - bitte warten Sie noch etwas',
             upstreamUnavailable: 'Die offizielle Seite antwortet nicht oder ist vorübergehend nicht verfügbar',
             retry: 'Erneut versuchen',
-            openInNewTab: 'Offizielle Seite öffnen ↗',
-            upstreamHint: 'Wenn das Spiel leer bleibt, öffnen Sie die offizielle Seite in einem neuen Tab.'
+            upstreamHint: 'Wenn das Spiel leer bleibt, klicken Sie auf „Erneut versuchen“, um es neu zu laden.'
         },
         es: {
-            loadingSlow: 'La carga va lenta: espera un poco más o abre la página oficial en una pestaña nueva',
+            loadingSlow: 'La carga va lenta: espera un poco más',
             upstreamUnavailable: 'La página oficial tarda demasiado o no está disponible temporalmente',
             retry: 'Reintentar',
-            openInNewTab: 'Abrir página oficial ↗',
-            upstreamHint: 'Si el juego sigue en blanco, abre la página oficial en una pestaña nueva.'
+            upstreamHint: 'Si el juego sigue en blanco, usa el botón Reintentar para volver a cargarlo.'
         },
         ru: {
-            loadingSlow: 'Загрузка идёт медленно - подождите ещё немного или откройте официальную страницу в новой вкладке',
+            loadingSlow: 'Загрузка идёт медленно - подождите ещё немного',
             upstreamUnavailable: 'Официальная страница слишком долго не отвечает или временно недоступна',
             retry: 'Повторить',
-            openInNewTab: 'Открыть официальную страницу ↗',
-            upstreamHint: 'Если игра остаётся пустой, откройте официальную страницу в новой вкладке.'
+            upstreamHint: 'Если игра остаётся пустой, нажмите «Повторить», чтобы перезагрузить её.'
         }
     };
 
@@ -137,7 +129,6 @@ window.HotlinkPlayer = (function () {
         var stalledTimer = null;
         var hideTimer = null;
         var lastUrl = null;
-        var lastTabUrl = null;
 
         function clearTimers() {
             [slowTimer, stalledTimer, hideTimer].forEach(function (timer) {
@@ -164,25 +155,8 @@ window.HotlinkPlayer = (function () {
             if (row && row.parentNode) row.parentNode.removeChild(row);
         }
 
-        function ensureOfficialLink() {
-            var link = document.getElementById('hotlinkNewTab');
-            if (!link) {
-                link = document.createElement('a');
-                link.id = 'hotlinkNewTab';
-                link.className = 'hotlink-fallback-link';
-                link.target = '_blank';
-                link.rel = 'noopener';
-                var host = document.querySelector('.header-right') || document.body;
-                host.appendChild(link);
-            }
-            link.href = lastTabUrl || lastUrl || '#';
-            link.textContent = words.openInNewTab;
-            return link;
-        }
-
         function showFallback() {
             if (!overlay) return;
-            ensureOfficialLink();
             removeFallback();
             var row = document.createElement('div');
             row.id = 'hotlinkFallback';
@@ -232,8 +206,6 @@ window.HotlinkPlayer = (function () {
             clearTimers();
             removeFallback();
             lastUrl = resolve(options.url);
-            lastTabUrl = resolve(options.newTabUrl) || lastUrl;
-            ensureOfficialLink();
             if (options.onStart) options.onStart();
             showOverlay(true);
             frame.src = 'about:blank';
@@ -245,7 +217,6 @@ window.HotlinkPlayer = (function () {
             slowTimer = setTimeout(function () {
                 if (!active || mine !== generation) return;
                 showToast(words.loadingSlow);
-                ensureOfficialLink();
             }, slowMs);
             stalledTimer = setTimeout(function () {
                 if (!active || mine !== generation) return;
@@ -275,4 +246,3 @@ window.HotlinkPlayer = (function () {
         createPlayer: createPlayer
     };
 })();
-

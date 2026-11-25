@@ -106,5 +106,24 @@ check(/getMusicApiBase/.test(fs.readFileSync(path.join(root, 'js', 'apiproxy.js'
 check(/SourceSettings\.render\(\)/.test(js) && /SourceSettings\.bindEvents\(\)/.test(js),
     'js/index.js must render and bind SourceSettings in initSourceControl');
 
+// YouTube Source Control tab: custom channel RSS feeds power Theater's
+// yt-rss: source, while the built-in Blender catalogue stays untouched.
+check((html.match(/<div class="source-options(?: hidden)?" data-source-type="youtube">/g) || []).length === 1,
+    'index.html must declare exactly one youtube source-options container');
+check(/data-source-type="youtube"[^>]*data-i18n="source_type_youtube"/.test(html),
+    'Source Control has no YouTube tab button');
+check(/'youtube'/.test(srcConf) && /isValidYouTubeFeedUrl/.test(srcConf),
+    'source-config.js lost the YouTube custom-source type/validator');
+check(/channel_id=UCSMOQeBJ2RAnuFungnQOxLg/.test(srcConf) && /channel_id=UCz75RVbH8q2jdBJ4SnwuZZQ/.test(srcConf),
+    'source-config.js is missing the two built-in YouTube channel RSS feeds');
+check(/getBuiltins\('youtube'\)/.test(fs.readFileSync(path.join(root, 'js', 'tocomprehensive.js'), 'utf8')),
+    'Theater does not expose the built-in YouTube channels as yt-rss sources');
+check(/isValidYouTubeFeedUrl/.test(js), 'js/index.js does not validate YouTube RSS URLs');
+check(/yt-rss:/.test(fs.readFileSync(path.join(root, 'js', 'tocomprehensive.js'), 'utf8')) &&
+      /yt-rss:/.test(fs.readFileSync(path.join(root, 'js', 'comprehensive.js'), 'utf8')),
+    'Theater does not handle yt-rss: YouTube channel sources');
+check((trans.match(/source_type_youtube/g) || []).length >= 90,
+    'source_type_youtube is missing from the translated languages');
+
 console.log(failed === 0 ? 'index DOM check: ALL OK' : 'index DOM check: ' + failed + ' problem(s)');
 process.exit(failed === 0 ? 0 : 1);

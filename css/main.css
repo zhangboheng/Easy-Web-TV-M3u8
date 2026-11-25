@@ -347,6 +347,30 @@ input[type="button"] {
     pointer-events: auto;
 }
 
+/* Keep the right-side controls (playback rate, fullscreen) reachable on
+   narrow/mobile screens: let the progress bar absorb the remaining space
+   and hide low-value controls instead of letting the bar overflow.
+   Audio players keep their own compact control bar layout. */
+.video-js:not(.audio-player) .vjs-control-bar {
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+.video-js:not(.audio-player) .vjs-progress-control {
+    flex: 1 1 auto;
+    min-width: 3em;
+}
+@media (max-width: 640px) {
+    .video-js:not(.audio-player) .vjs-volume-panel,
+    .video-js:not(.audio-player) .vjs-picture-in-picture-control {
+        display: none !important;
+    }
+}
+@media (max-width: 380px) {
+    .video-js:not(.audio-player) .vjs-duration,
+    .video-js:not(.audio-player) .vjs-time-divider {
+        display: none !important;
+    }
+}
 
 /*Comprehensive page css start*/
 

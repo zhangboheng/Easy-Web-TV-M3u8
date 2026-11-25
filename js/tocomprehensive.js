@@ -6,7 +6,6 @@
 // archive: uses the archive.org data loader instead of the Chinese CMS API
 var movieSources = {
     'archive_classic': { url: 'https://archive.org', name: 'Classic Movies (Public Domain)', lang: 'en', archive: true },
-    'youtube_blender': { url: 'https://youtube-nocookie.com', name: 'YouTube', lang: 'en', youtube: true },
     'hnzy': { url: 'https://www.hongniuzy2.com/api.php/provide/vod/at/json/', name: '红牛资源', lang: 'zh' },
     'bjy': { url: 'https://cj.rycjapi.com/api.php/provide/vod/at/json/', name: '如意资源', lang: 'zh' },
     'ikun': { url: 'https://ikunzyapi.com/api.php/provide/vod/at/json', name: '爱坤资源', lang: 'zh' },
@@ -20,7 +19,7 @@ var movieSources = {
 var TC_I18N = {
     en: {
         dlgTitle: 'Choose Movie Sources',
-        dlgDesc: 'Movie feeds come from community CMS APIs (Chinese), public-domain classics from archive.org (English), and curated CC-BY open movies from YouTube. Pick the sources you want — you can change this later from the source dropdown at the top.',
+        dlgDesc: 'Movie feeds come from community CMS APIs (Chinese) and public-domain classics from archive.org (English). YouTube channels are added separately under Settings → Source Control → YouTube. Pick the sources you want — you can change this later from the source dropdown at the top.',
         dlgConfirm: 'Confirm',
         dlgSkip: 'Use all sources',
         langZh: 'Chinese',
@@ -41,7 +40,7 @@ var TC_I18N = {
     },
     zh: {
         dlgTitle: '选择影片内容源',
-        dlgDesc: '影片源来自社区 CMS 资源站（中文）、archive.org 的公共领域经典电影（英文），以及 YouTube 上精选的 CC-BY 开源电影（官方嵌入播放）。选择你想看的源——之后可随时在顶部下拉框里修改。',
+        dlgDesc: '影片源来自社区 CMS 资源站（中文）和 archive.org 的公共领域经典电影（英文）；YouTube 频道请到「设置 → 源管理 → YouTube」单独添加。选择你想看的源——之后可随时在顶部下拉框里修改。',
         dlgConfirm: '确认',
         dlgSkip: '使用全部源',
         langZh: '中文',
@@ -62,7 +61,7 @@ var TC_I18N = {
     },
     ja: {
         dlgTitle: '動画ソースを選択',
-        dlgDesc: '動画ソースはコミュニティ CMS（中国語）、archive.org のパブリックドメイン映画（英語）、および YouTube の厳選された CC-BY オープン映画です。使用するソースを選択してください。上部のドロップダウンからいつでも変更できます。',
+        dlgDesc: '動画ソースはコミュニティ CMS（中国語）と archive.org のパブリックドメイン映画（英語）です。YouTube チャンネルは「設定 → ソース管理 → YouTube」で別途追加してください。使用するソースを選択してください。上部のドロップダウンからいつでも変更できます。',
         dlgConfirm: '確認',
         dlgSkip: 'すべてのソースを使用',
         langZh: '中国語',
@@ -83,7 +82,7 @@ var TC_I18N = {
     },
     ko: {
         dlgTitle: '영화 소스 선택',
-        dlgDesc: '영화 소스는 커뮤니티 CMS(중국어), archive.org 퍼블릭 도메인 영화(영어), YouTube의 엄선된 CC-BY 오픈 영화입니다. 사용할 소스를 선택하세요. 상단 드롭다운에서 언제든 변경할 수 있습니다.',
+        dlgDesc: '영화 소스는 커뮤니티 CMS(중국어)와 archive.org 퍼블릭 도메인 영화(영어)입니다. YouTube 채널은 "설정 → 소스 관리 → YouTube"에서 별도로 추가하세요. 사용할 소스를 선택하세요. 상단 드롭다운에서 언제든 변경할 수 있습니다.',
         dlgConfirm: '확인',
         dlgSkip: '모든 소스 사용',
         langZh: '중국어',
@@ -104,7 +103,7 @@ var TC_I18N = {
     },
     fr: {
         dlgTitle: 'Choisir les sources de films',
-        dlgDesc: 'Les sources proviennent de CMS communautaires (chinois), de films du domaine public sur archive.org (anglais) et de films ouverts CC-BY sélectionnés sur YouTube. Choisissez les sources à utiliser — modifiables à tout moment depuis le menu déroulant en haut.',
+        dlgDesc: 'Les sources proviennent de CMS communautaires (chinois) et de films du domaine public sur archive.org (anglais). Les chaînes YouTube s\'ajoutent séparément dans Paramètres → Gestion des sources → YouTube. Choisissez les sources à utiliser — modifiables à tout moment depuis le menu déroulant en haut.',
         dlgConfirm: 'Confirmer',
         dlgSkip: 'Utiliser toutes les sources',
         langZh: 'Chinois',
@@ -125,7 +124,7 @@ var TC_I18N = {
     },
     de: {
         dlgTitle: 'Filmquellen auswählen',
-        dlgDesc: 'Die Quellen stammen aus Community-CMS (Chinesisch), Public-Domain-Filmen von archive.org (Englisch) und ausgewählten CC-BY-Open-Movies auf YouTube. Wähle die gewünschten Quellen — jederzeit änderbar über das Dropdown oben.',
+        dlgDesc: 'Die Quellen stammen aus Community-CMS (Chinesisch) und Public-Domain-Filmen von archive.org (Englisch). YouTube-Kanäle werden separat unter Einstellungen → Quellenverwaltung → YouTube hinzugefügt. Wähle die gewünschten Quellen — jederzeit änderbar über das Dropdown oben.',
         dlgConfirm: 'Bestätigen',
         dlgSkip: 'Alle Quellen verwenden',
         langZh: 'Chinesisch',
@@ -146,7 +145,7 @@ var TC_I18N = {
     },
     es: {
         dlgTitle: 'Elegir fuentes de películas',
-        dlgDesc: 'Las fuentes provienen de CMS comunitarios (chino), películas de dominio público en archive.org (inglés) y películas abiertas CC-BY seleccionadas en YouTube. Elige las fuentes que quieras: puedes cambiarlas cuando quieras desde el menú desplegable superior.',
+        dlgDesc: 'Las fuentes provienen de CMS comunitarios (chino) y películas de dominio público en archive.org (inglés). Los canales de YouTube se añaden por separado en Ajustes → Gestión de fuentes → YouTube. Elige las fuentes que quieras: puedes cambiarlas cuando quieras desde el menú desplegable superior.',
         dlgConfirm: 'Confirmar',
         dlgSkip: 'Usar todas las fuentes',
         langZh: 'Chino',
@@ -167,7 +166,7 @@ var TC_I18N = {
     },
     ru: {
         dlgTitle: 'Выбрать источники фильмов',
-        dlgDesc: 'Источники: сообщества CMS (китайский), общедоступные фильмы archive.org (английский) и отобранные фильмы CC-BY на YouTube. Выберите нужные источники — их можно изменить в любой момент через меню вверху.',
+        dlgDesc: 'Источники: сообщества CMS (китайский) и общедоступные фильмы archive.org (английский). Каналы YouTube добавляются отдельно в Настройки → Управление источниками → YouTube. Выберите нужные источники — их можно изменить в любой момент через меню вверху.',
         dlgConfirm: 'Подтвердить',
         dlgSkip: 'Использовать все источники',
         langZh: 'Китайский',
@@ -330,9 +329,35 @@ function loadCategories(link) {
         renderArchiveCategories();
         return;
     }
-    // curated Blender open movies have a small fixed category set
-    if (link === YOUTUBE_SOURCE) {
-        renderYouTubeCategories();
+    // user-added YouTube channel RSS: sidebar lists the channel plus an All entry
+    if (isYouTubeRssSource(link)) {
+        fetchYouTubeRss(link).then(function (data) {
+            var categoryList = document.getElementById('categoryList');
+            categoryList.innerHTML = '';
+            var zh = tcLang() === 'zh';
+            var cats = [{ id: '', icon: 'fa-fire', name: zh ? '全部' : 'All' }];
+            if (data.name) cats.push({ id: data.name, icon: 'fa-youtube', name: data.name });
+            cats.forEach(function (cat, idx) {
+                var item = document.createElement('div');
+                item.className = 'category-item' + (idx === 0 ? ' active' : '');
+                item.dataset.id = cat.id;
+                item.innerHTML = '<i class="fas ' + cat.icon + '"></i><span>' + escapeHtml(cat.name) + '</span>';
+                item.addEventListener('click', function () {
+                    document.querySelectorAll('.category-item').forEach(function (el) { el.classList.remove('active'); });
+                    this.classList.add('active');
+                    currentCategory = this.dataset.id;
+                    pageNum = 1;
+                    document.getElementById('searchInput').value = '';
+                    loadVideos(currentLink, currentCategory, 1, true);
+                    if (window.innerWidth <= 768) {
+                        document.getElementById('sidebar').classList.remove('show-mobile');
+                    }
+                });
+                categoryList.appendChild(item);
+            });
+        }).catch(function () {
+            document.getElementById('categoryList').innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-triangle"></i><p>' + tcT('failCats') + '</p></div>';
+        });
         return;
     }
     var baseUrl = link.endsWith('/') ? link : link + '/';
@@ -412,9 +437,9 @@ function loadVideos(link, category, page, force) {
         loadArchiveVideos(category, page, seq);
         return;
     }
-    // curated Blender open movies: finite local catalogue
-    if (link === YOUTUBE_SOURCE) {
-        loadCuratedYouTubeVideos(category, seq);
+    // user-added YouTube channel RSS
+    if (isYouTubeRssSource(link)) {
+        loadYouTubeRssVideos(link, category, seq);
         return;
     }
     
@@ -478,81 +503,95 @@ function appendVideoCard(link, videoId, videoName, videoPic, videoType) {
     document.getElementById('contentGrid').insertAdjacentHTML('beforeend', cardHtml);
 }
 
-// ============================== curated Blender open movies (YouTube embed) ==============================
-// Small hand-picked catalogue of Blender Foundation open movies (CC-BY).
-// Playback uses YouTube's official iframe player only - no direct URLs are
-// fetched, stored or proxied by this app.
-var YOUTUBE_SOURCE = 'https://youtube-nocookie.com';
-var youtubeCatalogue = null; // lazy-loaded from data/videos/youtube.json
+// ============================== YouTube channel RSS feeds ==============================
+// Built-in and user-added channels from Source Control 'youtube' tab; each
+// stores a videos.xml?channel_id=... URL. The feed is fetched through the
+// shared CORS-proxy pool, parsed with DOMParser, and played via the official
+// nocookie embed. No fixed catalogue is involved.
+var YT_RSS_PREFIX = 'yt-rss:';
 
-function fetchYouTubeCatalogue() {
-    if (youtubeCatalogue) return Promise.resolve(youtubeCatalogue);
-    return fetch('../data/videos/youtube.json').then(function (r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-    }).then(function (data) {
-        var videos = (data && data.videos) || [];
-        if (!Array.isArray(videos)) throw new Error('Invalid catalogue');
-        youtubeCatalogue = videos;
-        return youtubeCatalogue;
-    });
+function isYouTubeRssSource(link) {
+    return typeof link === 'string' && link.indexOf(YT_RSS_PREFIX) === 0;
 }
 
-function renderYouTubeCategories() {
-    var categoryList = document.getElementById('categoryList');
-    categoryList.innerHTML = '';
-    var zh = tcLang() === 'zh';
-    var cats = [
-        { id: '', icon: 'fa-fire', name: zh ? '全部' : 'All' },
-        { id: 'animation', icon: 'fa-film', name: zh ? '动画短片' : 'Animation' },
-        { id: 'liveaction', icon: 'fa-users', name: zh ? '真人 VFX' : 'Live Action VFX' }
-    ];
-    cats.forEach(function (cat, idx) {
-        var item = document.createElement('div');
-        item.className = 'category-item' + (idx === 0 ? ' active' : '');
-        item.dataset.id = cat.id;
-        item.innerHTML = '<i class="fas ' + cat.icon + '"></i><span>' + escapeHtml(cat.name) + '</span>';
-        item.addEventListener('click', function () {
-            document.querySelectorAll('.category-item').forEach(function (el) {
-                el.classList.remove('active');
-            });
-            this.classList.add('active');
-            currentCategory = cat.id;
-            pageNum = 1;
-            document.getElementById('searchInput').value = '';
-            loadVideos(currentLink, currentCategory, 1);
-            if (window.innerWidth <= 768) {
-                document.getElementById('sidebar').classList.remove('show-mobile');
-            }
+function youtubeRssUrl(link) {
+    return link.slice(YT_RSS_PREFIX.length);
+}
+
+function parseYouTubeRss(xmlText) {
+    var doc = new DOMParser().parseFromString(xmlText, 'text/xml');
+    if (doc.querySelector('parsererror')) throw new Error('Invalid RSS XML');
+    var feedTitle = doc.querySelector('feed > title');
+    var channelName = feedTitle ? feedTitle.textContent.trim() : 'YouTube channel';
+    var videos = [];
+    var entries = doc.querySelectorAll('feed > entry');
+    for (var i = 0; i < entries.length; i++) {
+        var entry = entries[i];
+        var idEl = entry.getElementsByTagName('yt:videoId')[0];
+        var titleEl = entry.getElementsByTagName('title')[0];
+        var thumbEl = entry.getElementsByTagName('media:thumbnail')[0];
+        var publishedEl = entry.getElementsByTagName('published')[0];
+        var videoId = idEl ? idEl.textContent.trim() : '';
+        if (!videoId) continue;
+        videos.push({
+            id: videoId,
+            title: titleEl ? titleEl.textContent.trim() : videoId,
+            image: thumbEl ? thumbEl.getAttribute('url') : ('https://i.ytimg.com/vi/' + encodeURIComponent(videoId) + '/hqdefault.jpg'),
+            published: publishedEl ? publishedEl.textContent.trim() : ''
         });
-        categoryList.appendChild(item);
+    }
+    videos.sort(function (a, b) { return b.published.localeCompare(a.published); });
+    return { name: channelName, videos: videos };
+}
+
+function fetchYouTubeRss(link) {
+    return fetchWithProxy(youtubeRssUrl(link)).then(function (text) {
+        return parseYouTubeRss(text);
     });
 }
 
-function renderYouTubeCards(videos) {
-    var zh = tcLang() === 'zh';
+function renderYouTubeRssCards(videos, link, channelName) {
+    var contentGrid = document.getElementById('contentGrid');
+    contentGrid.innerHTML = '';
+    contentGrid.classList.remove('has-results');
+    if (!videos.length) {
+        contentGrid.innerHTML = '<div class="empty-state"><i class="fas fa-video-slash"></i><p>' + tcT('noVideos') + '</p></div>';
+        return;
+    }
+    contentGrid.classList.add('has-results');
     videos.forEach(function (v) {
-        appendVideoCard(YOUTUBE_SOURCE, v.id,
-            (zh && v.titleZh) ? v.titleZh : v.title,
-            'https://i.ytimg.com/vi/' + encodeURIComponent(v.id) + '/hqdefault.jpg',
-            v.year ? (v.year + ' · ' + (v.license || 'CC-BY')) : (v.license || 'CC-BY'));
+        // Keep the real feed URL in web= so the player knows this is the
+        // RSS-backed YouTube source; carry title/channel for the player view.
+        var cardHtml = '<a href="../catalogues/complay.html?web=' + encodeURIComponent(link) +
+            '&tab=' + encodeURIComponent(v.id) +
+            '&title=' + encodeURIComponent(v.title || '') +
+            '&channel=' + encodeURIComponent(channelName || '') + '" class="card-item">' +
+            '<img class="card-image" src="' + escapeHtml(v.image) + '" alt="' + escapeHtml(v.title) + '" onerror="this.src=\'../images/noimage.jpeg\'">' +
+            '<div class="card-overlay"></div>' +
+            '<div class="card-play-icon"><i class="fas fa-play"></i></div>' +
+            '<div class="card-info">' +
+            '<span class="card-type">' + escapeHtml(tcT('latest')) + '</span>' +
+            '<h4 class="card-title">' + escapeHtml(v.title) + '</h4>' +
+            '</div></a>';
+        contentGrid.insertAdjacentHTML('beforeend', cardHtml);
     });
 }
 
-function loadCuratedYouTubeVideos(category, seq) {
-    fetchYouTubeCatalogue().then(function (videos) {
-        if (seq !== videoRequestSeq) return; // stale: a newer request took over
-        var contentGrid = document.getElementById('contentGrid');
-        contentGrid.innerHTML = '';
-        contentGrid.classList.remove('has-results');
-        var filtered = category ? videos.filter(function (v) { return v.category === category; }) : videos;
-        if (filtered.length === 0) {
-            contentGrid.innerHTML = '<div class="empty-state"><i class="fas fa-video-slash"></i><p>' + tcT('noVideos') + '</p></div>';
-        } else {
-            contentGrid.classList.add('has-results');
-            renderYouTubeCards(filtered);
+function loadYouTubeRssVideos(link, category, seq, term) {
+    fetchYouTubeRss(link).then(function (data) {
+        if (seq !== videoRequestSeq) return;
+        var videos = data.videos;
+        if (category) {
+            // category is the channel name; a single feed normally has one channel,
+            // but keep the filter so a future multi-channel feed stays correct.
+            videos = videos.filter(function (v) { return (data.name || '') === category; });
         }
-        noMoreData = true; // finite curated list: no infinite scroll
+        if (term) {
+            var clean = term.toLowerCase().trim();
+            videos = videos.filter(function (v) { return v.title.toLowerCase().indexOf(clean) > -1; });
+        }
+        renderYouTubeRssCards(videos, link, data.name);
+        noMoreData = true; // YouTube RSS exposes only the latest ~15 videos
         showLoading(false);
         isLoading = false;
     }).catch(function () {
@@ -561,36 +600,6 @@ function loadCuratedYouTubeVideos(category, seq) {
         showLoading(false);
         isLoading = false;
         showToast(tcT('failVids'), 'error');
-    });
-}
-
-function loadCuratedYouTubeSearch(term, seq) {
-    fetchYouTubeCatalogue().then(function (videos) {
-        if (seq !== videoRequestSeq) return;
-        var clean = (term || '').toLowerCase().trim();
-        var contentGrid = document.getElementById('contentGrid');
-        contentGrid.innerHTML = '';
-        contentGrid.classList.remove('has-results');
-        var matched = videos.filter(function (v) {
-            return (v.title || '').toLowerCase().indexOf(clean) > -1 ||
-                (v.titleZh || '').indexOf(clean) > -1 ||
-                (v.channel || '').toLowerCase().indexOf(clean) > -1;
-        });
-        if (matched.length === 0) {
-            contentGrid.innerHTML = '<div class="empty-state"><i class="fas fa-search"></i><p>' + tcT('noResults') + ' "' + escapeHtml(term) + '"</p></div>';
-        } else {
-            contentGrid.classList.add('has-results');
-            renderYouTubeCards(matched);
-        }
-        noMoreData = true;
-        showLoading(false);
-        isLoading = false;
-    }).catch(function () {
-        if (seq !== videoRequestSeq) return;
-        document.getElementById('contentGrid').innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-triangle"></i><p>' + tcT('searchFail') + '</p></div>';
-        showLoading(false);
-        isLoading = false;
-        showToast(tcT('searchFail'), 'error');
     });
 }
 
@@ -748,9 +757,9 @@ function searchVideos(link, term, page, force) {
         loadArchiveSearch(term, page, seq);
         return;
     }
-    // curated Blender open movies: search the small local catalogue
-    if (link === YOUTUBE_SOURCE) {
-        loadCuratedYouTubeSearch(term, seq);
+    // user-added YouTube channel RSS: client-side title filter
+    if (isYouTubeRssSource(link)) {
+        loadYouTubeRssVideos(link, '', seq, term);
         return;
     }
     
@@ -941,6 +950,21 @@ function initSourceSelect() {
             var option = document.createElement('option');
             option.value = src.url;
             option.textContent = src.name || 'Custom source';
+            sourceSelect.appendChild(option);
+        });
+        // Built-in YouTube channels (official RSS feeds from Source Control):
+        // each is a yt-rss: source whose data is loaded live, not a fixed list.
+        SourceConfig.getBuiltins('youtube').forEach(function(src) {
+            var option = document.createElement('option');
+            option.value = 'yt-rss:' + src.url;
+            option.textContent = src.name;
+            sourceSelect.appendChild(option);
+        });
+        // User-added YouTube channel RSS feeds (Source Control > YouTube tab).
+        SourceConfig.getEnabled('youtube').forEach(function(src) {
+            var option = document.createElement('option');
+            option.value = 'yt-rss:' + src.url;
+            option.textContent = src.name || 'YouTube channel';
             sourceSelect.appendChild(option);
         });
     }

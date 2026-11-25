@@ -37,7 +37,6 @@ var i18n = {
         aboutHint: '《乐高海岛》由 isledecomp 从原始反编译源码重构，通过 WebAssembly 在浏览器运行。这是源代码级重建而非 ROM 模拟器，无需游戏数据。与乐高集团无关联。',
         loading: '游戏启动中，请稍候...',
         loadingTip: '游戏从官方站点加载，首次启动可能需要一些时间',
-        loadingSlow: '加载较慢，请耐心等待；也可以在新标签页打开',
         playing: '正在运行：',
         fullscreen: '全屏',
         invalidGame: '找不到这个游戏，请从游戏列表中重新选择。'
@@ -59,7 +58,6 @@ var i18n = {
         aboutHint: 'LEGO Island was rebuilt from original decompiled source code by isledecomp and runs in the browser via WebAssembly. It is a source-level reconstruction, not a ROM emulator, and needs no game data. Not affiliated with The LEGO Group.',
         loading: 'Starting the game, please wait...',
         loadingTip: 'The game loads from its official host; first launch can take a while',
-        loadingSlow: 'Still loading - please wait a bit longer, or open it in a new tab',
         playing: 'Now running: ',
         fullscreen: 'Fullscreen',
         invalidGame: 'That game was not found. Please choose one from the game list.'
@@ -81,7 +79,6 @@ var i18n = {
         aboutHint: '「LEGO アイランド」は isledecomp がオリジナルの非コンパイルソースから再構築し、WebAssembly でブラウザ動作するものです。ROM エミュレータではなく、ソースレベルの再構築でゲームデータは不要です。レゴグループとは無関係です。',
         loading: 'ゲームを起動中...',
         loadingTip: 'ゲームは公式サイトから読み込まれます。初回は時間がかかることがあります',
-        loadingSlow: '読み込みが遅い場合はお待ちいただくか、新しいタブで開いてください',
         playing: '実行中：',
         fullscreen: '全画面',
         invalidGame: 'ゲームが見つかりません。ゲーム一覧から選び直してください。'
@@ -103,7 +100,6 @@ var i18n = {
         aboutHint: '「LEGO Island」는 isledecomp가 원본 디컴파일 소스에서 재구현하여 WebAssembly로 브라우저에서 실행합니다. ROM 에뮬레이터가 아닌 소스 수준 재구현이며 게임 데이터가 필요 없습니다. LEGO 그룹과 관련이 없습니다.',
         loading: '게임을 실행 중...',
         loadingTip: '게임은 공식 호스트에서 로드됩니다. 첫 실행은 시간이 걸릴 수 있습니다',
-        loadingSlow: '로딩이 느립니다. 조금 더 기다리거나 새 탭에서 여세요',
         playing: '실행 중: ',
         fullscreen: '전체 화면',
         invalidGame: '게임을 찾을 수 없습니다. 게임 목록에서 다시 선택하세요.'
@@ -125,7 +121,6 @@ var i18n = {
         aboutHint: 'LEGO Island a été reconstruit à partir du code source décompilé d\'origine par isledecomp et fonctionne dans le navigateur via WebAssembly. C\'est une reconstruction au niveau source, pas un émulateur de ROM, et aucun fichier de jeu n\'est requis. Non affilié à The LEGO Group.',
         loading: 'Lancement du jeu, veuillez patienter...',
         loadingTip: 'Le jeu se charge depuis son hébergeur officiel ; le premier lancement peut être long',
-        loadingSlow: 'Chargement lent - patientez ou ouvrez dans un nouvel onglet',
         playing: 'En cours : ',
         fullscreen: 'Plein écran',
         invalidGame: 'Jeu introuvable. Choisissez-en un dans la liste.'
@@ -147,7 +142,6 @@ var i18n = {
         aboutHint: 'LEGO Island wurde von isledecomp aus dem ursprünglichen dekompilierten Quellcode neu gebaut und läuft im Browser via WebAssembly. Es ist eine Rekonstruktion auf Quellcode-Ebene, kein ROM-Emulator, und braucht keine Spieldateien. Nicht mit The LEGO Group verbunden.',
         loading: 'Spiel wird gestartet, bitte warten...',
         loadingTip: 'Das Spiel lädt vom offiziellen Host; der erste Start kann dauern',
-        loadingSlow: 'Laden langsam - bitte warten oder in neuem Tab öffnen',
         playing: 'Läuft: ',
         fullscreen: 'Vollbild',
         invalidGame: 'Spiel nicht gefunden. Bitte aus der Liste wählen.'
@@ -169,7 +163,6 @@ var i18n = {
         aboutHint: 'LEGO Island fue reconstruido por isledecomp a partir del código descompilado original y funciona en el navegador mediante WebAssembly. Es una reconstrucción a nivel de fuente, no un emulador de ROM, y no requiere datos de juego. Sin relación con The LEGO Group.',
         loading: 'Iniciando el juego, espera...',
         loadingTip: 'El juego se carga desde su host oficial; el primer inicio puede tardar',
-        loadingSlow: 'Carga lenta - espera o abre en una pestaña nueva',
         playing: 'Ejecutando: ',
         fullscreen: 'Pantalla completa',
         invalidGame: 'Juego no encontrado. Elígelo de la lista.'
@@ -191,7 +184,6 @@ var i18n = {
         aboutHint: 'LEGO Island пересобран isledecomp из исходного декомпилированного кода и работает в браузере через WebAssembly. Это реконструкция на уровне исходного кода, а не эмулятор ROM, и она не требует данных игры. Не связан с The LEGO Group.',
         loading: 'Запуск игры, подождите...',
         loadingTip: 'Игра загружается с официального хоста; первый запуск может быть долгим',
-        loadingSlow: 'Медленная загрузка — подождите или откройте в новой вкладке',
         playing: 'Запущено: ',
         fullscreen: 'Полный экран',
         invalidGame: 'Игра не найдена. Выберите её из списка.'

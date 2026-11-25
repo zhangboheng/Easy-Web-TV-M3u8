@@ -19,7 +19,6 @@
 const BUILTIN_SOURCES = {
     movie: [
         { id: 'archive_classic', name: 'Classic Movies (Public Domain)', lang: 'en', url: 'https://archive.org' },
-        { id: 'youtube_blender', name: 'YouTube (Blender open movies)', lang: 'en', url: 'https://youtube-nocookie.com' },
         { id: 'hnzy', name: '红牛资源', lang: 'zh', url: 'https://www.hongniuzy2.com/api.php/provide/vod/at/json/' },
         { id: 'bjy', name: '如意资源', lang: 'zh', url: 'https://cj.rycjapi.com/api.php/provide/vod/at/json/' },
         { id: 'ikun', name: '爱坤资源', lang: 'zh', url: 'https://ikunzyapi.com/api.php/provide/vod/at/json' },
@@ -47,12 +46,19 @@ const BUILTIN_SOURCES = {
     ],
     music: [
         { id: 'netease', name: 'NetEase Cloud Music', url: 'http://iwenwiki.com:3000' }
+    ],
+    // Built-in YouTube channels: official RSS feeds listed in the YouTube tab
+    // of Source Control, shown alongside user-added channel RSS feeds in
+    // Theater's YouTube source line-up.
+    youtube: [
+        { id: 'blender', name: 'Blender', url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCSMOQeBJ2RAnuFungnQOxLg' },
+        { id: 'blender_studio', name: 'Blender Studio', url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCz75RVbH8q2jdBJ4SnwuZZQ' }
     ]
 };
 
 const SourceConfig = {
     KEY: 'ewtv-custom-sources',
-    TYPES: ['movie', 'porn'],
+    TYPES: ['movie', 'porn', 'youtube'],
 
     getBuiltins: function(type) {
         return (BUILTIN_SOURCES[type] || []).slice();
@@ -126,6 +132,21 @@ const SourceConfig = {
         try {
             var u = new URL(String(url));
             return (u.protocol === 'https:' || u.protocol === 'http:');
+        } catch (e) {
+            return false;
+        }
+    },
+
+    // YouTube channel RSS feeds must be the official videos.xml endpoint with
+    // a channel_id query parameter (UC...). Reject arbitrary URLs so a bad
+    // entry cannot silently break the Theater sidebar.
+    isValidYouTubeFeedUrl: function(url) {
+        try {
+            var u = new URL(String(url).trim());
+            if (u.protocol !== 'https:' && u.protocol !== 'http:') return false;
+            if (u.hostname !== 'www.youtube.com' && u.hostname !== 'youtube.com') return false;
+            if (u.pathname !== '/feeds/videos.xml') return false;
+            return /^UC[\w-]+$/.test(u.searchParams.get('channel_id') || '');
         } catch (e) {
             return false;
         }

@@ -1,6 +1,23 @@
 // Comprehensive (Movie/TV) Play Page JS
 // Native JavaScript (No jQuery)
 
+// Small UI dictionary for the YouTube RSS playback view. This play page has
+// no language selector of its own, so it reads the same stored UI language
+// the rest of the app uses (same 8-language pattern as the route pages).
+var CP_I18N = {
+    zh: { ytTitle: 'YouTube 频道视频', ytDesc: '通过 YouTube 官方嵌入播放器播放。', ytFrom: '订阅频道' },
+    en: { ytTitle: 'YouTube channel video', ytDesc: 'Played via YouTube official embedded player.', ytFrom: 'Channel' },
+    ja: { ytTitle: 'YouTube チャンネル動画', ytDesc: 'YouTube 公式埋め込みプレーヤーで再生しています。', ytFrom: 'チャンネル' },
+    ko: { ytTitle: 'YouTube 채널 동영상', ytDesc: 'YouTube 공식 임베드 플레이어로 재생합니다.', ytFrom: '채널' },
+    fr: { ytTitle: 'Vidéo de chaîne YouTube', ytDesc: 'Lecteur officiel YouTube intégré.', ytFrom: 'Chaîne' },
+    de: { ytTitle: 'YouTube-Kanalvideo', ytDesc: 'Wiedergabe über den offiziellen YouTube-Einbettungsplayer.', ytFrom: 'Kanal' },
+    es: { ytTitle: 'Vídeo de canal de YouTube', ytDesc: 'Reproducido con el reproductor oficial integrado de YouTube.', ytFrom: 'Canal' },
+    ru: { ytTitle: 'Видео канала YouTube', ytDesc: 'Воспроизведение через официальный встроенный плеер YouTube.', ytFrom: 'Канал' }
+};
+var cpLang = (localStorage.getItem('ewtv-lang') || localStorage.getItem('preferredLanguage') || 'en').split('-')[0];
+if (!CP_I18N[cpLang]) cpLang = 'en';
+function cpT(key) { return (CP_I18N[cpLang] && CP_I18N[cpLang][key]) || CP_I18N.en[key] || key; }
+
 // CORS proxy + failover now live in ../js/apiproxy.js (fetchJSONWithProxy)
 
 // Store episodes data
@@ -157,8 +174,10 @@ document.addEventListener('DOMContentLoaded', function() {
         loadLocalVideo();
     } else if (initlink === 'https://archive.org') {
         loadArchiveVideo(id);
-    } else if (initlink === 'https://youtube-nocookie.com') {
-        loadCuratedYouTubeVideo(id);
+    } else if (initlink.indexOf('yt-rss:') === 0) {
+        // YouTube channel RSS: tab is the raw video id; title/channel are
+        // optional display metadata carried by the card link.
+        loadYouTubeRssVideo(id, urlParams.get('title'), urlParams.get('channel'));
     } else {
         loadVideoData(initlink, id);
     }
@@ -171,72 +190,40 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Load video data from API
-// ============================== curated YouTube open movies ==============================
-// Load a curated Blender open movie from data/videos/youtube.json and play it
-// through YouTube's official iframe player. No direct video URL is fetched,
-// proxied or stored; the embedded player keeps its own controls, branding and ads.
-function loadCuratedYouTubeVideo(videoId) {
-    if (!videoId) {
-        showError('No video id provided');
+// Play a video from a user-added YouTube channel RSS feed. The video id comes
+// straight from the URL (already validated by the official feed), so there is
+// no local catalogue lookup; playback is the same official nocookie iframe.
+function loadYouTubeRssVideo(videoId, videoTitle, channelName) {
+    if (!/^[\w-]+$/.test(videoId || '')) {
+        showError('No valid video id provided');
         return;
     }
-    fetch('../data/videos/youtube.json').then(function (r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-    }).then(function (data) {
-        var videos = (data && data.videos) || [];
-        if (!Array.isArray(videos)) throw new Error('Invalid catalogue');
-        var found = null;
-        for (var i = 0; i < videos.length; i++) {
-            if (videos[i].id === videoId) { found = videos[i]; break; }
-        }
-        if (!found) {
-            showError('This video is not in the curated Blender open movies list.');
-            return;
-        }
-
-        var zh = false;
-        try {
-            var lang = String(localStorage.getItem('preferredLanguage') ||
-                localStorage.getItem('languages') || (navigator.language || '') || '').toLowerCase();
-            zh = lang.indexOf('zh') === 0;
-        } catch (e) { /* storage unavailable: keep English title */ }
-        videoName = (zh && found.titleZh) ? found.titleZh : found.title;
-        videoDes = (found.channel || 'Blender') + ' · ' + (found.license || 'CC-BY') +
-            ' · ' + (found.year || '') + '. Played via YouTube official embedded player.';
-
-        var wrapper = document.querySelector('.video-wrapper');
-        var frame = document.getElementById('youtubeFrame');
-        if (!wrapper || !frame) {
-            showError('YouTube player container is missing.');
-            return;
-        }
-        wrapper.classList.add('youtube-mode');
-        if (player) { player.pause(); }
-
-        document.getElementById('videoTitle').textContent = videoName;
-        document.getElementById('detailContent').innerHTML = '<p>' + escapeHtml(videoDes) + '</p>';
-        document.getElementById('episodeCount').textContent = '1';
-
-        // rel=0 limits recommendations to the same channel; the official
-        // controls, logo and ads are intentionally left untouched.
-        frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(videoId) + '?rel=0';
-        document.getElementById('currentEpisode').textContent = videoName;
-
-        var sidebar = document.getElementById('sidebar');
-        if (sidebar) sidebar.classList.add('collapsed');
-        var toolbar = document.getElementById('top-toolbar');
-        if (toolbar) toolbar.classList.add('hidden');
-
-        episodes = [videoName];
-        links = [];
-        renderEpisodeList();
-        var ep = document.querySelector('.episode-item[data-index="0"]');
-        if (ep) ep.classList.add('active');
-        })
-        .catch(function () {
-            showError('Failed to load the curated movie list. Please check your connection.');
-        });
+    var title = (videoTitle || '').trim() || cpT('ytTitle');
+    var desc = (channelName || '').trim()
+        ? cpT('ytFrom') + ' ' + channelName + '. ' + cpT('ytDesc')
+        : cpT('ytDesc');
+    var wrapper = document.querySelector('.video-wrapper');
+    var frame = document.getElementById('youtubeFrame');
+    if (!wrapper || !frame) {
+        showError('YouTube player container is missing.');
+        return;
+    }
+    wrapper.classList.add('youtube-mode');
+    if (player) { player.pause(); }
+    document.getElementById('videoTitle').textContent = title;
+    document.getElementById('detailContent').innerHTML = '<p>' + escapeHtml(desc) + '</p>';
+    document.getElementById('episodeCount').textContent = '1';
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(videoId) + '?rel=0';
+    document.getElementById('currentEpisode').textContent = title;
+    var sidebar = document.getElementById('sidebar');
+    if (sidebar) sidebar.classList.add('collapsed');
+    var toolbar = document.getElementById('top-toolbar');
+    if (toolbar) toolbar.classList.add('hidden');
+    episodes = [title];
+    links = [];
+    renderEpisodeList();
+    var ep = document.querySelector('.episode-item[data-index="0"]');
+    if (ep) ep.classList.add('active');
 }
 
 // ============================== archive.org classic movies ==============================

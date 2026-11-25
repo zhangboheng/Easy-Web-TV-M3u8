@@ -85,6 +85,13 @@ const gameHtml = read('routes/game.html');
 check(/data-category="recent"/.test(gameHtml), 'game sidebar has no recently-played entry');
 check(/fa-clock-rotate-left/.test(gameHtml), 'recently-played sidebar entry lacks a clock icon');
 check(!/recent-section/.test(togame), 'togame.js still renders the recent shelf');
+check(/data-category=\"favorites\"/.test(gameHtml), 'game sidebar has no favorites entry');
+check(/fa-star/.test(gameHtml), 'favorites sidebar entry lacks a star icon');
+check(/currentCategory === 'favorites'/.test(togame), 'togame.js has no dedicated favorites view');
+check(/favoriteGamesHtml/.test(togame), 'togame.js has no favorites renderer');
+check(/No favorite games yet/.test(togame), 'favorites view has no empty state message');
+check(/game\.name\.toLowerCase\(\).indexOf\(q\).*game\.platform/.test(togame) ||
+      /game\.platform[\s\S]{0,120}toLowerCase/.test(togame), 'game search does not match platform names');
 check(!/recent-row/.test(gameHtml), 'game.html still styles the recent shelf');
 check(/currentCategory === 'recent'/.test(togame), 'togame.js has no dedicated recent view');
 check(/No recently played games/.test(togame), 'recent view has no empty state message');
@@ -309,10 +316,7 @@ check(tamaCard.length === 1 && !/gamebox\/tamaweb/.test(tamaCard[0].image),
 check(fs.existsSync(path.join(root, 'images/pet.svg')), 'Tamaweb image is missing: images/pet.svg');
 check(/https:\/\/autosam\.github\.io\/Tamaweb\//.test(tamaJs),
     'totamaweb.js must point at the official Tamaweb static build');
-const tamaOpenTabHints = tamaJs.match(/openInNewTab:\s*(['"])(.*?)\1/g) || [];
-check(tamaOpenTabHints.length === 8, 'totamaweb.js should have 8 translated openInNewTab strings, found ' + tamaOpenTabHints.length);
-check(tamaOpenTabHints.every((hint) => (hint.match(/↗/g) || []).length === 1),
-    'totamaweb.js openInNewTab strings must contain exactly one arrow');
+check(!/openInNewTab\s*:/.test(tamaJs), 'totamaweb.js should not carry the dead openInNewTab copy key (shared player owns the fallback UX)');
 check(/id="tamaFrame"/.test(tamaHtml), 'tamaweb.html iframe is missing');
 check(i18nPairsRaw.indexOf('js/totamaweb.js') !== -1 && i18nPairsRaw.indexOf('routes/tamaweb.html') !== -1,
     'checks.yml does not run i18n pairs for the Tamaweb page');
@@ -361,31 +365,21 @@ check(/'wusuomon':\s*\{\s*name:\s*'雾锁山门',\s*url:\s*'https:\/\/op7418\.gi
     'towebgame.js has no correct 雾锁山门 registry entry');
 check(/雾锁山门 \(hot-linked embed, AGPL-3\.0\)/.test(readme), 'README has no 雾锁山门 credit');
 
-// Curated Blender open movies from YouTube: official embedded player only.
-const ytJson = JSON.parse(read('data/videos/youtube.json'));
-check(ytJson.videos.length === 7, 'expected 7 curated Blender open movies, found ' + ytJson.videos.length);
-check(ytJson.videos.every((v) => /^[A-Za-z0-9_-]{11}$/.test(v.id)), 'all YouTube ids must be 11-char video ids');
-const ytChannels = ['Blender', 'Blender Studio'];
-check(ytJson.videos.every((v) => ytChannels.indexOf(v.channel) > -1 && /^CC-BY/.test(v.license)),
-    'curated movies must be official Blender / Blender Studio CC-BY uploads');
-const ytIds = ytJson.videos.map((v) => v.id);
-['aqz-KE-bpKQ', 'eRsGyueVLvQ', 'R6MlUcmOul8', 'TLkA0RELQ1g', 'Y-rmzh0PI3c', 'mN0zPOpADL4', 'WhWc3b3KhnY'].forEach((id) => {
-    check(ytIds.indexOf(id) > -1, 'curated list must contain official Blender movie ' + id);
-});
 const toComp = read('js/tocomprehensive.js');
 const comp = read('js/comprehensive.js');
 const compHtml = read('catalogues/complay.html');
-check(/'youtube_blender':\s*\{\s*url:\s*'https:\/\/youtube-nocookie\.com'/.test(toComp), 'Theater has no curated YouTube source');
-check(/fetch\('\.\.\/data\/videos\/youtube\.json'\)/.test(toComp) && /fetch\('\.\.\/data\/videos\/youtube\.json'\)/.test(comp),
-    'local YouTube catalogue must be loaded with native fetch (not the CORS proxy)');
-check(/function loadCuratedYouTubeVideos/.test(toComp) && /function loadCuratedYouTubeSearch/.test(toComp),
-    'tocomprehensive.js has no curated YouTube loader/search');
-check(/function loadCuratedYouTubeVideo/.test(comp), 'comprehensive.js has no curated YouTube playback branch');
 check(/youtube-nocookie\.com\/embed\//.test(comp), 'comprehensive.js does not use the official YouTube embed endpoint');
 check(/id="youtubeFrame"/.test(compHtml), 'complay.html has no YouTube iframe container');
 check(/youtube-mode/.test(comp) && /favorite-btn/.test(comp),
     'comprehensive.js has no YouTube-mode favourite suppression');
 check(!/tcT\(noResults\)/.test(toComp), 'tocomprehensive.js still has unquoted tcT(noResults) bug');
+check(/function parseYouTubeRss/.test(toComp) && /getElementsByTagName\('yt:videoId'\)/.test(toComp),
+    'tocomprehensive.js has no YouTube RSS videoId parser');
+check(/fetchWithProxy/.test(toComp) && /function fetchYouTubeRss/.test(toComp),
+    'YouTube RSS is not fetched through the shared CORS proxy');
+check(/function loadYouTubeRssVideo/.test(comp) && /yt-rss:/.test(comp),
+    'comprehensive.js has no YouTube RSS playback branch');
+check(/getEnabled\('youtube'\)/.test(toComp), 'Theater does not merge user-added YouTube channel sources');
 check(/Blender Foundation Open Movies/.test(readme), 'README has no Blender open movies credit');
 // Theater source-picker copy must be translated into the same 8 UI languages.
 const tcHead = toComp.split('function tcLang')[0];

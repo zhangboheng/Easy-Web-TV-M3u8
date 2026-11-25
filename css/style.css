@@ -137,24 +137,6 @@ body {
     background: #a3001b;
 }
 
-.hotlink-fallback-link {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 15px;
-    border: 1px solid rgba(163, 0, 27, 0.5);
-    border-radius: 6px;
-    background: rgba(163, 0, 27, 0.2);
-    color: #fff;
-    font-size: 13px;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-.hotlink-fallback-link:hover {
-    background: rgba(163, 0, 27, 0.45);
-    text-decoration: none;
-}
-
 
 /* Error Toast Styles */
 .error-toast {

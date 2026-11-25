@@ -39,7 +39,8 @@ An all-in-one web entertainment platform to watch TV, movies, series, anime, sho
 ### 🎬 Movies & Series
 - Search and watch movies, series, animes, and shows
 - Multiple source options
-- **Source selection dialog** with language badges (EN/CN), an archive.org classic-movies source (public-domain films), and a curated Blender open-movies source (CC-BY, embedded via YouTube's official player); reopen it anytime from the source dropdown
+- **Source selection dialog** with language badges (EN/CN), an archive.org classic-movies source (public-domain films) and Chinese CMS sources; reopen it anytime from the source dropdown
+- **YouTube channels**: two built-in channels (Blender, Blender Studio) are listed with their official RSS URLs under Settings → Source Control → 📺 YouTube; add any other channel's `videos.xml?channel_id=...` RSS feed there too, then pick a channel in Theater to load its latest ~15 videos live from RSS (fetched through the configurable CORS proxy pool, played via YouTube's official youtube-nocookie iframe; no video is downloaded or stored)
 - Favorites and watch history
 - 🎮 **Player controls**: playback speed (0.5x–2x), ±10s skip buttons around the progress bar, keyboard shortcuts (Space = play/pause, ←/→ = seek ±10s), plus Video.js built-ins (F fullscreen, M mute); mobile-friendly control bar
 
@@ -199,6 +200,10 @@ All 43 EmulatorJS-based emulators + 10 standalone/hot-linked engines and their c
 | Web Games | Candy Box 2 (hot-linked embed, GPL-3.0) | jQuery / DOM text (hot-linked build) | – | – |
 | Web Games | Antimatter Dimensions (hot-linked embed, MIT) | Vue 2 (hot-linked build) | – | – |
 | Web Games | 文字修仙 Xiuxian Cultivation (hot-linked embed, CC BY-NC 4.0) | Vue 3 (hot-linked build) | – | – |
+| Web Games | Cube Composer (hot-linked embed, MIT) | PureScript (hot-linked build) | – | – |
+| Web Games | Hexapipes (hot-linked embed, MIT) | SvelteKit (hot-linked build) | – | – |
+| Web Games | Mimstris (hot-linked embed, MIT) | React / Redux (hot-linked build) | – | – |
+| Web Games | Esviji (hot-linked embed, MIT) | SVG / JavaScript (hot-linked build) | – | – |
 | **Total** | **59 platforms** | – | **20694** | **34 files** |
 
 ¹ Master System and Game Gear share `sms.json` (1283 games combined).
@@ -298,6 +303,7 @@ This project uses the following open source projects:
 - [isle.pizza](https://isle.pizza/) ([isledecomp](https://github.com/isledecomp/isle)) - LEGO Island rebuilt from decompiled source, runs in the browser with no game files needed (hot-linked embed)
 - [guizang-game-skill](https://github.com/op7418/guizang-game-skill) - AI-generated 3D action game demo 《雾锁山门》 (AGPL-3.0, demo content © 2026 歸藏, hot-linked embed)
 - Text games (hot-linked embeds): [A Dark Room](https://github.com/doublespeakgames/adarkroom) (MPL-2.0), [Life Restart 人生重开模拟器](https://github.com/VickScarlet/remake) (MIT), [Candy Box 2](https://github.com/candybox2/candybox2.github.io) (GPL-3.0), [Antimatter Dimensions](https://github.com/IvarK/AntimatterDimensionsSourceCode) (MIT), [文字修仙 Xiuxian Cultivation](https://github.com/setube/vue-xiuxiangame) (CC BY-NC 4.0)
+- Puzzle games (hot-linked embeds): [Cube Composer](https://github.com/sharkdp/cube-composer) (MIT), [Hexapipes](https://github.com/gereleth/hexapipes) (MIT), [Mimstris](https://github.com/mimshwright/mimstris) (MIT), [Esviji](https://github.com/esviji/esviji) (MIT)
 - [Font Awesome](https://fontawesome.com/) - Icons
 - [Tamaweb](https://github.com/autosam/Tamaweb) - Virtual pet game (official static build hot-linked from autosam.github.io, CC BY-NC-SA 4.0)
 - [js-dos](https://js-dos.com/), [Ruffle](https://ruffle.rs/), [WASM-4](https://wasm4.org/), [v86](https://github.com/copy/v86) - Vendored game runtimes

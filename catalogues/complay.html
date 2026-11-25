@@ -484,41 +484,16 @@
             right: 0 !important;
             opacity: 0;
             transition: opacity 0.3s ease;
-            flex-wrap: nowrap;
-            overflow: hidden;
         }
-        
-        /* Progress bar flexes to absorb space so the right-side controls
-           (playback rate, fullscreen) always stay inside the player on
-           narrow screens instead of being pushed out of view */
-        .video-js .vjs-progress-control {
-            flex: 1 1 auto;
-            min-width: 3em;
-        }
-        .video-js .vjs-remaining-time {
-            display: none;
-        }
-        
-        /* Narrow screens: drop low-value controls so the control bar fits on
-           one row and the fullscreen button remains reachable in portrait */
+
+        /* Narrow screens: keep the seek buttons compact. The shared control-bar
+           flex/overflow and low-value control hiding live in css/main.css. */
         @media (max-width: 640px) {
-            .video-js .vjs-volume-panel,
-            .video-js .vjs-picture-in-picture-control {
-                display: none !important;
-            }
             .vjs-seek-btn {
                 width: 3em;
             }
             .vjs-seek-btn i {
                 font-size: 13px;
-            }
-        }
-        /* Very narrow portrait phones: drop the duration readout only, keep
-           current time, and give the reclaimed space to the progress bar */
-        @media (max-width: 380px) {
-            .video-js .vjs-duration,
-            .video-js .vjs-time-divider {
-                display: none !important;
             }
         }
         

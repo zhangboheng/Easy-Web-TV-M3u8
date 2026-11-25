@@ -132,8 +132,8 @@ function isUnverifiable(url) {
     }
 }
 
-const TIMEOUT_MS = 25000;
-const CONCURRENCY = 6;
+const TIMEOUT_MS = 15000;
+const CONCURRENCY = 10;
 
 async function checkUrlOnce(url) {
     const controller = new AbortController();
@@ -179,7 +179,7 @@ async function checkUrlOnce(url) {
 async function checkUrl(url) {
     let result = await checkUrlOnce(url);
     if (result) {
-        await new Promise((r) => setTimeout(r, 1000));
+        await new Promise((r) => setTimeout(r, 500));
         result = await checkUrlOnce(url);
     }
     return result;
