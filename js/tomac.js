@@ -7,6 +7,10 @@ var MAC_HOME = 'https://infinitemac.org/';
 var MAC_BASE = 'https://infinitemac.org/embed';
 var MAC_EMBED_URL = MAC_BASE + '?disk=System%207.1&infinite_hd=true';
 
+// ---- cross-origin isolation bootstrap (mac page only) -------------------
+// Run before createPlayer so no earlier exception can skip the SW reload.
+HotlinkPlayer.ensureIsolated('macIsoReload', '[mac]', '/sw.js');
+
 // Internationalization (8 languages, same key set as tops2.js)
 var i18n = {
     zh: {
@@ -278,11 +282,3 @@ document.getElementById('fullscreenBtn').addEventListener('click', function () {
 
 // ---- init --------------------------------------------------------------
 applyI18n();
-
-// ---- cross-origin isolation bootstrap (mac page only) -------------------
-// The SW injects COOP/COEP for /routes/mac.html top-level navigations. If
-// this load happened before the SW could intercept (first visit, or the SW
-// was not yet registered because the user landed here without passing
-// index.html), adopt the controller and reload once - guarded so we never
-// loop. On an isolated load we clear the guard.
-HotlinkPlayer.ensureIsolated('macIsoReload', '[mac]', '/sw.js');

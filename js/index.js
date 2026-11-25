@@ -1,10 +1,10 @@
 /**
  * Easy Web TV - Main Application
  * Native JavaScript (No jQuery)
- * @version 8.6.1
+ * @version 8.6.2
  */
 
-// Keep the visible version badge in sync with js/version.js (v8.6.1).
+// Keep the visible version badge in sync with js/version.js (v8.6.2).
 document.addEventListener('DOMContentLoaded', function () {
     var el = document.getElementById('app-version');
     if (el && window.EWTV_VERSION) el.textContent = window.EWTV_VERSION;
@@ -1447,7 +1447,7 @@ const SettingsModal = {
             }
             var payload = {
                 app: 'easy-web-tv',
-                version: (window.EWTV_VERSION || '8.6.1'),
+                version: (window.EWTV_VERSION || '8.6.2'),
                 exportedAt: new Date().toISOString(),
                 data: data
             };
@@ -1711,6 +1711,7 @@ DOM.ready(function() {
     if (scrollidbar) {
         scrollidbar.innerHTML = '';
         DOM.append(scrollidbar, `
+            <p>[2026-11-25] V8.6.2 release Harden the hot-linked player routes: the J2ME demo now launches inside the page's embedded iframe, jar URLs run in the same player, and the broken parent-origin blob local-jar path is replaced by the official installer inside the player; BBC Micro and Apple II stop lazy-loading their iframes after the shared player reveals them from display:none, so their src assignment is no longer skipped; the Service Worker bypasses the browser HTTP cache for normal document/script/style requests and the isolated PS2/Vita/Mac/N64/rustpal route navigations while leaving images, media and Range requests on the normal cache path, rustpal falls back to the upstream site when no service worker controls the page, and the version check now guards the isolated-route cache path and the settings changelog entry</p>
             <p>[2026-11-22] V8.6.1 update Add five text games to Web Games via the generic hot-link player: A Dark Room (MPL-2.0), Life Restart 人生重开模拟器 (MIT), Candy Box 2 (GPL-3.0), Antimatter Dimensions (MIT) and 文字修仙 Xiuxian Cultivation (CC BY-NC 4.0) - each runs from its author's official hosted build in an iframe with card art hot-linked from the project repositories; regression checks now parse the game registry and the 8-language texts instead of grepping file text, a new CI check verifies every hot-linked game URL is reachable, the catalogue check replaces a tautological assertion with category floors and cross-file consistency (route pages, category tabs, local images), the player notice says works are open source or free-licensed because CC BY-NC is not open source, and the CI check scripts moved out of docs/superpowers into scripts/checks so docs/ is now local-only skill scratch space that git ignores, and a regression check guards that directory contract so a future move cannot silently drop a check from CI</p>
             <p>[2026-11-22] V8.6.0 release Harden the app before adding more content: hot-linked game card images are now cached by the service worker (including opaque cross-origin responses) and fall back to the built-in Games icon when an upstream fails, with a CI check for every remote image URL; centralise the cross-origin-isolation reload dance in a shared hot-link player helper used by all isolated player pages; make js/version.js the single source of truth for the settings badge and backup export (a consistency check keeps the manifest, service-worker cache name and changelog in sync); shrink nine oversized screenshots to right-sized WebP images (~3MB saved); and move the 24 i18n page pairs into one JSON manifest so adding a page no longer means editing the workflow</p>
             <p>[2026-11-22] V8.5.9 update Add Legend of Sword and Fairy (DOS) to Recomp with a Rust/WASM engine port shown in a hot-linked iframe (per-page COOP/COEP via the service worker, no game files bundled), move 112 of 123 game card images to hot-linked public URLs and remove 106 unused local SVGs, restore the missing Recomp card image with a working URL, keep dark-background icons visible with white/brand-coloured Simple Icons, and cover the new player page in the CI i18n pairing check</p>

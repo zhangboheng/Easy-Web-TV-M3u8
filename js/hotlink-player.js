@@ -79,13 +79,23 @@ window.HotlinkPlayer = (function () {
             }
         });
         if (window.crossOriginIsolated) {
-            sessionStorage.removeItem(namespace);
+            try { sessionStorage.removeItem(namespace); } catch (e) { /* storage blocked */ }
             return;
         }
-        if (sessionStorage.getItem(namespace)) return; // already retried once
+        var storageAvailable = true;
+        try {
+            if (sessionStorage.getItem(namespace)) return; // already retried once
+        } catch (e) {
+            // Storage-blocked/private contexts cannot remember the retry. Do not
+            // reload blindly, or the page would loop forever.
+            storageAvailable = false;
+        }
+        if (!storageAvailable) return;
         navigator.serviceWorker.ready.then(function () {
-            sessionStorage.setItem(namespace, '1');
-            location.reload();
+            try { sessionStorage.setItem(namespace, '1'); } catch (e) {
+                storageAvailable = false;
+            }
+            if (storageAvailable) location.reload();
         }).catch(function () { /* SW unavailable - stay non-isolated */ });
     }
 
@@ -108,6 +118,11 @@ window.HotlinkPlayer = (function () {
         var frame = document.getElementById(options.frameId);
         if (!frame) return { start: noop, stop: noop, retry: noop };
 
+        // The player reveals the iframe from display:none on demand. A lazy
+        // loading attribute can make Chrome skip the later src assignment, so
+        // drop it here as well as in the page markup.
+        frame.removeAttribute('loading');
+
         var words = COPY[language()] || COPY.en;
         var overlay = document.getElementById(options.overlayId || 'loadingOverlay');
         var toastEl = document.getElementById(options.toastId || 'toast');
@@ -117,6 +132,7 @@ window.HotlinkPlayer = (function () {
         var hideDelay = options.hideDelay || 0;
         var generation = 0;
         var active = false;
+        var pendingLoad = false;
         var slowTimer = null;
         var stalledTimer = null;
         var hideTimer = null;
@@ -195,6 +211,7 @@ window.HotlinkPlayer = (function () {
         function finish() {
             generation += 1;
             active = false;
+            pendingLoad = false;
             clearTimers();
             removeFallback();
             if (options.onLoad) options.onLoad();
@@ -202,8 +219,8 @@ window.HotlinkPlayer = (function () {
         }
 
         frame.addEventListener('load', function () {
-            if (!active) return;
-            if (!frame.src || frame.src === 'about:blank') return;
+            if (!active || !pendingLoad) return;
+            pendingLoad = false;
             finish();
         });
 
@@ -211,6 +228,7 @@ window.HotlinkPlayer = (function () {
             generation += 1;
             var mine = generation;
             active = true;
+            pendingLoad = false;
             clearTimers();
             removeFallback();
             lastUrl = resolve(options.url);
@@ -221,6 +239,7 @@ window.HotlinkPlayer = (function () {
             frame.src = 'about:blank';
             setTimeout(function () {
                 if (!active || mine !== generation) return;
+                pendingLoad = true;
                 frame.src = lastUrl;
             }, 0);
             slowTimer = setTimeout(function () {
@@ -238,6 +257,7 @@ window.HotlinkPlayer = (function () {
         function stop() {
             generation += 1;
             active = false;
+            pendingLoad = false;
             clearTimers();
             removeFallback();
             frame.src = 'about:blank';

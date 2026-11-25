@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Lazy-load the official deployment only when the user asks for it.
+    // Load the official deployment only when the user asks for it.
     // The shared helper owns the spinner, slow hint and stalled-upstream UI.
     var player = HotlinkPlayer.createPlayer({
         frameId: 'embedFrame', overlayId: 'embedLoading',

@@ -5,6 +5,10 @@
 
 var N64HUB_HOME = 'https://n64hub.com/';
 
+// ---- cross-origin isolation bootstrap ------------------------------------
+// Run before createPlayer so no earlier exception can skip the SW reload.
+HotlinkPlayer.ensureIsolated('n64IsoReload', '[n64recomp]', '/sw.js');
+
 // Only these keys are accepted; an unknown/missing ?game= never silently
 // launches a different title. Metadata follows n64hub's Games table; "repo"
 // is the recomp/upstream repository and web ports live in the n64hub org.
@@ -350,9 +354,3 @@ $('instructionsHeader').addEventListener('click', function () {
     }
 })();
 applyI18n();
-
-// ---- cross-origin isolation bootstrap ------------------------------------
-// The SW injects COOP/COEP for /routes/n64recomp.html top-level navigations.
-// Adopt the controller and reload once if the first load was not isolated;
-// the session guard prevents a reload loop.
-HotlinkPlayer.ensureIsolated('n64IsoReload', '[n64recomp]', '/sw.js');

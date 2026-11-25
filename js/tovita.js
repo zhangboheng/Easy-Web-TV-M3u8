@@ -8,6 +8,10 @@
 
 var VITA_BASE = 'https://cretz.github.io/vitaslop/';
 
+// ---- cross-origin isolation bootstrap (vita page only) -----------------
+// Run before createPlayer so no earlier exception can skip the SW reload.
+HotlinkPlayer.ensureIsolated('vitaIsoReload', '[vita]', '/sw.js');
+
 // Internationalization (8 languages, same key set as toj2me.js)
 var i18n = {
     zh: {
@@ -284,12 +288,4 @@ document.getElementById('fullscreenBtn').addEventListener('click', function () {
 
 // ---- init --------------------------------------------------------------
 applyI18n();
-
-// ---- cross-origin isolation bootstrap (vita page only) -----------------
-// The SW injects COOP/COEP for /routes/vita.html top-level navigations. If
-// this load happened before the SW could intercept (first visit, or the SW
-// was not yet registered because the user landed here without passing
-// index.html), adopt the controller and reload once - guarded so we never
-// loop. On an isolated load we clear the guard.
-HotlinkPlayer.ensureIsolated('vitaIsoReload', '[vita]', '/sw.js');
 

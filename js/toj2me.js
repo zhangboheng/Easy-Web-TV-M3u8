@@ -1,6 +1,7 @@
 // J2ME Page JavaScript - J2meJS (GPL-2.0, by Rosabis) embedded by hotlink
-// to the official GitHub Pages demo. No jars are bundled or hotlinked:
-// users run their own jars via URL or local file.
+// to the official GitHub Pages demo. The demo launcher and CORS-enabled jar
+// URLs both run inside the same iframe; local files are chosen inside the
+// official player's own installer. No jar files are bundled.
 
 var J2ME_BASE = 'https://rosabis.github.io/J2meJS/java/';
 
@@ -11,20 +12,20 @@ var i18n = {
         reset: '重置',
         tabDemo: '官方 Demo',
         tabUrl: 'Jar URL',
-        tabFile: '本地 Jar',
+        tabFile: '安装 Jar',
         demoTitle: 'J2ME 手机游戏',
-        demoDesc: '通过 J2meJS（GPL-2.0，热链嵌入官方 Demo）在浏览器里运行 Java ME 功能机游戏。官方 Demo 收录了一批经典 MIDlet——打开即可选择游戏，或在下方加载你自己的 .jar。',
-        demoOpen: '打开官方 Demo',
+        demoDesc: '通过 J2meJS（GPL-2.0，热链嵌入官方 Demo）在浏览器里运行 Java ME 功能机游戏。官方 Demo 收录了一批经典 MIDlet——在下方播放器内启动即可选择游戏，也可以加载你自己的 .jar。',
+        demoOpen: '在页面内启动官方 Demo',
         demoHint: '托管在别处的商业 MIDlet 不在此热链——请运行你拥有版权或自由分发的 jar。',
         urlTitle: '从 URL 加载 Jar',
         urlDesc: '输入 .jar（Java ME MIDlet）文件的直链',
         urlPlaceholder: 'https://example.com/midlet.jar',
         loadJar: '运行 Jar',
         urlTip: '提示：文件服务器需允许跨域访问（CORS），GitHub raw 和 release 直链均可用。',
-        uploadTitle: '运行本地 Jar',
-        uploadDesc: '选择你自己的 Java ME .jar（MIDlet）文件',
-        uploadSelect: '选择 .jar 文件',
-        uploadHint: 'jar 仅在你的浏览器内处理，不会上传到任何服务器。请只运行你拥有版权或自由分发的软件。',
+        uploadTitle: '安装本地 Jar',
+        uploadDesc: '在官方播放器内选择你的 .jar 文件',
+        uploadSelect: '打开官方安装器',
+        uploadHint: '打开播放器后，点击其中的“安装游戏”并选择你的 .jar。文件只在浏览器内处理，不会上传到本页面或任何服务器。请只运行你拥有版权或自由分发的软件。',
         loading: 'JVM 启动中，请稍候...',
         loadingTip: 'jar 从其服务器下载，首次加载可能较慢',
         loadingSlow: '加载较慢，请耐心等待；也可以在新标签页打开模拟器',
@@ -44,20 +45,20 @@ var i18n = {
         reset: 'Reset',
         tabDemo: 'Official Demo',
         tabUrl: 'Jar URL',
-        tabFile: 'Local Jar',
+        tabFile: 'Install Jar',
         demoTitle: 'J2ME Mobile Games',
-        demoDesc: 'Run Java ME (J2ME) phone games in your browser with J2meJS (GPL-2.0, embedded by hotlink to the official demo). The official demo hosts a library of classic midlets - open it to pick a game, or load your own .jar below.',
-        demoOpen: 'Open Official Demo',
+        demoDesc: 'Run Java ME (J2ME) phone games in your browser with J2meJS (GPL-2.0, embedded by hotlink to the official demo). The official demo hosts a library of classic midlets - launch it in the player below to pick a game, or load your own .jar.',
+        demoOpen: 'Launch Official Demo',
         demoHint: 'Commercial midlets hosted elsewhere are not hotlinked here - run jars you own or that are freely distributed.',
         urlTitle: 'Load a Jar from URL',
         urlDesc: 'Enter the direct URL of a .jar (Java ME midlet) file',
         urlPlaceholder: 'https://example.com/midlet.jar',
         loadJar: 'Run Jar',
         urlTip: 'Tip: the file server must allow cross-origin access (CORS). GitHub raw and release links work.',
-        uploadTitle: 'Run a Local Jar',
-        uploadDesc: 'Select your own Java ME .jar (midlet) file',
-        uploadSelect: 'Select .jar File',
-        uploadHint: 'The jar stays in your browser - nothing is uploaded to any server. Run only software you own or that is freely distributed.',
+        uploadTitle: 'Install a Local Jar',
+        uploadDesc: 'Choose your .jar inside the official player',
+        uploadSelect: 'Open Official Installer',
+        uploadHint: 'After the player opens, click "Install game" and choose your .jar. The file stays in your browser - nothing is uploaded to this page or any server. Run only software you own or that is freely distributed.',
         loading: 'Starting the JVM, please wait...',
         loadingTip: 'The jar downloads from its host; first load can take a while',
         loadingSlow: 'Still loading - please wait a bit longer, or open the emulator in a new tab',
@@ -77,20 +78,20 @@ var i18n = {
         reset: 'リセット',
         tabDemo: '公式デモ',
         tabUrl: 'Jar URL',
-        tabFile: 'ローカル Jar',
+        tabFile: 'Jar をインストール',
         demoTitle: 'J2ME モバイルゲーム',
-        demoDesc: 'J2meJS（GPL-2.0、公式デモへのホットリンク埋め込み）でブラウザ上でJava MEフィーチャーフォンのゲームを実行します。公式デモにはクラシックなMIDletのコレクションがあります。開いてゲームを選ぶか、下で自分の.jarを読み込んでください。',
-        demoOpen: '公式デモを開く',
+        demoDesc: 'J2meJS（GPL-2.0、公式デモへのホットリンク埋め込み）でブラウザ上でJava MEフィーチャーフォンのゲームを実行します。公式デモにはクラシックなMIDletのコレクションがあります。下のプレーヤーで起動してゲームを選ぶか、自分の.jarを読み込んでください。',
+        demoOpen: '公式デモをページ内で起動',
         demoHint: '他でホストされている商用MIDletはここではホットリンクしません。所有または自由に配布されているjarを実行してください。',
         urlTitle: 'URLからJarを読み込む',
         urlDesc: '.jar（Java ME MIDlet）ファイルの直接URLを入力してください',
         urlPlaceholder: 'https://example.com/midlet.jar',
         loadJar: 'Jarを実行',
         urlTip: 'ヒント：ファイルサーバーはクロスオリジンアクセス（CORS）を許可する必要があります。GitHubのraw・リリースリンクは利用可能です。',
-        uploadTitle: 'ローカルJarを実行',
-        uploadDesc: '自分のJava ME .jar（MIDlet）ファイルを選択してください',
-        uploadSelect: '.jar ファイルを選択',
-        uploadHint: 'jarはブラウザ内で処理され、サーバーには送信されません。所有または自由に配布されているソフトウェアのみ実行してください。',
+        uploadTitle: 'ローカルJarをインストール',
+        uploadDesc: '公式プレーヤー内で .jar ファイルを選択します',
+        uploadSelect: '公式インストーラーを開く',
+        uploadHint: 'プレーヤーが開いたら「ゲームをインストール」をクリックして .jar を選んでください。ファイルはブラウザ内で処理され、このページやサーバーにはアップロードされません。所有または自由に配布されているソフトウェアのみ実行してください。',
         loading: 'JVMを起動中...',
         loadingTip: 'jarはホストからダウンロードされます。初回は時間がかかることがあります',
         loadingSlow: '読み込みが遅い場合はそのままお待ちいただくか、新しいタブでエミュレータを開いてください',
@@ -110,20 +111,20 @@ var i18n = {
         reset: '재설정',
         tabDemo: '공식 데모',
         tabUrl: 'Jar URL',
-        tabFile: '로컬 Jar',
+        tabFile: 'Jar 설치',
         demoTitle: 'J2ME 모바일 게임',
-        demoDesc: 'J2meJS(GPL-2.0, 공식 데모 핫링크 임베드)로 브라우저에서 Java ME 피처폰 게임을 실행하세요. 공식 데모에는 클래식 MIDlet 모음이 있습니다 - 열어서 게임을 고르거나 아래에서 자신의 .jar를 불러오세요.',
-        demoOpen: '공식 데모 열기',
+        demoDesc: 'J2meJS(GPL-2.0, 공식 데모 핫링크 임베드)로 브라우저에서 Java ME 피처폰 게임을 실행하세요. 공식 데모에는 클래식 MIDlet 모음이 있습니다 - 아래 플레이어에서 실행해 게임을 고르거나 자신의 .jar를 불러오세요.',
+        demoOpen: '페이지 내에서 공식 데모 실행',
         demoHint: '다른 곳에 호스팅된 상용 MIDlet은 여기서 핫링크하지 않습니다 - 소유하거나 자유롭게 배포되는 jar를 실행하세요.',
         urlTitle: 'URL에서 Jar 불러오기',
         urlDesc: '.jar(Java ME MIDlet) 파일의 직접 URL을 입력하세요',
         urlPlaceholder: 'https://example.com/midlet.jar',
         loadJar: 'Jar 실행',
         urlTip: '팁: 파일 서버가 교차 출처 접근(CORS)을 허용해야 합니다. GitHub raw 및 릴리스 링크가 동작합니다.',
-        uploadTitle: '로컬 Jar 실행',
-        uploadDesc: '자신의 Java ME .jar(MIDlet) 파일을 선택하세요',
-        uploadSelect: '.jar 파일 선택',
-        uploadHint: 'jar는 브라우저에서 처리되며 서버로 전송되지 않습니다. 소유하거나 자유롭게 배포되는 소프트웨어만 실행하세요.',
+        uploadTitle: '로컬 Jar 설치',
+        uploadDesc: '공식 플레이어 안에서 .jar 파일을 선택하세요',
+        uploadSelect: '공식 설치 프로그램 열기',
+        uploadHint: '플레이어가 열리면 "게임 설치"를 클릭하고 .jar 파일을 선택하세요. 파일은 브라우저에서 처리되며 이 페이지나 서버로 업로드되지 않습니다. 소유하거나 자유롭게 배포되는 소프트웨어만 실행하세요.',
         loading: 'JVM 시작 중...',
         loadingTip: 'jar는 호스트에서 다운로드됩니다. 첫 로드는 시간이 걸릴 수 있습니다',
         loadingSlow: '로딩이 느리면 조금 더 기다리거나 새 탭에서 에뮬레이터를 여세요',
@@ -143,20 +144,20 @@ var i18n = {
         reset: 'Réinitialiser',
         tabDemo: 'Démo officielle',
         tabUrl: 'URL du jar',
-        tabFile: 'Jar local',
+        tabFile: 'Installer un jar',
         demoTitle: 'Jeux mobiles J2ME',
-        demoDesc: "Exécutez des jeux Java ME (J2ME) de téléphones portables dans votre navigateur avec J2meJS (GPL-2.0, intégré par lien direct vers la démo officielle). La démo officielle héberge une bibliothèque de midlets classiques - ouvrez-la pour choisir un jeu, ou chargez votre propre .jar ci-dessous.",
-        demoOpen: 'Ouvrir la démo officielle',
+        demoDesc: "Exécutez des jeux Java ME (J2ME) de téléphones portables dans votre navigateur avec J2meJS (GPL-2.0, intégré par lien direct vers la démo officielle). La démo officielle héberge une bibliothèque de midlets classiques - lancez-la dans le lecteur ci-dessous pour choisir un jeu, ou chargez votre propre .jar.",
+        demoOpen: 'Lancer la démo officielle',
         demoHint: "Les midlets commerciaux hébergés ailleurs ne sont pas liés ici - exécutez des jars que vous possédez ou librement distribués.",
         urlTitle: "Charger un jar depuis une URL",
         urlDesc: "Saisissez l'URL directe d'un fichier .jar (midlet Java ME)",
         urlPlaceholder: 'https://example.com/midlet.jar',
         loadJar: 'Exécuter le jar',
         urlTip: "Astuce : le serveur de fichiers doit autoriser l'accès cross-origin (CORS). Les liens GitHub raw et release fonctionnent.",
-        uploadTitle: 'Exécuter un jar local',
-        uploadDesc: "Sélectionnez votre propre fichier .jar (midlet Java ME)",
-        uploadSelect: 'Sélectionner un .jar',
-        uploadHint: "Le jar reste dans votre navigateur - rien n'est envoyé à un serveur. N'exécutez que des logiciels dont vous possédez les droits ou librement distribués.",
+        uploadTitle: 'Installer un jar local',
+        uploadDesc: 'Choisissez votre .jar dans le lecteur officiel',
+        uploadSelect: "Ouvrir l'installateur officiel",
+        uploadHint: "Une fois le lecteur ouvert, cliquez sur « Installer un jeu » et choisissez votre .jar. Le fichier reste dans votre navigateur - rien n'est envoyé à cette page ni à un serveur.",
         loading: 'Démarrage de la JVM, veuillez patienter...',
         loadingTip: "Le jar est téléchargé depuis son hôte ; le premier chargement peut prendre du temps",
         loadingSlow: "Chargement lent - patientez encore un peu, ou ouvrez l'émulateur dans un nouvel onglet",
@@ -176,20 +177,20 @@ var i18n = {
         reset: 'Zurücksetzen',
         tabDemo: 'Offizielle Demo',
         tabUrl: 'Jar-URL',
-        tabFile: 'Lokales Jar',
+        tabFile: 'Jar installieren',
         demoTitle: 'J2ME-Handyspiele',
-        demoDesc: 'Führen Sie Java-ME-Spiele (J2ME) von Mobiltelefonen in Ihrem Browser aus - mit J2meJS (GPL-2.0, per Hotlink zur offiziellen Demo eingebettet). Die offizielle Demo hostet eine Sammlung klassischer Midlets - öffnen Sie sie, um ein Spiel zu wählen, oder laden Sie unten Ihr eigenes .jar.',
-        demoOpen: 'Offizielle Demo öffnen',
+        demoDesc: 'Führen Sie Java-ME-Spiele (J2ME) von Mobiltelefonen in Ihrem Browser aus - mit J2meJS (GPL-2.0, per Hotlink zur offiziellen Demo eingebettet). Die offizielle Demo hostet eine Sammlung klassischer Midlets - starten Sie sie im Player unten, um ein Spiel zu wählen, oder laden Sie Ihr eigenes .jar.',
+        demoOpen: 'Offizielle Demo starten',
         demoHint: 'Anderswo gehostete kommerzielle Midlets werden hier nicht verlinkt - führen Sie nur Jars aus, die Sie besitzen oder die frei verteilt werden.',
         urlTitle: 'Jar von URL laden',
         urlDesc: 'Geben Sie die direkte URL einer .jar-Datei (Java-ME-Midlet) ein',
         urlPlaceholder: 'https://example.com/midlet.jar',
         loadJar: 'Jar starten',
         urlTip: 'Tipp: Der Dateiserver muss Cross-Origin-Zugriff (CORS) erlauben. GitHub-Raw- und Release-Links funktionieren.',
-        uploadTitle: 'Lokales Jar starten',
-        uploadDesc: 'Wählen Sie Ihre eigene Java-ME-.jar-Datei (Midlet)',
-        uploadSelect: '.jar-Datei auswählen',
-        uploadHint: 'Das Jar bleibt im Browser - nichts wird auf einen Server hochgeladen. Führen Sie nur Software aus, die Sie besitzen oder die frei verteilt wird.',
+        uploadTitle: 'Lokales Jar installieren',
+        uploadDesc: 'Wählen Sie Ihre .jar im offiziellen Player',
+        uploadSelect: 'Offiziellen Installer öffnen',
+        uploadHint: 'Klicken Sie im geöffneten Player auf „Spiel installieren“ und wählen Sie Ihre .jar. Die Datei bleibt im Browser - nichts wird an diese Seite oder einen Server hochgeladen.',
         loading: 'JVM wird gestartet, bitte warten...',
         loadingTip: 'Das Jar wird vom Host heruntergeladen; das erste Laden kann dauern',
         loadingSlow: 'Laden dauert länger - bitte noch etwas warten, oder den Emulator in einem neuen Tab öffnen',
@@ -209,20 +210,20 @@ var i18n = {
         reset: 'Reiniciar',
         tabDemo: 'Demo oficial',
         tabUrl: 'URL del jar',
-        tabFile: 'Jar local',
+        tabFile: 'Instalar jar',
         demoTitle: 'Juegos móviles J2ME',
-        demoDesc: "Ejecuta juegos Java ME (J2ME) de teléfonos móviles en tu navegador con J2meJS (GPL-2.0, incrustado por enlace directo a la demo oficial). La demo oficial aloja una biblioteca de midlets clásicos - ábrela para elegir un juego, o carga tu propio .jar abajo.",
-        demoOpen: 'Abrir demo oficial',
+        demoDesc: "Ejecuta juegos Java ME (J2ME) de teléfonos móviles en tu navegador con J2meJS (GPL-2.0, incrustado por enlace directo a la demo oficial). La demo oficial aloja una biblioteca de midlets clásicos - iníciala en el reproductor de abajo para elegir un juego, o carga tu propio .jar.",
+        demoOpen: 'Iniciar demo oficial',
         demoHint: 'Los midlets comerciales alojados en otros sitios no se enlazan aquí - ejecuta jars que poseas o que se distribuyan libremente.',
         urlTitle: 'Cargar un jar desde URL',
         urlDesc: 'Introduce la URL directa de un archivo .jar (midlet Java ME)',
         urlPlaceholder: 'https://example.com/midlet.jar',
         loadJar: 'Ejecutar jar',
         urlTip: 'Consejo: el servidor de archivos debe permitir acceso cross-origin (CORS). Los enlaces raw y release de GitHub funcionan.',
-        uploadTitle: 'Ejecutar un jar local',
-        uploadDesc: 'Selecciona tu propio archivo .jar (midlet Java ME)',
-        uploadSelect: 'Seleccionar .jar',
-        uploadHint: 'El jar permanece en tu navegador - nada se sube a ningún servidor. Ejecuta solo software que poseas o que se distribuya libremente.',
+        uploadTitle: 'Instalar un jar local',
+        uploadDesc: 'Elige tu .jar dentro del reproductor oficial',
+        uploadSelect: 'Abrir instalador oficial',
+        uploadHint: 'Cuando se abra, pulsa «Instalar juego» en el reproductor y elige tu .jar. El archivo permanece en tu navegador: nada se sube a esta página ni a un servidor.',
         loading: 'Iniciando la JVM, espera...',
         loadingTip: "El jar se descarga de su servidor; la primera carga puede tardar",
         loadingSlow: 'Carga lenta: espera un poco más, o abre el emulador en una pestaña nueva',
@@ -242,20 +243,20 @@ var i18n = {
         reset: 'Сброс',
         tabDemo: 'Официальная демо',
         tabUrl: 'URL jar',
-        tabFile: 'Локальный jar',
+        tabFile: 'Установить jar',
         demoTitle: 'Мобильные игры J2ME',
-        demoDesc: 'Запускайте игры Java ME (J2ME) с кнопочных телефонов в браузере с помощью J2meJS (GPL-2.0, встраивание горячей ссылкой на официальную демо). В официальной демо есть коллекция классических мидлетов - откройте её, чтобы выбрать игру, или загрузите свой .jar ниже.',
-        demoOpen: 'Открыть официальную демо',
+        demoDesc: 'Запускайте игры Java ME (J2ME) с кнопочных телефонов в браузере с помощью J2meJS (GPL-2.0, встраивание горячей ссылкой на официальную демо). В официальной демо есть коллекция классических мидлетов - запустите её в проигрывателе ниже, чтобы выбрать игру, или загрузите свой .jar.',
+        demoOpen: 'Запустить официальную демо',
         demoHint: 'Коммерческие мидлеты, размещённые где-либо ещё, здесь не линкуются - запускайте jar, которыми владеете или которые свободно распространяются.',
         urlTitle: 'Загрузить jar по URL',
         urlDesc: 'Введите прямой URL файла .jar (мидлет Java ME)',
         urlPlaceholder: 'https://example.com/midlet.jar',
         loadJar: 'Запустить jar',
         urlTip: 'Совет: файловый сервер должен разрешать кросс-доменный доступ (CORS). Ссылки GitHub raw и release работают.',
-        uploadTitle: 'Запустить локальный jar',
-        uploadDesc: 'Выберите свой файл Java ME .jar (мидлет)',
-        uploadSelect: 'Выбрать .jar',
-        uploadHint: 'Jar остаётся в браузере - ничего не отправляется на сервер. Запускайте только программы, которыми владеете или которые свободно распространяются.',
+        uploadTitle: 'Установить локальный jar',
+        uploadDesc: 'Выберите свой .jar в официальном проигрывателе',
+        uploadSelect: 'Открыть официальный установщик',
+        uploadHint: 'После открытия нажмите «Установить игру» в проигрывателе и выберите свой .jar. Файл остаётся в браузере - ничего не отправляется на эту страницу или сервер.',
         loading: 'JVM запускается, подождите...',
         loadingTip: 'Jar скачивается с сервера; первая загрузка может занять время',
         loadingSlow: 'Загрузка идёт медленно - подождите ещё немного или откройте эмулятор в новой вкладке',
@@ -316,9 +317,7 @@ document.querySelectorAll('.upload-tab').forEach(function (el) {
 });
 
 // ---- demo tab ----------------------------------------------------------
-document.getElementById('demoOpenBtn').addEventListener('click', function () {
-    window.open(J2ME_BASE, '_blank', 'noopener');
-});
+document.getElementById('demoOpenBtn').addEventListener('click', playDemo);
 
 // ---- player ------------------------------------------------------------
 var currentJ2meUrl = '';
@@ -339,9 +338,17 @@ function showPlayer(title) {
 function playJar(jarUrl, title) {
     if (!document.getElementById('j2meFrame')) return;
     showPlayer(title);
-    // J2meJS loads the jar via fetch, so CORS-enabled URLs and blob: object
-    // URLs both work. Engine mode left at the demo default (compatibility).
+    // J2meJS loads jars with XHR from its own origin. Only CORS-enabled
+    // http(s) URLs can be passed here; a parent-origin blob: URL would be
+    // resolved as a relative path inside rosabis.github.io and fail.
     currentJ2meUrl = J2ME_BASE + 'main.html?jars=' + encodeURIComponent(jarUrl);
+    player.start();
+}
+
+function playDemo() {
+    if (!document.getElementById('j2meFrame')) return;
+    showPlayer(t('demoTitle'));
+    currentJ2meUrl = J2ME_BASE;
     player.start();
 }
 
@@ -365,18 +372,11 @@ document.getElementById('urlLoadBtn').addEventListener('click', function () {
     playJar(url, url.split('/').pop() || '');
 });
 
-// ---- file tab ----------------------------------------------------------
-document.getElementById('uploadBtn').addEventListener('click', function () {
-    document.getElementById('jarInput').click();
-});
-document.getElementById('jarInput').addEventListener('change', function (e) {
-    var file = e.target.files && e.target.files[0];
-    if (!file) return;
-    if (!/\.jar$/i.test(file.name)) { showToast(t('invalidFile')); return; }
-    // fetch() can read blob: URLs, so pass the object URL straight to J2meJS
-    var objectUrl = URL.createObjectURL(file);
-    playJar(objectUrl, file.name);
-});
+// ---- local install tab -------------------------------------------------
+// A parent-origin blob: URL cannot be fetched by the cross-origin J2meJS
+// iframe. Open the official demo instead; its own installer reads the user's
+// file locally and keeps it in the iframe's browser storage.
+document.getElementById('uploadBtn').addEventListener('click', playDemo);
 
 // ---- back / reset ------------------------------------------------------
 document.getElementById('backBtn').addEventListener('click', function () {

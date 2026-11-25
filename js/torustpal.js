@@ -3,6 +3,13 @@
 var RUSTPAL_BASE = '/xianjian/web/';
 var RUSTPAL_UPSTREAM = 'https://madeye.github.io/Legend-of-Sword-and-Fairy/web/';
 
+// The proxy path exists only while sw.js controls this page. Without it the
+// iframe would 404 on static hosting, so use the upstream site until the
+// isolation bootstrap below has a chance to install the service worker.
+if (!('serviceWorker' in navigator) || !navigator.serviceWorker.controller) {
+    RUSTPAL_BASE = RUSTPAL_UPSTREAM;
+}
+
 // ---- cross-origin isolation bootstrap (rustpal page only) ---------------
 // sw.js injects COOP/COEP for /routes/rustpal.html, which gives the hot-linked
 // iframe the SharedArrayBuffer it needs. Reload once on first visit if the SW
@@ -44,7 +51,7 @@ document.querySelectorAll('.upload-tab').forEach(function (el) {
 });
 var player = HotlinkPlayer.createPlayer({
     frameId: 'rustpalFrame', overlayId: 'loadingOverlay',
-    url: RUSTPAL_UPSTREAM, newTabUrl: RUSTPAL_UPSTREAM
+    url: RUSTPAL_BASE, newTabUrl: RUSTPAL_UPSTREAM
 });
 function showPlayer(title) {
     document.getElementById('uploadSection').classList.add('hidden');

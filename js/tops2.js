@@ -5,6 +5,10 @@
 
 var PS2_BASE = 'https://tabstationtoo.github.io/TabStationToo/';
 
+// ---- cross-origin isolation bootstrap (ps2 page only) -------------------
+// Run before createPlayer so no earlier exception can skip the SW reload.
+HotlinkPlayer.ensureIsolated('ps2IsoReload', '[ps2]', '/sw.js');
+
 // Internationalization (8 languages, same key set as tovita.js)
 var i18n = {
     zh: {
@@ -279,11 +283,3 @@ document.getElementById('fullscreenBtn').addEventListener('click', function () {
 
 // ---- init --------------------------------------------------------------
 applyI18n();
-
-// ---- cross-origin isolation bootstrap (ps2 page only) -------------------
-// The SW injects COOP/COEP for /routes/ps2.html top-level navigations. If
-// this load happened before the SW could intercept (first visit, or the SW
-// was not yet registered because the user landed here without passing
-// index.html), adopt the controller and reload once - guarded so we never
-// loop. On an isolated load we clear the guard.
-HotlinkPlayer.ensureIsolated('ps2IsoReload', '[ps2]', '/sw.js');
