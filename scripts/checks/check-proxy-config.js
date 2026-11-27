@@ -71,5 +71,38 @@ consumers.forEach(function(rel) {
 // Service worker must precache the shared config for offline use.
 check(/'\/js\/proxy-config\.js'/.test(read('sw.js')), 'sw.js must precache proxy-config.js');
 
+// --- 17. custom entries can be reordered persistently --------------------
+// Load the real module with a minimal localStorage shim (same as check-proxy-health).
+const path17 = require('path');
+const root17 = path17.resolve(__dirname, '..', '..');
+const store17 = {};
+global.window = global.window || { localStorage: {
+    getItem: function (k) { return store17[k] === undefined ? null : store17[k]; },
+    setItem: function (k, v) { store17[k] = String(v); },
+    removeItem: function (k) { delete store17[k]; }
+} };
+const PC17 = require(path17.join(root17, 'js', 'proxy-config.js')).ProxyConfig;
+PC17.saveCustom([
+  { id: 'a', name: 'A', url: 'https://a/', enabled: true },
+  { id: 'b', name: 'B', url: 'https://b/', enabled: true },
+  { id: 'c', name: 'C', url: 'https://c/', enabled: true }
+]);
+PC17.reorder(['c', 'a', 'b']);
+check(PC17.getCustom().map(function (x) { return x.id; }).join(',') === 'c,a,b',
+      'ProxyConfig.reorder() must persist the given id order');
+PC17.reorder(['b']); // incomplete ids must not drop entries
+check(PC17.getCustom().length === 3,
+      'ProxyConfig.reorder() must not drop entries when ids are incomplete');
+PC17.saveCustom([]);
+check(/reorder:\s*function\(ids\)/.test(config), 'ProxyConfig must expose reorder()');
+
+// --- 18. built-in proxies can be reordered and feed the live pool ----------
+PC17.reorderBuiltins(['builtin-2', 'builtin-0']);
+check(PC17.getBuiltins().map(function (x) { return x.id; }).join(',') === 'builtin-2,builtin-0,builtin-1,builtin-3',
+      'ProxyConfig.reorderBuiltins() must persist built-in order, omitted ones appended');
+check(PC17.getProxies().slice(0, 2).join(',') === [urls[2], urls[0]].join(','),
+      'getProxies() must follow the reordered built-in order');
+PC17.reorderBuiltins([]); // reset to default
+
 console.log('proxy config check: ' + (ok ? 'ALL OK' : 'FAIL'));
 process.exit(ok ? 0 : 1);

@@ -555,9 +555,23 @@ document.addEventListener('DOMContentLoaded', function() {
     if (sourceSelect) {
         var savedManga = null;
         try { savedManga = window.localStorage.getItem('manga'); } catch (e) {}
-        var mangaIds = savedManga ? savedManga.split(',')
-            .filter(function(id) { return MANGA_SOURCES[id]; }) : [];
-        (mangaIds.length ? mangaIds : Object.keys(MANGA_SOURCES)).forEach(function(id) {
+        var savedMangaIds = savedManga ? savedManga.split(',') : null;
+        // Walk ids in the user's configured built-in order (Settings > Source
+        // Control drag order), filtering by the saved enable-selection.
+        var mangaIds = Object.keys(MANGA_SOURCES);
+        if (typeof SourceConfig !== 'undefined' && SourceConfig.getBuiltins) {
+            var orderedManga = SourceConfig.getBuiltins('manga').map(function(s) { return s.id; })
+                .filter(function(id) { return !!MANGA_SOURCES[id]; });
+            Object.keys(MANGA_SOURCES).forEach(function(id) {
+                if (orderedManga.indexOf(id) === -1) orderedManga.push(id);
+            });
+            mangaIds = orderedManga;
+        }
+        if (savedMangaIds) {
+            var filteredManga = mangaIds.filter(function(id) { return savedMangaIds.indexOf(id) !== -1; });
+            if (filteredManga.length) mangaIds = filteredManga; // unknown/absent ids -> full list
+        }
+        mangaIds.forEach(function(id) {
             var option = document.createElement('option');
             option.value = id;
             option.textContent = MANGA_SOURCES[id].name;

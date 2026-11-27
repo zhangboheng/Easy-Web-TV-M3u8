@@ -89,12 +89,12 @@ check(/data-category=\"favorites\"/.test(gameHtml), 'game sidebar has no favorit
 check(/fa-star/.test(gameHtml), 'favorites sidebar entry lacks a star icon');
 check(/currentCategory === 'favorites'/.test(togame), 'togame.js has no dedicated favorites view');
 check(/favoriteGamesHtml/.test(togame), 'togame.js has no favorites renderer');
-check(/No favorite games yet/.test(togame), 'favorites view has no empty state message');
+check(/noFavs:\s*'No favorite games yet/.test(togame), 'favorites view has no empty state message');
 check(/game\.name\.toLowerCase\(\).indexOf\(q\).*game\.platform/.test(togame) ||
       /game\.platform[\s\S]{0,120}toLowerCase/.test(togame), 'game search does not match platform names');
 check(!/recent-row/.test(gameHtml), 'game.html still styles the recent shelf');
 check(/currentCategory === 'recent'/.test(togame), 'togame.js has no dedicated recent view');
-check(/No recently played games/.test(togame), 'recent view has no empty state message');
+check(/noRecent:\s*'No recently played games/.test(togame), 'recent view has no empty state message');
 check(/recent-empty/.test(gameHtml), 'recent empty state has no centering rule');
 check(/\.recent-empty[\s\S]*?min-height:\s*60vh/.test(gameHtml), 'recent empty state is not vertically centered');
 

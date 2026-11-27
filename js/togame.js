@@ -1,23 +1,91 @@
 // Game Page JS - Modern UI Version
 // Native JavaScript (No jQuery)
 
-// Small UI dictionary for the dynamic strings that are generated from JS
-// (empty states and the Favorites sidebar label). The rest of the Games page
-// uses hard-coded English copy; these keys follow the same 8-language pattern
-// as the other route pages (towebgame.js etc.).
-var TG_I18N = {
-    zh: { favTab: '收藏', noRecent: '暂无最近游玩的游戏', noFavs: '还没有收藏的游戏 - 点击游戏卡片上的星标即可收藏', noGames: '未找到游戏' },
-    en: { favTab: 'Favorites', noRecent: 'No recently played games', noFavs: 'No favorite games yet - tap the star on any game card', noGames: 'No games found' },
-    ja: { favTab: 'お気に入り', noRecent: '最近プレイしたゲームはありません', noFavs: 'お気に入りはまだありません - ゲームカードの星をタップしてください', noGames: 'ゲームが見つかりません' },
-    ko: { favTab: '즐겨찾기', noRecent: '최근 플레이한 게임이 없습니다', noFavs: '즐겨찾는 게임이 없습니다 - 게임 카드의 별을 눌러 추가하세요', noGames: '게임을 찾을 수 없습니다' },
-    fr: { favTab: 'Favoris', noRecent: 'Aucun jeu récemment joué', noFavs: 'Aucun favori pour le moment - touchez l\'étoile sur une carte de jeu', noGames: 'Aucun jeu trouvé' },
-    de: { favTab: 'Favoriten', noRecent: 'Keine kürzlich gespielten Spiele', noFavs: 'Noch keine Favoriten - tippe auf den Stern auf einer Spielkarte', noGames: 'Keine Spiele gefunden' },
-    es: { favTab: 'Favoritos', noRecent: 'No hay juegos jugados recientemente', noFavs: 'Aún no hay favoritos - toca la estrella en una tarjeta de juego', noGames: 'No se encontraron juegos' },
-    ru: { favTab: 'Избранное', noRecent: 'Нет недавно сыгранных игр', noFavs: 'Пока нет избранного - нажмите звезду на карточке игры', noGames: 'Игры не найдены' }
+// UI dictionary for the Games page. Covers the static HTML copy (titles,
+// sidebar categories, placeholders, loading states) and the dynamic strings
+// generated from JS (empty states). Same 8-language pattern and `i18n` name
+// as the other route pages so scripts/checks/check-i18n.js can verify it.
+var i18n = {
+    zh: {
+        pageTitle: '游戏', back: '返回', menu: '菜单', searchPlaceholder: '搜索游戏...',
+        catAll: '全部游戏', catRecent: '最近游玩', catFavorites: '收藏', catEmulator: '模拟器',
+        catRetroPc: '复古电脑', catRecomp: '重编译', catFantasy: '幻想主机', catComputers: '电脑',
+        catMobile: '手机', catWebGames: '网页游戏', loadingMore: '正在加载更多游戏...', loading: '正在加载游戏...',
+        noRecent: '暂无最近游玩的游戏', noFavs: '还没有收藏的游戏 - 点击游戏卡片上的星标即可收藏', noGames: '未找到游戏'
+    },
+    en: {
+        pageTitle: 'Games', back: 'Back', menu: 'Menu', searchPlaceholder: 'Search games...',
+        catAll: 'All Games', catRecent: 'Recently Played', catFavorites: 'Favorites', catEmulator: 'Emulator',
+        catRetroPc: 'Retro PC', catRecomp: 'Recomp', catFantasy: 'Fantasy Console', catComputers: 'Computers',
+        catMobile: 'Mobile', catWebGames: 'Web Games', loadingMore: 'Loading more games...', loading: 'Loading games...',
+        noRecent: 'No recently played games', noFavs: 'No favorite games yet - tap the star on any game card', noGames: 'No games found'
+    },
+    ja: {
+        pageTitle: 'ゲーム', back: '戻る', menu: 'メニュー', searchPlaceholder: 'ゲームを検索...',
+        catAll: 'すべてのゲーム', catRecent: '最近プレイしたゲーム', catFavorites: 'お気に入り', catEmulator: 'エミュレーター',
+        catRetroPc: 'レトロPC', catRecomp: 'リコンプ', catFantasy: 'ファンタジーコンソール', catComputers: 'コンピューター',
+        catMobile: 'モバイル', catWebGames: 'ウェブゲーム', loadingMore: 'ゲームをさらに読み込み中...', loading: 'ゲームを読み込み中...',
+        noRecent: '最近プレイしたゲームはありません', noFavs: 'お気に入りはまだありません - ゲームカードの星をタップしてください', noGames: 'ゲームが見つかりません'
+    },
+    ko: {
+        pageTitle: '게임', back: '뒤로', menu: '메뉴', searchPlaceholder: '게임 검색...',
+        catAll: '모든 게임', catRecent: '최근 플레이한 게임', catFavorites: '즐겨찾기', catEmulator: '에뮬레이터',
+        catRetroPc: '레트로 PC', catRecomp: '리컴프', catFantasy: '판타지 콘솔', catComputers: '컴퓨터',
+        catMobile: '모바일', catWebGames: '웹 게임', loadingMore: '게임을 더 불러오는 중...', loading: '게임을 불러오는 중...',
+        noRecent: '최근 플레이한 게임이 없습니다', noFavs: '즐겨찾는 게임이 없습니다 - 게임 카드의 별을 눌러 추가하세요', noGames: '게임을 찾을 수 없습니다'
+    },
+    fr: {
+        pageTitle: 'Jeux', back: 'Retour', menu: 'Menu', searchPlaceholder: 'Rechercher des jeux...',
+        catAll: 'Tous les jeux', catRecent: 'Joués récemment', catFavorites: 'Favoris', catEmulator: 'Émulateur',
+        catRetroPc: 'PC rétro', catRecomp: 'Recomp', catFantasy: 'Console fantaisie', catComputers: 'Ordinateurs',
+        catMobile: 'Mobile', catWebGames: 'Jeux web', loadingMore: 'Chargement d\'autres jeux...', loading: 'Chargement des jeux...',
+        noRecent: 'Aucun jeu récemment joué', noFavs: 'Aucun favori pour le moment - touchez l\'étoile sur une carte de jeu', noGames: 'Aucun jeu trouvé'
+    },
+    de: {
+        pageTitle: 'Spiele', back: 'Zurück', menu: 'Menü', searchPlaceholder: 'Spiele suchen...',
+        catAll: 'Alle Spiele', catRecent: 'Zuletzt gespielt', catFavorites: 'Favoriten', catEmulator: 'Emulator',
+        catRetroPc: 'Retro-PC', catRecomp: 'Recomp', catFantasy: 'Fantasy-Konsole', catComputers: 'Computer',
+        catMobile: 'Mobil', catWebGames: 'Webspiele', loadingMore: 'Weitere Spiele werden geladen...', loading: 'Spiele werden geladen...',
+        noRecent: 'Keine kürzlich gespielten Spiele', noFavs: 'Noch keine Favoriten - tippe auf den Stern auf einer Spielkarte', noGames: 'Keine Spiele gefunden'
+    },
+    es: {
+        pageTitle: 'Juegos', back: 'Atrás', menu: 'Menú', searchPlaceholder: 'Buscar juegos...',
+        catAll: 'Todos los juegos', catRecent: 'Jugados recientemente', catFavorites: 'Favoritos', catEmulator: 'Emulador',
+        catRetroPc: 'PC retro', catRecomp: 'Recomp', catFantasy: 'Consola fantástica', catComputers: 'Ordenadores',
+        catMobile: 'Móvil', catWebGames: 'Juegos web', loadingMore: 'Cargando más juegos...', loading: 'Cargando juegos...',
+        noRecent: 'No hay juegos jugados recientemente', noFavs: 'Aún no hay favoritos - toca la estrella en una tarjeta de juego', noGames: 'No se encontraron juegos'
+    },
+    ru: {
+        pageTitle: 'Игры', back: 'Назад', menu: 'Меню', searchPlaceholder: 'Поиск игр...',
+        catAll: 'Все игры', catRecent: 'Недавно сыгранные', catFavorites: 'Избранное', catEmulator: 'Эмулятор',
+        catRetroPc: 'Ретро-ПК', catRecomp: 'Ре compilation', catFantasy: 'Фэнтези-консоль', catComputers: 'Компьютеры',
+        catMobile: 'Мобильные', catWebGames: 'Веб-игры', loadingMore: 'Загрузка большего количества игр...', loading: 'Загрузка игр...',
+        noRecent: 'Нет недавно сыгранных игр', noFavs: 'Пока нет избранного - нажмите звезду на карточке игры', noGames: 'Игры не найдены'
+    }
 };
-var tgLang = (localStorage.getItem('ewtv-lang') || localStorage.getItem('preferredLanguage') || 'en').split('-')[0];
-if (!TG_I18N[tgLang]) tgLang = 'en';
-function tgT(key) { return (TG_I18N[tgLang] && TG_I18N[tgLang][key]) || TG_I18N.en[key] || key; }
+var currentLang = (localStorage.getItem('ewtv-lang') || localStorage.getItem('preferredLanguage') || 'en').split('-')[0];
+if (!i18n[currentLang]) currentLang = 'en';
+function t(key) { return (i18n[currentLang] && i18n[currentLang][key]) || i18n.en[key] || key; }
+
+// Apply translated copy to the static HTML. Uses data-i18n on text nodes,
+// data-i18n-placeholder on inputs, data-i18n-title on tooltips.
+function applyI18n() {
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        if (i18n[currentLang] && i18n[currentLang][key]) el.textContent = i18n[currentLang][key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-placeholder');
+        if (i18n[currentLang] && i18n[currentLang][key]) el.placeholder = i18n[currentLang][key];
+    });
+    document.querySelectorAll('[data-i18n-title]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-title');
+        if (i18n[currentLang] && i18n[currentLang][key]) el.title = i18n[currentLang][key];
+    });
+    document.documentElement.lang = currentLang;
+}
+// Short alias used by the dynamic renderers below.
+function tgT(key) { return t(key); }
 
 // Game data
 var games = [
@@ -1486,9 +1554,9 @@ function showToast(message, type) {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('=== Game Page Loaded ===');
 
-    // Translate the dynamic Favorites sidebar label to match the UI language.
-    var favTab = document.querySelector('.category-item[data-category="favorites"] span');
-    if (favTab) favTab.textContent = tgT('favTab');
+    // Translate all static HTML copy (titles, sidebar, placeholders, loading
+    // states) and set the document language.
+    applyI18n();
 
     // Deep link: ?category=<id> selects the category (e.g. back links from
     // the standalone emulator pages: fantasy / computer / mobile / retropc)

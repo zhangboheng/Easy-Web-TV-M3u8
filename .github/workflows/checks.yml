@@ -32,6 +32,8 @@ jobs:
         run: node scripts/checks/check-proxy-config.js
       - name: Proxy health cache
         run: node scripts/checks/check-proxy-health.js
+      - name: Settings connectivity probe
+        run: node scripts/checks/check-settings-probe.js
       - name: Language selector
         run: node scripts/checks/check-language-selector.js
       - name: Local media and PDF regressions

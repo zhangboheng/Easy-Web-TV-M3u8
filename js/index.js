@@ -787,6 +787,10 @@ const VersionHistoryModal = {
 // Proxy settings UI: manage user-defined CORS proxies in localStorage.
 // Built-in proxies are shown read-only from ProxyConfig.getBuiltins().
 const ProxySettings = {
+    // In-memory probe results, keyed by custom proxy id. Rendered as badges;
+    // deliberately not persisted so a fresh visit re-checks live status.
+    _testResults: {},
+
     t: function(key, fallback) {
         try {
             if (typeof translations !== 'undefined') {
@@ -831,6 +835,8 @@ const ProxySettings = {
         // parses localStorage, and the list can hold several built-ins.
         var health = (typeof ProxyConfig.getHealth === 'function') ? ProxyConfig.getHealth() : [];
 
+        var dragHint = self.escapeHtml(self.t('settings_drag_hint', 'Drag to reorder'));
+        var builtinHandleTitle = self.escapeHtml(self.t('settings_drag_handle', 'Drag handle'));
         builtinEl.innerHTML = ProxyConfig.getBuiltins().map(function(item) {
             // Show the cooldown state so the user can tell why a proxy is being
             // skipped (see ProxyConfig.getHealth()).
@@ -845,7 +851,8 @@ const ProxySettings = {
                     self.escapeHtml(self.t('settings_proxy_cooldown', 'Temporarily skipped after a failure')) +
                     '">⏳ ' + mins + ' min</span>';
             }
-            return '<div class="proxy-item proxy-item-builtin">' +
+            return '<div class="proxy-item proxy-item-builtin proxy-item-draggable" data-id="' + self.escapeHtml(item.id) + '" draggable="true" title="' + dragHint + '">' +
+                '<span class="proxy-drag-handle" title="' + builtinHandleTitle + '">⠿</span>' +
                 '<span class="proxy-lock" title="' + self.escapeHtml(self.t('settings_proxy_builtin', 'Built-in (read-only)')) + '">🔒</span>' +
                 '<div class="proxy-item-body">' +
                     '<div class="proxy-item-name">' + self.escapeHtml(item.name) + badge + '</div>' +
@@ -857,12 +864,26 @@ const ProxySettings = {
         var custom = ProxyConfig.getCustom();
         customEl.innerHTML = custom.map(function(item) {
             var toggleLabel = item.enabled ? self.t('settings_proxy_disable', 'Disable') : self.t('settings_proxy_enable', 'Enable');
-            return '<div class="proxy-item" data-id="' + self.escapeHtml(item.id) + '">' +
+            var result = self._testResults[item.id];
+            var testBadge = '';
+            if (result) {
+                var cls = result.ok ? 'ok' : 'fail';
+                var label = result.ok
+                    ? self.t('settings_proxy_test_ok', 'OK')
+                    : self.t('settings_proxy_test_fail', 'Failed');
+                testBadge = '<span class="proxy-test-badge ' + cls + '" title="' +
+                    (result.via ? self.escapeHtml(result.via) : '') + '">' +
+                    (result.ok ? '✓ ' : '✗ ') + self.escapeHtml(label) + ' · ' + result.ms + 'ms</span>';
+            }
+            var dragHint = self.escapeHtml(self.t('settings_drag_hint', 'Drag to reorder'));
+            return '<div class="proxy-item proxy-item-draggable" data-id="' + self.escapeHtml(item.id) + '" draggable="true" title="' + dragHint + '">' +
+                '<span class="proxy-drag-handle" title="' + self.escapeHtml(self.t('settings_drag_handle', 'Drag handle')) + '">⠿</span>' +
                 '<div class="proxy-item-body">' +
-                    '<div class="proxy-item-name">' + self.escapeHtml(item.name) + '</div>' +
+                    '<div class="proxy-item-name">' + self.escapeHtml(item.name) + testBadge + '</div>' +
                     '<div class="proxy-item-url">' + self.escapeHtml(item.url) + '</div>' +
                 '</div>' +
                 '<div class="proxy-item-actions">' +
+                    '<button type="button" class="proxy-mini-btn" data-act="test" title="' + self.escapeHtml(self.t('settings_proxy_test', 'Test')) + '">⚡</button>' +
                     '<button type="button" class="proxy-mini-btn" data-act="toggle" title="' + self.escapeHtml(toggleLabel) + '">' + (item.enabled ? '⏸' : '▶') + '</button>' +
                     '<button type="button" class="proxy-mini-btn" data-act="edit" title="' + self.escapeHtml(self.t('settings_proxy_edit', 'Edit')) + '">✎</button>' +
                     '<button type="button" class="proxy-mini-btn danger" data-act="delete" title="' + self.escapeHtml(self.t('settings_proxy_delete', 'Delete')) + '">✕</button>' +
@@ -926,6 +947,25 @@ const ProxySettings = {
             var id = itemEl && itemEl.getAttribute('data-id');
             var act = btn.getAttribute('data-act');
             if (!id || !act) return;
+            if (act === 'test') {
+                var target = ProxyConfig.getCustom().filter(function(x) { return x.id === id; })[0];
+                if (!target) return;
+                btn.disabled = true;
+                var nameElForBadge = itemEl.querySelector('.proxy-item-name');
+                var testingBadge = null;
+                if (nameElForBadge) {
+                    testingBadge = document.createElement('span');
+                    testingBadge.className = 'proxy-test-badge testing';
+                    testingBadge.textContent = self.t('settings_proxy_testing', 'Testing...');
+                    nameElForBadge.appendChild(testingBadge);
+                }
+                if (typeof SettingsProbe === 'undefined') { btn.disabled = false; return; }
+                SettingsProbe.testProxy(target.url).then(function(res) {
+                    self._testResults[id] = res;
+                    self.render(); // re-render restores badge from _testResults and refreshes cooldown badges
+                });
+                return;
+            }
             if (act === 'delete') {
                 ProxyConfig.remove(id);
                 self.render();
@@ -949,6 +989,50 @@ const ProxySettings = {
                 if (form && form.scrollIntoView) form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
         });
+
+        // Drag-to-reorder for both built-in and custom proxies. Bind on the
+        // shared parent so it survives re-renders of either inner list; each
+        // dragend persists into the matching order (builtin vs custom).
+        var proxyWrap = DOM.$('.proxy-settings-lists') || DOM.$('#proxy-builtin-list').parentNode;
+        if (proxyWrap) {
+            var draggedId = null;
+            var draggedBuiltin = false;
+            proxyWrap.addEventListener('dragstart', function(e) {
+                var row = e.target.closest('.proxy-item-draggable');
+                if (!row) { e.preventDefault(); return; }
+                draggedId = row.getAttribute('data-id');
+                draggedBuiltin = !!(row.closest('#proxy-builtin-list'));
+                row.classList.add('dragging');
+                if (e.dataTransfer) {
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('text/plain', draggedId);
+                }
+            });
+            proxyWrap.addEventListener('dragover', function(e) {
+                if (!draggedId) return;
+                var row = e.target.closest('.proxy-item-draggable');
+                if (!row || row.getAttribute('data-id') === draggedId) return;
+                var rowBuiltin = !!(row.closest('#proxy-builtin-list'));
+                if (rowBuiltin !== draggedBuiltin) return; // never mix built-in/custom groups
+                e.preventDefault();
+                var box = row.getBoundingClientRect();
+                var before = (e.clientY - box.top) < box.height / 2;
+                var listEl = draggedBuiltin ? DOM.$('#proxy-builtin-list') : DOM.$('#proxy-custom-list');
+                var draggedRow = listEl.querySelector('.proxy-item[data-id="' + draggedId + '"]');
+                if (draggedRow) listEl.insertBefore(draggedRow, before ? row : row.nextSibling);
+            });
+            proxyWrap.addEventListener('dragend', function() {
+                if (!draggedId) return;
+                var listEl = draggedBuiltin ? DOM.$('#proxy-builtin-list') : DOM.$('#proxy-custom-list');
+                var ids = [].map.call(listEl.querySelectorAll('.proxy-item[data-id]'), function(el) {
+                    return el.getAttribute('data-id');
+                });
+                if (draggedBuiltin) ProxyConfig.reorderBuiltins(ids);
+                else ProxyConfig.reorder(ids);
+                draggedId = null;
+                self.render();
+            });
+        }
     }
 };
 
@@ -958,6 +1042,9 @@ const ProxySettings = {
 // custom collection-API sources for the movie and porn tabs, mirroring the
 // ProxySettings pattern.
 const SourceSettings = {
+    // In-memory probe results per type -> id. Not persisted; re-checked on visit.
+    _testResults: {},
+
     render: function() {
         if (typeof SourceConfig === 'undefined') return;
         var builtinTitle = ProxySettings.t('source_builtin_title', 'Built-in sources (read-only)');
@@ -974,10 +1061,13 @@ const SourceSettings = {
             if (!container) return;
 
             var html = '<div class="proxy-section-title proxy-subtitle">' + self.escape(builtinTitle) + '</div>';
-            html += '<div class="proxy-list">';
+            html += '<div class="proxy-list" data-builtin-list="' + type + '">';
+            var builtinDragHint = self.escape(ProxySettings.t('settings_drag_hint', 'Drag to reorder'));
+            var builtinHandleTitle = self.escape(ProxySettings.t('settings_drag_handle', 'Drag handle'));
             SourceConfig.getBuiltins(type).forEach(function(src) {
                 var urlRow = src.url ? '<div class="proxy-item-url">' + self.escape(src.url) + '</div>' : '';
-                html += '<label class="proxy-item source-item-builtin">' +
+                html += '<label class="proxy-item source-item-builtin proxy-item-draggable" data-id="' + self.escape(src.id) + '" draggable="true" title="' + builtinDragHint + '">' +
+                    '<span class="proxy-drag-handle" title="' + builtinHandleTitle + '">⠿</span>' +
                     '<input type="checkbox" name="settings-' + type + '" value="' + self.escape(src.id) + '" checked>' +
                     '<div class="proxy-item-body">' +
                         '<div class="proxy-item-name">' + self.escape(src.name) +
@@ -997,12 +1087,26 @@ const SourceSettings = {
                         var toggleLabel = item.enabled
                             ? ProxySettings.t('settings_proxy_disable', 'Disable')
                             : ProxySettings.t('settings_proxy_enable', 'Enable');
-                        html += '<div class="proxy-item" data-id="' + self.escape(item.id) + '">' +
+                        var results = self._testResults[type] || {};
+                        var result = results[item.id];
+                        var testBadge = '';
+                        if (result) {
+                            var cls = result.ok ? 'ok' : 'fail';
+                            var label = result.ok
+                                ? ProxySettings.t('settings_proxy_test_ok', 'OK')
+                                : ProxySettings.t('settings_proxy_test_fail', 'Failed');
+                            testBadge = '<span class="proxy-test-badge ' + cls + '">' +
+                                (result.ok ? '✓ ' : '✗ ') + self.escape(label) + ' · ' + result.ms + 'ms</span>';
+                        }
+                        var dragHint = self.escape(ProxySettings.t('settings_drag_hint', 'Drag to reorder'));
+                        html += '<div class="proxy-item proxy-item-draggable" data-id="' + self.escape(item.id) + '" draggable="true" title="' + dragHint + '">' +
+                            '<span class="proxy-drag-handle" title="' + self.escape(ProxySettings.t('settings_drag_handle', 'Drag handle')) + '">⠿</span>' +
                             '<div class="proxy-item-body">' +
-                                '<div class="proxy-item-name">' + self.escape(item.name) + '</div>' +
+                                '<div class="proxy-item-name">' + self.escape(item.name) + testBadge + '</div>' +
                                 '<div class="proxy-item-url">' + self.escape(item.url) + '</div>' +
                             '</div>' +
                             '<div class="proxy-item-actions">' +
+                                '<button type="button" class="proxy-mini-btn" data-act="test" title="' + self.escape(ProxySettings.t('settings_proxy_test', 'Test')) + '">⚡</button>' +
                                 '<button type="button" class="proxy-mini-btn" data-act="toggle" title="' + self.escape(toggleLabel) + '">' + (item.enabled ? '⏸' : '▶') + '</button>' +
                                 '<button type="button" class="proxy-mini-btn danger" data-act="delete" title="' + self.escape(deleteTitle) + '">✕</button>' +
                             '</div>' +
@@ -1041,7 +1145,10 @@ const SourceSettings = {
         // Delegate on the static .source-options containers: render() replaces
         // their innerHTML (and every button inside), so per-element listeners
         // would die on the first re-render.
-        SourceConfig.TYPES.forEach(function(type) {
+        // Render() builds built-in rows (now draggable) for ALL six tabs; bind
+        // on each static container so novel/manga/music built-ins are sortable
+        // too. Custom-source form/button logic only exists for SourceConfig.TYPES.
+        ['movie', 'novel', 'manga', 'music', 'porn', 'youtube'].forEach(function(type) {
             var container = DOM.$('.source-options[data-source-type="' + type + '"]');
             if (!container) return;
             container.addEventListener('click', function(e) {
@@ -1078,6 +1185,26 @@ const SourceSettings = {
                 var id = itemEl && itemEl.getAttribute('data-id');
                 var act = btn.getAttribute('data-act');
                 if (!id || !act) return;
+                if (act === 'test') {
+                    var source = SourceConfig.get(type).filter(function(x) { return x.id === id; })[0];
+                    if (!source) return;
+                    btn.disabled = true;
+                    var nameElForBadge = itemEl.querySelector('.proxy-item-name');
+                    if (nameElForBadge) {
+                        var testingBadge = document.createElement('span');
+                        testingBadge.className = 'proxy-test-badge testing';
+                        testingBadge.textContent = ProxySettings.t('settings_proxy_testing', 'Testing...');
+                        nameElForBadge.appendChild(testingBadge);
+                    }
+                    if (typeof SettingsProbe === 'undefined') { btn.disabled = false; return; }
+                    SettingsProbe.testSource(type, source.url).then(function(res) {
+                        self._testResults[type] = self._testResults[type] || {};
+                        self._testResults[type][id] = res;
+                        self.render();
+                        SettingsModal.loadSavedSources();
+                    });
+                    return;
+                }
                 if (act === 'delete') {
                     SourceConfig.remove(type, id);
                 } else if (act === 'toggle') {
@@ -1086,6 +1213,57 @@ const SourceSettings = {
                 } else {
                     return;
                 }
+                self.render();
+                SettingsModal.loadSavedSources();
+            });
+
+            // Drag-to-reorder for both built-in and custom sources of this tab.
+            // Bind on the STATIC .source-options container: render() rebuilds the
+            // inner lists each time, so listeners on them would die.
+            var draggedId = null;
+            var draggedBuiltin = false;
+            container.addEventListener('dragstart', function(e) {
+                var row = e.target.closest('.proxy-item-draggable');
+                if (!row) { e.preventDefault(); return; }
+                var builtinList = container.querySelector('.proxy-list[data-builtin-list="' + type + '"]');
+                var customList = DOM.$('#custom-source-list-' + type);
+                draggedBuiltin = !!(builtinList && builtinList.contains(row));
+                if (!draggedBuiltin && !(customList && customList.contains(row))) { e.preventDefault(); return; }
+                draggedId = row.getAttribute('data-id');
+                row.classList.add('dragging');
+                if (e.dataTransfer) {
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('text/plain', draggedId);
+                }
+            });
+            container.addEventListener('dragover', function(e) {
+                if (!draggedId) return;
+                var row = e.target.closest('.proxy-item-draggable');
+                if (!row || row.getAttribute('data-id') === draggedId) return;
+                var builtinList = container.querySelector('.proxy-list[data-builtin-list="' + type + '"]');
+                var customList = DOM.$('#custom-source-list-' + type);
+                var rowBuiltin = !!(builtinList && builtinList.contains(row));
+                if (rowBuiltin !== draggedBuiltin) return; // never mix built-in/custom groups
+                e.preventDefault();
+                var box = row.getBoundingClientRect();
+                var before = (e.clientY - box.top) < box.height / 2;
+                var listEl = draggedBuiltin ? builtinList : customList;
+                var draggedRow = listEl.querySelector('.proxy-item[data-id="' + draggedId + '"]');
+                if (draggedRow) listEl.insertBefore(draggedRow, before ? row : row.nextSibling);
+            });
+            container.addEventListener('dragend', function() {
+                if (!draggedId) return;
+                var builtinList = container.querySelector('.proxy-list[data-builtin-list="' + type + '"]');
+                var customList = DOM.$('#custom-source-list-' + type);
+                var listEl = draggedBuiltin ? builtinList : customList;
+                if (listEl) {
+                    var ids = [].map.call(listEl.querySelectorAll('.proxy-item[data-id]'), function(el) {
+                        return el.getAttribute('data-id');
+                    });
+                    if (draggedBuiltin) SourceConfig.reorderBuiltins(type, ids);
+                    else SourceConfig.reorder(type, ids);
+                }
+                draggedId = null;
                 self.render();
                 SettingsModal.loadSavedSources();
             });

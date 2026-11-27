@@ -29,15 +29,26 @@ function initSourceSelect() {
     
     // Clear existing options
     sourceSelect.innerHTML = '';
-    
+
+    // Built-in order follows the user's drag order in Settings > Source Control.
+    var orderedIds = Object.keys(pornSources);
+    if (typeof SourceConfig !== 'undefined' && SourceConfig.getBuiltins) {
+        var savedOrder = SourceConfig.getBuiltins('porn').map(function(s) { return s.id; });
+        var aligned = savedOrder.filter(function(id) { return !!pornSources[id]; });
+        Object.keys(pornSources).forEach(function(id) {
+            if (aligned.indexOf(id) === -1) aligned.push(id);
+        });
+        if (aligned.length) orderedIds = aligned;
+    }
+
     if (savedSources) {
         // Parse saved sources
         var sourceIds = savedSources.split(',');
         var hasValidSource = false;
         
-        // Add only saved sources
-        sourceIds.forEach(function(id) {
-            if (pornSources[id]) {
+        // Add only saved sources, in the configured built-in order
+        orderedIds.forEach(function(id) {
+            if (sourceIds.indexOf(id) !== -1 && pornSources[id]) {
                 var option = document.createElement('option');
                 option.value = pornSources[id].url;
                 option.textContent = pornSources[id].name;
@@ -48,7 +59,7 @@ function initSourceSelect() {
         
         // If no valid sources found, add all sources
         if (!hasValidSource) {
-            Object.keys(pornSources).forEach(function(id) {
+            orderedIds.forEach(function(id) {
                 var option = document.createElement('option');
                 option.value = pornSources[id].url;
                 option.textContent = pornSources[id].name;
@@ -57,7 +68,7 @@ function initSourceSelect() {
         }
     } else {
         // No saved settings, add all sources
-        Object.keys(pornSources).forEach(function(id) {
+        orderedIds.forEach(function(id) {
             var option = document.createElement('option');
             option.value = pornSources[id].url;
             option.textContent = pornSources[id].name;

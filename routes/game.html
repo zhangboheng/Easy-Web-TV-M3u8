@@ -549,7 +549,11 @@
         }
         
         @media screen and (max-width: 768px) {
+            /* Header is two rows here (118.5px); keep the sidebar below it
+               instead of pinned to the old 70px single-row height. */
             .sidebar {
+                top: 120px;
+                height: calc(100vh - 120px);
                 width: 0;
                 border-right: none;
             }
@@ -569,15 +573,44 @@
             
             .main-content {
                 margin-left: 0;
+                margin-top: 120px; /* two-row header: 12+40+10+44+12+2 */
                 padding: 15px;
             }
-            
+
             .header-title {
                 font-size: 16px;
             }
-            
+
+            /* Mobile toolbar: title row first, search on its own full-width
+               row (same pattern as adult.html / tv.html / radio.html). */
+            .top-header {
+                height: auto;
+                padding: 12px 15px;
+                flex-direction: column;
+                align-items: stretch;
+                flex-wrap: nowrap;
+                gap: 10px;
+            }
+
+            .header-left {
+                order: 1;
+            }
+
+            .header-right {
+                order: 2;
+                width: 100%;
+            }
+
             .search-box {
-                display: none;
+                width: 100%;
+            }
+
+            .search-box input {
+                width: 100%;
+                font-size: 16px; /* >=16px prevents iOS auto-zoom on focus */
+            }
+            .search-box input:focus {
+                width: 100%;
             }
             
             .game-grid {
@@ -622,20 +655,20 @@
         <!-- Top Header -->
         <header class="top-header">
             <div class="header-left">
-                <div class="header-btn" id="backBtn" title="Back">
+                <div class="header-btn" id="backBtn" data-i18n-title="back" title="Back">
                     <i class="fas fa-arrow-left"></i>
                 </div>
-                <div class="header-btn" id="menuBtn" title="Menu">
+                <div class="header-btn" id="menuBtn" data-i18n-title="menu" title="Menu">
                     <i class="fas fa-bars"></i>
                 </div>
                 <div class="header-title">
                     <i class="fas fa-gamepad"></i>
-                    <span>Games</span>
+                    <span data-i18n="pageTitle">Games</span>
                 </div>
             </div>
             <div class="header-right">
                 <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Search games...">
+                    <input type="text" id="searchInput" data-i18n-placeholder="searchPlaceholder" placeholder="Search games...">
                     <i class="fas fa-search search-icon" id="searchBtn"></i>
                 </div>
             </div>
@@ -650,43 +683,43 @@
             <div class="category-list" id="categoryList">
                 <div class="category-item active" data-category="all" tabindex="0">
                     <i class="fas fa-globe"></i>
-                    <span>All Games</span>
+                    <span data-i18n="catAll">All Games</span>
                 </div>
                 <div class="category-item" data-category="recent" tabindex="0">
                     <i class="fas fa-clock-rotate-left"></i>
-                    <span>Recently Played</span>
+                    <span data-i18n="catRecent">Recently Played</span>
                 </div>
                 <div class="category-item" data-category="favorites" tabindex="0">
                     <i class="fas fa-star"></i>
-                    <span>Favorites</span>
+                    <span data-i18n="catFavorites">Favorites</span>
                 </div>
                 <div class="category-item" data-category="emulator" tabindex="0">
                     <i class="fas fa-microchip"></i>
-                    <span>Emulator</span>
+                    <span data-i18n="catEmulator">Emulator</span>
                 </div>
                 <div class="category-item" data-category="retropc" tabindex="0">
                     <i class="fas fa-desktop"></i>
-                    <span>Retro PC</span>
+                    <span data-i18n="catRetroPc">Retro PC</span>
                 </div>
                 <div class="category-item" data-category="recomp" tabindex="0">
                     <i class="fas fa-cogs"></i>
-                    <span>Recomp</span>
+                    <span data-i18n="catRecomp">Recomp</span>
                 </div>
                 <div class="category-item" data-category="fantasy" tabindex="0">
                     <i class="fas fa-magic"></i>
-                    <span>Fantasy Console</span>
+                    <span data-i18n="catFantasy">Fantasy Console</span>
                 </div>
                 <div class="category-item" data-category="computer" tabindex="0">
                     <i class="fas fa-laptop"></i>
-                    <span>Computers</span>
+                    <span data-i18n="catComputers">Computers</span>
                 </div>
                 <div class="category-item" data-category="mobile" tabindex="0">
                     <i class="fas fa-mobile-screen"></i>
-                    <span>Mobile</span>
+                    <span data-i18n="catMobile">Mobile</span>
                 </div>
                 <div class="category-item" data-category="webgames" tabindex="0">
                     <i class="fas fa-window-maximize"></i>
-                    <span>Web Games</span>
+                    <span data-i18n="catWebGames">Web Games</span>
                 </div>
             </div>
         </aside>
@@ -698,7 +731,7 @@
             </div>
             <div class="load-more-indicator" id="loadMoreIndicator" style="display: none;">
                 <i class="fas fa-spinner"></i>
-                <span>Loading more games...</span>
+                <span data-i18n="loadingMore">Loading more games...</span>
             </div>
         </main>
         
@@ -706,7 +739,7 @@
         <div class="loading-overlay hidden" id="loadingOverlay">
             <div class="loading-spinner">
                 <i class="fas fa-spinner"></i>
-                <p>Loading games...</p>
+                <p data-i18n="loading">Loading games...</p>
             </div>
         </div>
     </div>

@@ -534,9 +534,23 @@ document.addEventListener('DOMContentLoaded', function() {
     if (sourceSelect) {
         var savedNovel = null;
         try { savedNovel = window.localStorage.getItem('novel'); } catch (e) {}
-        var novelIds = savedNovel ? savedNovel.split(',')
-            .filter(function(id) { return NOVEL_SOURCES[id]; }) : [];
-        (novelIds.length ? novelIds : Object.keys(NOVEL_SOURCES)).forEach(function(id) {
+        var savedNovelIds = savedNovel ? savedNovel.split(',') : null;
+        // Walk ids in the user's configured built-in order (Settings > Source
+        // Control drag order), filtering by the saved enable-selection.
+        var novelIds = Object.keys(NOVEL_SOURCES);
+        if (typeof SourceConfig !== 'undefined' && SourceConfig.getBuiltins) {
+            var orderedNovel = SourceConfig.getBuiltins('novel').map(function(s) { return s.id; })
+                .filter(function(id) { return !!NOVEL_SOURCES[id]; });
+            Object.keys(NOVEL_SOURCES).forEach(function(id) {
+                if (orderedNovel.indexOf(id) === -1) orderedNovel.push(id);
+            });
+            novelIds = orderedNovel;
+        }
+        if (savedNovelIds) {
+            var filteredNovel = novelIds.filter(function(id) { return savedNovelIds.indexOf(id) !== -1; });
+            if (filteredNovel.length) novelIds = filteredNovel; // unknown/absent ids -> full list
+        }
+        novelIds.forEach(function(id) {
             var option = document.createElement('option');
             option.value = id;
             option.textContent = NOVEL_SOURCES[id].name;

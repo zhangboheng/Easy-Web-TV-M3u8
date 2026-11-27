@@ -2481,6 +2481,19 @@ button.stylebtn:active {
     opacity: 0.75;
 }
 
+/* Drag-to-reorder: both built-in and custom rows carry .proxy-item-draggable.
+   The handle gives a clear affordance; a dragging row fades while moving. */
+.proxy-item-draggable { cursor: grab; }
+.proxy-item-draggable.dragging { opacity: 0.45; cursor: grabbing; }
+.proxy-drag-handle {
+    cursor: grab;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 16px;
+    flex-shrink: 0;
+    user-select: none;
+}
+.proxy-drag-handle:active { cursor: grabbing; }
+
 /* Source Control rows reuse the proxy-item layout; the enable checkbox sits
    at the row start and must not shrink. */
 .source-item-builtin input[type="checkbox"] {
@@ -2533,6 +2546,21 @@ button.stylebtn:active {
     border: 1px solid rgba(255, 176, 32, 0.35);
 }
 
+/* Active-test result badge shown on custom proxy/source rows. */
+.proxy-test-badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 1px 7px;
+    border-radius: 9px;
+    font-size: 10px;
+    font-weight: 600;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.proxy-test-badge.ok { color: #5cb85c; }
+.proxy-test-badge.fail { color: #ff6b6b; }
+.proxy-test-badge.testing { color: rgba(255, 255, 255, 0.6); }
+
 .proxy-item-actions {
     display: flex;
     gap: 6px;
@@ -2550,6 +2578,8 @@ button.stylebtn:active {
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
+
+.proxy-mini-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .proxy-mini-btn:hover {
     background: #a3001b;

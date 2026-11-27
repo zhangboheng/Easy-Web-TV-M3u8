@@ -22,5 +22,6 @@
   ["js/toflash.js", "routes/flash.html"],
   ["js/tov86.js", "routes/v86.html"],
   ["js/towasm4.js", "routes/wasm4.html"],
-  ["js/emulatorjs.js", "routes/emulatorjs.html"]
+  ["js/emulatorjs.js", "routes/emulatorjs.html"],
+  ["js/togame.js", "routes/game.html"]
 ]

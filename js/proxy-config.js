@@ -35,6 +35,9 @@ const BUILTIN_PROXIES = [
     'https://api.cors.lol/?url='
 ];
 
+// localStorage key for the user-defined order of built-in proxies (URL list).
+const BUILTIN_ORDER_KEY = 'ewtv-proxy-builtin-order';
+
 // --- Proxy health cache -----------------------------------------------------
 // A failed proxy is remembered in localStorage and demoted for a cooldown
 // period, so the next request does not pay the same timeout again.
@@ -50,11 +53,55 @@ const HEALTH_DEDUPE_MS = 3000;
 const ProxyConfig = {
     KEY: 'ewtv-proxy-list',
 
-    // All entries: built-ins are read-only (id starts with "builtin-").
+    // All entries. Built-ins keep their stable id ("builtin-<index>") but the
+    // returned order follows the user's saved preference, so dragging a built-in
+    // row in Settings actually changes the failover order used by consumers.
     getBuiltins: function() {
-        return BUILTIN_PROXIES.map(function(url, i) {
-            return { id: 'builtin-' + i, name: 'Built-in ' + (i + 1), url: url, builtin: true, enabled: true };
+        var order = this._readBuiltinOrder();
+        return order.map(function(url, i) {
+            var originalIndex = BUILTIN_PROXIES.indexOf(url);
+            return {
+                id: 'builtin-' + originalIndex,
+                name: 'Built-in ' + (originalIndex + 1),
+                url: url, builtin: true, enabled: true
+            };
         });
+    },
+
+    // Saved URL order for built-ins. Drops stale/unknown URLs and appends any
+    // built-in not yet in the saved list, so a code update adding a proxy still
+    // shows it. Falls back to the default BUILTIN_PROXIES order.
+    _readBuiltinOrder: function() {
+        var ordered = [];
+        try {
+            var raw = window.localStorage.getItem(BUILTIN_ORDER_KEY);
+            var saved = raw ? JSON.parse(raw) : [];
+            if (Array.isArray(saved)) {
+                saved.forEach(function(url) {
+                    if (BUILTIN_PROXIES.indexOf(url) !== -1 && ordered.indexOf(url) === -1) ordered.push(url);
+                });
+            }
+        } catch (e) { /* corrupted - fall back */ }
+        BUILTIN_PROXIES.forEach(function(url) {
+            if (ordered.indexOf(url) === -1) ordered.push(url);
+        });
+        return ordered;
+    },
+
+    // Persist a new built-in order from a sequence of ids (builtin-<index>).
+    // Unknown ids are ignored; omitted urls keep their relative order at the end.
+    reorderBuiltins: function(ids) {
+        var byId = {};
+        BUILTIN_PROXIES.forEach(function(url, i) { byId['builtin-' + i] = url; });
+        var ordered = [];
+        (ids || []).forEach(function(id) {
+            var url = byId[id];
+            if (url && ordered.indexOf(url) === -1) ordered.push(url);
+        });
+        BUILTIN_PROXIES.forEach(function(url) {
+            if (ordered.indexOf(url) === -1) ordered.push(url);
+        });
+        try { window.localStorage.setItem(BUILTIN_ORDER_KEY, JSON.stringify(ordered)); } catch (e) {}
     },
 
     getCustom: function() {
@@ -104,6 +151,22 @@ const ProxyConfig = {
 
     remove: function(id) {
         this.saveCustom(this.getCustom().filter(function(item) { return item.id !== id; }));
+    },
+
+    // Reorder custom proxies to match the given id sequence. Ids not present
+    // are ignored; entries whose id is omitted keep their relative order at the
+    // end. Consumers (getProxies) read getCustom() per request, so the new
+    // order takes effect without a reload.
+    reorder: function(ids) {
+        var list = this.getCustom();
+        var order = {};
+        (ids || []).forEach(function(id, i) { if (id) order[id] = i; });
+        list.sort(function(a, b) {
+            var ai = (order[a.id] === undefined) ? 1e9 : order[a.id];
+            var bi = (order[b.id] === undefined) ? 1e9 : order[b.id];
+            return ai - bi;
+        });
+        this.saveCustom(list);
     },
 
     // --- Health cache -------------------------------------------------------
@@ -213,7 +276,10 @@ const ProxyConfig = {
         var custom = this.getCustom()
             .filter(function(item) { return item && item.enabled && item.url; })
             .map(function(item) { return item.url; });
-        var pool = custom.concat(BUILTIN_PROXIES).filter(function(url, i, arr) {
+        // Built-ins now follow the user's saved order (getBuiltins), so the
+        // reorder performed in Settings takes effect on the very next fetch.
+        var builtinUrls = this.getBuiltins().map(function(item) { return item.url; });
+        var pool = custom.concat(builtinUrls).filter(function(url, i, arr) {
             return arr.indexOf(url) === i; // de-duplicate
         });
         var now = Date.now();
@@ -259,7 +325,7 @@ const ProxyConfig = {
         var pool = this.getCustom()
             .filter(function(item) { return item && item.enabled && item.url; })
             .map(function(item) { return item.url; })
-            .concat(BUILTIN_PROXIES);
+            .concat(this.getBuiltins().map(function(item) { return item.url; }));
         for (var i = 0; i < pool.length; i++) {
             if (pool[i] && fetchUrl.indexOf(pool[i]) === 0) return pool[i];
         }

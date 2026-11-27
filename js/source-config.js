@@ -58,10 +58,55 @@ const BUILTIN_SOURCES = {
 
 const SourceConfig = {
     KEY: 'ewtv-custom-sources',
+    BUILTIN_ORDER_KEY: 'ewtv-builtin-source-order',
     TYPES: ['movie', 'porn', 'youtube'],
 
+    // Built-in sources keep their ids but their order follows the user's
+    // saved preference, so a Settings drag changes the source dropdown order
+    // on the consumer pages (all of which build options from getBuiltins()).
     getBuiltins: function(type) {
-        return (BUILTIN_SOURCES[type] || []).slice();
+        var defaults = BUILTIN_SOURCES[type] || [];
+        var saved = this._readBuiltinOrder(type);
+        var byId = {};
+        defaults.forEach(function(src) { byId[src.id] = src; });
+        var ordered = [];
+        saved.forEach(function(id) {
+            if (byId[id] && ordered.indexOf(byId[id]) === -1) ordered.push(byId[id]);
+        });
+        defaults.forEach(function(src) {
+            if (ordered.indexOf(src) === -1) ordered.push(src);
+        });
+        return ordered;
+    },
+
+    _readBuiltinOrder: function(type) {
+        try {
+            var raw = window.localStorage.getItem(this.BUILTIN_ORDER_KEY);
+            var data = raw ? JSON.parse(raw) : null;
+            if (data && typeof data === 'object' && Array.isArray(data[type])) return data[type];
+        } catch (e) { /* corrupted - fall back to default order */ }
+        return [];
+    },
+
+    // Persist a new built-in order from a sequence of ids for one type.
+    reorderBuiltins: function(type, ids) {
+        var defaults = BUILTIN_SOURCES[type] || [];
+        var valid = {};
+        defaults.forEach(function(src) { valid[src.id] = true; });
+        var order = [];
+        (ids || []).forEach(function(id) {
+            if (valid[id] && order.indexOf(id) === -1) order.push(id);
+        });
+        defaults.forEach(function(src) {
+            if (order.indexOf(src.id) === -1) order.push(src.id);
+        });
+        try {
+            var raw = window.localStorage.getItem(this.BUILTIN_ORDER_KEY);
+            var data = raw ? JSON.parse(raw) : null;
+            if (!data || typeof data !== 'object' || Array.isArray(data)) data = {};
+            data[type] = order;
+            window.localStorage.setItem(this.BUILTIN_ORDER_KEY, JSON.stringify(data));
+        } catch (e) { /* storage full or disabled - order is best-effort */ }
     },
 
     getAll: function() {
@@ -118,6 +163,22 @@ const SourceConfig = {
 
     remove: function(type, id) {
         this.save(type, this.get(type).filter(function(item) { return item.id !== id; }));
+    },
+
+    // Reorder custom sources of a type to match the given id sequence. Same
+    // semantics as ProxyConfig.reorder: unknown ids are ignored, omitted ids
+    // keep their relative order at the end. Consumers (getEnabled) read get()
+    // per page load, so the new order appears after a normal navigation.
+    reorder: function(type, ids) {
+        var list = this.get(type);
+        var order = {};
+        (ids || []).forEach(function(id, i) { if (id) order[id] = i; });
+        list.sort(function(a, b) {
+            var ai = (order[a.id] === undefined) ? 1e9 : order[a.id];
+            var bi = (order[b.id] === undefined) ? 1e9 : order[b.id];
+            return ai - bi;
+        });
+        this.save(type, list);
     },
 
     // Enabled custom sources of a type, for the consumer pages.

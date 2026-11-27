@@ -29,10 +29,10 @@ function extractI18nTable(src) {
     }
 }
 
-// Unique data-i18n / data-i18n-placeholder keys, in source order.
+// Unique data-i18n / data-i18n-placeholder / data-i18n-title keys, in source order.
 function collectDataI18nKeys(text) {
     const found = [];
-    const re = /data-i18n(?:-placeholder)?="([^"]+)"/g;
+    const re = /data-i18n(?:-placeholder|-title)?="([^"]+)"/g;
     let m;
     while ((m = re.exec(text)) !== null) {
         if (found.indexOf(m[1]) === -1) found.push(m[1]);

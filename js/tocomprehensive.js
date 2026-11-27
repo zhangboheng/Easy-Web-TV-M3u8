@@ -329,7 +329,36 @@ function loadCategories(link) {
         renderArchiveCategories();
         return;
     }
-    // user-added YouTube channel RSS: sidebar lists the channel plus an All entry
+    // Unified YouTube source: sidebar lists All + every configured channel.
+    if (isYouTubeAllSource(link)) {
+        var categoryList = document.getElementById('categoryList');
+        categoryList.innerHTML = '';
+        var zh = tcLang() === 'zh';
+        var cats = [{ id: '', icon: 'fa-fire', name: zh ? '全部' : 'All' }];
+        getYouTubeChannels().forEach(function (ch) {
+            cats.push({ id: ch.url, icon: 'fa-youtube', name: ch.name });
+        });
+        cats.forEach(function (cat, idx) {
+            var item = document.createElement('div');
+            item.className = 'category-item' + (idx === 0 ? ' active' : '');
+            item.dataset.id = cat.id;
+            item.innerHTML = '<i class="fas ' + cat.icon + '"></i><span>' + escapeHtml(cat.name) + '</span>';
+            item.addEventListener('click', function () {
+                document.querySelectorAll('.category-item').forEach(function (el) { el.classList.remove('active'); });
+                this.classList.add('active');
+                currentCategory = this.dataset.id;
+                pageNum = 1;
+                document.getElementById('searchInput').value = '';
+                loadVideos(currentLink, currentCategory, 1, true);
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebar').classList.remove('show-mobile');
+                }
+            });
+            categoryList.appendChild(item);
+        });
+        return;
+    }
+    // single YouTube channel RSS (legacy direct feed link): channel + All entry
     if (isYouTubeRssSource(link)) {
         fetchYouTubeRss(link).then(function (data) {
             var categoryList = document.getElementById('categoryList');
@@ -437,6 +466,11 @@ function loadVideos(link, category, page, force) {
         loadArchiveVideos(category, page, seq);
         return;
     }
+    // unified YouTube source: sidebar category selects the channel(s)
+    if (isYouTubeAllSource(link)) {
+        loadYouTubeAllVideos(category, seq);
+        return;
+    }
     // user-added YouTube channel RSS
     if (isYouTubeRssSource(link)) {
         loadYouTubeRssVideos(link, category, seq);
@@ -509,9 +543,37 @@ function appendVideoCard(link, videoId, videoName, videoPic, videoType) {
 // shared CORS-proxy pool, parsed with DOMParser, and played via the official
 // nocookie embed. No fixed catalogue is involved.
 var YT_RSS_PREFIX = 'yt-rss:';
+// Unified YouTube source: the dropdown has one "YouTube" entry; its channels
+// are listed in the sidebar (like categories of a CMS source).
+var YT_ALL_SOURCE = 'youtube:all';
 
 function isYouTubeRssSource(link) {
     return typeof link === 'string' && link.indexOf(YT_RSS_PREFIX) === 0;
+}
+
+function isYouTubeAllSource(link) {
+    return link === YT_ALL_SOURCE;
+}
+
+// All YouTube channels configured in Source Control: built-in feeds plus
+// enabled custom feeds. Each entry carries the feed URL and display name.
+function getYouTubeChannels() {
+    var channels = [];
+    var seen = {};
+    function add(src) {
+        if (!src.url || seen[src.url]) return; // de-dupe built-in/custom duplicates
+        seen[src.url] = true;
+        channels.push({ url: src.url, name: src.name });
+    }
+    if (typeof SourceConfig !== 'undefined' && SourceConfig.getBuiltins) {
+        SourceConfig.getBuiltins('youtube').forEach(add);
+    }
+    if (typeof SourceConfig !== 'undefined' && SourceConfig.getEnabled) {
+        SourceConfig.getEnabled('youtube').forEach(function (src) {
+            add({ url: src.url, name: src.name || 'YouTube channel' });
+        });
+    }
+    return channels;
 }
 
 function youtubeRssUrl(link) {
@@ -562,10 +624,14 @@ function renderYouTubeRssCards(videos, link, channelName) {
     videos.forEach(function (v) {
         // Keep the real feed URL in web= so the player knows this is the
         // RSS-backed YouTube source; carry title/channel for the player view.
-        var cardHtml = '<a href="../catalogues/complay.html?web=' + encodeURIComponent(link) +
+        // v.feedUrl/v.channel are set for the mixed "All" view; otherwise the
+        // single-channel arguments are used.
+        var feedLink = v.feedUrl ? (YT_RSS_PREFIX + v.feedUrl) : link;
+        var cardChannel = v.channel || channelName || '';
+        var cardHtml = '<a href="../catalogues/complay.html?web=' + encodeURIComponent(feedLink) +
             '&tab=' + encodeURIComponent(v.id) +
             '&title=' + encodeURIComponent(v.title || '') +
-            '&channel=' + encodeURIComponent(channelName || '') + '" class="card-item">' +
+            '&channel=' + encodeURIComponent(cardChannel) + '" class="card-item">' +
             '<img class="card-image" src="' + escapeHtml(v.image) + '" alt="' + escapeHtml(v.title) + '" onerror="this.src=\'../images/noimage.jpeg\'">' +
             '<div class="card-overlay"></div>' +
             '<div class="card-play-icon"><i class="fas fa-play"></i></div>' +
@@ -592,6 +658,56 @@ function loadYouTubeRssVideos(link, category, seq, term) {
         }
         renderYouTubeRssCards(videos, link, data.name);
         noMoreData = true; // YouTube RSS exposes only the latest ~15 videos
+        showLoading(false);
+        isLoading = false;
+    }).catch(function () {
+        if (seq !== videoRequestSeq) return;
+        document.getElementById('contentGrid').innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-triangle"></i><p>' + tcT('failVids') + '</p></div>';
+        showLoading(false);
+        isLoading = false;
+        showToast(tcT('failVids'), 'error');
+    });
+}
+
+// Unified YouTube source: category is a channel feed URL (or '' for All).
+// Fetch the selected channel(s), tag each video with its feed/channel so the
+// card link opens the correct embed source, then render newest-first.
+function loadYouTubeAllVideos(category, seq, term) {
+    var channels = getYouTubeChannels();
+    if (category) {
+        channels = channels.filter(function (ch) { return ch.url === category; });
+    }
+    if (!channels.length) {
+        document.getElementById('contentGrid').innerHTML = '<div class="empty-state"><i class="fas fa-video-slash"></i><p>' + tcT('noVideos') + '</p></div>';
+        noMoreData = true;
+        showLoading(false);
+        isLoading = false;
+        return;
+    }
+    var requests = channels.map(function (ch) {
+        // A single dead feed (e.g. a stale custom channel) must not blank out
+        // the whole All view: degrade that channel to an empty list.
+        return fetchYouTubeRss(YT_RSS_PREFIX + ch.url).then(function (data) {
+            var name = ch.name || data.name || 'YouTube channel';
+            return data.videos.map(function (v) {
+                return {
+                    id: v.id, title: v.title, image: v.image, published: v.published,
+                    feedUrl: ch.url, channel: name
+                };
+            });
+        }).catch(function () { return []; });
+    });
+    Promise.all(requests).then(function (lists) {
+        if (seq !== videoRequestSeq) return;
+        var videos = [];
+        lists.forEach(function (list) { videos = videos.concat(list); });
+        videos.sort(function (a, b) { return (b.published || '').localeCompare(a.published || ''); });
+        if (term) {
+            var clean = term.toLowerCase().trim();
+            videos = videos.filter(function (v) { return (v.title || '').toLowerCase().indexOf(clean) > -1; });
+        }
+        renderYouTubeRssCards(videos, '', '');
+        noMoreData = true; // feeds expose only the latest ~15 videos each
         showLoading(false);
         isLoading = false;
     }).catch(function () {
@@ -757,6 +873,11 @@ function searchVideos(link, term, page, force) {
         loadArchiveSearch(term, page, seq);
         return;
     }
+    // unified YouTube source: search within the selected channel (or all)
+    if (isYouTubeAllSource(link)) {
+        loadYouTubeAllVideos(currentCategory, seq, term);
+        return;
+    }
     // user-added YouTube channel RSS: client-side title filter
     if (isYouTubeRssSource(link)) {
         loadYouTubeRssVideos(link, '', seq, term);
@@ -908,15 +1029,28 @@ function initSourceSelect() {
     
     // Clear existing options
     sourceSelect.innerHTML = '';
+
+    // Built-in order follows the user's drag order in Settings > Source Control.
+    // movieSources is the page's own catalogue (id -> url/name/lang); just walk
+    // its ids in the configured order instead of its hard-coded key order.
+    var orderedIds = Object.keys(movieSources);
+    if (typeof SourceConfig !== 'undefined' && SourceConfig.getBuiltins) {
+        var savedOrder = SourceConfig.getBuiltins('movie').map(function(s) { return s.id; });
+        var aligned = savedOrder.filter(function(id) { return !!movieSources[id]; });
+        Object.keys(movieSources).forEach(function(id) {
+            if (aligned.indexOf(id) === -1) aligned.push(id);
+        });
+        if (aligned.length) orderedIds = aligned;
+    }
     
     if (savedSources) {
         // Parse saved sources
         var sourceIds = savedSources.split(',');
         var hasValidSource = false;
         
-        // Add only saved sources
-        sourceIds.forEach(function(id) {
-            if (movieSources[id]) {
+        // Add only saved sources, in the configured built-in order
+        orderedIds.forEach(function(id) {
+            if (sourceIds.indexOf(id) !== -1 && movieSources[id]) {
                 var option = document.createElement('option');
                 option.value = movieSources[id].url;
                 option.textContent = movieSources[id].name;
@@ -927,7 +1061,7 @@ function initSourceSelect() {
         
         // If no valid sources found, add all sources
         if (!hasValidSource) {
-            Object.keys(movieSources).forEach(function(id) {
+            orderedIds.forEach(function(id) {
                 var option = document.createElement('option');
                 option.value = movieSources[id].url;
                 option.textContent = movieSources[id].name;
@@ -936,7 +1070,7 @@ function initSourceSelect() {
         }
     } else {
         // No saved settings, add all sources
-        Object.keys(movieSources).forEach(function(id) {
+        orderedIds.forEach(function(id) {
             var option = document.createElement('option');
             option.value = movieSources[id].url;
             option.textContent = movieSources[id].name;
@@ -952,21 +1086,12 @@ function initSourceSelect() {
             option.textContent = src.name || 'Custom source';
             sourceSelect.appendChild(option);
         });
-        // Built-in YouTube channels (official RSS feeds from Source Control):
-        // each is a yt-rss: source whose data is loaded live, not a fixed list.
-        SourceConfig.getBuiltins('youtube').forEach(function(src) {
-            var option = document.createElement('option');
-            option.value = 'yt-rss:' + src.url;
-            option.textContent = src.name;
-            sourceSelect.appendChild(option);
-        });
-        // User-added YouTube channel RSS feeds (Source Control > YouTube tab).
-        SourceConfig.getEnabled('youtube').forEach(function(src) {
-            var option = document.createElement('option');
-            option.value = 'yt-rss:' + src.url;
-            option.textContent = src.name || 'YouTube channel';
-            sourceSelect.appendChild(option);
-        });
+        // Unified YouTube source: one entry in the dropdown; Source Control's
+        // YouTube channels (built-in + custom) become sidebar categories.
+        var youtubeOpt = document.createElement('option');
+        youtubeOpt.value = YT_ALL_SOURCE;
+        youtubeOpt.textContent = 'YouTube';
+        sourceSelect.appendChild(youtubeOpt);
     }
     
     // Entry point to reopen the source picker dialog

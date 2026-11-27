@@ -98,16 +98,31 @@ const srcConf = fs.existsSync(path.join(root, 'js', 'source-config.js'))
 check(!!srcConf, 'js/source-config.js is missing');
 check(/getBuiltins: function/.test(srcConf) && /getEnabled: function/.test(srcConf) && /isValidUrl: function/.test(srcConf),
     'js/source-config.js lost its getBuiltins/getEnabled/isValidUrl API');
+check(/reorder: function\(type, ids\)/.test(srcConf),
+    'js/source-config.js lost its reorder() API for drag-sorted custom sources');
+check(/reorderBuiltins: function\(type, ids\)/.test(srcConf) &&
+      /BUILTIN_ORDER_KEY/.test(srcConf),
+    'js/source-config.js lost its reorderBuiltins() API for drag-sorted built-in sources');
+check(/proxy-item-builtin proxy-item-draggable/.test(js) &&
+      /source-item-builtin proxy-item-draggable/.test(js),
+    'js/index.js must render drag handles on built-in proxy/source rows too');
+check(/reorderBuiltins\(ids\)/.test(js) && /reorderBuiltins\(type, ids\)/.test(js),
+    'js/index.js must persist built-in drags via reorderBuiltins()');
 check(/getEnabled\('movie'\)/.test(fs.readFileSync(path.join(root, 'js', 'tocomprehensive.js'), 'utf8')) &&
       /getEnabled\('porn'\)/.test(fs.readFileSync(path.join(root, 'js', 'toadult.js'), 'utf8')),
     'tocomprehensive.js/toadult.js no longer merge enabled custom sources');
+// Built-in source dropdowns must follow the drag order from Source Control.
+['js/tocomprehensive.js', 'js/toadult.js', 'js/tonovel.js', 'js/tomanga.js'].forEach(function(rel) {
+    check(/getBuiltins\(/.test(fs.readFileSync(path.join(root, rel), 'utf8')),
+          rel + ' does not order its built-in sources from SourceConfig.getBuiltins()');
+});
 check(/getMusicApiBase/.test(fs.readFileSync(path.join(root, 'js', 'apiproxy.js'), 'utf8')),
     'js/apiproxy.js must source the music API base via getMusicApiBase()');
 check(/SourceSettings\.render\(\)/.test(js) && /SourceSettings\.bindEvents\(\)/.test(js),
     'js/index.js must render and bind SourceSettings in initSourceControl');
 
 // YouTube Source Control tab: custom channel RSS feeds power Theater's
-// yt-rss: source, while the built-in Blender catalogue stays untouched.
+// unified "YouTube" source, whose channels appear as sidebar categories.
 check((html.match(/<div class="source-options(?: hidden)?" data-source-type="youtube">/g) || []).length === 1,
     'index.html must declare exactly one youtube source-options container');
 check(/data-source-type="youtube"[^>]*data-i18n="source_type_youtube"/.test(html),
@@ -117,13 +132,36 @@ check(/'youtube'/.test(srcConf) && /isValidYouTubeFeedUrl/.test(srcConf),
 check(/channel_id=UCSMOQeBJ2RAnuFungnQOxLg/.test(srcConf) && /channel_id=UCz75RVbH8q2jdBJ4SnwuZZQ/.test(srcConf),
     'source-config.js is missing the two built-in YouTube channel RSS feeds');
 check(/getBuiltins\('youtube'\)/.test(fs.readFileSync(path.join(root, 'js', 'tocomprehensive.js'), 'utf8')),
-    'Theater does not expose the built-in YouTube channels as yt-rss sources');
+    'Theater does not list the built-in YouTube channels as sidebar categories');
+check(/YT_ALL_SOURCE\s*=\s*'youtube:all'/.test(fs.readFileSync(path.join(root, 'js', 'tocomprehensive.js'), 'utf8')) &&
+      /function isYouTubeAllSource/.test(fs.readFileSync(path.join(root, 'js', 'tocomprehensive.js'), 'utf8')),
+    'Theater has no unified YouTube source entry');
 check(/isValidYouTubeFeedUrl/.test(js), 'js/index.js does not validate YouTube RSS URLs');
 check(/yt-rss:/.test(fs.readFileSync(path.join(root, 'js', 'tocomprehensive.js'), 'utf8')) &&
       /yt-rss:/.test(fs.readFileSync(path.join(root, 'js', 'comprehensive.js'), 'utf8')),
     'Theater does not handle yt-rss: YouTube channel sources');
 check((trans.match(/source_type_youtube/g) || []).length >= 90,
     'source_type_youtube is missing from the translated languages');
+
+// --- Runtime: built-in source reorder persists and feeds getBuiltins() -------
+(function () {
+    const store = {};
+    const sandbox = {
+        window: { localStorage: { getItem: k => (k in store ? store[k] : null), setItem: (k, v) => { store[k] = String(v); } } },
+        console: console
+    };
+    require('vm').createContext(sandbox);
+    require('vm').runInContext(srcConf + '\n;globalThis.__SC = SourceConfig;', sandbox);
+    const SC = sandbox.__SC;
+    const before = SC.getBuiltins('movie').map(s => s.id).join(',');
+    SC.reorderBuiltins('movie', ['c621', 'hnzy']);
+    const afterArr = SC.getBuiltins('movie').map(s => s.id);
+    check(afterArr[0] === 'c621' && afterArr[1] === 'hnzy',
+          'SourceConfig.reorderBuiltins() must persist built-in order (got ' + afterArr.join(',') + ')');
+    SC.reorderBuiltins('movie', []); // reset
+    check(SC.getBuiltins('movie').map(s => s.id).join(',') === before,
+          'reorderBuiltins([]) must restore the default order');
+})();
 
 console.log(failed === 0 ? 'index DOM check: ALL OK' : 'index DOM check: ' + failed + ' problem(s)');
 process.exit(failed === 0 ? 0 : 1);

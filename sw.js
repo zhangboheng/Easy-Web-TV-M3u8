@@ -34,6 +34,7 @@ const PRECACHE_ASSETS = [
   '/js/index.js',
   '/js/proxy-config.js',
   '/js/source-config.js',
+  '/js/settings-probe.js',
   '/js/translator.js',
   '/js/translations.js',
   '/js/dom.js',
