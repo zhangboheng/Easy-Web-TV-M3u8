@@ -663,6 +663,86 @@ check(!/id="jarInput"/.test(j2meHtml),
 check(/uploadBtn'\)\.addEventListener\('click',\s*playDemo\)/.test(j2meJs),
     'J2ME local-install button must open the embedded official installer');
 
+// 11. Games catalogue UX hardening (v8.6.x P0 batch). These pin the behaviour
+// users rely on: lazy images, IME-safe debounced search with URL state,
+// per-category counters, sorting, favoriting feedback and the card menu.
+check(/loading="lazy"/.test(togame) && /decoding="async"/.test(togame),
+    'togame.js game cards are not lazy-loaded');
+check(/function escapeHtml\s*\(/.test(togame),
+    'togame.js has no escapeHtml helper - card copy is interpolated unescaped');
+check(/aria-pressed=/.test(togame), 'favorite button has no aria-pressed state');
+check(/compositionstart/.test(togame) && /searchTimer/.test(togame),
+    'game search is not debounced / IME-aware');
+check(/history\.replaceState/.test(togame), 'game search state is not mirrored into the URL');
+check(/pageshow/.test(togame), 'recent/favorites views do not refresh after a bfcache restore');
+check(/getRecent\(\)[\s\S]{0,200}Array\.isArray/.test(togame) && /getFavs\(\)[\s\S]{0,200}Array\.isArray/.test(togame),
+    'favorites/recent storage is read without a shape guard');
+check(/dataset\.count/.test(togame) && /\.category-item::after/.test(gameHtml),
+    'sidebar category counters are missing');
+check(/\.category-item\[data-empty="1"\]/.test(gameHtml),
+    'empty sidebar categories are not visually muted');
+check(/function sortGames\s*\(/.test(togame) && /id="sortSelect"/.test(gameHtml),
+    'game catalogue has no sort control');
+check(/game-more-btn/.test(togame) && /\.game-card-menu/.test(gameHtml),
+    'game cards have no actions menu');
+check(/copyLink/.test(togame) && /openNewTab/.test(togame),
+    'card actions menu lacks copy-link / open-in-new-tab entries');
+
+// 12. Card markup and asset delivery. The card wrapper is a div with an inner
+// <a>: interactive controls must never be nested inside the link (invalid HTML
+// and ambiguous for screen readers). And same-origin assets must stay
+// network-first in the service worker, otherwise a deploy would keep serving
+// cached JS/CSS until the cache version is bumped.
+check(/<div class="game-card" data-game-id=/.test(togame),
+    'game cards are not rendered as a wrapper div');
+check(/class="game-card-link"/.test(togame) && /\.game-card-link\s*\{/.test(gameHtml),
+    'game cards have no inner .game-card-link anchor (or it has no styles)');
+check(/<\/a>'[\s\S]{0,160}game-fav-btn/.test(togame),
+    'favorite/menu buttons must be siblings of the card link, not nested inside it');
+check(!/tabindex="0">[^']*game-fav-btn/.test(togame), 'card link still wraps the card controls');
+check(/CACHE_NAME\s*=\s*'easy-web-tv-v/.test(sw), 'sw.js cache name is not versioned');
+check(/Network-first/.test(sw), 'sw.js is no longer network-first for same-origin assets');
+check(/caches\.keys\(\)[\s\S]{0,600}caches\.delete\(cacheName\)/.test(sw),
+    'sw.js does not prune outdated caches on activate');
+
+// 13. D-pad / arrow-key ring must only contain what the user can actually see.
+// The sidebar is width:0 while closed, so its categories have to drop out of
+// the ring (otherwise the first press focuses an invisible row) and the ring
+// must survive being empty (empty Favorites on a phone would hit items[0]).
+check(/sidebar\.offsetWidth > 0/.test(togame),
+    'getFocusables still includes the categories of a closed sidebar');
+check((togame.match(/if \(!items\.length\) return;/g) || []).length >= 2,
+    'arrow/gamepad navigation lacks the empty-focus-ring guard');
+check(/id="menuBtn"[^>]*role="button"[^>]*tabindex="0"/.test(gameHtml) && /id="backBtn"[^>]*role="button"[^>]*tabindex="0"/.test(gameHtml),
+    'header buttons are not reachable with a keyboard/gamepad');
+check(/id="toggleSidebar"[^>]*role="button"/.test(gameHtml),
+    'sidebar toggle is not reachable with a keyboard/gamepad');
+check(/getAttribute\('role'\) === 'button'/.test(togame),
+    'Enter/Space does not activate the role=button sidebar rows and header buttons');
+
+// 14. Every data-i18n key on the page must exist in the page's own i18n table,
+// otherwise that string keeps rendering in English for the other 7 languages.
+const domI18nKeys = [...new Set([...gameHtml.matchAll(/data-i18n(?:-title)?="([^"]+)"/g)].map((m) => m[1]))];
+const missingI18nKeys = domI18nKeys.filter((k) => !new RegExp('(^|[\\s,{])' + k + '\\s*:').test(togame));
+check(!missingI18nKeys.length,
+    'routes/game.html uses i18n keys missing from togame.js: ' + missingI18nKeys.join(', '));
+
+// 15. Document language and disclosure state. <html> must declare a language
+// before the script runs (screen readers guess otherwise), and the two sidebar
+// toggles must expose whether the sidebar is open.
+check(/^<!DOCTYPE html>\s*<html lang="\w[\w-]*">/.test(gameHtml),
+    'routes/game.html does not declare a language on <html>');
+check(/id="menuBtn"[^>]*aria-expanded/.test(gameHtml) && /id="toggleSidebar"[^>]*aria-expanded/.test(gameHtml),
+    'sidebar toggles do not expose aria-expanded');
+check(/setAttribute\('aria-expanded'/.test(togame),
+    'aria-expanded is never kept in sync when the sidebar opens or closes');
+check(/try \{[\s\S]{0,160}localStorage\.getItem\('ewtv-lang'\)[\s\S]{0,160}\} catch/.test(togame),
+    'the stored language is read without a storage guard - blocked storage would abort the page');
+check(/document\.title = t\('pageTitle'\)/.test(togame),
+    'the games page keeps an English <title> after a language switch');
+check(/setAttribute\('aria-current'/.test(togame),
+    'the selected sidebar category is conveyed by colour only (no aria-current)');
+
 if (failures.length) {
     failures.forEach((f) => console.log('FAIL: ' + f));
     process.exit(1);

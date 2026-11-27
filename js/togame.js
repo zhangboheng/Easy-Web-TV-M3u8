@@ -11,59 +11,101 @@ var i18n = {
         catAll: '全部游戏', catRecent: '最近游玩', catFavorites: '收藏', catEmulator: '模拟器',
         catRetroPc: '复古电脑', catRecomp: '重编译', catFantasy: '幻想主机', catComputers: '电脑',
         catMobile: '手机', catWebGames: '网页游戏', loadingMore: '正在加载更多游戏...', loading: '正在加载游戏...',
-        noRecent: '暂无最近游玩的游戏', noFavs: '还没有收藏的游戏 - 点击游戏卡片上的星标即可收藏', noGames: '未找到游戏'
+        noRecent: '暂无最近游玩的游戏', noFavs: '还没有收藏的游戏 - 点击游戏卡片上的星标即可收藏', noGames: '未找到游戏',
+        favAdd: '收藏', favRemove: '取消收藏', favAdded: '已收藏', favRemoved: '已取消收藏',
+        copyLink: '复制链接', openNewTab: '新标签打开', linkCopied: '链接已复制',
+        sortDefault: '默认排序', sortName: '按名称', sortPlatform: '按平台', sortNewest: '最新添加',
+        sortLabel: '排序方式'
     },
     en: {
         pageTitle: 'Games', back: 'Back', menu: 'Menu', searchPlaceholder: 'Search games...',
         catAll: 'All Games', catRecent: 'Recently Played', catFavorites: 'Favorites', catEmulator: 'Emulator',
         catRetroPc: 'Retro PC', catRecomp: 'Recomp', catFantasy: 'Fantasy Console', catComputers: 'Computers',
         catMobile: 'Mobile', catWebGames: 'Web Games', loadingMore: 'Loading more games...', loading: 'Loading games...',
-        noRecent: 'No recently played games', noFavs: 'No favorite games yet - tap the star on any game card', noGames: 'No games found'
+        noRecent: 'No recently played games', noFavs: 'No favorite games yet - tap the star on any game card', noGames: 'No games found',
+        favAdd: 'Add to favorites', favRemove: 'Remove from favorites',
+        favAdded: 'Added to favorites', favRemoved: 'Removed from favorites',
+        copyLink: 'Copy link', openNewTab: 'Open in a new tab', linkCopied: 'Link copied',
+        sortDefault: 'Default order', sortName: 'Name (A-Z)', sortPlatform: 'Platform', sortNewest: 'Newest first',
+        sortLabel: 'Sort games'
     },
     ja: {
         pageTitle: 'ゲーム', back: '戻る', menu: 'メニュー', searchPlaceholder: 'ゲームを検索...',
         catAll: 'すべてのゲーム', catRecent: '最近プレイしたゲーム', catFavorites: 'お気に入り', catEmulator: 'エミュレーター',
         catRetroPc: 'レトロPC', catRecomp: 'リコンプ', catFantasy: 'ファンタジーコンソール', catComputers: 'コンピューター',
         catMobile: 'モバイル', catWebGames: 'ウェブゲーム', loadingMore: 'ゲームをさらに読み込み中...', loading: 'ゲームを読み込み中...',
-        noRecent: '最近プレイしたゲームはありません', noFavs: 'お気に入りはまだありません - ゲームカードの星をタップしてください', noGames: 'ゲームが見つかりません'
+        noRecent: '最近プレイしたゲームはありません', noFavs: 'お気に入りはまだありません - ゲームカードの星をタップしてください', noGames: 'ゲームが見つかりません',
+        favAdd: 'お気に入りに追加', favRemove: 'お気に入りから削除', favAdded: 'お気に入りに追加しました', favRemoved: 'お気に入りから削除しました',
+        copyLink: 'リンクをコピー', openNewTab: '新しいタブで開く', linkCopied: 'リンクをコピーしました',
+        sortDefault: '既定の順序', sortName: '名前順', sortPlatform: 'プラットフォーム順', sortNewest: '新しい順',
+        sortLabel: 'ゲームを並べ替え'
     },
     ko: {
         pageTitle: '게임', back: '뒤로', menu: '메뉴', searchPlaceholder: '게임 검색...',
         catAll: '모든 게임', catRecent: '최근 플레이한 게임', catFavorites: '즐겨찾기', catEmulator: '에뮬레이터',
         catRetroPc: '레트로 PC', catRecomp: '리컴프', catFantasy: '판타지 콘솔', catComputers: '컴퓨터',
         catMobile: '모바일', catWebGames: '웹 게임', loadingMore: '게임을 더 불러오는 중...', loading: '게임을 불러오는 중...',
-        noRecent: '최근 플레이한 게임이 없습니다', noFavs: '즐겨찾는 게임이 없습니다 - 게임 카드의 별을 눌러 추가하세요', noGames: '게임을 찾을 수 없습니다'
+        noRecent: '최근 플레이한 게임이 없습니다', noFavs: '즐겨찾는 게임이 없습니다 - 게임 카드의 별을 눌러 추가하세요', noGames: '게임을 찾을 수 없습니다',
+        favAdd: '즐겨찾기에 추가', favRemove: '즐겨찾기에서 제거', favAdded: '즐겨찾기에 추가했습니다', favRemoved: '즐겨찾기에서 제거했습니다',
+        copyLink: '링크 복사', openNewTab: '새 탭에서 열기', linkCopied: '링크를 복사했습니다',
+        sortDefault: '기본 순서', sortName: '이름순', sortPlatform: '플랫폼순', sortNewest: '최신순',
+        sortLabel: '게임 정렬'
     },
     fr: {
         pageTitle: 'Jeux', back: 'Retour', menu: 'Menu', searchPlaceholder: 'Rechercher des jeux...',
         catAll: 'Tous les jeux', catRecent: 'Joués récemment', catFavorites: 'Favoris', catEmulator: 'Émulateur',
         catRetroPc: 'PC rétro', catRecomp: 'Recomp', catFantasy: 'Console fantaisie', catComputers: 'Ordinateurs',
         catMobile: 'Mobile', catWebGames: 'Jeux web', loadingMore: 'Chargement d\'autres jeux...', loading: 'Chargement des jeux...',
-        noRecent: 'Aucun jeu récemment joué', noFavs: 'Aucun favori pour le moment - touchez l\'étoile sur une carte de jeu', noGames: 'Aucun jeu trouvé'
+        noRecent: 'Aucun jeu récemment joué', noFavs: 'Aucun favori pour le moment - touchez l\'étoile sur une carte de jeu', noGames: 'Aucun jeu trouvé',
+        favAdd: 'Ajouter aux favoris', favRemove: 'Retirer des favoris', favAdded: 'Ajouté aux favoris', favRemoved: 'Retiré des favoris',
+        copyLink: 'Copier le lien', openNewTab: 'Ouvrir dans un nouvel onglet', linkCopied: 'Lien copié',
+        sortDefault: 'Ordre par défaut', sortName: 'Nom (A-Z)', sortPlatform: 'Plateforme', sortNewest: 'Plus récents',
+        sortLabel: 'Trier les jeux'
     },
     de: {
         pageTitle: 'Spiele', back: 'Zurück', menu: 'Menü', searchPlaceholder: 'Spiele suchen...',
         catAll: 'Alle Spiele', catRecent: 'Zuletzt gespielt', catFavorites: 'Favoriten', catEmulator: 'Emulator',
         catRetroPc: 'Retro-PC', catRecomp: 'Recomp', catFantasy: 'Fantasy-Konsole', catComputers: 'Computer',
         catMobile: 'Mobil', catWebGames: 'Webspiele', loadingMore: 'Weitere Spiele werden geladen...', loading: 'Spiele werden geladen...',
-        noRecent: 'Keine kürzlich gespielten Spiele', noFavs: 'Noch keine Favoriten - tippe auf den Stern auf einer Spielkarte', noGames: 'Keine Spiele gefunden'
+        noRecent: 'Keine kürzlich gespielten Spiele', noFavs: 'Noch keine Favoriten - tippe auf den Stern auf einer Spielkarte', noGames: 'Keine Spiele gefunden',
+        favAdd: 'Zu Favoriten hinzufügen', favRemove: 'Aus Favoriten entfernen', favAdded: 'Zu Favoriten hinzugefügt', favRemoved: 'Aus Favoriten entfernt',
+        copyLink: 'Link kopieren', openNewTab: 'In neuem Tab öffnen', linkCopied: 'Link kopiert',
+        sortDefault: 'Standardreihenfolge', sortName: 'Name (A-Z)', sortPlatform: 'Plattform', sortNewest: 'Neueste zuerst',
+        sortLabel: 'Spiele sortieren'
     },
     es: {
         pageTitle: 'Juegos', back: 'Atrás', menu: 'Menú', searchPlaceholder: 'Buscar juegos...',
         catAll: 'Todos los juegos', catRecent: 'Jugados recientemente', catFavorites: 'Favoritos', catEmulator: 'Emulador',
         catRetroPc: 'PC retro', catRecomp: 'Recomp', catFantasy: 'Consola fantástica', catComputers: 'Ordenadores',
         catMobile: 'Móvil', catWebGames: 'Juegos web', loadingMore: 'Cargando más juegos...', loading: 'Cargando juegos...',
-        noRecent: 'No hay juegos jugados recientemente', noFavs: 'Aún no hay favoritos - toca la estrella en una tarjeta de juego', noGames: 'No se encontraron juegos'
+        noRecent: 'No hay juegos jugados recientemente', noFavs: 'Aún no hay favoritos - toca la estrella en una tarjeta de juego', noGames: 'No se encontraron juegos',
+        favAdd: 'Añadir a favoritos', favRemove: 'Quitar de favoritos', favAdded: 'Añadido a favoritos', favRemoved: 'Eliminado de favoritos',
+        copyLink: 'Copiar enlace', openNewTab: 'Abrir en una pestaña nueva', linkCopied: 'Enlace copiado',
+        sortDefault: 'Orden predeterminado', sortName: 'Nombre (A-Z)', sortPlatform: 'Plataforma', sortNewest: 'Más recientes',
+        sortLabel: 'Ordenar juegos'
     },
     ru: {
         pageTitle: 'Игры', back: 'Назад', menu: 'Меню', searchPlaceholder: 'Поиск игр...',
         catAll: 'Все игры', catRecent: 'Недавно сыгранные', catFavorites: 'Избранное', catEmulator: 'Эмулятор',
-        catRetroPc: 'Ретро-ПК', catRecomp: 'Ре compilation', catFantasy: 'Фэнтези-консоль', catComputers: 'Компьютеры',
+        catRetroPc: 'Ретро-ПК', catRecomp: 'Рекомпиляция', catFantasy: 'Фэнтези-консоль', catComputers: 'Компьютеры',
         catMobile: 'Мобильные', catWebGames: 'Веб-игры', loadingMore: 'Загрузка большего количества игр...', loading: 'Загрузка игр...',
-        noRecent: 'Нет недавно сыгранных игр', noFavs: 'Пока нет избранного - нажмите звезду на карточке игры', noGames: 'Игры не найдены'
+        noRecent: 'Нет недавно сыгранных игр', noFavs: 'Пока нет избранного - нажмите звезду на карточке игры', noGames: 'Игры не найдены',
+        favAdd: 'Добавить в избранное', favRemove: 'Убрать из избранного', favAdded: 'Добавлено в избранное', favRemoved: 'Удалено из избранного',
+        copyLink: 'Скопировать ссылку', openNewTab: 'Открыть в новой вкладке', linkCopied: 'Ссылка скопирована',
+        sortDefault: 'Порядок по умолчанию', sortName: 'По имени (А-Я)', sortPlatform: 'По платформе', sortNewest: 'Сначала новые',
+        sortLabel: 'Сортировать игры'
     }
 };
-var currentLang = (localStorage.getItem('ewtv-lang') || localStorage.getItem('preferredLanguage') || 'en').split('-')[0];
+// Storage may be unavailable (Safari "block all cookies", locked-down file://
+// contexts). Reading it unguarded used to abort this whole script before a
+// single card was rendered, so fall back to English instead.
+var currentLang = 'en';
+try {
+    var storedLang = localStorage.getItem('ewtv-lang') || localStorage.getItem('preferredLanguage') || 'en';
+    currentLang = String(storedLang).split('-')[0];
+} catch (e) {
+    currentLang = 'en';
+}
 if (!i18n[currentLang]) currentLang = 'en';
 function t(key) { return (i18n[currentLang] && i18n[currentLang][key]) || i18n.en[key] || key; }
 
@@ -80,9 +122,17 @@ function applyI18n() {
     });
     document.querySelectorAll('[data-i18n-title]').forEach(function (el) {
         var key = el.getAttribute('data-i18n-title');
-        if (i18n[currentLang] && i18n[currentLang][key]) el.title = i18n[currentLang][key];
+        if (i18n[currentLang] && i18n[currentLang][key]) {
+            el.title = i18n[currentLang][key];
+            // Icon-only controls have no text node, so the title is also their
+            // accessible name.
+            el.setAttribute('aria-label', i18n[currentLang][key]);
+        }
     });
     document.documentElement.lang = currentLang;
+    // Keep the tab/bookmark title in the chosen language too (the legacy webgame
+    // page does the same); the "Easy Web TV" brand suffix stays untranslated.
+    document.title = t('pageTitle') + ' - Easy Web TV';
 }
 // Short alias used by the dynamic renderers below.
 function tgT(key) { return t(key); }
@@ -1175,6 +1225,13 @@ var games = [
 var currentCategory = 'all';
 var searchQuery = '';
 
+// Sort order (P0 UX): persisted per browser, mirrored into ?sort= so a shared
+// or reloaded link keeps the same order.
+var SORT_KEY = 'ewtv_game_sort';
+var gameSort = 'default';
+var searchTimer = null;
+var isComposing = false;
+
 // Incremental rendering state (Theater-style infinite scroll over local data).
 var GAMES_PER_PAGE = 24;
 var visibleGames = [];
@@ -1203,8 +1260,15 @@ function saveJson(key, val) {
     }
 }
 
+// Favorites are stored as an array of id strings. Older builds (or a manually
+// edited localStorage entry) could leave a non-array or null holes behind, so
+// sanitise on read instead of crashing the whole grid render.
 function getFavs() {
-    return loadJson(FAV_KEY, []);
+    var val = loadJson(FAV_KEY, []);
+    if (!Array.isArray(val)) return [];
+    return val.filter(function (id) {
+        return id !== null && id !== undefined && id !== '';
+    }).map(String);
 }
 
 function isFav(id) {
@@ -1224,8 +1288,16 @@ function toggleFav(id) {
     return idx === -1;
 }
 
+// Same defensive read for recently played: entries must be objects with an id,
+// otherwise a stale/corrupt record would render an "undefined" title.
 function getRecent() {
-    return loadJson(RECENT_KEY, []);
+    var val = loadJson(RECENT_KEY, []);
+    if (!Array.isArray(val)) return [];
+    return val.filter(function (item) {
+        return item && typeof item === 'object' && item.id !== undefined && item.id !== null;
+    }).map(function (item) {
+        return { id: String(item.id), ts: Number(item.ts) || 0 };
+    });
 }
 
 function pushRecent(id) {
@@ -1259,14 +1331,25 @@ var GamepadNav = {
     _lastRepeat: 0,
     _rafId: null,
 
-    // All focusable elements in navigation order: sidebar categories first, then visible cards
+    // All focusable elements in navigation order: header buttons, the sidebar
+    // toggle, sidebar categories, then visible cards. Cards contribute their
+    // inner <a> (the card wrapper itself is not focusable).
+    // While the sidebar is closed (width:0 on phones, .collapsed on desktop) its
+    // categories are clipped, so they must be skipped - otherwise the first d-pad
+    // press moves focus onto an invisible row and nothing seems to happen. The
+    // toggle button lives outside that clipped area, so it stays reachable.
     getFocusables: function() {
+        var sidebar = document.getElementById('sidebar');
+        var sidebarOpen = !sidebar || sidebar.offsetWidth > 0;
+        var visible = function(el) {
+            if (!el.getClientRects().length) return false;
+            var rect = el.getBoundingClientRect();
+            return rect.width > 0 && rect.height > 0;
+        };
         var items = [];
-        $$('.category-item').forEach(function(el) {
-            if (el.offsetParent) items.push(el);
-        });
-        $$('.game-card').forEach(function(el) {
-            if (el.offsetParent) items.push(el);
+        $$('.header-btn[tabindex], .toggle-sidebar[tabindex], .category-item, .game-card-link').forEach(function(el) {
+            if (!sidebarOpen && el.classList.contains('category-item')) return;
+            if (visible(el)) items.push(el);
         });
         return items;
     },
@@ -1325,15 +1408,19 @@ var GamepadNav = {
         var inside = focused && (items.indexOf(focused) !== -1);
         var key = e.key;
         if (key === 'ArrowRight' || key === 'ArrowLeft' || key === 'ArrowUp' || key === 'ArrowDown') {
+            // Nothing focusable (empty Favorites / no search results on a phone with
+            // the sidebar closed): keep the browser default so the page can scroll.
+            if (!items.length) return;
             e.preventDefault();
             if (!inside) { items[0].focus(); return; }
             this.move(focused, key === 'ArrowRight' ? 1 : key === 'ArrowLeft' ? -1 : 0, key === 'ArrowDown' ? 1 : key === 'ArrowUp' ? -1 : 0);
-        } else if (key === 'Enter') {
-            if (inside && focused.classList.contains('game-card')) {
+        } else if (key === 'Enter' || key === ' ') {
+            // Anchors and native <button>s activate themselves. The clickable divs
+            // (sidebar rows, header buttons, the sidebar toggle) need a click.
+            if (inside && focused.getAttribute('role') === 'button') {
                 e.preventDefault();
                 focused.click();
             }
-            // Enter on .category-item and native buttons uses default behavior
         }
     },
 
@@ -1350,6 +1437,8 @@ var GamepadNav = {
         this._lastRepeat = now;
         var focused = document.activeElement;
         var items = this.getFocusables();
+        // Empty grid + closed sidebar: nothing to focus, and items[0] would throw.
+        if (!items.length) return;
         if (pressed === 'ok') {
             if (focused && items.indexOf(focused) !== -1) focused.click();
             else items[0].focus();
@@ -1386,38 +1475,68 @@ function $$(selector) {
     return document.querySelectorAll(selector);
 }
 
-// Build one card's HTML (shared by grid + recent row)
+// Escape a string for safe interpolation into innerHTML (text nodes and
+// double-quoted attributes). Mirrors js/emulatorjs.js.
+function escapeHtml(s) {
+    return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+// Build one card's HTML (shared by grid + recent row). The card is a wrapper
+// <div>; the clickable area is an inner <a> so the star and "..." controls are
+// siblings rather than nested inside a link (invalid HTML, and taps on them
+// would otherwise be ambiguous for assistive tech).
 function gameCardHtml(game) {
     var fav = isFav(game.id);
-    var html = '<a href="' + game.url + '"' + (game.external ? ' target="_blank" rel="noopener"' : '') + ' class="game-card" data-game-id="' + game.id + '" tabindex="0">';
-    html += '  <div class="game-image-wrapper">';
-    html += '    <img class="game-image" src="' + game.image + '" alt="' + game.name + '" onerror="this.src=\'../images/game.svg\'">';
-    html += '    <button class="game-fav-btn' + (fav ? ' active' : '') + '" data-fav-id="' + game.id + '" title="Favorite" aria-label="Toggle favorite"><i class="fa' + (fav ? 's' : 'r') + ' fa-star"></i></button>';
-    html += '  </div>';
-    html += '  <div class="game-overlay"></div>';
-    html += '  <div class="play-icon"><i class="fas fa-play"></i></div>';
-    html += '  <div class="game-info">';
-    html += '    <span class="game-platform">' + game.platform + '</span>';
-    html += '    <h4 class="game-name">' + game.name + '</h4>';
-    html += '  </div>';
-    html += '</a>';
+    var name = escapeHtml(game.name);
+    var platform = escapeHtml(game.platform || '');
+    var label = escapeHtml(fav ? tgT('favRemove') : tgT('favAdd'));
+    var html = '<div class="game-card" data-game-id="' + escapeHtml(game.id) + '">';
+    html += '  <a class="game-card-link" href="' + escapeHtml(game.url) + '"' + (game.external ? ' target="_blank" rel="noopener"' : '') + ' tabindex="0">';
+    html += '    <div class="game-image-wrapper">';
+    html += '      <img class="game-image" src="' + escapeHtml(game.image) + '" alt="' + name + '" loading="lazy" decoding="async" onerror="this.src=\'../images/game.svg\'">';
+    html += '    </div>';
+    html += '    <div class="game-overlay"></div>';
+    html += '    <div class="play-icon"><i class="fas fa-play"></i></div>';
+    html += '    <div class="game-info">';
+    html += '      <span class="game-platform">' + platform + '</span>';
+    html += '      <h4 class="game-name">' + name + '</h4>';
+    html += '    </div>';
+    html += '  </a>';
+    html += '  <button class="game-fav-btn' + (fav ? ' active' : '') + '" data-fav-id="' + escapeHtml(game.id) + '" title="' + label + '" aria-label="' + label + '" aria-pressed="' + (fav ? 'true' : 'false') + '"><i class="fa' + (fav ? 's' : 'r') + ' fa-star"></i></button>';
+    html += '  <button class="game-more-btn" data-more-id="' + escapeHtml(game.id) + '" title="' + escapeHtml(tgT('openNewTab')) + '" aria-label="' + escapeHtml(tgT('openNewTab')) + '"><i class="fas fa-ellipsis-v"></i></button>';
+    html += '</div>';
     return html;
+}
+
+// Shared search predicate: name or platform, case-insensitive. Used by the
+// main grid and by the recent/favorites views so the search box behaves the
+// same everywhere (and a reloaded ?q= never lands in an unfiltered view).
+function matchesSearch(game, q) {
+    if (!q) return true;
+    return game.name.toLowerCase().indexOf(q) !== -1 || Boolean(game.platform && game.platform.toLowerCase().indexOf(q) !== -1);
 }
 
 // Render recently played games as a dedicated sidebar view.
 function recentGamesHtml() {
     var recent = getRecent();
+    var q = searchQuery.toLowerCase();
     var cards = '';
     var shown = 0;
     for (var i = 0; i < recent.length && shown < 12; i++) {
         var game = findGameById(recent[i].id);
-        if (game) {
+        if (game && matchesSearch(game, q)) {
             cards += gameCardHtml(game);
             shown++;
         }
     }
     if (!shown) {
-        return '<div class="no-results recent-empty"><i class="fas fa-clock-rotate-left"></i><p>' + tgT('noRecent') + '</p></div>';
+        return '<div class="no-results recent-empty"><i class="fas fa-clock-rotate-left"></i><p>' +
+            (q ? tgT('noGames') : tgT('noRecent')) + '</p></div>';
     }
     return cards;
 }
@@ -1427,13 +1546,15 @@ function recentGamesHtml() {
 // and must all be reachable, so there is no arbitrary 12-card cap here.
 function favoriteGamesHtml() {
     var favs = getFavs();
+    var q = searchQuery.toLowerCase();
     var cards = '';
     for (var i = 0; i < favs.length; i++) {
         var game = findGameById(favs[i]);
-        if (game) cards += gameCardHtml(game);
+        if (game && matchesSearch(game, q)) cards += gameCardHtml(game);
     }
     if (!cards) {
-        return '<div class="no-results recent-empty"><i class="fas fa-star"></i><p>' + tgT('noFavs') + '</p></div>';
+        return '<div class="no-results recent-empty"><i class="fas fa-star"></i><p>' +
+            (q ? tgT('noGames') : tgT('noFavs')) + '</p></div>';
     }
     return cards;
 }
@@ -1463,12 +1584,72 @@ function checkAutoLoadGames() {
     checkAutoLoadGames();
 }
 
+// ---------- Search / sort / URL state (P0 UX) ----------
+
+// Mirror the current view into the query string so reloading or sharing the
+// URL keeps the category, the query and the sort order. replaceState keeps the
+// back button working as a normal history entry.
+function syncUrlState() {
+    try {
+        var params = new URLSearchParams();
+        if (currentCategory && currentCategory !== 'all') params.set('category', currentCategory);
+        if (searchQuery) params.set('q', searchQuery);
+        if (gameSort !== 'default') params.set('sort', gameSort);
+        var qs = params.toString();
+        history.replaceState(null, '', qs ? '?' + qs : window.location.pathname);
+    } catch (e) {
+        // file:// and locked-down contexts can reject replaceState.
+    }
+}
+
+function scheduleSearch(value) {
+    searchQuery = String(value || '').trim();
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(function () {
+        syncUrlState();
+        renderGames();
+    }, 120);
+}
+
+// Sorting is display-only: the underlying `games` array keeps its curated
+// order so ids and favorites stay stable.
+function sortGames(list) {
+    var sorted = list.slice();
+    if (gameSort === 'name') {
+        sorted.sort(function (a, b) { return a.name.localeCompare(b.name); });
+    } else if (gameSort === 'platform') {
+        sorted.sort(function (a, b) {
+            return String(a.platform).localeCompare(String(b.platform)) || a.name.localeCompare(b.name);
+        });
+    } else if (gameSort === 'newest') {
+        sorted.sort(function (a, b) { return Number(b.id) - Number(a.id); });
+    }
+    return sorted;
+}
+
+// Paint the per-category counts into the sidebar via data-count (rendered by
+// .category-item::after). Recent/favorites count only playable entries.
+function updateCategoryCounts() {
+    var counts = { all: games.length, recent: 0, favorites: 0 };
+    games.forEach(function (game) {
+        counts[game.category] = (counts[game.category] || 0) + 1;
+    });
+    counts.recent = getRecent().filter(function (item) { return findGameById(item.id); }).length;
+    counts.favorites = getFavs().filter(function (id) { return findGameById(id); }).length;
+    $$('.category-item').forEach(function (el) {
+        var n = counts[el.dataset.category] || 0;
+        el.dataset.count = String(n);
+        el.dataset.empty = n === 0 ? '1' : '0';
+    });
+}
+
 // Render games
 function renderGames() {
     var grid = $('#gameGrid');
     grid.innerHTML = '';
     visibleGames = [];
     renderedGameCount = 0;
+    updateCategoryCounts();
     var indicator = $('#loadMoreIndicator');
     if (indicator) indicator.style.display = 'none';
 
@@ -1496,8 +1677,7 @@ function renderGames() {
     if (searchQuery) {
         var q = searchQuery.toLowerCase();
         filteredGames = filteredGames.filter(function(game) {
-            return game.name.toLowerCase().indexOf(q) !== -1 ||
-                (game.platform && game.platform.toLowerCase().indexOf(q) !== -1);
+            return matchesSearch(game, q);
         });
     }
     
@@ -1506,7 +1686,7 @@ function renderGames() {
         return;
     }
 
-    visibleGames = filteredGames;
+    visibleGames = sortGames(filteredGames);
     loadMoreGames();
     checkAutoLoadGames();
 }
@@ -1522,6 +1702,29 @@ function toggleSidebar() {
         sidebar.classList.toggle('collapsed');
         mainContent.classList.toggle('expanded');
     }
+    syncSidebarAria();
+}
+
+// Both the header button and the edge toggle drive the same sidebar, so their
+// disclosure state has to match what the user actually sees.
+function syncSidebarAria() {
+    var sidebar = $('#sidebar');
+    if (!sidebar) return;
+    var open = window.innerWidth <= 768
+        ? sidebar.classList.contains('show-mobile')
+        : !sidebar.classList.contains('collapsed');
+    ['#menuBtn', '#toggleSidebar'].forEach(function(sel) {
+        var el = $(sel);
+        if (el) el.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+}
+
+// The selected category is styled with colour only; expose it so a screen reader
+// (or a TV UI review) can tell which view is current.
+function syncCategoryAria() {
+    $$('.category-item').forEach(function(el) {
+        el.setAttribute('aria-current', el.classList.contains('active') ? 'page' : 'false');
+    });
 }
 
 // Show toast notification
@@ -1534,10 +1737,16 @@ function showToast(message, type) {
         existingToast.remove();
     }
     
+    var header = document.querySelector('.top-header');
+    // The header is one row on desktop and two on mobile; anchor the toast
+    // below it instead of using a fixed 80px that overlaps on phones.
+    var toastTop = (header ? header.getBoundingClientRect().bottom : 70) + 12;
+
     var toast = document.createElement('div');
     toast.className = 'toast-notification ' + type;
-    toast.style.cssText = 'position: fixed; top: 80px; right: 20px; padding: 15px 20px; background: rgba(0,0,0,0.9); border: 2px solid #a3001b; border-radius: 10px; color: #fff; z-index: 9999; display: flex; align-items: center; gap: 10px;';
-    toast.innerHTML = '<i class="fas fa-info-circle" style="color: #a3001b"></i><span>' + message + '</span>';
+    toast.setAttribute('role', 'status');
+    toast.style.cssText = 'position: fixed; top: ' + toastTop + 'px; right: 20px; max-width: min(90vw, 480px); padding: 15px 20px; background: rgba(0,0,0,0.9); border: 2px solid #a3001b; border-radius: 10px; color: #fff; z-index: 9999; display: flex; align-items: center; gap: 10px;';
+    toast.innerHTML = '<i class="fas fa-info-circle" style="color: #a3001b"></i><span style="word-break: break-all">' + escapeHtml(message) + '</span>';
     
     document.body.appendChild(toast);
     
@@ -1550,6 +1759,78 @@ function showToast(message, type) {
     }, 3000);
 }
 
+// ---------- Card actions menu (P0 UX) ----------
+// A "..." button on every card offers "Copy link" / "Open in a new tab", which
+// the plain card anchor cannot do (touch devices have no right-click).
+var menuTrigger = null;
+
+function closeCardMenu() {
+    var menu = document.getElementById('gameCardMenu');
+    var hadFocus = Boolean(menu && menu.contains(document.activeElement));
+    if (menu && menu.parentNode) menu.parentNode.removeChild(menu);
+    $$('.game-card.is-menu-open').forEach(function (card) { card.classList.remove('is-menu-open'); });
+    // Keyboard users must not lose their place when the menu closes.
+    if (hadFocus && menuTrigger && document.body.contains(menuTrigger)) menuTrigger.focus();
+    menuTrigger = null;
+}
+
+function copyToClipboard(text, okMessage) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+            showToast(okMessage);
+        }, function () {
+            // Clipboard blocked (insecure origin / denied permission): show the
+            // link so it can still be copied by hand.
+            showToast(text);
+        });
+        return;
+    }
+    showToast(text);
+}
+
+function openCardMenu(button, game) {
+    closeCardMenu();
+    menuTrigger = button;
+    var card = button.closest ? button.closest('.game-card') : null;
+    if (card) card.classList.add('is-menu-open');
+    var rect = button.getBoundingClientRect();
+    var menu = document.createElement('div');
+    menu.id = 'gameCardMenu';
+    menu.className = 'game-card-menu';
+    menu.setAttribute('data-for-id', String(game.id));
+    menu.style.top = Math.max(8, Math.min(rect.bottom + 6, window.innerHeight - 130)) + 'px';
+    menu.style.left = Math.max(8, Math.min(rect.left - 150, window.innerWidth - 210)) + 'px';
+    menu.innerHTML = '<button type="button" data-action="copy"><i class="fas fa-link"></i><span>' +
+        escapeHtml(tgT('copyLink')) + '</span></button>' +
+        '<button type="button" data-action="newtab"><i class="fas fa-external-link-alt"></i><span>' +
+        escapeHtml(tgT('openNewTab')) + '</span></button>';
+    document.body.appendChild(menu);
+    var firstItem = menu.querySelector('button');
+    if (firstItem) firstItem.focus();
+    menu.addEventListener('click', function (e) {
+        var action = e.target.closest ? e.target.closest('[data-action]') : null;
+        if (!action) return;
+        e.preventDefault();
+        e.stopPropagation();
+        if (action.dataset.action === 'copy') {
+            copyToClipboard(new URL(game.url, window.location.href).href, tgT('linkCopied'));
+        } else {
+            window.open(game.url, '_blank', 'noopener');
+        }
+        closeCardMenu();
+    });
+}
+
+// Keep --game-header-h in sync with the real toolbar height: the header is one
+// row on desktop and two on phones, and a translated label can change it, so the
+// sidebar offset and the grid's top margin are measured instead of hard-coded.
+function syncHeaderHeight() {
+    var header = document.querySelector('.top-header');
+    if (!header) return;
+    var height = Math.round(header.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--game-header-h', height + 'px');
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
     console.log('=== Game Page Loaded ===');
@@ -1557,6 +1838,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Translate all static HTML copy (titles, sidebar, placeholders, loading
     // states) and set the document language.
     applyI18n();
+    syncHeaderHeight();
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(syncHeaderHeight);
+    }
 
     // Deep link: ?category=<id> selects the category (e.g. back links from
     // the standalone emulator pages: fantasy / computer / mobile / retropc)
@@ -1573,7 +1858,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Search + sort deep links: ?q= and ?sort= (persisted in localStorage for
+    // sort when the URL has no explicit value).
+    var initialQuery = (new URLSearchParams(window.location.search).get('q') || '').trim();
+    if (initialQuery) {
+        searchQuery = initialQuery;
+        $('#searchInput').value = initialQuery;
+    }
+    var savedSort = '';
+    try { savedSort = localStorage.getItem(SORT_KEY) || ''; } catch (e) { savedSort = ''; }
+    var initialSort = new URLSearchParams(window.location.search).get('sort');
+    if (['name', 'platform', 'newest'].indexOf(initialSort) !== -1) {
+        gameSort = initialSort;
+    } else if (['name', 'platform', 'newest'].indexOf(savedSort) !== -1) {
+        gameSort = savedSort;
+    }
+    if ($('#sortSelect')) $('#sortSelect').value = gameSort;
+
     // Render initial games
+    syncCategoryAria();
     renderGames();
     
     // Incremental loading: reveal the next batch near the bottom, like Theater.
@@ -1586,14 +1889,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     // Favorites & recent: event delegation on the grid (v8.5.0)
     $('#gameGrid').addEventListener('click', function(e) {
+        var moreBtn = e.target.closest ? e.target.closest('.game-more-btn') : null;
+        if (moreBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            var moreGame = findGameById(moreBtn.dataset.moreId);
+            if (moreGame) {
+                // Toggle: tapping the same "..." twice closes its menu.
+                var openMenu = document.getElementById('gameCardMenu');
+                if (openMenu && openMenu.getAttribute('data-for-id') === String(moreGame.id)) {
+                    closeCardMenu();
+                } else {
+                    openCardMenu(moreBtn, moreGame);
+                }
+            }
+            return;
+        }
         var favBtn = e.target.closest ? e.target.closest('.game-fav-btn') : null;
         if (favBtn) {
             e.preventDefault();
             e.stopPropagation();
+            closeCardMenu();
             var added = toggleFav(favBtn.dataset.favId);
             // Update only this star so infinite-scroll position is preserved.
+            var newLabel = added ? tgT('favRemove') : tgT('favAdd');
             favBtn.classList.toggle('active', added);
+            favBtn.setAttribute('aria-pressed', added ? 'true' : 'false');
+            favBtn.setAttribute('title', newLabel);
+            favBtn.setAttribute('aria-label', newLabel);
             favBtn.innerHTML = '<i class="fa' + (added ? 's' : 'r') + ' fa-star"></i>';
+            showToast(added ? tgT('favAdded') : tgT('favRemoved'));
+            updateCategoryCounts();
             // In the Favorites view an unstar removes the card from the list,
             // so refresh the whole view to keep it in sync.
             if (currentCategory === 'favorites' && !added) renderGames();
@@ -1602,6 +1928,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var card = e.target.closest ? e.target.closest('.game-card[data-game-id]') : null;
         if (card) {
             pushRecent(card.dataset.gameId);
+            updateCategoryCounts();
             // navigation proceeds normally via the anchor href
         }
     });
@@ -1638,6 +1965,7 @@ document.addEventListener('DOMContentLoaded', function() {
     $('#toggleSidebar').addEventListener('click', function() {
         toggleSidebar();
     });
+    syncSidebarAria();
     
     // Category selection
     $$('.category-item').forEach(function(item) {
@@ -1647,24 +1975,70 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             this.classList.add('active');
             currentCategory = this.dataset.category;
+            syncCategoryAria();
+            syncUrlState();
             renderGames();
             
             // Hide sidebar on mobile
             if (window.innerWidth <= 768) {
                 $('#sidebar').classList.remove('show-mobile');
+                syncSidebarAria();
             }
         });
     });
     
-    // Search functionality
-    $('#searchInput').addEventListener('keyup', function(e) {
-        searchQuery = this.value.trim();
+    // Search functionality: debounced, IME-aware (compositionstart/end keeps
+    // Chinese/Japanese/Korean input from re-rendering mid-composition) and
+    // mirrored into ?q= so a reload keeps the query.
+    var searchInput = $('#searchInput');
+    searchInput.addEventListener('compositionstart', function() {
+        isComposing = true;
+    });
+    searchInput.addEventListener('compositionend', function() {
+        isComposing = false;
+        scheduleSearch(this.value);
+    });
+    searchInput.addEventListener('input', function() {
+        if (!isComposing) scheduleSearch(this.value);
+    });
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key !== 'Escape') return;
+        this.value = '';
+        clearTimeout(searchTimer);
+        searchQuery = '';
+        syncUrlState();
         renderGames();
     });
-    
     $('#searchBtn').addEventListener('click', function() {
-        searchQuery = $('#searchInput').value.trim();
-        renderGames();
+        scheduleSearch($('#searchInput').value);
+    });
+
+    // Sort order: persisted locally and reflected in ?sort=.
+    if ($('#sortSelect')) {
+        $('#sortSelect').addEventListener('change', function() {
+            gameSort = this.value;
+            try { localStorage.setItem(SORT_KEY, gameSort); } catch (e) { /* storage blocked */ }
+            syncUrlState();
+            renderGames();
+        });
+    }
+
+    // Card actions menu: clicking anywhere else, scrolling or pressing Esc
+    // closes it.
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest || !e.target.closest('.game-card-menu')) closeCardMenu();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeCardMenu();
+    });
+    $('#mainContent').addEventListener('scroll', closeCardMenu);
+
+    // bfcache restore: the game page is reached via a real navigation, so
+    // coming back must refresh the recent/favorites views and the counters.
+    window.addEventListener('pageshow', function(e) {
+        if (!e.persisted) return;
+        updateCategoryCounts();
+        if (currentCategory === 'recent' || currentCategory === 'favorites') renderGames();
     });
     
     // Handle window resize
@@ -1672,8 +2046,16 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', function() {
         if (window.innerWidth > 768) {
             $('#sidebar').classList.remove('show-mobile');
+            syncSidebarAria();
         }
+        syncHeaderHeight();
         clearTimeout(gameResizeTimer);
-        gameResizeTimer = setTimeout(checkAutoLoadGames, 200);
+        gameResizeTimer = setTimeout(function() {
+            syncHeaderHeight();
+            checkAutoLoadGames();
+        }, 200);
+    });
+    window.addEventListener('orientationchange', function() {
+        setTimeout(syncHeaderHeight, 100);
     });
 });

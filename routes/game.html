@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -41,6 +41,13 @@
         }
         
         /* Top Header */
+        /* Height of the fixed toolbar. JS keeps this in sync with the real
+           header height (one row on desktop, two on phones), so the sidebar and
+           the scroll container never depend on a hard-coded breakpoint value. */
+        :root {
+            --game-header-h: 70px;
+        }
+
         .top-header {
             position: fixed;
             top: 0;
@@ -151,10 +158,10 @@
         .sidebar {
             position: fixed;
             left: 0;
-            top: 70px;
+            top: var(--game-header-h);
             bottom: 0;
             width: 250px;
-            height: calc(100vh - 70px);
+            height: calc(100vh - var(--game-header-h));
             background: rgba(0,0,0,0.85);
             border-right: 2px solid rgba(163,0,27,0.5);
             display: flex;
@@ -260,13 +267,127 @@
             width: 20px;
             text-align: center;
         }
-        
+
+        /* Per-category game counts (v8.6.x): painted by JS via data-count so the
+           sidebar stays a zero-DOM-cost list. */
+        .category-item::after {
+            content: attr(data-count);
+            margin-left: auto;
+            font-size: 12px;
+            line-height: 1;
+            color: rgba(255,255,255,0.55);
+            background: rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 3px 8px;
+        }
+
+        .category-item[data-empty="1"]::after {
+            opacity: 0.35;
+        }
+
+        /* Sort control (v8.6.x) */
+        .sort-select {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(163,0,27,0.5);
+            border-radius: 10px;
+            color: #fff;
+            padding: 9px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .sort-select:focus {
+            border-color: #a3001b;
+        }
+
+        .sort-select option {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        /* Card actions menu (v8.6.x) */
+        .game-more-btn {
+            position: absolute;
+            top: 10px;
+            right: 52px;
+            z-index: 5;
+            width: 34px;
+            height: 34px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.55);
+            color: rgba(255,255,255,0.65);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s ease, background 0.2s ease;
+        }
+
+        .game-card:hover .game-more-btn,
+        .game-card:focus-within .game-more-btn,
+        .game-card.is-menu-open .game-more-btn {
+            opacity: 1;
+        }
+
+        .game-more-btn:hover {
+            background: rgba(163,0,27,0.8);
+            color: #fff;
+        }
+
+        @media (hover: none) {
+            .game-more-btn {
+                opacity: 1;
+            }
+        }
+
+        .game-card-menu {
+            position: fixed;
+            z-index: 9999;
+            min-width: 190px;
+            background: rgba(0,0,0,0.95);
+            border: 2px solid rgba(163,0,27,0.6);
+            border-radius: 10px;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .game-card-menu button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 10px 12px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .game-card-menu button:hover {
+            background: rgba(163,0,27,0.35);
+        }
+
+        .game-card-menu button i {
+            color: #a3001b;
+            width: 18px;
+            text-align: center;
+        }
+
         /* Main Content */
         .main-content {
             flex: 1;
             height: 0;
             margin-left: 250px;
-            margin-top: 70px;
+            margin-top: var(--game-header-h);
             padding: 20px;
             overflow-y: auto;
             transition: margin-left 0.3s ease;
@@ -312,6 +433,14 @@
             transform: translateY(-5px);
             border-color: rgba(163,0,27,0.5);
             box-shadow: 0 10px 30px rgba(163,0,27,0.2);
+        }
+
+        /* The link is the clickable surface; the card wrapper stays relative so
+           the star/... buttons and the hover overlay can sit on top of it. */
+        .game-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
         }
         
         .game-card .game-image-wrapper {
@@ -430,11 +559,17 @@
         }
 
         /* Keyboard / gamepad focus */
-        .game-card:focus-visible,
+        .game-card-link:focus-visible,
         .category-item:focus-visible,
-        .game-fav-btn:focus-visible {
+        .game-fav-btn:focus-visible,
+        .header-btn:focus-visible,
+        .toggle-sidebar:focus-visible {
             outline: 2px solid #ffc93c;
             outline-offset: 2px;
+        }
+
+        .game-card-link:focus-visible {
+            border-radius: 15px;
         }
 
         /* Loading */
@@ -549,11 +684,17 @@
         }
         
         @media screen and (max-width: 768px) {
-            /* Header is two rows here (118.5px); keep the sidebar below it
-               instead of pinned to the old 70px single-row height. */
+            /* Pre-JS fallback (two-row header). syncHeaderHeight() replaces this
+               with the measured height as soon as the page script runs. */
+            :root {
+                --game-header-h: 120px;
+            }
+
+            /* Header becomes two rows here; --game-header-h is updated from the
+               measured header height, so the sidebar and grid stay below it. */
             .sidebar {
-                top: 120px;
-                height: calc(100vh - 120px);
+                top: var(--game-header-h);
+                height: calc(100vh - var(--game-header-h));
                 width: 0;
                 border-right: none;
             }
@@ -573,7 +714,7 @@
             
             .main-content {
                 margin-left: 0;
-                margin-top: 120px; /* two-row header: 12+40+10+44+12+2 */
+                margin-top: var(--game-header-h);
                 padding: 15px;
             }
 
@@ -599,10 +740,12 @@
             .header-right {
                 order: 2;
                 width: 100%;
+                flex-wrap: wrap;
             }
 
             .search-box {
-                width: 100%;
+                flex: 1 1 140px;
+                width: auto;
             }
 
             .search-box input {
@@ -611,6 +754,12 @@
             }
             .search-box input:focus {
                 width: 100%;
+            }
+
+            .sort-select {
+                flex: 0 0 auto;
+                max-width: 46%;
+                background-color: rgba(0,0,0,0.6);
             }
             
             .game-grid {
@@ -655,10 +804,10 @@
         <!-- Top Header -->
         <header class="top-header">
             <div class="header-left">
-                <div class="header-btn" id="backBtn" data-i18n-title="back" title="Back">
+                <div class="header-btn" id="backBtn" role="button" tabindex="0" data-i18n-title="back" title="Back">
                     <i class="fas fa-arrow-left"></i>
                 </div>
-                <div class="header-btn" id="menuBtn" data-i18n-title="menu" title="Menu">
+                <div class="header-btn" id="menuBtn" role="button" tabindex="0" aria-expanded="true" aria-controls="sidebar" data-i18n-title="menu" title="Menu">
                     <i class="fas fa-bars"></i>
                 </div>
                 <div class="header-title">
@@ -671,53 +820,59 @@
                     <input type="text" id="searchInput" data-i18n-placeholder="searchPlaceholder" placeholder="Search games...">
                     <i class="fas fa-search search-icon" id="searchBtn"></i>
                 </div>
+                <select id="sortSelect" class="sort-select" data-i18n-title="sortLabel" aria-label="Sort games">
+                    <option value="default" data-i18n="sortDefault">Default order</option>
+                    <option value="name" data-i18n="sortName">Name (A-Z)</option>
+                    <option value="platform" data-i18n="sortPlatform">Platform</option>
+                    <option value="newest" data-i18n="sortNewest">Newest first</option>
+                </select>
             </div>
         </header>
         
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
             <!-- Toggle Button -->
-            <div class="toggle-sidebar" id="toggleSidebar">
+            <div class="toggle-sidebar" id="toggleSidebar" role="button" tabindex="0" aria-expanded="true" aria-controls="sidebar">
                 <i class="fas fa-chevron-left"></i>
             </div>
             <div class="category-list" id="categoryList">
-                <div class="category-item active" data-category="all" tabindex="0">
+                <div class="category-item active" data-category="all" tabindex="0" role="button">
                     <i class="fas fa-globe"></i>
                     <span data-i18n="catAll">All Games</span>
                 </div>
-                <div class="category-item" data-category="recent" tabindex="0">
+                <div class="category-item" data-category="recent" tabindex="0" role="button">
                     <i class="fas fa-clock-rotate-left"></i>
                     <span data-i18n="catRecent">Recently Played</span>
                 </div>
-                <div class="category-item" data-category="favorites" tabindex="0">
+                <div class="category-item" data-category="favorites" tabindex="0" role="button">
                     <i class="fas fa-star"></i>
                     <span data-i18n="catFavorites">Favorites</span>
                 </div>
-                <div class="category-item" data-category="emulator" tabindex="0">
+                <div class="category-item" data-category="emulator" tabindex="0" role="button">
                     <i class="fas fa-microchip"></i>
                     <span data-i18n="catEmulator">Emulator</span>
                 </div>
-                <div class="category-item" data-category="retropc" tabindex="0">
+                <div class="category-item" data-category="retropc" tabindex="0" role="button">
                     <i class="fas fa-desktop"></i>
                     <span data-i18n="catRetroPc">Retro PC</span>
                 </div>
-                <div class="category-item" data-category="recomp" tabindex="0">
+                <div class="category-item" data-category="recomp" tabindex="0" role="button">
                     <i class="fas fa-cogs"></i>
                     <span data-i18n="catRecomp">Recomp</span>
                 </div>
-                <div class="category-item" data-category="fantasy" tabindex="0">
+                <div class="category-item" data-category="fantasy" tabindex="0" role="button">
                     <i class="fas fa-magic"></i>
                     <span data-i18n="catFantasy">Fantasy Console</span>
                 </div>
-                <div class="category-item" data-category="computer" tabindex="0">
+                <div class="category-item" data-category="computer" tabindex="0" role="button">
                     <i class="fas fa-laptop"></i>
                     <span data-i18n="catComputers">Computers</span>
                 </div>
-                <div class="category-item" data-category="mobile" tabindex="0">
+                <div class="category-item" data-category="mobile" tabindex="0" role="button">
                     <i class="fas fa-mobile-screen"></i>
                     <span data-i18n="catMobile">Mobile</span>
                 </div>
-                <div class="category-item" data-category="webgames" tabindex="0">
+                <div class="category-item" data-category="webgames" tabindex="0" role="button">
                     <i class="fas fa-window-maximize"></i>
                     <span data-i18n="catWebGames">Web Games</span>
                 </div>

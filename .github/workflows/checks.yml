@@ -24,6 +24,8 @@ jobs:
         run: node scripts/checks/check-index-dom.js
       - name: Game regressions
         run: node scripts/checks/check-game-regressions.js
+      - name: Gameplay shell
+        run: node scripts/checks/check-gameplay-shell.js
       - name: Hot-link player helper
         run: node scripts/checks/check-hotlink-player.js
       - name: Version consistency

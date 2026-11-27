@@ -84,6 +84,28 @@ check(badImages.length === 0, 'cards with a local image that does not resolve: '
 
 const remoteImages = games.filter((g) => /^https?:\/\//.test(g.image)).length;
 const mobile = games.filter((g) => g.category === 'mobile');
+
+// 7. Cards that deep-link into the standalone gameplay shell must use a key that
+//    GAMEPLAY_REGISTRY knows - an unknown key renders "Game not found" instead of
+//    the game - and each registry URL must exist (resolved from catalogues/).
+const gameplayJs = fs.readFileSync(path.join(root, 'js/togameplay.js'), 'utf8');
+const registryBlock = gameplayJs.match(/var GAMEPLAY_REGISTRY = \{([\s\S]*?)\n\};/);
+check(Boolean(registryBlock), 'js/togameplay.js has no GAMEPLAY_REGISTRY');
+if (registryBlock) {
+    const registry = [...registryBlock[1].matchAll(/'([\w-]+)':\s*\{[\s\S]{0,220}?url:\s*'([^']+)'/g)]
+        .map((m) => ({ key: m[1], url: m[2] }));
+    const registryKeys = new Set(registry.map((r) => r.key));
+    const deepLinks = games
+        .filter((g) => typeof g.url === 'string' && g.url.indexOf('catalogues/gameplay.html?game=') !== -1)
+        .map((g) => g.url.split('game=')[1]);
+    const unknownKeys = deepLinks.filter((k) => !registryKeys.has(k));
+    check(unknownKeys.length === 0,
+        'cards deep-link to gameplay keys missing from GAMEPLAY_REGISTRY: ' + unknownKeys.join(', '));
+    const brokenRegistry = registry.filter((r) => !fs.existsSync(path.join(root, 'catalogues', r.url)));
+    check(brokenRegistry.length === 0,
+        'GAMEPLAY_REGISTRY urls that do not exist: ' + brokenRegistry.map((r) => r.key + ' -> ' + r.url).join(', '));
+}
+
 console.log('total games: ' + games.length + ' | mobile: ' + mobile.length +
     ' | webgames: ' + (byCategory.webgames || 0) +
     ' | categories: ' + Object.keys(byCategory).length +
