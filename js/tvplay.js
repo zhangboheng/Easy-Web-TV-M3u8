@@ -7,13 +7,95 @@ var currentChannelIndex = -1;  // Track current playing channel index
 // Favorite prefix for localStorage - ensures only this app's favorites are shown
 var FAV_PREFIX = 'fav_tvplay_';
 
+// Cache TTL for parsed playlists and the currently loaded playlist URL.
+var TV_CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24h
+var currentApiUrl = '';
+
+function tvCacheGet(key) {
+    try {
+        var raw = window.localStorage.getItem(key);
+        if (!raw) return null;
+        var obj = JSON.parse(raw);
+        if (!obj || !Array.isArray(obj.data)) return null;
+        return { data: obj.data, at: obj.at || 0 };
+    } catch (e) { return null; }
+}
+function tvCacheSet(key, data) {
+    try { window.localStorage.setItem(key, JSON.stringify({ data: data, at: Date.now() })); }
+    catch (e) { /* storage full - caching is best-effort */ }
+}
+
+// Standard M3U8 playlist parser. Line-based: EXTINF carries the channel
+// metadata (tvg-id / tvg-logo / group-title) after the comma; URL lines follow.
+// Handles #EXTVLCOPT, de-duplicates (tvg-id + url), and drops non-http URLs
+// so the sidebar and failover only see playable entries.
+function parseM3U(text) {
+    var out = [];
+    var seen = {};
+    var lines = String(text || '').split(/\r?\n/);
+    var cur = null;
+    for (var i = 0; i < lines.length; i++) {
+        var line = lines[i].trim();
+        if (!line) continue;
+        if (line.indexOf('#EXTM3U') === 0) continue;
+        if (line.indexOf('#EXTINF:') === 0) {
+            var attrText = line.substring(line.indexOf(':') + 1);
+            var comma = attrText.indexOf(',');
+            var attrPart = comma === -1 ? '' : attrText.substring(0, comma);
+            var name = comma === -1 ? '' : attrText.substring(comma + 1).trim();
+            var attrs = {};
+            var re = /([a-zA-Z0-9_-]+)="([^"]*)"/g;
+            var m;
+            while ((m = re.exec(attrPart)) !== null) {
+                // Convert hyphenated keys (tvg-id) to camelCase (tvgId) so
+                // lookups below can use dot notation.
+                var key = m[1].toLowerCase().replace(/-([a-z])/g, function (_, c) { return c.toUpperCase(); });
+                attrs[key] = m[2];
+            }
+            cur = {
+                name: name || attrs.tvgName || attrs.tvgId || 'Unknown channel',
+                tvgId: attrs.tvgId || '',
+                logo: attrs.tvgLogo || '',
+                group: attrs.groupTitle || '',
+                opts: []
+            };
+            continue;
+        }
+        if (line.indexOf('#EXTVLCOPT') === 0) {
+            if (cur) cur.opts.push(line.substring(line.indexOf(':') + 1).trim());
+            continue;
+        }
+        if (line.charAt(0) === '#') continue; // other directives (#KODIPROP, ...)
+        var url = line;
+        // Skip non-playable schemes (rtmp/rtsp/udp/mms appear in some iptv-org
+        // lists) but KEEP cur alive so a following http(s) URL under the same
+        // EXTINF still carries the channel's name / tvg-id / group.
+        if (!/^https?:\/\//i.test(url)) { continue; }
+        var key = (cur ? cur.tvgId : '') + '|' + url;
+        if (seen[key]) { continue; }
+        seen[key] = true;
+        out.push({
+            name: cur ? cur.name : 'Unknown channel',
+            tvgId: cur ? cur.tvgId : '',
+            logo: cur ? cur.logo : '',
+            group: cur ? cur.group : '',
+            opts: cur ? cur.opts : [],
+            url: url
+        });
+        // Keep cur alive (do NOT null it): a #EXTVLCOPT may follow the URL and
+        // accumulate into cur.opts, which is shared by reference with every
+        // channel pushed from this EXTINF. The next EXTINF reassigns cur.
+    }
+    return out;
+}
+
 // ============================== Stream diagnostics ==============================
 // Explain why a channel may fail on this device. The #1 real-world cause is
 // mixed content: the site runs on HTTPS (GitHub Pages) while the channel is a
 // plain http:// stream - desktop Chrome/Edge/Firefox block that, while some
 // mobile/TV webviews allow it. That matches "works on my other devices".
 function currentChannelUrl() {
-    if (currentChannelIndex >= 0 && channels[currentChannelIndex]) return channels[currentChannelIndex];
+    if (currentChannelIndex >= 0 && channels[currentChannelIndex]) return channels[currentChannelIndex].url;
     var el = document.querySelector('.channel-item.active');
     return el ? el.dataset.url : '';
 }
@@ -78,27 +160,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize video player
     player = videojs(document.querySelector('#video1'));
     
-    // Error handling - prevent loading spinner and error icon showing simultaneously,
-    // and explain to the user WHY a channel may refuse to play on this device.
+    // Error handling - explain the failure and auto-fail over to the next
+    // playable channel after a short delay (skips dead sources).
     player.on('error', function() {
         player.removeClass('vjs-waiting');
         player.removeClass('vjs-loading');
         showStreamNotice(currentChannelUrl());
+        var failedIdx = currentChannelIndex;
+        markChannelFailed(failedIdx);
+        // wait briefly so transient errors don't thrash; then fail over - but
+        // only if the user hasn't manually switched away from the failed
+        // channel in the meantime (otherwise we'd interrupt their new pick).
+        setTimeout(function () {
+            if (currentChannelIndex === failedIdx) {
+                tryNextChannel();
+            }
+        }, 600);
     });
-    
-    // Auto-play next channel when current channel ends
+
+    // Auto-play next playable channel when current channel ends
     player.on('ended', function() {
         console.log('Video ended, checking for next channel...');
-        if (currentChannelIndex >= 0 && currentChannelIndex < channels.length - 1) {
-            var nextIndex = currentChannelIndex + 1;
-            console.log('Auto-playing next channel:', nextIndex + 1);
-            var nextUrl = channels[nextIndex];
-            var nextItem = $$('.channel-item')[nextIndex];
-            var nextName = nextItem.dataset.name;
-            playChannel(nextUrl, nextName);
-            $$('.channel-item').forEach(function(el) { el.classList.remove('active'); });
-            nextItem.classList.add('active');
-        } else {
+        if (!tryNextChannel()) {
             console.log('No more channels to play');
         }
     });
@@ -288,10 +371,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (channelItem) {
                 var url = channelItem.dataset.url;
                 var name = channelItem.dataset.name;
-                
+                var ci = channelIndexByUrl(url);
+                if (ci >= 0) channels[ci].failed = false;
+
                 $$('.channel-item').forEach(function(el) { el.classList.remove('active'); });
                 channelItem.classList.add('active');
-                
+
                 playChannel(url, name);
             }
         });
@@ -300,44 +385,71 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Load channels from API
 function loadChannels(apiUrl) {
-    fetch(apiUrl)
-        .then(function(response) { return response.text(); })
-        .then(function(message) {
-            var channelList = [];
-            var str = message;
-            var lst = str.split(",").slice(1).filter(function(x) { return /[^h]+.m3u8/.test(x); }).map(function(x) { return x.split("\n"); });
-            var array = str.split(" ");
-            var links = array.filter(function(x) { return /[^h]+.m3u8/.test(x); }).map(function(x) { return x.split("\n"); }).flat().filter(function(x) { return /[^h]+.m3u8/.test(x); });
-            
-            for (var i = 0; i < links.length; i++) {
-                channels.push(links[i]);
-                var channelName = (lst[i] && lst[i][0]) ? lst[i][0] : 'Unknown channel';
-                channelList.push({
-                    name: channelName,
-                    url: links[i],
-                    isFavorite: window.localStorage.getItem(FAV_PREFIX + links[i]) === channelName
-                });
-            }
-            
-            renderChannelList(channelList);
-        })
-        .catch(function() {
-            $('#channelList').innerHTML = '<div class="no-channels"><i class="fas fa-exclamation-triangle"></i><p>Failed to load channels</p><p style="font-size: 12px; margin-top: 10px;">Please check your internet connection</p></div>';
-        });
+    currentApiUrl = apiUrl;
+    var cacheKey = 'tvplay_cache_' + apiUrl;
+    // fetchWithProxy (from apiproxy.js) routes through the unified proxy pool
+    // with its health cache + per-attempt timeout; fall back to raw fetch.
+    var fetchText = (typeof fetchWithProxy === 'function')
+        ? function (u) { return fetchWithProxy(u); }
+        : function (u) { return fetch(u).then(function (r) { return r.text(); }); };
+
+    function renderAndCache(parsed) {
+        tvCacheSet(cacheKey, parsed);
+        channels = parsed;
+        renderChannelList(parsed);
+    }
+    function onError() {
+        var cached = tvCacheGet(cacheKey);
+        if (cached) { channels = cached.data; renderChannelList(cached.data); }
+        else { renderLoadError(); }
+    }
+
+    var cached = tvCacheGet(cacheKey);
+    if (cached && (Date.now() - cached.at) < TV_CACHE_TTL_MS) {
+        channels = cached.data;
+        renderChannelList(cached.data);
+        // refresh in the background; only update the cache so the user's
+        // current channel isn't interrupted by a re-render + auto-play.
+        fetchText(apiUrl).then(function (message) {
+            tvCacheSet(cacheKey, parseM3U(message));
+        }).catch(function () { /* keep cached */ });
+        return;
+    }
+    return fetchText(apiUrl)
+        .then(function (message) { renderAndCache(parseM3U(message)); })
+        .catch(onError);
+}
+
+function renderLoadError() {
+    $('#channelList').innerHTML = '<div class="no-channels"><i class="fas fa-exclamation-triangle"></i>' +
+        '<p>Failed to load channels</p>' +
+        '<p style="font-size:12px;margin-top:10px;">Please check your internet connection</p>' +
+        '<button type="button" id="tvRetryBtn" class="play-link-btn">Retry</button></div>';
+    var btn = document.getElementById('tvRetryBtn');
+    if (btn) btn.addEventListener('click', function () { loadChannels(currentApiUrl); });
 }
 
 // Render channel list
-function renderChannelList(channelList) {
+function renderChannelList(parsed) {
+    var channelList = parsed.map(function (c) {
+        return {
+            name: c.name,
+            url: c.url,
+            group: c.group,
+            logo: c.logo,
+            isFavorite: window.localStorage.getItem(FAV_PREFIX + c.url) === c.name
+        };
+    });
     $('#channelList').innerHTML = '';
     $('#channelCount').textContent = channelList.length;
-    
+
     if (channelList.length === 0) {
         $('#channelList').innerHTML = '<div class="no-channels"><i class="fas fa-tv"></i><p>No channels found</p></div>';
         return;
     }
-    
+
     var html = '';
-    channelList.forEach(function(channel, index) {
+    channelList.forEach(function (channel, index) {
         var isFav = channel.isFavorite ? 'active' : '';
         html += '<div class="channel-item ' + (index === 0 ? 'active' : '') + '" data-url="' + escapeHtml(channel.url) + '" data-name="' + escapeHtml(channel.name) + '">';
         html += '    <div class="channel-icon"><i class="fas fa-tv"></i></div>';
@@ -345,9 +457,9 @@ function renderChannelList(channelList) {
         html += '    <i class="fas fa-heart favorite-btn ' + isFav + '" title="Add to favorites"></i>';
         html += '</div>';
     });
-    
+
     $('#channelList').innerHTML = html;
-    
+
     // Play first channel automatically
     if (channelList.length > 0) {
         playChannel(channelList[0].url, channelList[0].name);
@@ -365,9 +477,14 @@ function playChannel(url, name) {
     // channel works on some devices but not on a PC).
     showStreamNotice(url);
     
-    // Update current channel index
+    // Update current channel index. Reset first: a URL that is not in the
+    // channel list (custom link input, a favorite not in the current list)
+    // must clear the index to -1. Otherwise a stale index points at an
+    // unrelated channel, and the error handler would mark that wrong channel
+    // as failed and trigger failover on it.
+    currentChannelIndex = -1;
     for (var i = 0; i < channels.length; i++) {
-        if (channels[i] === url) {
+        if (channels[i] && channels[i].url === url) {
             currentChannelIndex = i;
             break;
         }
@@ -380,6 +497,39 @@ function playChannel(url, name) {
     
     player.play();
     $('#currentChannel').textContent = name;
+}
+
+function channelIndexByUrl(url) {
+    for (var i = 0; i < channels.length; i++) {
+        if (channels[i] && channels[i].url === url) return i;
+    }
+    return -1;
+}
+
+function markChannelFailed(idx) {
+    if (idx >= 0 && idx < channels.length && channels[idx]) channels[idx].failed = true;
+}
+
+// Advance to the next playable channel, skipping failed and mixed-content
+// (http on an https page, which browsers block) entries. Returns true when it
+// started another channel, false when nothing usable remains. The loop runs
+// i < channels.length (not <=): it never revisits the start channel, so an
+// 'ended' event can't loop by re-playing the same channel that just finished.
+function tryNextChannel() {
+    var start = currentChannelIndex;
+    if (start < 0 || !channels.length) return false;
+    for (var i = 1; i < channels.length; i++) {
+        var idx = (start + i) % channels.length;
+        var ch = channels[idx];
+        if (!ch || ch.failed) continue;
+        if (isMixedContent(ch.url)) { ch.failed = true; continue; }
+        playChannel(ch.url, ch.name);
+        $$('.channel-item').forEach(function (el) { el.classList.remove('active'); });
+        var item = $$('.channel-item')[idx];
+        if (item) item.classList.add('active');
+        return true;
+    }
+    return false;
 }
 
 // Load favorites list

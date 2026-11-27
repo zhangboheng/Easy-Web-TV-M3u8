@@ -34,6 +34,8 @@ jobs:
         run: node scripts/checks/check-proxy-health.js
       - name: Settings connectivity probe
         run: node scripts/checks/check-settings-probe.js
+      - name: TV player (M3U parse / proxy / cache / failover)
+        run: node scripts/checks/check-tvplay.js
       - name: Language selector
         run: node scripts/checks/check-language-selector.js
       - name: Local media and PDF regressions
