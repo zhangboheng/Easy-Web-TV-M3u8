@@ -1,10 +1,10 @@
 /**
  * Easy Web TV - Main Application
  * Native JavaScript (No jQuery)
- * @version 8.6.2
+ * @version 8.6.3
  */
 
-// Keep the visible version badge in sync with js/version.js (v8.6.2).
+// Keep the visible version badge in sync with js/version.js (v8.6.3).
 document.addEventListener('DOMContentLoaded', function () {
     var el = document.getElementById('app-version');
     if (el && window.EWTV_VERSION) el.textContent = window.EWTV_VERSION;
@@ -1635,7 +1635,7 @@ const SettingsModal = {
             }
             var payload = {
                 app: 'easy-web-tv',
-                version: (window.EWTV_VERSION || '8.6.2'),
+                version: (window.EWTV_VERSION || '8.6.3'),
                 exportedAt: new Date().toISOString(),
                 data: data
             };
@@ -1899,6 +1899,7 @@ DOM.ready(function() {
     if (scrollidbar) {
         scrollidbar.innerHTML = '';
         DOM.append(scrollidbar, `
+            <p>[2026-11-27] V8.6.3 release Rebuild the Games catalogue UI: every card is a wrapper div with an inner link, so the favourite star and the "..." actions menu (copy link, open in a new tab) are siblings instead of being nested inside the link, with lazy-decoded images, escaped card copy, per-category counters, Recently Played and Favorites views, IME-safe debounced search mirrored into ?q=, a persisted sort order mirrored into ?sort=, and d-pad/arrow navigation that only walks rows and cards the user can actually see, with a visible focus ring, aria-current/aria-expanded state, a language-aware tab title and a storage-safe language read; the four local web games (Square Obstacles, Pong, Breakout, Tic Tac Toe) now play in the standalone catalogues/gameplay.html shell, which reports an unknown ?game= key instead of launching the first game, delegates the iframe lifecycle to the shared hot-link helper, keeps back/home keyboard operable, follows the real fullscreen state and grants in-frame fullscreen/autoplay; CI gains check-gameplay-shell.js plus deep-link-to-registry, i18n key coverage and storage-guard assertions</p>
             <p>[2026-11-25] V8.6.2 update Add a YouTube tab to Settings > Source Control with two built-in channels (Blender, Blender Studio) listed by their official RSS URLs plus user-added channel feeds; picking any YouTube channel in Theater now loads its latest videos live from that RSS feed through the configurable CORS proxy pool and plays them via YouTube's official nocookie embed</p>
             <p>[2026-11-25] V8.6.2 release Harden the hot-linked player routes: the J2ME demo now launches inside the page's embedded iframe, jar URLs run in the same player, and the broken parent-origin blob local-jar path is replaced by the official installer inside the player; BBC Micro and Apple II stop lazy-loading their iframes after the shared player reveals them from display:none, so their src assignment is no longer skipped; the Service Worker bypasses the browser HTTP cache for normal document/script/style requests and the isolated PS2/Vita/Mac/N64/rustpal route navigations while leaving images, media and Range requests on the normal cache path, rustpal falls back to the upstream site when no service worker controls the page, and the version check now guards the isolated-route cache path and the settings changelog entry</p>
             <p>[2026-11-22] V8.6.1 update Add five text games to Web Games via the generic hot-link player: A Dark Room (MPL-2.0), Life Restart 人生重开模拟器 (MIT), Candy Box 2 (GPL-3.0), Antimatter Dimensions (MIT) and 文字修仙 Xiuxian Cultivation (CC BY-NC 4.0) - each runs from its author's official hosted build in an iframe with card art hot-linked from the project repositories; regression checks now parse the game registry and the 8-language texts instead of grepping file text, a new CI check verifies every hot-linked game URL is reachable, the catalogue check replaces a tautological assertion with category floors and cross-file consistency (route pages, category tabs, local images), the player notice says works are open source or free-licensed because CC BY-NC is not open source, and the CI check scripts moved out of docs/superpowers into scripts/checks so docs/ is now local-only skill scratch space that git ignores, and a regression check guards that directory contract so a future move cannot silently drop a check from CI</p>

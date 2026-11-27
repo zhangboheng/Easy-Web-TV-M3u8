@@ -1,5 +1,5 @@
 /**
- * Single source of truth for the application version (v8.6.2).
+ * Single source of truth for the application version (v8.6.3).
  * Plain global so every page, including the service worker, can read it.
  */
-window.EWTV_VERSION = '8.6.2';
+window.EWTV_VERSION = '8.6.3';

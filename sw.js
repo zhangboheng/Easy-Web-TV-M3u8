@@ -3,7 +3,7 @@
 // after a CORS re-fetch confirms a real 2xx (an opaque no-cors 404 looks like
 // status 0 and would suppress the card's Games-icon onerror fallback).
 // Cache name is kept in sync with js/version.js by check-version.js.
-const CACHE_NAME = 'easy-web-tv-v8.6.2';
+const CACHE_NAME = 'easy-web-tv-v8.6.3';
 
 // Assets to cache on install - only local assets that exist
 // v8.5.0: slimmed down to the index shell only; route pages, engines and
@@ -25,6 +25,9 @@ const CACHE_NAME = 'easy-web-tv-v8.6.2';
 // unified module/player headers, grid card-height fix, 96-language inline texts,
 // a language-switch fix that preserves saved source selections, the Legend of
 // Sword and Fairy (DOS) player with per-page isolation, and online game card art.
+// v8.6.3: rebuilt Games catalogue cards (wrapper div + inner link, favourites and
+// card actions menu, IME-safe search, sort/URL state, d-pad ring) and added the
+// standalone catalogues/gameplay.html shell for the four local web games.
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
